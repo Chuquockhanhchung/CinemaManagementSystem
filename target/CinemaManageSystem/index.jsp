@@ -37,7 +37,7 @@
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
     <body>
@@ -4125,7 +4125,7 @@
         <%@include file="footer.jsp" %>
         <!-- prs footer Wrapper End -->
         <!-- Form Login -->
-        <form action="login" method="post">
+        <form action="login" method="post" id="form">
             <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -4149,14 +4149,17 @@
                         <div class="st_form_pop_fp float_left">
                             <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
                         </div>
+                        <div class="g-recaptcha float_left" data-sitekey="6LclJOUpAAAAABir2gwq1sKVfC1zD_Gygchg7m-g"></div>
+                        <div id="error"></div>
+
                         <div class="st_form_pop_login_btn float_left">
                             <input type="submit" value="LOGIN" />
                         </div>
                         <div class="st_form_pop_or_btn float_left">
                             <h4>or</h4>
                         </div>
-                        <div class="st_form_pop_gmail_btn float_left">
-                            <a href="https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force"> 
+                        <div class="click st_form_pop_gmail_btn float_left">
+                            <a href="https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force" class="link"> 
                                 <img src="images/content/google.png" alt=""> Login with Google</a>
                         </div>
                         <div class="st_form_pop_signin_btn float_left">
@@ -4168,6 +4171,37 @@
                 </div>
             </div>
         </form> 
+        <script>
+            window.onload = function(){
+            let isValid = false;
+                    const form = document.getElementById("form");
+                    const id = document.getElementById("error");
+                    form.addEventListener("submit", function(event){
+                    event.preventDefault();
+                            
+                   
+                    const respone = grecaptcha.getResponse();
+                    if (respone){
+                        form.submit();
+                        
+                    } else{
+                    error.innerHTML = "Please check!";
+                    }
+                    });
+                     $('.click').on('click', function(e) {
+                       //  // Now link won't go anywhere
+                        
+                        const respone = grecaptcha.getResponse();
+                    if (respone){
+                        window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
+                        
+                    } else{
+                    e.preventDefault();
+                    error.innerHTML = "Please check!";
+                    }
+                        });
+                    }
+        </script>
         <!-- Form Forgot Password -->
         <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
             <div class="modal-dialog">
@@ -4255,6 +4289,11 @@
         <script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
         <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
         <script src="js/custom.js"></script>
+        <script type="text/javascript">
+                                            var onloadCallback = function() {
+                                            alert("grecaptcha is ready!");
+                                            };
+        </script>
         <!--main js file end-->
     </body>
 
