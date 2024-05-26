@@ -1,7 +1,8 @@
-package model;
-
-
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Email;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -12,7 +13,10 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
-
+/**
+ *
+ * @author ADMIN
+ */
 public class Email {
     private String from;
     
@@ -86,4 +90,5 @@ public class Email {
             e.printStackTrace();
         }
     }
+
 }

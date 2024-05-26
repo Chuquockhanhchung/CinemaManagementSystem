@@ -5,7 +5,7 @@
 
 package controller;
 
-import model.Email;
+import Email.Email;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
