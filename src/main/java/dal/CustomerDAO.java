@@ -22,7 +22,7 @@ public class CustomerDAO extends DBContext {
     }
 
     public ArrayList<Customer> getInfor_Customer() {
-         String sql = "SELECT k.MaKhachHang, t.MaTaiKhoan, k.HoTen, k.Email, k.SoDienThoai, t.MatKhau, t.LoaiTaiKhoan FROM khachhang k JOIN taikhoan t ON k.MaTaiKhoan = t.MaTaiKhoan";
+        String sql = "SELECT k.MaKhachHang, t.MaTaiKhoan, k.HoTen, k.Email, k.SoDienThoai, t.MatKhau, t.LoaiTaiKhoan FROM khachhang k JOIN taikhoan t ON k.MaTaiKhoan = t.MaTaiKhoan";
         ArrayList<Customer> list = new ArrayList<>();
         Security s = new Security();
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
@@ -58,6 +58,27 @@ public class CustomerDAO extends DBContext {
         }
     }
 
+    public void resetPassword(String mail, String password) {
+        Security s = new Security();
+        String sql = "update taikhoan set MatKhau = ? where MaTaiKhoan =\n"
+                + "(select MaTaiKhoan from khachhang where Email = ?)";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, s.encode(password));
+            ps.setString(2, mail);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+public static void main(String[] args) {
+        try (Connection con = getConn()) {
+            // Connection successful, you can perform further operations here if needed
+            CustomerDAO cd =new CustomerDAO(con);
+            cd.resetPassword("chihphe176407@fpt.edu.vn", "1234");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void insertAccount(Customer account) {
         Security s = new Security();
         String sql = "insert into taikhoan (MaTaiKhoan, MatKhau,loaiTaiKhoan, NgayTao) values (?, ?, ?, now())";
