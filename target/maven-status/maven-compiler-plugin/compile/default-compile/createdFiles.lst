@@ -1,10 +1,10 @@
-loginbygoogle\LoginByGoogle.class
-Utill\Security.class
-controller\logout.class
 loginbygoogle\Constants.class
 loginbygoogle\GoogleUtils.class
 controller\signup.class
 dal\CustomerDAO.class
 dal\DBContext.class
-model\Customer.class
 controller\servlet_Login.class
+loginbygoogle\LoginByGoogle.class
+Utill\Security.class
+controller\logout.class
+model\Customer.class

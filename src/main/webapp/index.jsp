@@ -264,142 +264,17 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                                <div class="prs_upcom_movie_box_wrapper">
-                                                    <div class="prs_upcom_movie_img_box">
-                                                        <img src="images/content/up1.jpg" alt="movie_img" />
-                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                            <ul>
-                                                                <li><a href="#">View Trailer</a>
-                                                                </li>
-                                                                <li><a href="#">View Details</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box">
-                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                            <h2><a href="#">Busting Car</a></h2>
-                                                            <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                            <ul>
-                                                                <li><a href="movie_booking.jsp"><i class="fi fi-ss-ticket"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_second">
-                                                <div class="prs_upcom_movie_box_wrapper">
-                                                    <div class="prs_upcom_movie_img_box">
-                                                        <img src="images/content/up2.jpg" alt="movie_img" />
-                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                            <ul>
-                                                                <li><a href="#">View Trailer</a>
-                                                                </li>
-                                                                <li><a href="#">View Details</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box">
-                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                            <h2><a href="#">Busting Car</a></h2>
-                                                            <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                            <ul>
-                                                                <li><a href="movie_booking.jsp"><i
-                                                                            class="fi fi-ss-ticket"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                                <div class="prs_upcom_movie_box_wrapper">
-                                                    <div class="prs_upcom_movie_img_box">
-                                                        <img src="images/content/up3.jpg" alt="movie_img" />
-                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                            <ul>
-                                                                <li><a href="#">View Trailer</a>
-                                                                </li>
-                                                                <li><a href="#">View Details</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box">
-                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                            <h2><a href="#">Busting Car</a></h2>
-                                                            <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                            <ul>
-                                                                <li><a href="movie_booking.jsp"><i
-                                                                            class="fi fi-ss-ticket"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                                <div class="prs_upcom_movie_box_wrapper">
-                                                    <div class="prs_upcom_movie_img_box">
-                                                        <img src="images/content/up4.jpg" alt="movie_img" />
-                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                            <ul>
-                                                                <li><a href="#">View Trailer</a>
-                                                                </li>
-                                                                <li><a href="#">View Details</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box">
-                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                            <h2><a href="#">Busting Car</a></h2>
-                                                            <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                            <ul>
-                                                                <li><a href="movie_booking.jsp"><i
-                                                                            class="fi fi-ss-ticket"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cc_featured_second_section">
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                
+                                                
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
                                                     <div class="prs_upcom_movie_box_wrapper">
                                                         <div class="prs_upcom_movie_img_box">
-                                                            <img src="images/content/up5.jpg" alt="movie_img" />
+                                                            <img src="${o.image}" alt="movie_img" />
                                                             <div class="prs_upcom_movie_img_overlay"></div>
                                                             <div class="prs_upcom_movie_img_btn_wrapper">
                                                                 <ul>
@@ -429,105 +304,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                                    <div class="prs_upcom_movie_box_wrapper">
-                                                        <div class="prs_upcom_movie_img_box">
-                                                            <img src="images/content/up6.jpg" alt="movie_img" />
-                                                            <div class="prs_upcom_movie_img_overlay"></div>
-                                                            <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#">View Trailer</a>
-                                                                    </li>
-                                                                    <li><a href="#">View Details</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box">
-                                                            <div class="prs_upcom_movie_content_box_inner">
-                                                                <h2><a href="#">Busting Car</a></h2>
-                                                                <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                <ul>
-                                                                    <li><a href="movie_booking.jsp"><i
-                                                                                class="fi fi-ss-ticket"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                                    <div class="prs_upcom_movie_box_wrapper">
-                                                        <div class="prs_upcom_movie_img_box">
-                                                            <img src="images/content/up7.jpg" alt="movie_img" />
-                                                            <div class="prs_upcom_movie_img_overlay"></div>
-                                                            <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#">View Trailer</a>
-                                                                    </li>
-                                                                    <li><a href="#">View Details</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box">
-                                                            <div class="prs_upcom_movie_content_box_inner">
-                                                                <h2><a href="#">Busting Car</a></h2>
-                                                                <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                <ul>
-                                                                    <li><a href="movie_booking.jsp"><i
-                                                                                class="fi fi-ss-ticket"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                                    <div class="prs_upcom_movie_box_wrapper">
-                                                        <div class="prs_upcom_movie_img_box">
-                                                            <img src="images/content/up8.jpg" alt="movie_img" />
-                                                            <div class="prs_upcom_movie_img_overlay"></div>
-                                                            <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#">View Trailer</a>
-                                                                    </li>
-                                                                    <li><a href="#">View Details</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="prs_upcom_movie_content_box">
-                                                            <div class="prs_upcom_movie_content_box_inner">
-                                                                <h2><a href="#">Busting Car</a></h2>
-                                                                <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                <ul>
-                                                                    <li><a href="movie_booking.jsp"><i
-                                                                                class="fi fi-ss-ticket"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            
+                                            
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -4171,6 +3950,7 @@
                 </div>
             </div>
         </form> 
+
         <script>
             window.onload = function(){
             let isValid = false;
@@ -4202,8 +3982,10 @@
                         });
                     }
         </script>
+
         <!-- Form Forgot Password -->
         <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+            
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -4213,14 +3995,44 @@
                     </div>
                     <div class="st_profile_input float_left">
                         <label>Email Address</label>
-                        <input type="text">
+                        <input id="emailInput" name="email" type="text">
                     </div>
-                    <div class="st_form_pop_fpass_btn float_left"> <a href="#">Verify</a>
+                    <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"> <a href="" id="verifyButton">Verify</a>
                     </div>
                 </div>
             </div>
         </div>
+       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#verifyButton').on('click', function(event){
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            
+            var email = $('#emailInput').val(); // Lấy giá trị từ input
+            
+            if(email) {
+                $.ajax({
+                    url: 'sendEmail', 
+                    method: 'POST',
+                    data: { email: email },
+                    success: function(response) {
+                        alert("View your email to verify");
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred: " + xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Please enter your email address.");
+            }
+        });
+    });
+</script>
         <!-- Form Sign Up -->
         <form action="signup" method="post">
             <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
