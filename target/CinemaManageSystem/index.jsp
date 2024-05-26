@@ -4168,8 +4168,10 @@
                 </div>
             </div>
         </form> 
+                        
         <!-- Form Forgot Password -->
         <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+            
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -4179,14 +4181,44 @@
                     </div>
                     <div class="st_profile_input float_left">
                         <label>Email Address</label>
-                        <input type="text">
+                        <input id="emailInput" name="email" type="text">
                     </div>
-                    <div class="st_form_pop_fpass_btn float_left"> <a href="#">Verify</a>
+                    <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"> <a href="" id="verifyButton">Verify</a>
                     </div>
                 </div>
             </div>
         </div>
+       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#verifyButton').on('click', function(event){
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            
+            var email = $('#emailInput').val(); // Lấy giá trị từ input
+            
+            if(email) {
+                $.ajax({
+                    url: 'sendEmail', 
+                    method: 'POST',
+                    data: { email: email },
+                    success: function(response) {
+                        alert("View your email to verify");
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred: " + xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Please enter your email address.");
+            }
+        });
+    });
+</script>
         <!-- Form Sign Up -->
         <form action="signup" method="post">
             <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
