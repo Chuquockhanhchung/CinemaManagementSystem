@@ -74,7 +74,8 @@ public static void main(String[] args) {
         try (Connection con = getConn()) {
             // Connection successful, you can perform further operations here if needed
             CustomerDAO cd =new CustomerDAO(con);
-            cd.resetPassword("chihphe176407@fpt.edu.vn", "1234");
+            ArrayList<Customer> a=cd.getInfor_Customer();
+            System.out.println(a);
         } catch (SQLException e) {
             e.printStackTrace();
         }
