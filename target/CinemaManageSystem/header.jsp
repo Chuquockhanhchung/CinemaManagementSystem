@@ -16,6 +16,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     </head>
     <body>
         <div class="prs_navigation_main_wrapper">
@@ -301,6 +303,12 @@
                                     </li>
                                     <li class="parent"><a href="contact.jsp">contact</a>
                                     </li>
+                                    <c:if test="${sessionScope.user != null}">
+                                        <li>
+                                            <a style="text-decoration: none;color: white" href="login"><i class="fa-solid fa-user"></i>  ${sessionScope.user.name}</a>
+                                        </li>
+
+                                    </c:if>
                                 </ul>
                             </div>
                             <!-- /dl-menuwrapper -->
@@ -321,7 +329,7 @@
                                 <div class="prs_animate_btn1">
                                     <ul>
                                         <li><a href="logout" class="button button--tamaya" data-text="logout" 
-                                              ><span>logout</span></a></li>
+                                               ><span>logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>

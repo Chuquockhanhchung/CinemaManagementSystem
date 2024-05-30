@@ -20,7 +20,7 @@ public class Customer {
     private String pass;
     private int role;
     private String date;
-    private String trangThai;
+    private String status;
 
     public Customer() {
         super();
@@ -36,12 +36,12 @@ public class Customer {
         this.picture = picture;
     }
 
-    public Customer(String id, String pass, int role, String date, String trangThai) {
+    public Customer(String id, String pass, int role, String date, String status) {
         this.id = id;
         this.pass = pass;
         this.role = role;
         this.date = date;
-        this.trangThai = trangThai;
+        this.status = status;
     }
 
 
@@ -117,12 +117,12 @@ public class Customer {
         this.date = date;
     }
 
-    public String getTrangThai() {
-        return trangThai;
+    public String getStauts() {
+        return status;
     }
 
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

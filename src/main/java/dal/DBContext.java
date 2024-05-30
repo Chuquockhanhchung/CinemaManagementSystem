@@ -14,7 +14,7 @@ public class DBContext {
 
     protected static Connection conn;
 
-//    private static String URL = "jdbc:mysql://localhost:3306/bacnamshop";
+//    private static String URL = "jdbc:mysql://localhost:3306/cinemamanagersystem";
 //
 //    private static String USER = "root";
 //
@@ -34,7 +34,8 @@ public class DBContext {
 //            throw new RuntimeException("Failed to connect to the database.", e);
 //        }
 //        return conn;
-//    }
+//    } 
+//}
     
     
     private static String URL = "jdbc:mysql://cinemamanagementsystem.mysql.database.azure.com:3306/cinemamanagersystem?useSSL=true";
@@ -65,6 +66,8 @@ public class DBContext {
             e.printStackTrace();
         }
     }
+}
+    
 //    private static String URL = "jdbc:sqlserver://SUPPER:1433;DatabaseName=ShopBacNamHai;user=sa;password=123;encrypt=true;trustServerCertificate=true;";
 //
 //    private static String USER = "sa";
@@ -87,4 +90,4 @@ public class DBContext {
 //        return conn;
 //    }
 
-}
+

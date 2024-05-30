@@ -22,6 +22,7 @@ public class servlet_Login extends HttpServlet {
         super();
     }
 
+
   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,7 +40,6 @@ public class servlet_Login extends HttpServlet {
             out.println("</html>");
         }
     }
-
   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -88,9 +88,12 @@ public class servlet_Login extends HttpServlet {
 
                     if (c.getRole() == 1) {
                         response.sendRedirect("index.jsp");
-                    } else {
-                        System.out.println("Login failed");
-                        response.sendRedirect("index.jsp");
+                    } else if(c.getRole()==3){
+                        response.sendRedirect("userStaff/index.jsp");
+                    }else if(c.getRole()==4){
+                        response.sendRedirect("manage/index.jsp");
+                    }else {
+                        response.sendRedirect("admin");
                     }
 
                 } else {

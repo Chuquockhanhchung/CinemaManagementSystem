@@ -37,9 +37,9 @@ public class LoginByGoogle extends HttpServlet {
     }
 
     private void saveUserToDatabase(Customer userGoogle) {
-        String checkSql = "SELECT COUNT(*) FROM taikhoan WHERE MaTaiKhoan = ?";
-        String insertAccountSql = "INSERT INTO taikhoan (MaTaiKhoan, MatKhau, LoaiTaiKhoan, NgayTao) VALUES (?, ?, ?, NOW())";
-        String insertCustomerSql = "INSERT INTO khachhang (MaTaiKhoan, HoTen, Email, Picture) VALUES (?, ?, ?, ?)";
+        String checkSql = "SELECT COUNT(*) FROM account WHERE AccountID = ?";
+        String insertAccountSql = "INSERT INTO account (AccountID, Password, AccountType, CreationDate) VALUES (?, ?, ?, NOW())";
+        String insertCustomerSql = "INSERT INTO customer (CustomerID, FullName, Email, Picture) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DBContext.getConn()) {
             conn.setAutoCommit(false); // Begin transaction
