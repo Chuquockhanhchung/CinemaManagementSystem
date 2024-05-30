@@ -4034,7 +4034,7 @@
     });
 </script>
         <!-- Form Sign Up -->
-        <form action="signup" method="post">
+        <form action="signup" method="post" onsubmit="return validateForm()">
             <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -4044,7 +4044,7 @@
                         </div>
                         <div class="st_profile_input float_left">
                             <label>Your Email</label>
-                            <input type="text" name=email placeholder="example@gmail.com">
+                            <input type="text" id="emailInput2" name=email placeholder="example@gmail.com">
                         </div>
                         <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                             <label>Mobile Number</label>
@@ -4074,6 +4074,52 @@
                 </div>
             </div>
         </form>
+        <script>
+    function validateForm() {
+        // Get form elements
+        const email = document.getElementById('emailInput2').value;
+        const phone = document.querySelector('input[name="phone"]').value;
+        const name = document.querySelector('input[name="name"]').value;
+        const pass1 = document.querySelector('input[name="pass1"]').value;
+        const pass2 = document.querySelector('input[name="pass2"]').value;
+
+        // Email regex pattern
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        // Phone regex pattern (assuming it should be 10-15 digits)
+        const phonePattern = /^\d{10}$/;
+
+        // Validate email
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // Validate phone
+        if (!phonePattern.test(phone)) {
+            alert("Please enter a valid phone number (10 digits).");
+            return false;
+        }
+
+        // Validate name
+        if (name.trim() === "") {
+            alert("Please enter your name.");
+            return false;
+        }
+
+        // Validate passwords
+        if (pass1 === "" || pass2 === "") {
+            alert("Please enter and confirm your password.");
+            return false;
+        }
+
+        if (pass1 !== pass2) {
+            alert("Passwords do not match.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
         <!-- st login wrapper End -->
         <!--main js file start-->
         <script src="js/jquery_min.js"></script>

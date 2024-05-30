@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Email.Email;
 import model.*;
 import dal.*;
 import java.io.IOException;
@@ -81,13 +82,8 @@ public class signup extends HttpServlet {
             String name = request.getParameter("name");
             String phone = request.getParameter("phone");
             String pass1 = request.getParameter("pass1");
-            String pass2 = request.getParameter("pass2");
-            if (email == null || name == null || phone == null || pass1 == null || pass2 == null
-                    || email.isEmpty() || name.isEmpty() || phone.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
-                request.setAttribute("err", "Input is missing!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-                return;
-            }
+            
+            
 
             boolean checkphone = false;
             for (Customer kh : list) {
@@ -96,11 +92,7 @@ public class signup extends HttpServlet {
                     break;
                 }
             }
-            if (!ValPhone(phone)) {
-                request.setAttribute("err", "Phone number is invalid");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-                return; // Cần return ở đây để ngăn việc tiếp tục xử lý
-            }
+            
             if (checkphone) {
                 request.setAttribute("err", "Phone number is exist!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -114,22 +106,14 @@ public class signup extends HttpServlet {
                     break;
                 }
             }
-            if (!valiEmail(email)) {
-                request.setAttribute("err", "Email is invalid!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-                return;
-            }
+            
             if (checkemail) {
                 request.setAttribute("err", "Email is exist!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 return;
             }
 
-            if (!pass1.equals(pass2)) {
-                request.setAttribute("err", "Password don't match!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-                return;
-            }
+           
 
             String idAccount = Math.random() + "";
             PrintWriter out = response.getWriter();
@@ -138,6 +122,8 @@ public class signup extends HttpServlet {
             dao.insertAccount(account);
             Customer customer = new Customer(0, idAccount, name, email, phone, "");
             dao.insertCustomer(customer);
+            Email e = new Email();
+            e.sendEmail2(email);
             response.sendRedirect("index.jsp");
 
         } catch (Exception e) {
@@ -147,22 +133,7 @@ public class signup extends HttpServlet {
         }
     }
 
-    public boolean valiEmail(String email) {
-        if (email == null) {
-            return false;
-        }
-        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-        Pattern emailPat = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = emailPat.matcher(email);
-        return matcher.find();
-    }
-
-    public boolean ValPhone(String phone) {
-        if (phone == null) {
-            return false;
-        }
-        return phone.charAt(0) == '0' && phone.length() == 10 && phone.matches("[0-9]+");
-    }
+   
 
     /**
      * Returns a short description of the servlet.
