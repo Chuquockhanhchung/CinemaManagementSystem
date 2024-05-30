@@ -184,8 +184,7 @@ public class signup extends HttpServlet {
         } catch (Exception e) {
             System.out.println(e);
             request.setAttribute("err", "An error occurred: " + e.getMessage());
-            Email e = new Email();
-            e.sendEmail2(email);
+            
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
