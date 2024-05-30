@@ -37,7 +37,7 @@ public class DBContext {
 //    }
     
     
-    private static String URL = "jdbc:mysql://cinemamanagersystem.mysql.database.azure.com:3306/cinemamanagersystem?useSSL=true";
+    private static String URL = "jdbc:mysql://cinemamanagementsystem.mysql.database.azure.com:3306/cinemamanagersystem?useSSL=true";
 
     private static String USER = "cinema";
 
