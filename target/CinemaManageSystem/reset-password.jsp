@@ -74,7 +74,7 @@
         <div class="header">
             <h2>Reset Password</h2>
         </div>
-        <form action="resetPassword" method="post">
+        <form action="ResetPassword" method="post">
             <div class="form-group">
                 <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" value="${mail}" readonly>

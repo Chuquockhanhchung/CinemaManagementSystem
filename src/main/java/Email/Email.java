@@ -71,7 +71,7 @@ public class Email {
             msg.setSubject("Confirm transaction!");
             
             // Set content
-           String resetPasswordLink = "http://localhost:8080/CinemaManageSystem/Resetpassword?mail="+mail;
+           String resetPasswordLink = "http://localhost:8080/CinemaManageSystem/ResetPassword?mail="+mail;
             String content = "<html><body style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">"
                            + "<div style=\"max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;\">"
                            + "<h2 style=\"color: #444;\">Reset Password</h2>"
