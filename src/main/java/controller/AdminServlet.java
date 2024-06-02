@@ -7,10 +7,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import dal.AdminDAO;
+import dal.DBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Account;
 
 /**
  *
@@ -53,16 +58,15 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+       AdminDAO dao = new AdminDAO(DBContext.getConn());
+        ArrayList<Account> list = dao.getall_Account();
+        request.setAttribute("listAcc", list);
+        request.setAttribute("numberAcc",list.size());
+        request.getRequestDispatcher("/admin/dashboard/customers.jsp").forward(request, response);
+
     } 
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {

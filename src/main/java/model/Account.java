@@ -1,3 +1,4 @@
+
 package model;
 
 import java.sql.Date;
@@ -8,12 +9,14 @@ public class Account {
     private int AccountType;
     private Date CreationDate;
     private String Status;
+    private String Email;
 
     public Account() {
         super();
     }
 
-    public Account(String AccountID, String Password, int AccountType, Date CreationDate, String Status) {
+    public Account(String Email,String AccountID, String Password, int AccountType, Date CreationDate, String Status) {
+        this.Email = Email;
         this.AccountID = AccountID;
         this.Password = Password;
         this.AccountType = AccountType;
@@ -51,6 +54,14 @@ public class Account {
         this.Status = Status;
     }
 
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        this.Email = email;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -59,6 +70,7 @@ public class Account {
                 ", AccountType=" + AccountType +
                 ", CreationDate=" + CreationDate +
                 ", Status='" + Status + '\'' +
+                ", Email='" + Email + '\'' +
                 '}';
     }
 }
