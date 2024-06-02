@@ -277,7 +277,7 @@ Content body start
                                     <a href="javascript:void(0);" class="btn-close" data-bs-dismiss="modal"></a>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="adaccount" method="get">
+                                    <form action="adaccount" method="get" id="addCustomerForm">
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Email</label>
                                             <input type="text" name="email" class="form-control">
@@ -311,10 +311,44 @@ Content body start
                         </div>
                     </div>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const form = document.querySelector('#addCustomerForm');
+                        const emailInput = form.querySelector('input[name="email"]');
+
+                        // Retrieve the existing emails from JSTL
+                        const existingEmails = [
+                            <c:forEach var="account" items="${listAcc}" varStatus="status">
+                            "${account.getEmail()}"<c:if test="${!status.last}">,</c:if>
+                            </c:forEach>
+                        ];
+
+                            form.addEventListener('submit', (event) => {
+                                event.preventDefault(); // Prevent the default form submission
+
+                                const email = emailInput.value;
+
+                                // Perform client-side validation
+                                if (!email) {
+                                    alert('Email không được để trống.');
+                                    return;
+                                }
+
+                                // Check if the email already exists
+                                if (existingEmails.includes(email)) {
+                                    alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                                    return;
+                                }
+
+                                // If validation passes, submit the form
+                                form.submit();
+                            });
+                    });
+                </script>
                 <div class="col-xl-9 col-lg-8">
                     <div class="card m-0 ">
                         <div class="card-body py-3 py-md-2">
-                            <div class="d-sm-flex  d-block align-items-center">
+                        <div class="d-sm-flex  d-block align-items-center">
                                 <div class="d-flex mb-sm-0 mb-3 me-auto align-items-center">
                                     <svg class="me-2 user-ico mb-1" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none" xmlns="http://www.w3.org/2000/svg">
