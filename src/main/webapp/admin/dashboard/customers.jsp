@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
 <head>
@@ -33,6 +33,8 @@
 
     <!-- Favicon icon -->
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicon.png">
 
 
@@ -109,7 +111,7 @@ Header start
                         <div class="input-group search-area d-xl-inline-flex d-none">
                             <button class="input-group-text"><i
                                     class="flaticon-381-search-2 text-primary"></i></button>
-                            <input type="text" class="form-control" placeholder="Search here...">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
                         </div>
                     </div>
                     <ul class="navbar-nav header-right">
@@ -125,21 +127,14 @@ Header start
 
 
 
-                        <li class="nav-item dropdown notification_dropdown">
-                            <select class="language-btn default-select">
-                                <option data-display="ENGLISH">ENGLISH</option>
-                                <option value="1">FRANCE</option>
-                                <option value="2">CANADA</option>
-                                <option value="3">GERMAN</option>
-                            </select>
-                        </li>
+
                         <li class="nav-item dropdown header-profile">
                             <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                 <div class="header-info me-3">
-                                    <span class="fs-16 font-w600 ">James P. Sullivan</span>
-                                    <small class="text-end fs-14 font-w400">Super Admin</small>
+                                    <span class="fs-16 font-w600 ">${sessionScope.user.name}</span>
+                                    <small class="text-end fs-14 font-w400"> Admin</small>
                                 </div>
-                                <img src="../../public/assets/images/profile/pic1.jpg" width="20" alt="">
+                                <img src="${sessionScope.user.picture}" width="20" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="https://ventic.dexignzone.com/codeigniter/demo/app_profile"
@@ -150,19 +145,10 @@ Header start
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="12" cy="7" r="4"></circle>
                                     </svg>
-                                    <span class="ms-2">Profile </span>
+                                    <span class="ms-2">Thông Tin Cá Nhân </span>
                                 </a>
-                                <a href="https://ventic.dexignzone.com/codeigniter/demo/email_inbox"
-                                   class="dropdown-item ai-icon">
-                                    <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path
-                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                        </path>
-                                        <polyline points="22,6 12,13 2,6"></polyline>
-                                    </svg>
-                                    <span class="ms-2">Inbox </span>
+
+
                                 </a>
                                 <a href="https://ventic.dexignzone.com/codeigniter/demo/page_login"
                                    class="dropdown-item ai-icon">
@@ -173,7 +159,7 @@ Header start
                                         <polyline points="16 17 21 12 16 7"></polyline>
                                         <line x1="21" y1="12" x2="9" y2="12"></line>
                                     </svg>
-                                    <span class="ms-2">Logout </span>
+                                    <span class="ms-2">Đăng Xuất </span>
                                 </a>
                             </div>
                         </li>
@@ -202,8 +188,7 @@ Content body start
 
             <div class="form-head mb-4 d-flex flex-wrap align-items-center">
                 <div class="me-auto">
-                    <h2 class="font-w600 mb-0">Account List</h2>
-                    <p>Lorem ipsum dolor sit amet </p>
+                    <h2 class="font-w600 mb-0">Danh Sách Tài Khoản</h2>
                 </div>
 
 
@@ -211,19 +196,18 @@ Content body start
             <div class="row mb-4 align-items-center">
                 <div class="col-xl-3 col-lg-4 mb-4 mb-lg-0">
                     <a href="javascript:void(0);" class="btn btn-secondary  btn-lg btn-block rounded text-white"
-                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">+ New Customer</a>
+                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">Thêm Tài Khoản</a>
                     <!-- Add Order -->
                     <div class="modal fade" id="addNewCustomer">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add Event</h5>
                                     <a href="javascript:void(0);" class="btn-close" data-bs-dismiss="modal"></a>
                                 </div>
                                 <div class="modal-body">
                                     <form>
                                         <div class="mb-3">
-                                            <label class="text-black font-w500">Customer Id</label>
+                                            <label class="text-black font-w500">Email</label>
                                             <input type="text" class="form-control">
                                         </div>
                                         <div class="mb-3">
@@ -231,12 +215,12 @@ Content body start
                                             <input class="form-control mb-3" type="text" id="datepicker">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="text-black font-w500">Customer Name</label>
+                                            <label class="text-black font-w500">Password</label>
                                             <input type="text" class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="text-black font-w500">Location</label>
-                                            <input type="text" class="form-control">
+                                            <label class="text-black font-w500">Status</label>
+                                            <input type="radio" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <button type="button" class="btn btn-primary light">Create</button>
@@ -266,22 +250,33 @@ Content body start
                                         </defs>
                                     </svg>
                                     <div class="media-body">
-                                        <p class="mb-1 fs-12 ">Total Customer</p>
-                                        <h3 class="mb-0 font-w600 fs-22">129.000 Person</h3>
+                                        <p class="mb-1 fs-12 ">Tổng Số Tài Khoản</p>
+                                        <h3 class="mb-0 font-w600 fs-22"> ${numberAcc} Tài Khoản</h3>
                                     </div>
                                 </div>
                                 <div>
-                                    <a href="javascript:void(0);" class="btn btn-outline-primary rounded"><i
-                                            class="fa fa-check-square me-2 scale4" aria-hidden="true"></i>Active</a>
-                                    <a href="javascript:void(0);"
-                                       class="btn btn-outline-warning rounded ms-2">Edit</a>
-                                    <a href="javascript:void(0);" class="btn btn-danger rounded ms-2">Delete</a>
+
+                                    <a href="" id="activateLink" class="btn btn-outline-primary rounded"><i
+                                            class="fa  me-2 scale4" aria-hidden="true"></i>Hoạt Động/Vô Hiệu Hóa</a>
+                                    <a href="javascript:void(0);" id="editLink"
+                                       class="btn btn-outline-warning rounded ms-2">Sửa</a>
+                                    <a href="javascript:void(0);" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <script>
+        document.getElementById('checkAll').addEventListener('change', function() {
+                    const checkboxes = document.querySelectorAll('.checkbox-item');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    })
+
+            </script>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive rounded">
@@ -290,61 +285,49 @@ Content body start
                             <tr>
                                 <th>
                                     <div class="form-check checkbox-secondary">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkAll">
+                                        <input class="form-check-input checkbox-item" type="checkbox" value="" id="checkAll">
                                         <label class="form-check-label" for="checkAll">
                                         </label>
                                     </div>
                                 </th>
-                                <th>AccountID</th>
-                                <th>Password</th>
-                                <th>AccountType</th>
-                                <th>CreationDate</th>
-                                <th>Status</th>
+                                <th>Mã Tài Khoản</th>
+                                <th>Email</th>
+                                <th>Mật Khẩu</th>
+                                <th>Phân quyền</th>
+                                <th>Ngày Tạo</th>
+                                <th>Trạng Thái</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-check checkbox-secondary">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                               id="flexCheckDefault1">
-                                        <label class="form-check-label" for="flexCheckDefault1">
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>#0012451</td>
-                                <td>21/11/2017</td>
-                                <td>Cive Slauw</td>
-                                <td>The Story Of Danaou Taba (Musical Drama)</td>
-                                <td>Medan Indonesia</td>
-                                <td>04/08/2020 12:34 AM</td>
-                                <td class="text-secondary font-w500">$1,300</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="javascript:void(0);">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                        d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z"
-                                                        stroke="#FF7B31" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                            </svg>
-                                        </a>
-                                        <a href="javascript:void(0);" class="ms-4">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M3 6H5H21" stroke="#FF3131" stroke-width="2"
-                                                      stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path
-                                                        d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
-                                                        stroke="#FF3131" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                            </svg>
 
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <c:forEach items="${listAcc}" var="a">
+                                <tr>
+                                    <td>
+                                        <div class="form-check checkbox-secondary">
+                                            <input class="form-check-input checkbox-item" type="checkbox" value="${a.getAccountID()}|${a.getStatus()}"
+                                                   id="checkbox_${a.getAccountID()}" >
+                                            <label class="form-check-label" for="checkbox_${a.getAccountID()}">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>${a.getAccountID()}</td>
+                                    <td>${a.getEmail()}</td>
+                                    <td>${a.getPassword()}</td>
+                                    <td><c:choose>
+                                        <c:when test="${a.getAccountType() == 1}">Khách Hàng</c:when>
+                                        <c:when test="${a.getAccountType() == 2}">ADMIN</c:when>
+                                        <c:when test="${a.getAccountType() == 3}">Nhân Viên</c:when>
+                                        <c:when test="${a.getAccountType() == 4}">Quản Lí</c:when>
+                                    </c:choose></td>
+
+                                    <td>${a.getCreationDate()}</td>
+                                    <td><c:choose>
+                                        <c:when test="${a.getStatus() =='active'}">Hoạt Động</c:when>
+                                        <c:when test="${a.getStatus() =='unactive'}">Vô Hiệu</c:when>
+                                    </c:choose></td>
+                                </tr>
+                            </c:forEach>
+
 
                             </tbody>
                         </table>
@@ -372,21 +355,59 @@ Footer end
 
 </div>
 <script>
+    document.getElementById('activateLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+
+        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
+
+        if (checkedCheckboxes.length > 0) {
+            // Khởi tạo một mảng để lưu trữ các cặp id và status
+            var ids = [];
+            var statuses = [];
+
+            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
+            checkedCheckboxes.each(function() {
+                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
+                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
+                var status = value.split('|')[1]; // Lấy status của checkbox hiện tại
+
+                // Thêm id và status vào mảng tương ứng
+                ids.push(id);
+                statuses.push(status);
+            });
+
+            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
+            var idsString = ids.join(',');
+            var statusesString = statuses.join(',');
+
+            // Construct the URL to the servlet with the concatenated IDs and statuses
+            var newHref = 'activate?ids=' + idsString + '&status=' + statusesString;
+
+            // Thay đổi đường link href
+            this.href = newHref;
+            window.location.href = newHref; // Chuyển hướng trang đến URL mới
+        }
+    });
+
+
+
+</script>
+<script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
-<script src="../../public/assets/vendor/global/global.min.js"></script>
-<script src="../../public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 
-<script src="../../public/assets/vendor/chartjs/chart.bundle.min.js"></script>
-<script src="../../public/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../../public/assets/js/plugins-init/datatables.init.js"></script>
-<script src="../../public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/chartjs/chart.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/plugins-init/datatables.init.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
 
-<script src="../../public/assets/js/custom.min.js"></script>
-<script src="../../public/assets/js/deznav-init.js"></script>
-<script src="../../public/assets/js/demo.js"></script>
-<script src="../../public/assets/js/styleSwitcher.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
 <script>
     $(function () {
         $("#datepicker").datepicker({

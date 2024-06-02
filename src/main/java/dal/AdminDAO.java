@@ -81,16 +81,17 @@ public class AdminDAO extends DBContext {
 
     public ArrayList<Account> getall_Account(){
         ArrayList<Account> accounts = new ArrayList<>();
-        String sql = "select * from Account";
+        String sql = "select a.AccountID, c.Email,a.Password, a.AccountType,a.CreationDate,a.Status from account a join customer c on a.AccountID=c.AccountID";
         Security s = new Security();
         try(PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()){
             while (rs.next()){
                 Account a = new Account();
                 a.setAccountID(rs.getString(1));
-                a.setPassword(s.decode(rs.getString(2)));
-                a.setAccountType(rs.getInt(3));
-                a.setCreationDate(rs.getDate(4));
-                a.setStatus(rs.getString(5));
+                a.setEmail(rs.getString(2));
+                a.setPassword(s.decode(rs.getString(3)));
+                a.setAccountType(rs.getInt(4));
+                a.setCreationDate(rs.getDate(5));
+                a.setStatus(rs.getString(6));
                 accounts.add(a);
             }
         }catch(SQLException e){

@@ -56,6 +56,10 @@
         <servlet-class>controller.ManageServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ActiveServlet</servlet-name>
+        <servlet-class>controller.ActiveServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>sendEmail</servlet-name>
         <servlet-class>controller.sendEmail</servlet-class>
     </servlet>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActiveServlet</servlet-name>
+        <url-pattern>/activate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
