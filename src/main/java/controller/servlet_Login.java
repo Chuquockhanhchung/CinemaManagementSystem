@@ -74,6 +74,10 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
+                if(c.getStauts().compareTo("unactive") == 0){
+                    request.setAttribute("err", "Account unactive!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 if (c.getPass().compareTo(pass) == 0) {
                     Cookie em = new Cookie("em", c.getEmail());
                     Cookie pa = new Cookie("pa", c.getPass());
@@ -89,7 +93,7 @@ public class servlet_Login extends HttpServlet {
                     if (c.getRole() == 1) {
                         response.sendRedirect("index.jsp");
                     } else if(c.getRole()==3){
-                        response.sendRedirect("userStaff/index.jsp");
+                        response.sendRedirect("staff/index.jsp");
                     }else if(c.getRole()==4){
                         response.sendRedirect("manage/index.jsp");
                     }else {
