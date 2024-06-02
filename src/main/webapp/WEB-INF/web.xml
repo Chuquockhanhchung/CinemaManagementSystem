@@ -63,6 +63,10 @@
         <servlet-class>controller.DeleteAccount</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditAccount</servlet-name>
+        <servlet-class>controller.EditAccount</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>StaffServlet</servlet-name>
         <servlet-class>controller.StaffServlet</servlet-class>
     </servlet>
@@ -89,6 +93,10 @@
     <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAccount</servlet-name>
+        <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>

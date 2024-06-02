@@ -69,16 +69,29 @@ public class AdminDAO extends DBContext {
             e.printStackTrace();
         }
     }
+    public void EditAccount(int role, String Email, String Password){
+        String sql = "update Account set password=?, AccountType=? where AccountID=(select AccountID from customer where Email=?)";
+        Security s = new Security();
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1, s.encode(Password));
+            ps.setInt(2, role);
+            ps.setString(3, Email);
+            ps.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<Account> getall_Account(){
         ArrayList<Account> accounts = new ArrayList<>();
+        Security s = new Security();
         String sql = "select a.AccountID, c.Email,a.Password, a.AccountType,a.CreationDate,a.Status from account a join customer c on a.AccountID=c.AccountID";
         try(PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()){
             while (rs.next()){
                 Account a = new Account();
                 a.setAccountID(rs.getString(1));
                 a.setEmail(rs.getString(2));
-                a.setPassword(rs.getString(3));
+                a.setPassword(s.decode(rs.getString(3)));
                 a.setAccountType(rs.getInt(4));
                 a.setCreationDate(rs.getDate(5));
                 a.setStatus(rs.getString(6));
@@ -104,11 +117,12 @@ public class AdminDAO extends DBContext {
             PreparedStatement ps = con.prepareStatement(sql);
              ps.setString(1, Email);
              ResultSet rs = ps.executeQuery();
+             Security s = new Security();
             while (rs.next()){
                 Account a = new Account();
                 a.setAccountID(rs.getString(1));
                 a.setEmail(rs.getString(2));
-                a.setPassword(rs.getString(3));
+                a.setPassword(s.decode(rs.getString(3)));
                 a.setAccountType(rs.getInt(4));
                 a.setCreationDate(rs.getDate(5));
                 a.setStatus(rs.getString(6));
@@ -150,8 +164,8 @@ public class AdminDAO extends DBContext {
 //             Connection successful, you can perform further operations here if needed
             AdminDAO cd =new AdminDAO(con);
             //ArrayList<Account> a=cd.getall_Account_ByMail("chi");
-            cd.deleteCustomer("0.3074242760399084");
-            cd.deleteAccount("0.3074242760399084");
+            cd.EditAccount(2,"chuquockhanhchung@gmail.com","12345678");
+
 
             //System.out.println(a);
         } catch (SQLException e) {

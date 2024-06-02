@@ -58,7 +58,73 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link class="main-css" href="../../public/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <style>
+        /* Basic styling for popup */
+        /* Basic styling for popup */
+        /* Basic styling for popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 500px;  /* Increased width */
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px; /* Increased font size for better visibility */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, select {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px; /* Increased font size for better readability */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px; /* Increased font size */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -272,7 +338,7 @@ Content body start
 
                                     <a href="" id="activateLink" class="btn btn-outline-primary rounded"><i
                                             class="fa  me-2 scale4" aria-hidden="true"></i>Hoạt Động/Vô Hiệu Hóa</a>
-                                    <a href="javascript:void(0);" id="editLink"
+                                    <a href="javascript:void(0);" id="editLink" data-bs-target="#editUserPopup"
                                        class="btn btn-outline-warning rounded ms-2">Sửa</a>
                                     <a href="" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
                                 </div>
@@ -281,7 +347,30 @@ Content body start
                     </div>
                 </div>
             </div>
+<%--            Edir Popup--%>
+            <div id="editUserPopup" class="popup" style="display:none;">
+                <div class="popup-content">
+                    <span class="close-btn">&times;</span>
+                    <form id="editUserForm" action="edit" method="get">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" readonly required>
 
+                        <label for="role">Phân Quyền</label>
+                        <select id="role" name="role">
+                            <option value="1">Khách Hàng</option>
+                            <option value="2">Admin</option>
+                            <option value="3">Nhân Viên</option>
+                            <option value="4">Quản Lí</option>
+                        </select>
+
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+
+                        <button type="submit">Sửa</button>
+                    </form>
+                </div>
+            </div>
             <script>
         document.getElementById('checkAll').addEventListener('change', function() {
                     const checkboxes = document.querySelectorAll('.checkbox-item');
@@ -318,7 +407,7 @@ Content body start
                                 <tr>
                                     <td>
                                         <div class="form-check checkbox-secondary">
-                                            <input class="form-check-input checkbox-item" type="checkbox" value="${a.getAccountID()}|${a.getStatus()}"
+                                            <input class="form-check-input checkbox-item" type="checkbox" value="${a.getAccountID()}|${a.getStatus()}|${a.getEmail()}|${a.getAccountType()}|${a.getPassword()}"
                                                    id="checkbox_${a.getAccountID()}" >
                                             <label class="form-check-label" for="checkbox_${a.getAccountID()}">
                                             </label>
@@ -351,6 +440,7 @@ Content body start
         </div>
 
     </div>
+
     <!--**********************************
 Content body end
 ***********************************-->
@@ -467,7 +557,44 @@ Footer end
 
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const editLink = document.getElementById('editLink');
+        const editUserPopup = document.getElementById('editUserPopup');
+        const closeBtn = document.querySelector('.close-btn');
 
+        editLink.addEventListener('click', () => {
+            const checkedBoxes = document.querySelectorAll('.checkbox-item:checked');
+
+            if (checkedBoxes.length !== 1) {
+                alert('Chỉ được chọn 1 tài khoản để sửa');
+                return;
+            }
+
+            const checkedBox = checkedBoxes[0];
+            const [accountID, status, email, role, password, createdDate] = checkedBox.value.split('|');
+            // Populate the form fields with the selected user's data
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+            document.getElementById('role').value = role.toLowerCase(); // Ensure the value matches the option value
+
+            // Display the popup form
+            editUserPopup.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            editUserPopup.style.display = 'none';
+        });
+
+        // Hide popup if clicked outside of the popup content
+        window.addEventListener('click', (event) => {
+            if (event.target === editUserPopup) {
+                editUserPopup.style.display = 'none';
+            }
+        });
+    });
+
+</script>
 
 <!--**********************************
     Main wrapper end

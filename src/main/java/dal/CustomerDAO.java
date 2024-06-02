@@ -85,7 +85,7 @@ public class CustomerDAO extends DBContext {
 
     public void insertAccount(Customer account) {
         Security s = new Security();
-        String sql = "insert into account (AccountID, Password,AccountType, CreationDate) values (?, ?, ?, now())";
+        String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'active')";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, account.getId());
