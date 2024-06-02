@@ -74,7 +74,7 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
-                if(c.getStauts().compareTo("unactive") == 0){
+                if(c.getStauts()== "unactive"){
                     request.setAttribute("err", "Account unactive!");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }

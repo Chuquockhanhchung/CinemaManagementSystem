@@ -15,6 +15,7 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="author" content="DexignZone">
     <meta name="robots" content="">
 
@@ -223,7 +224,7 @@ Header start
 
 
                                 </a>
-                                <a href="https://ventic.dexignzone.com/codeigniter/demo/page_login"
+                                <a href="logout"
                                    class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
