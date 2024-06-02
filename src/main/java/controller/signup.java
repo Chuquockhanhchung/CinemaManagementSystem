@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Email.Email;
 import model.*;
 import dal.*;
 import java.io.IOException;
@@ -120,6 +121,8 @@ public class signup extends HttpServlet {
             dao.insertAccount(account);
             Customer customer = new Customer(0, idAccount, name, email, phone, "");
             dao.insertCustomer(customer);
+            Email mail = new Email();
+            mail.sendEmail2(email,idAccount);
             response.sendRedirect("index.jsp");
 
         } catch (Exception e) {

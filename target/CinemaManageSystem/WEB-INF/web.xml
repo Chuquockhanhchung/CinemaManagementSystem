@@ -79,6 +79,10 @@
         <servlet-class>controller.ActiveServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ActivatedServlet</servlet-name>
+        <servlet-class>controller.ActivatedServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>sendEmail</servlet-name>
         <servlet-class>controller.sendEmail</servlet-class>
     </servlet>
@@ -101,6 +105,10 @@
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>
         <url-pattern>/activate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActivatedServlet</servlet-name>
+        <url-pattern>/activated</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
