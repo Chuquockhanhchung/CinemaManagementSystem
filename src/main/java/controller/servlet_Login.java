@@ -86,25 +86,26 @@ public class servlet_Login extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
 
-                    if (c.getRole() == 1) {
-                        response.sendRedirect("index.jsp");
-                    } else if(c.getRole()==3){
-                        response.sendRedirect("userStaff/index.jsp");
-                    }else if(c.getRole()==4){
-                        response.sendRedirect("manage/index.jsp");
-                    }else {
-                        response.sendRedirect("admin");
-                    }
+                        if (c.getRole() == 1) {
+                            response.sendRedirect("home");
+                        } else if (c.getRole() == 3 ) {
+                            response.sendRedirect("userStaff/index.jsp");
+                        } else if (c.getRole() == 4) {
+                            response.sendRedirect("manage/index.jsp");
+                        } else {
+                            response.sendRedirect("admin");
+                        }
+
 
                 } else {
                     System.out.println("Login failed: Incorrect password for user: " + email);
                     request.setAttribute("err", "Password is wrong!");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("home").forward(request, response);
                 }
             } else {
                 System.out.println("Login failed: Email not found - " + email);
                 request.setAttribute("err", "Email not exist!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("home").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();

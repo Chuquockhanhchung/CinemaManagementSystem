@@ -3924,70 +3924,84 @@
         </div>
     </div>
 </form>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('#form');
         const emailInput = form.querySelector('input[name="email"]');
+        const passwordInput = form.querySelector('input[name="pass"]');
+        const errorDiv = document.getElementById("error");
 
-        // Retrieve the existing emails from JSTL
-        const existingEmails = [
+        // Retrieve the existing emails and passwords from JSTL
+        const existingAccounts = [
+            <%-- Server-side rendering of existing emails and passwords --%>
             <c:forEach var="account" items="${listAcc}" varStatus="status">
-            "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
+            {
+                email: "${account.getEmail().toLowerCase()}",
+                password: "${account.getPassword()}",
+                status:"${account.getStatus()}"// Assuming passwords are stored this way
+            }<c:if test="${!status.last}">, </c:if>
             </c:forEach>
         ];
-        console.log(existingEmails);
+
+        console.log("Existing Accounts:", existingAccounts);
+
         form.addEventListener('submit', (event) => {
             event.preventDefault(); // Prevent the default form submission
 
-            const email = emailInput.value;
-            Console.log
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+
             // Perform client-side validation
             if (!email) {
                 alert('Email không được để trống.');
                 return;
             }
 
-            // Check if the email already exists
-            if (existingEmails.includes(email)) {
-                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+            if (!password) {
+                alert('Mật khẩu không được để trống.');
                 return;
             }
 
-            // If validation passes, submit the form
+            // Check if the email exists and the password is correct
+            const account = existingAccounts.find(acc => acc.email === email);
+            if (!account) {
+                alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                return;
+            }
+            if(account.status === "unactive"){
+                alert('Tài khoản chưa được kích hoạt!');
+                return;
+            }
+            if (account.password !== password) {
+                alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                return;
+            }
+
+            // Perform reCAPTCHA validation
+            const response = grecaptcha.getResponse();
+            if (!response) {
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+                return;
+            }
+
+
+
+            console.log("Email and password validation passed. Submitting form...");
+            // If all validations pass, submit the form
             form.submit();
         });
-    });
-</script>
-<script>
-    window.onload = function () {
-        let isValid = false;
-        const form = document.getElementById("form");
-        const id = document.getElementById("error");
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
 
-
-            const respone = grecaptcha.getResponse();
-            if (respone) {
-                form.submit();
-
-            } else {
-                error.innerHTML = "Please check!";
-            }
-        });
-        $('.click').on('click', function (e) {
-            //  // Now link won't go anywhere
-
-            const respone = grecaptcha.getResponse();
-            if (respone) {
-                window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
-
-            } else {
+        document.querySelector('.click').addEventListener('click', (e) => {
+            const response = grecaptcha.getResponse();
+            if (!response) {
                 e.preventDefault();
-                error.innerHTML = "Please check!";
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+            } else {
+                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
             }
         });
-    }
+    });
 </script>
 
 <!-- Form Forgot Password -->
