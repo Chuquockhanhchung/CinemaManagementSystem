@@ -10,12 +10,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import dal.AdminDAO;
+import dal.CustomerDAO;
 import dal.DBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Account;
+import model.Customer;
 
 /**
  *
@@ -59,8 +61,11 @@ public class Homepage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO(DBContext.getConn());
+        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+        ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
         request.setAttribute("listAcc", list);
+        request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
         request.getRequestDispatcher("index.jsp").forward(request, response);
 

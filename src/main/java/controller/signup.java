@@ -126,7 +126,7 @@ public class signup extends HttpServlet {
             dao.insertCustomer(customer);
             Email mail = new Email();
             mail.sendEmail2(email, idAccount);
-            response.sendRedirect("index.jsp?success=true");
+            response.sendRedirect("home?success=true");
 
         } catch (Exception e) {
             System.out.println(e);
