@@ -174,16 +174,12 @@ Header start
             <nav class="navbar navbar-expand">
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="header-left">
-                        <div class="input-group search-area d-xl-inline-flex d-none">
-                            <form action="search" method="get" class="input-group search-area d-xl-inline-flex d-none">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search">
-                                <input type="submit" value="Search" class="input-group-text"><i
-                                        class="flaticon-381-search-2 text-primary"></i></input>
-
+                        <div class="form-control input-group search-area d-xl-inline-flex d-none">
+                            <form action="search" method="get" style="display: flex; flex-direction: row;">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search" style=" flex: 0.4;">
+                                <input type="submit" value="Search" class="input-group-text" style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
                             </form>
-
                         </div>
-
 
                     </div>
                     <ul class="navbar-nav header-right">
