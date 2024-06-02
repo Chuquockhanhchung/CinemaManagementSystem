@@ -34,16 +34,7 @@ public class AdminDAO extends DBContext {
 
     }
 
-    public static void main(String[] args) {
-        try (Connection con = getConn()) {
-//             Connection successful, you can perform further operations here if needed
-            AdminDAO cd =new AdminDAO(con);
-              ArrayList<Account> a=cd.getall_Account_ByMail("chi");
-            System.out.println(a);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void ChangePassword(String AccountID, String Password){
         String sql = "update Account set Password=? where AccountID=?";
@@ -129,5 +120,44 @@ public class AdminDAO extends DBContext {
         }
         return accounts;
     }
+    public void deleteAccount(String AccountID){
+        String sql = "delete from account where AccountID=?;" ;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,AccountID);;
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+    }
+    public void deleteCustomer(String AccountID){
+        String sql = "delete from customer where AccountID=?;" ;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,AccountID);;
+
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        try (Connection con = getConn()) {
+//             Connection successful, you can perform further operations here if needed
+            AdminDAO cd =new AdminDAO(con);
+            //ArrayList<Account> a=cd.getall_Account_ByMail("chi");
+            cd.deleteCustomer("0.3074242760399084");
+            cd.deleteAccount("0.3074242760399084");
+
+            //System.out.println(a);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

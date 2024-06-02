@@ -59,6 +59,10 @@
         <servlet-class>controller.AdminServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DeleteAccount</servlet-name>
+        <servlet-class>controller.DeleteAccount</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>StaffServlet</servlet-name>
         <servlet-class>controller.StaffServlet</servlet-class>
     </servlet>
@@ -81,6 +85,10 @@
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAccount</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>

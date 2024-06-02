@@ -45,21 +45,17 @@ public class AdAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        AdminDAO daoa = new AdminDAO(DBContext.getConn());
         try {
+
             CustomerDAO dao = new CustomerDAO(DBContext.getConn());
             ArrayList<Customer> list = dao.getInfor_Customer();
             String email = request.getParameter("email");
             int Permission = Integer.parseInt(request.getParameter("Permission"));
             String date = request.getParameter("date");
             String pass = request.getParameter("pass");
-            String status = request.getParameter("status");
-            if (email == null || Permission == null || date == null || pass == null || status == null
-                    || email.isEmpty() || Permission.isEmpty() || date.isEmpty() || pass.isEmpty() || status.isEmpty()) {
-                request.setAttribute("err", "Input is missing!");
-                request.getRequestDispatcher("/admin/dashboard/customers.jsp").forward(request, response);
-                return;
-            }
+
+
 
 //            boolean checkphone = false;
 //            for (Customer kh : list) {
@@ -106,16 +102,23 @@ public class AdAccountServlet extends HttpServlet {
             String idAccount = Math.random() + "";
             PrintWriter out = response.getWriter();
             out.print(idAccount);
-            Customer account = new Customer(idAccount, pass, Permission, date, status);
+            Customer account = new Customer(idAccount, pass, Permission, date, "active");
             dao.insertAccount(account);
             Customer customer = new Customer(0, idAccount, "", email, "", "");
             dao.insertCustomer(customer);
-            response.sendRedirect("/admin/dashboard/customers.jsp");
+
+            ArrayList<Account> lista = daoa.getall_Account();
+            request.setAttribute("listAcc", lista);
+            request.setAttribute("numberAcc",lista.size());
+            request.getRequestDispatcher("/admin/dashboard/customers.jsp").forward(request, response);
 
         } catch (Exception e) {
             System.out.println(e);
             request.setAttribute("err", "An error occurred: " + e.getMessage());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            ArrayList<Account> lista = daoa.getall_Account();
+            request.setAttribute("listAcc", lista);
+            request.setAttribute("numberAcc",lista.size());
+            request.getRequestDispatcher("/admin/dashboard/customers.jsp").forward(request, response);
         }
 
     }

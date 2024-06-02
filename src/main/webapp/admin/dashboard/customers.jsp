@@ -214,7 +214,7 @@ Content body start
                                     <form action="adaccount" method="get">
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Email</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" name="email" class="form-control">
                                         </div>
 
                                         <div class="mb-3">
@@ -235,12 +235,9 @@ Content body start
                                             <label class="text-black font-w500">Password</label>
                                             <input type="text" class="form-control" name="pass">
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="text-black font-w500">Trạng Thái</label>
-                                            <input type="radio" class="form-control" name="status">
-                                        </div>
+
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-primary light" value="Tạo">Tạo</input>
+                                            <input type="submit" class="btn btn-primary light" value="Tạo">
                                         </div>
                                     </form>
                                 </div>
@@ -277,7 +274,7 @@ Content body start
                                             class="fa  me-2 scale4" aria-hidden="true"></i>Hoạt Động/Vô Hiệu Hóa</a>
                                     <a href="javascript:void(0);" id="editLink"
                                        class="btn btn-outline-warning rounded ms-2">Sửa</a>
-                                    <a href="javascript:void(0);" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
+                                    <a href="" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
                                 </div>
                             </div>
                         </div>
@@ -399,6 +396,42 @@ Footer end
 
             // Construct the URL to the servlet with the concatenated IDs and statuses
             var newHref = 'activate?ids=' + idsString + '&status=' + statusesString;
+
+            // Thay đổi đường link href
+            this.href = newHref;
+            window.location.href = newHref; // Chuyển hướng trang đến URL mới
+        }
+    });
+
+
+
+</script>
+<script>
+    document.getElementById('deleteLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+
+        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
+
+        if (checkedCheckboxes.length > 0) {
+            // Khởi tạo một mảng để lưu trữ các cặp id và status
+            var ids = [];
+
+            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
+            checkedCheckboxes.each(function() {
+                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
+                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
+
+                // Thêm id và status vào mảng tương ứng
+                ids.push(id);
+
+            });
+
+            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
+            var idsString = ids.join(',');
+
+
+            // Construct the URL to the servlet with the concatenated IDs and statuses
+            var newHref = 'delete?ids=' + idsString ;
 
             // Thay đổi đường link href
             this.href = newHref;
