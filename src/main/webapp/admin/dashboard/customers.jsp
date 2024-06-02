@@ -323,7 +323,7 @@ Content body start
                             "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
                             </c:forEach>
                         ];
-
+                        console.log(existingEmails);
                         form.addEventListener('submit', (event) => {
                             event.preventDefault(); // Prevent the default form submission
 

@@ -3891,7 +3891,7 @@
                 </c:if>
                 <div class="st_profile_input float_left">
                     <label>Email / Mobile Number</label>
-                    <input value="${requestScope.email}" name="email" type="text">
+                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Password</label>

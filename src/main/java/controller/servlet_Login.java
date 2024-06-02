@@ -23,7 +23,7 @@ public class servlet_Login extends HttpServlet {
     }
 
 
-  
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,7 +40,7 @@ public class servlet_Login extends HttpServlet {
             out.println("</html>");
         }
     }
-  
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,11 +74,7 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
-                if(c.getStauts().compareTo("unactive") == 0){
-                    request.setAttribute("err", "Account unactive!");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                }
-                if (c.getPass().compareTo(pass) == 0) {
+                 if (c.getPass().compareTo(pass) == 0) {
                     Cookie em = new Cookie("em", c.getEmail());
                     Cookie pa = new Cookie("pa", c.getPass());
                     em.setMaxAge(60 * 60 * 24 * 7);
@@ -86,14 +82,14 @@ public class servlet_Login extends HttpServlet {
                     response.addCookie(em);
                     response.addCookie(pa);
 
-                    // Session  
+                    // Session
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
 
                     if (c.getRole() == 1) {
                         response.sendRedirect("index.jsp");
                     } else if(c.getRole()==3){
-                        response.sendRedirect("staff/index.jsp");
+                        response.sendRedirect("userStaff/index.jsp");
                     }else if(c.getRole()==4){
                         response.sendRedirect("manage/index.jsp");
                     }else {
@@ -116,7 +112,7 @@ public class servlet_Login extends HttpServlet {
         }
     }
 
-   
+
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -3891,7 +3891,7 @@
                 </c:if>
                 <div class="st_profile_input float_left">
                     <label>Email / Mobile Number</label>
-                    <input value="${requestScope.email}" name="email" type="text">
+                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Password</label>
@@ -3924,7 +3924,40 @@
         </div>
     </div>
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('#form');
+        const emailInput = form.querySelector('input[name="email"]');
 
+        // Retrieve the existing emails from JSTL
+        const existingEmails = [
+            <c:forEach var="account" items="${listAcc}" varStatus="status">
+            "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
+            </c:forEach>
+        ];
+        console.log(existingEmails);
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = emailInput.value;
+            Console.log
+            // Perform client-side validation
+            if (!email) {
+                alert('Email không được để trống.');
+                return;
+            }
+
+            // Check if the email already exists
+            if (existingEmails.includes(email)) {
+                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                return;
+            }
+
+            // If validation passes, submit the form
+            form.submit();
+        });
+    });
+</script>
 <script>
     window.onload = function () {
         let isValid = false;
