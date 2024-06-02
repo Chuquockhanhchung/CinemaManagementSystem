@@ -93,7 +93,7 @@ public class servlet_Login extends HttpServlet {
                     if (c.getRole() == 1) {
                         response.sendRedirect("index.jsp");
                     } else if(c.getRole()==3){
-                        response.sendRedirect("userStaff/index.jsp");
+                        response.sendRedirect("staff/index.jsp");
                     }else if(c.getRole()==4){
                         response.sendRedirect("manage/index.jsp");
                     }else {
