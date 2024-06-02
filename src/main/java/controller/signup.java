@@ -7,18 +7,20 @@ package controller;
 import Email.Email;
 import model.*;
 import dal.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 /**
- *
  * @author My Computer
  */
 public class signup extends HttpServlet {
@@ -27,10 +29,10 @@ public class signup extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,12 +50,13 @@ public class signup extends HttpServlet {
             out.println("</html>");
         }
     }
-   
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -82,7 +85,7 @@ public class signup extends HttpServlet {
             if (!ValPhone(phone)) {
                 request.setAttribute("err", "Phone number is invalid");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-                return; 
+                return;
             }
             if (checkphone) {
                 request.setAttribute("err", "Phone number is exist!");
@@ -122,8 +125,8 @@ public class signup extends HttpServlet {
             Customer customer = new Customer(0, idAccount, name, email, phone, "");
             dao.insertCustomer(customer);
             Email mail = new Email();
-            mail.sendEmail2(email,idAccount);
-            response.sendRedirect("index.jsp");
+            mail.sendEmail2(email, idAccount);
+            response.sendRedirect("index.jsp?success=true");
 
         } catch (Exception e) {
             System.out.println(e);
