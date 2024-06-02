@@ -31,6 +31,17 @@
         <servlet-name>servlet_Login</servlet-name>
         <servlet-class>controller.servlet_Login</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>controller.SearchServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AdAccountServlet</servlet-name>
+        <servlet-class>controller.AdAccountServlet</servlet-class>
+    </servlet>
+
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>controller.signup</servlet-class>
@@ -79,6 +90,17 @@
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AdAccountServlet</servlet-name>
+        <url-pattern>/adaccount</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>

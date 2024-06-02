@@ -109,10 +109,16 @@ Header start
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="header-left">
                         <div class="input-group search-area d-xl-inline-flex d-none">
-                            <button class="input-group-text"><i
-                                    class="flaticon-381-search-2 text-primary"></i></button>
-                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                            <form action="search" method="get" class="input-group search-area d-xl-inline-flex d-none">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search">
+                                <input type="submit" value="Search" class="input-group-text"><i
+                                        class="flaticon-381-search-2 text-primary"></i></input>
+
+                            </form>
+
                         </div>
+
+
                     </div>
                     <ul class="navbar-nav header-right">
                         <li class="nav-item dropdown notification_dropdown">
@@ -205,25 +211,36 @@ Content body start
                                     <a href="javascript:void(0);" class="btn-close" data-bs-dismiss="modal"></a>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="adaccount" method="get">
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Email</label>
                                             <input type="text" class="form-control">
                                         </div>
+
                                         <div class="mb-3">
-                                            <label class="text-black font-w500">Date Join</label>
-                                            <input class="form-control mb-3" type="text" id="datepicker">
+                                            <label class="text-black font-w500">Phân Quyền</label>
+                                            <select name="Permission" class="text-black font-w500">
+                                                <option value="1">Khách Hàng</option>
+                                                <option value="2">Admin</option>
+                                                <option value="3">Nhân Viên</option>
+                                                <option value="4">Quản Lí</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="text-black font-w500">Ngày Tạo</label>
+                                            <input class="form-control mb-3" type="text" id="datepicker" name="date">
                                         </div>
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Password</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="pass">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="text-black font-w500">Status</label>
-                                            <input type="radio" class="form-control">
+                                            <label class="text-black font-w500">Trạng Thái</label>
+                                            <input type="radio" class="form-control" name="status">
                                         </div>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-primary light">Create</button>
+                                            <input type="submit" class="btn btn-primary light" value="Tạo">Tạo</input>
                                         </div>
                                     </form>
                                 </div>

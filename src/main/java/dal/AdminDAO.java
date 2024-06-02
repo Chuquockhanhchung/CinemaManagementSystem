@@ -38,7 +38,7 @@ public class AdminDAO extends DBContext {
         try (Connection con = getConn()) {
 //             Connection successful, you can perform further operations here if needed
             AdminDAO cd =new AdminDAO(con);
-              ArrayList<Account> a=cd.getall_Account();
+              ArrayList<Account> a=cd.getall_Account_ByMail("chi");
             System.out.println(a);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,19 +82,49 @@ public class AdminDAO extends DBContext {
     public ArrayList<Account> getall_Account(){
         ArrayList<Account> accounts = new ArrayList<>();
         String sql = "select a.AccountID, c.Email,a.Password, a.AccountType,a.CreationDate,a.Status from account a join customer c on a.AccountID=c.AccountID";
-        Security s = new Security();
         try(PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()){
             while (rs.next()){
                 Account a = new Account();
                 a.setAccountID(rs.getString(1));
                 a.setEmail(rs.getString(2));
-                a.setPassword(s.decode(rs.getString(3)));
+                a.setPassword(rs.getString(3));
                 a.setAccountType(rs.getInt(4));
                 a.setCreationDate(rs.getDate(5));
                 a.setStatus(rs.getString(6));
                 accounts.add(a);
             }
         }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return accounts;
+    }
+
+    public ArrayList<Account> getall_Account_ByMail(String Email){
+        if (Email.length() == 0){
+            return getall_Account();
+        }
+        ArrayList<Account> accounts = new ArrayList<>();
+        Email = "%" + Email + "%";
+        String sql = "select a.AccountID, c.Email,a.Password, a.AccountType,a.CreationDate,a.Status \n" +
+                "from cinemamanagersystem.account a join cinemamanagersystem.customer c \n" +
+                "on a.AccountID=c.AccountID\n" +
+                "where c.Email like ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+             ps.setString(1, Email);
+             ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Account a = new Account();
+                a.setAccountID(rs.getString(1));
+                a.setEmail(rs.getString(2));
+                a.setPassword(rs.getString(3));
+                a.setAccountType(rs.getInt(4));
+                a.setCreationDate(rs.getDate(5));
+                a.setStatus(rs.getString(6));
+                accounts.add(a);
+            }
+
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return accounts;
