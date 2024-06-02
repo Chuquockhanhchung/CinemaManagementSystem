@@ -4134,6 +4134,18 @@
                             </div>
                         </div>
 </form>
+
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+<% if ("true".equals(request.getParameter("success"))) { %>
+<script>
+    alert("Đã gửi email xác thực tài khoản");
+</script>
+<% } %>
+
 <script>
     function validateForm() {
         // Get form elements
@@ -4180,6 +4192,78 @@
         return true;
     }
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('#form');
+        const emailInput = form.querySelector('input[name="email"]');
+        const passwordInput = form.querySelector('input[name="pass"]');
+
+        // Retrieve the existing emails from JSTL
+        const existingEmails = [
+            <c:forEach var="account" items="${listAcc}" varStatus="status">
+            "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
+            </c:forEach>
+        ];
+
+        console.log("Existing Emails:");
+        console.log(existingEmails);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = emailInput.value;
+
+            // Perform client-side validation
+            if (!email) {
+                alert('Email không được để trống.');
+                return;
+            }
+
+            // Check if the email does not exist
+            if (!existingEmails.includes(email)) {
+                alert('Email không tồn tại.');
+                return;
+            }
+
+            if (!passwordInput.value) {
+                alert('Sai mật khẩu. Vui lý nhập lại mật khẩu.');
+                return;
+            }
+
+            // If validation passes, submit the form
+            form.submit();
+        });
+    });
+</script>
+
+<%--<script>--%>
+<%--    function validateLoginForm() {--%>
+<%--        // Get form elements--%>
+<%--        const email = document.getElementById('emailInput').value;--%>
+<%--        const pass = document.querySelector('input[name="pass"]').value;--%>
+
+<%--        // Email regex pattern--%>
+<%--        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;--%>
+<%--        // Phone regex pattern (assuming it should be 10-15 digits)--%>
+<%--        const passPattern = /^\d{10}$/;--%>
+
+<%--        // Validate email--%>
+<%--        if (!emailPattern.test(email)) {--%>
+<%--            alert("Please enter a valid email address.");--%>
+<%--            return false;--%>
+<%--        }--%>
+
+<%--        // Validate phone--%>
+<%--        if (!passPattern.test(pass)) {--%>
+<%--            alert("Please enter a valid password (10 digits).");--%>
+<%--            return false;--%>
+<%--        }--%>
+
+<%--        return true;--%>
+<%--    }--%>
+<%--</script>--%>
+
 <!-- st login wrapper End -->
 <!--main js file start-->
 <script src="js/jquery_min.js"></script>
