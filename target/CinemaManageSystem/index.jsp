@@ -3891,7 +3891,7 @@
                 </c:if>
                 <div class="st_profile_input float_left">
                     <label>Email / Mobile Number</label>
-                    <input value="${requestScope.email}" name="email" type="text">
+                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Password</label>
@@ -3926,35 +3926,82 @@
 </form>
 
 <script>
-    window.onload = function () {
-        let isValid = false;
-        const form = document.getElementById("form");
-        const id = document.getElementById("error");
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('#form');
+        const emailInput = form.querySelector('input[name="email"]');
+        const passwordInput = form.querySelector('input[name="pass"]');
+        const errorDiv = document.getElementById("error");
 
+        // Retrieve the existing emails and passwords from JSTL
+        const existingAccounts = [
+            <%-- Server-side rendering of existing emails and passwords --%>
+            <c:forEach var="account" items="${listAcc}" varStatus="status">
+            {
+                email: "${account.getEmail().toLowerCase()}",
+                password: "${account.getPassword()}",
+                status:"${account.getStatus()}"// Assuming passwords are stored this way
+            }<c:if test="${!status.last}">, </c:if>
+            </c:forEach>
+        ];
 
-            const respone = grecaptcha.getResponse();
-            if (respone) {
-                form.submit();
+        console.log("Existing Accounts:", existingAccounts);
 
-            } else {
-                error.innerHTML = "Please check!";
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+            const response = grecaptcha.getResponse();
+            if (!response) {
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+                return;
             }
+            // Perform client-side validation
+            if (!email) {
+                alert('Email không được để trống.');
+                return;
+            }
+
+            if (!password) {
+                alert('Mật khẩu không được để trống.');
+                return;
+            }
+
+            // Check if the email exists and the password is correct
+            const account = existingAccounts.find(acc => acc.email === email);
+            if (!account) {
+                alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                return;
+            }
+            if(account.status === "unactive"){
+                alert('Tài khoản chưa được kích hoạt!');
+                return;
+            }
+            if (account.password !== password) {
+                alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                return;
+            }
+
+            // Perform reCAPTCHA validation
+
+
+
+
+            console.log("Email and password validation passed. Submitting form...");
+            // If all validations pass, submit the form
+            form.submit();
         });
-        $('.click').on('click', function (e) {
-            //  // Now link won't go anywhere
 
-            const respone = grecaptcha.getResponse();
-            if (respone) {
-                window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
-
-            } else {
+        document.querySelector('.click').addEventListener('click', (e) => {
+            const response = grecaptcha.getResponse();
+            if (!response) {
                 e.preventDefault();
-                error.innerHTML = "Please check!";
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+            } else {
+                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
             }
         });
-    }
+    });
 </script>
 
 <!-- Form Forgot Password -->
@@ -4010,7 +4057,7 @@
     });
 </script>
 <!-- Form Sign Up -->
-<form action="signup" method="post" onsubmit="return validateForm()">
+<form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
     <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -4020,7 +4067,7 @@
                 </div>
                 <div class="st_profile_input float_left">
                     <label>Your Email</label>
-                    <input type="text" id="emailInput2" name=email placeholder="example@gmail.com">
+                    <input type="text" id="emailInput2" name="email" placeholder="example@gmail.com">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Mobile Number</label>
@@ -4041,31 +4088,70 @@
                 <div class="st_form_pop_login_btn float_left">
                     <input type="submit" value="SignUp">
                 </div>
-
                 <script>
-                    const respone = grecaptcha.getResponse();
-                    if (respone) {
-                        form.submit();
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const form = document.querySelector('#formSignUp');
+                        const emailInput = form.querySelector('input[name="email"]');
+                        const phoneInput = form.querySelector('input[name="phone"]');
+                        const errorDiv = document.getElementById("error");
 
-                    } else {
-                        error.innerHTML = "Please check!";
-                    }
-                    })
-                    ;
-                    $('.click').on('click', function (e) {
-                        //  // Now link won't go anywhere
+                        // Retrieve the existing emails and passwords from JSTL
+                        const existingAccounts = [
+                            <%-- Server-side rendering of existing emails and passwords --%>
+                            <c:forEach var="customer" items="${listCus}" varStatus="status">
+                            {
+                                email: "${customer.getEmail().toLowerCase()}",
+                                phone: "${customer.getPhone()}",
 
-                        const respone = grecaptcha.getResponse();
-                        if (respone) {
-                            window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
+                            }<c:if test="${!status.last}">, </c:if>
+                            </c:forEach>
+                        ];
 
-                        } else {
-                            e.preventDefault();
-                            error.innerHTML = "Please check!";
-                        }
+                        console.log("Existing Accounts:", existingAccounts);
+
+                        form.addEventListener('submit', (event) => {
+                            event.preventDefault(); // Prevent the default form submission
+
+                            const email = emailInput.value.trim().toLowerCase();
+                            const phone = phoneInput.value;
+
+                            // Perform client-side validation
+
+
+                            // Check if the email exists and the password is correct
+                            const account = existingAccounts.find(acc => acc.email === email);
+                            if (account) {
+                                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                                return;
+                            }
+                            const phones = existingAccounts.find(acc => acc.phone === phone);
+                            if (phones) {
+                                alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                                return;
+                            }
+
+
+
+
+
+
+                            console.log("Email and password validation passed. Submitting form...");
+                            // If all validations pass, submit the form
+                            form.submit();
+                        });
+
+                        document.querySelector('.click').addEventListener('click', (e) => {
+                            const response = grecaptcha.getResponse();
+                            if (!response) {
+                                e.preventDefault();
+                                errorDiv.innerHTML = "Please check reCAPTCHA!";
+                            } else {
+                                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                            }
+                        });
                     });
-                    }
                 </script>
+
 
                 <!-- Form Forgot Password -->
                 <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
@@ -4087,6 +4173,16 @@
                             </div>
                         </div>
 </form>
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+<% if ("true".equals(request.getParameter("success"))) { %>
+<script>
+    alert("Đã gửi email xác thực tài khoản");
+</script>
+<% } %>
 <script>
     function validateForm() {
         // Get form elements
