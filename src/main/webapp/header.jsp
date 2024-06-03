@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <ul class="dl-menu">
-                                    <li class="parent"><a href="#">Home</a>
+                                    <li class="parent"><a href="#">Trang chủ</a>
                                         <ul class="lg-submenu">
                                             <li><a href="index.jsp">Index-I</a></li>
                                             <li><a href="index2.jsp">Index-II</a></li>
@@ -51,9 +51,9 @@
                                             <li><a href="index4.jsp">Index-IV</a></li>
                                         </ul>
                                     </li>
-                                    <li class="parent megamenu"><a href="#">movie</a>
+                                    <li class="parent megamenu"><a href="#">Phim</a>
                                         <ul class="lg-submenu">
-                                            <li><a>Popular Hindi Movies</a>
+                                            <li><a>Phim Hindi phổ biến</a>
                                                 <ul class="lg-submenu">
                                                     <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bajiro
                                                             Mastani</a>
@@ -83,7 +83,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a>Popular Kannada Movies</a>
+                                            <li><a>Phim Kannada phổ biến</a>
                                                 <ul class="lg-submenu">
                                                     <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Zoom</a>
                                                     </li>
@@ -109,7 +109,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a>Popular Bengali Movies</a>
+                                            <li><a>Phim Bengali phổ biến</a>
                                                 <ul class="lg-submenu">
                                                     <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baro
                                                             Bou</a>
@@ -140,7 +140,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a>Popular Hollywood Movies</a>
+                                            <li><a>Phim Hollywood phổ biến</a>
                                                 <ul class="lg-submenu">
                                                     <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wind
                                                             River</a>
@@ -186,18 +186,13 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="parent"><a href="#">tv show</a>
+                                    <li class="parent"><a href="#">Chương trình truyền hình</a>
                                         <ul class="lg-submenu">
-                                            <li><a href="#">Star Plus</a></li>
-                                            <li><a href="#">Star Jalsha</a></li>
-                                            <li><a href="#">Star Gold</a></li>
-                                            <li><a href="#">Sony TV</a></li>
-                                            <li><a href="#">Sab TV</a></li>
-                                            <li><a href="#">Sony Pal</a></li>
-                                            <li><a href="#">Set Max</a></li>
+                                            <li><a href="#">Ngôi sao Plus</a></li>
+                                            <li><a href="#">Ngôi sao vàng</a></li>
                                         </ul>
                                     </li>
-                                    <li class="parent megamenu"><a href="#">video</a>
+                                    <li class="parent megamenu"><a href="#">Thước phim</a>
                                         <ul class="lg-submenu prs_navi_video_wrapper">
                                             <li>
                                                 <div class="prs_video_navi_img_main_wrapper">
@@ -261,9 +256,9 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="parent"><a href="#">pages</a>
+                                    <li class="parent"><a href="#">Trang</a>
                                         <ul class="lg-submenu">
-                                            <li class="parent"><a href="#">Blog</a>
+                                            <li class="parent"><a href="#">Tin tức</a>
                                                 <ul class="lg-submenu">
                                                     <li><a href="blog_category.jsp">Blog-Category</a>
                                                     </li>
@@ -271,37 +266,35 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent"><a href="#">Event</a>
+                                            <li class="parent"><a href="#">Sự kiện</a>
                                                 <ul class="lg-submenu">
-                                                    <li><a href="event_category.jsp">Event-Category</a>
+                                                    <li><a href="event_category.jsp">Loại sự kện</a>
                                                     </li>
-                                                    <li><a href="event_single.jsp">Event-Single</a>
+                                                    <li><a href="event_single.jsp">Sự kiện đơn</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent"><a href="#">Movie</a>
+                                            <li class="parent"><a href="#">Phim</a>
                                                 <ul class="lg-submenu">
-                                                    <li><a href="movie_category.jsp">Movie-Category</a>
+                                                    <li><a href="movie_category.jsp">Thể loại phim</a>
                                                     </li>
-                                                    <li><a href="movie_single.jsp">Movie-Single</a>
-                                                    </li>
-                                                    <li><a href="movie_single_second.jsp">Movie-Single-II</a>
+                                                    <li><a href="movie_single.jsp">Phim đơn</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="gallery.jsp">gallery</a>
+                                            <li><a href="gallery.jsp">Phòng trưng bày</a>
                                             </li>
-                                            <li><a href="booking_type.jsp">Booking-Type</a>
+                                            <li><a href="booking_type.jsp">Loại đăng kí</a>
                                             </li>
-                                            <li><a href="confirmation_screen.jsp">Confirmation-Screen</a>
+                                            <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>
                                             </li>
-                                            <li><a href="movie_booking.jsp">Movie-Booking</a>
+                                            <li><a href="movie_booking.jsp">Đặt phim</a>
                                             </li>
-                                            <li><a href="seat_booking.jsp">Seat-Booking</a>
+                                            <li><a href="seat_booking.jsp">Đặt chỗ</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="parent"><a href="contact.jsp">contact</a>
+                                    <li class="parent"><a href="contact.jsp">Liên hệ</a>
                                     </li>
                                     <c:if test="${sessionScope.user != null}">
                                         <li>
@@ -349,13 +342,13 @@
                     <div class="product-heading">
                         <div class="con">
                             <select>
-                                <option>All Categories</option>
-                                <option>Movie</option>
-                                <option>Video</option>
-                                <option>Music</option>
-                                <option>TV-Show</option>
+                                <option>Tất cả danh mục</option>
+                                <option>Phim</option>
+                                <option>Thước phim</option>
+                                <option>Nhạc</option>
+                                <option>Chương trình truyền hình</option>
                             </select>
-                            <input type="text" placeholder="Search Movie , Video , Music">
+                            <input type="text" placeholder="Tìm phim, Thước phim, Nhạc">
                             <button type="submit"><i class="fi fi-bs-search"></i>
                             </button>
                         </div>
@@ -389,32 +382,32 @@
                                       C37.652,36.448,45.953,40,45.953,40l1.043-8.658C41.41,30.454,38.125,32.244,35.314,34.585z" />
                                 </g>
                                 </g>
-                                </svg><span>Movie Pro</span>
+                                </svg><span>Phim chuyên nghiệp</span>
                             </a>
                             <a href="#" class="manu-close"><i class="fa fa-times"></i></a>
                         </div>
                         <ul class="mobile-list-nav">
-                            <li><a href="about.jsp">OVERVIEW</a>
+                            <li><a href="about.jsp">Tổng quan</a>
                             </li>
-                            <li><a href="movie_single.jsp">MOVIE</a>
+                            <li><a href="movie_single.jsp">Phim</a>
                             </li>
-                            <li><a href="event_single.jsp">EVENT</a>
+                            <li><a href="event_single.jsp">Sự kiện</a>
                             </li>
-                            <li><a href="gallery.jsp">GALLERY</a>
+                            <li><a href="gallery.jsp">Thư viện</a>
                             </li>
-                            <li><a href="blog_single.jsp">BLOG</a>
+                            <li><a href="blog_single.jsp">Tin tức</a>
                             </li>
-                            <li><a href="contact.jsp">CONTACT</a>
+                            <li><a href="contact.jsp">Liên hệ</a>
                             </li>
                         </ul>
                         <div class="product-heading prs_slidebar_searchbar_wrapper">
                             <div class="con">
                                 <select>
-                                    <option>All Categories</option>
-                                    <option>Movie</option>
-                                    <option>Video</option>
-                                    <option>Music</option>
-                                    <option>TV-Show</option>
+                                    <option>Tất cả danh mục </option>
+                                    <option>Phim</option>
+                                    <option>Thước phim</option>
+                                    <option>Nhạc</option>
+                                    <option>Chương trình truyền hình</option>
                                 </select>
                                 <input type="text" placeholder="Search Movie , Video , Music">
                                 <button type="submit"><i class="flaticon-tool"></i>
