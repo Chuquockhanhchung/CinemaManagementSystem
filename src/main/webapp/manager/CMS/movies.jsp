@@ -64,9 +64,7 @@
           type="text/css"/>
 
     <style>
-        i.fa {
-            line-height: unset !important;
-        }
+        <%@ include file="../managerStyle.css"%>
     </style>
 </head>
 

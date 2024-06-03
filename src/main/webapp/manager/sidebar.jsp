@@ -9,6 +9,20 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel='stylesheet'
+          href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+          href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet'
+          href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet'
+          href='https://cdn-uicons.flaticon.com/2.4.0/uicons-thin-straight/css/uicons-thin-straight.css'>
+    <style>
+        .badge-danger {
+            bottom: 15px;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
 <div class="deznav">
@@ -16,7 +30,7 @@
         <ul class="metismenu" id="menu">
 
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-025-dashboard"></i>
+                <i class="fi fi-rr-dashboard-monitor"></i>
                 <span class="nav-text">Dashboard</span>
             </a>
                 <ul aria-expanded="false">
@@ -28,7 +42,7 @@
 
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-050-info"></i>
+                <i class="fi fi-rr-apps-add"></i>
                 <span class="nav-text">Apps</span>
             </a>
                 <ul aria-expanded="false">
@@ -46,7 +60,7 @@
             </li>
 
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-018-clock"></i>
+                <i class="fi fi-sr-clapperboard-play"></i>
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> MANAGER</span></span>
             </a>
                 <ul aria-expanded="false">
@@ -60,7 +74,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-041-graph"></i>
+                <i class="fi fi-sr-chart-mixed-up-circle-dollar"></i>
                 <span class="nav-text">Charts</span>
             </a>
                 <ul aria-expanded="false">
@@ -73,7 +87,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-086-star"></i>
+                <i class="fi fi-sr-star"></i>
                 <span class="nav-text">Bootstrap</span>
             </a>
                 <ul aria-expanded="false">
@@ -96,7 +110,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-045-heart"></i>
+                <i class="fi fi-sr-heart"></i>
                 <span class="nav-text">Plugins</span>
             </a>
                 <ul aria-expanded="false">
@@ -111,12 +125,12 @@
             </li>
             <li><a href="https://ventic.dexignzone.com/codeigniter/demo/widget_basic" class="ai-icon"
                    aria-expanded="false">
-                <i class="flaticon-013-checkmark"></i>
+                <i class="fi fi-rs-checklist-task-budget"></i>
                 <span class="nav-text">Widget</span>
             </a>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-072-printer"></i>
+                <i class="fi fi-rs-form"></i>
                 <span class="nav-text">Forms</span>
             </a>
                 <ul aria-expanded="false">
@@ -129,7 +143,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-043-menu"></i>
+                <i class="fi fi-rs-table-list"></i>
                 <span class="nav-text">Table</span>
             </a>
                 <ul aria-expanded="false">
@@ -138,7 +152,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-022-copy"></i>
+                <i class="fi fi-rs-browser"></i>
                 <span class="nav-text">Pages</span>
             </a>
                 <ul aria-expanded="false">
@@ -160,7 +174,6 @@
                     </li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/page_lock_screen">Lock Screen</a>
                     </li>
-                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/page_empty">Empty Page</a></li>
                 </ul>
             </li>
         </ul>
@@ -169,10 +182,7 @@
             <a class="text-white fs-14" href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Learn
                 more</a>
         </div>
-        <div class="copyright">
-            <p><strong>Ventic Ticketing Admin Dashboard Template</strong> © 2023 All Rights Reserved</p>
-            <p class="fs-12">Made with <span class="heart"></span> by DexignZone</p>
-        </div>
+
     </div>
 </div>
 </body>

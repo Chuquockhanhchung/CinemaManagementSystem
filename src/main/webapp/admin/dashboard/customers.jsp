@@ -7,11 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 
 <head>
     <!-- Title -->
-    <title>Ventic - CodeIgniter Event Ticketing Admin Dashboard Template</title>
+    <title>Admin | Dashboard</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -128,7 +129,18 @@
             background-color: #45a049;
         }
 
+        i.fa {
+            line-height: unset !important;
+        }
 
+        .sidebar-right .sidebar-right-trigger {
+            top: 3.6rem;
+        }
+
+        .fa-spin {
+
+            animation-duration: var(--fa-animation-duration, 10s);
+        }
     </style>
 </head>
 
@@ -156,99 +168,17 @@
     Main wrapper start
 ***********************************-->
 <div id="main-wrapper">
-
-    <!--**********************************
-Nav header start
-***********************************-->
-
-    <!--**********************************
-Nav header end
-***********************************-->
-    <!--**********************************
-Chat box start
-***********************************-->
-
-    <!--**********************************
-Chat box End
-***********************************-->
     <!--**********************************
 Header start
 ***********************************-->
-    <header class="header">
-        <div class="header-content">
-            <nav class="navbar navbar-expand">
-                <div class="collapse navbar-collapse justify-content-between">
-                    <div class="header-left">
-                        <div class="form-control input-group search-area d-xl-inline-flex d-none">
-                            <form action="search" method="get" style="display: flex; flex-direction: row;">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search"
-                                       style=" flex: 0.4;">
-                                <input type="submit" value="Search" class="input-group-text"
-                                       style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
-                            </form>
-                        </div>
-
-                    </div>
-                    <ul class="navbar-nav header-right">
-                        <li class="nav-item dropdown notification_dropdown">
-                            <a class="nav-link bell dz-theme-mode" href="javascript:void(0);"
-                               aria-label="theme-mode">
-                                <i id="icon-light" class="fas fa-sun"></i>
-                                <i id="icon-dark" class="fas fa-moon"></i>
-
-                            </a>
-
-                        </li>
-
-
-                        <li class="nav-item dropdown header-profile">
-                            <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                                <div class="header-info me-3">
-                                    <span class="fs-16 font-w600 ">${sessionScope.user.name}</span>
-                                    <small class="text-end fs-14 font-w400"> Admin</small>
-                                </div>
-                                <img src="${sessionScope.user.picture}" width="20" alt="">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="https://ventic.dexignzone.com/codeigniter/demo/app_profile"
-                                   class="dropdown-item ai-icon">
-                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    <span class="ms-2">Thông Tin Cá Nhân </span>
-                                </a>
-
-
-                                </a>
-                                <a href="${pageContext.request.contextPath}/logout"
-                                   class="dropdown-item ai-icon">
-                                    <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                        <polyline points="16 17 21 12 16 7"></polyline>
-                                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                                    </svg>
-                                    <span class="ms-2">Đăng Xuất </span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <%@include file="../header.jsp" %>
     <!--**********************************
 Header end 
 ***********************************-->
     <!--**********************************
 Sidebar start
 ***********************************-->
-
-
+    <%@include file="../sidebar.jsp" %>
     <!--**********************************
 Sidebar end
 ***********************************-->
@@ -263,13 +193,16 @@ Content body start
                 <div class="me-auto">
                     <h2 class="font-w600 mb-0">Danh Sách Tài Khoản</h2>
                 </div>
-
+                <div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
+                    <button class="input-group-text"><i class="fi fi-rr-search text-primary"></i></button>
+                    <input type="text" class="form-control" placeholder="Search here...">
+                </div>
 
             </div>
             <div class="row mb-4 align-items-center">
                 <div class="col-xl-3 col-lg-4 mb-4 mb-lg-0">
                     <a href="javascript:void(0);" class="btn btn-secondary  btn-lg btn-block rounded text-white"
-                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">Thêm Tài Khoản</a>
+                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">+ Thêm Tài Khoản</a>
                     <!-- Add Order -->
                     <div class="modal fade" id="addNewCustomer">
                         <div class="modal-dialog" role="document">
@@ -486,8 +419,7 @@ Footer start
 ***********************************-->
     <footer class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/"
-                                                          target="_blank">DexignZone</a> 2023</p>
+            <p>Copyright © Designed &amp; Developed by Group 1 - 2024</p>
         </div>
     </footer>
     <!--**********************************

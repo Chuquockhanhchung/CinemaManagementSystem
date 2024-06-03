@@ -3,13 +3,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import dal.*;
 import model.*;
+
 import java.util.ArrayList;
+
 import Utill.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
@@ -21,7 +24,6 @@ public class servlet_Login extends HttpServlet {
     public servlet_Login() {
         super();
     }
-
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -45,11 +47,11 @@ public class servlet_Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie arr[] = request.getCookies();
-        for(Cookie o: arr){
-            if(o.getName().equals("em")){
+        for (Cookie o : arr) {
+            if (o.getName().equals("em")) {
                 request.setAttribute("email", o.getValue());
             }
-            if(o.getName().equals("pa")){
+            if (o.getName().equals("pa")) {
                 request.setAttribute("pass", o.getValue());
             }
         }
@@ -74,7 +76,7 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
-                 if (c.getPass().compareTo(pass) == 0) {
+                if (c.getPass().compareTo(pass) == 0) {
                     Cookie em = new Cookie("em", c.getEmail());
                     Cookie pa = new Cookie("pa", c.getPass());
                     em.setMaxAge(60 * 60 * 24 * 7);
@@ -86,15 +88,15 @@ public class servlet_Login extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
 
-                        if (c.getRole() == 1) {
-                            response.sendRedirect("home");
-                        } else if (c.getRole() == 3 ) {
-                            response.sendRedirect("userStaff/index.jsp");
-                        } else if (c.getRole() == 4) {
-                            response.sendRedirect("manage/index.jsp");
-                        } else {
-                            response.sendRedirect("admin");
-                        }
+                    if (c.getRole() == 1) {
+                        response.sendRedirect("home");
+                    } else if (c.getRole() == 3) {
+                        response.sendRedirect("staff/index.jsp");
+                    } else if (c.getRole() == 4) {
+                        response.sendRedirect("manager");
+                    } else {
+                        response.sendRedirect("admin");
+                    }
 
 
                 } else {
