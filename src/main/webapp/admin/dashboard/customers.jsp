@@ -35,21 +35,25 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
 
 
-    <link href="../../public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
 
-    <link href="../../public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="../../public/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="../../public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
 
-    <link href="../../public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
+          rel="stylesheet" type="text/css"/>
+
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+          rel="stylesheet"
+          type="text/css"/>
+
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
 
@@ -57,7 +61,8 @@
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <link class="main-css" href="../../public/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
+          type="text/css"/>
     <style>
         /* Basic styling for popup */
         /* Basic styling for popup */
@@ -79,7 +84,7 @@
             background: white;
             padding: 40px;
             border-radius: 10px;
-            width: 500px;  /* Increased width */
+            width: 500px; /* Increased width */
             position: relative;
         }
 
@@ -176,8 +181,10 @@ Header start
                     <div class="header-left">
                         <div class="form-control input-group search-area d-xl-inline-flex d-none">
                             <form action="search" method="get" style="display: flex; flex-direction: row;">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search" style=" flex: 0.4;">
-                                <input type="submit" value="Search" class="input-group-text" style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search"
+                                       style=" flex: 0.4;">
+                                <input type="submit" value="Search" class="input-group-text"
+                                       style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
                             </form>
                         </div>
 
@@ -192,8 +199,6 @@ Header start
                             </a>
 
                         </li>
-
-
 
 
                         <li class="nav-item dropdown header-profile">
@@ -218,7 +223,7 @@ Header start
 
 
                                 </a>
-                                <a href="https://ventic.dexignzone.com/codeigniter/demo/page_login"
+                                <a href="${pageContext.request.contextPath}/logout"
                                    class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -315,36 +320,36 @@ Content body start
                         // Retrieve the existing emails from JSTL
                         const existingEmails = [
                             <c:forEach var="account" items="${listAcc}" varStatus="status">
-                            "${account.getEmail()}"<c:if test="${!status.last}">,</c:if>
+                            "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
                             </c:forEach>
                         ];
+                        console.log(existingEmails);
+                        form.addEventListener('submit', (event) => {
+                            event.preventDefault(); // Prevent the default form submission
 
-                            form.addEventListener('submit', (event) => {
-                                event.preventDefault(); // Prevent the default form submission
+                            const email = emailInput.value;
 
-                                const email = emailInput.value;
+                            // Perform client-side validation
+                            if (!email) {
+                                alert('Email không được để trống.');
+                                return;
+                            }
 
-                                // Perform client-side validation
-                                if (!email) {
-                                    alert('Email không được để trống.');
-                                    return;
-                                }
+                            // Check if the email already exists
+                            if (existingEmails.includes(email)) {
+                                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                                return;
+                            }
 
-                                // Check if the email already exists
-                                if (existingEmails.includes(email)) {
-                                    alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
-                                    return;
-                                }
-
-                                // If validation passes, submit the form
-                                form.submit();
-                            });
+                            // If validation passes, submit the form
+                            form.submit();
+                        });
                     });
                 </script>
                 <div class="col-xl-9 col-lg-8">
                     <div class="card m-0 ">
                         <div class="card-body py-3 py-md-2">
-                        <div class="d-sm-flex  d-block align-items-center">
+                            <div class="d-sm-flex  d-block align-items-center">
                                 <div class="d-flex mb-sm-0 mb-3 me-auto align-items-center">
                                     <svg class="me-2 user-ico mb-1" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -377,7 +382,7 @@ Content body start
                     </div>
                 </div>
             </div>
-<%--            Edir Popup--%>
+            <%--            Edir Popup--%>
             <div id="editUserPopup" class="popup" style="display:none;">
                 <div class="popup-content">
                     <span class="close-btn">&times;</span>
@@ -402,7 +407,7 @@ Content body start
                 </div>
             </div>
             <script>
-        document.getElementById('checkAll').addEventListener('change', function() {
+                document.getElementById('checkAll').addEventListener('change', function () {
                     const checkboxes = document.querySelectorAll('.checkbox-item');
                     checkboxes.forEach(checkbox => {
                         checkbox.checked = this.checked;
@@ -418,7 +423,8 @@ Content body start
                             <tr>
                                 <th>
                                     <div class="form-check checkbox-secondary">
-                                        <input class="form-check-input checkbox-item" type="checkbox" value="" id="checkAll">
+                                        <input class="form-check-input checkbox-item" type="checkbox" value=""
+                                               id="checkAll">
                                         <label class="form-check-label" for="checkAll">
                                         </label>
                                     </div>
@@ -437,8 +443,9 @@ Content body start
                                 <tr>
                                     <td>
                                         <div class="form-check checkbox-secondary">
-                                            <input class="form-check-input checkbox-item" type="checkbox" value="${a.getAccountID()}|${a.getStatus()}|${a.getEmail()}|${a.getAccountType()}|${a.getPassword()}"
-                                                   id="checkbox_${a.getAccountID()}" >
+                                            <input class="form-check-input checkbox-item" type="checkbox"
+                                                   value="${a.getAccountID()}|${a.getStatus()}|${a.getEmail()}|${a.getAccountType()}|${a.getPassword()}"
+                                                   id="checkbox_${a.getAccountID()}">
                                             <label class="form-check-label" for="checkbox_${a.getAccountID()}">
                                             </label>
                                         </div>
@@ -489,7 +496,7 @@ Footer end
 
 </div>
 <script>
-    document.getElementById('activateLink').addEventListener('click', function(event) {
+    document.getElementById('activateLink').addEventListener('click', function (event) {
         event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
         var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
@@ -500,7 +507,7 @@ Footer end
             var statuses = [];
 
             // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function() {
+            checkedCheckboxes.each(function () {
                 var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
                 var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
                 var status = value.split('|')[1]; // Lấy status của checkbox hiện tại
@@ -524,10 +531,9 @@ Footer end
     });
 
 
-
 </script>
 <script>
-    document.getElementById('deleteLink').addEventListener('click', function(event) {
+    document.getElementById('deleteLink').addEventListener('click', function (event) {
         event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
         var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
@@ -537,7 +543,7 @@ Footer end
             var ids = [];
 
             // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function() {
+            checkedCheckboxes.each(function () {
                 var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
                 var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
 
@@ -551,14 +557,13 @@ Footer end
 
 
             // Construct the URL to the servlet with the concatenated IDs and statuses
-            var newHref = 'delete?ids=' + idsString ;
+            var newHref = 'delete?ids=' + idsString;
 
             // Thay đổi đường link href
             this.href = newHref;
             window.location.href = newHref; // Chuyển hướng trang đến URL mới
         }
     });
-
 
 
 </script>

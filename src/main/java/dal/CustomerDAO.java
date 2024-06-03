@@ -77,15 +77,38 @@ public class CustomerDAO extends DBContext {
         try (Connection con = getConn()) {
             // Connection successful, you can perform further operations here if needed
             CustomerDAO cd = new CustomerDAO(con);
-            cd.resetPassword("chihphe176407@fpt.edu.vn", "1234");
+            System.out.println(cd.getCustomer("0.1820259700365935"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    public Customer getCustomer(String id) {
+        Customer c = new Customer();
+        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"
+                + "FROM customer\n"
+                + "JOIN account  ON customer.AccountID = account.AccountID where account.AccountID=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                c.setIdCustomer(rs.getInt(1));
+                c.setName(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setPass(rs.getString(6));
+                c.setRole(rs.getInt(7));
+                return c;
+            }
 
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public void insertAccount(Customer account) {
         Security s = new Security();
-        String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'active')";
+        String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'unactive')";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, account.getId());
@@ -96,5 +119,6 @@ public class CustomerDAO extends DBContext {
             e.printStackTrace();
         }
     }
+
 
 }

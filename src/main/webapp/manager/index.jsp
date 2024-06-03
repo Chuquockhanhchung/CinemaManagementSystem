@@ -32,15 +32,24 @@
 
     <!-- Favicon icon -->
 
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/favicon.png">
-    <link href="../public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css" rel="stylesheet"
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-    <link href="../public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+          rel="stylesheet"
           type="text/css"/>
-    <link href="../public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+          rel="stylesheet"
           type="text/css"/>
-    <link class="main-css" href="../public/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+          rel="stylesheet"
+          type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
+          type="text/css"/>
 
 </head>
 
@@ -49,7 +58,7 @@
 <!--*******************
     Preloader start
 ********************-->
-<!-- <div id="preloader">
+<div id="preloader">
     <div class="loader">
         <div class="loader--dot"></div>
         <div class="loader--dot"></div>
@@ -59,7 +68,7 @@
         <div class="loader--dot"></div>
         <div class="loader--text"></div>
     </div>
-</div> -->
+</div>
 <!--*******************
     Preloader end
 ********************-->
@@ -150,7 +159,7 @@ Nav header end
                                 <li class="active dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/1.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -163,7 +172,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/2.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -176,7 +185,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/3.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/3.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -189,7 +198,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/4.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/4.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -203,7 +212,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/5.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/5.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -216,7 +225,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/1.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -229,7 +238,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/2.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -243,7 +252,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/3.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/3.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -256,7 +265,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/4.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/4.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -270,7 +279,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/5.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/5.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -283,7 +292,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/1.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -296,7 +305,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/2.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -309,7 +318,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/3.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/3.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -323,7 +332,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/4.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/4.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -336,7 +345,7 @@ Nav header end
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="../public/assets/images/avatar/5.jpg"
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/5.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -401,7 +410,8 @@ Nav header end
                         <div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -415,13 +425,15 @@ Nav header end
                                     <span class="msg_time_send">8:55 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -435,13 +447,15 @@ Nav header end
                                     <span class="msg_time_send">9:05 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -455,13 +469,15 @@ Nav header end
                                     <span class="msg_time_send">9:10 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -471,7 +487,8 @@ Nav header end
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -485,13 +502,15 @@ Nav header end
                                     <span class="msg_time_send">8:55 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -505,13 +524,15 @@ Nav header end
                                     <span class="msg_time_send">9:05 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -525,13 +546,15 @@ Nav header end
                                     <span class="msg_time_send">9:10 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/2.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="../public/assets/images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                    <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                         class="rounded-circle user_img_msg"
                                          alt="">
                                 </div>
                                 <div class="msg_cotainer">
@@ -778,7 +801,7 @@ Nav header end
                                             <div class="timeline-panel">
                                                 <div class="media me-2">
                                                     <img alt="image" width="50"
-                                                         src="../public/assets/images/avatar/1.jpg">
+                                                         src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg">
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -812,7 +835,7 @@ Nav header end
                                             <div class="timeline-panel">
                                                 <div class="media me-2">
                                                     <img alt="image" width="50"
-                                                         src="../public/assets/images/avatar/1.jpg">
+                                                         src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg">
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -943,7 +966,8 @@ Nav header end
                                     <span class="fs-16 font-w600 ">James P. Sullivan</span>
                                     <small class="text-end fs-14 font-w400">Super Admin</small>
                                 </div>
-                                <img src="../public/assets/images/profile/pic1.jpg" width="20" alt="">
+                                <img src="${pageContext.request.contextPath}/public/assets/images/profile/pic1.jpg"
+                                     width="20" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="https://ventic.dexignzone.com/codeigniter/demo/app_profile"
@@ -968,7 +992,7 @@ Nav header end
                                     </svg>
                                     <span class="ms-2">Inbox </span>
                                 </a>
-                                <a href="logout"
+                                <a href="https://ventic.dexignzone.com/codeigniter/demo/page_login"
                                    class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -992,53 +1016,7 @@ Nav header end
     <!--**********************************
 Sidebar start
 ***********************************-->
-    <div class="deznav">
-        <div class="deznav-scroll">
-            <ul class="metismenu" id="menu">
-
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a href="index.jsp">Dashboard</a></li>
-                        <li><a href="dashboard/orders_list.jsp">Orders list</a></li>
-                        <li><a href="dashboard/event.jsp">Event</a></li>
-                        <li><a href="dashboard/customers.jsp">Customers</a></li>
-
-                    </ul>
-
-                </li>
-
-
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-018-clock"></i>
-                    <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1">Admin</span></span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a href="https://ventic.dexignzone.com/codeigniter/demo/content">Movies</a></li>
-
-                        <li><a href="https://ventic.dexignzone.com/codeigniter/demo/add_email">Add Email</a></li>
-                        <li><a href="https://ventic.dexignzone.com/codeigniter/demo/blog">Event</a></li>
-
-                        <li><a href="https://ventic.dexignzone.com/codeigniter/demo/blog_category">Event Category</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-            </ul>
-            <div class="plus-box">
-                <p class="fs-16 font-w500 mb-3">Ticket Sales Weekly Report</p>
-                <a class="text-white fs-14" href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Learn
-                    more</a>
-            </div>
-            <div class="copyright">
-                <p><strong>Ventic Ticketing Admin Dashboard Template</strong> © 2023 All Rights Reserved</p>
-                <p class="fs-12">Made with <span class="heart"></span> by DexignZone</p>
-            </div>
-        </div>
-    </div>
+    <%@include file="sidebar.jsp" %>
     <!--**********************************
 Sidebar end
 ***********************************-->
@@ -1423,7 +1401,8 @@ Sidebar end
                                 <div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="../public/assets/images/card/Untitled-15.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-15.jpg"
+                                                 alt="">
                                             <i class="las la-film image-icon"></i>
                                         </div>
                                         <div class="media-body">
@@ -1460,7 +1439,8 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="../public/assets/images/card/Untitled-16.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-16.jpg"
+                                                 alt="">
                                             <i class="fa fa-music image-icon"></i>
 
                                         </div>
@@ -1497,7 +1477,8 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="../public/assets/images/card/Untitled-17.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-17.jpg"
+                                                 alt="">
                                             <i class="fa fa-music image-icon"></i>
 
                                         </div>
@@ -1535,7 +1516,8 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="../public/assets/images/card/Untitled-15.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-15.jpg"
+                                                 alt="">
                                             <i class="fa fa-music image-icon"></i>
 
                                         </div>
@@ -1572,7 +1554,8 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="../public/assets/images/card/Untitled-16.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-16.jpg"
+                                                 alt="">
                                             <i class="fa fa-music image-icon"></i>
 
                                         </div>
@@ -1611,7 +1594,8 @@ Sidebar end
                                 <div class="card-footer text-center pt-0 border-0">
                                     <a href="javascript:void(0);"
                                        class="btn btn-secondary btn-lg  text-white dz-load-more" id="EventList"
-                                       rel="../public/assets/ajax/event-list.jsp">Load More</a>
+                                       rel="${pageContext.request.contextPath}/public/assets/ajax/event-list.jsp">Load
+                                        More</a>
                                 </div>
                             </div>
                         </div>
@@ -1647,7 +1631,8 @@ Sidebar end
                                 <div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="../public/assets/images/contacts/pic1.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                                 alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="fs-16 mb-0">Olivia Johanson</h6>
@@ -1661,7 +1646,8 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="../public/assets/images/contacts/pic2.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic2.jpg"
+                                                 alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="fs-16 mb-0">Griezerman</h6>
@@ -1675,7 +1661,8 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="../public/assets/images/contacts/pic3.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic3.jpg"
+                                                 alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="fs-16 mb-0">Uli Trumb</h6>
@@ -1689,7 +1676,8 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="../public/assets/images/contacts/pic1.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                                 alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="fs-16 mb-0">Oconner</h6>
@@ -1703,7 +1691,8 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="../public/assets/images/contacts/pic1.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                                 alt="">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="fs-16 mb-0">Oconner</h6>
@@ -1719,7 +1708,7 @@ Sidebar end
                                 <div class="card-footer style-1 border-0 px-0">
                                     <a href="javascript:void();"
                                        class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales"
-                                       rel="../public/assets/ajax/latest-sales.jsp"></a>
+                                       rel="${pageContext.request.contextPath}/public/assets/ajax/latest-sales.jsp"></a>
                                 </div>
                             </div>
                         </div>
@@ -1844,7 +1833,8 @@ Sidebar end
                                 <div class="card-footer pt-0 border-0">
                                     <a href="javascript:void(0);"
                                        class="btn btn-secondary btn-block text-white dz-load-more"
-                                       id="UpcomingEvent" rel="../public/assets/ajax/upcoming-event.jsp">Load
+                                       id="UpcomingEvent"
+                                       rel="${pageContext.request.contextPath}/public/assets/ajax/upcoming-event.jsp">Load
                                         More</a>
                                 </div>
                             </div>
@@ -1875,21 +1865,21 @@ Footer end
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
-<script src="../public/assets/vendor/global/global.min.js"></script>
-<script src="../public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 
-<script src="../public/assets/vendor/chartjs/chart.bundle.min.js"></script>
-<script src="../public/assets/vendor/bootstrap-datetimepicker/js/moment.js"></script>
-<script src="../public/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script src="../public/assets/vendor/peity/jquery.peity.min.js"></script>
-<script src="../public/assets/vendor/apexchart/apexchart.js"></script>
-<script src="../public/assets/js/dashboard/dashboard-1.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/chartjs/chart.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/peity/jquery.peity.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/apexchart/apexchart.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/dashboard/dashboard-1.js"></script>
 
-<script src="../public/assets/js/custom.min.js"></script>
-<script src="../public/assets/js/deznav-init.js"></script>
-<script src="../public/assets/js/demo.js"></script>
-<script src="../public/assets/js/styleSwitcher.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
 
 
 <!--**********************************

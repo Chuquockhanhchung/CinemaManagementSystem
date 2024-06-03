@@ -67,6 +67,10 @@
         <servlet-class>controller.EditAccount</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Homepage</servlet-name>
+        <servlet-class>controller.Homepage</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>StaffServlet</servlet-name>
         <servlet-class>controller.StaffServlet</servlet-class>
     </servlet>
@@ -77,6 +81,10 @@
     <servlet>
         <servlet-name>ActiveServlet</servlet-name>
         <servlet-class>controller.ActiveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActivatedServlet</servlet-name>
+        <servlet-class>controller.ActivatedServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>sendEmail</servlet-name>
@@ -95,12 +103,20 @@
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Homepage</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>
         <url-pattern>/activate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActivatedServlet</servlet-name>
+        <url-pattern>/activated</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
