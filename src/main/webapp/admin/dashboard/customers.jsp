@@ -7,15 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html lang="en">
 
 <head>
     <!-- Title -->
-    <title>Admin | Dashboard</title>
+    <title> Ticketing Admin Dashboard</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="author" content="DexignZone">
     <meta name="robots" content="">
 
@@ -82,6 +82,7 @@
         }
 
         .popup-content {
+            left: 35%;
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -129,18 +130,7 @@
             background-color: #45a049;
         }
 
-        i.fa {
-            line-height: unset !important;
-        }
 
-        .sidebar-right .sidebar-right-trigger {
-            top: 3.6rem;
-        }
-
-        .fa-spin {
-
-            animation-duration: var(--fa-animation-duration, 10s);
-        }
     </style>
 </head>
 
@@ -168,17 +158,99 @@
     Main wrapper start
 ***********************************-->
 <div id="main-wrapper">
+
+    <!--**********************************
+Nav header start
+***********************************-->
+
+    <!--**********************************
+Nav header end
+***********************************-->
+    <!--**********************************
+Chat box start
+***********************************-->
+
+    <!--**********************************
+Chat box End
+***********************************-->
     <!--**********************************
 Header start
 ***********************************-->
-    <%@include file="../header.jsp" %>
+    <header class="header">
+        <div class="header-content">
+            <nav class="navbar navbar-expand">
+                <div class="collapse navbar-collapse justify-content-between">
+                    <div class="header-left">
+                        <div class="form-control input-group search-area d-xl-inline-flex d-none">
+                            <form action="search" method="get" style="display: flex; flex-direction: row;">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search"
+                                       style=" flex: 0.4;">
+                                <input type="submit" value="Search" class="input-group-text"
+                                       style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
+                            </form>
+                        </div>
+
+                    </div>
+                    <ul class="navbar-nav header-right">
+                        <li class="nav-item dropdown notification_dropdown">
+                            <a class="nav-link bell dz-theme-mode" href="javascript:void(0);"
+                               aria-label="theme-mode">
+                                <i id="icon-light" class="fas fa-sun"></i>
+                                <i id="icon-dark" class="fas fa-moon"></i>
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item dropdown header-profile">
+                            <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                                <div class="header-info me-3">
+                                    <span class="fs-16 font-w600 ">${sessionScope.user.name}</span>
+                                    <small class="text-end fs-14 font-w400"> Admin</small>
+                                </div>
+                                <img src="${sessionScope.user.picture}" width="20" alt="">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="https://ventic.dexignzone.com/codeigniter/demo/app_profile"
+                                   class="dropdown-item ai-icon">
+                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
+                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span class="ms-2">Thông Tin Cá Nhân </span>
+                                </a>
+
+
+                                </a>
+                                <a href="logout"
+                                   class="dropdown-item ai-icon">
+                                    <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
+                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    <span class="ms-2">Đăng Xuất </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
     <!--**********************************
 Header end 
 ***********************************-->
     <!--**********************************
 Sidebar start
 ***********************************-->
-    <%@include file="../sidebar.jsp" %>
+
+
     <!--**********************************
 Sidebar end
 ***********************************-->
@@ -193,16 +265,13 @@ Content body start
                 <div class="me-auto">
                     <h2 class="font-w600 mb-0">Danh Sách Tài Khoản</h2>
                 </div>
-                <div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
-                    <button class="input-group-text"><i class="fi fi-rr-search text-primary"></i></button>
-                    <input type="text" class="form-control" placeholder="Search here...">
-                </div>
+
 
             </div>
             <div class="row mb-4 align-items-center">
                 <div class="col-xl-3 col-lg-4 mb-4 mb-lg-0">
                     <a href="javascript:void(0);" class="btn btn-secondary  btn-lg btn-block rounded text-white"
-                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">+ Thêm Tài Khoản</a>
+                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">Thêm Tài Khoản</a>
                     <!-- Add Order -->
                     <div class="modal fade" id="addNewCustomer">
                         <div class="modal-dialog" role="document">
@@ -219,12 +288,7 @@ Content body start
 
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Phân Quyền</label>
-                                            <select name="Permission" class="text-black font-w500">
-                                                <option value="1">Khách Hàng</option>
-                                                <option value="2">Admin</option>
-                                                <option value="3">Nhân Viên</option>
-                                                <option value="4">Quản Lí</option>
-                                            </select>
+                                            <input type="text" value="Nhân Viên">
                                         </div>
 
                                         <div class="mb-3">
@@ -256,7 +320,7 @@ Content body start
                             "${account.getEmail()}"<c:if test="${!status.last}">, </c:if>
                             </c:forEach>
                         ];
-                        console.log(existingEmails);
+
                         form.addEventListener('submit', (event) => {
                             event.preventDefault(); // Prevent the default form submission
 
@@ -302,14 +366,7 @@ Content body start
                                         <h3 class="mb-0 font-w600 fs-22"> ${numberAcc} Tài Khoản</h3>
                                     </div>
                                 </div>
-                                <div>
 
-                                    <a href="" id="activateLink" class="btn btn-outline-primary rounded"><i
-                                            class="fa  me-2 scale4" aria-hidden="true"></i>Hoạt Động/Vô Hiệu Hóa</a>
-                                    <a href="javascript:void(0);" id="editLink" data-bs-target="#editUserPopup"
-                                       class="btn btn-outline-warning rounded ms-2">Sửa</a>
-                                    <a href="" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -317,7 +374,7 @@ Content body start
             </div>
             <%--            Edir Popup--%>
             <div id="editUserPopup" class="popup" style="display:none;">
-                <div class="popup-content">
+                <div class="popup-content" >
                     <span class="close-btn">&times;</span>
                     <form id="editUserForm" action="edit" method="get">
                         <label for="email">Email</label>
@@ -325,8 +382,7 @@ Content body start
 
                         <label for="role">Phân Quyền</label>
                         <select id="role" name="role">
-                            <option value="1">Khách Hàng</option>
-                            <option value="2">Admin</option>
+
                             <option value="3">Nhân Viên</option>
                             <option value="4">Quản Lí</option>
                         </select>
@@ -339,53 +395,57 @@ Content body start
                     </form>
                 </div>
             </div>
+
             <script>
-                document.getElementById('checkAll').addEventListener('change', function () {
-                    const checkboxes = document.querySelectorAll('.checkbox-item');
-                    checkboxes.forEach(checkbox => {
-                        checkbox.checked = this.checked;
-                    })
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const popup = document.getElementById('editUserPopup');
+                    const closeBtn = document.querySelector('.close-btn');
+                    const emailField = document.getElementById('email');
+                    const roleField = document.getElementById('role');
 
+                    function openEditPopup(accountID, email, role) {
+                        emailField.value = email;
+                        roleField.value = role;
+                        popup.style.display = 'block';
+                    }
+
+                    closeBtn.addEventListener('click', () => {
+                        popup.style.display = 'none';
+                    });
+
+                    window.addEventListener('click', (event) => {
+                        if (event.target === popup) {
+                            popup.style.display = 'none';
+                        }
+                    });
+
+                    window.openEditPopup = openEditPopup;
+                });
             </script>
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive rounded">
                         <table id="example5" class="table customer-table display mb-4 fs-14 card-table">
                             <thead>
                             <tr>
-                                <th>
-                                    <div class="form-check checkbox-secondary">
-                                        <input class="form-check-input checkbox-item" type="checkbox" value=""
-                                               id="checkAll">
-                                        <label class="form-check-label" for="checkAll">
-                                        </label>
-                                    </div>
-                                </th>
+
                                 <th>Mã Tài Khoản</th>
                                 <th>Email</th>
-                                <th>Mật Khẩu</th>
+
                                 <th>Phân quyền</th>
                                 <th>Ngày Tạo</th>
                                 <th>Trạng Thái</th>
+                                <th>Chỉnh Sửa</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <c:forEach items="${listAcc}" var="a">
                                 <tr>
-                                    <td>
-                                        <div class="form-check checkbox-secondary">
-                                            <input class="form-check-input checkbox-item" type="checkbox"
-                                                   value="${a.getAccountID()}|${a.getStatus()}|${a.getEmail()}|${a.getAccountType()}|${a.getPassword()}"
-                                                   id="checkbox_${a.getAccountID()}">
-                                            <label class="form-check-label" for="checkbox_${a.getAccountID()}">
-                                            </label>
-                                        </div>
-                                    </td>
+
                                     <td>${a.getAccountID()}</td>
                                     <td>${a.getEmail()}</td>
-                                    <td>${a.getPassword()}</td>
+
                                     <td><c:choose>
                                         <c:when test="${a.getAccountType() == 1}">Khách Hàng</c:when>
                                         <c:when test="${a.getAccountType() == 2}">ADMIN</c:when>
@@ -398,9 +458,44 @@ Content body start
                                         <c:when test="${a.getStatus() =='active'}">Hoạt Động</c:when>
                                         <c:when test="${a.getStatus() =='unactive'}">Vô Hiệu</c:when>
                                     </c:choose></td>
+                                    <td>
+                                        <c:if test="${a.getAccountType() != 2&& a.getAccountType() != 1}">
+                                            <button onclick="confirmChangeStatus('${a.getAccountID()}', '${a.getStatus()}')" class="btn btn-outline-primary">Đổi Trạng Thái</button>
+                                            <button onclick="openEditPopup('${a.getAccountID()}', '${a.getEmail()}', '${a.getAccountType()}')" class="btn btn-outline-danger">Sửa</button>
+                                        </c:if>
+                                    </td>
                                 </tr>
                             </c:forEach>
+                            <script>
+                                function confirmChangeStatus(accountID, currentStatus) {
+                                    var confirmMsg = currentStatus === 'active' ? 'Bạn có chắc chắn muốn vô hiệu hóa tài khoản này?' : 'Bạn có chắc chắn muốn kích hoạt tài khoản này?';
+                                    if (confirm(confirmMsg)) {
+                                        // Perform the change status action here
+                                        console.log(confirmMsg);
+                                        changeStatus(accountID,currentStatus);
+                                    }
+                                }
 
+                                function changeStatus(accountID,currentStatus) {
+                                    // Implement the logic to change the status of the account
+                                    // You can use AJAX to send a request to the server to update the status
+                                    $.ajax({
+                                        url: 'activate', // Đường dẫn của servlet
+                                        method: 'POST',
+                                        data: { accountID: accountID,
+                                            currentStatus:currentStatus},
+                                        success: function(response) {
+                                            // Xử lý phản hồi thành công
+                                            console.log(response);
+                                            location.reload();
+                                        },
+                                        error: function(xhr, status, error) {
+                                            // Xử lý phản hồi lỗi
+                                            console.error('Error:', error);
+                                        }
+                                    });
+                                }
+                            </script>
 
                             </tbody>
                         </table>
@@ -419,7 +514,8 @@ Footer start
 ***********************************-->
     <footer class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by Group 1 - 2024</p>
+            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/"
+                                                          target="_blank">DexignZone</a> 2023</p>
         </div>
     </footer>
     <!--**********************************
@@ -427,78 +523,11 @@ Footer end
 ***********************************-->
 
 </div>
-<script>
-    document.getElementById('activateLink').addEventListener('click', function (event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
-        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
-
-        if (checkedCheckboxes.length > 0) {
-            // Khởi tạo một mảng để lưu trữ các cặp id và status
-            var ids = [];
-            var statuses = [];
-
-            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function () {
-                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
-                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
-                var status = value.split('|')[1]; // Lấy status của checkbox hiện tại
-
-                // Thêm id và status vào mảng tương ứng
-                ids.push(id);
-                statuses.push(status);
-            });
-
-            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
-            var idsString = ids.join(',');
-            var statusesString = statuses.join(',');
-
-            // Construct the URL to the servlet with the concatenated IDs and statuses
-            var newHref = 'activate?ids=' + idsString + '&status=' + statusesString;
-
-            // Thay đổi đường link href
-            this.href = newHref;
-            window.location.href = newHref; // Chuyển hướng trang đến URL mới
-        }
-    });
 
 
 </script>
-<script>
-    document.getElementById('deleteLink').addEventListener('click', function (event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
-        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
-
-        if (checkedCheckboxes.length > 0) {
-            // Khởi tạo một mảng để lưu trữ các cặp id và status
-            var ids = [];
-
-            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function () {
-                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
-                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
-
-                // Thêm id và status vào mảng tương ứng
-                ids.push(id);
-
-            });
-
-            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
-            var idsString = ids.join(',');
-
-
-            // Construct the URL to the servlet with the concatenated IDs and statuses
-            var newHref = 'delete?ids=' + idsString;
-
-            // Thay đổi đường link href
-            this.href = newHref;
-            window.location.href = newHref; // Chuyển hướng trang đến URL mới
-        }
-    });
-
-
-</script>
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
@@ -524,44 +553,7 @@ Footer end
 
     });
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editLink = document.getElementById('editLink');
-        const editUserPopup = document.getElementById('editUserPopup');
-        const closeBtn = document.querySelector('.close-btn');
 
-        editLink.addEventListener('click', () => {
-            const checkedBoxes = document.querySelectorAll('.checkbox-item:checked');
-
-            if (checkedBoxes.length !== 1) {
-                alert('Chỉ được chọn 1 tài khoản để sửa');
-                return;
-            }
-
-            const checkedBox = checkedBoxes[0];
-            const [accountID, status, email, role, password, createdDate] = checkedBox.value.split('|');
-            // Populate the form fields with the selected user's data
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = password;
-            document.getElementById('role').value = role.toLowerCase(); // Ensure the value matches the option value
-
-            // Display the popup form
-            editUserPopup.style.display = 'flex';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            editUserPopup.style.display = 'none';
-        });
-
-        // Hide popup if clicked outside of the popup content
-        window.addEventListener('click', (event) => {
-            if (event.target === editUserPopup) {
-                editUserPopup.style.display = 'none';
-            }
-        });
-    });
-
-</script>
 
 <!--**********************************
     Main wrapper end

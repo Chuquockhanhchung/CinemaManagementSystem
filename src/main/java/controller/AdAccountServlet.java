@@ -1,5 +1,6 @@
 package controller;
 
+import Email.Email;
 import dal.AdminDAO;
 import dal.CustomerDAO;
 import dal.DBContext;
@@ -51,62 +52,22 @@ public class AdAccountServlet extends HttpServlet {
             CustomerDAO dao = new CustomerDAO(DBContext.getConn());
             ArrayList<Customer> list = dao.getInfor_Customer();
             String email = request.getParameter("email");
-            int Permission = Integer.parseInt(request.getParameter("Permission"));
             String date = request.getParameter("date");
             String pass = request.getParameter("pass");
 
 
 
-//            boolean checkphone = false;
-//            for (Customer kh : list) {
-//                if (kh.getPhone().compareTo(phone) == 0) {
-//                    checkphone = true;
-//                    break;
-//                }
-//            }
-//            if (!ValPhone(phone)) {
-//                request.setAttribute("err", "Phone number is invalid");
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//                return;
-//            }
-//            if (checkphone) {
-//                request.setAttribute("err", "Phone number is exist!");
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//                return;
-//            }
-//
-//            boolean checkemail = false;
-//            for (Customer kh : list) {
-//                if (kh.getEmail().compareTo(email) == 0) {
-//                    checkemail = true;
-//                    break;
-//                }
-//            }
-//            if (!valiEmail(email)) {
-//                request.setAttribute("err", "Email is invalid!");
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//                return;
-//            }
-//            if (checkemail) {
-//                request.setAttribute("err", "Email is exist!");
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//                return;
-//            }
-//
-//            if (!pass1.equals(pass2)) {
-//                request.setAttribute("err", "Password don't match!");
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//                return;
-//            }
 
-            String idAccount = Math.random() + "";
+
+                String idAccount = Math.random() + "";
             PrintWriter out = response.getWriter();
             out.print(idAccount);
-            Customer account = new Customer(idAccount, pass, Permission, date, "active");
+            Customer account = new Customer(idAccount, pass, 3, date, "active");
             dao.insertAccount(account);
             Customer customer = new Customer(0, idAccount, "", email, "", "");
             dao.insertCustomer(customer);
-
+            Email a = new Email();
+            a.sendEmail(email);
             ArrayList<Account> lista = daoa.getall_Account();
             request.setAttribute("listAcc", lista);
             request.setAttribute("numberAcc",lista.size());

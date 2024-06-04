@@ -29,7 +29,7 @@ public class Email {
 
     public static void main(String[] args) throws MessagingException {
         Email a = new Email("chuquockhanhchung@gmail.com");
-        a.sendEmail2("chungfave@gmail.com","0.19277074783748493");
+        a.sendEmail("hoaidtthe172257@fpt.edu.vn");
     }
 
     public void sendEmail2(String mail, String AcountID) throws MessagingException {
@@ -129,7 +129,7 @@ public class Email {
             msg.setSubject("Confirm transaction!");
 
             // Set content
-            String resetPasswordLink = "http://localhost:9999/CinemaManageSystem_war_exploded/resetPassword?mail="+mail;
+            String resetPasswordLink = "http://localhost:9999/CinemaManageSystem/resetPassword?mail="+mail;
             String content = "<html><body style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">"
                     + "<div style=\"max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;\">"
                     + "<h2 style=\"color: #444;\">Reset Password</h2>"

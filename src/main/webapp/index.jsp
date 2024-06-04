@@ -4185,49 +4185,59 @@
 <% } %>
 <script>
     function validateForm() {
-        // Get form elements
+        // Lấy các phần tử của biểu mẫu
         const email = document.getElementById('emailInput2').value;
         const phone = document.querySelector('input[name="phone"]').value;
         const name = document.querySelector('input[name="name"]').value;
         const pass1 = document.querySelector('input[name="pass1"]').value;
         const pass2 = document.querySelector('input[name="pass2"]').value;
 
-        // Email regex pattern
+        // Mẫu regex cho email
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        // Phone regex pattern (assuming it should be 10-15 digits)
+        // Mẫu regex cho số điện thoại (giả sử là 10-15 chữ số)
         const phonePattern = /^\d{10}$/;
 
-        // Validate email
+        // Mẫu regex cho mật khẩu (ít nhất 6 ký tự)
+        const passPattern = /^.{6,}$/;
+
+        // Xác thực email
         if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
+            alert("Vui lòng nhập địa chỉ email hợp lệ.");
             return false;
         }
 
-        // Validate phone
+        // Xác thực số điện thoại
         if (!phonePattern.test(phone)) {
-            alert("Please enter a valid phone number (10 digits).");
+            alert("Vui lòng nhập số điện thoại hợp lệ (10 chữ số).");
             return false;
         }
 
-        // Validate name
+        // Xác thực tên
         if (name.trim() === "") {
-            alert("Please enter your name.");
+            alert("Vui lòng nhập tên của bạn.");
             return false;
         }
 
-        // Validate passwords
+        // Xác thực mật khẩu
         if (pass1 === "" || pass2 === "") {
-            alert("Please enter and confirm your password.");
+            alert("Vui lòng nhập và xác nhận mật khẩu của bạn.");
             return false;
         }
 
         if (pass1 !== pass2) {
-            alert("Passwords do not match.");
+            alert("Mật khẩu không khớp.");
+            return false;
+        }
+
+        if (!passPattern.test(pass1)) {
+            alert("Mật khẩu phải có ít nhất 6 chữ số.");
             return false;
         }
 
         return true;
     }
+
+
 </script>
 <!-- st login wrapper End -->
 <!--main js file start-->

@@ -77,18 +77,18 @@
             <form action="resetPassword" method="post">
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" value="${mail}" readonly>
+                    <input type="email" id="email" name="email" value="${mail}"   readonly>
                 </div>
                 <div class="form-group">
                     <label for="newPassword">New Password</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
+                    <input type="password" id="newPassword" name="newPassword"   required>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit">Reset Password</button>
+                    <button type="submit" onclick="return validatePasswords()">Reset Password</button>
                 </div>
                 <div class="form-group">
                     <a href="index.jsp">Back to Login</a>
@@ -99,17 +99,20 @@
             function validatePasswords() {
                 var newPassword = document.getElementById("newPassword").value;
                 var confirmPassword = document.getElementById("confirmPassword").value;
-                var resetButton = document.getElementById("resetButton");
+                var passwordPattern = /^\d{6,}$/; // Biểu thức chính quy kiểm tra mật khẩu phải có ít nhất 6 chữ số
 
-                if (newPassword === confirmPassword && newPassword !== "") {
-                    resetButton.disabled = false;
-                    resetButton.classList.add("enabled");
-                } else {
-                    resetButton.disabled = true;
-                    resetButton.classList.remove("enabled");
+                if (newPassword === confirmPassword && newPassword !== "" && passwordPattern.test(newPassword)) {
+                    return true; // Cho phép thực hiện hành động tiếp theo (reset password)
+                } else if(!passwordPattern.test(newPassword)){
+                    alert("Password must  contain at least 6 digits!"); // Hiển thị cảnh báo nếu mật khẩu không hợp lệ
+                    return false; // Ngăn người dùng tiếp tục
+                }else{
+                    alert("Password must  match!"); // Hiển thị cảnh báo nếu mật khẩu không hợp lệ
+                    return false; // Ngăn người dùng tiếp tục
                 }
             }
         </script>
+
     </body>
 </html>
 

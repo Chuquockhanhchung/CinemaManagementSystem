@@ -76,8 +76,13 @@ public class CustomerDAO extends DBContext {
     public static void main(String[] args) {
         try (Connection con = getConn()) {
             // Connection successful, you can perform further operations here if needed
-            CustomerDAO cd = new CustomerDAO(con);
-            System.out.println(cd.getCustomer("0.1820259700365935"));
+            String idAccount = Math.random() + "";
+            CustomerDAO dao = new CustomerDAO(con);
+            Customer account = new Customer(idAccount, "654356", 3, "", "active");
+            dao.insertAccount(account);
+            Customer customer = new Customer(0, idAccount, "06/04/2024",
+                    "hoaidtthe172257@fpt.edu.vn", "", "");
+            dao.insertCustomer(customer);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,7 +113,7 @@ public class CustomerDAO extends DBContext {
     }
     public void insertAccount(Customer account) {
         Security s = new Security();
-        String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'unactive')";
+        String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'active')";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, account.getId());
@@ -119,6 +124,5 @@ public class CustomerDAO extends DBContext {
             e.printStackTrace();
         }
     }
-
 
 }

@@ -3,16 +3,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import dal.*;
 import model.*;
-
 import java.util.ArrayList;
-
 import Utill.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +23,7 @@ public class servlet_Login extends HttpServlet {
     }
 
 
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,16 +40,16 @@ public class servlet_Login extends HttpServlet {
             out.println("</html>");
         }
     }
-
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie arr[] = request.getCookies();
-        for (Cookie o : arr) {
-            if (o.getName().equals("em")) {
+        for(Cookie o: arr){
+            if(o.getName().equals("em")){
                 request.setAttribute("email", o.getValue());
             }
-            if (o.getName().equals("pa")) {
+            if(o.getName().equals("pa")){
                 request.setAttribute("pass", o.getValue());
             }
         }
@@ -76,6 +74,10 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
+                if(c.getStauts()== "unactive"){
+                    request.setAttribute("err", "Account unactive!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 if (c.getPass().compareTo(pass) == 0) {
                     Cookie em = new Cookie("em", c.getEmail());
                     Cookie pa = new Cookie("pa", c.getPass());
@@ -84,30 +86,29 @@ public class servlet_Login extends HttpServlet {
                     response.addCookie(em);
                     response.addCookie(pa);
 
-                    // Session
+                    // Session  
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
 
                     if (c.getRole() == 1) {
-                        response.sendRedirect("home");
-                    } else if (c.getRole() == 3) {
+                        response.sendRedirect("index.jsp");
+                    } else if(c.getRole()==3){
                         response.sendRedirect("staff/index.jsp");
-                    } else if (c.getRole() == 4) {
-                        response.sendRedirect("manager");
-                    } else {
+                    }else if(c.getRole()==4){
+                        response.sendRedirect("manage/index.jsp");
+                    }else {
                         response.sendRedirect("admin");
                     }
-
 
                 } else {
                     System.out.println("Login failed: Incorrect password for user: " + email);
                     request.setAttribute("err", "Password is wrong!");
-                    request.getRequestDispatcher("home").forward(request, response);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             } else {
                 System.out.println("Login failed: Email not found - " + email);
                 request.setAttribute("err", "Email not exist!");
-                request.getRequestDispatcher("home").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,7 +116,7 @@ public class servlet_Login extends HttpServlet {
         }
     }
 
-
+   
     @Override
     public String getServletInfo() {
         return "Short description";
