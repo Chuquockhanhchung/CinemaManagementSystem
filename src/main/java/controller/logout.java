@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,7 +40,7 @@ public class logout extends HttpServlet {
             HttpSession session = request.getSession();
             session.removeAttribute("user");
 
-            response.sendRedirect("home");
+            response.sendRedirect("index.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
