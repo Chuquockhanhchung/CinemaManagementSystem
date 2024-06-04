@@ -29,7 +29,7 @@ public class Email {
 
     public static void main(String[] args) throws MessagingException {
         Email a = new Email("chuquockhanhchung@gmail.com");
-        a.sendEmail2("chungfave@gmail.com","0.19277074783748493");
+        a.sendEmail("hoaidtthe172257@fpt.edu.vn");
     }
 
     public void sendEmail2(String mail, String AcountID) throws MessagingException {

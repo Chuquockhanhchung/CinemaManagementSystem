@@ -11,7 +11,7 @@
 
 <head>
     <!-- Title -->
-    <title>Ventic - CodeIgniter Event Ticketing Admin Dashboard Template</title>
+    <title> Ticketing Admin Dashboard</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,6 +81,7 @@
         }
 
         .popup-content {
+            left: 35%;
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -286,12 +287,7 @@ Content body start
 
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Phân Quyền</label>
-                                            <select name="Permission" class="text-black font-w500">
-                                                <option value="1">Khách Hàng</option>
-                                                <option value="2">Admin</option>
-                                                <option value="3">Nhân Viên</option>
-                                                <option value="4">Quản Lí</option>
-                                            </select>
+                                            <input type="text" value="Nhân Viên">
                                         </div>
 
                                         <div class="mb-3">
@@ -369,14 +365,7 @@ Content body start
                                         <h3 class="mb-0 font-w600 fs-22"> ${numberAcc} Tài Khoản</h3>
                                     </div>
                                 </div>
-                                <div>
 
-                                    <a href="" id="activateLink" class="btn btn-outline-primary rounded"><i
-                                            class="fa  me-2 scale4" aria-hidden="true"></i>Hoạt Động/Vô Hiệu Hóa</a>
-                                    <a href="javascript:void(0);" id="editLink" data-bs-target="#editUserPopup"
-                                       class="btn btn-outline-warning rounded ms-2">Sửa</a>
-                                    <a href="" id="deleteLink" class="btn btn-danger rounded ms-2">Xóa</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,7 +373,7 @@ Content body start
             </div>
             <%--            Edir Popup--%>
             <div id="editUserPopup" class="popup" style="display:none;">
-                <div class="popup-content">
+                <div class="popup-content" >
                     <span class="close-btn">&times;</span>
                     <form id="editUserForm" action="edit" method="get">
                         <label for="email">Email</label>
@@ -392,8 +381,7 @@ Content body start
 
                         <label for="role">Phân Quyền</label>
                         <select id="role" name="role">
-                            <option value="1">Khách Hàng</option>
-                            <option value="2">Admin</option>
+
                             <option value="3">Nhân Viên</option>
                             <option value="4">Quản Lí</option>
                         </select>
@@ -406,32 +394,43 @@ Content body start
                     </form>
                 </div>
             </div>
+
             <script>
-                document.getElementById('checkAll').addEventListener('change', function () {
-                    const checkboxes = document.querySelectorAll('.checkbox-item');
-                    checkboxes.forEach(checkbox => {
-                        checkbox.checked = this.checked;
-                    })
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const popup = document.getElementById('editUserPopup');
+                    const closeBtn = document.querySelector('.close-btn');
+                    const emailField = document.getElementById('email');
+                    const roleField = document.getElementById('role');
 
+                    function openEditPopup(accountID, email, role) {
+                        emailField.value = email;
+                        roleField.value = role;
+                        popup.style.display = 'block';
+                    }
+
+                    closeBtn.addEventListener('click', () => {
+                        popup.style.display = 'none';
+                    });
+
+                    window.addEventListener('click', (event) => {
+                        if (event.target === popup) {
+                            popup.style.display = 'none';
+                        }
+                    });
+
+                    window.openEditPopup = openEditPopup;
+                });
             </script>
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive rounded">
                         <table id="example5" class="table customer-table display mb-4 fs-14 card-table">
                             <thead>
                             <tr>
-                                <th>
-                                    <div class="form-check checkbox-secondary">
-                                        <input class="form-check-input checkbox-item" type="checkbox" value=""
-                                               id="checkAll">
-                                        <label class="form-check-label" for="checkAll">
-                                        </label>
-                                    </div>
-                                </th>
+
                                 <th>Mã Tài Khoản</th>
                                 <th>Email</th>
-                                <th>Mật Khẩu</th>
+
                                 <th>Phân quyền</th>
                                 <th>Ngày Tạo</th>
                                 <th>Trạng Thái</th>
@@ -441,18 +440,10 @@ Content body start
 
                             <c:forEach items="${listAcc}" var="a">
                                 <tr>
-                                    <td>
-                                        <div class="form-check checkbox-secondary">
-                                            <input class="form-check-input checkbox-item" type="checkbox"
-                                                   value="${a.getAccountID()}|${a.getStatus()}|${a.getEmail()}|${a.getAccountType()}|${a.getPassword()}"
-                                                   id="checkbox_${a.getAccountID()}">
-                                            <label class="form-check-label" for="checkbox_${a.getAccountID()}">
-                                            </label>
-                                        </div>
-                                    </td>
+
                                     <td>${a.getAccountID()}</td>
                                     <td>${a.getEmail()}</td>
-                                    <td>${a.getPassword()}</td>
+
                                     <td><c:choose>
                                         <c:when test="${a.getAccountType() == 1}">Khách Hàng</c:when>
                                         <c:when test="${a.getAccountType() == 2}">ADMIN</c:when>
@@ -465,9 +456,44 @@ Content body start
                                         <c:when test="${a.getStatus() =='active'}">Hoạt Động</c:when>
                                         <c:when test="${a.getStatus() =='unactive'}">Vô Hiệu</c:when>
                                     </c:choose></td>
+                                    <td>
+                                        <c:if test="${a.getAccountType() != 2&& a.getAccountType() != 1}">
+                                            <button onclick="confirmChangeStatus('${a.getAccountID()}', '${a.getStatus()}')" class="btn btn-outline-primary">Đổi Trạng Thái</button>
+                                            <button onclick="openEditPopup('${a.getAccountID()}', '${a.getEmail()}', '${a.getAccountType()}')" class="btn btn-outline-danger">Sửa</button>
+                                        </c:if>
+                                    </td>
                                 </tr>
                             </c:forEach>
+                            <script>
+                                function confirmChangeStatus(accountID, currentStatus) {
+                                    var confirmMsg = currentStatus === 'active' ? 'Bạn có chắc chắn muốn vô hiệu hóa tài khoản này?' : 'Bạn có chắc chắn muốn kích hoạt tài khoản này?';
+                                    if (confirm(confirmMsg)) {
+                                        // Perform the change status action here
+                                        console.log(confirmMsg);
+                                        changeStatus(accountID,currentStatus);
+                                    }
+                                }
 
+                                function changeStatus(accountID,currentStatus) {
+                                    // Implement the logic to change the status of the account
+                                    // You can use AJAX to send a request to the server to update the status
+                                    $.ajax({
+                                        url: 'activate', // Đường dẫn của servlet
+                                        method: 'POST',
+                                        data: { accountID: accountID,
+                                            currentStatus:currentStatus},
+                                        success: function(response) {
+                                            // Xử lý phản hồi thành công
+                                            console.log(response);
+                                            location.reload();
+                                        },
+                                        error: function(xhr, status, error) {
+                                            // Xử lý phản hồi lỗi
+                                            console.error('Error:', error);
+                                        }
+                                    });
+                                }
+                            </script>
 
                             </tbody>
                         </table>
@@ -495,78 +521,11 @@ Footer end
 ***********************************-->
 
 </div>
-<script>
-    document.getElementById('activateLink').addEventListener('click', function (event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
-        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
-
-        if (checkedCheckboxes.length > 0) {
-            // Khởi tạo một mảng để lưu trữ các cặp id và status
-            var ids = [];
-            var statuses = [];
-
-            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function () {
-                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
-                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
-                var status = value.split('|')[1]; // Lấy status của checkbox hiện tại
-
-                // Thêm id và status vào mảng tương ứng
-                ids.push(id);
-                statuses.push(status);
-            });
-
-            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
-            var idsString = ids.join(',');
-            var statusesString = statuses.join(',');
-
-            // Construct the URL to the servlet with the concatenated IDs and statuses
-            var newHref = 'activate?ids=' + idsString + '&status=' + statusesString;
-
-            // Thay đổi đường link href
-            this.href = newHref;
-            window.location.href = newHref; // Chuyển hướng trang đến URL mới
-        }
-    });
 
 
 </script>
-<script>
-    document.getElementById('deleteLink').addEventListener('click', function (event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
-        var checkedCheckboxes = $('.checkbox-item:checked'); // Lấy tất cả các checkbox được chọn
-
-        if (checkedCheckboxes.length > 0) {
-            // Khởi tạo một mảng để lưu trữ các cặp id và status
-            var ids = [];
-
-            // Lặp qua tất cả các checkbox được chọn và thu thập các cặp id và status
-            checkedCheckboxes.each(function () {
-                var value = $(this).val(); // Lấy giá trị của checkbox hiện tại
-                var id = value.split('|')[0]; // Lấy id của checkbox hiện tại
-
-                // Thêm id và status vào mảng tương ứng
-                ids.push(id);
-
-            });
-
-            // Gộp ids và statuses thành một chuỗi duy nhất, cách nhau bởi dấu phẩy
-            var idsString = ids.join(',');
-
-
-            // Construct the URL to the servlet with the concatenated IDs and statuses
-            var newHref = 'delete?ids=' + idsString;
-
-            // Thay đổi đường link href
-            this.href = newHref;
-            window.location.href = newHref; // Chuyển hướng trang đến URL mới
-        }
-    });
-
-
-</script>
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
@@ -592,44 +551,7 @@ Footer end
 
     });
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editLink = document.getElementById('editLink');
-        const editUserPopup = document.getElementById('editUserPopup');
-        const closeBtn = document.querySelector('.close-btn');
 
-        editLink.addEventListener('click', () => {
-            const checkedBoxes = document.querySelectorAll('.checkbox-item:checked');
-
-            if (checkedBoxes.length !== 1) {
-                alert('Chỉ được chọn 1 tài khoản để sửa');
-                return;
-            }
-
-            const checkedBox = checkedBoxes[0];
-            const [accountID, status, email, role, password, createdDate] = checkedBox.value.split('|');
-            // Populate the form fields with the selected user's data
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = password;
-            document.getElementById('role').value = role.toLowerCase(); // Ensure the value matches the option value
-
-            // Display the popup form
-            editUserPopup.style.display = 'flex';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            editUserPopup.style.display = 'none';
-        });
-
-        // Hide popup if clicked outside of the popup content
-        window.addEventListener('click', (event) => {
-            if (event.target === editUserPopup) {
-                editUserPopup.style.display = 'none';
-            }
-        });
-    });
-
-</script>
 
 <!--**********************************
     Main wrapper end

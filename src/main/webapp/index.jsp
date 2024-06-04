@@ -3952,6 +3952,7 @@
             const email = emailInput.value.trim().toLowerCase();
             const password = passwordInput.value;
             const response = grecaptcha.getResponse();
+
             if (!response) {
                 errorDiv.innerHTML = "Please check reCAPTCHA!";
                 return;
@@ -4194,8 +4195,10 @@
 
         // Email regex pattern
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        // Phone regex pattern (assuming it should be 10-15 digits)
+        // Phone regex pattern (assuming it should be 10 digits)
         const phonePattern = /^\d{10}$/;
+        // Password regex pattern (at least 6 digits)
+        const passwordPattern = /^\d{6,}$/;
 
         // Validate email
         if (!emailPattern.test(email)) {
@@ -4223,6 +4226,12 @@
 
         if (pass1 !== pass2) {
             alert("Passwords do not match.");
+            return false;
+        }
+
+        // Validate password format (at least 6 digits)
+        if (!passwordPattern.test(pass1)) {
+            alert("Password must contain at least 6 digits.");
             return false;
         }
 

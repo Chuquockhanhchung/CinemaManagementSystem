@@ -34,7 +34,20 @@ public class AdminDAO extends DBContext {
 
     }
 
+    public static void main(String[] args) {
+        try (Connection con = getConn()) {
+//             Connection successful, you can perform further operations here if needed
+            AdminDAO cd =new AdminDAO(con);
+            //ArrayList<Account> a=cd.getall_Account_ByMail("chi");
+            //cd.ChangePassword("106042374001554801835","456435");
+            Security sec = new Security();
+            System.out.println(sec.decode("SFBDMzQ1NjU0"));
 
+            //System.out.println(a);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void ChangePassword(String AccountID, String Password){
         String sql = "update Account set Password=? where AccountID=?";
@@ -159,19 +172,7 @@ public class AdminDAO extends DBContext {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) {
-        try (Connection con = getConn()) {
-//             Connection successful, you can perform further operations here if needed
-            AdminDAO cd =new AdminDAO(con);
-            //ArrayList<Account> a=cd.getall_Account_ByMail("chi");
-            cd.EditAccount(2,"chuquockhanhchung@gmail.com","12345678");
 
-
-            //System.out.println(a);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
 
