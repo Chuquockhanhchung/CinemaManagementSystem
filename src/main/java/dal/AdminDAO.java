@@ -38,10 +38,10 @@ public class AdminDAO extends DBContext {
         try (Connection con = getConn()) {
 //             Connection successful, you can perform further operations here if needed
             AdminDAO cd =new AdminDAO(con);
-            //ArrayList<Account> a=cd.getall_Account_ByMail("chi");
+            ArrayList<Account> a=cd.getall_Account_ByMail("chi");
             //cd.ChangePassword("106042374001554801835","456435");
-            Security sec = new Security();
-            System.out.println(sec.decode("SFBDMzQ1NjU0"));
+            //Security sec = new Security();
+            System.out.println(a);
 
             //System.out.println(a);
         } catch (SQLException e) {

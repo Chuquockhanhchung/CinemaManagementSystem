@@ -435,6 +435,7 @@ Content body start
                                 <th>Phân quyền</th>
                                 <th>Ngày Tạo</th>
                                 <th>Trạng Thái</th>
+                                <th>Chỉnh Sửa</th>
                             </tr>
                             </thead>
                             <tbody>

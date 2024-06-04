@@ -75,6 +75,10 @@
         <servlet-class>controller.ManageServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Homepage</servlet-name>
+        <servlet-class>controller.Homepage</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ActiveServlet</servlet-name>
         <servlet-class>controller.ActiveServlet</servlet-class>
     </servlet>
@@ -101,6 +105,10 @@
     <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Homepage</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>
