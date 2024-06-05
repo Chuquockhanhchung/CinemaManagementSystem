@@ -12,14 +12,12 @@ import java.util.ArrayList;
 import dal.AdminDAO;
 import dal.CustomerDAO;
 import dal.DBContext;
-import dal.MovieDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Account;
 import model.Customer;
-import model.Movie;
 
 /**
  *
@@ -64,16 +62,12 @@ public class Homepage extends HttpServlet {
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO(DBContext.getConn());
         CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-        MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> movies = md.getall_Movie();
-        request.setAttribute("movies", movies);
         request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
         request.getRequestDispatcher("index.jsp").forward(request, response);
-
 
     }
 
