@@ -5,6 +5,8 @@
 package dal;
 
 import java.sql.*;
+import model.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -61,12 +63,15 @@ public class DBContext {
     }
     public static void main(String[] args) {
         try (Connection con = getConn()) {
-            // Connection successful, you can perform further operations here if needed
+            MovieDAO dao = new MovieDAO(con);
+            ArrayList<ShowTime> list = dao.getShowTime(44);
+            System.out.println(list.get(0).getDayName());
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 }
+
     
 //    private static String URL = "jdbc:sqlserver://SUPPER:1433;DatabaseName=ShopBacNamHai;user=sa;password=123;encrypt=true;trustServerCertificate=true;";
 //
