@@ -263,164 +263,13 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="best">
                     <div class="prs_upcom_slider_slides_wrapper">
                         <div class="owl-carousel owl-theme">
-
-
                             <div class="item">
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img src="images/content/up8.jpg" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_overlay"></div>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li><a href="#">View Trailer</a>
-                                                        </li>
-                                                        <li><a href="#">View Details</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#">Busting Car</a></h2>
-                                                    <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <%
-                                                    if (us == null) {
-                                                %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"
-                                                               onclick="alert('Please log in to book tickets.'); return false;">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } else { %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="movie_booking.jsp">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_second">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img src="images/content/up7.jpg" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_overlay"></div>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li><a href="#">View Trailer</a>
-                                                        </li>
-                                                        <li><a href="#">View Details</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#">Busting Car</a></h2>
-                                                    <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li><a href="movie_booking.jsp"><i
-                                                                class="fi fi-ss-ticket"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img src="images/content/up6.jpg" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_overlay"></div>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li><a href="#">View Trailer</a>
-                                                        </li>
-                                                        <li><a href="#">View Details</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#">Busting Car</a></h2>
-                                                    <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li><a href="movie_booking.jsp"><i
-                                                                class="fi fi-ss-ticket"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img src="images/content/up5.jpg" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_overlay"></div>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li><a href="#">View Trailer</a>
-                                                        </li>
-                                                        <li><a href="#">View Details</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#">Busting Car</a></h2>
-                                                    <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li><a href="movie_booking.jsp"><i
-                                                                class="fi fi-ss-ticket"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cc_featured_second_section">
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
+                                    <c:forEach var = "i" items="${movies}">
+                                        <div  class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                             <div class="prs_upcom_movie_box_wrapper">
                                                 <div class="prs_upcom_movie_img_box">
-                                                    <img src="images/content/up4.jpg" alt="movie_img"/>
+                                                    <img style="height: 400px;" src="${i.getImage()}" alt="movie_img"/>
                                                     <div class="prs_upcom_movie_img_overlay"></div>
                                                     <div class="prs_upcom_movie_img_btn_wrapper">
                                                         <ul>
@@ -431,125 +280,43 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="prs_upcom_movie_content_box">
+                                                <div style="height: 150px" class="prs_upcom_movie_content_box">
                                                     <div class="prs_upcom_movie_content_box_inner">
-                                                        <h2><a href="#">Busting Car</a></h2>
-                                                        <p>Drama , Acation</p> <i class="fa fa-star"></i>
+                                                        <h2><a href="#">${i.getMovieName()}</a></h2>
+                                                        <p>${i.getMovieTYpe()}</p> <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star-o"></i>
                                                         <i class="fa fa-star-o"></i>
                                                     </div>
+                                                    <%
+                                                        if (us == null) {
+                                                    %>
                                                     <div class="prs_upcom_movie_content_box_inner_icon">
                                                         <ul>
-                                                            <li><a href="movie_booking.jsp"><i
-                                                                    class="fi fi-ss-ticket"></i></a>
+                                                            <li>
+                                                                <a href="#"
+                                                                   onclick="alert('Please log in to book tickets.'); return false;">
+                                                                    <i class="fi fi-ss-ticket"></i>
+                                                                </a>
                                                             </li>
                                                         </ul>
                                                     </div>
+                                                    <% } else { %>
+                                                    <div class="prs_upcom_movie_content_box_inner_icon">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="movie_booking.jsp">
+                                                                    <i class="fi fi-ss-ticket"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                            <div class="prs_upcom_movie_box_wrapper">
-                                                <div class="prs_upcom_movie_img_box">
-                                                    <img src="images/content/up3.jpg" alt="movie_img"/>
-                                                    <div class="prs_upcom_movie_img_overlay"></div>
-                                                    <div class="prs_upcom_movie_img_btn_wrapper">
-                                                        <ul>
-                                                            <li><a href="#">View Trailer</a>
-                                                            </li>
-                                                            <li><a href="#">View Details</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box">
-                                                    <div class="prs_upcom_movie_content_box_inner">
-                                                        <h2><a href="#">Busting Car</a></h2>
-                                                        <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box_inner_icon">
-                                                        <ul>
-                                                            <li><a href="movie_booking.jsp"><i
-                                                                    class="fi fi-ss-ticket"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                            <div class="prs_upcom_movie_box_wrapper">
-                                                <div class="prs_upcom_movie_img_box">
-                                                    <img src="images/content/up2.jpg" alt="movie_img"/>
-                                                    <div class="prs_upcom_movie_img_overlay"></div>
-                                                    <div class="prs_upcom_movie_img_btn_wrapper">
-                                                        <ul>
-                                                            <li><a href="#">View Trailer</a>
-                                                            </li>
-                                                            <li><a href="#">View Details</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box">
-                                                    <div class="prs_upcom_movie_content_box_inner">
-                                                        <h2><a href="#">Busting Car</a></h2>
-                                                        <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box_inner_icon">
-                                                        <ul>
-                                                            <li><a href="movie_booking.jsp"><i
-                                                                    class="fi fi-ss-ticket"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 hidden-sm hidden-xs">
-                                            <div class="prs_upcom_movie_box_wrapper">
-                                                <div class="prs_upcom_movie_img_box">
-                                                    <img src="images/content/up1.jpg" alt="movie_img"/>
-                                                    <div class="prs_upcom_movie_img_overlay"></div>
-                                                    <div class="prs_upcom_movie_img_btn_wrapper">
-                                                        <ul>
-                                                            <li><a href="#">View Trailer</a>
-                                                            </li>
-                                                            <li><a href="#">View Details</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="prs_upcom_movie_content_box">
-                                                    <div class="prs_upcom_movie_content_box_inner">
-                                                        <h2><a href="#">Busting Car</a></h2>
-                                                        <p>Drama , Acation</p> <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="prs_upcom_movie_content_box_inner_icon">
-                                                        <ul>
-                                                            <li><a href="movie_booking.jsp"><i
-                                                                    class="fi fi-ss-ticket"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -3455,7 +3222,7 @@
     </div>
 </div>
 <!-- prs theater Slider End -->
-<!-- prs letest news Start	-->
+<!-- prs letest news Start  -->
 <div class="prs_ln_main_wrapper">
     <div class="container">
         <div class="row">
@@ -3891,7 +3658,7 @@
                 </c:if>
                 <div class="st_profile_input float_left">
                     <label>Email / Mobile Number</label>
-                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
+                    <input value="${requestScope.email}" name="email" type="text">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Password</label>
@@ -3926,82 +3693,35 @@
 </form>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('#form');
-        const emailInput = form.querySelector('input[name="email"]');
-        const passwordInput = form.querySelector('input[name="pass"]');
-        const errorDiv = document.getElementById("error");
-
-        // Retrieve the existing emails and passwords from JSTL
-        const existingAccounts = [
-            <%-- Server-side rendering of existing emails and passwords --%>
-            <c:forEach var="account" items="${listAcc}" varStatus="status">
-            {
-                email: "${account.getEmail().toLowerCase()}",
-                password: "${account.getPassword()}",
-                status:"${account.getStatus()}"// Assuming passwords are stored this way
-            }<c:if test="${!status.last}">, </c:if>
-            </c:forEach>
-        ];
-
-        console.log("Existing Accounts:", existingAccounts);
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent the default form submission
-
-            const email = emailInput.value.trim().toLowerCase();
-            const password = passwordInput.value;
-            const response = grecaptcha.getResponse();
-            if (!response) {
-                errorDiv.innerHTML = "Please check reCAPTCHA!";
-                return;
-            }
-            // Perform client-side validation
-            if (!email) {
-                alert('Email không được để trống.');
-                return;
-            }
-
-            if (!password) {
-                alert('Mật khẩu không được để trống.');
-                return;
-            }
-
-            // Check if the email exists and the password is correct
-            const account = existingAccounts.find(acc => acc.email === email);
-            if (!account) {
-                alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
-                return;
-            }
-            if(account.status === "unactive"){
-                alert('Tài khoản chưa được kích hoạt!');
-                return;
-            }
-            if (account.password !== password) {
-                alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
-                return;
-            }
-
-            // Perform reCAPTCHA validation
+    window.onload = function () {
+        let isValid = false;
+        const form = document.getElementById("form");
+        const id = document.getElementById("error");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
 
 
+            const respone = grecaptcha.getResponse();
+            if (respone) {
+                form.submit();
 
-
-            console.log("Email and password validation passed. Submitting form...");
-            // If all validations pass, submit the form
-            form.submit();
-        });
-
-        document.querySelector('.click').addEventListener('click', (e) => {
-            const response = grecaptcha.getResponse();
-            if (!response) {
-                e.preventDefault();
-                errorDiv.innerHTML = "Please check reCAPTCHA!";
             } else {
-                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                error.innerHTML = "Please check!";
             }
         });
-    });
+        $('.click').on('click', function (e) {
+            //  // Now link won't go anywhere
+
+            const respone = grecaptcha.getResponse();
+            if (respone) {
+                window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
+
+            } else {
+                e.preventDefault();
+                error.innerHTML = "Please check!";
+            }
+        });
+    }
 </script>
 
 <!-- Form Forgot Password -->
@@ -4057,7 +3777,7 @@
     });
 </script>
 <!-- Form Sign Up -->
-<form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
+<form action="signup" method="post" onsubmit="return validateForm()">
     <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -4067,7 +3787,7 @@
                 </div>
                 <div class="st_profile_input float_left">
                     <label>Your Email</label>
-                    <input type="text" id="emailInput2" name="email" placeholder="example@gmail.com">
+                    <input type="text" id="emailInput2" name=email placeholder="example@gmail.com">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Mobile Number</label>
@@ -4088,70 +3808,31 @@
                 <div class="st_form_pop_login_btn float_left">
                     <input type="submit" value="SignUp">
                 </div>
+
                 <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const form = document.querySelector('#formSignUp');
-                        const emailInput = form.querySelector('input[name="email"]');
-                        const phoneInput = form.querySelector('input[name="phone"]');
-                        const errorDiv = document.getElementById("error");
+                    const respone = grecaptcha.getResponse();
+                    if (respone) {
+                        form.submit();
 
-                        // Retrieve the existing emails and passwords from JSTL
-                        const existingAccounts = [
-                            <%-- Server-side rendering of existing emails and passwords --%>
-                            <c:forEach var="customer" items="${listCus}" varStatus="status">
-                            {
-                                email: "${customer.getEmail().toLowerCase()}",
-                                phone: "${customer.getPhone()}",
+                    } else {
+                        error.innerHTML = "Please check!";
+                    }
+                    })
+                    ;
+                    $('.click').on('click', function (e) {
+                        //  // Now link won't go anywhere
 
-                            }<c:if test="${!status.last}">, </c:if>
-                            </c:forEach>
-                        ];
+                        const respone = grecaptcha.getResponse();
+                        if (respone) {
+                            window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
 
-                        console.log("Existing Accounts:", existingAccounts);
-
-                        form.addEventListener('submit', (event) => {
-                            event.preventDefault(); // Prevent the default form submission
-
-                            const email = emailInput.value.trim().toLowerCase();
-                            const phone = phoneInput.value;
-
-                            // Perform client-side validation
-
-
-                            // Check if the email exists and the password is correct
-                            const account = existingAccounts.find(acc => acc.email === email);
-                            if (account) {
-                                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
-                                return;
-                            }
-                            const phones = existingAccounts.find(acc => acc.phone === phone);
-                            if (phones) {
-                                alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
-                                return;
-                            }
-
-
-
-
-
-
-                            console.log("Email and password validation passed. Submitting form...");
-                            // If all validations pass, submit the form
-                            form.submit();
-                        });
-
-                        document.querySelector('.click').addEventListener('click', (e) => {
-                            const response = grecaptcha.getResponse();
-                            if (!response) {
-                                e.preventDefault();
-                                errorDiv.innerHTML = "Please check reCAPTCHA!";
-                            } else {
-                                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
-                            }
-                        });
+                        } else {
+                            e.preventDefault();
+                            error.innerHTML = "Please check!";
+                        }
                     });
+                    }
                 </script>
-
 
                 <!-- Form Forgot Password -->
                 <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
@@ -4174,70 +3855,50 @@
                         </div>
 </form>
 <script>
-    function showAlert(message) {
-        alert(message);
-    }
-</script>
-<% if ("true".equals(request.getParameter("success"))) { %>
-<script>
-    alert("Đã gửi email xác thực tài khoản");
-</script>
-<% } %>
-<script>
     function validateForm() {
-        // Lấy các phần tử của biểu mẫu
+        // Get form elements
         const email = document.getElementById('emailInput2').value;
         const phone = document.querySelector('input[name="phone"]').value;
         const name = document.querySelector('input[name="name"]').value;
         const pass1 = document.querySelector('input[name="pass1"]').value;
         const pass2 = document.querySelector('input[name="pass2"]').value;
 
-        // Mẫu regex cho email
+        // Email regex pattern
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        // Mẫu regex cho số điện thoại (giả sử là 10-15 chữ số)
+        // Phone regex pattern (assuming it should be 10-15 digits)
         const phonePattern = /^\d{10}$/;
 
-        // Mẫu regex cho mật khẩu (ít nhất 6 ký tự)
-        const passPattern = /^.{6,}$/;
-
-        // Xác thực email
+        // Validate email
         if (!emailPattern.test(email)) {
-            alert("Vui lòng nhập địa chỉ email hợp lệ.");
+            alert("Please enter a valid email address.");
             return false;
         }
 
-        // Xác thực số điện thoại
+        // Validate phone
         if (!phonePattern.test(phone)) {
-            alert("Vui lòng nhập số điện thoại hợp lệ (10 chữ số).");
+            alert("Please enter a valid phone number (10 digits).");
             return false;
         }
 
-        // Xác thực tên
+        // Validate name
         if (name.trim() === "") {
-            alert("Vui lòng nhập tên của bạn.");
+            alert("Please enter your name.");
             return false;
         }
 
-        // Xác thực mật khẩu
+        // Validate passwords
         if (pass1 === "" || pass2 === "") {
-            alert("Vui lòng nhập và xác nhận mật khẩu của bạn.");
+            alert("Please enter and confirm your password.");
             return false;
         }
 
         if (pass1 !== pass2) {
-            alert("Mật khẩu không khớp.");
-            return false;
-        }
-
-        if (!passPattern.test(pass1)) {
-            alert("Mật khẩu phải có ít nhất 6 chữ số.");
+            alert("Passwords do not match.");
             return false;
         }
 
         return true;
     }
-
-
 </script>
 <!-- st login wrapper End -->
 <!--main js file start-->
@@ -4275,3 +3936,4 @@
 </body>
 
 </html>
+
