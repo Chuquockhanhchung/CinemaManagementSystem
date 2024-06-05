@@ -375,7 +375,7 @@
                                                 </div>
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
-                                                        <li><a href="movie_booking.jsp"><i
+                                                        <li><a href="booking_movie?id=44"><i
                                                                 class="fi fi-ss-ticket"></i></a>
                                                         </li>
                                                     </ul>
