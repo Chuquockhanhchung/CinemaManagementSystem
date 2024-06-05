@@ -1684,7 +1684,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- prs upcomung Slider End -->
 <!-- prs video section Start -->
 <div class="prs_video_section_main_wrapper">
@@ -3939,7 +3939,7 @@
             {
                 email: "${account.getEmail().toLowerCase()}",
                 password: "${account.getPassword()}",
-                status:"${account.getStatus()}"// Assuming passwords are stored this way
+                status: "${account.getStatus()}"// Assuming passwords are stored this way
             }<c:if test="${!status.last}">, </c:if>
             </c:forEach>
         ];
@@ -3973,7 +3973,7 @@
                 alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
                 return;
             }
-            if(account.status === "unactive"){
+            if (account.status === "unactive") {
                 alert('Tài khoản chưa được kích hoạt!');
                 return;
             }
@@ -3983,8 +3983,6 @@
             }
 
             // Perform reCAPTCHA validation
-
-
 
 
             console.log("Email and password validation passed. Submitting form...");
@@ -4088,90 +4086,91 @@
                 <div class="st_form_pop_login_btn float_left">
                     <input type="submit" value="SignUp">
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const form = document.querySelector('#formSignUp');
-                        const emailInput = form.querySelector('input[name="email"]');
-                        const phoneInput = form.querySelector('input[name="phone"]');
-                        const errorDiv = document.getElementById("error");
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('#formSignUp');
+            const emailInput = form.querySelector('input[name="email"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const errorDiv = document.getElementById("error");
 
-                        // Retrieve the existing emails and passwords from JSTL
-                        const existingAccounts = [
-                            <%-- Server-side rendering of existing emails and passwords --%>
-                            <c:forEach var="customer" items="${listCus}" varStatus="status">
-                            {
-                                email: "${customer.getEmail().toLowerCase()}",
-                                phone: "${customer.getPhone()}",
+            // Retrieve the existing emails and passwords from JSTL
+            const existingAccounts = [
+                <%-- Server-side rendering of existing emails and passwords --%>
+                <c:forEach var="customer" items="${listCus}" varStatus="status">
+                {
+                    email: "${customer.getEmail().toLowerCase()}",
+                    phone: "${customer.getPhone()}",
 
-                            }<c:if test="${!status.last}">, </c:if>
-                            </c:forEach>
-                        ];
+                }<c:if test="${!status.last}">, </c:if>
+                </c:forEach>
+            ];
 
-                        console.log("Existing Accounts:", existingAccounts);
+            console.log("Existing Accounts:", existingAccounts);
 
-                        form.addEventListener('submit', (event) => {
-                            event.preventDefault(); // Prevent the default form submission
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the default form submission
 
-                            const email = emailInput.value.trim().toLowerCase();
-                            const phone = phoneInput.value;
+                const email = emailInput.value.trim().toLowerCase();
+                const phone = phoneInput.value;
 
-                            // Perform client-side validation
-
-
-                            // Check if the email exists and the password is correct
-                            const account = existingAccounts.find(acc => acc.email === email);
-                            if (account) {
-                                alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
-                                return;
-                            }
-                            const phones = existingAccounts.find(acc => acc.phone === phone);
-                            if (phones) {
-                                alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
-                                return;
-                            }
+                // Perform client-side validation
 
 
+                // Check if the email exists and the password is correct
+                const account = existingAccounts.find(acc => acc.email === email);
+                if (account) {
+                    alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                    return;
+                }
+                const phones = existingAccounts.find(acc => acc.phone === phone);
+                if (phones) {
+                    alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                    return;
+                }
 
 
+                console.log("Email and password validation passed. Submitting form...");
+                // If all validations pass, submit the form
+                form.submit();
+            });
+
+            document.querySelector('.click').addEventListener('click', (e) => {
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    e.preventDefault();
+                    errorDiv.innerHTML = "Please check reCAPTCHA!";
+                } else {
+                    window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                }
+            });
+        });
+    </script>
 
 
-                            console.log("Email and password validation passed. Submitting form...");
-                            // If all validations pass, submit the form
-                            form.submit();
-                        });
+    <!-- Form Forgot Password -->
+    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
-                        document.querySelector('.click').addEventListener('click', (e) => {
-                            const response = grecaptcha.getResponse();
-                            if (!response) {
-                                e.preventDefault();
-                                errorDiv.innerHTML = "Please check reCAPTCHA!";
-                            } else {
-                                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
-                            }
-                        });
-                    });
-                </script>
-
-
-                <!-- Form Forgot Password -->
-                <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
-
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                                <h3>Forgot Password</h3>
-                                <p>We can help! All you need to do is enter your email ID and follow the
-                                    instructions!</p>
-                            </div>
-                            <div class="st_profile_input float_left">
-                                <label>Email Address</label>
-                                <input id="emailInput" name="email" type="text">
-                            </div>
-                            <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
-                                                                                                              id="verifyButton">Verify</a>
-                            </div>
-                        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
+                    <h3>Forgot Password</h3>
+                    <p>We can help! All you need to do is enter your email ID and follow the
+                        instructions!</p>
+                </div>
+                <div class="st_profile_input float_left">
+                    <label>Email Address</label>
+                    <input id="emailInput" name="email" type="text">
+                </div>
+                <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
+                                                                                                  id="verifyButton">Verify</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 <script>
     function showAlert(message) {
