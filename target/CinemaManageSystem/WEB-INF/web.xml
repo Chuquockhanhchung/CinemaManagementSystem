@@ -42,6 +42,9 @@
         <servlet-class>controller.AdAccountServlet</servlet-class>
     </servlet>
 
+
+
+
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>controller.signup</servlet-class>
@@ -132,6 +135,9 @@
         <servlet-name>AdAccountServlet</servlet-name>
         <url-pattern>/adaccount</url-pattern>
     </servlet-mapping>
+
+
+
 
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
