@@ -1,123 +1,50 @@
 package model;
 
-//import java.util.Date;
 import java.sql.Date;
 
 public class Movie {
-    private int MovieID ;
-    private String MovieName ;
-    private String Description  ;
-    private int MovieType ;
-    private int Director;
-    private int Actors ;
+    private int MovieID;
+    private String MovieName;
+    private String MovieDescription;
+    private int MovieType;
+    private String MovieDirector;
+    private String MovieActor;
     private Date ReleaseDate;
-    private int Duration;
+    private int MovieDuration;
     private int Language;
     private String Image;
-    private float IMDbRating;
+
+    private float MovieRating;
     private String Status;
-
-    //================
-    private String MovieType_Name;
-    private String Director_Name;
-
-    public int getMovieType() {
-        return MovieType;
-    }
-
-    public void setMovieType(int movieType) {
-        MovieType = movieType;
-    }
-
-    public String getMovieType_Name() {
-        return MovieType_Name;
-    }
-
-    public void setMovieType_Name(String movieType_Name) {
-        MovieType_Name = movieType_Name;
-    }
-
-    public String getDirector_Name() {
-        return Director_Name;
-    }
-
-    public void setDirector_Name(String director_Name) {
-        Director_Name = director_Name;
-    }
+    private int Price;
 
     public Movie() {
     }
 
-    public int getMovieID() {
-        return MovieID;
-    }
-
-    public void setMovieID(int movieID) {
+    public Movie(int movieID, String movieName, String movieDescription, int movieType, String movieDirector,
+            String movieActor, Date releaseDate, int movieDuration, int language, String image, float movieRating,
+            String status, int price) {
         MovieID = movieID;
-    }
-
-    public String getMovieName() {
-        return MovieName;
-    }
-
-    public void setMovieName(String movieName) {
         MovieName = movieName;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public int getMovieTYpe() {
-        return MovieType;
-    }
-
-    public void setMovieTYpe(int movieTYpe) {
-        MovieType = movieTYpe;
-    }
-
-    public int getDirector() {
-        return Director;
-    }
-
-    public void setDirector(int director) {
-        Director = director;
-    }
-
-    public int getActors() {
-        return Actors;
-    }
-
-    public void setActors(int actors) {
-        Actors = actors;
-    }
-
-    public Date getReleaseDate() {
-        return ReleaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
+        MovieDescription = movieDescription;
+        MovieType = movieType;
+        MovieDirector = movieDirector;
+        MovieActor = movieActor;
         ReleaseDate = releaseDate;
-    }
-
-    public int getDuration() {
-        return Duration;
-    }
-
-    public void setDuration(int duration) {
-        Duration = duration;
-    }
-
-    public int getLanguage() {
-        return Language;
-    }
-
-    public void setLanguage(int language) {
+        MovieDuration = movieDuration;
         Language = language;
+        Image = image;
+        MovieRating = movieRating;
+        Status = status;
+        Price = price;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public void setPrice(int price) {
+        Price = price;
     }
 
     public String getImage() {
@@ -134,6 +61,13 @@ public class Movie {
 
     public void setIMDbRating(float IMDbRating) {
         this.IMDbRating = IMDbRating;
+
+    public int getLanguage() {
+        return Language;
+    }
+
+    public void setLanguage(int language) {
+        Language = language;
     }
 
     public String getStatus() {
@@ -143,5 +77,95 @@ public class Movie {
     public void setStatus(String status) {
         Status = status;
     }
-}
 
+    public Date getReleaseDate() {
+        return ReleaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        ReleaseDate = releaseDate;
+    }
+
+    public int getMovieType() {
+        return MovieType;
+    }
+
+    public void setMovieType(int movieType) {
+        MovieType = movieType;
+    }
+
+    public float getMovieRating() {
+        return MovieRating;
+    }
+
+    public void setMovieRating(float movieRating) {
+        MovieRating = movieRating;
+    }
+
+    public String getMovieName() {
+        return MovieName;
+    }
+
+    public void setMovieName(String movieName) {
+        MovieName = movieName;
+    }
+
+    public int getMovieID() {
+        return MovieID;
+    }
+
+    public void setMovieID(int movieID) {
+        MovieID = movieID;
+    }
+
+    public String getMovieActor() {
+        return MovieActor;
+    }
+
+    public void setMovieActor(String movieActor) {
+        MovieActor = movieActor;
+    }
+
+    public String getMovieDescription() {
+        return MovieDescription;
+    }
+
+    public void setMovieDescription(String movieDescription) {
+        MovieDescription = movieDescription;
+    }
+
+    public String getMovieDirector() {
+        return MovieDirector;
+    }
+
+    public void setMovieDirector(String movieDirector) {
+        MovieDirector = movieDirector;
+    }
+
+    public int getMovieDuration() {
+        return MovieDuration;
+    }
+
+    public void setMovieDuration(int movieDuration) {
+        MovieDuration = movieDuration;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "Image='" + Image + '\'' +
+                ", MovieID=" + MovieID +
+                ", MovieName='" + MovieName + '\'' +
+                ", MovieDescription='" + MovieDescription + '\'' +
+                ", MovieType=" + MovieType +
+                ", MovieDirector=" + MovieDirector +
+                ", MovieActor='" + MovieActor + '\'' +
+                ", ReleaseDate=" + ReleaseDate +
+                ", MovieDuration=" + MovieDuration +
+                ", Language=" + Language +
+                ", MovieRating='" + MovieRating + '\'' +
+                ", Status='" + Status + '\'' +
+                ", Price=" + Price +
+                '}';
+    }
+}

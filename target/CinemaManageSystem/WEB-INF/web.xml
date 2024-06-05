@@ -88,6 +88,10 @@
         <servlet-class>controller.sendEmail</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SeatBookServlet</servlet-name>
+        <servlet-class>controller.SeatBookServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Resetpassword</servlet-name>
         <servlet-class>controller.Resetpassword</servlet-class>
     </servlet>
@@ -102,6 +106,10 @@
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeatBookServlet</servlet-name>
+        <url-pattern>/seat</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
