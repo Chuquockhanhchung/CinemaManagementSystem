@@ -2,6 +2,7 @@ package dal;
 
 import model.Account;
 import model.Movie;
+import model.ShowTime;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,14 +21,14 @@ public class MovieDAO extends DBContext {
     public ArrayList<Movie> getall_Movie() {
         ArrayList<Movie> movies = new ArrayList<>();
         MovieTypeDAO tdao = new MovieTypeDAO(con);
-        String sql = "select a.MovieID, a.MovieName, a.Description, a.MovieType, a.Image from movie a";
+        String sql = "select  c.MovieID, c.MovieName, c.Description, t.TypeName, c.Image from (select a.MovieID, a.MovieName, a.Description, b.TypeID, a.Image from movie a join movie_has_types b on a.MovieID = b.MovieID) c join movietype t on c.TypeID = t.TypeID";
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Movie a = new Movie();
                 a.setMovieID(rs.getInt(1));
                 a.setMovieName(rs.getString(2));
-                a.setMovieTYpe(rs.getInt(4));
-                a.setMovieType_Name(tdao.GetNameTypeByID(a.getMovieType()));
+                a.setMovieDescription(rs.getString(3));
+                a.setMovieType(rs.getNString(4));
                 a.setImage(rs.getString(5));
                 movies.add(a);
             }
@@ -46,12 +47,12 @@ public class MovieDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
-                c.setId(rs.getInt(1));
-                c.setName(rs.getString(2));
-                c.setDescription(rs.getString(3));
-                c.setType(rs.getString(4));
-                c.setImge(rs.getString(5));
-                c.setActor(rs.getString(6));
+                c.setMovieID(rs.getInt(1));
+                c.setMovieName(rs.getString(2));
+                c.setMovieDescription(rs.getString(3));
+                c.setMovieType(rs.getString(4));
+                c.setImage(rs.getString(5));
+                c.getMovieActor(rs.getString(6));
                 c.setStatus(rs.getString(7));
 
             }
@@ -61,32 +62,35 @@ public class MovieDAO extends DBContext {
         return c;
 
     }
+//    public String getActor(int id) {
+//
+//    }
 
-    // public static void main(String[] args) {
-    // MovieDAO d = new MovieDAO(DBContext.getConn());
-    // ArrayList<Movie> l = d.getall_Movie();
-    // for (Movie m : l) {
-    // System.out.println(m.getImage());
-    // }
-    // }
+     public static void main(String[] args) {
+     MovieDAO d = new MovieDAO(DBContext.getConn());
+     ArrayList<Movie> l = d.getall_Movie();
+     for (Movie m : l) {
+     System.out.println(m);
+     }
+     }
 
-    public ArrayList<Movie> getMovieType() {
-        String sql = "SELECT  t.TypeID,t.TypeName,count( m.MovieId) AS Total from movietype t left join  movie m on t.TypeID = m.MovieType group by t.TypeID";
-        ArrayList<Movie> list = new ArrayList<>();
-
-        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Movie c = new Movie();
-                c.setId(rs.getInt(1));
-                c.setType(rs.getString(2));
-                c.setTotalMovieType(rs.getInt(3));
-                list.add(c);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+//    public ArrayList<Movie> getMovieType() {
+//        String sql = "SELECT  t.TypeID,t.TypeName,count( m.MovieId) AS Total from movietype t left join  movie m on t.TypeID = m.MovieType group by t.TypeID";
+//        ArrayList<Movie> list = new ArrayList<>();
+//
+//        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+//            while (rs.next()) {
+//                Movie c = new Movie();
+//                c.getMovieID(rs.getInt(1));
+//                c.setMovieType(rs.getString(2));
+//
+//                list.add(c);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
 
     public ArrayList<ShowTime> getShowTime(int id) {
         ArrayList<ShowTime> list = new ArrayList<>();

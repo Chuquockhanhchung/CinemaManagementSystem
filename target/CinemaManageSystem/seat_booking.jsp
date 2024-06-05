@@ -63,7 +63,8 @@
                                 <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"> <a href="#"><i
                                             class="fa fa-times"></i></a>
                                 </div>
-                                <div class="st_seatlay_btn float_left"> <a href="booking_type.jsp" id="payment-link"
+                                <div class="st_seatlay_btn float_left"> <a
+                                        href="ticket?CustomerID=${sessionScope.user.idCustomer}" id="payment-link"
                                         style="display: none;">Thanh Toán</a>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@ public class Movie {
     private int MovieID;
     private String MovieName;
     private String MovieDescription;
-    private int MovieType;
+    private String MovieType;
     private String MovieDirector;
     private String MovieActor;
     private Date ReleaseDate;
@@ -21,7 +21,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int movieID, String movieName, String movieDescription, int movieType, String movieDirector,
+    public Movie(int movieID, String movieName, String movieDescription, String movieType, String movieDirector,
             String movieActor, Date releaseDate, int movieDuration, int language, String image, float movieRating,
             String status, int price) {
         MovieID = movieID;
@@ -55,13 +55,13 @@ public class Movie {
         Image = image;
     }
 
-    public float getIMDbRating() {
-        return IMDbRating;
+    public float getMovieRating() {
+        return MovieRating;
     }
 
-    public void setIMDbRating(float IMDbRating) {
-        this.IMDbRating = IMDbRating;
-
+    public void setMovieRating(float IMDbRating) {
+        this.MovieRating = IMDbRating;
+    }
     public int getLanguage() {
         return Language;
     }
@@ -86,21 +86,15 @@ public class Movie {
         ReleaseDate = releaseDate;
     }
 
-    public int getMovieType() {
+    public String getMovieType() {
         return MovieType;
     }
 
-    public void setMovieType(int movieType) {
+    public void setMovieType(String movieType) {
         MovieType = movieType;
     }
 
-    public float getMovieRating() {
-        return MovieRating;
-    }
 
-    public void setMovieRating(float movieRating) {
-        MovieRating = movieRating;
-    }
 
     public String getMovieName() {
         return MovieName;
@@ -118,7 +112,7 @@ public class Movie {
         MovieID = movieID;
     }
 
-    public String getMovieActor() {
+    public String getMovieActor(String string) {
         return MovieActor;
     }
 

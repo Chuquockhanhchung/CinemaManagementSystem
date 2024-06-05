@@ -54,7 +54,7 @@ public class TicketDAO extends DBContext{
                 return new Movie(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getInt(4),
+                        rs.getNString(4),
                         rs.getNString(5),
                         rs.getString(6),
                         rs.getDate(7),
