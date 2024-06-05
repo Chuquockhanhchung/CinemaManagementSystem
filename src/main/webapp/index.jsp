@@ -4173,11 +4173,76 @@
                                     const respone = grecaptcha.getResponse();
                                     if (respone) {
                                         window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
+                        </script>
+                        <script>
+                                        document.addEventListener('DOMContentLoaded', () => {
+                                            const form = document.querySelector('#form');
+                                            const emailInput = form.querySelector('input[name="email"]');
+                                            const passwordInput = form.querySelector('input[name="pass"]');
+                                            const errorDiv = document.getElementById("error");
 
-                                    } else {
-                                        e.preventDefault();
-                                        error.innerHTML = "Please check!";
-                                    }
+                                            // Retrieve the existing emails and passwords from JSTL
+                                            const existingAccounts = [
+            <% --Server - side rendering of existing emails and passwords-- %>
+                                                <c:forEach var="account" items="${listAcc}" varStatus="status">
+                                                    {
+                                                        email: "${account.getEmail().toLowerCase()}",
+                                                    password: "${account.getPassword()}",
+                                                    status: "${account.getStatus()}"// Assuming passwords are stored this way
+            }<c:if test="${!status.last}">, </c:if>
+                                                </c:forEach>
+                                            ];
+
+                                            console.log("Existing Accounts:", existingAccounts);
+
+                                            form.addEventListener('submit', (event) => {
+                                                event.preventDefault(); // Prevent the default form submission
+
+                                                const email = emailInput.value.trim().toLowerCase();
+                                                const password = passwordInput.value;
+                                                const response = grecaptcha.getResponse();
+                                                if (!response) {
+                                                    errorDiv.innerHTML = "Please check reCAPTCHA!";
+                                                    return;
+                                                }
+                                                // Perform client-side validation
+                                                if (!email) {
+                                                    alert('Email không được để trống.');
+                                                    return;
+                                                }
+
+                                                if (!password) {
+                                                    alert('Mật khẩu không được để trống.');
+                                                    return;
+                                                }
+
+                                                // Check if the email exists and the password is correct
+                                                const account = existingAccounts.find(acc => acc.email === email);
+                                                if (!account) {
+                                                    alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                                                    return;
+                                                }
+                                                if (account.status === "unactive") {
+                                                    alert('Tài khoản chưa được kích hoạt!');
+                                                    return;
+                                                }
+                                                if (account.password !== password) {
+                                                    alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                                                    return;
+                                                }
+
+                                                // Perform reCAPTCHA validation
+
+
+                                                console.log("Email and password validation passed. Submitting form...");
+                                                // If all validations pass, submit the form
+                                                form.submit();
+                                            });
+
+                                        } else {
+                                            e.preventDefault();
+                                            error.innerHTML = "Please check!";
+                                        }
                                 });
                             }
                         </script>
@@ -4349,54 +4414,227 @@
                                     alert("Please enter your name.");
                                     return false;
                                 }
+                            });
+            } else {
+                                alert("Please enter your email address.");
+                            }
+        });
+    });
+                        </script>
+                        <!-- Form Sign Up -->
+                        <form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
+                            <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="st_pop_form_heading_wrapper float_left">
+                                            <h3>Sign Up</h3>
+                                        </div>
+                                        <div class="st_profile_input float_left">
+                                            <label>Your Email</label>
+                                            <input type="text" id="emailInput2" name="email"
+                                                placeholder="example@gmail.com">
+                                        </div>
+                                        <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                                            <label>Mobile Number</label>
+                                            <input type="text" placeholder="Mobile Phone" name="phone">
+                                        </div>
+                                        <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                                            <label>Your Name</label>
+                                            <input type="text" placeholder="Name" name="name">
+                                        </div>
+                                        <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                                            <label>Password</label>
+                                            <input type="password" placeholder="Password" name="pass1">
+                                        </div>
+                                        <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                                            <label>Confirm Password</label>
+                                            <input type="password" placeholder="Confirm Password" name="pass2">
+                                        </div>
+                                        <div class="st_form_pop_login_btn float_left">
+                                            <input type="submit" value="SignUp">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const form = document.querySelector('#formSignUp');
+                                    const emailInput = form.querySelector('input[name="email"]');
+                                    const phoneInput = form.querySelector('input[name="phone"]');
+                                    const errorDiv = document.getElementById("error");
 
-                                // Validate passwords
-                                if (pass1 === "" || pass2 === "") {
-                                    alert("Please enter and confirm your password.");
-                                    return false;
-                                }
+                                    // Retrieve the existing emails and passwords from JSTL
+                                    const existingAccounts = [
+                <% --Server - side rendering of existing emails and passwords-- %>
+                                        <c:forEach var="customer" items="${listCus}" varStatus="status">
+                                            {
+                                                email: "${customer.getEmail().toLowerCase()}",
+                                            phone: "${customer.getPhone()}",
 
-                                if (pass1 !== pass2) {
-                                    alert("Passwords do not match.");
-                                    return false;
-                                }
+                }<c:if test="${!status.last}">, </c:if>
+                                        </c:forEach>
+                                    ];
 
-                                return true;
+                                    console.log("Existing Accounts:", existingAccounts);
+
+                                    form.addEventListener('submit', (event) => {
+                                        event.preventDefault(); // Prevent the default form submission
+
+                                        const email = emailInput.value.trim().toLowerCase();
+                                        const phone = phoneInput.value;
+
+                                        // Perform client-side validation
+
+                                        // Validate passwords
+                                        if (pass1 === "" || pass2 === "") {
+                                            alert("Please enter and confirm your password.");
+                                            return false;
+                                        }
+
+                                        // Check if the email exists and the password is correct
+                                        const account = existingAccounts.find(acc => acc.email === email);
+                                        if (account) {
+                                            alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                                            return;
+                                        }
+                                        const phones = existingAccounts.find(acc => acc.phone === phone);
+                                        if (phones) {
+                                            alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                                            return;
+                                        }
+
+
+                                        console.log("Email and password validation passed. Submitting form...");
+                                        // If all validations pass, submit the form
+                                        form.submit();
+                                    });
+
+                                    document.querySelector('.click').addEventListener('click', (e) => {
+                                        const response = grecaptcha.getResponse();
+                                        if (!response) {
+                                            e.preventDefault();
+                                            errorDiv.innerHTML = "Please check reCAPTCHA!";
+                                        } else {
+                                            window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                                        }
+                                    });
+                                });
+                            </script>
+
+
+                            <!-- Form Forgot Password -->
+                            <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div
+                                            class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
+                                            <h3>Forgot Password</h3>
+                                            <p>We can help! All you need to do is enter your email ID and follow the
+                                                instructions!</p>
+                                        </div>
+                                        <div class="st_profile_input float_left">
+                                            <label>Email Address</label>
+                                            <input id="emailInput" name="email" type="text">
+                                        </div>
+                                        <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton">
+                                            <a href="" id="verifyButton">Verify</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <script>
+                            function showAlert(message) {
+                                alert(message);
                             }
                         </script>
-                        <!-- st login wrapper End -->
-                        <!--main js file start-->
-                        <script src="js/jquery_min.js"></script>
-                        <script src="js/modernizr.js"></script>
-                        <script src="js/bootstrap.js"></script>
-                        <script src="js/owl.carousel.js"></script>
-                        <script src="js/jquery.dlmenu.js"></script>
-                        <script src="js/jquery.sticky.js"></script>
-                        <script src="js/jquery.nice-select.min.js"></script>
-                        <script src="js/jquery.magnific-popup.js"></script>
-                        <script src="js/jquery.bxslider.min.js"></script>
-                        <script src="js/venobox.min.js"></script>
-                        <script src="js/smothscroll_part1.js"></script>
-                        <script src="js/smothscroll_part2.js"></script>
-                        <script src="js/plugin/rs_slider/jquery.themepunch.revolution.min.js"></script>
-                        <script src="js/plugin/rs_slider/jquery.themepunch.tools.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.addon.snow.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.actions.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.carousel.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.kenburn.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.layeranimation.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.migration.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.navigation.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.parallax.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
-                        <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
-                        <script src="js/custom.js"></script>
-                        <script type="text/javascript">
-                            var onloadCallback = function () {
-                                alert("grecaptcha is ready!");
-                            };
-                        </script>
-                        <!--main js file end-->
+                        <% if ("true".equals(request.getParameter("success"))) { %>
+                            <script>
+                                alert("Đã gửi email xác thực tài khoản");
+                            </script>
+                            <% } %>
+                                <script>
+                                    function validateForm() {
+                                        // Get form elements
+                                        const email = document.getElementById('emailInput2').value;
+                                        const phone = document.querySelector('input[name="phone"]').value;
+                                        const name = document.querySelector('input[name="name"]').value;
+                                        const pass1 = document.querySelector('input[name="pass1"]').value;
+                                        const pass2 = document.querySelector('input[name="pass2"]').value;
+
+                                        // Email regex pattern
+                                        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                                        // Phone regex pattern (assuming it should be 10-15 digits)
+                                        const phonePattern = /^\d{10}$/;
+
+                                        // Validate email
+                                        if (!emailPattern.test(email)) {
+                                            alert("Please enter a valid email address.");
+                                            return false;
+                                        }
+
+                                        // Validate phone
+                                        if (!phonePattern.test(phone)) {
+                                            alert("Please enter a valid phone number (10 digits).");
+                                            return false;
+                                        }
+
+                                        // Validate name
+                                        if (name.trim() === "") {
+                                            alert("Please enter your name.");
+                                            return false;
+                                        }
+
+                                        // Validate passwords
+                                        if (pass1 === "" || pass2 === "") {
+                                            alert("Please enter and confirm your password.");
+                                            return false;
+                                        }
+
+                                        if (pass1 !== pass2) {
+                                            alert("Passwords do not match.");
+                                            return false;
+                                        }
+
+                                        return true;
+                                    }
+                                </script>
+                                <!-- st login wrapper End -->
+                                <!--main js file start-->
+                                <script src="js/jquery_min.js"></script>
+                                <script src="js/modernizr.js"></script>
+                                <script src="js/bootstrap.js"></script>
+                                <script src="js/owl.carousel.js"></script>
+                                <script src="js/jquery.dlmenu.js"></script>
+                                <script src="js/jquery.sticky.js"></script>
+                                <script src="js/jquery.nice-select.min.js"></script>
+                                <script src="js/jquery.magnific-popup.js"></script>
+                                <script src="js/jquery.bxslider.min.js"></script>
+                                <script src="js/venobox.min.js"></script>
+                                <script src="js/smothscroll_part1.js"></script>
+                                <script src="js/smothscroll_part2.js"></script>
+                                <script src="js/plugin/rs_slider/jquery.themepunch.revolution.min.js"></script>
+                                <script src="js/plugin/rs_slider/jquery.themepunch.tools.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.addon.snow.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.actions.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.carousel.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.kenburn.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.layeranimation.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.migration.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.navigation.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.parallax.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
+                                <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
+                                <script src="js/custom.js"></script>
+                                <script type="text/javascript">
+                                    var onloadCallback = function () {
+                                        alert("grecaptcha is ready!");
+                                    };
+                                </script>
+                                <!--main js file end-->
         </body>
 
         </html>

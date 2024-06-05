@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="_24x24-Close" data-name="24x24-Close" transform="translate(0.229)">
+    <rect id="Frame24" width="24" height="24" transform="translate(-0.229)" fill="#5a7087" opacity="0"/>
+    <path id="close" d="M17.656,6.333a.9.9,0,0,1,0,1.273l-4.1,4.108a.4.4,0,0,0,0,.565l4.1,4.109a.9.9,0,0,1,.08,1.181l-.081.092a.9.9,0,0,1-1.273,0l-4.1-4.107a.4.4,0,0,0-.566,0l-4.1,4.107a.9.9,0,1,1-1.274-1.272l4.1-4.109a.4.4,0,0,0,0-.565l-4.1-4.109a.9.9,0,0,1-.08-1.181l.081-.092a.9.9,0,0,1,1.273,0l4.1,4.106a.4.4,0,0,0,.566,0l4.1-4.106a.9.9,0,0,1,1.273,0Z" transform="translate(0.02 -0.01)" fill="#5A7087"/>
+  </g>
+<style type="text/css" media="screen">path{vector-effect:non-scaling-stroke}</style></svg>
