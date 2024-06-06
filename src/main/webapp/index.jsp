@@ -4126,7 +4126,7 @@
                     return;
                 }
                 const phones = existingAccounts.find(acc => acc.phone === phone);
-                if (phones) {
+                if (phones) {   
                     alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
                     return;
                 }
