@@ -34,8 +34,8 @@
 
     <!-- Favicon icon -->
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="icon" type="image/png" sizes="16x16"
           href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
 
@@ -58,9 +58,9 @@
           rel="stylesheet"
           type="text/css"/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"--%>
+<%--          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="--%>
+<%--          crossorigin="anonymous" referrerpolicy="no-referrer"/>--%>
 
     <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
@@ -157,25 +157,9 @@
 <!--**********************************
     Main wrapper start
 ***********************************-->
-<div id="main-wrapper">
+<div id="main-wrapper show">
 
-    <!--**********************************
-Nav header start
-***********************************-->
 
-    <!--**********************************
-Nav header end
-***********************************-->
-    <!--**********************************
-Chat box start
-***********************************-->
-
-    <!--**********************************
-Chat box End
-***********************************-->
-    <!--**********************************
-Header start
-***********************************-->
     <header class="header">
         <div class="header-content">
             <nav class="navbar navbar-expand">
@@ -224,7 +208,7 @@ Header start
                                 </a>
 
 
-                                </a>
+
                                 <a href="logout"
                                    class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
@@ -269,15 +253,18 @@ Content body start
 
             </div>
             <div class="row mb-4 align-items-center">
-                <div class="col-xl-3 col-lg-4 mb-4 mb-lg-0">
-                    <a href="javascript:void(0);" class="btn btn-secondary  btn-lg btn-block rounded text-white"
-                       data-bs-toggle="modal" data-bs-target="#addNewCustomer">Thêm Tài Khoản</a>
-                    <!-- Add Order -->
-                    <div class="modal fade" id="addNewCustomer">
+                <div class="container mt-5">
+                    <div class="col-xl-3 col-lg-4 mb-4 mb-lg-0">
+                        <a href="javascript:void(0);" class="btn btn-secondary btn-lg btn-block rounded text-white" id="triggerModal">Thêm Tài Khoản</a>
+                    </div>
+
+                    <!-- Add Customer Modal -->
+                    <div class="modal fade" id="addNewCustomer" tabindex="-1" aria-labelledby="addNewCustomerLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <a href="javascript:void(0);" class="btn-close" data-bs-dismiss="modal"></a>
+                                    <h5 class="modal-title" id="addNewCustomerLabel">Thêm Tài Khoản</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="adaccount" method="get" id="addCustomerForm">
@@ -285,21 +272,18 @@ Content body start
                                             <label class="text-black font-w500">Email</label>
                                             <input type="text" name="email" class="form-control">
                                         </div>
-
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Phân Quyền</label>
-                                            <input type="text" value="Nhân Viên">
+                                            <input type="text" class="form-control" value="Nhân Viên" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Ngày Tạo</label>
-                                            <input class="form-control mb-3" type="text" id="datepicker" name="date">
+                                            <input class="form-control mb-3" type="date" id="datepicker">
                                         </div>
                                         <div class="mb-3">
                                             <label class="text-black font-w500">Password</label>
                                             <input type="text" class="form-control" name="pass">
                                         </div>
-
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary light" value="Tạo">
                                         </div>
@@ -309,6 +293,27 @@ Content body start
                         </div>
                     </div>
                 </div>
+
+                <!-- Include Bootstrap JS and dependencies -->
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+                <script>
+                    document.getElementById('triggerModal').addEventListener('click', function() {
+                        var myModal = new bootstrap.Modal(document.getElementById('addNewCustomer'), {
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                        myModal.show();
+
+                        // Set the attributes
+                        var modalElement = document.getElementById('addNewCustomer');
+                        modalElement.setAttribute('aria-modal', 'true');
+                        modalElement.setAttribute('role', 'dialog');
+                        modalElement.style.display = 'block';
+                    });
+                </script>
+
                 <script>
                     document.addEventListener('DOMContentLoaded', () => {
                         const form = document.querySelector('#addCustomerForm');
@@ -398,7 +403,7 @@ Content body start
 
             <script>
                 document.addEventListener('DOMContentLoaded', (event) => {
-                    const popup = document.getElementById('editUserPopup');
+                    const popup = document.getElementById('editUserPopup')
                     const closeBtn = document.querySelector('.close-btn');
                     const emailField = document.getElementById('email');
                     const roleField = document.getElementById('role');
@@ -526,7 +531,7 @@ Footer end
 
 
 
-</script>
+
 
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
@@ -545,6 +550,14 @@ Footer end
 <script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
 <script>
+
+</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
+      rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
     $(function () {
         $("#datepicker").datepicker({
             autoclose: true,
@@ -553,8 +566,6 @@ Footer end
 
     });
 </script>
-
-
 <!--**********************************
     Main wrapper end
 ***********************************-->
