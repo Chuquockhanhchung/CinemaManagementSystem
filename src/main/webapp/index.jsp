@@ -301,58 +301,58 @@
                                             <div class="owl-carousel owl-theme">
                                                 <div class="item">
                                                     <div class="row">
-                                                        <c:forEach var = "i" items="${movies}">
-                                                            <div  class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                                                <div class="prs_upcom_movie_box_wrapper">
-                                                                    <div class="prs_upcom_movie_img_box">
-                                                                        <img style="height: 400px;" src="${i.getImage()}" alt="movie_img"/>
-                                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                            <ul>
-                                                                                <li><a href="#">View Trailer</a>
-                                                                                </li>
-                                                                                <li><a href="#">View Details</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                                            <h2><a href="#">${i.getMovieName()}</a></h2>
-                                                                            <p>${i.getMovieTYpe()}</p> <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </div>
-                                                                        <%
-                                                                            if (us == null) {
-                                                                        %>
-                                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <a href="#"
-                                                                                       onclick="alert('Please log in to book tickets.'); return false;">
-                                                                                        <i class="fi fi-ss-ticket"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <% } else { %>
-                                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <a href="movie_booking.jsp">
-                                                                                        <i class="fi fi-ss-ticket"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <% } %>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </c:forEach>
+<%--                                                        <c:forEach var = "i" items="${movies}">--%>
+<%--                                                            <div  class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">--%>
+<%--                                                                <div class="prs_upcom_movie_box_wrapper">--%>
+<%--                                                                    <div clazss="prs_upcom_movie_img_box">--%>
+<%--                                                                        <img style="height: 400px;" src="${i.getImage()}" alt="movie_img"/>--%>
+<%--                                                                        <div class="prs_upcom_movie_img_overlay"></div>--%>
+<%--                                                                        <div class="prs_upcom_movie_img_btn_wrapper">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li><a href="#">View Trailer</a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                                <li><a href="#">View Details</a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner">--%>
+<%--                                                                            <h2><a href="#">${i.getMovieName()}</a></h2>--%>
+<%--                                                                            <p>${i.getMovieTYpe()}</p> <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star-o"></i>--%>
+<%--                                                                            <i class="fa fa-star-o"></i>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <%--%>
+<%--                                                                            if (us == null) {--%>
+<%--                                                                        %>--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner_icon">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li>--%>
+<%--                                                                                    <a href="#"--%>
+<%--                                                                                       onclick="alert('Please log in to book tickets.'); return false;">--%>
+<%--                                                                                        <i class="fi fi-ss-ticket"></i>--%>
+<%--                                                                                    </a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <% } else { %>--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner_icon">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li>--%>
+<%--                                                                                    <a href="movie_booking.jsp">--%>
+<%--                                                                                        <i class="fi fi-ss-ticket"></i>--%>
+<%--                                                                                    </a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <% } %>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </c:forEach>--%>
 
                                                         </div>
                                                     </div>
@@ -3987,103 +3987,99 @@
                             </div>
                         </form>
 
-                        <script>
-                            window.onload = function () {
-                                let isValid = false;
-                                const form = document.getElementById("form");
-                                const id = document.getElementById("error");
-                                form.addEventListener("submit", function (event) {
-                                    event.preventDefault();
+            <script>
+                window.onload = function () {
+                    const form = document.getElementById("form");
+                    const error = document.getElementById("error");
+
+                    form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+
+                        const response = grecaptcha.getResponse();
+                        if (response) {
+                            form.submit();
+                        } else {
+                            error.innerHTML = "Please check!";
+                        }
+                    });
+
+                    document.querySelector('.click').addEventListener('click', function (e) {
+                        const response = grecaptcha.getResponse();
+                        if (response) {
+                            window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                        }
+                    });
+                }
+            </script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const form = document.querySelector('#form');
+                    const emailInput = form.querySelector('input[name="email"]');
+                    const passwordInput = form.querySelector('input[name="pass"]');
+                    const errorDiv = document.getElementById("error");
+
+                    // Retrieve the existing emails and passwords from JSTL
+                    const existingAccounts = [
+                        <c:forEach var="account" items="${listAcc}" varStatus="status">
+                        {
+                            email: "${account.getEmail().toLowerCase()}",
+                            password: "${account.getPassword()}",
+                            status: "${account.getStatus()}"
+                        }<c:if test="${!status.last}">, </c:if>
+                        </c:forEach>
+                    ];
+
+                    console.log("Existing Accounts:", existingAccounts);
+
+                    form.addEventListener('submit', (event) => {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        const email = emailInput.value.trim().toLowerCase();
+                        const password = passwordInput.value;
+                        const response = grecaptcha.getResponse();
+
+                        // Perform reCAPTCHA validation
+                        if (!response) {
+                            errorDiv.innerHTML = "Please check reCAPTCHA!";
+                            return;
+                        }
+
+                        // Perform client-side validation
+                        if (!email) {
+                            alert('Email không được để trống.');
+                            return;
+                        }
+
+                        if (!password) {
+                            alert('Mật khẩu không được để trống.');
+                            return;
+                        }
+
+                        // Check if the email exists and the password is correct
+                        const account = existingAccounts.find(acc => acc.email === email);
+                        if (!account) {
+                            alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                            return;
+                        }
+                        if (account.status === "unactive") {
+                            alert('Tài khoản chưa được kích hoạt!');
+                            return;
+                        }
+                        if (account.password !== password) {
+                            alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                            return;
+                        }
+
+                        console.log("Email and password validation passed. Submitting form...");
+                        // If all validations pass, submit the form
+                        form.submit();
+                    });
+                });
+            </script>
 
 
-                                    const respone = grecaptcha.getResponse();
-                                    if (respone) {
-                                        form.submit();
-
-                                    } else {
-                                        error.innerHTML = "Please check!";
-                                    }
-                                });
-                                $('.click').on('click', function (e) {
-                                    //  // Now link won't go anywhere
-
-                                    const respone = grecaptcha.getResponse();
-                                    if (respone) {
-                                        window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
-                        </script>
-                        <script>
-                                        document.addEventListener('DOMContentLoaded', () => {
-                                            const form = document.querySelector('#form');
-                                            const emailInput = form.querySelector('input[name="email"]');
-                                            const passwordInput = form.querySelector('input[name="pass"]');
-                                            const errorDiv = document.getElementById("error");
-
-                                            // Retrieve the existing emails and passwords from JSTL
-                                            const existingAccounts = [
-                                                <c:forEach var="account" items="${listAcc}" varStatus="status">
-                                                    {
-                                                        email: "${account.getEmail().toLowerCase()}",
-                                                    password: "${account.getPassword()}",
-                                                    status: "${account.getStatus()}"// Assuming passwords are stored this way
-                                                }<c:if test="${!status.last}">, </c:if>
-                                                </c:forEach>
-                                            ];
-
-                                            console.log("Existing Accounts:", existingAccounts);
-
-                                            form.addEventListener('submit', (event) => {
-                                                event.preventDefault(); // Prevent the default form submission
-
-                                                const email = emailInput.value.trim().toLowerCase();
-                                                const password = passwordInput.value;
-                                                const response = grecaptcha.getResponse();
-                                                if (!response) {
-                                                    errorDiv.innerHTML = "Please check reCAPTCHA!";
-                                                    return;
-                                                }
-                                                // Perform client-side validation
-                                                if (!email) {
-                                                    alert('Email không được để trống.');
-                                                    return;
-                                                }
-
-                                                if (!password) {
-                                                    alert('Mật khẩu không được để trống.');
-                                                    return;
-                                                }
-
-                                                // Check if the email exists and the password is correct
-                                                const account = existingAccounts.find(acc => acc.email === email);
-                                                if (!account) {
-                                                    alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
-                                                    return;
-                                                }
-                                                if (account.status === "unactive") {
-                                                    alert('Tài khoản chưa được kích hoạt!');
-                                                    return;
-                                                }
-                                                if (account.password !== password) {
-                                                    alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
-                                                    return;
-                                                }
-
-                                                // Perform reCAPTCHA validation
-
-
-                                                console.log("Email and password validation passed. Submitting form...");
-                                                // If all validations pass, submit the form
-                                                form.submit();
-                                            });
-
-                                        } else {
-                                            e.preventDefault();
-                                            error.innerHTML = "Please check!";
-                                        }
-                                });
-                            }
-                        </script>
-
-                        <!-- Form Forgot Password -->
+            <!-- Form Forgot Password -->
                         <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
                             <div class="modal-dialog">
@@ -4169,31 +4165,36 @@
                                         <div class="st_form_pop_login_btn float_left">
                                             <input type="submit" value="SignUp">
                                         </div>
-
+                                    </div>
+                                </div>
+                            </div>
                                         <script>
-                                            const respone = grecaptcha.getResponse();
-                                            if (respone) {
-                                                form.submit();
+                                            document.addEventListener('DOMContentLoaded', function () {
+                                                const form = document.querySelector('form');
+                                                const error = document.getElementById('error');
 
-                                            } else {
-                                                error.innerHTML = "Please check!";
-                                            }
-                    })
-                                            ;
-                                            $('.click').on('click', function (e) {
-                                                //  // Now link won't go anywhere
+                                                form.addEventListener('submit', function (e) {
+                                                    const response = grecaptcha.getResponse();
+                                                    if (response) {
+                                                        form.submit();
+                                                    } else {
+                                                        e.preventDefault();
+                                                        error.innerHTML = "Please check!";
+                                                    }
+                                                });
 
-                                                const respone = grecaptcha.getResponse();
-                                                if (respone) {
-                                                    window.location('https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force') // Now the event won't bubble up
-
-                                                } else {
-                                                    e.preventDefault();
-                                                    error.innerHTML = "Please check!";
-                                                }
+                                                $('.click').on('click', function (e) {
+                                                    const response = grecaptcha.getResponse();
+                                                    if (response) {
+                                                        window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                                                    } else {
+                                                        e.preventDefault();
+                                                        error.innerHTML = "Please check!";
+                                                    }
+                                                });
                                             });
-                    }
                                         </script>
+
 
                                         <!-- Form Forgot Password -->
                                         <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
@@ -4218,46 +4219,54 @@
                                                             id="verifyButton">Verify</a>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
                         </form>
-                        <script>
-                            function validateForm() {
-                                // Get form elements
-                                const email = document.getElementById('emailInput2').value;
-                                const phone = document.querySelector('input[name="phone"]').value;
-                                const name = document.querySelector('input[name="name"]').value;
-                                const pass1 = document.querySelector('input[name="pass1"]').value;
-                                const pass2 = document.querySelector('input[name="pass2"]').value;
+            <script>
+                function validateForm() {
+                    // Get form elements
+                    const email = document.getElementById('emailInput2').value;
+                    const phone = document.querySelector('input[name="phone"]').value;
+                    const name = document.querySelector('input[name="name"]').value;
+                    const pass1 = document.querySelector('input[name="pass1"]').value;
+                    const pass2 = document.querySelector('input[name="pass2"]').value;
 
-                                // Email regex pattern
-                                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-                                // Phone regex pattern (assuming it should be 10-15 digits)
-                                const phonePattern = /^\d{10}$/;
+                    // Email regex pattern
+                    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                    // Phone regex pattern (assuming it should be 10 digits)
+                    const phonePattern = /^\d{10}$/;
 
-                                // Validate email
-                                if (!emailPattern.test(email)) {
-                                    alert("Please enter a valid email address.");
-                                    return false;
-                                }
+                    // Validate email
+                    if (!emailPattern.test(email)) {
+                        alert("Please enter a valid email address.");
+                        return false;
+                    }
 
-                                // Validate phone
-                                if (!phonePattern.test(phone)) {
-                                    alert("Please enter a valid phone number (10 digits).");
-                                    return false;
-                                }
+                    // Validate phone
+                    if (!phonePattern.test(phone)) {
+                        alert("Please enter a valid phone number (10 digits).");
+                        return false;
+                    }
 
-                                // Validate name
-                                if (name.trim() === "") {
-                                    alert("Please enter your name.");
-                                    return false;
-                                }
-                            });
-            } else {
-                                alert("Please enter your email address.");
-                            }
-        });
-    });
-                        </script>
-                        <!-- Form Sign Up -->
+                    // Validate name
+                    if (name.trim() === "") {
+                        alert("Please enter your name.");
+                        return false;
+                    }
+
+                    // Validate password
+                    if (pass1 !== pass2) {
+                        alert("Passwords do not match.");
+                        return false;
+                    }
+
+                    return true;
+                }
+
+
+            </script>
+
+            <!-- Form Sign Up -->
                         <form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
                             <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
                                 <div class="modal-dialog">
