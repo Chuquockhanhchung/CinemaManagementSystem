@@ -21,15 +21,15 @@ public class MovieDAO extends DBContext {
     public ArrayList<Movie> getall_Movie() {
         ArrayList<Movie> movies = new ArrayList<>();
         MovieTypeDAO tdao = new MovieTypeDAO(con);
-        String sql = "select  c.MovieID, c.MovieName, c.Description, t.TypeName, c.Image from (select a.MovieID, a.MovieName, a.Description, b.TypeID, a.Image from movie a join movie_has_types b on a.MovieID = b.MovieID) c join movietype t on c.TypeID = t.TypeID";
+        String sql = "SELECT * FROM movie_all;";
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Movie a = new Movie();
                 a.setMovieID(rs.getInt(1));
                 a.setMovieName(rs.getString(2));
-                a.setMovieDescription(rs.getString(3));
-                a.setMovieType(rs.getNString(4));
-                a.setImage(rs.getString(5));
+                a.setMovieType(rs.getString(3));
+                a.setMovieDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
                 movies.add(a);
             }
         } catch (SQLException e) {
