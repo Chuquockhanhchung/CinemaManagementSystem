@@ -11,7 +11,7 @@ public class Movie {
     private String MovieActor;
     private Date ReleaseDate;
     private int MovieDuration;
-    private int Language;
+    private String Language;
     private String Image;
 
     private float MovieRating;
@@ -22,7 +22,7 @@ public class Movie {
     }
 
     public Movie(int movieID, String movieName, String movieDescription, String movieType, String movieDirector,
-            String movieActor, Date releaseDate, int movieDuration, int language, String image, float movieRating,
+            String movieActor, Date releaseDate, int movieDuration, String language, String image, float movieRating,
             String status, int price) {
         MovieID = movieID;
         MovieName = movieName;
@@ -62,11 +62,11 @@ public class Movie {
     public void setMovieRating(float IMDbRating) {
         this.MovieRating = IMDbRating;
     }
-    public int getLanguage() {
+    public String getLanguage() {
         return Language;
     }
 
-    public void setLanguage(int language) {
+    public void setLanguage(String language) {
         Language = language;
     }
 

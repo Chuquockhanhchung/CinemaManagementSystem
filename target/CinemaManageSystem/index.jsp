@@ -301,58 +301,58 @@
                                             <div class="owl-carousel owl-theme">
                                                 <div class="item">
                                                     <div class="row">
-                                                        <c:forEach var = "i" items="${movies}">
-                                                            <div  class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                                                <div class="prs_upcom_movie_box_wrapper">
-                                                                    <div class="prs_upcom_movie_img_box">
-                                                                        <img style="height: 400px;" src="${i.getImage()}" alt="movie_img"/>
-                                                                        <div class="prs_upcom_movie_img_overlay"></div>
-                                                                        <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                            <ul>
-                                                                                <li><a href="#">View Trailer</a>
-                                                                                </li>
-                                                                                <li><a href="#">View Details</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                                        <div class="prs_upcom_movie_content_box_inner">
-                                                                            <h2><a href="#">${i.getMovieName()}</a></h2>
-                                                                            <p>${i.getMovieTYpe()}</p> <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </div>
-                                                                        <%
-                                                                            if (us == null) {
-                                                                        %>
-                                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <a href="#"
-                                                                                       onclick="alert('Please log in to book tickets.'); return false;">
-                                                                                        <i class="fi fi-ss-ticket"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <% } else { %>
-                                                                        <div class="prs_upcom_movie_content_box_inner_icon">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <a href="movie_booking.jsp">
-                                                                                        <i class="fi fi-ss-ticket"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <% } %>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </c:forEach>
+<%--                                                        <c:forEach var = "i" items="${movies}">--%>
+<%--                                                            <div  class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">--%>
+<%--                                                                <div class="prs_upcom_movie_box_wrapper">--%>
+<%--                                                                    <div class="prs_upcom_movie_img_box">--%>
+<%--                                                                        <img style="height: 400px;" src="${i.getImage()}" alt="movie_img"/>--%>
+<%--                                                                        <div class="prs_upcom_movie_img_overlay"></div>--%>
+<%--                                                                        <div class="prs_upcom_movie_img_btn_wrapper">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li><a href="#">View Trailer</a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                                <li><a href="#">View Details</a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner">--%>
+<%--                                                                            <h2><a href="#">${i.getMovieName()}</a></h2>--%>
+<%--                                                                            <p>${i.getMovieTYpe()}</p> <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star"></i>--%>
+<%--                                                                            <i class="fa fa-star-o"></i>--%>
+<%--                                                                            <i class="fa fa-star-o"></i>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <%--%>
+<%--                                                                            if (us == null) {--%>
+<%--                                                                        %>--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner_icon">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li>--%>
+<%--                                                                                    <a href="#"--%>
+<%--                                                                                       onclick="alert('Please log in to book tickets.'); return false;">--%>
+<%--                                                                                        <i class="fi fi-ss-ticket"></i>--%>
+<%--                                                                                    </a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <% } else { %>--%>
+<%--                                                                        <div class="prs_upcom_movie_content_box_inner_icon">--%>
+<%--                                                                            <ul>--%>
+<%--                                                                                <li>--%>
+<%--                                                                                    <a href="movie_booking.jsp">--%>
+<%--                                                                                        <i class="fi fi-ss-ticket"></i>--%>
+<%--                                                                                    </a>--%>
+<%--                                                                                </li>--%>
+<%--                                                                            </ul>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <% } %>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </c:forEach>--%>
 
                                                         </div>
                                                     </div>

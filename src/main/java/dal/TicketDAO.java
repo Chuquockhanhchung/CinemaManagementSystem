@@ -59,7 +59,7 @@ public class TicketDAO extends DBContext{
                         rs.getString(6),
                         rs.getDate(7),
                         rs.getInt(8),
-                        rs.getInt(9),
+                        rs.getString(9),
                         rs.getString(10),
                         rs.getFloat(11),
                         rs.getString(12),
@@ -72,7 +72,7 @@ public class TicketDAO extends DBContext{
         return null;
     }
     public String getLanguageFilm(int id) throws SQLException {
-        String sql="select LanguageName from movielanguages where LanguageID=?";
+        String sql="select LanguageName from movie_all where MovieID=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);

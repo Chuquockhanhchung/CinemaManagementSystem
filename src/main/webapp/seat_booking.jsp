@@ -39,6 +39,7 @@
                 <div id="status">
                     <img src="images/header/horoscope.gif" id="preloader_image" alt="loader">
                 </div>
+            </div>
                 <!-- color picker start -->
                 <!-- st top header Start -->
                 <div class="st_bt_top_header_wrapper float_left">
@@ -65,7 +66,7 @@
                                 </div>
                                 <div class="st_seatlay_btn float_left"> <a
                                         href="ticket?CustomerID=${sessionScope.user.idCustomer}" id="payment-link"
-                                        style="display: none;">Thanh Toán</a>
+                                        >Thanh Toán</a>
                                 </div>
                             </div>
                         </div>
@@ -176,12 +177,12 @@
                                         <li class="st_seat_heading_row">A</li>
 
                                         <c:forEach var="seat" items="${listSeat}">
-                                            <c:if test="${seat.getIndex()>=68 && seat.getIndex()<=94}">
+                                            <c:if test="${seat.getIndex()>=68 && seat.getIndex()<=91}">
                                                 <c:choose>
                                                     <c:when test="${seat.getStatus()=='active'}">
                                                         <li><span>Pay ${movie.getPrice()} VND</span>
                                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
-                                                            <label for=c"${seat.getIndex()}"></label>
+                                                            <label for="c${seat.getIndex()}"></label>
                                                         </li>
                                                     </c:when>
                                                     <c:when test="${seat.getStatus()=='unactive'}">
@@ -262,10 +263,17 @@
 
             </script>
             <script>
-                    function collectSelectedSeats() {
+
+                    // Add event listener to the payment link
+                    document.getElementById('payment-link').addEventListener('click', function (event) {
                         const checkboxes = document.querySelectorAll('input[type="checkbox"][name="cb"]:checked');
                         let selectedSeats = [];
-
+                        if (checkboxes.length === 0) {
+                            // Show mesage
+                            alert("Hãy chọn ít nhất một ghế trước khi thực hiện thanh toán.");
+                            event.preventDefault();
+                            return false;//Stop function
+                        }
                         checkboxes.forEach(checkbox => {
                             selectedSeats.push(checkbox.id);
                         });
@@ -276,11 +284,6 @@
                         // Set the href of the link with selected seats as query parameter
                         const paymentLink = document.getElementById('payment-link');
                         paymentLink.href = `booking_type.jsp?selectedSeats=` + selectedSeatsString;
-                    }
-
-                    // Add event listener to the payment link
-                    document.getElementById('payment-link').addEventListener('click', function (event) {
-                        collectSelectedSeats();
                     });
 
             </script>
