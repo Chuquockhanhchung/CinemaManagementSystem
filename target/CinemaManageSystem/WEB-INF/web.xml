@@ -99,10 +99,7 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>seatBookingServlet</servlet-name>
-        <servlet-class>controller.seatBookingServlet</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>controller.TicketServlet</servlet-class>
@@ -179,10 +176,7 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <url-pattern>/booking_movie</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>seatBookingServlet</servlet-name>
-        <url-pattern>/seat_booking</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/ticket</url-pattern>

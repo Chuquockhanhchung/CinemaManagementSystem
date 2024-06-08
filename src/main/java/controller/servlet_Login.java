@@ -74,10 +74,7 @@ public class servlet_Login extends HttpServlet {
                 }
             }
             if (c != null) {
-                if(c.getStauts()== "unactive"){
-                    request.setAttribute("err", "Account unactive!");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                }
+
                 if (c.getPass().compareTo(pass) == 0) {
                     Cookie em = new Cookie("em", c.getEmail());
                     Cookie pa = new Cookie("pa", c.getPass());
@@ -86,12 +83,12 @@ public class servlet_Login extends HttpServlet {
                     response.addCookie(em);
                     response.addCookie(pa);
 
-                    // Session  
+                    // Session
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
 
                     if (c.getRole() == 1) {
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("home");
                     } else if(c.getRole()==3){
                         response.sendRedirect("staff/index.jsp");
                     }else if(c.getRole()==4){
@@ -101,13 +98,9 @@ public class servlet_Login extends HttpServlet {
                     }
 
                 } else {
-                    System.out.println("Login failed: Incorrect password for user: " + email);
-                    request.setAttribute("err", "Password is wrong!");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             } else {
-                System.out.println("Login failed: Email not found - " + email);
-                request.setAttribute("err", "Email not exist!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (Exception e) {
@@ -116,7 +109,7 @@ public class servlet_Login extends HttpServlet {
         }
     }
 
-   
+
     @Override
     public String getServletInfo() {
         return "Short description";

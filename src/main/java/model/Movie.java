@@ -1,165 +1,114 @@
 package model;
 
-import java.sql.Date;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
+/**
+ *
+ * @author Chi
+ */
 public class Movie {
-    private int MovieID;
-    private String MovieName;
-    private String MovieDescription;
-    private String MovieType;
-    private String MovieDirector;
-    private String MovieActor;
-    private Date ReleaseDate;
-    private int MovieDuration;
-    private String Language;
-    private String Image;
 
-    private float MovieRating;
-    private String Status;
-    private int Price;
+    private int id;
+    private String name;
+    private String description;
+    private String type;
+    private String imge;
+    private String actor;
+    private String status;
+    private int duration;
+    private int price;
 
     public Movie() {
     }
 
-    public Movie(int movieID, String movieName, String movieDescription, String movieType, String movieDirector,
-            String movieActor, Date releaseDate, int movieDuration, String language, String image, float movieRating,
-            String status, int price) {
-        MovieID = movieID;
-        MovieName = movieName;
-        MovieDescription = movieDescription;
-        MovieType = movieType;
-        MovieDirector = movieDirector;
-        MovieActor = movieActor;
-        ReleaseDate = releaseDate;
-        MovieDuration = movieDuration;
-        Language = language;
-        Image = image;
-        MovieRating = movieRating;
-        Status = status;
-        Price = price;
+    public Movie(int id, String name, String description, String type, String imge, String actor, String status, int duration,int price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.imge = imge;
+        this.actor = actor;
+        this.status = status;
+        this.duration = duration;
+        this.price = price;
     }
 
     public int getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(int price) {
-        Price = price;
+        this.price = price;
     }
 
-    public String getImage() {
-        return Image;
+    public int getId() {
+        return id;
     }
 
-    public void setImage(String image) {
-        Image = image;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public float getMovieRating() {
-        return MovieRating;
+    public String getName() {
+        return name;
     }
 
-    public void setMovieRating(float IMDbRating) {
-        this.MovieRating = IMDbRating;
-    }
-    public String getLanguage() {
-        return Language;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setLanguage(String language) {
-        Language = language;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getImge() {
+        return imge;
+    }
+
+    public void setImge(String imge) {
+        this.imge = imge;
+    }
+
+    public String getActor() {
+        return actor;
+    }
+
+    public void setActor(String actor) {
+        this.actor = actor;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
-    public Date getReleaseDate() {
-        return ReleaseDate;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        ReleaseDate = releaseDate;
-    }
-
-    public String getMovieType() {
-        return MovieType;
-    }
-
-    public void setMovieType(String movieType) {
-        MovieType = movieType;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
 
 
-    public String getMovieName() {
-        return MovieName;
-    }
 
-    public void setMovieName(String movieName) {
-        MovieName = movieName;
-    }
-
-    public int getMovieID() {
-        return MovieID;
-    }
-
-    public void setMovieID(int movieID) {
-        MovieID = movieID;
-    }
-
-    public String getMovieActor(String string) {
-        return MovieActor;
-    }
-
-    public void setMovieActor(String movieActor) {
-        MovieActor = movieActor;
-    }
-
-    public String getMovieDescription() {
-        return MovieDescription;
-    }
-
-    public void setMovieDescription(String movieDescription) {
-        MovieDescription = movieDescription;
-    }
-
-    public String getMovieDirector() {
-        return MovieDirector;
-    }
-
-    public void setMovieDirector(String movieDirector) {
-        MovieDirector = movieDirector;
-    }
-
-    public int getMovieDuration() {
-        return MovieDuration;
-    }
-
-    public void setMovieDuration(int movieDuration) {
-        MovieDuration = movieDuration;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "Image='" + Image + '\'' +
-                ", MovieID=" + MovieID +
-                ", MovieName='" + MovieName + '\'' +
-                ", MovieDescription='" + MovieDescription + '\'' +
-                ", MovieType=" + MovieType +
-                ", MovieDirector=" + MovieDirector +
-                ", MovieActor='" + MovieActor + '\'' +
-                ", ReleaseDate=" + ReleaseDate +
-                ", MovieDuration=" + MovieDuration +
-                ", Language=" + Language +
-                ", MovieRating='" + MovieRating + '\'' +
-                ", Status='" + Status + '\'' +
-                ", Price=" + Price +
-                '}';
-    }
 }

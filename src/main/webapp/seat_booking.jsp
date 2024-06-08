@@ -55,7 +55,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div
                                     class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
-                                    <h3>${movie.getMovieName()} - ${language} - (${movie.getMovieDuration()} phút)</h3>
+                                    <h3>${movie.getName()} - ${language} - (${movie.getDuration()} phút)</h3>
                                     <h4>${date}</h4>
                                 </div>
                                 <input type="hidden" name="product_id" />

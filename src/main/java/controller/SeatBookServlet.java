@@ -53,23 +53,29 @@ public class SeatBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int showtimeID =Integer.parseInt(request.getParameter("showtimeId")) ;
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        List<Seat> list = dal.getSeatByRoom(1);
+        List<Seat> list = null;
+        try {
+            list = dal.getSeatByRoom(dal.getRoomByShowtime(showtimeID).getRoomId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         Movie movie = null;
         try {
-            movie = dal.getMovieByShowTime(1);
+            movie = dal.getMovieByShowTime(showtimeID);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         String language = null;
         try {
-            language = dal.getLanguageFilm(movie.getMovieID());
+            language = dal.getLanguageFilm(movie.getId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         String date=null;
         try {
-             date = dal.getDateByShowtime(1);
+             date = dal.getDateByShowtime(showtimeID);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

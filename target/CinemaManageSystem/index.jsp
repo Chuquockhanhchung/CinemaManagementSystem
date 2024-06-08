@@ -275,7 +275,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                         <div class="prs_upcom_movie_box_wrapper">
                                             <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" src="<%= movie.getImage() %>" alt="movie_img"/>
+                                                <img style="height: 400px;" src="<%= movie.getImge() %>" alt="movie_img"/>
                                                 <div class="prs_upcom_movie_img_overlay"></div>
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
@@ -286,8 +286,8 @@
                                             </div>
                                             <div style="height: 150px" class="prs_upcom_movie_content_box">
                                                 <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#"><%= movie.getMovieName() %></a></h2>
-                                                    <p><%= movie.getMovieType() %></p>
+                                                    <h2><a href="#"><%= movie.getName() %></a></h2>
+                                                    <p><%= movie.getType() %></p>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -310,7 +310,7 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="movie_booking.jsp">
+                                                            <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -323,6 +323,11 @@
                                     <% } %>
                                 </div>
                             </div>
+                            <script>
+                                function bookMovie(movieID) {
+                                    window.location.href='booking_movie?id='+movieID;
+                                }
+                            </script>
                             <div class="item">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">

@@ -62,11 +62,13 @@ public class BookingMovieServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             MovieDAO dao = new MovieDAO(DBContext.getConn());
-             int movieId = Integer.parseInt(request.getParameter("id"));
+            int movieId = Integer.parseInt(request.getParameter("id"));
             Movie movie = dao.getMovie(movieId);
+            ArrayList<Movie> movietype = dao.getMovieType(movieId);
             ArrayList<ShowTime> list1 = dao.getShowTime(movieId);
             ArrayList<ShowTime> list2 = dao.getTime(movieId);
             HttpSession session = request.getSession();
+            session.setAttribute("movietype", movietype);
             session.setAttribute("movie", movie);
             session.setAttribute("showtime", list1);
             session.setAttribute("time", list2);
@@ -89,7 +91,22 @@ public class BookingMovieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            MovieDAO dao = new MovieDAO(DBContext.getConn());
+            int movieId = Integer.parseInt(request.getParameter("id"));
+            Movie movie = dao.getMovie(movieId);
+            ArrayList<ShowTime> list1 = dao.getShowTime(movieId);
+            ArrayList<ShowTime> list2 = dao.getTime(movieId);
+            HttpSession session = request.getSession();
+            session.setAttribute("movie", movie);
+            session.setAttribute("showtime", list1);
+            session.setAttribute("time", list2);
+
+            request.getRequestDispatcher("movie_booking.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**

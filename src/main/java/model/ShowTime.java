@@ -116,5 +116,19 @@ public class ShowTime {
         this.date = date;
     }
 
-   
+    @Override
+    public String toString() {
+        return "ShowTime{" +
+                "date='" + date + '\'' +
+                ", showTimeID=" + showTimeID +
+                ", roomID=" + roomID +
+                ", MovieID=" + MovieID +
+                ", dayName='" + dayName + '\'' +
+                ", Duration=" + Duration +
+                ", MaxTickets=" + MaxTickets +
+                ", day=" + day +
+                ", month=" + month +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }
