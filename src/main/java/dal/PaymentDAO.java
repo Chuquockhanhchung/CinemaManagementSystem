@@ -54,5 +54,8 @@ public class PaymentDAO {
         }
         return null;
     }
+    public Customer getCustomerByID(String customerID) {
+        String sql="";
+    }
 
 }

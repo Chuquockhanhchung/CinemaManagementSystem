@@ -55,8 +55,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div
                                     class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
-                                    <h3>${movie.getName()} - ${language} - (${movie.getDuration()} phút)</h3>
-                                    <h4>${date}</h4>
+                                    <h3>${sessionScope.movie.getName()} - ${sessionScope.language} - (${sessionScope.movie.getDuration()} phút)</h3>
+                                    <h4>${sessionScope.date}</h4>
                                 </div>
                                 <input type="hidden" name="product_id" />
                             </div>
@@ -90,11 +90,11 @@
                                 <div class="st_seat_lay_row float_left">
                                     <ul>
                                         <li class="st_seat_heading_row">D</li>
-                                        <c:forEach var="seat" items="${listSeat}">
+                                        <c:forEach var="seat" items="${sessionScope.listSeat}">
                                             <c:if test="${seat.getIndex()>=1 && seat.getIndex()<=22}">
                                                 <c:choose>
                                                     <c:when test="${seat.getStatus()=='active'}">
-                                                        <li><span>Pay ${movie.getPrice()*1.5} VND</span>
+                                                        <li><span>Pay ${sessionScope.movie.getPrice()*1.5} VND</span>
                                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
@@ -122,11 +122,11 @@
                                 <div class="st_seat_lay_row float_left">
                                     <ul>
                                         <li class="st_seat_heading_row">C</li>
-                                        <c:forEach var="seat" items="${listSeat}">
+                                        <c:forEach var="seat" items="${sessionScope.listSeat}">
                                             <c:if test="${seat.getIndex()>=23 && seat.getIndex()<=44}">
                                                 <c:choose>
                                                     <c:when test="${seat.getStatus()=='active'}">
-                                                        <li><span>Pay ${movie.getPrice()} VND</span>
+                                                        <li><span>Pay ${sessionScope.movie.getPrice()} VND</span>
                                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
@@ -150,11 +150,11 @@
                                     <ul>
                                         <li class="st_seat_heading_row">B</li>
 
-                                        <c:forEach var="seat" items="${listSeat}">
+                                        <c:forEach var="seat" items="${sessionScope.listSeat}">
                                             <c:if test="${seat.getIndex()>=45 && seat.getIndex()<=67}">
                                                 <c:choose>
                                                     <c:when test="${seat.getStatus()=='active'}">
-                                                        <li><span>Pay ${movie.getPrice()} VND</span>
+                                                        <li><span>Pay ${sessionScope.movie.getPrice()} VND</span>
                                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
@@ -176,11 +176,11 @@
                                     <ul>
                                         <li class="st_seat_heading_row">A</li>
 
-                                        <c:forEach var="seat" items="${listSeat}">
+                                        <c:forEach var="seat" items="${sessionScope.listSeat}">
                                             <c:if test="${seat.getIndex()>=68 && seat.getIndex()<=91}">
                                                 <c:choose>
                                                     <c:when test="${seat.getStatus()=='active'}">
-                                                        <li><span>Pay ${movie.getPrice()} VND</span>
+                                                        <li><span>Pay ${sessionScope.movie.getPrice()} VND</span>
                                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
@@ -283,7 +283,7 @@
 
                         // Set the href of the link with selected seats as query parameter
                         const paymentLink = document.getElementById('payment-link');
-                        paymentLink.href = `booking_type.jsp?selectedSeats=` + selectedSeatsString;
+                        paymentLink.href = `ticket?CustomerID=${sessionScope.user.idCustomer}&selectedSeats=` + selectedSeatsString;
                     });
 
             </script>

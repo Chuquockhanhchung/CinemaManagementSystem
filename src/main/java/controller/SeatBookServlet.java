@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Account;
 import model.Movie;
 import model.Seat;
@@ -79,10 +80,11 @@ public class SeatBookServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        request.setAttribute("listSeat", list);
-        request.setAttribute("movie", movie);
-        request.setAttribute("language", language);
-        request.setAttribute("date",date);
+        HttpSession session = request.getSession();
+        session.setAttribute("listSeat", list);
+        session.setAttribute("movie", movie);
+        session.setAttribute("language", language);
+        session.setAttribute("date",date);
         request.getRequestDispatcher("seat_booking.jsp").forward(request, response);
 
     }

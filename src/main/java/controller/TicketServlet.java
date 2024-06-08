@@ -48,9 +48,10 @@ public class TicketServlet extends HttpServlet {
         String customerID = request.getParameter("CustomerID");
 
         PaymentDAO dao = new PaymentDAO(DBContext.getConn());
-        Ticket ticket = dao.getTicketByID(customerID);
+        Ticket ticket = new Ticket();
 
         HttpSession session = request.getSession();
+
         session.setAttribute("ticket", ticket);
 
         response.sendRedirect("payment.jsp");

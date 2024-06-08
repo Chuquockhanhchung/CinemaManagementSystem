@@ -21,8 +21,7 @@ public class Ticket {
     }
 
 
-    public Ticket(String ticketID, String customerID, String fullName, String startTime, String seatID, String seatType, String eventName, float ticketPrice, String bookingDate, String status, String comboName, String movieName, String image) {
-        TicketID = ticketID;
+    public Ticket( String customerID, String fullName, String startTime, String seatID, String seatType, String eventName, float ticketPrice, String bookingDate, String status, String comboName, String movieName, String image) {
         CustomerID = customerID;
         FullName = fullName;
         StartTime = startTime;
