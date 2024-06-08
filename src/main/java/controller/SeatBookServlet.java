@@ -81,6 +81,7 @@ public class SeatBookServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         HttpSession session = request.getSession();
+        session.setAttribute("time",showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
         session.setAttribute("language", language);
