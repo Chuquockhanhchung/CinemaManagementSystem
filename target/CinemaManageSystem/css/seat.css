@@ -1,36 +1,36 @@
-.st_seat_lay_row #c01[type="checkbox"]+label:before {
+.st_seat_lay_row #c1[type="checkbox"]+label:before {
     content: "1";
 }
 
-.st_seat_lay_row #c02[type="checkbox"]+label:before {
+.st_seat_lay_row #c2[type="checkbox"]+label:before {
     content: "2";
 }
 
-.st_seat_lay_row #c03[type="checkbox"]+label:before {
+.st_seat_lay_row #c3[type="checkbox"]+label:before {
     content: "3";
 }
 
-.st_seat_lay_row #c04[type="checkbox"]+label:before {
+.st_seat_lay_row #c4[type="checkbox"]+label:before {
     content: "4";
 }
 
-.st_seat_lay_row #c05[type="checkbox"]+label:before {
+.st_seat_lay_row #c5[type="checkbox"]+label:before {
     content: "5";
 }
 
-.st_seat_lay_row #c06[type="checkbox"]+label:before {
+.st_seat_lay_row #c6[type="checkbox"]+label:before {
     content: "6";
 }
 
-.st_seat_lay_row #c07[type="checkbox"]+label:before {
+.st_seat_lay_row #c7[type="checkbox"]+label:before {
     content: "7";
 }
 
-.st_seat_lay_row #c08[type="checkbox"]+label:before {
+.st_seat_lay_row #c8[type="checkbox"]+label:before {
     content: "8";
 }
 
-.st_seat_lay_row #c09[type="checkbox"]+label:before {
+.st_seat_lay_row #c9[type="checkbox"]+label:before {
     content: "9";
 }
 
