@@ -55,7 +55,27 @@ public class PaymentDAO {
         return null;
     }
     public Customer getCustomerByID(String customerID) {
-        String sql="";
+        try {
+            String sql = "SELECT * from customer where CustomerID=7;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Customer customer = new Customer(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6)
+
+
+                );
+                return customer;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -4,6 +4,7 @@
 <%@ page import="model.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 
 <html lang="zxx">
 <head>
@@ -49,8 +50,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="st_bt_top_back_btn float_left"><a href="seat_booking.jsp"><i
-                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+                <div class="st_bt_top_back_btn float_left"><a href="seat?showtimeId=${sessionScope.time}"><i
+                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -90,7 +91,7 @@
                         <div class="col-md-12">
                             <div class="st_cherity_section float_left">
                                 <div class="st_cherity_img float_left">
-                                    <img src="images/content/cc1.jpg" alt="img">
+                                    <img src="${sessionScope.movie.getImge()}" alt="img">
                                 </div>
                             </div>
                         </div>
