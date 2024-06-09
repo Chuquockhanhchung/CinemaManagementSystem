@@ -11,11 +11,11 @@ package model;
  */
 public class Movie {
 
-    private int id;
+    private int MovieID;
     private String name;
     private String description;
     private String type;
-    private String imge;
+    private String image;
     private String actor;
     private String status;
     private int duration;
@@ -24,32 +24,24 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String name, String description, String type, String imge, String actor, String status, int duration,int price) {
-        this.id = id;
+    public Movie(int MovieID, String name, String description, String type, String imge, String actor, String status, int duration,int price) {
+        this.MovieID = MovieID;
         this.name = name;
         this.description = description;
         this.type = type;
-        this.imge = imge;
+        this.image = image;
         this.actor = actor;
         this.status = status;
         this.duration = duration;
         this.price = price;
     }
 
-    public int getPrice() {
-        return price;
+    public int getMovieID() {
+        return MovieID;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setMovieID(int movieID) {
+        MovieID = movieID;
     }
 
     public String getName() {
@@ -76,12 +68,12 @@ public class Movie {
         this.type = type;
     }
 
-    public String getImge() {
-        return imge;
+    public String getImage() {
+        return image;
     }
 
-    public void setImge(String imge) {
-        this.imge = imge;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getActor() {
@@ -108,7 +100,11 @@ public class Movie {
         this.duration = duration;
     }
 
+    public int getPrice() {
+        return price;
+    }
 
-
-
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
