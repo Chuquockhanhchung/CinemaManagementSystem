@@ -70,7 +70,7 @@ public class SeatBookServlet extends HttpServlet {
         }
         String language = null;
         try {
-            language = dal.getLanguageFilm(movie.getId());
+            language = dal.getLanguageFilm(movie.getMovieID());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
