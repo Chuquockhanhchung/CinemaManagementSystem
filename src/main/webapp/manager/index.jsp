@@ -5,6 +5,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en">
 
@@ -33,24 +34,24 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16"
-          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
+          href="public/assets/images/favicon.png">
+    <link href="public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+    <link href="public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
+    <link class="main-css" href="public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
-    
+
     <style>
         <%@ include file="managerStyle.css"%>
     </style>
@@ -475,7 +476,7 @@ Sidebar end
                                 <div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-15.jpg"
+                                            <img src="public/assets/images/card/Untitled-15.jpg"
                                                  alt="">
                                             <i class="las la-film image-icon"></i>
                                         </div>
@@ -513,7 +514,7 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-16.jpg"
+                                            <img src="public/assets/images/card/Untitled-16.jpg"
                                                  alt="">
                                             <i class="fa fa-music image-icon"></i>
 
@@ -551,7 +552,7 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-17.jpg"
+                                            <img src="public/assets/images/card/Untitled-17.jpg"
                                                  alt="">
                                             <i class="fa fa-music image-icon"></i>
 
@@ -590,7 +591,7 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-15.jpg"
+                                            <img src="public/assets/images/card/Untitled-15.jpg"
                                                  alt="">
                                             <i class="fa fa-music image-icon"></i>
 
@@ -628,7 +629,7 @@ Sidebar end
                                     </div>
                                     <div class="media event-list pb-3 border-bottom mb-3">
                                         <div class="image">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/card/Untitled-16.jpg"
+                                            <img src="public/assets/images/card/Untitled-16.jpg"
                                                  alt="">
                                             <i class="fa fa-music image-icon"></i>
 
@@ -668,7 +669,7 @@ Sidebar end
                                 <div class="card-footer text-center pt-0 border-0">
                                     <a href="javascript:void(0);"
                                        class="btn btn-secondary btn-lg  text-white dz-load-more" id="EventList"
-                                       rel="${pageContext.request.contextPath}/public/assets/ajax/event-list.jsp">Load
+                                       rel="public/assets/ajax/event-list.jsp">Load
                                         More</a>
                                 </div>
                             </div>
@@ -705,7 +706,7 @@ Sidebar end
                                 <div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                            <img src="public/assets/images/contacts/pic1.jpg"
                                                  alt="">
                                         </div>
                                         <div class="media-body">
@@ -720,7 +721,7 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic2.jpg"
+                                            <img src="public/assets/images/contacts/pic2.jpg"
                                                  alt="">
                                         </div>
                                         <div class="media-body">
@@ -735,7 +736,7 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic3.jpg"
+                                            <img src="public/assets/images/contacts/pic3.jpg"
                                                  alt="">
                                         </div>
                                         <div class="media-body">
@@ -750,7 +751,7 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                            <img src="public/assets/images/contacts/pic1.jpg"
                                                  alt="">
                                         </div>
                                         <div class="media-body">
@@ -765,7 +766,7 @@ Sidebar end
                                     </div>
                                     <div class="media pb-3 border-bottom mb-3 align-items-center">
                                         <div class="media-image me-2">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/contacts/pic1.jpg"
+                                            <img src="public/assets/images/contacts/pic1.jpg"
                                                  alt="">
                                         </div>
                                         <div class="media-body">
@@ -782,7 +783,7 @@ Sidebar end
                                 <div class="card-footer style-1 border-0 px-0">
                                     <a href="javascript:void();"
                                        class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales"
-                                       rel="${pageContext.request.contextPath}/public/assets/ajax/latest-sales.jsp"></a>
+                                       rel="public/assets/ajax/latest-sales.jsp"></a>
                                 </div>
                             </div>
                         </div>
@@ -908,7 +909,7 @@ Sidebar end
                                     <a href="javascript:void(0);"
                                        class="btn btn-secondary btn-block text-white dz-load-more"
                                        id="UpcomingEvent"
-                                       rel="${pageContext.request.contextPath}/public/assets/ajax/upcoming-event.jsp">Load
+                                       rel="public/assets/ajax/upcoming-event.jsp">Load
                                         More</a>
                                 </div>
                             </div>
@@ -939,21 +940,21 @@ Footer end
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="public/assets/vendor/global/global.min.js"></script>
+<script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 
-<script src="${pageContext.request.contextPath}/public/assets/vendor/chartjs/chart.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datetimepicker/js/moment.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/peity/jquery.peity.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/apexchart/apexchart.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/dashboard/dashboard-1.js"></script>
+<script src="public/assets/vendor/chartjs/chart.bundle.min.js"></script>
+<script src="public/assets/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="public/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="public/assets/vendor/peity/jquery.peity.min.js"></script>
+<script src="public/assets/vendor/apexchart/apexchart.js"></script>
+<script src="public/assets/js/dashboard/dashboard-1.js"></script>
 
-<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
+<script src="public/assets/js/custom.min.js"></script>
+<script src="public/assets/js/deznav-init.js"></script>
+<script src="public/assets/js/demo.js"></script>
+<script src="public/assets/js/styleSwitcher.js"></script>
 
 
 <!--**********************************
