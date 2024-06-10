@@ -18,6 +18,41 @@ public class MovieDAO extends DBContext {
         this.con = con;
     }
 
+    public static void main(String[] args) {
+        MovieDAO movieDAO = new MovieDAO(DBContext.getConn());
+        ArrayList<Movie> movies = movieDAO.filter("","","2024-05-24");
+        for (Movie movie : movies) {
+            System.out.println(movie);
+        }
+    }
+    public ArrayList<Movie> filter(String name, String status, String date){
+        ArrayList<Movie> movies = new ArrayList<>();
+        name = "%"+name+"%";
+        status = "%"+status+"%";
+        date = "%"+date+"%";
+        MovieTypeDAO tdao = new MovieTypeDAO(con);
+        String sql = "SELECT * FROM movie_all  where MovieName LIKE ? And Status Like ? and ReleaseDate Like ? ;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+             ps.setString(1,name);
+             ps.setString(2,status);
+             ps.setString(3,date);
+             ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setMovieID(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setStatus(rs.getString(13));
+                a.setReleaseDate(rs.getDate(7));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
     public ArrayList<Movie> getall_Movie() {
         ArrayList<Movie> movies = new ArrayList<>();
         MovieTypeDAO tdao = new MovieTypeDAO(con);
@@ -28,6 +63,8 @@ public class MovieDAO extends DBContext {
                 a.setMovieID(rs.getInt(1));
                 a.setName(rs.getString(2));
                 a.setType(rs.getString(3));
+                a.setStatus(rs.getString(13));
+                a.setReleaseDate(rs.getDate(7));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 movies.add(a);

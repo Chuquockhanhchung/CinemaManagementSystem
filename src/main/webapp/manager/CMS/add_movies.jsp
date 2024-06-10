@@ -33,25 +33,25 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16"
-          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
+          href="public/assets/images/favicon.png">
+    <link href="public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/select2/css/select2.min.css" rel="stylesheet"
+    <link href="public/assets/vendor/select2/css/select2.min.css" rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
+    <link href="public/assets/vendor/datatables/css/jquery.dataTables.min.css"
           rel="stylesheet" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+    <link href="public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet"
           type="text/css"/>
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
+    <link class="main-css" href="public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
 </head>
@@ -1617,18 +1617,18 @@ Footer end
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="public/assets/vendor/global/global.min.js"></script>
+<script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 
-<script src="${pageContext.request.contextPath}/public/assets/vendor/select2/js/select2.full.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/plugins-init/select2-init.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/ckeditor/ckeditor.js"></script>
+<script src="public/assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="public/assets/js/plugins-init/select2-init.js"></script>
+<script src="public/assets/vendor/ckeditor/ckeditor.js"></script>
 
-<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
+<script src="public/assets/js/custom.min.js"></script>
+<script src="public/assets/js/deznav-init.js"></script>
+<script src="public/assets/js/demo.js"></script>
+<script src="public/assets/js/styleSwitcher.js"></script>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

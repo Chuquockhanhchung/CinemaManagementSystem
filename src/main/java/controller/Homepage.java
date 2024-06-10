@@ -17,6 +17,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Account;
 import model.Customer;
 import model.Movie;
@@ -68,6 +69,8 @@ public class Homepage extends HttpServlet {
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
         ArrayList<Movie> movies = md.getall_Movie();
+        HttpSession session = request.getSession();
+        session.setAttribute("movies", movies);
         request.setAttribute("movies", movies);
         request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);

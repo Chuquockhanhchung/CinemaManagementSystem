@@ -12,7 +12,7 @@
 
 <head>
     <!-- Title -->
-    <title>Ventic - CodeIgniter Event Ticketing Admin Dashboard Template</title>
+    <title>Manage Movie</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,36 +35,55 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16"
-          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
+          href="public/assets/images/favicon.png">
 
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
+    <link href="public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet" type="text/css"/>
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
+    <link href="public/assets/vendor/datatables/css/jquery.dataTables.min.css"
           rel="stylesheet" type="text/css"/>
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+    <link href="public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet" type="text/css"/>
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
+    <link class="main-css" href="public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
     <style>
         <%@ include file="../managerStyle.css"%>
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Khoảng cách giữa các phần tử */
+        }
+        .form-container > div {
+            flex: 1 1 20%; /* Điều chỉnh kích thước cho mỗi phần tử */
+            min-width: 150px; /* Đảm bảo kích thước tối thiểu cho mỗi phần tử */
+        }
+        .form-container .btn-container {
+            display: flex;
+            gap: 10px;
+            flex: 1 1 30%; /* Điều chỉnh kích thước container chứa nút */
+        }
+        .form-container .btn-container > button {
+            flex: 1;
+            /* Để các nút có cùng kích thước */
+        }
     </style>
 </head>
 
@@ -172,7 +191,7 @@ Chat box start
                                 <li class="active dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/1.jpg"
+                                            <img src="public/assets/images/avatar/1.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -198,7 +217,7 @@ Chat box start
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/3.jpg"
+                                            <img src="public/assets/images/avatar/3.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon"></span>
                                         </div>
@@ -211,7 +230,7 @@ Chat box start
                                 <li class="dz-chat-user">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="${pageContext.request.contextPath}/public/assets/images/avatar/4.jpg"
+                                            <img src="public/assets/images/avatar/4.jpg"
                                                  class="rounded-circle user_img" alt="">
                                             <span class="online_icon offline"></span>
                                         </div>
@@ -1024,32 +1043,31 @@ Content body start
                         <div class="cm-content-body  form excerpt">
                             <div class="card-body pb-2">
                                 <div class="row">
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                                               placeholder="Title">
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <select class="form-control default-select dashboard-select-2 h-auto wide"
-                                                aria-label="Default select example">
-                                            <option selected>Select Status</option>
-                                            <option value="1">Published</option>
-                                            <option value="2">Draft</option>
-                                            <option value="3">Trash</option>
-                                            <option value="4">Private</option>
-                                            <option value="5">Pending</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <input class="form-control" type="text" id="datepicker">
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <button class="btn btn-primary" title="Click here to Search" type="button"><i
-                                                class="fa-sharp fa-solid fa-filter me-1"></i>Filter
-                                        </button>
-                                        <button class="btn btn-danger light" title="Click here to remove filter"
-                                                type="button">Remove Filter
-                                        </button>
-                                    </div>
+                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                   placeholder="Title" name="title">
+                                        </div>
+                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                            <select id="statusSelect" name="status" class="form-control default-select dashboard-select-2 h-auto wide"
+                                                    aria-label="Default select example">
+                                                <option value="">Select Status</option>
+                                                <option value="Đang Chiếu">Đang Chiếu</option>
+                                                <option value="Sắp Chiếu">Sắp Chiếu</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                            <input class="form-control" name="date" type="text" id="datepicker">
+                                        </div>
+                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3 btn-container">
+                                            <button class="btn btn-primary" title="Click here to Search" id="filterButton"><i
+                                                    class="fa-sharp fa-solid fa-filter me-1" ></i>Filter
+                                            </button>
+                                            <button class="btn btn-danger light" title="Click here to remove filter"
+                                                    type="button" id="removeFilterButton">Remove Filter
+                                            </button>
+                                        </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1083,91 +1101,27 @@ Content body start
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>About Us</td>
-                                            <td>Published</td>
-                                            <td>18 Feb, 2024</td>
-                                            <td class="text-end">
+                                        <c:forEach items="${sessionScope.movies}" var="m">
+                                            <tr>
+                                                <td>${m.getMovieID()}</td>
+                                                <td>${m.getName()}</td>
+                                                <td>${m.getStatus()}</td>
+                                                <td>${m.getReleaseDate()}</td>
+                                                <td class="text-end">
 
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>FAQ</td>
-                                            <td>Published</td>
-                                            <td>13 Jan, 2024</td>
-                                            <td class="text-end">
+                                                    <a href="javascript:void(0);"
+                                                       class="btn btn-warning btn-sm content-icon">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <a href="javascript:void(0);"
+                                                       class="btn btn-danger btn-sm content-icon">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
 
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pricing</td>
-                                            <td>Published</td>
-                                            <td>13 Jan, 2024</td>
-                                            <td class="text-end">
 
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Schedule</td>
-                                            <td>Published</td>
-                                            <td>13 Jan, 2024</td>
-                                            <td class="text-end">
-
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Under Maintenance</td>
-                                            <td>Published</td>
-                                            <td>25 Jan, 2024</td>
-                                            <td class="text-end">
-
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                   class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                     <div class="d-lg-flex d-block align-items-center width-defult justify-content-between flex-wrap py-3">
@@ -1217,16 +1171,16 @@ Footer end
 <script>
     var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
 </script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="public/assets/vendor/global/global.min.js"></script>
+<script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
+<script src="public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
-<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
+<script src="public/assets/js/custom.min.js"></script>
+<script src="public/assets/js/deznav-init.js"></script>
+<script src="public/assets/js/demo.js"></script>
+<script src="public/assets/js/styleSwitcher.js"></script>
 <script>
     $(function () {
         $("#datepicker").datepicker({
@@ -1242,5 +1196,71 @@ Footer end
     Main wrapper end
 ***********************************-->
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded and parsed');
+        var filterButton = document.getElementById('filterButton');
+        var removeFilterButton = document.getElementById('removeFilterButton');
 
+        if (!filterButton) {
+            console.error('Filter button not found');
+        }
+
+        if (!removeFilterButton) {
+            console.error('Remove filter button not found');
+        }
+
+        filterButton.addEventListener('click', function() {
+            console.log('Filter button clicked');
+
+            var title = document.getElementById('exampleFormControlInput1').value;
+            var status = document.getElementById('statusSelect').value;
+            var date = document.getElementById('datepicker').value;
+
+            console.log('Title:', title);
+            console.log('Status:', status);
+            console.log('Date:', date);
+            var queryParams="";
+            var titlev="title=";
+            var statusv="status=";
+            var datev="date=";
+            if (title) {
+                titlev+=title;
+                queryParams=titlev;
+            }
+            if (status) {
+                statusv+=status;
+                if(title){
+                    queryParams=queryParams+"&&"+statusv;
+                }else{
+                    queryParams=queryParams+statusv;
+                }
+
+            }
+            if (date) {
+                datev+=date;
+                if(title || status){
+                    queryParams=queryParams+"&&"+datev;
+                }else{
+                    queryParams=queryParams+datev;
+                }
+
+            }
+
+
+            var newUrl = `http://localhost:9999/CinemaManageSystem_war_exploded/searchmovie?`+queryParams;
+            console.log('Navigating to:', newUrl);
+
+            // window.location.href = newUrl;
+        });
+
+        removeFilterButton.addEventListener('click', function() {
+            console.log('Remove filter button clicked');
+
+            document.getElementById('exampleFormControlInput1').value = '';
+            document.getElementById('statusSelect').value = 'Select Status';
+            document.getElementById('datepicker').value = '';
+        });
+    });
+</script>
 </html>

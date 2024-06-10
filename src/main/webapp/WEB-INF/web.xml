@@ -36,12 +36,20 @@
         <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SearchMovie</servlet-name>
+        <servlet-class>controller.SearchMovie</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdAccountServlet</servlet-name>
         <servlet-class>controller.AdAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>controller.signup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccessManage</servlet-name>
+        <servlet-class>controller.AccessManage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>
@@ -117,8 +125,16 @@
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AccessManage</servlet-name>
+        <url-pattern>/managemovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchMovie</servlet-name>
+        <url-pattern>/searchmovie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Homepage</servlet-name>

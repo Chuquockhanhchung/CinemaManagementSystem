@@ -38,8 +38,8 @@ public class DBContext {
 //        return conn;
 //    } 
 //}
-    
-    
+
+
     private static String URL = "jdbc:mysql://cinemamanagementsystem.mysql.database.azure.com:3306/cinemamanagersystem?useSSL=true";
 
     private static String USER = "cinema";
@@ -72,7 +72,7 @@ public class DBContext {
     }
 }
 
-    
+
 //    private static String URL = "jdbc:sqlserver://SUPPER:1433;DatabaseName=ShopBacNamHai;user=sa;password=123;encrypt=true;trustServerCertificate=true;";
 //
 //    private static String USER = "sa";
@@ -94,5 +94,3 @@ public class DBContext {
 //        }
 //        return conn;
 //    }
-
-
