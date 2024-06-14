@@ -64,16 +64,16 @@
         <servlet-class>controller.EditAccount</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Homepage</servlet-name>
-        <servlet-class>controller.Homepage</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>StaffServlet</servlet-name>
         <servlet-class>controller.StaffServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageServlet</servlet-name>
         <servlet-class>controller.ManageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Homepage</servlet-name>
+        <servlet-class>controller.Homepage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ActiveServlet</servlet-name>
@@ -88,9 +88,18 @@
         <servlet-class>controller.sendEmail</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SeatBookServlet</servlet-name>
+        <servlet-class>controller.SeatBookServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Resetpassword</servlet-name>
         <servlet-class>controller.Resetpassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookingMovieServlet</servlet-name>
+        <servlet-class>controller.BookingMovieServlet</servlet-class>
+    </servlet>
+
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>controller.TicketServlet</servlet-class>
@@ -100,16 +109,20 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>SeatBookServlet</servlet-name>
+        <url-pattern>/seat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Homepage</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Homepage</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActiveServlet</servlet-name>
@@ -159,6 +172,11 @@
         <servlet-name>Resetpassword</servlet-name>
         <url-pattern>/resetPassword</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingMovieServlet</servlet-name>
+        <url-pattern>/booking_movie</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/ticket</url-pattern>

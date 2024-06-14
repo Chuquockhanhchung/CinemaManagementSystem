@@ -5,6 +5,8 @@
 package dal;
 
 import java.sql.*;
+import model.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,16 +37,6 @@ public class DBContext {
         }
         return conn;
     }
-<<<<<<< Updated upstream
-    public static void main(String[] args) {
-        try (Connection con = getConn()) {
-            // Connection successful, you can perform further operations here if needed
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-}
-=======
 }
     
     
@@ -80,7 +72,6 @@ public class DBContext {
 //    }
 //}
 
->>>>>>> Stashed changes
     
 //    private static String URL = "jdbc:sqlserver://SUPPER:1433;DatabaseName=ShopBacNamHai;user=sa;password=123;encrypt=true;trustServerCertificate=true;";
 //

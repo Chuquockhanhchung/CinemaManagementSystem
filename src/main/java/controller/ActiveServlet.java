@@ -48,14 +48,13 @@ public class ActiveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("ids");
-        String status = request.getParameter("status");
-        String[] ids = id.split(",");
-        String[] statuses = status.split(",");
+        String id = request.getParameter("accountID");
+        String status = request.getParameter("currentStatus");
+
         AdminDAO dao = new AdminDAO(DBContext.getConn());
-        for(int i=0; i<ids.length; i++) {
-            dao.ChangeStatus(ids[i],(statuses[i].equals("active")?"unactive":"active") );
-        }
+
+        dao.ChangeStatus(id,(status.equals("active")?"unactive":"active") );
+
 
         ArrayList<Account> list = dao.getall_Account();
         request.setAttribute("listAcc", list);
@@ -68,7 +67,19 @@ public class ActiveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("accountID");
+        String status = request.getParameter("currentStatus");
+
+        AdminDAO dao = new AdminDAO(DBContext.getConn());
+
+        dao.ChangeStatus(id,(status.equals("active")?"unactive":"active") );
+
+
+        ArrayList<Account> list = dao.getall_Account();
+        request.setAttribute("listAcc", list);
+        request.setAttribute("numberAcc",list.size());
+        request.getRequestDispatcher("/admin").forward(request, response);
+
     }
 
     /**

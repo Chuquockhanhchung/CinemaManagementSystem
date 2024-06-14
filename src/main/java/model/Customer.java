@@ -43,6 +43,13 @@ public class Customer {
         this.date = date;
         this.status = status;
     }
+    public Customer(String id, String fullname, String email, String phone, String picture) {
+        this.id = id;
+        this.name = fullname;
+        this.email = email;
+        this.phone = phone;
+        this.picture = picture;
+    }
 
 
     public int getIdCustomer() {

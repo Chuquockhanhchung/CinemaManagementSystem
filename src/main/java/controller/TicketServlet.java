@@ -7,26 +7,23 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-<<<<<<< Updated upstream
-=======
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
->>>>>>> Stashed changes
 import java.util.List;
-import java.util.Scanner;
 
 import dal.DBContext;
 import dal.PaymentDAO;
+import dal.TicketDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Customer;
+import model.Movie;
+import model.ShowTime;
 import model.Ticket;
-import org.json.JSONObject;
 
 public class TicketServlet extends HttpServlet {
 
@@ -50,18 +47,62 @@ public class TicketServlet extends HttpServlet {
             out.println("</html>");
         }
     }
+    public double getPrice(String seat, int price) {
 
+        String[] seats = seat.split(",");
+        double priceAll = 0;
+        for (int i = 0; i < seats.length; i++) {
+            if(seats[i].contains("D")) {
+                priceAll += price*1.5 ;
+            }else{
+                priceAll += price ;
+            }
+        }
+        return priceAll;
+    }
+    public String changeSeat(String listSeat){
+        String seatAfterChange="";
+        String[] seats = listSeat.split(",");
+        for(int i=0; i<seats.length; i++){
+            seats[i] = seats[i].trim();
+            int seatInt=0;
+            if(seats.length>2) {
+                 seatInt = Integer.parseInt(seats[i].split("")[1]) * 10 + Integer.parseInt(seats[i].split("")[2]);
+            }else{
+                 seatInt = Integer.parseInt(seats[i].split("")[1]);
+            }
+            if(seatInt<=22){
+                seatAfterChange+="D"+seatInt;
+            }else if(seatInt>22 && seatInt<=44){
+                int s = seatInt%22;
+                seatAfterChange+="C"+((s==0)?22:s);
+            }else if(seatInt>44 && seatInt<=66){
+                int s = seatInt%22;
+                seatAfterChange+="B"+((s==0)?22:s);
+            }else if(seatInt==67){
+                seatAfterChange+="B23";
+            }else{
+                int s = seatInt%22-1;
+                seatAfterChange+="A"+((s==0)?22:s);
+            }
+            if(i<seats.length-1){
+                seatAfterChange+=",";
+            }
+        }
+        return seatAfterChange;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String customerID = request.getParameter("CustomerID");
+        String seatID = request.getParameter("selectedSeats");
 
+        Date date =new Date();
+        HttpSession session = request.getSession();
+        Movie movie = (Movie) session.getAttribute("movie");
         PaymentDAO dao = new PaymentDAO(DBContext.getConn());
-<<<<<<< Updated upstream
-        Ticket ticket = dao.getTicketByID(customerID);
-=======
         TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
-        Customer customer = (Customer) session.getAttribute("user");
+        Customer customer = dao.getCustomerByID(customerID);
         String time = null;
         try {
             time = ticketDAO.getDateByShowtime((int)session.getAttribute("time"));
@@ -86,9 +127,7 @@ public class TicketServlet extends HttpServlet {
                 );
 
 
->>>>>>> Stashed changes
 
-        HttpSession session = request.getSession();
         session.setAttribute("ticket", ticket);
 
         response.sendRedirect("payment.jsp");
@@ -98,7 +137,7 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+        processRequest(request, response);
     }
 
     @Override

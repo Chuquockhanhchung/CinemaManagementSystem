@@ -33,7 +33,9 @@ html {
     padding-right: 0 !important;
     overflow-x: hidden;
 }
-
+.platinum-label {
+    background-color: #E5E4E2; /* Hex code for platinum color */
+}
 body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #ffffff;
@@ -10408,6 +10410,11 @@ i:before {
     background: #4d4f5c;
     border: 1px solid #4d4f5c;
     color: rgba(255, 255, 255, 0.38);
+}
+.vip input[type="checkbox"]:checked + label:before {
+    background: #0000FF; /* Blue color */
+    border: 1px solid #0000FF; /* Blue color */
+    color: white; /* You can adjust the text color if needed */
 }
 
 .seat_disable label {

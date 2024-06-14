@@ -54,11 +54,9 @@ public class PaymentDAO {
         }
         return null;
     }
-<<<<<<< Updated upstream
-=======
     public Customer getCustomerByID(String customerID) {
         try {
-            String sql = "SELECT * from customer where CustomerID= ? ";
+            String sql = "SELECT * from customer where CustomerID=7;";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -79,6 +77,5 @@ public class PaymentDAO {
         }
         return null;
     }
->>>>>>> Stashed changes
 
 }
