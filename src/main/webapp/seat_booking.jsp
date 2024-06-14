@@ -544,6 +544,7 @@
                 });
             });
 
+<<<<<<< Updated upstream
             // Add isotope click function
             $(".protfoli_filter li").on('click', function () {
                 $(".protfoli_filter li").removeClass("active");
@@ -563,6 +564,25 @@
         ;
     };
     protfolioIsotope();
+=======
+                        // Add isotope click function
+                        $(".protfoli_filter li").on('click', function () {
+                            $(".protfoli_filter li").removeClass("active");
+                            $(this).addClass("active");
+                            var selector = $(this).attr("data-filter");
+                            $(".protfoli_inner, .portfoli_inner").isotope({
+                                filter: selector,
+                                animationOptions: {
+                                    duration: 450,
+                                    easing: "linear",
+                                    queue: false,
+                                }
+                            });
+                        });
+                    }
+                    };
+                    protfolioIsotope();
+>>>>>>> Stashed changes
 
     function changeQty(increase) {
         var qty = parseInt($('.select_number').find("input").val());

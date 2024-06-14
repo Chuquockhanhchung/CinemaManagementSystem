@@ -7,7 +7,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+<<<<<<< Updated upstream
+=======
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.Date;
+>>>>>>> Stashed changes
 import java.util.List;
+import java.util.Scanner;
 
 import dal.DBContext;
 import dal.PaymentDAO;
@@ -18,6 +26,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Ticket;
+import org.json.JSONObject;
 
 public class TicketServlet extends HttpServlet {
 
@@ -48,7 +57,36 @@ public class TicketServlet extends HttpServlet {
         String customerID = request.getParameter("CustomerID");
 
         PaymentDAO dao = new PaymentDAO(DBContext.getConn());
+<<<<<<< Updated upstream
         Ticket ticket = dao.getTicketByID(customerID);
+=======
+        TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
+        Customer customer = (Customer) session.getAttribute("user");
+        String time = null;
+        try {
+            time = ticketDAO.getDateByShowtime((int)session.getAttribute("time"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        String Seater=changeSeat(seatID);
+        String[] s2 = Seater.split(",");
+
+        Ticket ticket = new Ticket(customer.getId(),
+                customer.getName(),
+                time,
+                Seater,
+                "",
+                "",
+                (float) getPrice(Seater,movie.getPrice()),
+                date.toString(),
+                "Hold",
+                "",
+                movie.getName(),
+                ""
+                );
+
+
+>>>>>>> Stashed changes
 
         HttpSession session = request.getSession();
         session.setAttribute("ticket", ticket);
@@ -60,7 +98,7 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
     }
 
     @Override
