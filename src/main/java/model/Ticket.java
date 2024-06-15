@@ -2,11 +2,12 @@ package model;
 
 public class Ticket {
 
-    private String TicketID;
-    private String CustomerID;
+    private int TicketID;
+    private int CustomerID;
     private String FullName;
+    private int ShowtimeID;
     private String StartTime;
-    private String SeatID;
+    private int SeatID;
     private String SeatType;
     private String EventName;
     private float TicketPrice;
@@ -21,34 +22,62 @@ public class Ticket {
     }
 
 
-    public Ticket( String customerID, String fullName, String startTime, String seatID, String seatType, String eventName, float ticketPrice, String bookingDate, String status, String comboName, String movieName, String image) {
+    public Ticket(int customerID, int showtimeID,  int seatID, float ticketPrice, String status) {
         CustomerID = customerID;
-        FullName = fullName;
-        StartTime = startTime;
+        ShowtimeID = showtimeID;
         SeatID = seatID;
-        SeatType = seatType;
-        EventName = eventName;
         TicketPrice = ticketPrice;
-        BookingDate = bookingDate;
         Status = status;
-        ComboName = comboName;
-        MovieName = movieName;
-        Image = image;
     }
 
-    public String getTicketID() {
+    public Ticket(int CustomerID, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String s3) {
+        CustomerID = CustomerID;
+        FullName = name;
+        StartTime = time;
+        SeatType = seater;
+        EventName = s;
+        ComboName = s1;
+        TicketPrice = price;
+        Status = string;
+        BookingDate = hold;
+        MovieName = s2;
+        Image = name1;
+        SeatID = Integer.parseInt(s3);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "TicketID=" + TicketID +
+                ", CustomerID=" + CustomerID +
+                ", FullName='" + FullName + '\'' +
+                ", ShowtimeID=" + ShowtimeID +
+                ", StartTime='" + StartTime + '\'' +
+                ", SeatID=" + SeatID +
+                ", SeatType='" + SeatType + '\'' +
+                ", EventName='" + EventName + '\'' +
+                ", TicketPrice=" + TicketPrice +
+                ", BookingDate='" + BookingDate + '\'' +
+                ", Status='" + Status + '\'' +
+                ", ComboName='" + ComboName + '\'' +
+                ", MovieName='" + MovieName + '\'' +
+                ", Image='" + Image + '\'' +
+                '}';
+    }
+
+    public int getTicketID() {
         return TicketID;
     }
 
-    public void setTicketID(String ticketID) {
+    public void setTicketID(int ticketID) {
         TicketID = ticketID;
     }
 
-    public String getCustomerID() {
+    public int getCustomerID() {
         return CustomerID;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(int customerID) {
         CustomerID = customerID;
     }
 
@@ -60,6 +89,14 @@ public class Ticket {
         FullName = fullName;
     }
 
+    public int getShowtimeID() {
+        return ShowtimeID;
+    }
+
+    public void setShowtimeID(int showtimeID) {
+        ShowtimeID = showtimeID;
+    }
+
     public String getStartTime() {
         return StartTime;
     }
@@ -68,11 +105,11 @@ public class Ticket {
         StartTime = startTime;
     }
 
-    public String getSeatID() {
+    public int getSeatID() {
         return SeatID;
     }
 
-    public void setSeatID(String seatID) {
+    public void setSeatID(int seatID) {
         SeatID = seatID;
     }
 

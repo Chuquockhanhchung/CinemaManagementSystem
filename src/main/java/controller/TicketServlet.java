@@ -7,9 +7,12 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import dal.DBContext;
 import dal.PaymentDAO;
@@ -24,6 +27,7 @@ import model.Customer;
 import model.Movie;
 import model.ShowTime;
 import model.Ticket;
+import org.json.JSONObject;
 
 public class TicketServlet extends HttpServlet {
 
@@ -94,7 +98,7 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String customerID = request.getParameter("CustomerID");
+        int customerID = Integer.parseInt(request.getParameter("CustomerID"));
         String seatID = request.getParameter("selectedSeats");
 
         Date date =new Date();
@@ -112,7 +116,7 @@ public class TicketServlet extends HttpServlet {
         String Seater=changeSeat(seatID);
         String[] s2 = Seater.split(",");
 
-        Ticket ticket = new Ticket(customer.getId(),
+        Ticket ticket = new Ticket(customer.getIdCustomer(),
                 customer.getName(),
                 time,
                 Seater,
@@ -126,8 +130,6 @@ public class TicketServlet extends HttpServlet {
                 ""
                 );
 
-
-
         session.setAttribute("ticket", ticket);
 
         response.sendRedirect("payment.jsp");
@@ -137,7 +139,45 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String content = request.getParameter("content");
+        String price = request.getParameter("price");
+
+        String urlString = "https://script.google.com/macros/s/AKfycbxVVi9V7W28MhMyCgYECnPssLc_qQgrkkyjY6LrsWO5o8d6ZUoeq3UgB5CqxXAaSpce/exec";
+        URL url = new URL(urlString);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+
+        // Getting the response code
+        int responsecode = conn.getResponseCode();
+
+        if (responsecode != 200) {
+            throw new RuntimeException("HttpResponseCode: " + responsecode);
+        } else {
+            StringBuilder inline = new StringBuilder();
+            Scanner scanner = new Scanner(url.openStream());
+
+            while (scanner.hasNext()) {
+                inline.append(scanner.nextLine());
+            }
+            scanner.close();
+
+            JSONObject jsonObject = new JSONObject(inline.toString());
+            // Assume the lastPaid data is at the last element of the array.
+            JSONObject lastPaid = jsonObject.getJSONArray("data").getJSONObject(jsonObject.getJSONArray("data").length() - 1);
+
+            String lastContent = lastPaid.getString("Mô tả");
+            int lastPrice = lastPaid.getInt("Giá trị");
+
+            boolean isPaid = lastContent.contains(content) && lastPrice >= Integer.parseInt(price);
+
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            JSONObject result = new JSONObject();
+            result.put("isPaid", isPaid);
+            out.print(result);
+            out.flush();
+        }
     }
 
     @Override
