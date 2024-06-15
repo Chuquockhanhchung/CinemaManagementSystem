@@ -15,7 +15,7 @@ public class Movie {
     private String name;
     private String description;
     private String type;
-    private String imge;
+    private String image;
     private String actor;
     private String status;
     private int duration;
@@ -24,23 +24,15 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String name, String description, String type, String imge, String actor, String status, int duration,int price) {
+    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
-        this.imge = imge;
+        this.image = image;
         this.actor = actor;
         this.status = status;
         this.duration = duration;
-        this.price = price;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -76,12 +68,12 @@ public class Movie {
         this.type = type;
     }
 
-    public String getImge() {
-        return imge;
+    public String getImage() {
+        return image;
     }
 
-    public void setImge(String imge) {
-        this.imge = imge;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getActor() {
@@ -108,7 +100,11 @@ public class Movie {
         this.duration = duration;
     }
 
+    public int getPrice() {
+        return price;
+    }
 
-
-
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

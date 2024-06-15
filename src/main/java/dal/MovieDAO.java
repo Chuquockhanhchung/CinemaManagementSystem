@@ -29,7 +29,7 @@ public class MovieDAO extends DBContext {
                 a.setName(rs.getString(2));
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
-                a.setImge(rs.getString(10));
+                a.setImage(rs.getString(10));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -51,7 +51,7 @@ public class MovieDAO extends DBContext {
                 c.setName(rs.getString(2));
                 c.setDescription(rs.getString(3));
                 c.setType(rs.getString(4));
-                c.setImge(rs.getString(5));
+                c.setImage(rs.getString(5));
                 c.setStatus(rs.getString(6));
                 c.setDuration(rs.getInt(7));
                 list.add(c);
@@ -75,7 +75,7 @@ public class MovieDAO extends DBContext {
                 c.setId(rs.getInt(1));
                 c.setName(rs.getString(2));
                 c.setDescription(rs.getString(3));
-                c.setImge(rs.getString(4));
+                c.setImage(rs.getString(4));
                 c.setStatus(rs.getString(5));
                 c.setDuration(rs.getInt(6));
 

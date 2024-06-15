@@ -63,6 +63,21 @@
         </div>
     </div>
     <!-- prs title wrapper End -->
+
+    <c:if test="${not empty succMess}">
+        <div class="position-relative mb-4" aria-live="polite" aria-atomic="true" >
+            <div class="toast show ">
+                <div class="toast-header ">
+                    <strong class="me-auto">Chúc Mừng</strong>
+                    <small class="text-body-secondary"><i class="fas fa-check"></i></small>
+                    <button class="btn ms-2 p-0" type="button" data-bs-dismiss="toast" aria-label="Close"><span class="uil uil-times fs-7"></span></button>
+                </div>
+                <div class="toast-body">${succMess}.</div>
+            </div>
+        </div>
+        <c:remove var="succMess" scope="session"/>
+    </c:if>
+
     <!-- st bc Start -->
     <div class="st_bcc_main_main_wrapper float_left">
         <div class="st_bcc_main_wrapper">

@@ -146,7 +146,7 @@
                 <form action="booking_movie" method="get">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <c:if test="${sessionScope.movie != null}">
-                            <img  src="${sessionScope.movie.getImge()}" width="100%" height="height" alt="alt"/>
+                            <img  src="${sessionScope.movie.getImage()}" width="100%" height="height" alt="alt"/>
 
                         </c:if>
 

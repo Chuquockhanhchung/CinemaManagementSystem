@@ -275,7 +275,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                         <div class="prs_upcom_movie_box_wrapper">
                                             <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" src="<%= movie.getImge() %>" alt="movie_img"/>
+                                                <img style="height: 400px;" src="<%= movie.getImage() %>" alt="movie_img"/>
                                                 <div class="prs_upcom_movie_img_overlay"></div>
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
