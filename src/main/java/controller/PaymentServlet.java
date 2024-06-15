@@ -51,7 +51,7 @@ public class PaymentServlet extends HttpServlet {
             int ticketID = Integer.parseInt(request.getParameter("ticketID"));
             int customerID = Integer.parseInt(request.getParameter("idCustomer"));
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
-            String seatID = request.getParameter("seatID");
+            int seatID = Integer.parseInt(request.getParameter("seatID"));
             float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
             String status = request.getParameter("status");
 
@@ -69,7 +69,8 @@ public class PaymentServlet extends HttpServlet {
         }
 
     }
-    
+
+
     @Override
     public String getServletInfo() {
         return "Short description";

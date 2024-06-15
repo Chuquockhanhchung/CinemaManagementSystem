@@ -39,7 +39,7 @@ public class PaymentDAO {
                 ticket.setCustomerID(rs.getInt(2));
                 ticket.setFullName(rs.getString(3));
                 ticket.setStartTime(rs.getString(4));
-                ticket.setSeatID(rs.getString(5));
+                ticket.setSeatID(rs.getInt(5));
                 ticket.setSeatType(rs.getString(6));
                 ticket.setTicketPrice(rs.getFloat(7));
                 ticket.setBookingDate(rs.getString(8));
@@ -84,7 +84,7 @@ public class PaymentDAO {
         PreparedStatement ps = con.prepareStatement(sql) ;
             ps.setInt(1, ticket.getCustomerID());
             ps.setInt(2, ticket.getShowtimeID());
-            ps.setString(3, ticket.getSeatID());
+            ps.setInt(3, ticket.getSeatID());
             ps.setFloat(4, ticket.getTicketPrice());
             ps.setString(5, ticket.getStatus());
 
