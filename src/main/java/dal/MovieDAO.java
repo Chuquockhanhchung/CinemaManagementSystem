@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MovieDAO extends DBContext {
+
     private final Connection con;
 
     public MovieDAO(Connection con) {
@@ -88,7 +89,6 @@ public class MovieDAO extends DBContext {
     }
 
 //
-
     public ArrayList<ShowTime> getShowTime(int id) {
         ArrayList<ShowTime> list = new ArrayList<>();
         String sql = " SELECT s.ShowtimeID,s.RoomID, s.MovieID, CASE DAYOFWEEK(s.showdate)\n"
@@ -157,4 +157,24 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
+
+    public ArrayList<Movie> getSearch_Movie(String name) {
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all m where m.movieName  LIKE '%"+name+"%'";
+         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImge(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
 }

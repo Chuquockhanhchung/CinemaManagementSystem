@@ -13,362 +13,358 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+              integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-</head>
-<body>
-<div class="prs_navigation_main_wrapper">
-    <div class="container-fluid">
-        <div id="search_open" class="gc_search_box">
-            <input type="text" placeholder="Search here">
-            <button><i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div class="prs_navi_left_main_wrapper">
-            <div class="prs_logo_main_wrapper">
-                <a href="index.jsp">
-                    <img src="images/header/logo.png" alt="logo"/>
-                </a>
-            </div>
-            <div class="prs_menu_main_wrapper">
-                <nav class="navbar navbar-default">
-                    <div id="dl-menu" class="xv-menuwrapper responsive-menu">
-                        <button class="dl-trigger">
-                            <img src="images/header/bars.png" alt="bar_png">
-                        </button>
-                        <div class="prs_mobail_searchbar_wrapper" id="search_button"><i class="fa fa-search"></i>
-                        </div>
-                        <div class="clearfix"></div>
-                        <ul class="dl-menu">
-                            <li class="parent"><a href="#">Trang chủ</a>
-                                <ul class="lg-submenu">
-                                    <li><a href="index.jsp">Index-I</a></li>
-                                    <li><a href="index2.jsp">Index-II</a></li>
-                                    <li><a href="index3.jsp">Index-III</a></li>
-                                    <li><a href="index4.jsp">Index-IV</a></li>
-                                </ul>
-                            </li>
-                            <li class="parent megamenu"><a href="#">Phim</a>
-                                <ul class="lg-submenu">
-                                    <li><a>Phim Hindi phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bajiro
-                                                Mastani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Drishyam</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Queen</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wanted</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Veer</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jannat</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baaghi</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Baaghi-2</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Ki & Ka</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kahaani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jab We
-                                                Met</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Kannada phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Zoom</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kirik
-                                                Party</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Mahakali</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">karvva</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Ishtakamya</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Jigarthanda</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Abhimani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Priyanka</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Bengali phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baro
-                                                Bou</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Tomake</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jeevan</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Haraner
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Bidhilipi</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bhalobasa
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Prateek</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Aparanher</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Mukhyamantri</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Charmurti</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Hollywood phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wind
-                                                River</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Coco</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Meyerowitz
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Ragnarok</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Driver</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Dunkirk</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Big Sick
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">American
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="prs_navi_slider_wraper">
-                                            <div class="owl-carousel owl-theme">
-                                                <div class="item">
-                                                    <img src="images/content/up1.jpg" alt="navi_img">
-                                                </div>
-                                                <div class="item">
-                                                    <img src="images/content/up2.jpg" alt="navi_img">
-                                                </div>
-                                                <div class="item">
-                                                    <img src="images/content/up3.jpg" alt="navi_img">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#">Chương trình truyền hình</a>
-                                <ul class="lg-submenu">
-                                    <li><a href="#">Ngôi sao Plus</a></li>
-                                    <li><a href="#">Ngôi sao vàng</a></li>
-                                </ul>
-                            </li>
-                            <li class="parent megamenu"><a href="#">Thước phim</a>
-                                <ul class="lg-submenu prs_navi_video_wrapper">
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp1.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp2.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp3.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp4.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp5.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="hidden-sm">
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp6.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#">Trang</a>
-                                <ul class="lg-submenu">
-                                    <li class="parent"><a href="#">Tin tức</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="blog_category.jsp">Blog-Category</a>
-                                            </li>
-                                            <li><a href="blog_single.jsp">Blog-Single</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent"><a href="#">Sự kiện</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="event_category.jsp">Loại sự kện</a>
-                                            </li>
-                                            <li><a href="event_single.jsp">Sự kiện đơn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent"><a href="#">Phim</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="movie_category.jsp">Thể loại phim</a>
-                                            </li>
-                                            <li><a href="movie_single.jsp">Phim đơn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="gallery.jsp">Phòng trưng bày</a>
-                                    </li>
-                                    <li><a href="payment.jsp">Loại đăng kí</a>
-                                    </li>
-                                    <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>
-                                    </li>
-                                    <li><a href="movie_booking.jsp">Đặt phim</a>
-                                    </li>
-                                    <li><a href="seat_booking.jsp">Đặt chỗ</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="contact.jsp">Liên hệ</a>
-                            </li>
-                            <c:if test="${sessionScope.user != null}">
-                                <li>
-                                    <a style="text-decoration: none;color: white" href="login"><i
-                                            class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
-                                </li>
-
-                            </c:if>
-                        </ul>
-                    </div>
-                    <!-- /dl-menuwrapper -->
-                </nav>
-            </div>
-        </div>
-        <div class="prs_navi_right_main_wrapper">
-            <div class="prs_slidebar_wrapper">
-                <button class="second-nav-toggler" type="button">
-                    <img src="images/header/bars.png" alt="bar_png">
-                </button>
-            </div>
-
-
-            <c:choose>
-                <c:when test="${not empty user}">
-                    <div class="prs_top_login_btn_wrapper">
-                        <div class="prs_animate_btn1">
-                            <ul>
-                                <li><a href="logout" class="button button--tamaya" data-text="logout"
-                                ><span>logout</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </c:when>
-                <c:otherwise>
-                    <div class="prs_top_login_btn_wrapper">
-                        <div class="prs_animate_btn1">
-                            <ul>
-                                <li><a href="#" class="button button--tamaya" data-text="LOGIN" data-toggle="modal"
-                                       data-target="#myModal"><span>LOGIN</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </c:otherwise>
-            </c:choose>
-
-            <div class="product-heading">
-                <div class="con">
-                    <select>
-                        <option>Tất cả danh mục</option>
-                        <option>Phim</option>
-                        <option>Thước phim</option>
-                        <option>Nhạc</option>
-                        <option>Chương trình truyền hình</option>
-                    </select>
-                    <input type="text" placeholder="Tìm phim, Thước phim, Nhạc">
-                    <button type="submit"><i class="fi fi-bs-search"></i>
+    </head>
+    <body>
+        <div class="prs_navigation_main_wrapper">
+            <div class="container-fluid">
+                <div id="search_open" class="gc_search_box">
+                    <input type="text" placeholder="Search here">
+                    <button><i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>
-            </div>
-        </div>
-        <div id="mobile-nav" data-prevent-default="true" data-mouse-events="true">
-            <div class="mobail_nav_overlay"></div>
-            <div class="mobile-nav-box">
-                <div class="mobile-logo">
-                    <a href="index.jsp" class="mobile-main-logo">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46.996px"
-                             height="40px" viewBox="0 0 46.996 40" enable-background="new 0 0 46.996 40"
-                             xml:space="preserve">
+                <div class="prs_navi_left_main_wrapper">
+                    <div class="prs_logo_main_wrapper">
+                        <a href="index.jsp">
+                            <img src="images/header/logo.png" alt="logo"/>
+                        </a>
+                    </div>
+                    <div class="prs_menu_main_wrapper">
+                        <nav class="navbar navbar-default">
+                            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                                <button class="dl-trigger">
+                                    <img src="images/header/bars.png" alt="bar_png">
+                                </button>
+                                <div class="prs_mobail_searchbar_wrapper" id="search_button"><i class="fa fa-search"></i>
+                                </div>
+                                <div class="clearfix"></div>
+                                <ul class="dl-menu">
+                                    <li class="parent"><a href="#">Trang chủ</a>
+                                        <ul class="lg-submenu">
+                                            <li><a href="index.jsp">Index-I</a></li>
+                                            <li><a href="index2.jsp">Index-II</a></li>
+                                            <li><a href="index3.jsp">Index-III</a></li>
+                                            <li><a href="index4.jsp">Index-IV</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent megamenu"><a href="#">Phim</a>
+                                        <ul class="lg-submenu">
+                                            <li><a>Phim Hindi phổ biến</a>
+                                                <ul class="lg-submenu">
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bajiro
+                                                            Mastani</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Drishyam</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Queen</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wanted</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Veer</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jannat</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baaghi</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Baaghi-2</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Ki & Ka</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kahaani</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jab We
+                                                            Met</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a>Phim Kannada phổ biến</a>
+                                                <ul class="lg-submenu">
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Zoom</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kirik
+                                                            Party</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Mahakali</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">karvva</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Ishtakamya</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Jigarthanda</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Abhimani</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Priyanka</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a>Phim Bengali phổ biến</a>
+                                                <ul class="lg-submenu">
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baro
+                                                            Bou</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Tomake</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jeevan</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Haraner
+                                                        </a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Bidhilipi</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bhalobasa
+                                                        </a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Prateek</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Aparanher</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Mukhyamantri</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Charmurti</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a>Phim Hollywood phổ biến</a>
+                                                <ul class="lg-submenu">
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wind
+                                                            River</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Coco</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Meyerowitz
+                                                        </a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a
+                                                            href="#">Ragnarok</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Driver</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Dunkirk</a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Big Sick
+                                                        </a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">American
+                                                        </a>
+                                                    </li>
+                                                    <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="prs_navi_slider_wraper">
+                                                    <div class="owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <img src="images/content/up1.jpg" alt="navi_img">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="images/content/up2.jpg" alt="navi_img">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="images/content/up3.jpg" alt="navi_img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent"><a href="#">Chương trình truyền hình</a>
+                                        <ul class="lg-submenu">
+                                            <li><a href="#">Ngôi sao Plus</a></li>
+                                            <li><a href="#">Ngôi sao vàng</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent megamenu"><a href="#">Thước phim</a>
+                                        <ul class="lg-submenu prs_navi_video_wrapper">
+                                            <li>
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp1.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp2.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp3.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp4.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp5.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="hidden-sm">
+                                                <div class="prs_video_navi_img_main_wrapper">
+                                                    <img src="images/content/vp6.jpg" alt="video_img">
+                                                    <div class="prs_video_navi_overlay_wrapper"><a
+                                                            class="test-popup-link button" rel='external'
+                                                            href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+                                                            title='title'><i class="fi fi-rr-play"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent"><a href="#">Trang</a>
+                                        <ul class="lg-submenu">
+                                            <li class="parent"><a href="#">Tin tức</a>
+                                                <ul class="lg-submenu">
+                                                    <li><a href="blog_category.jsp">Blog-Category</a>
+                                                    </li>
+                                                    <li><a href="blog_single.jsp">Blog-Single</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent"><a href="#">Sự kiện</a>
+                                                <ul class="lg-submenu">
+                                                    <li><a href="event_category.jsp">Loại sự kện</a>
+                                                    </li>
+                                                    <li><a href="event_single.jsp">Sự kiện đơn</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent"><a href="#">Phim</a>
+                                                <ul class="lg-submenu">
+                                                    <li><a href="movie_category.jsp">Thể loại phim</a>
+                                                    </li>
+                                                    <li><a href="movie_single.jsp">Phim đơn</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="gallery.jsp">Phòng trưng bày</a>
+                                            </li>
+                                            <li><a href="payment.jsp">Loại đăng kí</a>
+                                            </li>
+                                            <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>
+                                            </li>
+                                            <li><a href="movie_booking.jsp">Đặt phim</a>
+                                            </li>
+                                            <li><a href="seat_booking.jsp">Đặt chỗ</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent"><a href="contact.jsp">Liên hệ</a>
+                                    </li>
+                                    <c:if test="${sessionScope.user != null}">
+                                        <li>
+                                            <a style="text-decoration: none;color: white" href="login"><i
+                                                    class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
+                                        </li>
+
+                                    </c:if>
+                                </ul>
+                            </div>
+                            <!-- /dl-menuwrapper -->
+                        </nav>
+                    </div>
+                </div>
+                <div class="prs_navi_right_main_wrapper">
+                    <div class="prs_slidebar_wrapper">
+                        <button class="second-nav-toggler" type="button">
+                            <img src="images/header/bars.png" alt="bar_png">
+                        </button>
+                    </div>
+
+
+                    <c:choose>
+                        <c:when test="${not empty user}">
+                            <div class="prs_top_login_btn_wrapper">
+                                <div class="prs_animate_btn1">
+                                    <ul>
+                                        <li><a href="logout" class="button button--tamaya" data-text="logout"
+                                               ><span>logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="prs_top_login_btn_wrapper">
+                                <div class="prs_animate_btn1">
+                                    <ul>
+                                        <li><a href="#" class="button button--tamaya" data-text="LOGIN" data-toggle="modal"
+                                               data-target="#myModal"><span>LOGIN</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <div class="product-heading">
+                        <form action="searchMovies" method="post">
+                            <div class="con">
+
+                            <input id="search" type="text" placeholder="Tìm phim, Thước phim, Nhạc" name="search" value="${requestScope.name}">
+                            <button  type="submit"><i class="fi fi-bs-search"></i>
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="mobile-nav" data-prevent-default="true" data-mouse-events="true">
+                    <div class="mobail_nav_overlay"></div>
+                    <div class="mobile-nav-box">
+                        <div class="mobile-logo">
+                            <a href="index.jsp" class="mobile-main-logo">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46.996px"
+                                     height="40px" viewBox="0 0 46.996 40" enable-background="new 0 0 46.996 40"
+                                     xml:space="preserve">
                                 <g>
-                                    <g>
-                                        <path d="M39.919,19.833C39.919,8.88,30.984,0,19.959,0C8.937,0,0,8.88,0,19.833
+                                <g>
+                                <path d="M39.919,19.833C39.919,8.88,30.984,0,19.959,0C8.937,0,0,8.88,0,19.833
                                       c0,10.954,8.937,19.834,19.959,19.834C30.984,39.666,39.919,30.787,39.919,19.833z M35.675,14.425
                                       c0.379,0,0.686,0.307,0.686,0.683s-0.305,0.683-0.686,0.683c-0.38,0-0.688-0.307-0.688-0.683S35.295,14.425,35.675,14.425z
                                       M34.482,20.461c0,0.491-0.025,0.976-0.071,1.452l-11.214-4.512l6.396-7.733C32.592,12.311,34.482,16.167,34.482,20.461z
@@ -383,75 +379,83 @@
                                       c0-0.377,0.307-0.683,0.686-0.683s0.688,0.306,0.688,0.683C30.626,33.683,30.319,33.99,29.939,33.99z M22.482,34.672
                                       l-0.246-12.388l10.846,4.365C31.098,30.799,27.177,33.854,22.482,34.672z M35.314,34.585c-1.837,1.531-6.061,4.306-6.061,4.306
                                       C37.652,36.448,45.953,40,45.953,40l1.043-8.658C41.41,30.454,38.125,32.244,35.314,34.585z"/>
-                                    </g>
+                                </g>
                                 </g>
                                 </svg>
-                        <span>Phim chuyên nghiệp</span>
-                    </a>
-                    <a href="#" class="manu-close"><i class="fa fa-times"></i></a>
-                </div>
-                <ul class="mobile-list-nav">
-                    <li><a href="about.jsp">Tổng quan</a>
-                    </li>
-                    <li><a href="movie_single.jsp">Phim</a>
-                    </li>
-                    <li><a href="event_single.jsp">Sự kiện</a>
-                    </li>
-                    <li><a href="gallery.jsp">Thư viện</a>
-                    </li>
-                    <li><a href="blog_single.jsp">Tin tức</a>
-                    </li>
-                    <li><a href="contact.jsp">Liên hệ</a>
-                    </li>
-                </ul>
-                <div class="product-heading prs_slidebar_searchbar_wrapper">
-                    <div class="con">
-                        <select>
-                            <option>Tất cả danh mục</option>
-                            <option>Phim</option>
-                            <option>Thước phim</option>
-                            <option>Nhạc</option>
-                            <option>Chương trình truyền hình</option>
-                        </select>
-                        <input type="text" placeholder="Search Movie , Video , Music">
-                        <button type="submit"><i class="flaticon-tool"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="achivement-blog">
-                    <ul class="flat-list">
-                        <li>
-                            <a href="#"> <i class="fa fa-facebook"></i>
-                                <h6>Facebook</h6>
-                                <span class="counter">12546</span>
+                                <span>Phim chuyên nghiệp</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-twitter"></i>
-                                <h6>Twiter</h6>
-                                <span class="counter">12546</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-pinterest"></i>
-                                <h6>Pinterest</h6>
-                                <span class="counter">12546</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="prs_top_login_btn_wrapper prs_slidebar_searchbar_btn_wrapper">
-                    <div class="prs_animate_btn1">
-                        <ul>
-                            <li><a href="#" class="button button--tamaya" data-text="sign up" data-toggle="modal"
-                                   data-target="#myModal"><span>sign up</span></a>
+                            <a href="#" class="manu-close"><i class="fa fa-times"></i></a>
+                        </div>
+                        <ul class="mobile-list-nav">
+                            <li><a href="about.jsp">Tổng quan</a>
+                            </li>
+                            <li><a href="movie_single.jsp">Phim</a>
+                            </li>
+                            <li><a href="event_single.jsp">Sự kiện</a>
+                            </li>
+                            <li><a href="gallery.jsp">Thư viện</a>
+                            </li>
+                            <li><a href="blog_single.jsp">Tin tức</a>
+                            </li>
+                            <li><a href="contact.jsp">Liên hệ</a>
                             </li>
                         </ul>
+                        <div class="product-heading prs_slidebar_searchbar_wrapper">
+                            <div class="con">
+                                <select>
+                                    <option>Tất cả danh mục</option>
+                                    <option>Phim</option>
+                                    <option>Thước phim</option>
+                                    <option>Nhạc</option>
+                                    <option>Chương trình truyền hình</option>
+                                </select>
+                                <input type="text" placeholder="Search Movie , Video , Music">
+                                <button type="submit"><i class="flaticon-tool"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="achivement-blog">
+                            <ul class="flat-list">
+                                <li>
+                                    <a href="#"> <i class="fa fa-facebook"></i>
+                                        <h6>Facebook</h6>
+                                        <span class="counter">12546</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fa fa-twitter"></i>
+                                        <h6>Twiter</h6>
+                                        <span class="counter">12546</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fa fa-pinterest"></i>
+                                        <h6>Pinterest</h6>
+                                        <span class="counter">12546</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="prs_top_login_btn_wrapper prs_slidebar_searchbar_btn_wrapper">
+                            <div class="prs_animate_btn1">
+                                <ul>
+                                    <li><a href="#" class="button button--tamaya" data-text="sign up" data-toggle="modal"
+                                           data-target="#myModal"><span>sign up</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</body>
+        <!--        <script>
+              
+                function searchMovie() {
+                    let search = document.querySelector("#search").value
+                    window.location = "searchMovies?search=" + search
+                }
+        
+            </script>-->
+    </body>
 </html>

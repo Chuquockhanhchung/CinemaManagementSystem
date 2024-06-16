@@ -99,10 +99,13 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>controller.TicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_movie_Servlet</servlet-name>
+        <servlet-class>controller.Search_movie_Servlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
@@ -176,10 +179,13 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <url-pattern>/booking_movie</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/ticket</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_movie_Servlet</servlet-name>
+        <url-pattern>/searchMovies</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
