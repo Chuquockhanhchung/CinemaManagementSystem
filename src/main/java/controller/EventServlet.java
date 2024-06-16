@@ -74,8 +74,8 @@ public class EventServlet extends HttpServlet {
             boolean f = dao.addEvent(event);
 
             if (f) {
-                session.setAttribute("succMess", "Payment successful!");
-                response.sendRedirect("manager/CMS/add_event.jsp");
+                session.setAttribute("succMess", "Add event successful!");
+                response.sendRedirect("manager/CMS/event.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();

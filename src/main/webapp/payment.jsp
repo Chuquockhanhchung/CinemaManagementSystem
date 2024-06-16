@@ -73,7 +73,7 @@
 </div>
 
 <!-- st dtts section Start -->
-<form action="ticket" method="post">
+<form action="payment" method="post">
     <input type="text" value="${sessionScope.user.idCustomer}" name="idCustomer" hidden="">
     <input type="text" value="${sessionScope.time}" name="showtimeID" hidden="">
 
@@ -93,7 +93,7 @@
                                                 class="dtts1">Giờ:</span> <%= ticket != null ? ticket.getStartTime() : "N/A" %>
                                         </li>
                                         <li><span name="seatID"
-                                                class="dtts1">Ghế Ngồi:</span> <%= ticket != null ? ticket.getSeatID() : "N/A" %>
+                                                class="dtts1">Ghế Ngồi:</span> <%= ticket.getSeatType() %> - <%= ticket.getSeatID() %>
                                         </li>
                                     </ul>
 
@@ -659,8 +659,9 @@
                                     </h3>
                                     <%--                                <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
-                                        <span name="ticketPrice"><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
+                                        <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
                                     </h5>
+                                    <input type="text" value="<%= customCurrency %>" name="ticketPrice">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -713,13 +714,13 @@
                 if (lastContent.includes(content) && lastPrice >= price) {
                     alert("Thanh toán thành công");
                     paidSuccess = true;
-                    // Redirect to success page
-                    window.location.href = "confirmation_screen.jsp";
+                    // Submit the existing form to the payment servlet
+                    document.querySelector('form').submit();
                 } else {
                     if (!alertShown) {
                         alert("Thanh toán thất bại");
                         alertShown = true;
-                        // Redirect to error page
+                        // Optionally redirect to an error page
                         // window.location.href = "error.jsp";
                     }
                 }
