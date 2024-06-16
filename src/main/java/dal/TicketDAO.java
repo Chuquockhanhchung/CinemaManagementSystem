@@ -1,8 +1,6 @@
 package dal;
 
-import model.Movie;
-import model.Room;
-import model.Seat;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -103,6 +101,42 @@ public class TicketDAO extends DBContext{
         return null;
     }
 
+    public List<Ticket> getAllTicket() {
+        List<Ticket> list = new ArrayList<Ticket>();
+        Ticket ticket = null;
+        try {
+            String sql = "SELECT " +
+                    "t.TicketID, c.CustomerID, c.FullName, " +
+                    "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
+                    "st.SeatID, st.SeatType, t.TicketPrice, " +
+                    "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
+                    "t.Status, m.MovieName, m.Image " +
+                    "FROM movieticket t " +
+                    "JOIN customer c ON t.CustomerID = c.CustomerID " +
+                    "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
+                    "JOIN seat st ON t.SeatID = st.SeatID " +
+                    "JOIN movie m ON s.MovieID = m.MovieID ";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ticket = new Ticket();
+                ticket.setTicketID(rs.getInt(1));
+                ticket.setComboName(rs.getString(3));
+                ticket.setSeatID(rs.getString(5));
+                ticket.setSeatType(rs.getString(6));
+                ticket.setTicketPrice(rs.getFloat(7));
+                ticket.setBookingDate(rs.getString(8));
+                ticket.setStatus(rs.getString(9));
+                ticket.setMovieName(rs.getString(10));
+                list.add(ticket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
         try {

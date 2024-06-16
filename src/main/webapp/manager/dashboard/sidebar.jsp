@@ -36,7 +36,7 @@
                 <span class="nav-text">Dashboard</span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="manager/dashboard/orders_list.jsp">Orders list</a></li>
+                    <li><a href="../dashboard/orders_list.jsp">Orders list</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Event</a></li
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Analytics</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/reviews">Reviews</a></li>
@@ -66,12 +66,12 @@
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> MANAGER</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="manager/CMS/movies.jsp">Movies</a></li>
-                    <li><a href="manager/CMS/add_movies.jsp">Add Movie</a></li>
-                    <li><a href="manager/CMS/add_email.jsp">Add Email</a></li>
-                    <li><a href="manager/CMS/event.jsp">Event</a></li>
-                    <li><a href="manager/CMS/add_event.jsp">Add Event</a></li>
-                    <li><a href="manager/CMS/event_category.jsp">Event Category</a>
+                    <li><a href="../CMS/movies.jsp">Movies</a></li>
+                    <li><a href="../CMS/add_movies.jsp">Add Movie</a></li>
+                    <li><a href="../CMS/add_email.jsp">Add Email</a></li>
+                    <li><a href="../CMS/event.jsp">Event</a></li>
+                    <li><a href="../CMS/add_event.jsp">Add Event</a></li>
+                    <li><a href="../CMS/event_category.jsp">Event Category</a>
                     </li>
                 </ul>
             </li>

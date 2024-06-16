@@ -446,7 +446,7 @@ Sidebar end
                         <div class="col-xl-12">
                             <div class="card event-bx">
                                 <div class="card-header border-0 mb-0">
-                                    <h4 class="fs-20 card-title">Recent Event List</h4>
+                                    <h4 class="fs-20 card-title">Recent Movie List</h4>
                                     <div class="dropdown custom-dropdown mb-0 tbl-orders-style">
                                         <div class="btn sharp tp-btn" data-bs-toggle="dropdown">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -836,7 +836,7 @@ Sidebar end
                                     <input type='text' class="form-control d-none" id='datetimepicker1'>
                                 </div>
                                 <div class="card-header py-0 border-0">
-                                    <h4 class="text-black fs-20">Upcoming Events</h4>
+                                    <h4 class="text-black fs-20">Upcoming Movies</h4>
                                 </div>
                                 <div class="card-body pb-0 loadmore-content height450 dz-scroll"
                                      id="UpcomingEventContent">
