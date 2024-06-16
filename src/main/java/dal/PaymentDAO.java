@@ -86,7 +86,6 @@ public class PaymentDAO {
             ps.setInt(2, ticket.getShowtimeID());
             ps.setString(3, ticket.getSeatID());
             ps.setFloat(4, ticket.getTicketPrice());
-            ps.setString(5, ticket.getStatus());
 
             int i = ps.executeUpdate();
             if (i == 1) {

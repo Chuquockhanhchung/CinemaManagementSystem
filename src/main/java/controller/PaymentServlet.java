@@ -46,16 +46,21 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
         try {
-            int ticketID = Integer.parseInt(request.getParameter("ticketID"));
             int customerID = Integer.parseInt(request.getParameter("idCustomer"));
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
             String seatID = request.getParameter("seatID");
             float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
             String status = request.getParameter("status");
 
-            Ticket ticket = new Ticket(customerID, showtimeID, seatID, ticketPrice, status);
+            HttpSession session = request.getSession();
+            Ticket ticket = new Ticket();
+            ticket.setCustomerID(customerID);
+            ticket.setShowtimeID(showtimeID);
+            ticket.setSeatID(seatID);
+            ticket.setTicketPrice(ticketPrice);
+            ticket.setStatus(status);
+
             PaymentDAO dao = new PaymentDAO(DBContext.getConn());
             boolean f = dao.addTicket(ticket);
 
