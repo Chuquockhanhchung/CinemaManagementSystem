@@ -99,10 +99,17 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>controller.TicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EventServlet</servlet-name>
+        <servlet-class>controller.EventServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
@@ -176,10 +183,17 @@
         <servlet-name>BookingMovieServlet</servlet-name>
         <url-pattern>/booking_movie</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/ticket</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventServlet</servlet-name>
+        <url-pattern>/event</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

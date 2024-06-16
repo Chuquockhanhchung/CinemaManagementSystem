@@ -35,8 +35,8 @@ public class PaymentDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Ticket ticket = new Ticket();
-                ticket.setTicketID(rs.getString(1));
-                ticket.setCustomerID(rs.getString(2));
+                ticket.setTicketID(rs.getInt(1));
+                ticket.setCustomerID(rs.getInt(2));
                 ticket.setFullName(rs.getString(3));
                 ticket.setStartTime(rs.getString(4));
                 ticket.setSeatID(rs.getString(5));
@@ -54,10 +54,11 @@ public class PaymentDAO {
         }
         return null;
     }
-    public Customer getCustomerByID(String customerID) {
+    public Customer getCustomerByID(int customerID) {
         try {
-            String sql = "SELECT * from customer where CustomerID=7;";
+            String sql = "SELECT * from customer where CustomerID=?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Customer customer = new Customer(
@@ -67,8 +68,6 @@ public class PaymentDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6)
-
-
                 );
                 return customer;
             }
@@ -76,6 +75,28 @@ public class PaymentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean addTicket(Ticket ticket) {
+        boolean f = false;
+        try {
+        String sql = "INSERT INTO movieticket (CustomerID, ShowtimeID, SeatID, TicketPrice, BookingDate, Status) VALUES ( ?, ?, ?, ?, now(), 'successful')";
+        PreparedStatement ps = con.prepareStatement(sql) ;
+            ps.setInt(1, ticket.getCustomerID());
+            ps.setInt(2, ticket.getShowtimeID());
+            ps.setString(3, ticket.getSeatID());
+            ps.setFloat(4, ticket.getTicketPrice());
+            ps.setString(5, ticket.getStatus());
+
+            int i = ps.executeUpdate();
+            if (i == 1) {
+                f = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return f;
     }
 
 }

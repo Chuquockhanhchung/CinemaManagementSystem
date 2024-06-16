@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
 <!--**********************************
@@ -926,7 +929,7 @@ Header start
                                 </svg>
                                 <span class="ms-2">Inbox </span>
                             </a>
-                            <a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/logout"
+                            <a href="${pageContext.request.contextPath}/logout"
                                class="dropdown-item ai-icon">
                                 <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                      width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
