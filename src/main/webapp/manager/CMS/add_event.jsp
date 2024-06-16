@@ -56,12 +56,29 @@
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet" type="text/css"/>
 
-    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
-          rel="stylesheet" type="text/css"/>
-
+<%--Date Picker--%>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<%--Date Picker--%>
     <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
+    <style>
+        .picktime {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bs-body-color);
+            appearance: none;
+            background-color: var(--bs-body-bg);
+            background-clip: padding-box;
+            border: var(--bs-border-width) solid #E6E6E6;
+            border-radius: var(--bs-border-radius);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
@@ -119,96 +136,15 @@ Content body start
                 <div class="col-xl-12">
                     <div class="mb-3">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="https://ventic.dexignzone.com/codeigniter/demo/add_email"
+                            <li><a href="event.jsp"
                                    class="btn btn-primary">Event</a></li>
-                            <li><a href="https://ventic.dexignzone.com/codeigniter/demo/blog_category"
-                                   class="btn btn-primary mx-1">Event Category</a></li>
-                            <li><a href="https://ventic.dexignzone.com/codeigniter/demo/blog_category"
-                                   class="btn btn-primary me-1 mt-sm-0 mt-1">Add Event Category</a></li>
                         </ul>
                     </div>
-                    <div class="main-check" style="display:none;">
-                        <div class="row">
-                            <h6 class="mb-3">Show on screen</h6>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-1">
-                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
-                                        Page Attributes
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-2">
-                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-2">
-                                        Featured Image
-
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-3">
-                                    <label class="form-check-label mb-0" for="flexCheckDefault-3">
-                                        Excerpt
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-4">
-                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-4">
-                                        Custom Fields
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-5">
-                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-5">
-                                        Discussion
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-6">
-                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-6">
-                                        Slug
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-7">
-                                    <label class="form-check-label mb-0" for="flexCheckDefault-7">
-                                        Author
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-8">
-                                    <label class="form-check-label mb-0" for="flexCheckDefault-8">
-                                        Page Type
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-9">
-                                    <label class="form-check-label mb-0" for="flexCheckDefault-9">
-                                        Seo
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <form method="post" action="../../event">
                     <div class="row">
                         <div class="mb-3 col-sm-6">
                             <label class="form-label">Title</label>
-                            <input type="text" class="form-control" placeholder="Title">
+                            <input type="text" class="form-control" placeholder="Title" name="EventName">
                         </div>
                         <div class="col-xl-8">
                             <div class="card h-auto">
@@ -217,86 +153,9 @@ Content body start
                                 </div>
                             </div>
 
-
                             <div class="filter cm-content-box box-primary">
                                 <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Excerpt
-                                    </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body  publish-content form excerpt">
-                                    <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="form-label">Excerpt</label>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                            <div class="form-text">Excerpts are optional hand-crafted summaries of your
-                                                content that can be used in your theme.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa">
-                                        Custom Fields
-                                    </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body  form excerpt">
-                                    <div class="card-body">
-                                        <h6>Add New Custom Field:</h6>
-                                        <div class="row">
-                                            <div class="col-xl-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Title</label>
-                                                    <input type="text" class="form-control" placeholder="Title">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-sm-6">
-                                                <label class="form-label">Value</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-sm mt-3 mt-sm-0">Add Custom
-                                            Field
-                                        </button>
-                                        <small class="mt-3 d-block">Custom fields can be used to extra metadata to a
-                                            post that you can use in your theme.</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa">
-                                        Discussion
-                                    </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body  form excerpt">
-                                    <div class="card-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="flexCheckDefault-15">
-                                            <label class="form-check-label" for="flexCheckDefault-15">
-                                                Allow comments.
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Slug
+                                    <div class="cpa"> Event Code
                                     </div>
                                     <div class="tools">
                                         <a href="javascript:void(0);" class="expand handle"><i
@@ -305,68 +164,36 @@ Content body start
                                 </div>
                                 <div class="cm-content-body form excerpt">
                                     <div class="card-body">
-                                        <label class="form-label">Slug</label>
-                                        <input type="text" class="form-control">
+                                        <label class="form-label">Event Code</label>
+                                        <input type="text" class="form-control" name="EventCode">
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa">Author
 
+                            <div class="col-xl-8">
+                                <div class="card h-auto">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Date Picker</h4>
                                     </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body  form excerpt">
                                     <div class="card-body">
-                                        <label class="form-label">User</label>
-                                        <select class="js-example-disabled" style="width:100%;">
-                                            <option value="AL">
-                                                <template class="__cf_email__"
-                                                          data-cfemail="9dfcf9f0f4f3ddfaf0fcf4f1b3fef2f0">[email&#160;protected]
-                                                </template>
-                                            </option>
-                                            <option value="WY">India</option>
-                                            <option value="WY">Information</option>
-                                            <option value="WY">New Menu</option>
-                                            <option value="WY">Page Menu</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Seo
-                                    </div>
-                                    <div class="tools"><a href="javascript:void(0);" class="expand handle"><i
-                                            class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body  form excerpt">
-                                    <div class="card-body">
-                                        <label class="form-label">Page Title</label>
-                                        <input type="text" class="form-control mb-3" placeholder="Page title">
                                         <div class="row">
-                                            <div class="col-xl-6 col-sm-6">
-                                                <label class="form-label">Keywords</label>
-                                                <input type="text" class="form-control mb-sm-0 mb-3 "
-                                                       placeholder="Enter meta Keywords">
+
+                                            <div class="col-xl-4 mb-3">
+                                                <div class="example">
+                                                    <p class="mb-1">Start Time</p>
+                                                    <input class="picktime" type="text" name="start-datetimes" />
+                                                </div>
                                             </div>
-                                            <div class="col-xl-6 col-sm-6">
-                                                <label class="form-label">Descriptions</label>
-                                                <textarea class="form-control" placeholder="Enter meta Keywords"
-                                                          rows="3"></textarea>
+                                            <div class="col-xl-4 mb-3">
+                                                <div class="example">
+                                                    <p class="mb-1">End Time</p>
+                                                    <input class="picktime" type="text" name="end-datetimes" />
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-xl-4">
                             <div class="right-sidebar-sticky">
@@ -505,90 +332,10 @@ Content body start
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="card-footer border-0 pt-0 text-end">
-                                            <a href="javascript:void(0);" class="btn btn-primary btn-sm">Publish</a>
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="filter cm-content-box box-primary">
-                                    <div class="content-title SlideToolHeader">
-                                        <div class="cpa">
-                                            Categories
-                                        </div>
-                                        <div class="tools">
-                                            <a href="javascript:void(0);" class="expand handle"><i
-                                                    class="fal fa-angle-down"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cm-content-body publish-content form excerpt">
-                                        <div class="card-body">
-                                            <div class="border rounded p-3 mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault-10">
-                                                    <label class="form-check-label" for="flexCheckDefault-10">
-                                                        Beauty
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault-11">
-                                                    <label class="form-check-label" for="flexCheckDefault-11">
-                                                        Fashion
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault-12">
-                                                    <label class="form-check-label" for="flexCheckDefault-12">
-                                                        Lifestyle
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault-13">
-                                                    <label class="form-check-label" for="flexCheckDefault-13">
-                                                        Food
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault-14">
-                                                    <label class="form-check-label" for="flexCheckDefault-14">
-                                                        Beauty
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-plus"></i> Add New
-                                                Categories</a>
-                                            <div class="input-group mt-3">
-                                                <input type="text" class="form-control" placeholder="Username"
-                                                       aria-label="Username" aria-describedby="basic-addon1">
-                                                <span class="input-group-text" id="basic-addon1"><a
-                                                        href="javascript:void(0);">Add New</a></span>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="filter cm-content-box box-primary">
-                                    <div class="content-title SlideToolHeader">
-                                        <div class="cpa">
-                                            Tag
-                                        </div>
-                                        <div class="tools">
-                                            <a href="javascript:void(0);" class="expand handle"><i
-                                                    class="fal fa-angle-down"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cm-content-body  form excerpt">
-                                        <div class="card-body">
-                                            <input name='tagify' class="form-control h-auto" value='Beauty, Fashion'>
-                                        </div>
 
-                                    </div>
-                                </div>
                                 <div class="filter cm-content-box box-primary">
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa">
@@ -610,7 +357,8 @@ Content body start
                                                     </div>
                                                     <div class="change-btn d-flex align-items-center flex-wrap">
                                                         <input type='file' class="form-control d-none" id="imageUpload"
-                                                               accept=".png, .jpg, .jpeg">
+                                                               accept=".png, .jpg, .jpeg"
+                                                                name="EventImage">
                                                         <label for="imageUpload" class="btn btn-primary ms-0">Select
                                                             Image</label>
                                                     </div>
@@ -618,10 +366,15 @@ Content body start
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div class="card-footer border-0 pt-0 text-end">
+                                        <input type="submit" class="btn btn-primary btn-sm" name="SUBMIT">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+    </form>
                 </div>
             </div>
         </div>
@@ -662,6 +415,13 @@ Footer end
 <script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
+
+<%--Date Picker--%>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<%--Date Picker--%>
+
 
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
@@ -704,7 +464,29 @@ Footer end
         new Tagify(input);
     }
 </script>
+<script>
+    $(function() {
+        $('input[name="start-datetimes"]').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm A'
+            }
+        });
+    });
 
+    $(function() {
+        $('input[name="end-datetimes"]').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm A'
+            }
+        });
+    });
+</script>
 
 <!--**********************************
     Main wrapper end

@@ -9,15 +9,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import dal.DBContext;
-import dal.PaymentDAO;
+import dal.EventDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Ticket;
+import model.Event;
 
-public class PaymentServlet extends HttpServlet {
+/**
+ *
+ * @author datla
+ */
+public class EventServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -27,10 +31,10 @@ public class PaymentServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PaymentServlet</title>");  
+            out.println("<title>Servlet EventServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet EventServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -41,35 +45,42 @@ public class PaymentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
-    }
+    } 
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
         try {
-            int ticketID = Integer.parseInt(request.getParameter("ticketID"));
-            int customerID = Integer.parseInt(request.getParameter("idCustomer"));
-            int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
-            String seatID = request.getParameter("seatID");
-            float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
-            String status = request.getParameter("status");
 
-            Ticket ticket = new Ticket(customerID, showtimeID, seatID, ticketPrice, status);
-            PaymentDAO dao = new PaymentDAO(DBContext.getConn());
-            boolean f = dao.addTicket(ticket);
+            String EventName = request.getParameter("EventName");
+            String EventCode = request.getParameter("EventCode");
+            String EventDetail = request.getParameter("EventDetail");
+            String StartDate = request.getParameter("start-datetimes");
+            String EndDate = request.getParameter("end-datetimes");
+            String Status = request.getParameter("Status");
+
+            HttpSession session = request.getSession();
+
+            Event event = new Event();
+            event.setEventName(EventName);
+            event.setEventCode(EventCode);
+            event.setEventDetail(EventDetail);
+            event.setStartDate(StartDate);
+            event.setEndDate(EndDate);
+            event.setStatus(Status);
+
+            EventDAO dao = new EventDAO(DBContext.getConn());
+            boolean f = dao.addEvent(event);
 
             if (f) {
                 session.setAttribute("succMess", "Payment successful!");
-                response.sendRedirect("confirmation_screen.jsp");
+                response.sendRedirect("manager/CMS/add_event.jsp");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 
     @Override
     public String getServletInfo() {

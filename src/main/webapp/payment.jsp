@@ -715,7 +715,7 @@
                     alert("Thanh toán thành công");
                     paidSuccess = true;
                     // Redirect to success page
-                    window.location.href = "payment";
+                    window.location.href = "confirmation_screen.jsp";
                 } else {
                     if (!alertShown) {
                         alert("Thanh toán thất bại");
