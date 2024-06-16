@@ -36,7 +36,7 @@
                 <span class="nav-text">Dashboard</span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/orders_list">Orders list</a></li>
+                    <li><a href="../dashboard/orders_list.jsp">Orders list</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Event</a></li
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Analytics</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/reviews">Reviews</a></li>

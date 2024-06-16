@@ -31,7 +31,7 @@
         </div>
         <div class="prs_navi_left_main_wrapper">
             <div class="prs_logo_main_wrapper">
-                <a href="index.jsp">
+                <a href="home">
                     <img src="images/header/logo.png" alt="logo"/>
                 </a>
             </div>
@@ -45,13 +45,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="dl-menu">
-                            <li class="parent"><a href="#">Trang chủ</a>
-                                <ul class="lg-submenu">
-                                    <li><a href="index.jsp">Index-I</a></li>
-                                    <li><a href="index2.jsp">Index-II</a></li>
-                                    <li><a href="index3.jsp">Index-III</a></li>
-                                    <li><a href="index4.jsp">Index-IV</a></li>
-                                </ul>
+                            <li class="parent"><a href="home">Trang chủ</a>
                             </li>
                             <li class="parent megamenu"><a href="#">Phim</a>
                                 <ul class="lg-submenu">
@@ -188,12 +182,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="parent"><a href="#">Chương trình truyền hình</a>
-                                <ul class="lg-submenu">
-                                    <li><a href="#">Ngôi sao Plus</a></li>
-                                    <li><a href="#">Ngôi sao vàng</a></li>
-                                </ul>
-                            </li>
                             <li class="parent megamenu"><a href="#">Thước phim</a>
                                 <ul class="lg-submenu prs_navi_video_wrapper">
                                     <li>
@@ -324,8 +312,8 @@
                     <div class="prs_top_login_btn_wrapper">
                         <div class="prs_animate_btn1">
                             <ul>
-                                <li><a href="logout" class="button button--tamaya" data-text="logout"
-                                ><span>logout</span></a></li>
+                                <li><a href="logout" class="button button--tamaya" data-text="Đăng Xuất"
+                                ><span>Đăng Xuất</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -335,7 +323,7 @@
                         <div class="prs_animate_btn1">
                             <ul>
                                 <li><a href="#" class="button button--tamaya" data-text="LOGIN" data-toggle="modal"
-                                       data-target="#myModal"><span>LOGIN</span></a></li>
+                                       data-target="#myModal"><span>Đăng Nhập</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -411,7 +399,6 @@
                             <option>Phim</option>
                             <option>Thước phim</option>
                             <option>Nhạc</option>
-                            <option>Chương trình truyền hình</option>
                         </select>
                         <input type="text" placeholder="Search Movie , Video , Music">
                         <button type="submit"><i class="flaticon-tool"></i>

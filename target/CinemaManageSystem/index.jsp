@@ -76,7 +76,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/01.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/max.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 3 -->
@@ -99,7 +99,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/02.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/bạn tưởng tượng.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 6 -->
@@ -122,7 +122,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/03.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/quy.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 9 -->
@@ -145,7 +145,7 @@
                     data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6=""
                     data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/01.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/gozila.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 12 -->
@@ -168,7 +168,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/02.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/toto.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 15 -->
@@ -191,7 +191,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/03.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/transformer.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 18 -->
@@ -214,7 +214,7 @@
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="images/header/01.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
+                    <img src="images/header/ngayxua.jpg" alt="" data-bgposition="center center" data-bgfit="contain"
                          data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- LAYER NR. 21 -->
@@ -243,20 +243,20 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="prs_heading_section_wrapper">
-                    <h2>Upcoming Movies</h2>
+                    <h2>Phim Đang Chiếu</h2>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="prs_upcome_tabs_wrapper">
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab"
-                                                                  data-toggle="tab">Upcoming Movies</a>
+                                                                  data-toggle="tab">Phim Đang Chiếu</a>
                         </li>
                         <li role="presentation"><a href="#hot" aria-controls="hot" role="tab"
-                                                   data-toggle="tab">Relesed Movies</a>
+                                                   data-toggle="tab">Phim Sắp Chiếu</a>
                         </li>
                         <li role="presentation"><a href="#trand" aria-controls="trand" role="tab"
-                                                   data-toggle="tab">Best of library</a>
+                                                   data-toggle="tab">Top Phim Hay Nhất</a>
                         </li>
                     </ul>
                 </div>
@@ -275,18 +275,23 @@
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                         <div class="prs_upcom_movie_box_wrapper">
                                             <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" src="<%= movie.getImage() %>" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_overlay"></div>
+                                                <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
-                                                        <li><a href="#">View Trailer</a></li>
-                                                        <li><a href="#">View Details</a></li>
+                                                        <li>
+                                                        <a
+                                                                class="test-popup-link button" rel='external'
+                                                                href='https://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV'
+                                                                title='title'>Xem Trailer
+                                                        </a>
+                                                        </li>
+                                                        <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div style="height: 150px" class="prs_upcom_movie_content_box">
                                                 <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="#"><%= movie.getName() %></a></h2>
+                                                    <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
                                                     <p><%= movie.getType() %></p>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -605,7 +610,7 @@
                             <div class="prs_animate_btn1 prs_upcom_main_wrapper">
                                 <ul>
                                     <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
-                                           data-text="view all"><span>View All</span></a>
+                                           data-text="view all"><span>Xem Tất Cả</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -657,9 +662,9 @@
                                                 <div class="prs_upcom_movie_img_overlay"></div>
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
-                                                        <li><a href="#">View Trailer</a>
+                                                        <li><a href="#">Xem Trailer</a>
                                                         </li>
-                                                        <li><a href="#">View Details</a>
+                                                        <li><a href="#">Thông Tin Chi Tiết</a>
                                                         </li>
                                                     </ul>
                                                 </div>

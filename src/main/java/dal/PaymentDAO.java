@@ -21,7 +21,7 @@ public class PaymentDAO {
                 "t.TicketID, c.CustomerID, c.FullName, " +
                 "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                 "st.SeatID, st.SeatType, t.TicketPrice, " +
-                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y') AS BookingDate, " +
+                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
                 "t.Status, m.MovieName, m.Image " +
                 "FROM movieticket t " +
                 "JOIN customer c ON t.CustomerID = c.CustomerID " +

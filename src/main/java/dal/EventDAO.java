@@ -56,7 +56,6 @@ public class EventDAO {
                 event.setEventDetail(rs.getString(5));
                 event.setEventImage(rs.getString(6));
                 event.setStartDate(rs.getString(7));
-
                 event.setEndDate(rs.getString(8));
                 event.setDiscount(rs.getFloat(9));
                 event.setStatus(rs.getString(10));

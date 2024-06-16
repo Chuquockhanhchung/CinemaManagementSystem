@@ -92,8 +92,9 @@
                                         <li><span
                                                 class="dtts1">Giờ:</span> <%= ticket != null ? ticket.getStartTime() : "N/A" %>
                                         </li>
-                                        <li><span name="seatID"
-                                                class="dtts1">Ghế Ngồi:</span> <%= ticket.getSeatType() %> - <%= ticket.getSeatID() %>
+                                        <li>
+                                            <span class="dtts1">Ghế Ngồi:</span>
+                                            <%= ticket.getSeatType() %> - <%= ticket.getSeatID() %>
                                         </li>
                                     </ul>
 
@@ -662,7 +663,7 @@
                                     <h5>Số tiền cần thanh toán
                                         <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
                                     </h5>
-                                    <input type="text" value="<%= customCurrency %>" name="ticketPrice">
+                                    <input type="text" value="<%= customCurrency %>" name="ticketPrice" hidden="">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -713,13 +714,27 @@
                 lastPrice = lastPaid["Giá trị"];
 
                 if (lastContent.includes(content) && lastPrice >= price) {
-                    alert("Thanh toán thành công");
-                    paidSuccess = true;
-                    // Submit the existing form to the payment servlet
-                    document.querySelector('form').submit();
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Thanh toán thành công!",
+                        icon: "success",
+                        allowOutsideClick: false, // Ngăn người dùng đóng alert bằng cách bấm bên ngoài
+                        showCancelButton: false, // Ẩn nút Cancel
+                        confirmButtonText: "OK"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Chuyển hướng trang sau khi nhấn OK
+                            document.querySelector('form').submit(); // Thay đổi đường dẫn tới trang mới
+                        }
+                    });
                 } else {
                     if (!alertShown) {
-                        alert("Thanh toán thất bại");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Thanh toán không thành công!",
+                            footer: '<a href="#">Liên hệ với chúng tôi!</a>'
+                        });
                         alertShown = true;
                         // Optionally redirect to an error page
                         // window.location.href = "error.jsp";
@@ -739,6 +754,10 @@
 <script src="js/jquery.dlmenu.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>
+
+<%--SweetAlert2--%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<%--SweetAlert2--%>
 
 </body>
 
