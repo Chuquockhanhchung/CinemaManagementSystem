@@ -322,7 +322,7 @@
                     <div class="prs_top_login_btn_wrapper">
                         <div class="prs_animate_btn1">
                             <ul>
-                                <li><a href="#" class="button button--tamaya" data-text="LOGIN" data-toggle="modal"
+                                <li><a href="#" class="button button--tamaya" data-text="Đăng Nhập" data-toggle="modal"
                                        data-target="#myModal"><span>Đăng Nhập</span></a></li>
                             </ul>
                         </div>

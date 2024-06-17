@@ -33,7 +33,7 @@ public class LoginByGoogle extends HttpServlet {
         saveUserToDatabase(user);
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("home");
     }
 
     private void saveUserToDatabase(Customer userGoogle) {
