@@ -24,7 +24,12 @@
     <link rel="stylesheet" href="css/QR_Code/Styles/style.css">
     <link rel="stylesheet" href="css/QR_Code/Styles/custom.bundles.css">
 
-
+    <style>
+        #countdown {
+            font-size: 2em;
+            color: #ff0000;
+        }
+    </style>
 </head>
 
 <body class="booking_type_back">
@@ -109,6 +114,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <section class="payment-section">
                         <h2 class="payment-method-text">Phương thức thanh toán</h2>
@@ -667,10 +673,15 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="st_cherity_btn float_left">
+
                                     <ul>
+
                                         <li><a  class="payment-process" style="cursor: pointer;">Tiến hành thanh toán</a></li>
                                     </ul>
                                 </div>
+                                <div style="color: red">Thời gian giữ vé </div>
+                                    <div id="countdown"> 01:00</div>
+                                    <script src="countdown.js"></script>
                             </div>
                         </div>
                     </div>
