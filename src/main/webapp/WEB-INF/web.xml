@@ -84,6 +84,10 @@
         <servlet-class>controller.ActiveServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <servlet-class>controller.DeleteFeedback</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
         <servlet-class>controller.ActivatedServlet</servlet-class>
     </servlet>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <url-pattern>/deletefeedback</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Homepage</servlet-name>

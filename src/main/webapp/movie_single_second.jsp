@@ -804,7 +804,6 @@
                                     </div>
 
                                     <div id="menu2" class="tab-pane fade">
-                                        <c:set var="currentUserId" value="${sessionScope.user.getId()}" />
                                         <c:choose>
                                             <c:when test="${not empty listf}">
                                                 <c:forEach items="${listf}" var="f">
@@ -815,13 +814,12 @@
                                                                 <span>${f.getCustomerID().getName()}</span>
                                                                 <span>${f.getRate()}</span>
                                                             </div>
+
                                                             <div class="comment-body">
                                                                     ${f.getFeedback()}
                                                             </div>
-                                                            <div class="reply-btn" onclick="toggleReplyForm(${f.getFeedbackID()})">Reply</div>
-                                                            <c:if test="${f.getCustomerID().getId() eq currentUserId}">
-                                                                <div class="delete-btn" onclick="deleteFeedback(${f.getFeedbackID()})">Delete</div>
-                                                            </c:if>
+                                                            <div class="replies-toggle-btn reply-btn" onclick="toggleReplyForm(${f.getFeedbackID()})">Reply</div>
+
 
                                                             <div class="reply-form" id="reply-form-${f.getFeedbackID()}" style="display: none;">
                                                                 <textarea id="reply-text-${f.getFeedbackID()}" rows="3" cols="50" placeholder="Write your reply..."></textarea><br>
@@ -832,7 +830,9 @@
                                                             <c:if test="${f.getRelpies() != null}">
                                                                 <div class="replies-toggle-btn reply-btn" onclick="toggleReplies(${f.getFeedbackID()})">Show/Hide Replies</div>
                                                             </c:if>
-
+                                                            <c:if test="${f.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
+                                                                <div class="replies-toggle-btn reply-btn" onclick="deleteFeedback(${f.getFeedbackID()})">Delete</div>
+                                                            </c:if>
                                                             <!-- Replies section -->
                                                             <c:set var="replies" value="${f.getRelpies()}" scope="request"/>
                                                             <div class="replies-section pl-4" id="replies-section-${f.getFeedbackID()}" style="display: none;">
@@ -853,7 +853,7 @@
                                     <script>
                                         function deleteFeedback(feedbackId) {
                                             if (confirm('Are you sure you want to delete this feedback?')) {
-                                                window.location.href = 'DeleteFeedbackServlet?feedbackId=' + feedbackId;
+                                                window.location.href = 'deletefeedback?feedbackId=' + feedbackId;
                                             }
                                         }
                                         function toggleReplyForm(feedbackID) {

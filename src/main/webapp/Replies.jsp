@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="currentUserId" value="${sessionScope.user.getId()}" />
 <c:choose>
     <c:when test="${not empty replies}">
         <c:forEach items="${replies}" var="reply">
@@ -19,10 +18,8 @@
                 <div class="comment-body">
                         ${reply.getFeedback()}
                 </div>
-                <div class="reply-btn" onclick="toggleReplyForm(${reply.getFeedbackID()})">Reply</div>
-                <c:if test="${reply.getCustomerID().getId() eq currentUserId}">
-                    <div class="delete-btn" onclick="deleteFeedback(${reply.getFeedbackID()})">Delete</div>
-                </c:if>
+                <div class="replies-toggle-btn reply-btn" onclick="toggleReplyForm(${reply.getFeedbackID()})">Reply</div>
+
                 <div class="reply-form" id="reply-form-${reply.getFeedbackID()}" style="display: none;">
                     <textarea id="reply-text-${reply.getFeedbackID()}" rows="3" cols="50" placeholder="Write your reply..."></textarea><br>
                     <button type="button" onclick="submitReply(${reply.getFeedbackID()})">Submit</button>
@@ -31,6 +28,9 @@
                 <!-- Button to toggle replies section -->
                 <c:if test="${reply.getRelpies() != null}">
                 <div class="replies-toggle-btn reply-btn" onclick="toggleReplies(${reply.getFeedbackID()})">Show/Hide Replies</div>
+                </c:if>
+                <c:if test="${reply.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
+                    <div class="replies-toggle-btn reply-btn" onclick="deleteFeedback(${reply.getFeedbackID()})">Delete</div>
                 </c:if>
                 <!-- Nested replies section -->
                 <c:set var="replies" value="${reply.getRelpies()}" scope="request"/>

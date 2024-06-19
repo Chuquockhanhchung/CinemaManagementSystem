@@ -112,6 +112,16 @@ public class MovieDAO extends DBContext {
         }
         return feedbacks;
     }
+    public void delete_Feedback(int id){
+        String sql = "DELETE FROM `cinemamanagersystem`.`feedback` WHERE (`FeedbackID` = ?);\n";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
     public void insert_Feedback(Feedback feedback) {
         String sql="INSERT INTO `cinemamanagersystem`.`feedback` (`MovieID`, `CustomerID`, `Content`, `FeedbackDate`, `Rate`,`ReplyID`) VALUES (?,?,?, ?, ?,?);\n";
         try{
@@ -130,12 +140,13 @@ public class MovieDAO extends DBContext {
     }
     public static void main(String[] args) {
         MovieDAO dao = new MovieDAO(DBContext.getConn());
-        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-        Customer cu = daoc.getCustomerByCID("60");
-        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
-        for (Feedback feedback : feedbacks) {
-            System.out.println(feedback);
-        }
+//        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+//        Customer cu = daoc.getCustomerByCID("60");
+//        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
+//        for (Feedback feedback : feedbacks) {
+//            System.out.println(feedback);
+//        }
+        dao.delete_Feedback(124);
     }
     public ArrayList<Movie> getMovieType(int id) {
         String sql = "select m.MovieID, m.MovieName, m.Description, t.TypeName, m.Image, m.Status,  m.Duration  from movietype t join (SELECT m.MovieID, m.MovieName, m.Description, t.TypeID, m.Image, m.Status, m.Duration FROM movie m join movie_has_types t on m.MovieID = t.MovieID) m on m.TypeID = t.TypeID   where m.MovieID = ? ";
