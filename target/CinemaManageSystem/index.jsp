@@ -280,9 +280,9 @@
                                                     <ul>
                                                         <li>
                                                         <a
-                                                                class="test-popup-link button" rel='external'
-                                                                href='https://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV'
-                                                                title='title'>Xem Trailer
+                                                            class="test-popup-link button" rel='external'
+                                                            href='h<%= movie.getTrailer() %>'
+                                                            title='title'>Xem Trailer
                                                         </a>
                                                         </li>
                                                         <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>

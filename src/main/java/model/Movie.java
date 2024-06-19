@@ -16,6 +16,7 @@ public class Movie {
     private String description;
     private String type;
     private String image;
+    private String trailer;
     private String actor;
     private String status;
     private int duration;
@@ -34,6 +35,14 @@ public class Movie {
         this.status = status;
         this.duration = duration;
         this.price = price;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     public int getId() {

@@ -30,6 +30,7 @@ public class MovieDAO extends DBContext {
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(11));
                 movies.add(a);
             }
         } catch (SQLException e) {
