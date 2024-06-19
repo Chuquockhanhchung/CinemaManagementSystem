@@ -1,13 +1,8 @@
 package dal;
 
-import model.Account;
-import model.Movie;
-import model.ShowTime;
+import model.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class MovieDAO extends DBContext {
@@ -37,7 +32,111 @@ public class MovieDAO extends DBContext {
         }
         return movies;
     }
+    public String getDateById(int id) {
+        String date = "";
+        String sql = "SELECT ReleaseDate FROM movie WHERE MovieID=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                date = rs.getString(1);
+            }
+            return date;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public float getRatingById(int id) {
+        float rating = 0;
+        String sql = "SELECT IMDbRating FROM movie WHERE MovieID=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                rating = rs.getFloat(1);
+                return rating;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    return rating;
+    }
+    public ArrayList<Feedback> getFBbyID(int id){
+        ArrayList<Feedback> feedbacks = new ArrayList<>();
+        String sql = "SELECT * FROM Feedback WHERE MovieID=?";
+        CustomerDAO cdao = new CustomerDAO(con);
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                feedbacks.add(new Feedback(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getInt(6)
+                ));
+            }
+            return feedbacks;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return feedbacks;
+    }
+    public ArrayList<Feedback> getFBbyFBID(int id){
+        ArrayList<Feedback> feedbacks = new ArrayList<>();
+        String sql = "SELECT * FROM Feedback WHERE ReplyID=?";
+        CustomerDAO cdao = new CustomerDAO(con);
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                feedbacks.add(new Feedback(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getInt(6)
+                ));
+            }
+            return feedbacks;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return feedbacks;
+    }
+    public void insert_Feedback(Feedback feedback) {
+        String sql="INSERT INTO `cinemamanagersystem`.`feedback` (`MovieID`, `CustomerID`, `Content`, `FeedbackDate`, `Rate`,`ReplyID`) VALUES (?,?,?, ?, ?,?);\n";
+        try{
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setInt(1,feedback.getMovieID());
+            ps.setInt(2,feedback.getCustomerID().getIdCustomer());
+            ps.setString(3,feedback.getFeedback());
+            ps.setDate(4,feedback.getFeedbackDate());
+            ps.setInt(5,feedback.getRate());
+            ps.setInt(6,feedback.getReplyID());
+            ps.executeUpdate();
 
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        MovieDAO dao = new MovieDAO(DBContext.getConn());
+        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+        Customer cu = daoc.getCustomerByCID("60");
+        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
+        for (Feedback feedback : feedbacks) {
+            System.out.println(feedback);
+        }
+    }
     public ArrayList<Movie> getMovieType(int id) {
         String sql = "select m.MovieID, m.MovieName, m.Description, t.TypeName, m.Image, m.Status,  m.Duration  from movietype t join (SELECT m.MovieID, m.MovieName, m.Description, t.TypeID, m.Image, m.Status, m.Duration FROM movie m join movie_has_types t on m.MovieID = t.MovieID) m on m.TypeID = t.TypeID   where m.MovieID = ? ";
         ArrayList<Movie> list = new ArrayList<>();

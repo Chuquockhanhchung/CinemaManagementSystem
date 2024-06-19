@@ -280,7 +280,7 @@
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
                                                         <li><a href="#">View Trailer</a></li>
-                                                        <li><a href="#">View Details</a></li>
+                                                        <li><a href="detail?id=<%= movie.getId()%>">View Details</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
