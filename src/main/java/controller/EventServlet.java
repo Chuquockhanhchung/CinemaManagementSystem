@@ -56,8 +56,10 @@ public class EventServlet extends HttpServlet {
             String EventName = request.getParameter("EventName");
             String EventCode = request.getParameter("EventCode");
             String EventDetail = request.getParameter("EventDetail");
-            String StartDate = request.getParameter("start-datetimes");
-            String EndDate = request.getParameter("end-datetimes");
+            String EventImage = request.getParameter("EventImage");
+            String StartDate = request.getParameter("datetimes");
+            String EndDate = request.getParameter("EndDate");
+            float Discount = Float.parseFloat(request.getParameter("Discount"));
             String Status = request.getParameter("Status");
 
             HttpSession session = request.getSession();
@@ -66,8 +68,10 @@ public class EventServlet extends HttpServlet {
             event.setEventName(EventName);
             event.setEventCode(EventCode);
             event.setEventDetail(EventDetail);
+            event.setEventImage(EventImage);
             event.setStartDate(StartDate);
             event.setEndDate(EndDate);
+            event.setDiscount(Discount);
             event.setStatus(Status);
 
             EventDAO dao = new EventDAO(DBContext.getConn());

@@ -128,7 +128,7 @@ Content body start
             <div class="page-titles">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Event</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm sự kiện mới</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -137,14 +137,14 @@ Content body start
                     <div class="mb-3">
                         <ul class="d-flex align-items-center flex-wrap">
                             <li><a href="event.jsp"
-                                   class="btn btn-primary">Event</a></li>
+                                   class="btn btn-primary">Danh sách sự kiện</a></li>
                         </ul>
                     </div>
     <form method="post" action="../../event">
                     <div class="row">
-                        <div class="mb-3 col-sm-6">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" placeholder="Title" name="EventName">
+                        <div class="mb-3 col-sm-8">
+                            <label class="form-label">Tiêu Đề</label>
+                            <input type="text" class="form-control" placeholder="Tiêu Đề" name="EventName">
                         </div>
                         <div class="col-xl-8">
                             <div class="card h-auto">
@@ -155,7 +155,7 @@ Content body start
 
                             <div class="filter cm-content-box box-primary">
                                 <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Event Code
+                                    <div class="cpa"> Code Sự Kiện
                                     </div>
                                     <div class="tools">
                                         <a href="javascript:void(0);" class="expand handle"><i
@@ -164,8 +164,25 @@ Content body start
                                 </div>
                                 <div class="cm-content-body form excerpt">
                                     <div class="card-body">
-                                        <label class="form-label">Event Code</label>
+                                        <label class="form-label">Code Sự Kiện</label>
                                         <input type="text" class="form-control" name="EventCode">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter cm-content-box box-primary">
+                                <div class="content-title SlideToolHeader">
+                                    <div class="cpa"> Giảm giá
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:void(0);" class="expand handle"><i
+                                                class="fal fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="cm-content-body form excerpt">
+                                    <div class="card-body">
+                                        <label class="form-label">Giảm giá</label>
+                                        <input type="number" class="form-control" name="Discount">
                                     </div>
                                 </div>
                             </div>
@@ -173,21 +190,14 @@ Content body start
                             <div class="col-xl-8">
                                 <div class="card h-auto">
                                     <div class="card-header">
-                                        <h4 class="card-title">Date Picker</h4>
+                                        <h4 class="card-title">Ngày Bắt Đầu & Kết Thúc Sự Kiện</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-
                                             <div class="col-xl-4 mb-3">
                                                 <div class="example">
-                                                    <p class="mb-1">Start Time</p>
-                                                    <input class="picktime" type="text" name="start-datetimes" />
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 mb-3">
-                                                <div class="example">
-                                                    <p class="mb-1">End Time</p>
-                                                    <input class="picktime" type="text" name="end-datetimes" />
+                                                    <input class="picktime" type="text" name="datetimes" />
+                                                    <input class="picktime" type="text" name="EndDate" />
                                                 </div>
                                             </div>
                                         </div>
@@ -200,7 +210,7 @@ Content body start
                                 <div class="filter cm-content-box box-primary">
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa">
-                                            Published
+                                            Cài Đặt
                                         </div>
                                         <div class="tools">
                                             <a href="javascript:void(0);" class="expand handle"><i
@@ -210,55 +220,15 @@ Content body start
                                     <div class="cm-content-body publish-content form excerpt">
                                         <div class="card-body py-3">
                                             <ul class="d-flex align-items-center mb-2">
-                                                <li><a href="javascript:void(0);"><i class="fa-solid fa-key"></i></a>
-                                                </li>
-                                                <li><a href="javascript:void(0);" class="ms-2">Status:</a></li>
-                                                <li><strong><a href="javascript:void(0);"
-                                                               class="mx-2">Published</a></strong></li>
-                                                <li><a href="javascript:void(0);" class="accordion accordion-primary"
-                                                       id="headingOne" data-bs-toggle="collapse"
-                                                       data-bs-target="#collapseOne" aria-controls="collapseOne"
-                                                       aria-expanded="true" role="button">Edit</a></li>
-                                            </ul>
-                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                                 data-bs-parent="#accordion-one">
-                                                <div class="accordion-body-text p-3 border rounded">
-                                                    <div class="mb-2">
-                                                        <label class="form-label w-100">Content Type</label>
-                                                        <select class="publish-drop default-select mb-2 w-100">
-                                                            <option selected>Select Status</option>
-                                                            <option value="1">Published</option>
-                                                            <option value="2">Draft</option>
-                                                            <option value="3">Trash</option>
-                                                            <option value="4">Private</option>
-                                                            <option value="5">Pending</option>
-                                                        </select>
-                                                    </div>
-                                                    <div>
-                                                        <button class="btn btn-primary btn-sm me-2" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                aria-expanded="false" aria-controls="collapseOne">
-                                                            Ok
-                                                        </button>
-                                                        <button class="btn btn-danger light btn-sm" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                aria-expanded="false" aria-controls="collapseOne">
-                                                            Cancel
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <ul class="d-flex align-items-center mb-2">
                                                 <li><a href="javascript:void(0);"><i class="fa-solid fa-eye"></i></a>
                                                 </li>
-                                                <li><a href="javascript:void(0);" class="ms-2">Status:</a></li>
+                                                <li><a href="javascript:void(0);" class="ms-2">Trạng Thái:</a></li>
                                                 <li><strong><a href="javascript:void(0);"
-                                                               class="mx-2">Public</a></strong></li>
+                                                               class="mx-2">Hoạt Động</a></strong></li>
                                                 <li><a href="javascript:void(0);" class="accordion accordion-primary"
                                                        id="headingtwo" data-bs-toggle="collapse"
                                                        data-bs-target="#collapsetwo" aria-controls="collapsetwo"
-                                                       aria-expanded="true" role="button">Edit</a></li>
+                                                       aria-expanded="true" role="button">Chỉnh sửa</a></li>
                                             </ul>
                                             <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
                                                  data-bs-parent="#accordion-one">
@@ -270,19 +240,13 @@ Content body start
                                                                     <label class="form-check-label"><input type="radio"
                                                                                                            name="optradio"
                                                                                                            class="form-check-input">
-                                                                        Public</label>
+                                                                        Hoạt Động</label>
                                                                 </div>
                                                                 <div class="radio">
                                                                     <label class="form-check-label"><input type="radio"
                                                                                                            name="optradio"
                                                                                                            class="form-check-input">
-                                                                        Password Protected</label>
-                                                                </div>
-                                                                <div class="radio disabled">
-                                                                    <label class="form-check-label"><input type="radio"
-                                                                                                           name="optradio"
-                                                                                                           class="form-check-input">
-                                                                        Private</label>
+                                                                        Không Hoạt Động</label>
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -335,7 +299,6 @@ Content body start
                                     </div>
                                 </div>
 
-
                                 <div class="filter cm-content-box box-primary">
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa">
@@ -352,7 +315,7 @@ Content body start
                                                 <div class=" position-relative ">
                                                     <div class="avatar-preview">
                                                         <div id="imagePreview"
-                                                             style="background-image: url(public/assets/images/no-img-avatar.png);">
+                                                             style="background-image: url(../../public/assets/images/no-img-avatar.png);">
                                                         </div>
                                                     </div>
                                                     <div class="change-btn d-flex align-items-center flex-wrap">
@@ -422,7 +385,6 @@ Footer end
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <%--Date Picker--%>
 
-
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
 <script>
@@ -432,7 +394,29 @@ Footer end
             console.error( error );
         } );
 </script>
+<script>
+    $(function() {
+        $('input[name="datetimes"]').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm'
+            }
+        });
+    });
 
+    $(function() {
+        $('input[name="EndDate"]').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm'
+            }
+        });
+    });
+</script>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -463,29 +447,6 @@ Footer end
         // initialize Tagify on the above input node reference
         new Tagify(input);
     }
-</script>
-<script>
-    $(function() {
-        $('input[name="start-datetimes"]').daterangepicker({
-            timePicker: true,
-            startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(32, 'hour'),
-            locale: {
-                format: 'YYYY/MM/DD hh:mm A'
-            }
-        });
-    });
-
-    $(function() {
-        $('input[name="end-datetimes"]').daterangepicker({
-            timePicker: true,
-            startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(32, 'hour'),
-            locale: {
-                format: 'YYYY/MM/DD hh:mm A'
-            }
-        });
-    });
 </script>
 
 <!--**********************************
