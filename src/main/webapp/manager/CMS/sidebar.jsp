@@ -66,11 +66,11 @@
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> MANAGER</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="movies.jsp">Movies</a></li>
-                    <li><a href="add_movies.jsp">Add Movie</a></li>
+                    <li><a href="movies.jsp">Danh sách Phim</a></li>
+                    <li><a href="add_movies.jsp">Thêm phim</a></li>
                     <li><a href="add_email.jsp">Add Email</a></li>
-                    <li><a href="event.jsp">Event</a></li>
-                    <li><a href="add_event.jsp">Add Event</a></li>
+                    <li><a href="event.jsp">Danh sách sự kiện</a></li>
+                    <li><a href="add_event.jsp">Thêm sự kiện mới</a></li>
                     <li><a href="event_category.jsp">Event Category</a>
                     </li>
                 </ul>

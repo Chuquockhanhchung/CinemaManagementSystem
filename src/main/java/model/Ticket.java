@@ -30,7 +30,7 @@ public class Ticket {
         Status = status;
     }
 
-    public Ticket(int CustomerID, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String s3) {
+    public Ticket(int CustomerID, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String SeatID) {
         CustomerID = CustomerID;
         FullName = name;
         StartTime = time;
@@ -42,7 +42,7 @@ public class Ticket {
         BookingDate = hold;
         MovieName = s2;
         Image = name1;
-        SeatID = s3;
+        SeatID = SeatID;
     }
 
     @Override
