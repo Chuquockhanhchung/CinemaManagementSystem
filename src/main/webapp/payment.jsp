@@ -99,7 +99,7 @@
                                         </li>
                                         <li>
                                             <span class="dtts1">Ghế Ngồi:</span>
-                                            <%= ticket.getSeatType() %> - <%= ticket.getSeatID() %>
+                                            <h5><%= ticket.getSeatType() %> - <%= ticket.getSeatID() %></h5>
                                         </li>
                                     </ul>
 

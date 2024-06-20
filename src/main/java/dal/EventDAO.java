@@ -21,13 +21,16 @@ public class EventDAO {
     public boolean addEvent(Event event) {
         boolean f = false;
         try {
-            String sql = "INSERT INTO event (EventName, EventCode, EventDetail, StartDate, EndDate) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO event (EventName, EventCode, EventDetail, EventImage, StartDate, EndDate, Discount, Status) VALUES (?, ?, 'Detail', ?, ?, ?, ?, 'Active')";
             PreparedStatement ps = con.prepareStatement(sql) ;
             ps.setString(1, event.getEventName());
             ps.setString(2, event.getEventCode());
-            ps.setString(3, event.getEventDetail());
+//            ps.setString(3, event.getEventDetail());
+            ps.setString(3, event.getEventImage());
             ps.setString(4, event.getStartDate());
             ps.setString(5, event.getEndDate());
+            ps.setFloat(6, event.getDiscount());
+//            ps.setString(8, event.getStatus());
 
             int i = ps.executeUpdate();
             if (i == 1) {
