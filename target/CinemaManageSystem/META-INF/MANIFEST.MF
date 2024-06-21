@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
-Class-Path: 
+Created-By: IntelliJ IDEA
+Built-By: datla
+Build-Jdk: Oracle OpenJDK 17.0.9
 
