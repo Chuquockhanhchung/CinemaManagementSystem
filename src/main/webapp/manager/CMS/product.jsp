@@ -203,11 +203,11 @@ Content body start
                                             <td><%= event.getStatus() %></td>
                                             <td><%= event.getStartDate() %></td>
                                             <td class="text-end">
-                                                <a href="javascript:void(0);"
+                                                <a href="#"
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="javascript:void(0);"
+                                                <a href="#"
                                                    class="btn btn-danger btn-sm content-icon">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>

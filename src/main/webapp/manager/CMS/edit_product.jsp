@@ -140,7 +140,7 @@ Content body start
                                    class="btn btn-primary">Danh sách sản phẩm</a></li>
                         </ul>
                     </div>
-                    <form method="post" action="../../addproduct">
+                    <form method="post" action="../../editproduct">
                         <div class="row">
                             <div class="mb-3 col-sm-8">
                                 <label class="form-label">Tên Sản Phẩm</label>
