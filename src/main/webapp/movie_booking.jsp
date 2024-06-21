@@ -217,7 +217,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="prs_heading_section_wrapper">
-                    <h2>Our Patners</h2>
+                    <h2>Những cộng sự của chúng ta</h2>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -271,27 +271,27 @@
                 <h3>Log in</h3>
             </div>
             <div class="st_profile_input float_left">
-                <label>Email / Mobile Number</label>
+                <label>Email / Số điện thoại</label>
                 <input type="text">
             </div>
             <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                 <input type="password" placeholder="Password">
             </div>
             <div class="st_form_pop_fp float_left">
-                <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
+                <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Quên mật khẩu ?</a></h3>
             </div>
-            <div class="st_form_pop_login_btn float_left"> <a href="page-1-7_profile_settings.jsp">LOGIN</a>
+            <div class="st_form_pop_login_btn float_left"> <a href="page-1-7_profile_settings.jsp">Đăng nhập</a>
             </div>
             <div class="st_form_pop_or_btn float_left">
                 <h4>or</h4>
             </div>
-            <div class="st_form_pop_facebook_btn float_left"> <a href="#"> Connect with Facebook</a>
+            <div class="st_form_pop_facebook_btn float_left"> <a href="#"> Kết nối với Facebook</a>
             </div>
-            <div class="st_form_pop_gmail_btn float_left"> <a href="#"> Connect with Google</a>
+            <div class="st_form_pop_gmail_btn float_left"> <a href="#"> Kết nối với Google</a>
             </div>
             <div class="st_form_pop_signin_btn float_left">
-                <h4>Donâ€™t have an account? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Sign Up</a></h4>
-                <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+                <h4>Không có tài khoản? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Đăng kí</a></h4>
+                <h5>Tôi đồng ý với <a href="#">Điều khoản & Điều khiển</a> & <a href="#">Chính sách bảo mật</a></h5>
             </div>
         </div>
     </div>
@@ -301,11 +301,11 @@
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                <h3>Forgot Password</h3>
-                <p>We can help! All you need to do is enter your email ID and follow the instructions!</p>
+                <h3>Quên mật khẩu</h3>
+                <p>Chúng tôi có thể giúp đỡ! Tất cả những gì bạn cần làm là nhập ID email của bạn và làm theo ướng dẫn!</p>
             </div>
             <div class="st_profile_input float_left">
-                <label>Email Address</label>
+                <label>Địa chỉ Email</label>
                 <input type="text">
             </div>
             <div class="st_form_pop_fpass_btn float_left"> <a href="#">Verify</a>
@@ -318,10 +318,10 @@
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="st_pop_form_heading_wrapper float_left">
-                <h3>Sign Up</h3>
+                <h3>Đăng kí</h3>
             </div>
             <div class="st_profile_input float_left">
-                <label>Email / Mobile Number</label>
+                <label>Email / Số điện thoại</label>
                 <input type="text">
             </div>
             <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
@@ -335,12 +335,12 @@
             <div class="st_form_pop_or_btn float_left">
                 <h4>or</h4>
             </div>
-            <div class="st_form_pop_facebook_btn float_left"> <a href="#"><i class="fab fa-facebook-f"></i> Connect with Facebook</a>
+            <div class="st_form_pop_facebook_btn float_left"> <a href="#"><i class="fab fa-facebook-f"></i> Kết nối với Facebook</a>
             </div>
-            <div class="st_form_pop_gmail_btn float_left"> <a href="#"><i class="fab fa-google-plus-g"></i> Connect with Google</a>
+            <div class="st_form_pop_gmail_btn float_left"> <a href="#"><i class="fab fa-google-plus-g"></i> kết nối với Google</a>
             </div>
             <div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
-                <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+                <h5>Tôi đồng ý với <a href="#">Điều khoản & Điều khiển</a> & <a href="#">Chính sách bảo mật</a></h5>
             </div>
         </div>
     </div>
