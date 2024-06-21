@@ -136,7 +136,44 @@ public class TicketDAO extends DBContext{
         }
         return list;
     }
-    
+
+    public List<Ticket> getTicketByBooking(int CustomerID) {
+        List<Ticket> list = new ArrayList<Ticket>();
+        Ticket ticket = null;
+        try {
+            String sql = "SELECT *\n" +
+                    "FROM movieticket\n" +
+                    "WHERE CustomerID = ?\n" +
+                    "  AND DATE_FORMAT(BookingDate, '%Y/%m/%d %H:%i') = (\n" +
+                    "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H:%i'))\n" +
+                    "      FROM movieticket\n" +
+                    "      WHERE CustomerID = ?\n" +
+                    "  );";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, CustomerID);
+            ps.setInt(2, CustomerID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ticket = new Ticket();
+                ticket.setTicketID(rs.getInt(1));
+                ticket.setComboName(rs.getString(3));
+                ticket.setSeatID(rs.getString(5));
+                ticket.setSeatType(rs.getString(6));
+                ticket.setTicketPrice(rs.getFloat(7));
+                ticket.setBookingDate(rs.getString(8));
+                ticket.setStatus(rs.getString(9));
+                ticket.setMovieName(rs.getString(10));
+                list.add(ticket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
         try {

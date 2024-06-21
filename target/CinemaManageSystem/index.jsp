@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="images/header/shortcut-icon.png"/>
 
     <!-- Uicons - Flaticon -->
     <link rel='stylesheet'
@@ -3934,42 +3934,42 @@
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <div class="st_pop_form_heading_wrapper float_left">
-                    <h3>Log in</h3>
+                    <h3>Đăng Nhập</h3>
                 </div>
                 <c:if test="${not empty err}">
                     <div class="text-danger">${err}.</div>
                     <c:remove var="failMess" scope="session"/>
                 </c:if>
                 <div class="st_profile_input float_left">
-                    <label>Email / Mobile Number</label>
-                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
+                    <label>Email / Số điện thoại</label>
+                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email / Số điện thoại">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Password</label>
-                    <input value="${requestScope.pass}" name="pass" type="password" placeholder="Password">
+                    <label>Mật khẩu</label>
+                    <input value="${requestScope.pass}" name="pass" type="password" placeholder="Mật khẩu">
                 </div>
 
                 <div class="st_form_pop_fp float_left">
-                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
+                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Bạn quên mật khẩu?</a></h3>
                 </div>
                 <div class="g-recaptcha float_left" data-sitekey="6LclJOUpAAAAABir2gwq1sKVfC1zD_Gygchg7m-g"></div>
                 <div id="error"></div>
 
                 <div class="st_form_pop_login_btn float_left">
-                    <input type="submit" value="LOGIN"/>
+                    <input type="submit" value="ĐĂNG NHẬP"/>
                 </div>
                 <div class="st_form_pop_or_btn float_left">
-                    <h4>or</h4>
+                    <h4>Hoặc</h4>
                 </div>
                 <div class="click st_form_pop_gmail_btn float_left">
                     <a href="https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force"
                        class="link">
-                        <img src="images/content/google.png" alt=""> Login with Google</a>
+                        <img src="images/content/google.png" alt=""> Đăng nhập bằng Google</a>
                 </div>
                 <div class="st_form_pop_signin_btn float_left">
-                    <h4>Don't have an account? <a href="#" data-toggle="modal" data-target="#myModa3"
-                                                  target="_blank">Sign Up</a></h4>
-                    <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+                    <h4>Bạn chưa có tài khoản? <a href="#" data-toggle="modal" data-target="#myModa3"
+                                                  target="_blank">Đăng Ký</a></h4>
+                    <h5>Tôi đồng ý với <a href="#">Điều khoản & Dịch vụ</a> & <a href="#">của chúnng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -4060,17 +4060,17 @@
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="st_pop_form_heading_wrapper float_left">
-                <h3>Log in</h3>
+                <h3>QUÊN MẬT KHẨU</h3>
             </div>
             <c:if test="${not empty err}">
                 <div class="text-danger">${err}.</div>
                 <c:remove var="failMess" scope="session"/>
             </c:if>
             <div class="st_profile_input float_left">
-                <label>Email Address</label>
+                <label>Địa chỉ Email</label>
                 <input id="emailInput" name="email" type="text">
             </div>
-            <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href="" id="verifyButton">Verify</a>
+            <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href="" id="verifyButton">Xác Nhận</a>
             </div>
         </div>
     </div>
@@ -4112,30 +4112,30 @@
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <div class="st_pop_form_heading_wrapper float_left">
-                    <h3>Sign Up</h3>
+                    <h3>Đăng Ký</h3>
                 </div>
                 <div class="st_profile_input float_left">
-                    <label>Your Email</label>
+                    <label>Địa Chỉ Email</label>
                     <input type="text" id="emailInput2" name="email" placeholder="example@gmail.com">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Mobile Number</label>
-                    <input type="text" placeholder="Mobile Phone" name="phone">
+                    <label>Số Điện Thoại</label>
+                    <input type="text" placeholder="Số Điện Thoại" name="phone">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Your Name</label>
-                    <input type="text" placeholder="Name" name="name">
+                    <label>Họ Và Tên</label>
+                    <input type="text" placeholder="Họ Và Tên" name="name">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Password</label>
-                    <input type="password" placeholder="Password" name="pass1">
+                    <label>Mật Khẩu</label>
+                    <input type="password" placeholder="Mật Khẩu" name="pass1">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm Password" name="pass2">
+                    <label>Xác Nhận Mật Khẩu</label>
+                    <input type="password" placeholder="Xác Nhận Mật Khẩu" name="pass2">
                 </div>
                 <div class="st_form_pop_login_btn float_left">
-                    <input type="submit" value="SignUp">
+                    <input type="submit" value="Đăng Ký">
                 </div>
             </div>
         </div>
@@ -4208,16 +4208,15 @@
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                    <h3>Forgot Password</h3>
-                    <p>We can help! All you need to do is enter your email ID and follow the
-                        instructions!</p>
+                    <h3>Quên Mật Khẩu</h3>
+                    <p>Chúng tôi sẽ giúp bạn! Tất cả những gì bạn phải làm là nhập địa chỉ Email và làm theo hướng dẫn</p>
                 </div>
                 <div class="st_profile_input float_left">
-                    <label>Email Address</label>
+                    <label>Địa Chỉ Email</label>
                     <input id="emailInput" name="email" type="text">
                 </div>
                 <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
-                                                                                                  id="verifyButton">Verify</a>
+                                                                                                  id="verifyButton">Xác Nhận</a>
                 </div>
             </div>
         </div>

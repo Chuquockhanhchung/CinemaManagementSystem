@@ -1783,7 +1783,7 @@
                             <input type="checkbox" id="c3" name="cb">
                             <label for="c3"></label>
                         </li>
-                        <li> <span>Pay Rs.790.00</sp2an>
+                        <li> <span>Pay Rs.790.00</span>
                             <input type="checkbox" id="c4" name="cb">
                                         <label for="c4"></label>
                         </li>
