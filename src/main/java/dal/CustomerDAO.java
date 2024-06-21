@@ -21,6 +21,29 @@ public class CustomerDAO extends DBContext {
         this.con = con;
     }
 
+    public void EditCustomer(String name, String email, String phone, String img, int id) {
+        String sql = "UPDATE customer SET FullName = ?, Email = ?, PhoneNumber = ?, Picture = ? WHERE CustomerID = ?";
+
+        System.out.println("Executing query: " + sql);
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, phone);
+            ps.setString(4, img);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        CustomerDAO dao =  new CustomerDAO(DBContext.getConn());
+        System.out.println(dao.getInfor_Customer().size());
+    }
+
     public ArrayList<Customer> getInfor_Customer() {
         String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"
                 + "FROM customer\n"
@@ -73,20 +96,7 @@ public class CustomerDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-        try (Connection con = getConn()) {
-            // Connection successful, you can perform further operations here if needed
-            String idAccount = Math.random() + "";
-            CustomerDAO dao = new CustomerDAO(con);
-            Customer account = new Customer(idAccount, "654356", 3, "", "active");
-            dao.insertAccount(account);
-            Customer customer = new Customer(0, idAccount, "06/04/2024",
-                    "hoaidtthe172257@fpt.edu.vn", "", "");
-            dao.insertCustomer(customer);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
     public Customer getCustomer(String id) {
         Customer c = new Customer();
         String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"

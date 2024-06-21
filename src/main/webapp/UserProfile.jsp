@@ -43,35 +43,24 @@
     </div>
     <div class="profile-content">
         <h1>Thông Tin Cá Nhân</h1>
-        <form>
+        <form method="post" action="updateprofile">
+            <input name="id" value="${customer.getIdCustomer()}" hidden>
             <div class="form-group">
                 <label for="username">Tên người dùng:</label>
-                <input type="text" class="form-control" id="username" placeholder="Nhập tên người dùng" value="Nguyễn Tiến Đạt">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nhập tên người dùng" value="${customer.getName()}">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Nhập email" value="example@gmail.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email" value="${customer.getEmail()}">
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại:</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại" value="0123456789">
-            </div>
-            <div class="form-group">
-                <label for="address">Địa chỉ:</label>
-                <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" value="Hà Nội, Việt Nam">
-            </div>
-            <div class="form-group">
-                <label for="gender">Giới tính:</label>
-                <select class="form-control" id="gender">
-                    <option value="male">Nam</option>
-                    <option value="female">Nữ</option>
-                    <option value="other">Khác</option>
-                </select>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại" value="${customer.getPhone()}">
             </div>
             <div class="form-group">
                 <label for="avatar">Ảnh đại diện:</label>
-                <input type="file" class="form-control-file" id="avatar" onchange="previewAvatar(event)">
-                <img id="avatarPreview" class="avatar-preview mt-3" src="default-avatar.png" alt="Avatar Preview">
+                <input type="file" class="form-control-file" name="avatar" id="avatar" onchange="previewAvatar(event)">
+                <img id="avatarPreview" class="avatar-preview mt-3" src="${customer.getPicture()}" alt="Avatar Preview">
             </div>
             <button type="submit" class="btn btn-primary">Cập nhật</button>
         </form>
