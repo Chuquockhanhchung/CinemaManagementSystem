@@ -32,6 +32,14 @@
         <servlet-class>controller.servlet_Login</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FilterByTypeServlet</servlet-name>
+        <servlet-class>controller.FilterByTypeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <servlet-class>controller.SearchMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
@@ -120,6 +128,10 @@
         <url-pattern>/seat</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>FilterByTypeServlet</servlet-name>
+        <url-pattern>/type</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
@@ -142,6 +154,10 @@
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <url-pattern>/searchmovie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>

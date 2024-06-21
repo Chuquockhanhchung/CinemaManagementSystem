@@ -18,6 +18,73 @@ public class MovieDAO extends DBContext {
         this.con = con;
     }
 
+    public ArrayList<String> getMovieType(){
+        ArrayList<String> type = new ArrayList<>();
+        String sql = "select movietype.TypeName from cinemamanagersystem.movietype;";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                type.add(rs.getString("TypeName"));
+            }
+            return type;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Movie> FilterbyType(String type){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where Types like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+type+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public ArrayList<Movie> SearchMovie(String Search){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where MovieName like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+Search+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public static void main(String[] args) {
+        MovieDAO type = new MovieDAO(DBContext.getConn());
+        ArrayList<Movie> St = type.FilterbyType("hài");
+        for(int i=0; i<St.size(); i++){
+            System.out.println(St.get(i).toString());
+        }
+    }
+
     public ArrayList<Movie> getall_Movie() {
         ArrayList<Movie> movies = new ArrayList<>();
         MovieTypeDAO tdao = new MovieTypeDAO(con);

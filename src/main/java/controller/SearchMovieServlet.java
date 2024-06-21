@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import dal.AdminDAO;
 import dal.CustomerDAO;
@@ -22,19 +13,11 @@ import model.Account;
 import model.Customer;
 import model.Movie;
 
-/**
- *
- * @author Chi
- */
-public class Homepage extends HttpServlet {
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class SearchMovieServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -63,12 +46,13 @@ public class Homepage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String Search = request.getParameter("Search");
         AdminDAO dao = new AdminDAO(DBContext.getConn());
         CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
         MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> movies = md.getall_Movie();
+        ArrayList<Movie> movies = md.SearchMovie(Search);
         HttpSession session = request.getSession();
         ArrayList<String> type = md.getMovieType();
         session.setAttribute("type", type);
@@ -77,7 +61,6 @@ public class Homepage extends HttpServlet {
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
         request.getRequestDispatcher("index.jsp").forward(request, response);
-
 
     }
 
@@ -95,6 +78,6 @@ public class Homepage extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
