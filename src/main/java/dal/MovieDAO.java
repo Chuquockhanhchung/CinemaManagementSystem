@@ -100,6 +100,42 @@ public class MovieDAO extends DBContext {
         return movies;
     }
 
+    public double GetRateByID (int id){
+        String sql="SELECT sum(Rate), count(Rate) from feedback where MovieID = ? and rate>0;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return (double) rs.getDouble(1)/rs.getDouble(2);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public ArrayList<Movie> film(){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where IMDbRating > 3.5;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(14));
+                a.setRate(rs.getFloat(11));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
     public static void main(String[] args) {
         MovieDAO type = new MovieDAO(DBContext.getConn());
         ArrayList<Movie> St = type.phim("Đang chiếu");
