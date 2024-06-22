@@ -312,7 +312,7 @@
                                                                         <li>
                                                                             <a
                                                                                     class="test-popup-link button" rel='external'
-                                                                                    href='<%= movie.getTrailer()%>'
+                                                                                    href='h<%= movie.getTrailer()%>'
                                                                                     title='title'>Xem Trailer
                                                                             </a>
                                                                         </li>
@@ -1837,18 +1837,6 @@
     };
 </script>
 <!--main js file end-->
-
-<script>
-    // Disabling the carousel auto slide
-    $('#hot').carousel({
-        interval: false
-    });
-
-    // Disabling animation on slide event
-    $('#hot').on('slide.bs.carousel', function (e) {
-        e.preventDefault();
-    });
-</script>
 
 </body>
 
