@@ -830,8 +830,12 @@
                                                             <c:if test="${f.getRelpies() != null}">
                                                                 <div class="replies-toggle-btn reply-btn" onclick="toggleReplies(${f.getFeedbackID()})">Show/Hide Replies</div>
                                                             </c:if>
+
                                                             <c:if test="${f.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
                                                                 <div class="replies-toggle-btn reply-btn" onclick="deleteFeedback(${f.getFeedbackID()})">Delete</div>
+                                                            </c:if>
+                                                            <c:if test="${f.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
+                                                                <div class="replies-toggle-btn reply-btn" onclick="editFeedback(${f.getFeedbackID()})">Edit</div>
                                                             </c:if>
                                                             <!-- Replies section -->
                                                             <c:set var="replies" value="${f.getRelpies()}" scope="request"/>
