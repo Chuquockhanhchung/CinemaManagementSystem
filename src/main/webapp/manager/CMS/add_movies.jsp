@@ -1376,6 +1376,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <c:if test="${requestScope.err != null}">
+                                            <div class="alert alert-danger" role="alert">
+                                                ${requestScope.err}
+                                            </div>
+                                        </c:if>                  
                                         <div>
                                             <input type="submit" class="btn btn-primary mb-3" value="Add movie" >
 
@@ -1392,11 +1397,6 @@
                     </div>
                 </div>
             </div>
-            <script>
-                function showAlert(message) {
-                    alert(message);
-                }
-            </script>
 
             <!--**********************************
         Content body end
@@ -1418,7 +1418,7 @@
         <script data-cfasync="false"
         src="${pageContext.request.contextPath}/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
         <script>
-    var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
+                                        var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
         </script>
         <script src="public/assets/vendor/global/global.min.js"></script>
         <script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
@@ -1433,63 +1433,63 @@
         <script src="public/assets/js/demo.js"></script>
         <script src="public/assets/js/styleSwitcher.js"></script>
         <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-                $('#imagePreview').hide();
-                $('#imagePreview').fadeIn(650);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
+                                                reader.onload = function (e) {
+                                                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                                                    $('#imagePreview').hide();
+                                                    $('#imagePreview').fadeIn(650);
+                                                }
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        }
 
-    $("#imageUpload").on('change', function () {
+                                        $("#imageUpload").on('change', function () {
 
-        readURL(this);
-    });
-    $('.remove-img').on('click', function () {
-        var imageUrl = "${pageContext.request.contextPath}/public/assets/images/no-img-avatar.png";
-        $('.avatar-preview, #imagePreview').removeAttr('style');
-        $('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
-    });
+                                            readURL(this);
+                                        });
+                                        $('.remove-img').on('click', function () {
+                                            var imageUrl = "${pageContext.request.contextPath}/public/assets/images/no-img-avatar.png";
+                                            $('.avatar-preview, #imagePreview').removeAttr('style');
+                                            $('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
+                                        });
 
-    function checkValidateForm() {
-        const name = document.querySelector('input[name="name"]').value;
-        const des = document.querySelector('input[name="des"]').value;
-        const dir = document.querySelector('input[name="dir"]').value;
-        const actor = document.querySelector('input[name="actor"]').value;
-        const date = document.querySelector('input[name="date"]').value;
-        const time = document.querySelector('input[name="time"]').value;
-        const lan = document.querySelector('select[name="language"]').value;
-        const img = document.querySelector('input[name="img"]').value;
-        const status = document.querySelector('input[name="status"]').value;
-        const price = document.querySelector('input[name="price"]').value;
-        const otherType = document.querySelector('input[name="otherType"]').value;
-        var checkboxes = document.querySelectorAll('input[name="type"]:checked');
-        if (name.trim() === "" || des.trim() === "" || dir.trim() === "" || actor.trim() === "" || date.trim() === "" || time.trim() === "" || lan.trim() === "" || img.trim() === "" || status.trim() === "" || price.trim() === "") {
-            alert("Vui lòng điền đầy đủ thông tin!");
-            return false;
-        }
-        if (otherType.trim() === "" && checkboxes.length === 0) {
-            alert("Vui lòng điền đầy đủ thông tin!");
-            return false;
+                                        function checkValidateForm() {
+                                            const name = document.querySelector('input[name="name"]').value;
+                                            const des = document.querySelector('input[name="des"]').value;
+                                            const dir = document.querySelector('input[name="dir"]').value;
+                                            const actor = document.querySelector('input[name="actor"]').value;
+                                            const date = document.querySelector('input[name="date"]').value;
+                                            const time = document.querySelector('input[name="time"]').value;
+                                            const lan = document.querySelector('select[name="language"]').value;
+                                            const img = document.querySelector('input[name="img"]').value;
+                                            const status = document.querySelector('input[name="status"]').value;
+                                            const price = document.querySelector('input[name="price"]').value;
+                                            const otherType = document.querySelector('input[name="otherType"]').value;
+                                            var checkboxes = document.querySelectorAll('input[name="type"]:checked');
+                                            if (name.trim() === "" || des.trim() === "" || dir.trim() === "" || actor.trim() === "" || date.trim() === "" || time.trim() === "" || lan.trim() === "" || img.trim() === "" || status.trim() === "" || price.trim() === "") {
+                                                alert("Vui lòng điền đầy đủ thông tin!");
+                                                return false;
+                                            }
+                                            if (otherType.trim() === "" && checkboxes.length === 0) {
+                                                alert("Vui lòng điền đầy đủ thông tin!");
+                                                return false;
 
-        }
-        if (parseInt(price) <= 0 || isNaN(price) || isNaN(parseInt(price))) {
-            alert("Giá vé phải lớn hơn 0 và phải là số nguyên!");
-            return false;
-        }
+                                            }
+                                            if (parseInt(price) <= 0 || isNaN(price) || isNaN(parseInt(price))) {
+                                                alert("Giá vé phải lớn hơn 0 và phải là số nguyên!");
+                                                return false;
+                                            }
 
-        if (parseInt(time) <= 0 || isNaN(time) || isNaN(parseInt(time))) {
-            alert("Thời lượng phim phải là số nguyên và không đượng nhỏ hơn 0!");
-            return false;
-        }
+                                            if (parseInt(time) <= 0 || isNaN(time) || isNaN(parseInt(time))) {
+                                                alert("Thời lượng phim phải là số nguyên và không đượng nhỏ hơn 0!");
+                                                return false;
+                                            }
 
-        return true;
+                                            return true;
 
-    }
+                                        }
         </script>
 
 

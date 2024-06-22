@@ -102,8 +102,18 @@ public class AddMovieServlet extends HttpServlet {
             int price = Integer.parseInt(request.getParameter("price"));
             String otherType = request.getParameter("otherType");
             MovieDAO dao = new MovieDAO(DBContext.getConn());
+            Movie movie = new Movie(1, name, des, otherType, img, actor, date, status, time, price, dir, lan);
+            request.setAttribute("movies", movie);
+         if(name.trim() == "" || des.trim() == "" || dir.trim() == "" || actor.trim() == "" || date.trim() == "" || request.getParameter("time").trim() == "" || request.getParameter("language").trim() == "" || img.trim() == "" || status.trim() == "" || request.getParameter("price").trim() == ""){
+             request.setAttribute("err", "Vui lòng ?i?n ??y ?? thông tin!");
+             request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
+         }
          
-            Movie movie = new Movie(1, name, des, "chi", img, actor, date, status, time, price, dir, lan);
+         if(type.length == 0 && otherType.trim() == ""){
+             request.setAttribute("err", "Vui lòng ?i?n ??y ?? thông tin!");
+             request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
+         }
+            
             dao.AddMovie(movie);
             String[] actors = actor.split(",");
             int[] id = new int[actors.length];
@@ -114,7 +124,7 @@ public class AddMovieServlet extends HttpServlet {
             int movieID = dao.getIDMovie();
             for (String t : type) {
                 dao.AddHasType(movieID, Integer.parseInt(t));
-            }
+            } 
             for (int a : id) {
                 dao.AddHasActor(movieID, a);
             }
@@ -130,10 +140,10 @@ public class AddMovieServlet extends HttpServlet {
                     dao.AddHasType(movieID, t);
                 }
             }
-            response.sendRedirect("manager/CMS/movies.jsp");
+            response.sendRedirect("manageMovie");
 
         } catch (NumberFormatException e) {
-            request.setAttribute("err", "Vui lòng ?i?n ??y ?? thông tin!");
+            request.setAttribute("err", "Gía phim và th?i l??ng phim ph?i l?n h?n 0!");
             request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
         }
     }
