@@ -48,7 +48,7 @@ public class MovieDAO extends DBContext {
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
+                a.setTrailer(rs.getString(14));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class MovieDAO extends DBContext {
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
+                a.setTrailer(rs.getString(14));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -91,7 +91,7 @@ public class MovieDAO extends DBContext {
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
+                a.setTrailer(rs.getString(14));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -125,7 +125,7 @@ public class MovieDAO extends DBContext {
                 a.setType(rs.getString(3));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
+                a.setTrailer(rs.getString(14));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -174,7 +174,7 @@ public class MovieDAO extends DBContext {
                 c.setImage(rs.getString(4));
                 c.setStatus(rs.getString(5));
                 c.setDuration(rs.getInt(6));
-                c.setTrailer(rs.getString(11));
+                c.setTrailer(rs.getString(14));
 
             }
         } catch (SQLException e) {

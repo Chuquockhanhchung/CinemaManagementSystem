@@ -117,4 +117,20 @@ public class Movie {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", image='" + image + '\'' +
+                ", actor='" + actor + '\'' +
+                ", status='" + status + '\'' +
+                ", duration=" + duration +
+                ", price=" + price +
+                ", trailer='" + trailer + '\'' +
+                '}';
+    }
 }
