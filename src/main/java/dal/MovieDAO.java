@@ -76,12 +76,37 @@ public class MovieDAO extends DBContext {
         }
         return movies;
     }
+    public ArrayList<Movie> phim(String status){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where Status like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+status+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
 
     public static void main(String[] args) {
         MovieDAO type = new MovieDAO(DBContext.getConn());
-        ArrayList<Movie> St = type.FilterbyType("hài");
-        for(int i=0; i<St.size(); i++){
+        ArrayList<Movie> St = type.phim("Đang chiếu");
+        ArrayList<Movie> St2 = type.phim("Sắp chiếu");
+        for(int i=0; i<St.size(); i++) {
             System.out.println(St.get(i).toString());
+        }
+        System.out.println();
+        for(int i=0; i<St2.size(); i++) {
+            System.out.println(St2.get(i).toString());
         }
     }
 
