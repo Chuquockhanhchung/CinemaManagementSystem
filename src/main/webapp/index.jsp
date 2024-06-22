@@ -260,6 +260,31 @@
                         </li>
                     </ul>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Lấy tất cả các thẻ a trong tab
+                        var tabs = document.querySelectorAll('.nav-tabs a');
+
+                        tabs.forEach(function(tab) {
+                            // Thêm sự kiện click vào mỗi thẻ a
+                            tab.addEventListener('click', function (event) {
+                                // Ngăn chặn hành động mặc định của thẻ a
+                                event.preventDefault();
+
+                                // Lấy nội dung của thẻ a được nhấp vào
+                                var tabText = tab.textContent;
+
+                                // Thay đổi nội dung của thẻ h2
+                                document.querySelector('.prs_heading_section_wrapper h2').textContent = tabText;
+
+                                // Hiển thị tab tương ứng
+
+                                });
+
+                            });
+                        });
+
+                </script>
             </div>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="best">
@@ -279,26 +304,26 @@
                                     %>
 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li>
-                                                        <a
-                                                                class="test-popup-link button" rel='external'
-                                                                href='https://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV'
-                                                                title='title'>Xem Trailer
-                                                        </a>
-                                                        </li>
-                                                        <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
-                                                    <p><%= movie.getType() %></p>
+                                                        <div class="prs_upcom_movie_box_wrapper">
+                                                            <div class="prs_upcom_movie_img_box">
+                                                                <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
+                                                                <div class="prs_upcom_movie_img_btn_wrapper">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a
+                                                                                    class="test-popup-link button" rel='external'
+                                                                                    href='<%= movie.getTrailer()%>'
+                                                                                    title='title'>Xem Trailer
+                                                                            </a>
+                                                                        </li>
+                                                                        <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div style="height: 150px" class="prs_upcom_movie_content_box">
+                                                                <div class="prs_upcom_movie_content_box_inner">
+                                                                    <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
+                                                                    <p><%= movie.getType() %></p>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -385,7 +410,7 @@
                                                         <li>
                                                             <a
                                                                     class="test-popup-link button" rel='external'
-                                                                    href='https://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV'
+                                                                    href='<%= movie.getTrailer()%>'
                                                                     title='title'>Xem Trailer
                                                             </a>
                                                         </li>
@@ -1805,6 +1830,7 @@
 <script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
 <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script type="text/javascript">
     var onloadCallback = function () {
         alert("grecaptcha is ready!");
