@@ -49,17 +49,16 @@ public class TicketDAO extends DBContext{
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Movie(rs.getInt(1),
+                return new Movie(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getNString(4),
-                        rs.getNString(5),
+                        rs.getString(4),
+                        rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
                         rs.getInt(8),
-                        rs.getInt(9),
-                        rs.getString(10)
-
+                        rs.getInt(9)
                 );
             }
         }catch (SQLException e) {

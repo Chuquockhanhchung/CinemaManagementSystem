@@ -50,6 +50,32 @@
 
     // Hàm này sẽ áp dụng định dạng tùy chỉnh cho giá trị và loại bỏ dấu chấm giữa các số
     String customCurrency = customFormat.format(ticket.getTicketPrice());
+
+    String dateTime = "${sessionScope.date}";
+    String dateTime = (String) session.getAttribute("date");  // Hoặc sessionScope.date
+
+    // Hàm lấy ngày
+    String getDate(String dateTime) {
+    if (dateTime != null && dateTime.contains(" ")) {
+    return dateTime.split(" ")[0];
+    }
+    return "";
+    }
+
+    // Hàm lấy giờ và phút
+    String getTime(String dateTime) {
+    if (dateTime != null && dateTime.contains(" ")) {
+    String[] parts = dateTime.split(" ");
+    if (parts.length == 2 && parts[1].contains(":")) {
+    return parts[1].substring(0, 5);  // Lấy giờ và phút (đầu tiên 5 ký tự)
+    }
+    }
+    return "";
+    }
+
+    // Gọi các hàm để lấy ngày và giờ phút
+    String dateOnly = getDate(dateTime);
+    String hourAndMinute = getTime(dateTime);
 %>
 
 <!-- st top header Start -->
@@ -62,10 +88,9 @@
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="st_bt_top_center_heading float_left">
-                    <h3><%= ticket != null ? ticket.getMovieName() : "N/A" %> - English
-                        - <%= ticket != null ? ticket.getStartTime() : "N/A" %>
-                    </h3>
+                <div   class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+                    <h3>${sessionScope.movie.getName()} - ${sessionScope.language} - (${sessionScope.movie.getDuration()} phút)</h3>
+                    <h4>${sessionScope.date}</h4>
                 </div>
             </div>
         </div>
@@ -86,8 +111,8 @@
                             <div class="col-md-12">
                                 <div class="st_dtts_ineer_box float_left">
                                     <ul>
-                                        <li><span name=""
-                                                  class="dtts1">Ngày:</span> <%= ticket != null ? ticket.getBookingDate() : "N/A" %>
+                                        <li><span class="dtts1">Ngày:</span>
+                                            <b name=""><%= dateOnly %></b>
                                         </li>
                                         <li><span
                                                 class="dtts1">Giờ:</span> <%= ticket != null ? ticket.getStartTime() : "N/A" %>

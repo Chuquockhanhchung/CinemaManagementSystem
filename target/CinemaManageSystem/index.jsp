@@ -336,8 +336,12 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
-                                                                <i class="fi fi-ss-ticket"></i>
+                                                            <a href="#" onclick="Swal.fire({
+                                                                icon: 'error',
+                                                                title: 'Oops...',
+                                                                text: 'Please log in to book tickets.'
+                                                            }); return false;">
+                                                            <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -1534,27 +1538,47 @@
             }
             // Perform client-side validation
             if (!email) {
-                alert('Email không được để trống.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Email không được để trống!"
+                });
                 return;
             }
 
             if (!password) {
-                alert('Mật khẩu không được để trống.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Mật khẩu không được để trống!"
+                });
                 return;
             }
 
             // Check if the email exists and the password is correct
             const account = existingAccounts.find(acc => acc.email === email);
             if (!account) {
-                alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Email không tồn tại. Vui lòng sử dụng một email khác!"
+                });
                 return;
             }
             if (account.status === "unactive") {
-                alert('Tài khoản chưa được kích hoạt!');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Tài khoản chưa được kích hoạt!"
+                });
                 return;
             }
             if (account.password !== password) {
-                alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Sai mật khẩu. Vui lòng nhập lại mật khẩu!"
+                });
                 return;
             }
 
@@ -1618,14 +1642,22 @@
                     method: 'POST',
                     data: {email: email},
                     success: function (response) {
-                        alert("View your email to verify");
+                        Swal.fire({
+                            title: "Thành Công!",
+                            text: "Kiểm tra email của bạn để xác thực tài khoản",
+                            icon: "success"
+                        });
                     },
                     error: function (xhr, status, error) {
                         alert("An error occurred: " + xhr.responseText);
                     }
                 });
             } else {
-                alert("Please enter your email address.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Hãy ghi địa chỉ email của bạn!"
+                });
             }
         });
     });
@@ -1698,12 +1730,20 @@
                 // Check if the email exists and the password is correct
                 const account = existingAccounts.find(acc => acc.email === email);
                 if (account) {
-                    alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Email đã tồn tại. Vui lòng sử dụng một email khác!"
+                    });
                     return;
                 }
                 const phones = existingAccounts.find(acc => acc.phone === phone);
                 if (phones) {
-                    alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác!"
+                    });
                     return;
                 }
 
@@ -1754,7 +1794,11 @@
 </script>
 <% if ("true".equals(request.getParameter("success"))) { %>
 <script>
-    alert("Đã gửi email xác thực tài khoản");
+    Swal.fire({
+        title: "Thành Công",
+        text: "Đã gửi email xác thực tài khoản!",
+        icon: "success"
+    });
 </script>
 <% } %>
 <script>
@@ -1773,30 +1817,50 @@
 
         // Validate email
         if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Địa chỉ email không hợp lệ!"
+            });
             return false;
         }
 
         // Validate phone
         if (!phonePattern.test(phone)) {
-            alert("Please enter a valid phone number (10 digits).");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Số điện thoại không hợp lệ!"
+            });
             return false;
         }
 
         // Validate name
         if (name.trim() === "") {
-            alert("Please enter your name.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hãy ghi Họ và Tên của bạn!"
+            });
             return false;
         }
 
         // Validate passwords
         if (pass1 === "" || pass2 === "") {
-            alert("Please enter and confirm your password.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hãy nhập Mật Khẩu của bạn!"
+            });
             return false;
         }
 
         if (pass1 !== pass2) {
-            alert("Passwords do not match.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Mật khẩu không giống nhau!"
+            });
             return false;
         }
 
@@ -1831,6 +1895,11 @@
 <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<%--SweetAlert2--%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<%--SweetAlert2--%>
+
 <script type="text/javascript">
     var onloadCallback = function () {
         alert("grecaptcha is ready!");

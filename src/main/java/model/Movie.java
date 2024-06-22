@@ -23,9 +23,10 @@ public class Movie {
     public String trailer;
 
     public Movie() {
+        super();
     }
 
-    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price, String trailer) {
+    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -37,6 +38,7 @@ public class Movie {
         this.price = price;
         this.trailer = trailer;
     }
+
 
     public String getTrailer() {
         return trailer;
