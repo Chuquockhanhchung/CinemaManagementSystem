@@ -1,4 +1,8 @@
-<%--
+<%@ page import="dal.ProductDAO" %>
+<%@ page import="dal.DBContext" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.util.List" %><%--
+
   Created by IntelliJ IDEA.
   User: datla
   Date: 6/2/2024
@@ -140,11 +144,18 @@ Content body start
                                    class="btn btn-primary">Danh sách sản phẩm</a></li>
                         </ul>
                     </div>
+                    <%
+                        int ProductID = Integer.parseInt(request.getParameter("ProductID"));
+                        ProductDAO pd = new ProductDAO(DBContext.getConn());
+                        Product p = pd.getProductByID(ProductID);
+                    %>
+
                     <form method="post" action="../../editproduct">
                         <div class="row">
                             <div class="mb-3 col-sm-8">
                                 <label class="form-label">Tên Sản Phẩm</label>
-                                <input type="text" class="form-control" placeholder="Tên Sản Phẩm" name="ProductName">
+                                <input type="text" class="form-control" placeholder="Tên Sản Phẩm"
+                                       name="ProductName" value="<%=p.getProductName()%>">
                             </div>
                             <div class="col-xl-8">
                                 <div class="filter cm-content-box box-primary">
@@ -159,16 +170,20 @@ Content body start
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Giá Sản Phẩm</label>
-                                            <input type="text" class="form-control" name="ProductPrice">
+                                            <input type="text" class="form-control"
+                                                   name="ProductPrice" value="<%=p.getProductPrice()%>">
                                         </div>
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Thông Tin Sản Phẩm</label>
-                                            <input type="" class="form-control" name="Detail">
+                                            <input type="text" class="form-control"
+                                                   name="Detail" value="<%=p.getDetail()%>">
                                         </div>
                                     </div>
+                                    <input type="submit" class="btn btn-primary" value="EditProduct">
                                 </div>
+
                             </div>
 <%--                            <div class="col-xl-4">--%>
 <%--                                <div class="right-sidebar-sticky">--%>

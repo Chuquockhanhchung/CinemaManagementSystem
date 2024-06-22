@@ -2,6 +2,8 @@
 <%@ page import="dal.DBContext" %>
 <%@ page import="model.Event" %>
 <%@ page import="java.util.List" %>
+<%@ page import="dal.ProductDAO" %>
+<%@ page import="model.Product" %>
 <%--
   Created by IntelliJ IDEA.
   User: datla
@@ -184,26 +186,28 @@ Content body start
                                     <table class="table table-striped  table-condensed flip-content">
                                         <thead>
                                         <tr>
-                                            <th class="text-black">S.No</th>
-                                            <th class="text-black">Title</th>
-                                            <th class="text-black">Status</th>
-                                            <th class="text-black">Modified</th>
-                                            <th class="text-black text-end">Actions</th>
+                                            <th class="text-black">P.ID</th>
+                                            <th class="text-black">Tên sản phẩm</th>
+                                            <th class="text-black">Nhà cung cấp</th>
+                                            <th class="text-black">Giá sản pẩm</th>
+                                            <th class="text-black">Chi tiết sản phẩm</th>
+                                            <th class="text-black text-end">Công cụ</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <%
-                                            EventDAO d = new EventDAO(DBContext.getConn());
-                                            List<Event> list = d.getAllEvent();
-                                            for (Event event : list) {
+                                            ProductDAO pd = new ProductDAO(DBContext.getConn());
+                                            List<Product> list = pd.getAllProduct();
+                                            for (Product product : list) {
                                         %>
                                         <tr>
-                                            <td><%= event.getEventID() %></td>
-                                            <td><%= event.getEventName() %></td>
-                                            <td><%= event.getStatus() %></td>
-                                            <td><%= event.getStartDate() %></td>
+                                            <td><%= product.getProductID() %></td>
+                                            <td><%= product.getProductName() %></td>
+                                            <td><%= product.getSupplierName() %></td>
+                                            <td><%= product.getProductPrice() %></td>
+                                            <td><%= product.getDetail() %></td>
                                             <td class="text-end">
-                                                <a href="#"
+                                                <a href="edit_product.jsp?ProductID=<%=product.getProductID()%>"
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>

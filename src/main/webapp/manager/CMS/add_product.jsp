@@ -165,9 +165,13 @@ Content body start
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Thông Tin Sản Phẩm</label>
-                                            <input type="" class="form-control" name="Detail">
+                                            <input type="text" class="form-control" name="Detail">
                                         </div>
                                     </div>
+<%--                                    <select name="type">--%>
+<%--                                        <c:if test="${requestScope.}"--%>
+<%--                                    </select>--%>
+                                    <input type="submit" class="btn btn-primary btn-sm" value="AddProduct">
                                 </div>
                             </div>
 <%--                            <div class="col-xl-4">--%>
