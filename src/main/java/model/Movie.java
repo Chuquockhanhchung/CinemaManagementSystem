@@ -20,11 +20,12 @@ public class Movie {
     private String status;
     private int duration;
     private int price;
+    public String trailer;
 
     public Movie() {
     }
 
-    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price) {
+    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price, String trailer) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,6 +35,15 @@ public class Movie {
         this.status = status;
         this.duration = duration;
         this.price = price;
+        this.trailer = trailer;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     public int getId() {

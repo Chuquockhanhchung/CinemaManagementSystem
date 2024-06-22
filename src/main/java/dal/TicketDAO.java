@@ -57,7 +57,8 @@ public class TicketDAO extends DBContext{
                         rs.getString(6),
                         rs.getString(7),
                         rs.getInt(8),
-                        rs.getInt(9)
+                        rs.getInt(9),
+                        rs.getString(10)
 
                 );
             }
