@@ -1074,7 +1074,7 @@ Content body start
                     </div>
 
                     <div class="mb-5">
-                        <a href="add_movies.jsp" class="btn btn-primary">Add
+                        <a href="addmovie" class="btn btn-primary">Add
                             Movies</a>
                     </div>
                     <div class="filter cm-content-box box-primary">

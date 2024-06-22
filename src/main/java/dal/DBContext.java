@@ -63,9 +63,10 @@ public class DBContext {
     }
     public static void main(String[] args) {
         try (Connection con = getConn()) {
+            Movie m = new Movie(1, "chi", "hpc", "2", "abc", "123", "2003-02-03", "?ang chi?u", 123, 200, "hpc", 2);
+            Actor a = new Actor(210, "hpc");
             MovieDAO dao = new MovieDAO(con);
-            ArrayList<ShowTime> list = dao.getShowTime(44);
-            System.out.println(list.get(0).getDayName());
+            dao.AddMovie(m);
         } catch (SQLException e) {
             e.printStackTrace();
         }

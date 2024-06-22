@@ -1,8 +1,6 @@
 package dal;
 
-import model.Account;
-import model.Movie;
-import model.ShowTime;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MovieDAO extends DBContext {
+
     private final Connection con;
 
     public MovieDAO(Connection con) {
@@ -20,30 +19,31 @@ public class MovieDAO extends DBContext {
 
     public static void main(String[] args) {
         MovieDAO movieDAO = new MovieDAO(DBContext.getConn());
-        ArrayList<Movie> movies = movieDAO.filter("","","2024-05-24");
+        ArrayList<Movie> movies = movieDAO.filter("", "", "2024-05-24");
         for (Movie movie : movies) {
             System.out.println(movie);
         }
     }
-    public ArrayList<Movie> filter(String name, String status, String date){
+
+    public ArrayList<Movie> filter(String name, String status, String date) {
         ArrayList<Movie> movies = new ArrayList<>();
-        name = "%"+name+"%";
-        status = "%"+status+"%";
-        date = "%"+date+"%";
+        name = "%" + name + "%";
+        status = "%" + status + "%";
+        date = "%" + date + "%";
         MovieTypeDAO tdao = new MovieTypeDAO(con);
         String sql = "SELECT * FROM movie_all  where MovieName LIKE ? And Status Like ? and ReleaseDate Like ? ;";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-             ps.setString(1,name);
-             ps.setString(2,status);
-             ps.setString(3,date);
-             ResultSet rs = ps.executeQuery();
+            ps.setString(1, name);
+            ps.setString(2, status);
+            ps.setString(3, date);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Movie a = new Movie();
                 a.setMovieID(rs.getInt(1));
                 a.setName(rs.getString(2));
                 a.setType(rs.getString(3));
                 a.setStatus(rs.getString(13));
-                a.setReleaseDate(rs.getDate(7));
+                a.setReleaseDate(rs.getString(7));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 movies.add(a);
@@ -53,6 +53,7 @@ public class MovieDAO extends DBContext {
         }
         return movies;
     }
+
     public ArrayList<Movie> getall_Movie() {
         ArrayList<Movie> movies = new ArrayList<>();
         MovieTypeDAO tdao = new MovieTypeDAO(con);
@@ -64,7 +65,7 @@ public class MovieDAO extends DBContext {
                 a.setName(rs.getString(2));
                 a.setType(rs.getString(3));
                 a.setStatus(rs.getString(13));
-                a.setReleaseDate(rs.getDate(7));
+                a.setReleaseDate(rs.getString(7));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 movies.add(a);
@@ -125,7 +126,6 @@ public class MovieDAO extends DBContext {
     }
 
 //
-
     public ArrayList<ShowTime> getShowTime(int id) {
         ArrayList<ShowTime> list = new ArrayList<>();
         String sql = " SELECT s.ShowtimeID,s.RoomID, s.MovieID, CASE DAYOFWEEK(s.showdate)\n"
@@ -194,4 +194,179 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
+
+    public ArrayList<Language> getAllLanguage() {
+        ArrayList<Language> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.movielanguage;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Language l = new Language();
+                l.setId(rs.getInt(1));
+                l.setName(rs.getString(2));
+                list.add(l);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public ArrayList<MovieType> getAllMovieType() {
+        ArrayList<MovieType> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.movietype;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MovieType m = new MovieType();
+                m.setTypeID(rs.getInt(1));
+                m.setTypeName(rs.getString(2));
+                m.setTypeDescription(rs.getString(3));
+                list.add(m);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public ArrayList<Actor> getAllActor() {
+        ArrayList<Actor> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.actors;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Actor m = new Actor();
+                m.setId(rs.getInt(1));
+                m.setName(rs.getString(2));
+                list.add(m);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public void AddMovie(Movie m) {
+        String sql = "insert into movie  (MovieName, Description, Director, ReleaseDate, Duration, Language, Image, status,Price)Values (?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, m.getName());
+            ps.setString(2, m.getDescription());
+            ps.setString(3, m.getDirector());
+            ps.setString(4, m.getReleaseDate());
+            ps.setInt(5, m.getDuration());
+            ps.setInt(6, m.getLanguages());
+            ps.setString(7, m.getImage());
+            ps.setString(8, m.getStatus());
+            ps.setInt(9, m.getPrice());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddHasType(int a, int b) {
+        String sql = "insert into movie_has_types (MovieID, TypeID) VALUES(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, a);
+            ps.setInt(2, b);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddActor(String a) {
+        String sql = "insert into actors ( ActorName) values(?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, a);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+     public void AddType(String a) {
+        String sql = "insert into movietype ( TypeName) values(?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, a);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddHasActor(int a, int b) {
+        String sql = "insert into movie_has_actors (MovieID, ActorID) values(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, a);
+            ps.setInt(2, b);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public int getIDMovie(){
+        String sql ="SELECT max(MovieID) FROM movie ";
+        int movieID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                movieID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return movieID;
+    }
+    
+    public int getIdActor(){
+        String sql ="SELECT max(ActorID) FROM cinemamanagersystem.actors";
+        int actorID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                actorID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return actorID;
+    }
+    
+     public int getIdType(){
+        String sql ="SELECT max(TypeID) FROM cinemamanagersystem.movietype";
+        int typeID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                typeID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return typeID;
+    }
+    
+
 }

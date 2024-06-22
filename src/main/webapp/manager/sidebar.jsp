@@ -65,7 +65,7 @@
             </a>
                 <ul aria-expanded="false">
                     <li><a href="http://localhost:9999/CinemaManageSystem_war_exploded/manager/CMS/movies.jsp">Movies</a></li>
-                    <li><a href="add_movies.jsp">Add Movie</a></li>
+                    <li><a href="addmovie">Add Movie</a></li>
                     <li><a href="add_email.jsp">Add Email</a></li>
                     <li><a href="event.jsp">Event</a></li>
                     <li><a href="add_event.jsp">Add Event</a></li>
