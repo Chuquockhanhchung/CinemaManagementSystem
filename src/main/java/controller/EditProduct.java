@@ -71,8 +71,6 @@ public class EditProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
        try{
-           int ProductID = Integer.parseInt(request.getParameter("ProductID"));
-           int SupplierID = Integer.parseInt(request.getParameter("SupplierID"));
            String ProductName = request.getParameter("ProductName");
            Float ProductPrice = Float.parseFloat(request.getParameter("ProductPrice"));
            String Detail = request.getParameter("Detail");
