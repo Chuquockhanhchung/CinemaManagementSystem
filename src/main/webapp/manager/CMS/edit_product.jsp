@@ -149,8 +149,8 @@ Content body start
                         ProductDAO pd = new ProductDAO(DBContext.getConn());
                         Product p = pd.getProductByID(ProductID);
                     %>
-
                     <form method="post" action="../../editproduct">
+                        <input type="text" name="ProductID" value="<%= p.getProductID()%>">
                         <div class="row">
                             <div class="mb-3 col-sm-8">
                                 <label class="form-label">Tên Sản Phẩm</label>
