@@ -7,6 +7,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import dal.DBContext;
+import dal.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -53,8 +56,16 @@ public class DeleteProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-    } 
+        try{
+            ProductDAO pd = new ProductDAO(DBContext.getConn());
+            String ProductID = request.getParameter("ProductID");
+            pd.DeleteProduct(Integer.parseInt(ProductID));
+            response.sendRedirect("../../products.jsp");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.

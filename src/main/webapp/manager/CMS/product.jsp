@@ -211,7 +211,7 @@ Content body start
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="#"
+                                                <a href="javascript:void(0);" onclick="DeleteProduct('<%=product.getProductID()%>')"
                                                    class="btn btn-danger btn-sm content-icon">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
@@ -221,6 +221,14 @@ Content body start
                                         <% } %>
                                         </tbody>
                                     </table>
+                                    <script>
+                                        function DeleteProduct(ProductID) {
+                                            let text = "You want delete" + ProductID + "?";
+                                            if (confirm(text) == true) {
+                                                window.location = "../../deleteproduct?ProductID=" + ProductID
+                                            }
+                                        }
+                                    </script>
                                     <div class="d-flex align-items-center width-defult justify-content-xl-between justify-content-center flex-wrap py-3">
                                         <small>Page 1 of 5, showing 2 records out of 8 total, starting on record 1,
                                             ending on 2</small>
