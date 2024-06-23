@@ -21,11 +21,13 @@ public class Movie {
     private String status;
     private int duration;
     private int price;
+    public String trailer;
+    private double Rate;
 
     public Movie() {
     }
 
-    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price) {
+    public Movie(int id, String name, String description, String type, String image, String actor, String status, int duration,int price, String trailer, double Rate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -35,6 +37,24 @@ public class Movie {
         this.status = status;
         this.duration = duration;
         this.price = price;
+        this.trailer = trailer;
+        this.Rate = Rate;
+    }
+
+    public double getRate() {
+        return Rate;
+    }
+
+    public void setRate(double rate) {
+        Rate = rate;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     public String getTrailer() {
@@ -115,5 +135,21 @@ public class Movie {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", image='" + image + '\'' +
+                ", actor='" + actor + '\'' +
+                ", status='" + status + '\'' +
+                ", duration=" + duration +
+                ", price=" + price +
+                ", trailer='" + trailer + '\'' +
+                '}';
     }
 }
