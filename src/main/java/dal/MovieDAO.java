@@ -48,6 +48,35 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
+    public static void main(String[] args) {
+        MovieDAO dao = new MovieDAO(DBContext.getConn());
+//        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+//        Customer cu = daoc.getCustomerByCID("60");
+//        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
+//        for (Feedback feedback : feedbacks) {
+//            System.out.println(feedback);
+//        }
+        ArrayList<Actor> actors = dao.getActorByMovieId(48);
+        for (Actor a : actors) {
+            System.out.println(a.toString());
+        }
+    }
+    public ArrayList<Actor> getActorByMovieId(int id) {
+        ArrayList<Actor> actors = new ArrayList<>();
+        String sql = "Select a.ActorID,a.ActorImg,a.ActorName from actors a join movie_has_actors m on a.ActorID=m.ActorID where m.MovieID=?";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                actors.add(new Actor(rs.getInt(1), rs.getString(3), rs.getString(2)));
+            }
+            return actors;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public float getRatingById(int id) {
         float rating = 0;
         String sql = "SELECT IMDbRating FROM movie WHERE MovieID=?";
@@ -138,16 +167,7 @@ public class MovieDAO extends DBContext {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) {
-        MovieDAO dao = new MovieDAO(DBContext.getConn());
-//        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-//        Customer cu = daoc.getCustomerByCID("60");
-//        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
-//        for (Feedback feedback : feedbacks) {
-//            System.out.println(feedback);
-//        }
-        dao.delete_Feedback(124);
-    }
+
     public ArrayList<Movie> getMovieType(int id) {
         String sql = "select m.MovieID, m.MovieName, m.Description, t.TypeName, m.Image, m.Status,  m.Duration  from movietype t join (SELECT m.MovieID, m.MovieName, m.Description, t.TypeID, m.Image, m.Status, m.Duration FROM movie m join movie_has_types t on m.MovieID = t.MovieID) m on m.TypeID = t.TypeID   where m.MovieID = ? ";
         ArrayList<Movie> list = new ArrayList<>();

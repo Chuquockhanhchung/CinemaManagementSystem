@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Actor;
 import model.Customer;
 import model.Feedback;
 import model.Movie;
@@ -83,12 +84,15 @@ public class DetailFilmServlet extends HttpServlet {
             ArrayList<Feedback> a = dao.getFBbyFBID(f.getFeedbackID());
             AddReplies(a,f);
         }
+        //Get actor
+        ArrayList<Actor> actors = dao.getActorByMovieId(id);
         HttpSession session = request.getSession();
         session.setAttribute("movie", movie);
         session.setAttribute("language", language);
         session.setAttribute("rating", rating);
         session.setAttribute("date", date);
         session.setAttribute("listf", listf);
+        session.setAttribute("actors", actors);
        response.sendRedirect("movie_single_second.jsp");
 
     }

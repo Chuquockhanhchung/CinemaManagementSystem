@@ -1,4 +1,4 @@
-
+<%@ page import="java.util.ArrayList" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -36,6 +36,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         .replies-section {
             margin-top: 10px; /* Khoảng cách giữa phần replies-section và các phần khác */
@@ -462,7 +463,7 @@
                     <div class="st_video_slider_inner_wrapper float_left">
                         <div class="st_video_slider_overlay"></div>
                         <div class="st_video_slide_sec float_left">
-                            <a rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title' class="test-popup-link">
+                            <a rel='external' href='' title='title' class="test-popup-link">
 								<img src="${sessionScope.movie.getImge()}" alt="img" style="width: 300px; height: auto;">
 							</a>
                             <h3>${sessionScope.movie.getName()}</h3>
@@ -490,10 +491,10 @@
     </div>
     <!-- prs video top End -->
     <div class="container mt-5">
-        <h2>Community Feedback</h2>
+        <h2>Đánh Giá Phim</h2>
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-primary2" style="color: white" data-toggle="modal" data-target="#reviewModal">
-            Write a Review
+           Đánh Giá
         </button>
 
         <!-- Modal -->
@@ -542,7 +543,18 @@
     <script>
         document.getElementById('reviewForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Ngăn chặn form submit mặc định
+            function isUserLoggedIn() {
+                // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
+                // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
+                return !!localStorage.getItem('user');
+            }
 
+            if (!isUserLoggedIn()) {
+                alert('Bạn cần đăng nhập để thực hiện thao tác này.');
+                // Hiển thị popup đăng nhập hoặc chuyển hướng đến trang đăng nhập
+
+                return false;
+            }
             var rating = document.querySelector('input[name="rating"]:checked');
             var ratingValue = rating ? rating.value : null;
             var review = document.getElementById('reviewText').value;
@@ -617,7 +629,7 @@
                             }
                         });
                     </script>
-                    <h4>USERS RATING</h4>
+                    <h4>Đánh Giá Của Khách Hàng</h4>
                 </div >
                 <div class="st_rating_box st_rating_box2" hidden="">
                     <fieldset class="rating">
@@ -675,13 +687,13 @@
             <div class="st_slider_rating_right">
                 <div class="st_slider_rating_btn prs_animate_btn1">
                     <ul>
-                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
+                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>
                         </li>
                     </ul>
                 </div>
                 <div class="st_slider_rating_btn_heart">
                     <h5><i class="fa fa-heart"></i> 85%</h5>
-                    <h4>52,291 votes</h4>
+                    <h4>52,291 lượt bình chọn</h4>
                 </div>
             </div>
         </div>
@@ -705,9 +717,9 @@
                             <div class="col-md-12">
                                 <div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Summary</a>
+                                        <li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Tóm Tắt</a>
                                         </li>
-                                        <li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Comments</a>
+                                        <li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Bình Luận & Phản Hồi</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -718,88 +730,41 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="st_md_summ_pera float_left">
-                                                    <h5>SYNOPSIS</h5>
+                                                    <h5>Tóm Tắt</h5>
                                                     <p>${sessionScope.movie.getDescription()}</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="st_md_summ_client_slider float_left">
-                                                    <p>CAST</p>
+                                                    <p>Dàn Diễn Viên</p>
                                                     <div class="owl-carousel owl-theme">
+
+                                                       <%
+                                                           ArrayList<Actor> actors = (ArrayList<Actor>) session.getAttribute("actors");
+                                                           for (Actor actor : actors) {
+
+
+                                                               %>
+
                                                         <div class="item">
                                                             <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c1.jpg" alt="img">
-                                                                <h4><a href="#">Jason Momoa</a></h4>
+                                                                <img src="<%=actor.getPicture()%>" alt="img" style="width: 80% ;height: 50%">
+                                                                <h4><a href="#"><%=actor.getName()%></a></h4>
                                                                 <h5>Actor</h5>
                                                                 <h6>As Arthur</h6>
                                                             </div>
                                                         </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c2.jpg" alt="img">
-                                                                <h4><a href="#">Nicole Kidman</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c3.jpg" alt="img">
-                                                                <h4><a href="#">Willem Dafoe</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c4.jpg" alt="img">
-                                                                <h4><a href="#">Amber Heard</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
+                                                        <%
+                                                           }
+                                                       %>
+
+
+
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="st_md_summ_client_slider float_left">
-                                                    <p>Crew</p>
-                                                    <div class="owl-carousel owl-theme">
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c5.jpg" alt="img">
-                                                                <h4><a href="#">James Wan.</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c6.jpg" alt="img">
-                                                                <h4><a href="#">Peter Safran</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c7.jpg" alt="img">
-                                                                <h4><a href="#">Rob Cowan</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="st_summ_slider_cont float_left">
-                                                                <img src="images/content/c8.jpg" alt="img">
-                                                                <h4><a href="#">Geoff Johns</a></h4>
-                                                                <h5>Actor</h5>
-                                                                <h6>As Arthur</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
 
@@ -818,24 +783,24 @@
                                                             <div class="comment-body">
                                                                     ${f.getFeedback()}
                                                             </div>
-                                                            <div class="replies-toggle-btn reply-btn" onclick="toggleReplyForm(${f.getFeedbackID()})">Reply</div>
+                                                            <div class="replies-toggle-btn reply-btn" onclick="toggleReplyForm(${f.getFeedbackID()})">Phản hồi</div>
 
 
                                                             <div class="reply-form" id="reply-form-${f.getFeedbackID()}" style="display: none;">
-                                                                <textarea id="reply-text-${f.getFeedbackID()}" rows="3" cols="50" placeholder="Write your reply..."></textarea><br>
-                                                                <button type="button" onclick="submitReply(${f.getFeedbackID()})">Submit</button>
+                                                                <textarea id="reply-text-${f.getFeedbackID()}" rows="3" cols="50" placeholder="Viết phản hồi của bạn..."></textarea><br>
+                                                                <button type="button" onclick="submitReply(${f.getFeedbackID()})">Đăng</button>
                                                             </div>
 
                                                             <!-- Button to toggle replies section -->
                                                             <c:if test="${f.getRelpies() != null}">
-                                                                <div class="replies-toggle-btn reply-btn" onclick="toggleReplies(${f.getFeedbackID()})">Show/Hide Replies</div>
+                                                                <div class="replies-toggle-btn reply-btn" onclick="toggleReplies(${f.getFeedbackID()})">Hiển thị/Tắt phản hồi</div>
                                                             </c:if>
 
                                                             <c:if test="${f.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
-                                                                <div class="replies-toggle-btn reply-btn" onclick="deleteFeedback(${f.getFeedbackID()})">Delete</div>
+                                                                <div class="replies-toggle-btn reply-btn" onclick="deleteFeedback(${f.getFeedbackID()})">Xóa</div>
                                                             </c:if>
                                                             <c:if test="${f.getCustomerID().getIdCustomer() eq sessionScope.user.getIdCustomer()}">
-                                                                <div class="replies-toggle-btn reply-btn" onclick="editFeedback(${f.getFeedbackID()})">Edit</div>
+                                                                <div class="replies-toggle-btn reply-btn" onclick="editFeedback(${f.getFeedbackID()})">Sửa</div>
                                                             </c:if>
                                                             <!-- Replies section -->
                                                             <c:set var="replies" value="${f.getRelpies()}" scope="request"/>
@@ -848,7 +813,7 @@
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
-                                                <p>No feedback available.</p>
+                                                <p>Không có phản hồi.</p>
                                             </c:otherwise>
                                         </c:choose>
 
@@ -856,7 +821,7 @@
 
                                     <script>
                                         function deleteFeedback(feedbackId) {
-                                            if (confirm('Are you sure you want to delete this feedback?')) {
+                                            if (confirm('Bạn có chắc chắn muốn xóa?')) {
                                                 window.location.href = 'deletefeedback?feedbackId=' + feedbackId;
                                             }
                                         }
@@ -878,9 +843,7 @@
                                             }
                                         }
 
-                                        function submitReply(feedbackID) {
-                                            // Implement the functionality to submit a reply
-                                        }
+
                                     </script>
 
                                 </div>
@@ -894,6 +857,18 @@
 
                                         function submitReply(feedbackId) {
                                             const replyTextElement = document.getElementById('reply-text-' + feedbackId);
+                                            function isUserLoggedIn() {
+                                                // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
+                                                // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
+                                                return !!localStorage.getItem('user');
+                                            }
+
+                                            if (!isUserLoggedIn()) {
+                                                alert('Bạn cần đăng nhập để thực hiện thao tác này.');
+                                                // Hiển thị popup đăng nhập hoặc chuyển hướng đến trang đăng nhập
+
+                                                return false;
+                                            }
                                             if (replyTextElement) {
                                                 let replyText = replyTextElement.value.trim();
                                                 console.log("Reply Text:", replyText);  // Debug: In giá trị reply text
@@ -981,92 +956,362 @@
            <%@include file="footer.jsp" %>
     <!-- prs footer Wrapper End -->
     <!-- st login wrapper Start -->
-    <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
+    <!-- Form Login -->
+    <form action="login" method="post" id="form">
+        <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="st_pop_form_heading_wrapper float_left">
+                        <h3>Log in</h3>
+                    </div>
+                    <c:if test="${not empty err}">
+                        <div class="text-danger">${err}.</div>
+                        <c:remove var="failMess" scope="session"/>
+                    </c:if>
+                    <div class="st_profile_input float_left">
+                        <label>Email / Mobile Number</label>
+                        <input value="${requestScope.email}" name="email" type="text" placeholder="Email">
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <label>Password</label>
+                        <input value="${requestScope.pass}" name="pass" type="password" placeholder="Password">
+                    </div>
+
+                    <div class="st_form_pop_fp float_left">
+                        <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
+                    </div>
+                    <div class="g-recaptcha float_left" data-sitekey="6LclJOUpAAAAABir2gwq1sKVfC1zD_Gygchg7m-g"></div>
+                    <div id="error"></div>
+
+                    <div class="st_form_pop_login_btn float_left">
+                        <input type="submit" value="LOGIN"/>
+                    </div>
+                    <div class="st_form_pop_or_btn float_left">
+                        <h4>or</h4>
+                    </div>
+                    <div class="click st_form_pop_gmail_btn float_left">
+                        <a href="https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force"
+                           class="link">
+                            <img src="images/content/google.png" alt=""> Login with Google</a>
+                    </div>
+                    <div class="st_form_pop_signin_btn float_left">
+                        <h4>Don't have an account? <a href="#" data-toggle="modal" data-target="#myModa3"
+                                                      target="_blank">Sign Up</a></h4>
+                        <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('#form');
+            const emailInput = form.querySelector('input[name="email"]');
+            const passwordInput = form.querySelector('input[name="pass"]');
+            const errorDiv = document.getElementById("error");
+
+            // Retrieve the existing emails and passwords from JSTL
+            const existingAccounts = [
+                <%-- Server-side rendering of existing emails and passwords --%>
+                <c:forEach var="account" items="${listAcc}" varStatus="status">
+                {
+                    email: "${account.getEmail().toLowerCase()}",
+                    password: "${account.getPassword()}",
+                    status: "${account.getStatus()}"// Assuming passwords are stored this way
+                }<c:if test="${!status.last}">, </c:if>
+                </c:forEach>
+            ];
+
+            console.log("Existing Accounts:", existingAccounts);
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the default form submission
+
+                const email = emailInput.value.trim().toLowerCase();
+                const password = passwordInput.value;
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    errorDiv.innerHTML = "Please check reCAPTCHA!";
+                    return;
+                }
+                // Perform client-side validation
+                if (!email) {
+                    alert('Email không được để trống.');
+                    return;
+                }
+
+                if (!password) {
+                    alert('Mật khẩu không được để trống.');
+                    return;
+                }
+
+                // Check if the email exists and the password is correct
+                const account = existingAccounts.find(acc => acc.email === email);
+                if (!account) {
+                    alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                    return;
+                }
+                if (account.status === "unactive") {
+                    alert('Tài khoản chưa được kích hoạt!');
+                    return;
+                }
+                if (account.password !== password) {
+                    alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                    return;
+                }
+
+                // Perform reCAPTCHA validation
+
+
+                console.log("Email and password validation passed. Submitting form...");
+                // If all validations pass, submit the form
+                form.submit();
+            });
+
+            document.querySelector('.click').addEventListener('click', (e) => {
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    e.preventDefault();
+                    errorDiv.innerHTML = "Please check reCAPTCHA!";
+                } else {
+                    window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                }
+            });
+        });
+    </script>
+
+    <!-- Form Forgot Password -->
+    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <div class="st_pop_form_heading_wrapper float_left">
                     <h3>Log in</h3>
                 </div>
-                <div class="st_profile_input float_left">
-                    <label>Email / Mobile Number</label>
-                    <input type="text">
-                </div>
-                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="st_form_pop_fp float_left">
-                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-                </div>
-                <div class="st_form_pop_login_btn float_left"> <a href="page-1-7_profile_settings.jsp">LOGIN</a>
-                </div>
-                <div class="st_form_pop_or_btn float_left">
-                    <h4>or</h4>
-                </div>
-                <div class="st_form_pop_facebook_btn float_left"> <a href="#"> Connect with Facebook</a>
-                </div>
-                <div class="st_form_pop_gmail_btn float_left"> <a href="#"> Connect with Google</a>
-                </div>
-                <div class="st_form_pop_signin_btn float_left">
-                    <h4>Donâ€™t have an account? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Sign Up</a></h4>
-                    <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                    <h3>Forgot Password</h3>
-                    <p>We can help! All you need to do is enter your email ID and follow the instructions!</p>
-                </div>
+                <c:if test="${not empty err}">
+                    <div class="text-danger">${err}.</div>
+                    <c:remove var="failMess" scope="session"/>
+                </c:if>
                 <div class="st_profile_input float_left">
                     <label>Email Address</label>
-                    <input type="text">
+                    <input id="emailInput" name="email" type="text">
                 </div>
-                <div class="st_form_pop_fpass_btn float_left"> <a href="#">Verify</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="st_pop_form_heading_wrapper float_left">
-                    <h3>Sign Up</h3>
-                </div>
-                <div class="st_profile_input float_left">
-                    <label>Email / Mobile Number</label>
-                    <input type="text">
-                </div>
-                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="st_form_pop_fp float_left">
-                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-                </div>
-                <div class="st_form_pop_login_btn float_left"> <a href="page-1-7_profile_settings.jsp">LOGIN</a>
-                </div>
-                <div class="st_form_pop_or_btn float_left">
-                    <h4>or</h4>
-                </div>
-                <div class="st_form_pop_facebook_btn float_left"> <a href="#"><i class="fab fa-facebook-f"></i> Connect with Facebook</a>
-                </div>
-                <div class="st_form_pop_gmail_btn float_left"> <a href="#"><i class="fab fa-google-plus-g"></i> Connect with Google</a>
-                </div>
-                <div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
-                    <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
+                <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href="" id="verifyButton">Verify</a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#verifyButton').on('click', function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+                var email = $('#emailInput').val(); // Lấy giá trị từ input
+
+                if (email) {
+                    $.ajax({
+                        url: 'sendEmail',
+                        method: 'POST',
+                        data: {email: email},
+                        success: function (response) {
+                            alert("View your email to verify");
+                        },
+                        error: function (xhr, status, error) {
+                            alert("An error occurred: " + xhr.responseText);
+                        }
+                    });
+                } else {
+                    alert("Please enter your email address.");
+                }
+            });
+        });
+    </script>
+    <!-- Form Sign Up -->
+    <form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
+        <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="st_pop_form_heading_wrapper float_left">
+                        <h3>Sign Up</h3>
+                    </div>
+                    <div class="st_profile_input float_left">
+                        <label>Your Email</label>
+                        <input type="text" id="emailInput2" name="email" placeholder="example@gmail.com">
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <label>Mobile Number</label>
+                        <input type="text" placeholder="Mobile Phone" name="phone">
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Name" name="name">
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" name="pass1">
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="Confirm Password" name="pass2">
+                    </div>
+                    <div class="st_form_pop_login_btn float_left">
+                        <input type="submit" value="SignUp">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const form = document.querySelector('#formSignUp');
+                const emailInput = form.querySelector('input[name="email"]');
+                const phoneInput = form.querySelector('input[name="phone"]');
+                const errorDiv = document.getElementById("error");
+
+                // Retrieve the existing emails and passwords from JSTL
+                const existingAccounts = [
+                    <%-- Server-side rendering of existing emails and passwords --%>
+                    <c:forEach var="customer" items="${listCus}" varStatus="status">
+                    {
+                        email: "${customer.getEmail().toLowerCase()}",
+                        phone: "${customer.getPhone()}",
+
+                    }<c:if test="${!status.last}">, </c:if>
+                    </c:forEach>
+                ];
+
+                console.log("Existing Accounts:", existingAccounts);
+
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Prevent the default form submission
+
+                    const email = emailInput.value.trim().toLowerCase();
+                    const phone = phoneInput.value;
+
+                    // Perform client-side validation
+
+
+                    // Check if the email exists and the password is correct
+                    const account = existingAccounts.find(acc => acc.email === email);
+                    if (account) {
+                        alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                        return;
+                    }
+                    const phones = existingAccounts.find(acc => acc.phone === phone);
+                    if (phones) {
+                        alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                        return;
+                    }
+
+
+                    console.log("Email and password validation passed. Submitting form...");
+                    // If all validations pass, submit the form
+                    form.submit();
+                });
+
+                document.querySelector('.click').addEventListener('click', (e) => {
+                    const response = grecaptcha.getResponse();
+                    if (!response) {
+                        e.preventDefault();
+                        errorDiv.innerHTML = "Please check reCAPTCHA!";
+                    } else {
+                        window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                    }
+                });
+            });
+        </script>
+
+
+        <!-- Form Forgot Password -->
+        <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
+                        <h3>Forgot Password</h3>
+                        <p>We can help! All you need to do is enter your email ID and follow the
+                            instructions!</p>
+                    </div>
+                    <div class="st_profile_input float_left">
+                        <label>Email Address</label>
+                        <input id="emailInput" name="email" type="text">
+                    </div>
+                    <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
+                                                                                                      id="verifyButton">Verify</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function showAlert(message) {
+            alert(message);
+        }
+    </script>
+    <% if ("true".equals(request.getParameter("success"))) { %>
+    <script>
+        alert("Đã gửi email xác thực tài khoản");
+    </script>
+    <% } %>
+    <script>
+        function validateForm() {
+            // Get form elements
+            const email = document.getElementById('emailInput2').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const name = document.querySelector('input[name="name"]').value;
+            const pass1 = document.querySelector('input[name="pass1"]').value;
+            const pass2 = document.querySelector('input[name="pass2"]').value;
+
+            // Email regex pattern
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            // Phone regex pattern (assuming it should be 10-15 digits)
+            const phonePattern = /^\d{10}$/;
+
+            // Validate email
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Validate phone
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid phone number (10 digits).");
+                return false;
+            }
+
+            // Validate name
+            if (name.trim() === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            // Validate passwords
+            if (pass1 === "" || pass2 === "") {
+                alert("Please enter and confirm your password.");
+                return false;
+            }
+
+            if (pass1 !== pass2) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     <!-- st login wrapper End -->
     <!--main js file start-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/jquery_min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/modernizr.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/owl.carousel.js"></script>
@@ -1078,7 +1323,24 @@
     <script src="js/venobox.min.js"></script>
     <script src="js/smothscroll_part1.js"></script>
     <script src="js/smothscroll_part2.js"></script>
+    <script src="js/plugin/rs_slider/jquery.themepunch.revolution.min.js"></script>
+    <script src="js/plugin/rs_slider/jquery.themepunch.tools.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.addon.snow.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.actions.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.carousel.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.kenburn.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.layeranimation.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.migration.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.navigation.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.parallax.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
+    <script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
     <script src="js/custom.js"></script>
+    <script type="text/javascript">
+        var onloadCallback = function () {
+            alert("grecaptcha is ready!");
+        };
+    </script>
     <!--main js file end-->
 </body>
 
