@@ -1,0 +1,210 @@
+/* -----------------
+        * FLASH SALE
+        * ----------------- */
+
+.sale-time {
+    margin-top: 30px;
+    backface-visibility: hidden;
+    cursor: default;
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    padding: 35px;
+    flex-direction: column;
+}
+
+.flip-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
+    border-radius: .1em;
+}
+
+.top,
+.bottom,
+.flip-card .top-flip,
+.flip-card .bottom-flip {
+    height: 0.75em;
+    line-height: 1;
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+.top,
+.flip-card .top-flip {
+    background-color: rgb(249 104 104);
+    border-top-right-radius: .1em;
+    border-top-left-radius: .1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottom,
+.flip-card .bottom-flip {
+    background-color: rgb(249 104 104);
+    display: flex;
+    align-items: flex-end;
+    border-bottom-right-radius: .1em;
+    border-bottom-left-radius: .1em;
+}
+
+.flip-card .top-flip {
+    position: absolute;
+    width: 100%;
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
+
+@keyframes flip-top {
+    100% {
+        transform: rotateX(90deg);
+    }
+}
+
+.flip-card .bottom-flip {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    animation: flip-bottom 250ms ease-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+@keyframes flip-bottom {
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+.container-segment {
+    display: flex;
+    flex-direction: column;
+    gap: .1em;
+    align-items: center;
+}
+
+.segment {
+    display: flex;
+    gap: .1em;
+}
+
+.segment-title {
+    font-size: 1rem;
+}
+
+
+.section-container {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+
+.btn-focus {
+    background-color: #cb202d;
+    color: #ffffff;
+}
+.time-btn-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+#time {
+    text-align: center;
+    color: #ffffff;
+    font-size: 5em;
+    font-weight: 600;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+#btn-start,
+#btn-pause {
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+#btn-reset {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 2em;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+.flash-sale .flash-sale-time,
+.flash-sale .flash-sale-time .sale-time   {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.popular-product .product-list:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+.product-list {
+    display: flex;
+    gap: 10px;
+    /* overflow: auto hidden; */
+    scroll-snap-type: inline mandatory;
+    overscroll-behavior-inline: contain;
+}
+
+.product-list .showcase {
+    scroll-snap-align: start;
+    min-width: 20%;
+}
+
+.image-carousel {
+    display: flex;
+    padding-bottom: 20px;
+    gap: 10px;
+    /* -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr; */
+
+}
+
+
+.has-scrollbar {
+    padding-bottom: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+    width: 12px; /* for vertical scroll */
+    height: 12px; /* for horizontal scroll */
+}
+.has-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 3px solid var(--white);
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.has-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 90%);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 0%, 80%);
+}
+
+.countdown {
+    cursor: default;
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+    color: white;
+}
+/* -----------------
+*  END FLASH SALE
+* ----------------- */

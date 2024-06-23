@@ -1,4 +1,4 @@
-
+<%@ page import="dal.TicketDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -63,6 +63,13 @@
         </div>
     </div>
     <!-- prs title wrapper End -->
+    <%
+//        int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
+        TicketDAO dao = new TicketDAO(DBContext.getConn());
+//        List<Ticket> list = dao.getTicketByBooking(CustomerID);
+    %>
+
+        <input type="text" name="CustomerID" value="${sessionScope.user.idCustomer}" >
 
     <!-- st bc Start -->
     <div class="st_bcc_main_main_wrapper float_left">

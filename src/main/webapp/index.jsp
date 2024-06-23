@@ -287,21 +287,20 @@
                 </script>
             </div>
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="best">
-                    <div class="prs_upcom_slider_slides_wrapper">
-                        <div class="owl-carousel owl-theme">
-                            <%
-                                ArrayList<Movie> dangchieu = (ArrayList<Movie>) request.getAttribute("dangchieu");
-                                int size = dangchieu.size()/8;
-                                for(int i=0 ; i<(size*8== dangchieu.size()? size:size+1);i++){
-                            %>
-                            <div class="item">
-                                <div class="row">
-                                    <%
-
-                                        for (Movie movie : dangchieu) {
-                                            if(dangchieu.indexOf(movie)>=i*8 && dangchieu.indexOf(movie)<=i*8+7){
-                                    %>
+                    <div role="tabpanel" class="tab-pane fade in active" id="best">
+                        <div class="prs_upcom_slider_slides_wrapper">
+                            <div class="owl-carousel owl-theme">
+                                <%
+                                    ArrayList<Movie> dangchieu = (ArrayList<Movie>) request.getAttribute("dangchieu");
+                                    int size = dangchieu.size()/8;
+                                    for(int i=0 ; i<(size*8== dangchieu.size()? size:size+1);i++){
+                                %>
+                                <div class="item">
+                                    <div class="row">
+                                        <%
+                                            for (Movie movie : dangchieu) {
+                                                if(dangchieu.indexOf(movie)>=i*8 && dangchieu.indexOf(movie)<=i*8+7){
+                                        %>
 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                                         <div class="prs_upcom_movie_box_wrapper">

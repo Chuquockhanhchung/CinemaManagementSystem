@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="css/QR_Code/Styles/style.css">
     <link rel="stylesheet" href="css/QR_Code/Styles/custom.bundles.css">
 
-
+    <style>
+        <%@include file="css/payment.css" %>
+    </style>
 </head>
 
 <body class="booking_type_back">
@@ -88,7 +90,7 @@
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div   class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+                <div class="st_bt_top_center_heading float_left">
                     <h3>${sessionScope.movie.getName()} - ${sessionScope.language} - (${sessionScope.movie.getDuration()} phút)</h3>
                     <h4>${sessionScope.date}</h4>
                 </div>
@@ -110,6 +112,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="st_dtts_ineer_box float_left">
+                                    <div class="st_cherity_img">
+                                        <img src="${sessionScope.movie.getImage()}" alt="img">
+                                    </div>
+
                                     <ul>
                                         <li><span class="dtts1">Ngày:</span>
                                             <b name=""><%= dateOnly %></b>
@@ -125,19 +131,13 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <div class="st_cherity_section float_left">
-                                    <div class="st_cherity_img float_left">
-                                        <img src="${sessionScope.movie.getImage()}" alt="img">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <section class="payment-section">
-                        <h2 class="payment-method-text">Phương thức thanh toán</h2>
                         <form>
+                            <h2 class="payment-method-text">Phương thức thanh toán</h2>
+
                             <div class="row-payment g-4 mb-7 payment-method">
                                 <div class="col-12" style="margin: 0 auto; margin-top: 20px">
                                     <div class="row-payment justify-content-center gx-lg-11">
@@ -145,8 +145,7 @@
                                             <div class="form-check" style="margin-right: 20px;">
                                                 <input class="form-check-input" id="coupon" type="radio"
                                                        name="paymentMethod" checked="checked"/>
-                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ
-                                                    ngân hàng </label>
+                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ ngân hàng </label>
                                                 <span class="badge badge-phoenix badge-phoenix-warning ms-2 ms-lg-4 ms-xl-2">Popular</span>
                                             </div>
                                         </div>
@@ -699,6 +698,54 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="flash-sale-time">
+                                <div class="sale-time">
+                                    <h2>Thời gian thanh toán</h2>
+                                    <div class="countdown">
+
+
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-hours-tens>
+                                                    <div class="top">2</div>
+                                                    <div class="bottom">2</div>
+                                                </div>
+                                                <div class="flip-card" data-hours-ones>
+                                                    <div class="top">4</div>
+                                                    <div class="bottom">4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-minutes-tens>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                                <div class="flip-card" data-minutes-ones>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-seconds-tens>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                                <div class="flip-card" data-seconds-ones>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -772,6 +819,7 @@
     }
 </script>
 
+<script src="countdown.js"></script>
 
 <script src="js/jquery_min.js"></script>
 <script src="js/modernizr.js"></script>
