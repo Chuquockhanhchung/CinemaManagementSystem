@@ -53,8 +53,8 @@
                     <div class="st_video_slider_inner_wrapper float_left">
                         <div class="st_video_slider_overlay"></div>
                         <div class="st_video_slide_sec float_left">
-                            <a rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title' class="test-popup-link">
-								<img src="images/index_III/icon.png" alt="img">
+                            <a rel='external' href='' title='title' class="test-popup-link">
+								<img src="${sessionScope.movie.getImage()}" alt="img" style="width: 300px; height: auto;">
 							</a>
                             <h3>Aquaman</h3>
                             <p>ENGLISH, HINDI, TAMIL</p>
@@ -91,6 +91,111 @@
         </div>
     </div>
     <!-- prs video top End -->
+    <div class="container mt-5">
+        <h2>Đánh Giá Phim</h2>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-primary2" style="color: white" data-toggle="modal" data-target="#reviewModal">
+           Đánh Giá
+        </button>
+
+        <!-- Modal -->
+        <div id="reviewModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Đánh giá ${sessionScope.movie.getName()}</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form id="reviewForm" action="added" method="post">
+                    <div class="modal-body">
+                        <div class="d-flex" >
+                            <img src="${sessionScope.movie.getImage()}"  style="width: 100px; margin-right: 20px;">
+                            <div>
+                                <div class="stars">
+                                    <input type="radio" id="star1.5" name="rating" value="5">
+                                    <label for="star1.5">&#9733;</label>
+                                    <input type="radio" id="star1.4" name="rating" value="4">
+                                    <label for="star1.4">&#9733;</label>
+                                    <input type="radio" id="star1.3" name="rating" value="3">
+                                    <label for="star1.3">&#9733;</label>
+                                    <input type="radio" id="star1.2" name="rating" value="2">
+                                    <label for="star1.2">&#9733;</label>
+                                    <input type="radio" id="star1.1" name="rating" value="1">
+                                    <label for="star1.1">&#9733;</label>
+
+                                </div>
+                                <textarea id="reviewText" placeholder="Đánh giá của bạn về ${sessionScope.movie.getName()}"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" >Đăng</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn form submit mặc định
+            function isUserLoggedIn() {
+                // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
+                // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
+                return !!localStorage.getItem('user');
+            }
+
+            if (!isUserLoggedIn()) {
+                alert('Bạn cần đăng nhập để thực hiện thao tác này.');
+                // Hiển thị popup đăng nhập hoặc chuyển hướng đến trang đăng nhập
+
+                return false;
+            }
+            var rating = document.querySelector('input[name="rating"]:checked');
+            var ratingValue = rating ? rating.value : null;
+            var review = document.getElementById('reviewText').value;
+
+            if (ratingValue && review) {
+                // Tạo một chuỗi query parameter từ dữ liệu form
+                var queryParams = 'rating=' + encodeURIComponent(ratingValue) + '&review=' + encodeURIComponent(review);
+
+                // Tạo URL mới để chuyển hướng đến
+                var redirectUrl = 'added?' + queryParams;
+
+                // Chuyển hướng trang
+                window.location.href = redirectUrl;
+            } else {
+                alert('Vui lòng chọn đánh giá và viết nhận xét của bạn.');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('.stars label');
+
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    // Remove checked class from all stars
+                    stars.forEach(s => s.classList.remove('checked'));
+
+                    // Get the value of the selected star
+                    const ratingValue = this.previousElementSibling.value;
+
+                    // Add checked class to the selected star and all previous stars
+                    stars.forEach(s => {
+                        if (s.previousElementSibling.value <= ratingValue) {
+                            s.classList.add('checked');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
     <!-- st slider rating wrapper Start -->
     <div class="st_slider_rating_main_wrapper float_left">
         <div class="container">
@@ -796,39 +901,125 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="st_pop_form_heading_wrapper float_left">
-                    <h3>Sign Up</h3>
-                </div>
-                <div class="st_profile_input float_left">
-                    <label>Email / Mobile Number</label>
-                    <input type="text">
-                </div>
-                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="st_form_pop_fp float_left">
-                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-                </div>
-                <div class="st_form_pop_login_btn float_left"> <a href="page-1-7_profile_settings.jsp">LOGIN</a>
-                </div>
-                <div class="st_form_pop_or_btn float_left">
-                    <h4>or</h4>
-                </div>
-                <div class="st_form_pop_facebook_btn float_left"> <a href="#"><i class="fab fa-facebook-f"></i> Connect with Facebook</a>
-                </div>
-                <div class="st_form_pop_gmail_btn float_left"> <a href="#"><i class="fab fa-google-plus-g"></i> Connect with Google</a>
-                </div>
-                <div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
-                    <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-                </div>
-            </div>
-        </div>
-    </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const form = document.querySelector('#formSignUp');
+                const emailInput = form.querySelector('input[name="email"]');
+                const phoneInput = form.querySelector('input[name="phone"]');
+                const errorDiv = document.getElementById("error");
+
+                // Retrieve the existing emails and passwords from JSTL
+                const existingAccounts = [
+                    <%-- Server-side rendering of existing emails and passwords --%>
+                    <c:forEach var="customer" items="${listCus}" varStatus="status">
+                    {
+                        email: "${customer.getEmail().toLowerCase()}",
+                        phone: "${customer.getPhone()}",
+
+                    }<c:if test="${!status.last}">, </c:if>
+                    </c:forEach>
+                ];
+
+                console.log("Existing Accounts:", existingAccounts);
+
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Prevent the default form submission
+
+                    const email = emailInput.value.trim().toLowerCase();
+                    const phone = phoneInput.value;
+
+                    // Perform client-side validation
+
+
+                    // Check if the email exists and the password is correct
+                    const account = existingAccounts.find(acc => acc.email === email);
+                    if (account) {
+                        alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                        return;
+                    }
+                    const phones = existingAccounts.find(acc => acc.phone === phone);
+                    if (phones) {
+                        alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                        return;
+                    }
+
+
+                    console.log("Email and password validation passed. Submitting form...");
+                    // If all validations pass, submit the form
+                    form.submit();
+                });
+
+                document.querySelector('.click').addEventListener('click', (e) => {
+                    const response = grecaptcha.getResponse();
+                    if (!response) {
+                        e.preventDefault();
+                        errorDiv.innerHTML = "Please check reCAPTCHA!";
+                    } else {
+                        window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                    }
+                });
+            });
+        </script>
+
+
+
+    </form>
+    <script>
+        function showAlert(message) {
+            alert(message);
+        }
+    </script>
+    <% if ("true".equals(request.getParameter("success"))) { %>
+    <script>
+        alert("Đã gửi email xác thực tài khoản");
+    </script>
+    <% } %>
+    <script>
+        function validateForm() {
+            // Get form elements
+            const email = document.getElementById('emailInput2').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const name = document.querySelector('input[name="name"]').value;
+            const pass1 = document.querySelector('input[name="pass1"]').value;
+            const pass2 = document.querySelector('input[name="pass2"]').value;
+
+            // Email regex pattern
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            // Phone regex pattern (assuming it should be 10-15 digits)
+            const phonePattern = /^\d{10}$/;
+
+            // Validate email
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Validate phone
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid phone number (10 digits).");
+                return false;
+            }
+
+            // Validate name
+            if (name.trim() === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            // Validate passwords
+            if (pass1 === "" || pass2 === "") {
+                alert("Please enter and confirm your password.");
+                return false;
+            }
+
+            if (pass1 !== pass2) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     <!-- st login wrapper End -->
     <!--main js file start-->
     <script src="js/jquery_min.js"></script>
