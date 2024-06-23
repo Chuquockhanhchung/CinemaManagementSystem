@@ -1974,7 +1974,7 @@ body.active #mobile-nav {
 .prs_upcom_slider_slides_wrapper {
     float: left;
     width: 100%;
-    padding-top: 55px;
+    /*padding-top: 55px;*/
 }
 
 .prs_upcom_slider_slides_wrapper .nav-tabs {
@@ -2370,7 +2370,7 @@ body.active #mobile-nav {
 }
 
 .prs_upcom_movie_content_box h2 a {
-    font-size: 18px;
+    font-size: 14px;
     color: #000000;
     font-weight: bold;
     -webkit-transition: all 0.5s;

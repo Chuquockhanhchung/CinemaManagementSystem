@@ -21,7 +21,6 @@ public class Movie {
     private String status;
     private int duration;
     private int price;
-    public String trailer;
     private double Rate;
 
     public Movie() {
@@ -49,13 +48,6 @@ public class Movie {
         Rate = rate;
     }
 
-    public String getTrailer() {
-        return trailer;
-    }
-
-    public void setTrailer(String trailer) {
-        this.trailer = trailer;
-    }
 
     public String getTrailer() {
         return trailer;
