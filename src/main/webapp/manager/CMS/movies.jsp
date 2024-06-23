@@ -1109,7 +1109,7 @@ Content body start
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">
 
-                                                    <a href="javascript:void(0);"
+                                                    <a href="editMovie?id=${m.getMovieID()}"
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
