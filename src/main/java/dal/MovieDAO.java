@@ -78,11 +78,58 @@ public class MovieDAO extends DBContext {
         }
         return movies;
     }
+
+    public ArrayList<Movie> SearchMovie(String Search, String Status){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where MovieName like ? and Status like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+Search+"%");
+            ps.setString(2, "%"+Status+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(14));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
     public ArrayList<Movie> phim(String status){
         ArrayList<Movie> movies = new ArrayList<>();
         String sql = "SELECT * FROM movie_all where Status like ?;";
         try {PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%"+status+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(14));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public ArrayList<Movie> phim(String status, String Type){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where Status like ? and Types like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+status+"%");
+            ps.setString(2, "%"+Type+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Movie a = new Movie();

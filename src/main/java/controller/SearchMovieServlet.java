@@ -47,16 +47,29 @@ public class SearchMovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String Search = request.getParameter("Search");
+
         AdminDAO dao = new AdminDAO(DBContext.getConn());
         CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
         MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> movies = md.SearchMovie(Search);
+        ArrayList<Movie> sapchieu = md.SearchMovie(Search, "Sắp chiếu");
+        for(Movie m : sapchieu){
+            m.setRate(md.GetRateByID(m.getId()));
+
+        }
+        ArrayList<Movie> dangchieu = md.SearchMovie(Search, "Đang chiếu");
+        for(Movie m : dangchieu){
+            m.setRate(md.GetRateByID(m.getId()));
+        }
+        ArrayList<Movie> phimhaynhat = md.film();
+
         HttpSession session = request.getSession();
         ArrayList<String> type = md.getMovieType();
         session.setAttribute("type", type);
-        request.setAttribute("movies", movies);
+        request.setAttribute("sapchieu", sapchieu);
+        request.setAttribute("dangchieu", dangchieu);
+        request.setAttribute("phimhaynhat", phimhaynhat);
         request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());

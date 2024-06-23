@@ -55,11 +55,23 @@ public class FilterByTypeServlet extends HttpServlet {
         MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> movies = md.FilterbyType(name);
+        ArrayList<Movie> sapchieu = md.phim("Sắp chiếu", name);
+        for(Movie m : sapchieu){
+            m.setRate(md.GetRateByID(m.getId()));
+
+        }
+        ArrayList<Movie> dangchieu = md.phim("Đang chiếu", name);
+        for(Movie m : dangchieu){
+            m.setRate(md.GetRateByID(m.getId()));
+        }
+        ArrayList<Movie> phimhaynhat = md.film();
+
         HttpSession session = request.getSession();
         ArrayList<String> type = md.getMovieType();
         session.setAttribute("type", type);
-        request.setAttribute("movies", movies);
+        request.setAttribute("sapchieu", sapchieu);
+        request.setAttribute("dangchieu", dangchieu);
+        request.setAttribute("phimhaynhat", phimhaynhat);
         request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
