@@ -38,6 +38,13 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
+        .movie {
+            display: none; /* Hide all movies by default */
+        }
+
+        .movie.display {
+            display: block; /* Show movies with the 'display' class */
+        }
         .replies-section {
             margin-top: 10px; /* Khoảng cách giữa phần replies-section và các phần khác */
         }
@@ -213,12 +220,7 @@
             width: 100%;
         }
         /* General modal styling */
-        .modal-content {
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #1b1b1b; /* Dark background to match the theme */
-            color: #fff; /* White text for contrast */
-        }
+
 
         .modal-header {
             background-color: #e50914; /* Bright red to match the header */
@@ -463,8 +465,8 @@
                     <div class="st_video_slider_inner_wrapper float_left">
                         <div class="st_video_slider_overlay"></div>
                         <div class="st_video_slide_sec float_left">
-                            <a rel='external' href='' title='title' class="test-popup-link">
-								<img src="${sessionScope.movie.getImge()}" alt="img" style="width: 300px; height: auto;">
+                            <a rel='external' href='h${sessionScope.movie.getTrailer()}' title='title' class="test-popup-link">
+								<img src="${sessionScope.movie.getImage()}" alt="img" style="width: 300px; height: auto;">
 							</a>
                             <h3>${sessionScope.movie.getName()}</h3>
                             <p>${sessionScope.movie.getName()}</p>
@@ -472,10 +474,10 @@
                             <h5><span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h5>
                         </div>
                         <div class="st_video_slide_social float_left">
-                            <div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">
-                                <h5><i class="fa fa-heart"></i> 85%</h5>
-                                <h4>52,291 votes</h4>
-                            </div>
+<%--                            <div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">--%>
+<%--                                <h5><i class="fa fa-heart"></i> 85%</h5>--%>
+<%--                                <h4>52,291 votes</h4>--%>
+<%--                            </div>--%>
 
                             <div class="st_video_slide_social_right float_left">
                                 <ul>
@@ -509,7 +511,7 @@
                     <form id="reviewForm" action="added" method="post">
                     <div class="modal-body">
                         <div class="d-flex" >
-                            <img src="${sessionScope.movie.getImge()}"  style="width: 100px; margin-right: 20px;">
+                            <img src="${sessionScope.movie.getImage()}"  style="width: 100px; margin-right: 20px;">
                             <div>
                                 <div class="stars">
                                     <input type="radio" id="star1.5" name="rating" value="5">
@@ -628,6 +630,16 @@
                                 radio.checked = true;
                             }
                         });
+                        function filterMovie(date){
+                            const movies = document.querySelectorAll('.movie');
+                            movies.forEach(movie => {
+                                if(movie.getAttribute('data-date') === date){
+                                    movie.classList.add('display');
+                                } else {
+                                    movie.classList.remove('display');
+                                }
+                            })
+                        }
                     </script>
                     <h4>Đánh Giá Của Khách Hàng</h4>
                 </div >
@@ -685,17 +697,18 @@
                 </div>
             </div>
             <div class="st_slider_rating_right">
-                <div class="st_slider_rating_btn prs_animate_btn1">
-                    <ul>
-                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="st_slider_rating_btn_heart">
-                    <h5><i class="fa fa-heart"></i> 85%</h5>
-                    <h4>52,291 lượt bình chọn</h4>
-                </div>
+<%--                <div class="st_slider_rating_btn prs_animate_btn1">--%>
+<%--                    <ul>--%>
+<%--                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+<%--                <div class="st_slider_rating_btn_heart">--%>
+<%--                    <h5><i class="fa fa-heart"></i> 85%</h5>--%>
+<%--                    <h4>52,291 lượt bình chọn</h4>--%>
+<%--                </div>--%>
             </div>
+
         </div>
     </div>
     <script>
@@ -705,6 +718,7 @@
     </script>
     <!-- st slider rating wrapper End -->
     <!-- st slider sidebar wrapper Start -->
+
     <div class="st_slider_index_sidebar_main_wrapper st_slider_index_sidebar_main_wrapper_md float_left">
         <div class="container">
             <div class="row">
@@ -712,7 +726,55 @@
                     <div class="st_indx_slider_main_container float_left">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="tab-content">
+                                    <div id="home1" class="tab-pane active">
+                                        <c:if test="${sessionScope.movie != null}">
+                                            <h1 style="font-size: 34px; font-family: inherit; color: #333333; margin-bottom: 20px; font-weight: 700">${sessionScope.movie.getName()}</h1>
+                                            <ul style="display: flex;  margin-bottom: 40px" class="blog-info">
 
+                                                <c:forEach items="${sessionScope.movietype}" var="i">
+                                                    <li style="margin-right: 10px;"><i style="font-size: 18px; color: #555555;" class="fa fa-tags"></i> ${i.getType()} </li>
+                                                </c:forEach>
+                                                <li style="margin-right: 10px;"><i style="font-size: 18px; color: #555555;" class="fa fa-clock-o"></i>${sessionScope.movie.getDuration()}p</li>
+                                            </ul>
+                                            <ul style="display: flex;  margin-bottom: 40px" class="blog-info">
+                                                <div class="st_calender_tabs" >
+                                                    <ul class="nav nav-tabs">
+
+                                                        <c:if test="${sessionScope.time != null}">
+                                                            <c:forEach items="${sessionScope.time}" var="i">
+
+                                                                <li class="" onclick="filterMovie('${i.getTime()}')" style="border: 1px solid #555555; background-color: #555555; border-radius: 5px">
+                                                                    <a data-toggle="tab" ><span>${i.getDayName()}</span> <br> ${i.getDay()}/${i.getMonth()}</a>
+                                                                </li>
+                                                            </c:forEach>
+
+                                                        </c:if>
+                                                    </ul>
+                                                </div>
+                                            </ul>
+
+
+                                        </c:if>
+                                        <ul  style="display:flex; list-style: none;flex-wrap:wrap ">
+                                            <c:if test="${sessionScope.showtime != null}">
+                                                <c:forEach items="${sessionScope.showtime}" var="i">
+                                                    <li class="movie" data-date="${i.getDate()}" style="border: 1px solid #333; padding: 15px; margin-left: 15px" >
+                                                        <a  href="seat?showtimeId=${i.getShowTimeID()}">${i.getTime()}</a>
+                                                    </li>
+
+                                                </c:forEach>
+                                            </c:if>
+
+
+                                        </ul>
+
+
+
+
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
@@ -1230,27 +1292,7 @@
         </script>
 
 
-        <!-- Form Forgot Password -->
-        <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                        <h3>Forgot Password</h3>
-                        <p>We can help! All you need to do is enter your email ID and follow the
-                            instructions!</p>
-                    </div>
-                    <div class="st_profile_input float_left">
-                        <label>Email Address</label>
-                        <input id="emailInput" name="email" type="text">
-                    </div>
-                    <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
-                                                                                                      id="verifyButton">Verify</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </form>
     <script>
         function showAlert(message) {

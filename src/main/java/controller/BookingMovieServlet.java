@@ -72,7 +72,6 @@ public class BookingMovieServlet extends HttpServlet {
             session.setAttribute("movie", movie);
             session.setAttribute("showtime", list1);
             session.setAttribute("time", list2);
-
             request.getRequestDispatcher("movie_booking.jsp").forward(request, response);
 
         } catch (Exception e) {

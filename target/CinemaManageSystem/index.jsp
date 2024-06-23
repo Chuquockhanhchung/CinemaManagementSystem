@@ -321,13 +321,13 @@
                                                                                         title='title'>Xem Trailer
                                                                                 </a>
                                                                             </li>
-                                                                            <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                                            <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div style="height: 150px" class="prs_upcom_movie_content_box">
                                                                     <div class="prs_upcom_movie_content_box_inner">
-                                                                        <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
+                                                                        <h2><a href="detail?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
                                                                         <p><%= movie.getType() %></p>
                                                                         <%
                                                                             int rate = (int)movie.getRate();
@@ -436,8 +436,9 @@
                                                                     title='title'>Xem Trailer
                                                             </a>
                                                         </li>
-                                                        <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                        <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
                                                     </ul>
+
                                                 </div>
                                             </div>
                                             <div style="height: 150px" class="prs_upcom_movie_content_box">
@@ -554,7 +555,7 @@
                                                                     title='title'>Xem Trailer
                                                             </a>
                                                         </li>
-                                                        <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                        <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -685,7 +686,7 @@
                                                         title='title'>Xem Trailer
                                                 </a>
                                             </li>
-                                            <li><a href="booking_movie?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                            <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
                                         </ul>
                                     </div>
                                 </div>
