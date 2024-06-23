@@ -20,7 +20,7 @@ public class DBContext {
 
     private static String USER = "root";
 
-    private static String PASS = "thuhoai123";
+    private static String PASS = "Chuchung1@";
 
     public static Connection getConn() {
         try {
