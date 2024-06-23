@@ -48,13 +48,6 @@ public class Movie {
         Rate = rate;
     }
 
-    public String getTrailer() {
-        return trailer;
-    }
-
-    public void setTrailer(String trailer) {
-        this.trailer = trailer;
-    }
 
 
 

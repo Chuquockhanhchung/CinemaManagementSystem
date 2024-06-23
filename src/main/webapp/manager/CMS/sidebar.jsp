@@ -72,6 +72,9 @@
                     <li><a href="event.jsp">Danh sách sự kiện</a></li>
                     <li><a href="add_event.jsp">Thêm sự kiện mới</a></li>
                     <li><a href="event_category.jsp">Event Category</a>
+                    <li><a href="product.jsp">Sản Phẩm</a>
+                    <li><a href="add_product.jsp">Thêm Sản Phẩm</a>
+
                     </li>
                 </ul>
             </li>

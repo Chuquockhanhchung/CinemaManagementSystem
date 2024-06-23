@@ -1267,17 +1267,7 @@
 </script>
 <!--main js file end-->
 
-<script>
-    // Disabling the carousel auto slide
-    $('#hot').carousel({
-        interval: false
-    });
 
-    // Disabling animation on slide event
-    $('#hot').on('slide.bs.carousel', function (e) {
-        e.preventDefault();
-    });
-</script>
 
 </body>
 
