@@ -367,12 +367,15 @@ ul.colors li:hover p {
 
 .prs_logo_main_wrapper {
     float: left;
-    padding-top: 30px;
+    padding-top: 12px;
     padding-bottom: 30px;
     position: relative;
     z-index: 1;
 }
-
+.prs_logo_main_wrapper img{
+    width: 100%;
+    height: 80px;
+}
 .prs_menu_main_wrapper {
     float: left;
     padding-left: 30px;
@@ -11056,7 +11059,7 @@ i:before {
 /*---------------- st Booking Conformation Start --------------*/
 
 .st_bcc_main_wrapper {
-    padding-top: 100px;
+    padding-top: 45px;
     padding-bottom: 100px;
     display: inline-block;
     width: 100%;
@@ -11311,7 +11314,7 @@ i:before {
     margin-right: 10px;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:first-child a {
+.st_bcc_ticket_boxes_bottom_wrapper li a {
     width: 150px;
     height: 50px;
     line-height: 50px;
@@ -11332,7 +11335,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:first-child a:hover {
+.st_bcc_ticket_boxes_bottom_wrapper li a:hover {
     background: transparent;
     color: #ff4444;
     -webkit-transition: all 0.5s;
@@ -11342,7 +11345,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:last-child a {
+.st_bcc_ticket_boxes_bottom_wrapper li a {
     width: 150px;
     height: 50px;
     line-height: 50px;
@@ -11363,7 +11366,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:last-child a:hover {
+.st_bcc_ticket_boxes_bottom_wrapper lI a:hover {
     background: #ff4444;
     color: #fff;
     border: 1px solid #ff4444;

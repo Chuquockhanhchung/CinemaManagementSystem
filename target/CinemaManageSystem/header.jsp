@@ -49,137 +49,13 @@
                             </li>
                             <li class="parent megamenu"><a href="#">Phim</a>
                                 <ul class="lg-submenu">
-                                    <li><a>Phim Hindi phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bajiro
-                                                Mastani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Drishyam</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Queen</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wanted</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Veer</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jannat</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baaghi</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Baaghi-2</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Ki & Ka</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kahaani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jab We
-                                                Met</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Kannada phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Zoom</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Kirik
-                                                Party</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Mahakali</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">karvva</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Ishtakamya</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Jigarthanda</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Abhimani</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Priyanka</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Bengali phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Baro
-                                                Bou</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Tomake</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Jeevan</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Haraner
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Bidhilipi</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Bhalobasa
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Prateek</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Aparanher</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Mukhyamantri</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Charmurti</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a>Phim Hollywood phổ biến</a>
-                                        <ul class="lg-submenu">
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Wind
-                                                River</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Coco</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Meyerowitz
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a
-                                                    href="#">Ragnarok</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Driver</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Dunkirk</a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Big Sick
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">American
-                                            </a>
-                                            </li>
-                                            <li class="ar_left"><i class="fi fi-rr-film"></i><a href="#">Logan </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="prs_navi_slider_wraper">
-                                            <div class="owl-carousel owl-theme">
-                                                <div class="item">
-                                                    <img src="images/content/up1.jpg" alt="navi_img">
-                                                </div>
-                                                <div class="item">
-                                                    <img src="images/content/up2.jpg" alt="navi_img">
-                                                </div>
-                                                <div class="item">
-                                                    <img src="images/content/up3.jpg" alt="navi_img">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <c:forEach items="${type}" var="o">
+                                        <li><a href="type?name=${o}">Phim ${o}</a>
+
+                                        </li>
+                                    </c:forEach>
+
+
                                 </ul>
                             </li>
                             <li class="parent megamenu"><a href="#">Thước phim</a>
@@ -322,7 +198,7 @@
                     <div class="prs_top_login_btn_wrapper">
                         <div class="prs_animate_btn1">
                             <ul>
-                                <li><a href="#" class="button button--tamaya" data-text="Đăng Nhập" data-toggle="modal"
+                                <li><a href="#" class="button button--tamaya" data-text="ĐĂNG NHẬP" data-toggle="modal"
                                        data-target="#myModal"><span>Đăng Nhập</span></a></li>
                             </ul>
                         </div>
@@ -333,16 +209,22 @@
             <div class="product-heading">
                 <div class="con">
                     <select>
-                        <option>Tất cả danh mục</option>
-                        <option>Phim</option>
-                        <option>Thước phim</option>
-                        <option>Nhạc</option>
-                        <option>Chương trình truyền hình</option>
+                        <option>Tên Phim</option>
+
                     </select>
-                    <input type="text" placeholder="Tìm phim, Thước phim, Nhạc">
-                    <button type="submit"><i class="fi fi-bs-search"></i>
+                    <input type="text" placeholder="Tìm phim" id="query">
+                    <button type="submit" onclick="submitForm()"><i class="fi fi-bs-search"></i>
                     </button>
                 </div>
+
+                <script>
+                    function submitForm() {
+
+                        const query = document.getElementById("query").value;
+                        var link = 'searchmovie?Search=' + query;
+                        window.location.href = link;
+                    }
+                </script>
             </div>
         </div>
         <div id="mobile-nav" data-prevent-default="true" data-mouse-events="true">
