@@ -464,7 +464,7 @@
                         <div class="st_video_slider_overlay"></div>
                         <div class="st_video_slide_sec float_left">
                             <a rel='external' href='' title='title' class="test-popup-link">
-								<img src="${sessionScope.movie.getImge()}" alt="img" style="width: 300px; height: auto;">
+								<img src="${sessionScope.movie.getImage()}" alt="img" style="width: 300px; height: auto;">
 							</a>
                             <h3>${sessionScope.movie.getName()}</h3>
                             <p>${sessionScope.movie.getName()}</p>
@@ -509,7 +509,7 @@
                     <form id="reviewForm" action="added" method="post">
                     <div class="modal-body">
                         <div class="d-flex" >
-                            <img src="${sessionScope.movie.getImge()}"  style="width: 100px; margin-right: 20px;">
+                            <img src="${sessionScope.movie.getImage()}"  style="width: 100px; margin-right: 20px;">
                             <div>
                                 <div class="stars">
                                     <input type="radio" id="star1.5" name="rating" value="5">
@@ -1230,27 +1230,7 @@
         </script>
 
 
-        <!-- Form Forgot Password -->
-        <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                        <h3>Forgot Password</h3>
-                        <p>We can help! All you need to do is enter your email ID and follow the
-                            instructions!</p>
-                    </div>
-                    <div class="st_profile_input float_left">
-                        <label>Email Address</label>
-                        <input id="emailInput" name="email" type="text">
-                    </div>
-                    <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
-                                                                                                      id="verifyButton">Verify</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </form>
     <script>
         function showAlert(message) {

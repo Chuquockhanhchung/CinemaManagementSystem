@@ -202,19 +202,19 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
-    public static void main(String[] args) {
-        MovieDAO dao = new MovieDAO(DBContext.getConn());
-//        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-//        Customer cu = daoc.getCustomerByCID("60");
-//        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
-//        for (Feedback feedback : feedbacks) {
-//            System.out.println(feedback);
+//    public static void main(String[] args) {
+//        MovieDAO dao = new MovieDAO(DBContext.getConn());
+////        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+////        Customer cu = daoc.getCustomerByCID("60");
+////        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
+////        for (Feedback feedback : feedbacks) {
+////            System.out.println(feedback);
+////        }
+//        ArrayList<Actor> actors = dao.getActorByMovieId(48);
+//        for (Actor a : actors) {
+//            System.out.println(a.toString());
 //        }
-        ArrayList<Actor> actors = dao.getActorByMovieId(48);
-        for (Actor a : actors) {
-            System.out.println(a.toString());
-        }
-    }
+//    }
     public ArrayList<Actor> getActorByMovieId(int id) {
         ArrayList<Actor> actors = new ArrayList<>();
         String sql = "Select a.ActorID,a.ActorImg,a.ActorName from actors a join movie_has_actors m on a.ActorID=m.ActorID where m.MovieID=?";
