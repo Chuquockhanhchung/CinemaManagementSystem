@@ -22,7 +22,7 @@ public class CustomerDAO extends DBContext {
     }
 
     public ArrayList<Customer> getInfor_Customer() {
-        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"
+        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture\n"
                 + "FROM customer\n"
                 + "JOIN account  ON customer.AccountID = account.AccountID";
         ArrayList<Customer> list = new ArrayList<>();
@@ -37,6 +37,7 @@ public class CustomerDAO extends DBContext {
                 c.setPhone(rs.getString(5));
                 c.setPass(s.decode(rs.getString(6)));
                 c.setRole(rs.getInt(7));
+                c.setPicture(rs.getString(8));
                 list.add(c);
             }
         } catch (SQLException e) {
@@ -76,13 +77,7 @@ public class CustomerDAO extends DBContext {
     public static void main(String[] args) {
         try (Connection con = getConn()) {
             // Connection successful, you can perform further operations here if needed
-            String idAccount = Math.random() + "";
-            CustomerDAO dao = new CustomerDAO(con);
-            Customer account = new Customer(idAccount, "654356", 3, "", "active");
-            dao.insertAccount(account);
-            Customer customer = new Customer(0, idAccount, "06/04/2024",
-                    "hoaidtthe172257@fpt.edu.vn", "", "");
-            dao.insertCustomer(customer);
+            System.out.println();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -103,6 +98,31 @@ public class CustomerDAO extends DBContext {
                 c.setPhone(rs.getString(5));
                 c.setPass(rs.getString(6));
                 c.setRole(rs.getInt(7));
+                return c;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Customer getCustomerByCID(String id) {
+        Customer c = new Customer();
+        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType, Picture\n"
+                + "FROM customer\n"
+                + "JOIN account  ON customer.AccountID = account.AccountID where customer.CustomerID=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                c.setIdCustomer(rs.getInt(1));
+                c.setName(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setPass(rs.getString(6));
+                c.setRole(rs.getInt(7));
+                c.setPicture(rs.getString(8));
                 return c;
             }
 

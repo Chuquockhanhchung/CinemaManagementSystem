@@ -70,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label for="avatar">Ảnh đại diện:</label>
-                <input type="file" class="form-control-file" id="avatar" onchange="previewAvatar(event)">
+                <input type="file" class="form-control-file" id="avatar"  onchange="previewAvatar(event)">
                 <img id="avatarPreview" class="avatar-preview mt-3" src="default-avatar.png" alt="Avatar Preview">
             </div>
             <button type="submit" class="btn btn-primary">Cập nhật</button>

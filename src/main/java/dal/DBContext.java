@@ -37,6 +37,30 @@ public class DBContext {
         }
         return conn;
     }
+//}
+    
+//
+//    private static String URL = "jdbc:mysql://cinemamanagementsystem.mysql.database.azure.com:3306/cinemamanagersystem?useSSL=true";
+//
+//    private static String USER = "cinema";
+//
+//    private static String PASS = "Rapchieuphim@";
+//
+//    public static Connection getConn() {
+//        try {
+//            System.out.println("URL --->" + URL);
+//            System.out.println("USER --->" + USER);
+//            System.out.println("PASS --->" + PASS);
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conn = DriverManager.getConnection(URL, USER, PASS);
+//            System.out.println("Successfully connected to the database.");
+//        } catch (Exception e) {
+//            System.out.println("Failed to connect to the database.");
+//            e.printStackTrace(); // Print stack trace for debugging
+//            throw new RuntimeException("Failed to connect to the database.", e);
+//        }
+//        return conn;
+//    }
     public static void main(String[] args) {
         try (Connection con = getConn()) {
             MovieDAO dao = new MovieDAO(con);
