@@ -44,7 +44,7 @@ public class TicketDAO extends DBContext{
     }
     public Movie getMovieByShowTime(int id) throws SQLException {
         try {
-            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price from showtime s join movie_all m on s.MovieID =m.MovieID where s.ShowtimeID=?";
+            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price, m.Trailer, m.IMDbRating from showtime s join movie_all m on s.MovieID =m.MovieID where s.ShowtimeID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -57,7 +57,9 @@ public class TicketDAO extends DBContext{
                         rs.getString(6),
                         rs.getString(7),
                         rs.getInt(8),
-                        rs.getInt(9)
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getFloat(11)
 
                 );
             }
