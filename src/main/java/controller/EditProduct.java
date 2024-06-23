@@ -71,10 +71,12 @@ public class EditProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
        try{
+           int productID = Integer.parseInt(request.getParameter("ProductID"));
            String ProductName = request.getParameter("ProductName");
            Float ProductPrice = Float.parseFloat(request.getParameter("ProductPrice"));
            String Detail = request.getParameter("Detail");
            Product p = new Product();
+           p.setProductID(productID);
            p.setProductName(ProductName);
            p.setProductPrice(ProductPrice);
            p.setDetail(Detail);
