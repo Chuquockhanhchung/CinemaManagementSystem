@@ -25,10 +25,7 @@
     <link rel="stylesheet" href="css/QR_Code/Styles/custom.bundles.css">
 
     <style>
-        #countdown {
-            font-size: 2em;
-            color: #ff0000;
-        }
+        <%@include file="css/payment.css" %>
     </style>
 </head>
 
@@ -68,9 +65,8 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="st_bt_top_center_heading float_left">
-                    <h3><%= ticket != null ? ticket.getMovieName() : "N/A" %> - English
-                        - <%= ticket != null ? ticket.getStartTime() : "N/A" %>
-                    </h3>
+                    <h3>${sessionScope.movie.getName()} - ${sessionScope.language} - (${sessionScope.movie.getDuration()} phút)</h3>
+                    <h4>${sessionScope.date}</h4>
                 </div>
             </div>
         </div>
@@ -90,6 +86,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="st_dtts_ineer_box float_left">
+                                    <div class="st_cherity_img">
+                                        <img src="${sessionScope.movie.getImage()}" alt="img">
+                                    </div>
+
                                     <ul>
                                         <li><span name=""
                                                   class="dtts1">Ngày:</span> <%= ticket != null ? ticket.getBookingDate() : "N/A" %>
@@ -105,20 +105,14 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <div class="st_cherity_section float_left">
-                                    <div class="st_cherity_img float_left">
-                                        <img src="${sessionScope.movie.getImage()}" alt="img">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
 
                     <section class="payment-section">
-                        <h2 class="payment-method-text">Phương thức thanh toán</h2>
                         <form>
+                            <h2 class="payment-method-text">Phương thức thanh toán</h2>
+
                             <div class="row-payment g-4 mb-7 payment-method">
                                 <div class="col-12" style="margin: 0 auto; margin-top: 20px">
                                     <div class="row-payment justify-content-center gx-lg-11">
@@ -126,8 +120,7 @@
                                             <div class="form-check" style="margin-right: 20px;">
                                                 <input class="form-check-input" id="coupon" type="radio"
                                                        name="paymentMethod" checked="checked"/>
-                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ
-                                                    ngân hàng </label>
+                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ ngân hàng </label>
                                                 <span class="badge badge-phoenix badge-phoenix-warning ms-2 ms-lg-4 ms-xl-2">Popular</span>
                                             </div>
                                         </div>
@@ -673,15 +666,58 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="st_cherity_btn float_left">
-
                                     <ul>
-
                                         <li><a  class="payment-process" style="cursor: pointer;">Tiến hành thanh toán</a></li>
                                     </ul>
                                 </div>
-                                <div style="color: red">Thời gian giữ vé </div>
-                                    <div id="countdown"> 01:00</div>
-                                    <script src="countdown.js"></script>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="flash-sale-time">
+                                <div class="sale-time">
+                                    <h2>Thời gian thanh toán</h2>
+                                    <div class="countdown">
+
+
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-hours-tens>
+                                                    <div class="top">2</div>
+                                                    <div class="bottom">2</div>
+                                                </div>
+                                                <div class="flip-card" data-hours-ones>
+                                                    <div class="top">4</div>
+                                                    <div class="bottom">4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-minutes-tens>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                                <div class="flip-card" data-minutes-ones>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-segment">
+                                            <div class="segment">
+                                                <div class="flip-card" data-seconds-tens>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                                <div class="flip-card" data-seconds-ones>
+                                                    <div class="top">0</div>
+                                                    <div class="bottom">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -757,6 +793,7 @@
     }
 </script>
 
+<script src="countdown.js"></script>
 
 <script src="js/jquery_min.js"></script>
 <script src="js/modernizr.js"></script>

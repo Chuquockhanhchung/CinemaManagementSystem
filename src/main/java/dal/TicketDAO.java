@@ -149,8 +149,8 @@ public class TicketDAO extends DBContext{
             String sql = "SELECT *\n" +
                     "FROM movieticket\n" +
                     "WHERE CustomerID = ?\n" +
-                    "  AND DATE_FORMAT(BookingDate, '%Y/%m/%d %H:%i') = (\n" +
-                    "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H:%i'))\n" +
+                    "  AND DATE_FORMAT(BookingDate, '%Y/%m/%d %H') = (\n" +
+                    "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H'))\n" +
                     "      FROM movieticket\n" +
                     "      WHERE CustomerID = ?\n" +
                     "  );";

@@ -10724,12 +10724,16 @@ i:before {
 .st_bt_top_close_btn a:hover {
     color: #F06292;
 }
-
+.st_cherity_img {
+    padding-right: 20px;
+}
 .st_dtts_ineer_box {
+    display: flex;
     background: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .st_dtts_ineer_box li {
@@ -10766,7 +10770,8 @@ i:before {
 }
 
 .st_cherity_img img {
-    width: 100%;
+    width: 300px;
+    height: 100%;
 }
 
 .st_cherity_section {

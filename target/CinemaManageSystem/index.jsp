@@ -303,7 +303,6 @@
                                 <div class="item">
                                     <div class="row">
                                         <%
-
                                             for (Movie movie : dangchieu) {
                                                 if(dangchieu.indexOf(movie)>=i*8 && dangchieu.indexOf(movie)<=i*8+7){
                                         %>

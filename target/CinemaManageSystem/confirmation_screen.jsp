@@ -1,4 +1,4 @@
-
+<%@ page import="dal.TicketDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -63,7 +63,17 @@
         </div>
     </div>
     <!-- prs title wrapper End -->
-
+    <%
+        int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
+        TicketDAO dao = new TicketDAO(DBContext.getConn());
+        List<Ticket> list = dao.getTicketByBooking(CustomerID);
+    %>
+    <c:if test="${not empty sessionScope.user.idCustomer}">
+        <input type="text" name="CustomerID" value="${sessionScope.user.idCustomer}" >
+    </c:if>
+    <c:if test="${empty sessionScope.user.idCustomer}">
+        <p>Customer ID is not available.</p>
+    </c:if>
     <!-- st bc Start -->
     <div class="st_bcc_main_main_wrapper float_left">
         <div class="st_bcc_main_wrapper">
