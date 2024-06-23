@@ -367,12 +367,15 @@ ul.colors li:hover p {
 
 .prs_logo_main_wrapper {
     float: left;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 30px;
     position: relative;
     z-index: 1;
 }
-
+.prs_logo_main_wrapper img{
+    width: 100%;
+    height: 60px;
+}
 .prs_menu_main_wrapper {
     float: left;
     padding-left: 30px;
@@ -1971,7 +1974,7 @@ body.active #mobile-nav {
 .prs_upcom_slider_slides_wrapper {
     float: left;
     width: 100%;
-    padding-top: 55px;
+    /*padding-top: 55px;*/
 }
 
 .prs_upcom_slider_slides_wrapper .nav-tabs {
@@ -2367,7 +2370,7 @@ body.active #mobile-nav {
 }
 
 .prs_upcom_movie_content_box h2 a {
-    font-size: 18px;
+    font-size: 14px;
     color: #000000;
     font-weight: bold;
     -webkit-transition: all 0.5s;
@@ -10721,12 +10724,16 @@ i:before {
 .st_bt_top_close_btn a:hover {
     color: #F06292;
 }
-
+.st_cherity_img {
+    padding-right: 20px;
+}
 .st_dtts_ineer_box {
+    display: flex;
     background: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .st_dtts_ineer_box li {
@@ -10763,7 +10770,8 @@ i:before {
 }
 
 .st_cherity_img img {
-    width: 100%;
+    width: 300px;
+    height: 100%;
 }
 
 .st_cherity_section {
@@ -11056,7 +11064,7 @@ i:before {
 /*---------------- st Booking Conformation Start --------------*/
 
 .st_bcc_main_wrapper {
-    padding-top: 100px;
+    padding-top: 45px;
     padding-bottom: 100px;
     display: inline-block;
     width: 100%;
@@ -11311,7 +11319,7 @@ i:before {
     margin-right: 10px;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:first-child a {
+.st_bcc_ticket_boxes_bottom_wrapper li a {
     width: 150px;
     height: 50px;
     line-height: 50px;
@@ -11332,7 +11340,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:first-child a:hover {
+.st_bcc_ticket_boxes_bottom_wrapper li a:hover {
     background: transparent;
     color: #ff4444;
     -webkit-transition: all 0.5s;
@@ -11342,7 +11350,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:last-child a {
+.st_bcc_ticket_boxes_bottom_wrapper li a {
     width: 150px;
     height: 50px;
     line-height: 50px;
@@ -11363,7 +11371,7 @@ i:before {
     transition: all 0.5s;
 }
 
-.st_bcc_ticket_boxes_bottom_wrapper li:last-child a:hover {
+.st_bcc_ticket_boxes_bottom_wrapper lI a:hover {
     background: #ff4444;
     color: #fff;
     border: 1px solid #ff4444;

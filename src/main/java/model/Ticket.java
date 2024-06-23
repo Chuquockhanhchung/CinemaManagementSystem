@@ -7,7 +7,7 @@ public class Ticket {
     private String FullName;
     private int ShowtimeID;
     private String StartTime;
-    private int SeatID;
+    private String SeatID;
     private String SeatType;
     private String EventName;
     private float TicketPrice;
@@ -22,7 +22,7 @@ public class Ticket {
     }
 
 
-    public Ticket(int customerID, int showtimeID,  int seatID, float ticketPrice, String status) {
+    public Ticket(int customerID, int showtimeID,  String seatID, float ticketPrice, String status) {
         CustomerID = customerID;
         ShowtimeID = showtimeID;
         SeatID = seatID;
@@ -30,11 +30,11 @@ public class Ticket {
         Status = status;
     }
 
-    public Ticket(int CustomerID, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String s3) {
-        CustomerID = CustomerID;
+    public Ticket(int CustomerId, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String SeatId) {
+        CustomerID = CustomerId;
         FullName = name;
         StartTime = time;
-        SeatType = seater;
+        SeatID = seater;
         EventName = s;
         ComboName = s1;
         TicketPrice = price;
@@ -42,7 +42,7 @@ public class Ticket {
         BookingDate = hold;
         MovieName = s2;
         Image = name1;
-        SeatID = Integer.parseInt(s3);
+        SeatType = SeatId;
     }
 
     @Override
@@ -105,11 +105,11 @@ public class Ticket {
         StartTime = startTime;
     }
 
-    public int getSeatID() {
+    public String getSeatID() {
         return SeatID;
     }
 
-    public void setSeatID(int seatID) {
+    public void setSeatID(String seatID) {
         SeatID = seatID;
     }
 

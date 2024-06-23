@@ -32,6 +32,14 @@
         <servlet-class>controller.servlet_Login</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FilterByTypeServlet</servlet-name>
+        <servlet-class>controller.FilterByTypeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <servlet-class>controller.SearchMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
@@ -76,8 +84,16 @@
         <servlet-class>controller.Homepage</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DetailFilmServlet</servlet-name>
+        <servlet-class>controller.DetailFilmServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ActiveServlet</servlet-name>
         <servlet-class>controller.ActiveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <servlet-class>controller.DeleteFeedback</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
@@ -100,6 +116,14 @@
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddFeedbackServlet</servlet-name>
+        <servlet-class>controller.AddFeedbackServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddFeedbackServlet2</servlet-name>
+        <servlet-class>controller.AddFeedbackServlet2</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>controller.TicketServlet</servlet-class>
     </servlet>
@@ -107,13 +131,45 @@
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>controller.PaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EventServlet</servlet-name>
+        <servlet-class>controller.EventServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>controller.AddProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProduct</servlet-name>
+        <servlet-class>controller.EditProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>controller.DeleteProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddFeedbackServlet</servlet-name>
+        <url-pattern>/added</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFeedbackServlet2</servlet-name>
+        <url-pattern>/added2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailFilmServlet</servlet-name>
+        <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SeatBookServlet</servlet-name>
         <url-pattern>/seat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterByTypeServlet</servlet-name>
+        <url-pattern>/type</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
@@ -122,6 +178,10 @@
     <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <url-pattern>/deletefeedback</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Homepage</servlet-name>
@@ -138,6 +198,10 @@
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <url-pattern>/searchmovie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
@@ -186,6 +250,22 @@
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventServlet</servlet-name>
+        <url-pattern>/event</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/addproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProduct</servlet-name>
+        <url-pattern>/editproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/deleteproduct</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

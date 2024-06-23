@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <div class="prs_newsletter_text">
-                            <h3>Get update sign up now !</h3>
+                            <h3>Hãy đăng kí cập nhật ngay bây giờ!</h3>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_1">
-                            <h2>LANGUAGE MOVIES</h2>
+                            <h2>Ngôn ngữ phim</h2>
                             <ul>
                                 <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">English movie</a>
                                 </li>
@@ -57,28 +57,28 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_2">
-                            <h2>MOVIES by presenter</h2>
+                            <h2>Phim của người dẫn chương trình</h2>
                             <ul>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Action movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">phim hành động</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Romantic movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim lãng mạn</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Adult movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim người lớn</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Comedy movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim hài</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Drama movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim kịch tính</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Musical movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim ca nhạc</a>
                                 </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Classical movie</a>
+                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Phim kinh điển</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
-                            <h2>BOOKING ONLINE</h2>
+                            <h2>Đặt vé trực tuyến</h2>
                             <ul>
                                 <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
                                 </li>
@@ -99,8 +99,8 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_4">
-                            <h2>App available on</h2>
-                            <p>Download App and Get Free Movie Ticket !</p>
+                            <h2>Ứng dụng có sẵn vào ngày</h2>
+                            <p>Tải ứng dụng và nhận vé xem phim miễn phí!</p>
                             <ul>
                                 <li>
                                     <a href="#">
@@ -113,7 +113,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <h5><span>$50</span> Payback on App Download</h5>
+                            <h5><span>$50</span> Hoàn vốn khi tải ứng dụng</h5>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                         <div class="prs_bottom_footer_cont_wrapper">
-                            <p>Copyright 2022-23 <a href="#">Movie Pro</a> . All rights reserved - Design by <a
+                            <p>Copyright 2022-23 <a href="#">Movie Pro</a> . Bảo lưu mọi quyền - Thiết kế bởi <a
                                     href="#">Webstrot</a>
                             </p>
                         </div>

@@ -1,8 +1,6 @@
 package dal;
 
-import model.Movie;
-import model.Room;
-import model.Seat;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,20 +44,25 @@ public class TicketDAO extends DBContext{
     }
     public Movie getMovieByShowTime(int id) throws SQLException {
         try {
-            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price from showtime s join movie_all m on s.MovieID =m.MovieID where s.ShowtimeID=?";
+            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price, m.Trailer, m.IMDbRating " +
+                    "from showtime s join movie_all m on s.MovieID =m.MovieID " +
+                    "where s.ShowtimeID=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Movie(rs.getInt(1),
+                return new Movie(
+                        rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getNString(4),
-                        rs.getNString(5),
+                        rs.getString(4),
+                        rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
                         rs.getInt(8),
-                        rs.getInt(9)
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getFloat(11)
 
                 );
             }
@@ -102,6 +105,79 @@ public class TicketDAO extends DBContext{
         }
         return null;
     }
+
+    public List<Ticket> getAllTicket() {
+        List<Ticket> list = new ArrayList<Ticket>();
+        Ticket ticket = null;
+        try {
+            String sql = "SELECT " +
+                    "t.TicketID, c.CustomerID, c.FullName, " +
+                    "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
+                    "st.SeatID, st.SeatType, t.TicketPrice, " +
+                    "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
+                    "t.Status, m.MovieName, m.Image " +
+                    "FROM movieticket t " +
+                    "JOIN customer c ON t.CustomerID = c.CustomerID " +
+                    "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
+                    "JOIN seat st ON t.SeatID = st.SeatID " +
+                    "JOIN movie m ON s.MovieID = m.MovieID ";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ticket = new Ticket();
+                ticket.setTicketID(rs.getInt(1));
+                ticket.setComboName(rs.getString(3));
+                ticket.setSeatID(rs.getString(5));
+                ticket.setSeatType(rs.getString(6));
+                ticket.setTicketPrice(rs.getFloat(7));
+                ticket.setBookingDate(rs.getString(8));
+                ticket.setStatus(rs.getString(9));
+                ticket.setMovieName(rs.getString(10));
+                list.add(ticket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Ticket> getTicketByBooking(int CustomerID) {
+        List<Ticket> list = new ArrayList<Ticket>();
+        Ticket ticket = null;
+        try {
+            String sql = "SELECT *\n" +
+                    "FROM movieticket\n" +
+                    "WHERE CustomerID = ?\n" +
+                    "  AND DATE_FORMAT(BookingDate, '%Y/%m/%d %H') = (\n" +
+                    "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H'))\n" +
+                    "      FROM movieticket\n" +
+                    "      WHERE CustomerID = ?\n" +
+                    "  );";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, CustomerID);
+            ps.setInt(2, CustomerID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ticket = new Ticket();
+                ticket.setTicketID(rs.getInt(1));
+                ticket.setComboName(rs.getString(3));
+                ticket.setSeatID(rs.getString(5));
+                ticket.setSeatType(rs.getString(6));
+                ticket.setTicketPrice(rs.getFloat(7));
+                ticket.setBookingDate(rs.getString(8));
+                ticket.setStatus(rs.getString(9));
+                ticket.setMovieName(rs.getString(10));
+                list.add(ticket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());

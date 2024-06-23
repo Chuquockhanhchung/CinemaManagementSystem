@@ -14,7 +14,7 @@ public class Constants {
 
     public static String GOOGLE_CLIENT_SECRET = "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";
 
-    public static String GOOGLE_REDIRECT_URI = "http://localhost:9999/CinemaManageSystem/loginbygoogle";
+    public static String GOOGLE_REDIRECT_URI = "http://localhost:9999/CinemaManageSystem_war_exploded/loginbygoogle";
 
     public static String GOOGLE_LINK_GET_TOKEN = "https://oauth2.googleapis.com/token";
 

@@ -70,7 +70,7 @@ public class TicketServlet extends HttpServlet {
         for(int i=0; i<seats.length; i++){
             seats[i] = seats[i].trim();
             int seatInt=0;
-            if(seats.length>2) {
+            if(seats[i].length()>2) {
                  seatInt = Integer.parseInt(seats[i].split("")[1]) * 10 + Integer.parseInt(seats[i].split("")[2]);
             }else{
                  seatInt = Integer.parseInt(seats[i].split("")[1]);
@@ -123,8 +123,9 @@ public class TicketServlet extends HttpServlet {
                 "",
                 "",
                 (float) getPrice(Seater,movie.getPrice()),
-                date.toString(),
                 "Hold",
+                date.toString(),
+                
                 "",
                 movie.getName(),
                 ""

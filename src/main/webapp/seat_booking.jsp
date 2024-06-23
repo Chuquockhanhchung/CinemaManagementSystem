@@ -255,12 +255,10 @@
                                     queue: false,
                                 }
                             });
-                        };
+                        });
                     };
                     protfolioIsotope();
-
-
-
+                }
             </script>
             <script>
 

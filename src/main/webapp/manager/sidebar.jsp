@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -34,7 +36,7 @@
                 <span class="nav-text">Dashboard</span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/orders_list">Orders list</a></li>
+                    <li><a href="manager/dashboard/orders_list.jsp">Orders list</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Event</a></li
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Analytics</a></li>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/reviews">Reviews</a></li>
@@ -64,12 +66,14 @@
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> MANAGER</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="movies.jsp">Movies</a></li>
-                    <li><a href="add_movies.jsp">Add Movie</a></li>
-                    <li><a href="add_email.jsp">Add Email</a></li>
-                    <li><a href="event.jsp">Event</a></li>
-                    <li><a href="add_event.jsp">Add Event</a></li>
-                    <li><a href="event_category.jsp">Event Category</a>
+                    <li><a href="manager/CMS/movies.jsp">Movies</a></li>
+                    <li><a href="manager/CMS/add_movies.jsp">Add Movie</a></li>
+                    <li><a href="manager/CMS/add_email.jsp">Add Email</a></li>
+                    <li><a href="manager/CMS/event.jsp">Event</a></li>
+                    <li><a href="manager/CMS/add_event.jsp">Add Event</a></li>
+                    <li><a href="manager/CMS/event_category.jsp">Event Category</a>
+                    <li><a href="manager/CMS/product.jsp">Sản Phẩm</a>
+                    <li><a href="manager/CMS/add_product.jsp">Thêm Sản Phẩm</a>
                     </li>
                 </ul>
             </li>

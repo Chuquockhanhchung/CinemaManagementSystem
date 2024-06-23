@@ -21,7 +21,7 @@ public class PaymentDAO {
                 "t.TicketID, c.CustomerID, c.FullName, " +
                 "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                 "st.SeatID, st.SeatType, t.TicketPrice, " +
-                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y') AS BookingDate, " +
+                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
                 "t.Status, m.MovieName, m.Image " +
                 "FROM movieticket t " +
                 "JOIN customer c ON t.CustomerID = c.CustomerID " +
@@ -39,7 +39,7 @@ public class PaymentDAO {
                 ticket.setCustomerID(rs.getInt(2));
                 ticket.setFullName(rs.getString(3));
                 ticket.setStartTime(rs.getString(4));
-                ticket.setSeatID(rs.getInt(5));
+                ticket.setSeatID(rs.getString(5));
                 ticket.setSeatType(rs.getString(6));
                 ticket.setTicketPrice(rs.getFloat(7));
                 ticket.setBookingDate(rs.getString(8));
@@ -84,9 +84,8 @@ public class PaymentDAO {
         PreparedStatement ps = con.prepareStatement(sql) ;
             ps.setInt(1, ticket.getCustomerID());
             ps.setInt(2, ticket.getShowtimeID());
-            ps.setInt(3, ticket.getSeatID());
+            ps.setString(3, ticket.getSeatID());
             ps.setFloat(4, ticket.getTicketPrice());
-            ps.setString(5, ticket.getStatus());
 
             int i = ps.executeUpdate();
             if (i == 1) {

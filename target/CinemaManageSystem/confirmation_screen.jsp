@@ -1,4 +1,4 @@
-
+<%@ page import="dal.TicketDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
     <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="images/header/shortcut-icon.png" />
 </head>
 
 <body class="booking_type_back">
@@ -51,11 +51,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="prs_title_heading_wrapper">
-                        <h2>Confirmation Screen</h2>
+                        <h2>XÁC NHẬN THÔNG TIN</h2>
                         <ul>
-                            <li><a href="#">Home</a>
+                            <li><a href="home">Trang Chủ</a>
                             </li>
-                            <li>&nbsp;&nbsp; >&nbsp;&nbsp; Confirmation Screen</li>
+                            <li>&nbsp;&nbsp; >&nbsp;&nbsp; Xác Nhận Thông Tin</li>
                         </ul>
                     </div>
                 </div>
@@ -63,21 +63,17 @@
         </div>
     </div>
     <!-- prs title wrapper End -->
-
-    <c:if test="${not empty succMess}">
-        <div class="position-relative mb-4" aria-live="polite" aria-atomic="true" >
-            <div class="toast show ">
-                <div class="toast-header ">
-                    <strong class="me-auto">Chúc Mừng</strong>
-                    <small class="text-body-secondary"><i class="fas fa-check"></i></small>
-                    <button class="btn ms-2 p-0" type="button" data-bs-dismiss="toast" aria-label="Close"><span class="uil uil-times fs-7"></span></button>
-                </div>
-                <div class="toast-body">${succMess}.</div>
-            </div>
-        </div>
-        <c:remove var="succMess" scope="session"/>
+    <%
+        int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
+        TicketDAO dao = new TicketDAO(DBContext.getConn());
+        List<Ticket> list = dao.getTicketByBooking(CustomerID);
+    %>
+    <c:if test="${not empty sessionScope.user.idCustomer}">
+        <input type="text" name="CustomerID" value="${sessionScope.user.idCustomer}" >
     </c:if>
-
+    <c:if test="${empty sessionScope.user.idCustomer}">
+        <p>Customer ID is not available.</p>
+    </c:if>
     <!-- st bc Start -->
     <div class="st_bcc_main_main_wrapper float_left">
         <div class="st_bcc_main_wrapper">
@@ -85,13 +81,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="st_bcc_heading_wrapper float_left"> <i class="fa fa-check-circle"></i>
-                            <h3>Payment of <span>Rs 373.00</span> Complete successfull</h3>
+                            <h3>Thanh toán <span>200.000</span> Thành Công</h3>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="st_bcc_ticket_boxes_wrapper float_left">
                             <div class="st_bcc_tecket_top_hesder float_left">
-                                <p>Your Booking is Confirmed!</p> <span>Booking ID SSST0000310644 </span>
+                                <p>VÉ CỦA BẠN ĐÃ ĐƯỢC XÁC NHẬN!</p> <span>Booking ID SSST0000310644 </span>
                             </div>
                             <div class="st_bcc_tecket_bottom_hesder float_left">
                                 <div class="st_bcc_tecket_bottom_left_wrapper">
@@ -125,12 +121,10 @@
                             </div>
                         </div>
                         <div class="st_bcc_ticket_boxes_bottom_wrapper float_left">
-                            <p>You can access your ticket from your Profile. We will send you
-                                <br>an e-Mail/SMS Confirmation with in 15 Minutes.</p>
+                            <p>Bạn có thể truy cập vé của mình từ Hồ sơ của bạn. Chúng tôi sẽ gửi cho bạn
+                                <br>Xác nhận qua e-Mail/SMS trong vòng 15 phút.</p>
                             <ul>
-                                <li><a href="#">INVITE FRIENDS</a>
-                                </li>
-                                <li><a href="#">Locate Friend</a>
+                                <li><a href="#">MỜI BẠN BÈ</a>
                                 </li>
                             </ul>
                         </div>
