@@ -652,7 +652,7 @@
                                 </div>
                                 <div class="st_dtts_sb_ul float_left">
                                     <ul>
-                                        <li><%= ticket.getSeatType() %> - <%= ticket.getSeatID() %>
+                                        <li> <%= ticket.getSeatID() %>
                                             <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "") %></span>
                                         </li>
                                         <%--                                    <li>Internet handling fees <span>Rs.70.80</span></li>--%>

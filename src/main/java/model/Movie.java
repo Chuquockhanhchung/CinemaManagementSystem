@@ -49,9 +49,13 @@ public class Movie {
     }
 
 
+    public String getTrailer() {
+        return trailer;
+    }
 
-
-
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
 
     public int getId() {
         return id;

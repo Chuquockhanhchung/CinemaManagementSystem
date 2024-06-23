@@ -30,11 +30,11 @@ public class Ticket {
         Status = status;
     }
 
-    public Ticket(int CustomerID, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String SeatID) {
-        CustomerID = CustomerID;
+    public Ticket(int CustomerId, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String SeatId) {
+        CustomerID = CustomerId;
         FullName = name;
         StartTime = time;
-        SeatType = seater;
+        SeatID = seater;
         EventName = s;
         ComboName = s1;
         TicketPrice = price;
@@ -42,7 +42,7 @@ public class Ticket {
         BookingDate = hold;
         MovieName = s2;
         Image = name1;
-        SeatID = SeatID;
+        SeatType = SeatId;
     }
 
     @Override
