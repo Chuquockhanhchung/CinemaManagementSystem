@@ -67,13 +67,12 @@
         int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
         TicketDAO dao = new TicketDAO(DBContext.getConn());
         List<Ticket> list = dao.getTicketByBooking(CustomerID);
+
+        float TicketPrice = 0;
+        for (Ticket ticket : list) {
+            TicketPrice += ticket.getTicketPrice();
+        }
     %>
-    <c:if test="${not empty sessionScope.user.idCustomer}">
-        <input type="text" name="CustomerID" value="${sessionScope.user.idCustomer}" >
-    </c:if>
-    <c:if test="${empty sessionScope.user.idCustomer}">
-        <p>Customer ID is not available.</p>
-    </c:if>
     <!-- st bc Start -->
     <div class="st_bcc_main_main_wrapper float_left">
         <div class="st_bcc_main_wrapper">
@@ -81,7 +80,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="st_bcc_heading_wrapper float_left"> <i class="fa fa-check-circle"></i>
-                            <h3>Thanh toán <span>200.000</span> Thành Công</h3>
+                            <h3>Thanh toán <span><%= TicketPrice %></span> Thành Công</h3>
                         </div>
                     </div>
                     <div class="col-md-12">

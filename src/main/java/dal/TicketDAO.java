@@ -153,7 +153,7 @@ public class TicketDAO extends DBContext{
                     "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H'))\n" +
                     "      FROM movieticket\n" +
                     "      WHERE CustomerID = ?\n" +
-                    "  );";
+                    "  )";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, CustomerID);

@@ -66,7 +66,7 @@ public class PaymentServlet extends HttpServlet {
 
             if (f) {
                 session.setAttribute("succMess", "Payment successful!");
-                response.sendRedirect("confirmation_screen.jsp");
+                response.sendRedirect("confirmation_screen.jsp?CustomerID=" + customerID);
             }
 
         } catch (Exception e) {
