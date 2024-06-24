@@ -1225,7 +1225,7 @@
                                                 <div class="cm-content-body   form excerpt">
                                                     <div class="card-body">
                                                         <label class="form-label">ID phim</label>
-                                                        <input type="text" name="id" value="${movieT.getMovieID()}" class="form-control mb-3" placeholder="ID movie">
+                                                        <input type="text" name="id" value="${movieT.getId()}" class="form-control mb-3" placeholder="ID movie">
 
                                                     </div>
                                                 </div>

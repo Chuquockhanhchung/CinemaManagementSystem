@@ -1103,13 +1103,13 @@ Content body start
                                         <tbody>
                                         <c:forEach items="${sessionScope.movies}" var="m">
                                             <tr>
-                                                <td>${m.getMovieID()}</td>
+                                                <td>${m.getId()}</td>
                                                 <td>${m.getName()}</td>
                                                 <td>${m.getStatus()}</td>
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">
 
-                                                    <a href="editMovie?id=${m.getMovieID()}"
+                                                    <a href="editMovie?id=${m.getId()}"
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>

@@ -101,7 +101,7 @@
                                                     </c:when>
                                                     <c:when test="${seat.getStatus()=='unactive'}">
                                                         <li class="seat_disable">
-                                                            <input type="checkbox" id="c${seat.getIndex()}" name="cb">
+                                                            <input type="checkbox" id="c${seat.getIndex()}" >
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
                                                     </c:when>
@@ -133,7 +133,7 @@
                                                     </c:when>
                                                     <c:when test="${seat.getStatus()=='unactive'}">
                                                         <li class="seat_disable">
-                                                            <input type="checkbox" id="c${seat.getIndex()}" name="cb">
+                                                            <input type="checkbox" id="c${seat.getIndex()}" >
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
                                                     </c:when>
@@ -161,7 +161,7 @@
                                                     </c:when>
                                                     <c:when test="${seat.getStatus()=='unactive'}">
                                                         <li class="seat_disable">
-                                                            <input type="checkbox" id="c${seat.getIndex()}" name="cb">
+                                                            <input type="checkbox" id="c${seat.getIndex()}" >
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
                                                     </c:when>
@@ -187,7 +187,7 @@
                                                     </c:when>
                                                     <c:when test="${seat.getStatus()=='unactive'}">
                                                         <li class="seat_disable">
-                                                            <input type="checkbox" id="c${seat.getIndex()}" name="cb">
+                                                            <input type="checkbox" id="c${seat.getIndex()}" >
                                                             <label for="c${seat.getIndex()}"></label>
                                                         </li>
                                                     </c:when>

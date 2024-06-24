@@ -80,6 +80,7 @@ public class Homepage extends HttpServlet {
         ArrayList<Movie> phimhaynhat = md.film();
 
         HttpSession session = request.getSession();
+        ArrayList<Movie> all = md.getall_Movie();
         ArrayList<String> type = md.getMovieType();
         session.setAttribute("type", type);
         request.setAttribute("sapchieu", sapchieu);
@@ -88,6 +89,7 @@ public class Homepage extends HttpServlet {
         request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
+        session.setAttribute("movies",all);
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
 

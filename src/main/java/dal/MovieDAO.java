@@ -713,7 +713,7 @@ public class MovieDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
 
-                m.setMovieID(rs.getInt(1));
+                m.setId(rs.getInt(1));
                 m.setName(rs.getString(2));
                 m.setDescription(rs.getNString(3));
                 m.setDirector(rs.getString(4));
