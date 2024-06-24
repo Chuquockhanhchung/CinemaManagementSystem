@@ -54,21 +54,24 @@ public class TicketDAO extends DBContext{
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Movie(
+                Movie a = new Movie(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getDate(10),
                         rs.getString(7),
+
                         rs.getInt(8),
+
                         rs.getInt(9),
                         rs.getString(10),
                         rs.getFloat(11)
 
                 );
+                a.setReleaseDate(String.valueOf(rs.getDate(12)));
+                return a;
             }
         }catch (SQLException e) {
             e.printStackTrace();

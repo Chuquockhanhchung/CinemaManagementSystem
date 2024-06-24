@@ -5,6 +5,8 @@ package model;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+import java.sql.Date;
+
 /**
  *
  * @author Chi
@@ -44,6 +46,23 @@ public class Movie {
         this.trailer = trailer;
         this.Rate = Rate;
     }
+
+    public Movie(int i, String name, String des, String otherType, String img, String actor, String date, String status, int time, int price, String dir, int lan) {
+        this.id = i;
+        this.name = name;
+        this.description = des;
+        this.type = otherType;
+        this.image = img;
+        this.actor = actor;
+        ReleaseDate = date;
+        this.status = status;
+        duration = time;
+        price = price;
+        director = dir;
+        languages = lan;
+
+    }
+
 
     public double getRate() {
         return Rate;
