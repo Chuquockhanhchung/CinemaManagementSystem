@@ -118,8 +118,6 @@ public class Role_ManageFilter implements Filter {
                 res.sendRedirect("error/error3.jsp");
             } else if(c.getRole()==3){
                 res.sendRedirect("error/error4.jsp");
-            } else if(c.getRole()==2){
-                res.sendRedirect("error/error5.jsp");
             }
         }
         Throwable problem = null;

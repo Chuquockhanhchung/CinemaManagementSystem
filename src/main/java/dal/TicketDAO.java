@@ -1,6 +1,9 @@
 package dal;
 
-import model.*;
+import model.Movie;
+import model.Room;
+import model.Seat;
+import model.Ticket;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +47,7 @@ public class TicketDAO extends DBContext{
     }
     public Movie getMovieByShowTime(int id) throws SQLException {
         try {
-            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price, m.Trailer, m.IMDbRating " +
+            String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price, m.Trailer, m.IMDbRating,m.ReleaseDate " +
                     "from showtime s join movie_all m on s.MovieID =m.MovieID " +
                     "where s.ShowtimeID=?";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -58,6 +61,7 @@ public class TicketDAO extends DBContext{
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
+                        rs.getDate(10),
                         rs.getString(7),
                         rs.getInt(8),
                         rs.getInt(9),

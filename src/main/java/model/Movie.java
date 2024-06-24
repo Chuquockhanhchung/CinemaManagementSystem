@@ -18,10 +18,14 @@ public class Movie {
     private String image;
     private String trailer;
     private String actor;
+    private String ReleaseDate;
     private String status;
     private int duration;
     private int price;
     private double Rate;
+    private String director;
+    private int languages;
+
 
     public Movie() {
     }
@@ -33,6 +37,7 @@ public class Movie {
         this.type = type;
         this.image = image;
         this.actor = actor;
+        this.ReleaseDate = ReleaseDate;
         this.status = status;
         this.duration = duration;
         this.price = price;
@@ -55,6 +60,8 @@ public class Movie {
 
     public void setTrailer(String trailer) {
         this.trailer = trailer;
+        this.director = director;
+        this.languages = languages;
     }
 
     public int getId() {
@@ -105,6 +112,14 @@ public class Movie {
         this.actor = actor;
     }
 
+    public String getReleaseDate() {
+        return ReleaseDate;
+    }
+
+    public void setReleaseDate(String ReleaseDate) {
+        this.ReleaseDate = ReleaseDate;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -121,6 +136,7 @@ public class Movie {
         this.duration = duration;
     }
 
+
     public int getPrice() {
         return price;
     }
@@ -128,6 +144,24 @@ public class Movie {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public int getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(int languages) {
+        this.languages = languages;
+    }
+
+
 
     @Override
     public String toString() {
