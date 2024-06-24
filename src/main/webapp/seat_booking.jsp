@@ -64,10 +64,13 @@
                                 <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"> <a href="#"><i
                                             class="fa fa-times"></i></a>
                                 </div>
-                                <div class="st_seatlay_btn float_left"> <a
-                                        href="ticket?CustomerID=${sessionScope.user.idCustomer}" id="payment-link"
-                                        >Thanh Toán</a>
-                                </div>
+                                <form id="payment-form" action="ticket" method="post">
+                                    <input type="hidden" name="CustomerID" value="${sessionScope.user.idCustomer}" />
+                                    <input type="hidden" id="selected-seats" name="selectedSeats" />
+                                    <div class="st_seatlay_btn float_left">
+                                        <button type="submit" id="payment-button">Thanh Toán</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -261,30 +264,22 @@
                 }
             </script>
             <script>
-
-                    // Add event listener to the payment link
-                    document.getElementById('payment-link').addEventListener('click', function (event) {
-                        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="cb"]:checked');
-                        let selectedSeats = [];
-                        if (checkboxes.length === 0) {
-                            // Show mesage
-                            alert("Hãy chọn ít nhất một ghế trước khi thực hiện thanh toán.");
-                            event.preventDefault();
-                            return false;//Stop function
-                        }
-                        checkboxes.forEach(checkbox => {
-                            selectedSeats.push(checkbox.id);
-                        });
-
-                        // Join the IDs into a single string
-                        const selectedSeatsString = selectedSeats.join(',');
-
-                        // Set the href of the link with selected seats as query parameter
-                        const paymentLink = document.getElementById('payment-link');
-                        paymentLink.href = `ticket?CustomerID=${sessionScope.user.idCustomer}&selectedSeats=` + selectedSeatsString;
+                document.getElementById('payment-button').addEventListener('click', function (event) {
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="cb"]:checked');
+                    let selectedSeats = [];
+                    if (checkboxes.length === 0) {
+                        alert("Hãy chọn ít nhất một ghế trước khi thực hiện thanh toán.");
+                        event.preventDefault();
+                        return false; // Stop function
+                    }
+                    checkboxes.forEach(checkbox => {
+                        selectedSeats.push(checkbox.id.replace(/[^0-9]/g, '')); // Remove non-numeric characters
                     });
 
-            </script>
+                    const selectedSeatsString = selectedSeats.join(',');
+                    document.getElementById('selected-seats').value = selectedSeatsString;
+                });
+            </script><z></z>
         </body>
 
         </html>

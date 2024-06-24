@@ -6,7 +6,9 @@ public class Ticket {
     private int CustomerID;
     private String FullName;
     private int ShowtimeID;
+    private String BookingID;
     private String StartTime;
+    private String StartDate;
     private String SeatID;
     private String SeatType;
     private String EventName;
@@ -22,7 +24,7 @@ public class Ticket {
     }
 
 
-    public Ticket(int customerID, int showtimeID,  String seatID, float ticketPrice, String status) {
+    public Ticket(int customerID, int showtimeID, String seatID, float ticketPrice, String status) {
         CustomerID = customerID;
         ShowtimeID = showtimeID;
         SeatID = seatID;
@@ -71,6 +73,14 @@ public class Ticket {
 
     public void setTicketID(int ticketID) {
         TicketID = ticketID;
+    }
+
+    public String getBookingID() {
+        return BookingID;
+    }
+
+    public void setBookingID(String bookingID) {
+        BookingID = bookingID;
     }
 
     public int getCustomerID() {
@@ -175,5 +185,13 @@ public class Ticket {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getStartDate() {
+        return StartDate;
+    }
+
+    public void setStartDate(String startDate) {
+        StartDate = startDate;
     }
 }

@@ -1,7 +1,7 @@
 package model;
 
 public class Seat {
-    private int seatNo;
+    private int SeatID;
     private int RoomID;
     private String Status;
     private String SeatType;
@@ -10,12 +10,12 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(int roomID, int seatNo, String seatType, String status) {
+    public Seat(int roomID, int SeatID, String seatType, String status) {
         RoomID = roomID;
-        this.seatNo = seatNo;
+        this.SeatID = SeatID;
         SeatType = seatType;
         Status = status;
-        index = (seatNo-RoomID)/4+1;
+        index = (SeatID-RoomID)/4+1;
     }
     public int getIndex(){
         return index;
@@ -28,13 +28,14 @@ public class Seat {
         RoomID = roomID;
     }
 
-    public int getSeatNo() {
-        return seatNo;
+    public int getSeatID() {
+        return SeatID;
     }
 
-    public void setSeatNo(int seatNo) {
-        this.seatNo = seatNo;
+    public void setSeatID(int seatID) {
+        SeatID = seatID;
     }
+
 
     public String getSeatType() {
         return SeatType;
@@ -56,7 +57,7 @@ public class Seat {
     public String toString() {
         return "Seat{" +
                 "RoomID=" + RoomID +
-                ", seatNo=" + seatNo +
+                ", seatNo=" + SeatID +
                 ", Status='" + Status + '\'' +
                 ", SeatType='" + SeatType + '\'' +
                 ", index=" + index +

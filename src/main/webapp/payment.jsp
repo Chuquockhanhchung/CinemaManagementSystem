@@ -99,7 +99,7 @@
                                         </li>
                                         <li>
                                             <span class="dtts1">Ghế Ngồi:</span>
-                                            <h5><%= ticket.getSeatType() %> - <%= ticket.getSeatID() %></h5>
+                                            <h5> <%= ticket.getSeatID() %></h5>
                                         </li>
                                     </ul>
 
@@ -761,7 +761,7 @@
 
                 if (lastContent.includes(content) && lastPrice >= price) {
                     Swal.fire({
-                        title: "Good job!",
+                        title: "Chúc Mừng!",
                         text: "Thanh toán thành công!",
                         icon: "success",
                         allowOutsideClick: false, // Ngăn người dùng đóng alert bằng cách bấm bên ngoài

@@ -146,14 +146,21 @@ public class TicketDAO extends DBContext{
         List<Ticket> list = new ArrayList<Ticket>();
         Ticket ticket = null;
         try {
-            String sql = "SELECT *\n" +
-                    "FROM movieticket\n" +
-                    "WHERE CustomerID = ?\n" +
-                    "  AND DATE_FORMAT(BookingDate, '%Y/%m/%d %H') = (\n" +
-                    "      SELECT MAX(DATE_FORMAT(BookingDate, '%Y/%m/%d %H'))\n" +
-                    "      FROM movieticket\n" +
-                    "      WHERE CustomerID = ?\n" +
-                    "  )";
+            String sql = "SELECT " +
+                    "t.TicketID, c.FullName, t.TicketPrice, " +
+                    "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
+                    "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
+                    "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
+                    "m.MovieName, m.Image " +
+                    "FROM movieticket t " +
+                    "JOIN customer c ON t.CustomerID = c.CustomerID " +
+                    "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
+                    "JOIN movie m ON s.MovieID = m.MovieID " +
+                    "WHERE t.CustomerID = ? " +
+                    "AND DATE_FORMAT(t.BookingDate, '%Y/%m/%d %H:%i') = (" +
+                    "   SELECT MAX(DATE_FORMAT(t2.BookingDate, '%Y/%m/%d %H:%i')) " +
+                    "   FROM movieticket t2 " +
+                    "   WHERE t2.CustomerID = ?);";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, CustomerID);
@@ -161,20 +168,69 @@ public class TicketDAO extends DBContext{
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ticket = new Ticket();
-                ticket.setTicketID(rs.getInt(1));
-                ticket.setComboName(rs.getString(3));
-                ticket.setSeatID(rs.getString(5));
-                ticket.setSeatType(rs.getString(6));
-                ticket.setTicketPrice(rs.getFloat(7));
-                ticket.setBookingDate(rs.getString(8));
-                ticket.setStatus(rs.getString(9));
-                ticket.setMovieName(rs.getString(10));
+                ticket.setTicketID(rs.getInt("TicketID"));
+                ticket.setComboName(rs.getString("FullName")); // Assuming you want FullName for ComboName
+                ticket.setTicketPrice(rs.getFloat("TicketPrice"));
+                ticket.setStartDate(rs.getString("StartDate"));
+                ticket.setStartTime(rs.getString("StartTime"));
+                ticket.setBookingDate(rs.getString("BookingDate"));
+                ticket.setMovieName(rs.getString("MovieName"));
+                ticket.setImage(rs.getString("Image"));
                 list.add(ticket);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public int countTicketsByBooking(int CustomerID) {
+        int count = 0;
+        try {
+            String sql = "SELECT COUNT(*) AS ticketCount " +
+                    "FROM movieticket t " +
+                    "JOIN customer c ON t.CustomerID = c.CustomerID " +
+                    "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
+                    "JOIN movie m ON s.MovieID = m.MovieID " +
+                    "WHERE t.CustomerID = ? " +
+                    "AND DATE_FORMAT(t.BookingDate, '%Y/%m/%d %H') = (" +
+                    "   SELECT MAX(DATE_FORMAT(t2.BookingDate, '%Y/%m/%d %H')) " +
+                    "   FROM movieticket t2 " +
+                    "   WHERE t2.CustomerID = ?);";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, CustomerID);
+            ps.setInt(2, CustomerID);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("ticketCount");
+            }
+
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public boolean holdTicket(Seat seat) {
+        boolean f = false;
+        try {
+            String sql = "UPDATE seat SET status=? WHERE SeatID=?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, seat.getStatus());
+            st.setInt(2, seat.getSeatID());
+
+            int i = st.executeUpdate();
+            if (i == 1) {
+                f = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
     }
 
 

@@ -23,10 +23,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Customer;
-import model.Movie;
-import model.ShowTime;
-import model.Ticket;
+import model.*;
 import org.json.JSONObject;
 
 public class TicketServlet extends HttpServlet {
@@ -64,37 +61,46 @@ public class TicketServlet extends HttpServlet {
         }
         return priceAll;
     }
-    public String changeSeat(String listSeat){
-        String seatAfterChange="";
+    public String changeSeat(String listSeat) {
+        StringBuilder seatAfterChange = new StringBuilder();
         String[] seats = listSeat.split(",");
-        for(int i=0; i<seats.length; i++){
+
+        for (int i = 0; i < seats.length; i++) {
             seats[i] = seats[i].trim();
-            int seatInt=0;
-            if(seats[i].length()>2) {
-                 seatInt = Integer.parseInt(seats[i].split("")[1]) * 10 + Integer.parseInt(seats[i].split("")[2]);
-            }else{
-                 seatInt = Integer.parseInt(seats[i].split("")[1]);
-            }
-            if(seatInt<=22){
-                seatAfterChange+="D"+seatInt;
-            }else if(seatInt>22 && seatInt<=44){
-                int s = seatInt%22;
-                seatAfterChange+="C"+((s==0)?22:s);
-            }else if(seatInt>44 && seatInt<=66){
-                int s = seatInt%22;
-                seatAfterChange+="B"+((s==0)?22:s);
-            }else if(seatInt==67){
-                seatAfterChange+="B23";
-            }else{
-                int s = seatInt%22-1;
-                seatAfterChange+="A"+((s==0)?22:s);
-            }
-            if(i<seats.length-1){
-                seatAfterChange+=",";
+            if (seats[i].length() > 1) {
+                String numericPart = seats[i].replaceAll("[^0-9]", ""); // Extract numeric part from the seat ID
+                try {
+                    int seatInt = Integer.parseInt(numericPart);
+
+                    if (seatInt <= 22) {
+                        seatAfterChange.append("D").append(seatInt);
+                    } else if (seatInt > 22 && seatInt <= 44) {
+                        int s = seatInt % 22;
+                        seatAfterChange.append("C").append((s == 0) ? 22 : s);
+                    } else if (seatInt > 44 && seatInt <= 66) {
+                        int s = seatInt % 22;
+                        seatAfterChange.append("B").append((s == 0) ? 22 : s);
+                    } else if (seatInt == 67) {
+                        seatAfterChange.append("B23");
+                    } else {
+                        int s = seatInt % 22 - 1;
+                        seatAfterChange.append("A").append((s == 0) ? 22 : s);
+                    }
+
+                    if (i < seats.length - 1) {
+                        seatAfterChange.append(",");
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    // Handle invalid format by skipping this seat
+                    continue;
+                }
             }
         }
-        return seatAfterChange;
+        return seatAfterChange.toString();
     }
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -125,7 +131,7 @@ public class TicketServlet extends HttpServlet {
                 (float) getPrice(Seater,movie.getPrice()),
                 "Hold",
                 date.toString(),
-                
+
                 "",
                 movie.getName(),
                 ""
@@ -140,45 +146,77 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String content = request.getParameter("content");
-        String price = request.getParameter("price");
-
-        String urlString = "https://script.google.com/macros/s/AKfycbxVVi9V7W28MhMyCgYECnPssLc_qQgrkkyjY6LrsWO5o8d6ZUoeq3UgB5CqxXAaSpce/exec";
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.connect();
-
-        // Getting the response code
-        int responsecode = conn.getResponseCode();
-
-        if (responsecode != 200) {
-            throw new RuntimeException("HttpResponseCode: " + responsecode);
-        } else {
-            StringBuilder inline = new StringBuilder();
-            Scanner scanner = new Scanner(url.openStream());
-
-            while (scanner.hasNext()) {
-                inline.append(scanner.nextLine());
+        try {
+            String selectedSeatsParam = request.getParameter("selectedSeats");
+            if (selectedSeatsParam == null || selectedSeatsParam.isEmpty()) {
+                response.sendRedirect("error.jsp"); // Redirect to an error page if no seats are selected
+                return;
             }
-            scanner.close();
 
-            JSONObject jsonObject = new JSONObject(inline.toString());
-            // Assume the lastPaid data is at the last element of the array.
-            JSONObject lastPaid = jsonObject.getJSONArray("data").getJSONObject(jsonObject.getJSONArray("data").length() - 1);
+            String[] selectedSeats = selectedSeatsParam.split(",");
+            HttpSession session = request.getSession();
+            TicketDAO d = new TicketDAO(DBContext.getConn());
+            boolean allSeatsHeld = true;
 
-            String lastContent = lastPaid.getString("Mô tả");
-            int lastPrice = lastPaid.getInt("Giá trị");
+            for (String seatIdStr : selectedSeats) {
+                int seatId;
+                try {
+                    seatId = Integer.parseInt(seatIdStr);
+                } catch (NumberFormatException e) {
+                    // Handle invalid seat ID format
+                    allSeatsHeld = false;
+                    break;
+                }
+                Seat seat = new Seat();
+                seat.setSeatID(seatId);
+                seat.setStatus("unactive");
 
-            boolean isPaid = lastContent.contains(content) && lastPrice >= Integer.parseInt(price);
+                boolean seatHeld = d.holdTicket(seat);
+                if (!seatHeld) {
+                    allSeatsHeld = false;
+                    break;
+                }
+            }
 
-            response.setContentType("application/json");
-            PrintWriter out = response.getWriter();
-            JSONObject result = new JSONObject();
-            result.put("isPaid", isPaid);
-            out.print(result);
-            out.flush();
+            if (allSeatsHeld) {
+                // Create the ticket object and set it in the session
+                Customer customer = (Customer) session.getAttribute("user");
+                Movie movie = (Movie) session.getAttribute("movie");
+                String time = null;
+                TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
+                try {
+                    time = ticketDAO.getDateByShowtime((int)session.getAttribute("time"));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                Date date = new Date();
+                String Seater = changeSeat(selectedSeatsParam); // Assumes changeSeat handles seat conversion
+                Ticket ticket = new Ticket(
+                        customer.getIdCustomer(),
+                        customer.getName(),
+                        time,
+                        Seater,
+                        "",
+                        "",
+                        (float) getPrice(Seater, movie.getPrice()), // Assumes getPrice handles pricing
+                        "Hold",
+                        date.toString(),
+                        "",
+                        movie.getName(),
+                        ""
+                );
+
+                session.setAttribute("ticket", ticket);
+
+                response.sendRedirect("payment.jsp");
+            } else {
+                response.sendRedirect("error.jsp"); // Redirect to an error page if any seat update fails
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp"); // Redirect to an error page on exception
         }
+
     }
 
     @Override
