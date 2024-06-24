@@ -234,8 +234,7 @@
                                                                                         <div class="row-payment">
                                                                                             <div class="col-md-12 col-5 mb4">
                                                                                                 <div class="sub-title color-sub-default">
-                                                                                                    Số tiền
-                                                                                                    thanh toán
+                                                                                                    Số tiền thanh toán
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
@@ -251,8 +250,7 @@
                                                                                         <div class="row-payment">
                                                                                             <div class="col-md-12 col-5 mb4">
                                                                                                 <div class="sub-title color-sub-default">
-                                                                                                    Giá trị đơn
-                                                                                                    hàng
+                                                                                                    Giá trị đơn hàng
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
@@ -267,8 +265,7 @@
                                                                                         <div class="row-payment">
                                                                                             <div class="col-md-12 col-5 mb4">
                                                                                                 <div class="sub-title color-sub-default">
-                                                                                                    Phí giao
-                                                                                                    dịch
+                                                                                                    Phí giao dịch
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
@@ -284,8 +281,7 @@
                                                                                         <div class="row-payment">
                                                                                             <div class="col-md-12 col-5 mb4">
                                                                                                 <div class="sub-title color-sub-default">
-                                                                                                    Số tiền
-                                                                                                    khuyến mại
+                                                                                                    Số tiền khuyến mại
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
@@ -333,8 +329,7 @@
                                                                 <div class="col-md right-bill-col">
                                                                     <div class="right-bill-col-inner">
                                                                         <div class="main-title h2 text-center show-desktop mb24">
-                                                                            Quét mã qua ứng dụng Ngân hàng/ Ví
-                                                                            điện tử
+                                                                            Quét mã qua ứng dụng Ngân hàng/ Ví điện tử
                                                                         </div>
                                                                         <div class="qr-section">
                                                                             <div class="qr-section-inner list-mb24 list-last-mb">
@@ -391,7 +386,6 @@
                                                                         <div class="row-payment row-16 align-items-center">
                                                                             <div class="col">
                                                                                 <div class="weight5">
-
                                                                                     Danh sách Ngân hàng/ Ví điện
                                                                                     tử khác hỗ trợ thanh toán
                                                                                     <span class="vnpay-logo b">

@@ -74,7 +74,8 @@
                     <li><a href="event_category.jsp">Event Category</a>
                     <li><a href="product.jsp">Sản Phẩm</a>
                     <li><a href="add_product.jsp">Thêm Sản Phẩm</a>
-
+                    <li><a href="voucher.jsp">Voucher Phim</a>
+                    <li><a href="add_voucher.jsp">Thêm Voucher Phim</a>
                     </li>
                 </ul>
             </li>

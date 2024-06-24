@@ -74,6 +74,8 @@
                     <li><a href="manager/CMS/event_category.jsp">Event Category</a>
                     <li><a href="manager/CMS/product.jsp">Sản Phẩm</a>
                     <li><a href="manager/CMS/add_product.jsp">Thêm Sản Phẩm</a>
+                    <li><a href="manager/CMS/voucher.jsp">Voucher Phim</a>
+                    <li><a href="manager/CMS/add_voucher.jsp">Thêm Voucher Phim</a>
                     </li>
                 </ul>
             </li>
