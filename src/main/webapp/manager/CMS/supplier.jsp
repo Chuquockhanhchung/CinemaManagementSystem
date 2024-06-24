@@ -1,8 +1,10 @@
 
 <%@ page import="dal.DBContext" %>
+
 <%@ page import="java.util.List" %>
-<%@ page import="dal.ProductDAO" %>
-<%@ page import="model.Product" %>
+<%@ page import="dal.SupplierDAO" %>
+<%@ page import="model.Supplier" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: datla
@@ -185,32 +187,32 @@ Content body start
                                     <table class="table table-striped  table-condensed flip-content">
                                         <thead>
                                         <tr>
-                                            <th class="text-black">P.ID</th>
-                                            <th class="text-black">Tên sản phẩm</th>
-                                            <th class="text-black">Nhà cung cấp</th>
-                                            <th class="text-black">Giá sản pẩm</th>
-                                            <th class="text-black">Chi tiết sản phẩm</th>
+                                            <th class="text-black">S.ID</th>
+                                            <th class="text-black">Tên nhà cung cấp</th>
+                                            <th class="text-black">Địa chỉ</th>
+                                            <th class="text-black">Email</th>
+                                            <th class="text-black">Số điện thoại</th>
                                             <th class="text-black text-end">Công cụ</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <%
-                                            ProductDAO pd = new ProductDAO(DBContext.getConn());
-                                            List<Product> list = pd.getAllProduct();
-                                            for (Product product : list) {
+                                            SupplierDAO sd = new SupplierDAO(DBContext.getConn());
+                                            List<Supplier> list = sd.getAllSupplier();
+                                            for (Supplier supplier : list) {
                                         %>
                                         <tr>
-                                            <td><%= product.getProductID() %></td>
-                                            <td><%= product.getProductName() %></td>
-                                            <td><%= product.getSupplierName() %></td>
-                                            <td><%= product.getProductPrice() %></td>
-                                            <td><%= product.getDetail() %></td>
+                                            <td><%= supplier.getSupplierID() %></td>
+                                            <td><%= supplier.getSupplierName() %></td>
+                                            <td><%= supplier.getAddress() %></td>
+                                            <td><%= supplier.getEmail() %></td>
+                                            <td><%= supplier.getPhoneNumber() %></td>
                                             <td class="text-end">
-                                                <a href="edit_product.jsp?ProductID=<%=product.getProductID()%>"
+                                                <a href="edit_supplier.jsp?SupplierID=<%=supplier.getSupplierID()%>"
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="javascript:void(0);" onclick="DeleteProduct('<%=product.getProductID()%>')"
+                                                <a href="" onclick="DeleteSupplier('<%=supplier.getSupplierID()%>')"
                                                    class="btn btn-danger btn-sm content-icon">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
@@ -221,10 +223,10 @@ Content body start
                                         </tbody>
                                     </table>
                                     <script>
-                                        function DeleteProduct(ProductID) {
-                                            let text = "You want delete" + ProductID + "?";
+                                        function DeleteSupplier(SupplierID) {
+                                            let text = "You want delete" + SupplierID + "?";
                                             if (confirm(text) == true) {
-                                                window.location = "../../deleteproduct?ProductID=" + ProductID
+                                                window.location = "../../deletesupplier?SupplierID=" + SupplierID
                                             }
                                         }
                                     </script>

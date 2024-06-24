@@ -131,6 +131,18 @@
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>controller.DeleteProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddSupplier</servlet-name>
+        <servlet-class>controller.AddSupplier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditSupplier</servlet-name>
+        <servlet-class>controller.EditSupplier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSupplier</servlet-name>
+        <servlet-class>controller.DeleteSupplier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -234,6 +246,18 @@
     <servlet-mapping>
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/deleteproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSupplier</servlet-name>
+        <url-pattern>/addsupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditSupplier</servlet-name>
+        <url-pattern>/editsupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSupplier</servlet-name>
+        <url-pattern>/deletesupplier</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

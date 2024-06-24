@@ -307,6 +307,13 @@ Content body start
 <%--                            </div>--%>
                         </div>
                     </form>
+                    <c:if test="${not empty sessionScope.error}">
+                        <div class="alert alert-danger">
+                                ${sessionScope.error}
+                        </div>
+                        <!-- Remove the error from the session after displaying -->
+                        <c:remove var="error" scope="session" />
+                    </c:if>
                 </div>
             </div>
         </div>
