@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MovieDAO extends DBContext {
+
     private final Connection con;
 
     public MovieDAO(Connection con) {
@@ -566,13 +567,13 @@ public class MovieDAO extends DBContext {
         }
     }
 
-    public int getIDMovie(){
-        String sql ="SELECT max(MovieID) FROM movie ";
+    public int getIDMovie() {
+        String sql = "SELECT max(MovieID) FROM movie ";
         int movieID = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 movieID = rs.getInt(1);
             }
         } catch (Exception e) {
@@ -580,13 +581,13 @@ public class MovieDAO extends DBContext {
         return movieID;
     }
 
-    public int getIdActor(){
-        String sql ="SELECT max(ActorID) FROM cinemamanagersystem.actors";
+    public int getIdActor() {
+        String sql = "SELECT max(ActorID) FROM cinemamanagersystem.actors";
         int actorID = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 actorID = rs.getInt(1);
             }
         } catch (Exception e) {
@@ -595,13 +596,13 @@ public class MovieDAO extends DBContext {
         return actorID;
     }
 
-     public int getIdType(){
-        String sql ="SELECT max(TypeID) FROM cinemamanagersystem.movietype";
+    public int getIdType() {
+        String sql = "SELECT max(TypeID) FROM cinemamanagersystem.movietype";
         int typeID = 0;
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 typeID = rs.getInt(1);
             }
         } catch (Exception e) {
@@ -610,5 +611,122 @@ public class MovieDAO extends DBContext {
         return typeID;
     }
 
+    public void UpdateMovie(Movie movie) {
+        String sql = "update movie set movieName = ?, description=?, director=?, releaseDate =?, duration=?, language = ?, image =?, status=?, price=? where movieID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, movie.getName());
+            ps.setString(2, movie.getDescription());
+            ps.setString(3, movie.getDirector());
+            ps.setString(4, movie.getReleaseDate());
+            ps.setInt(5, movie.getDuration());
+            ps.setInt(6, movie.getLanguages());
+            ps.setString(7, movie.getImage());
+            ps.setString(8, movie.getStatus());
+            ps.setInt(9, movie.getPrice());
+            ps.setInt(10, movie.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
+    }
+
+    public void UpdateType( int movieID) {
+        String sql = "delete from movie_has_types where MovieID =?";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, movieID);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void UpdateActor( int movieID) {
+        String sql = "delete from movie_has_actors where MovieID =?";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, movieID);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public ArrayList<MovieType> getTypeCheck(int id) {
+        String sql = "select m.TypeID, m.TypeName from  movie_has_types t join movietype m on t.TypeID = m.TypeID  where MovieID = ?";
+        ArrayList<MovieType> list = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MovieType m = new MovieType();
+                m.setTypeID(rs.getInt(1));
+                m.setTypeName(rs.getString(2));
+                list.add(m);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return  list;
+
+
+    }
+
+    public ArrayList<Actor> getActorCheck(int id) {
+        String sql = "SELECT m.ActorID,a.ActorName from movie_has_actors m join actors a on m.ActorID = a.ActorID where m.MovieID = ?";
+        ArrayList<Actor> list = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Actor a = new Actor();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                list.add(a);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return  list;
+
+
+    }
+
+    public Movie getMoviebyID(int id){
+        String sql ="SELECT m.MovieID, m.MovieName, m.Description, m.Director, m.Duration, m.Language, m.Image,m.Status,m.Price, m.ReleaseDate FROM cinemamanagersystem.movie m where MovieID = ?";
+        Movie m = new Movie();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+
+                m.setMovieID(rs.getInt(1));
+                m.setName(rs.getString(2));
+                m.setDescription(rs.getNString(3));
+                m.setDirector(rs.getString(4));
+                m.setDuration(rs.getInt(5));
+                m.setLanguages(rs.getInt(6));
+                m.setImage(rs.getString(7));
+                m.setStatus(rs.getString(8));
+                m.setPrice(rs.getInt(9));
+                m.setReleaseDate(rs.getString(10));
+
+            }
+        } catch (Exception e) {
+        }
+        return m;
+    }
 }

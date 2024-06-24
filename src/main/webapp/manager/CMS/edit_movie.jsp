@@ -1218,173 +1218,190 @@
 
                             <div class="row">
                                 <div class="col-xl-11">
-                                    <form action="addmovie" method="post">
-                                        <div class="filter cm-content-box box-primary">
+                                    <form action="editMovie" method="post">
+                                        <c:if test="${sessionScope.movieT != null}">
+                                            <div style="display:none" class="filter cm-content-box box-primary">
+
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">ID phim</label>
+                                                        <input type="text" name="id" value="${movieT.getMovieID()}" class="form-control mb-3" placeholder="ID movie">
+
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
-                                        </div>
-                                        <div class="filter cm-content-box box-primary">
+                                            <div class="filter cm-content-box box-primary">
 
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Tên phim</label>
-                                                    <input type="text" name="name" class="form-control mb-3" placeholder="Tên phim">
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Tên phim</label>
+                                                        <input type="text" name="name" value="${movieT.getName()}" class="form-control mb-3" placeholder="Tên phim">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter cm-content-box box-primary">
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Thể loại</label>
+                                                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                                                            <c:if test="${sessionScope.type != null}">                                                          
+                                                                <c:forEach items="${sessionScope.type}" var="i">
+                                                                    <div class="form-check mb-sm-3 mb-1">
+                                                                        <input class="form-check-input" 
+                                                                               <c:forEach items="${sessionScope.typecheck}" var="u">
+                                                                                   ${u.getTypeID() == i.getTypeID() ?"checked":""}
+
+                                                                               </c:forEach>
+                                                                               type="checkbox" name="type" value="${i.getTypeID()}" id="flexCheckDefault-1">
+                                                                        <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
+                                                                            ${i.getTypeName()}	
+                                                                        </label>
+                                                                    </div>
+                                                                </c:forEach>
+                                                            </c:if>
+
+                                                            <div class="card-body">
+                                                                <label class="form-label">khác</label>
+                                                                <input type="text" class="form-control mb-3" name="otherType" placeholder="Nhập thể loại khác">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
 
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="filter cm-content-box box-primary">
 
-                                        <div class="filter cm-content-box box-primary">
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Thể loại</label>
-                                                    <div class="col-xl-2 col-lg-3 col-sm-4">
-                                                        <c:if test="${sessionScope.movieType != null}">
-                                                            <c:forEach items="${sessionScope.movieType}" var="i">
-                                                                <div class="form-check mb-sm-3 mb-1">
-                                                                    <input class="form-check-input" type="checkbox" name="type" value="${i.getTypeID()}" id="flexCheckDefault-1">
-                                                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
-                                                                        ${i.getTypeName()}	
-                                                                    </label>
-                                                                </div>
-                                                            </c:forEach>
-                                                        </c:if>
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Mô tả</label>
+                                                        <input type="text" value="${movieT.getDescription()}" name="des" class="form-control mb-3" placeholder="Mô tả">
 
-                                                        <div class="card-body">
-                                                            <label class="form-label">khác</label>
-                                                            <input type="text" class="form-control mb-3" name="otherType" placeholder="Nhập thể loại khác">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="filter cm-content-box box-primary">
+
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Đạo diễn</label>
+                                                        <input type="text" value="${movieT.getDirector()}" name="dir" class="form-control mb-3" placeholder="Đạo diễn">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter cm-content-box box-primary">
+
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Diễn viên</label>
+                                                        <input type="text" value="${a}"
+                                                                   name="actor" class="form-control mb-3" placeholder="Diễn viên">
+
+
                                                         </div>
                                                     </div>
                                                 </div>
 
+                                                <div class="filter cm-content-box box-primary">
 
-                                            </div>
-                                        </div>
-                                        <div class="filter cm-content-box box-primary">
+                                                    <div class="cm-content-body   form excerpt">
+                                                        <div class="card-body">
+                                                            <label class="form-label">Ngày phát hành</label>
+                                                            <input type="Date" value="${movieT.getReleaseDate()}" name="date" class="form-control mb-3" placeholder="Ngày phát hành">
 
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Mô tả</label>
-                                                    <input type="text" name="des" class="form-control mb-3" placeholder="Mô tả">
-
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="filter cm-content-box box-primary">
 
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Đạo diễn</label>
-                                                    <input type="text" name="dir" class="form-control mb-3" placeholder="Đạo diễn">
+                                                <div class="filter cm-content-box box-primary">
 
+                                                    <div class="cm-content-body   form excerpt">
+                                                        <div class="card-body">
+                                                            <label class="form-label">Thời lượng phim</label>
+                                                            <input type="text" value="${movieT.getDuration()}" name="time" class="form-control mb-3" placeholder="Thời lượng phim">
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="filter cm-content-box box-primary">
+                                                <div class="filter cm-content-box box-primary">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Ngôn ngữ phim</label>
+                                                        <select class="js-example-disabled" name="language" style="width:100%;">
 
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Diễn viên</label>
-                                                    <input type="text" name="actor" class="form-control mb-3" placeholder="Diễn viên">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="filter cm-content-box box-primary">
-
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Ngày phát hành</label>
-                                                    <input type="Date" name="date" class="form-control mb-3" placeholder="Ngày phát hành">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="filter cm-content-box box-primary">
-
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Thời lượng phim</label>
-                                                    <input type="text" name="time" class="form-control mb-3" placeholder="Thời lượng phim">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="filter cm-content-box box-primary">
-                                            <div class="card-body">
-                                                <label class="form-label">Ngôn ngữ phim</label>
-                                                <select class="js-example-disabled" name="language" style="width:100%;">
-
-                                                    <c:if test="${sessionScope.language != null}">
-                                                        <c:forEach items="${sessionScope.language}" var="i">
-                                                            <option value="${i.getId()}">${i.getName()}</option>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                </select>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="filter cm-content-box box-primary">
-
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Áp phích</label>
-                                                    <input type="text" name="img" class="form-control mb-3" placeholder="Áp phích">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--                                        <div class="filter cm-content-box box-primary">
-                                        
-                                                                                    <div class="cm-content-body   form excerpt">
-                                                                                        <div class="card-body">
-                                                                                            <label class="form-label">Đánh giá phim</label>
-                                                                                            <input type="text" name="rating" class="form-control mb-3" placeholder="Đánh giá phim">
-                                        
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>-->
-
-                                        <div class="filter cm-content-box box-primary">
-
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Trạng thái phim</label>
-                                                    <select class="js-example-disabled" name="status" style="width:100%;" >
-                                                        <option>Đang chiếu</option>
-                                                        <option>Sắp chiếu</option>
-
+                                                        <c:if test="${sessionScope.lan != null}">
+                                                            <c:forEach items="${sessionScope.lan}" var="i">
+                                                                <option ${movieT.getLanguages() == i.getId()?"selected":""} value="${i.getId()}">${i.getName()}</option>
+                                                            </c:forEach>
+                                                        </c:if>
                                                     </select>
 
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="filter cm-content-box box-primary">
+                                            <div class="filter cm-content-box box-primary">
 
-                                            <div class="cm-content-body   form excerpt">
-                                                <div class="card-body">
-                                                    <label class="form-label">Gía vé phim</label>
-                                                    <input type="text" name="price" class="form-control mb-3" placeholder="Gía vé phim">
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Áp phích</label>
+                                                        <input type="text" value="${movieT.getImage()}" name="img" class="form-control mb-3" placeholder="Áp phích">
 
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <c:if test="${requestScope.err != null}">
-                                            <div class="alert alert-danger" role="alert">
-                                                ${requestScope.err}
-                                            </div>
-                                        </c:if>                  
-                                        <div>
-                                            <input type="submit" class="btn btn-primary mb-3" value="Add movie" >
 
-                                        </div>
+                                            <!--                                        <div class="filter cm-content-box box-primary">
+                                            
+                                                                                        <div class="cm-content-body   form excerpt">
+                                                                                            <div class="card-body">
+                                                                                                <label class="form-label">Đánh giá phim</label>
+                                                                                                <input type="text" name="rating" class="form-control mb-3" placeholder="Đánh giá phim">
+                                            
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>-->
+
+                                            <div class="filter cm-content-box box-primary">
+
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Trạng thái phim</label>
+                                                        <select class="js-example-disabled" name="status" style="width:100%;" >
+                                                            <option ${movieT.getStatus() == "Đang chiếu"?"selected": ""} >Đang chiếu</option>
+                                                            <option ${movieT.getStatus() == "Sắp chiếu"?"selected": ""}>Sắp chiếu</option>
+
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter cm-content-box box-primary">
+
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Gía vé phim</label>
+                                                        <input type="text" value="${movieT.getPrice()}" name="price" class="form-control mb-3" placeholder="Gía vé phim">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <c:if test="${requestScope.err != null}">
+                                                <div class="alert alert-danger" role="alert">
+                                                    ${requestScope.err}
+                                                </div>
+                                            </c:if>                  
+                                            <div>
+                                                <input type="submit" class="btn btn-primary mb-3" value="Edit movie" >
+
+                                            </div>
+                                        </c:if>
 
                                     </form>
 
@@ -1418,7 +1435,7 @@
         <script data-cfasync="false"
         src="${pageContext.request.contextPath}/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
         <script>
-                                        var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
+            var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
         </script>
         <script src="public/assets/vendor/global/global.min.js"></script>
         <script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
@@ -1433,63 +1450,29 @@
         <script src="public/assets/js/demo.js"></script>
         <script src="public/assets/js/styleSwitcher.js"></script>
         <script>
-                                        function readURL(input) {
-                                            if (input.files && input.files[0]) {
-                                                var reader = new FileReader();
-                                                reader.onload = function (e) {
-                                                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-                                                    $('#imagePreview').hide();
-                                                    $('#imagePreview').fadeIn(650);
-                                                }
-                                                reader.readAsDataURL(input.files[0]);
-                                            }
-                                        }
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                        $('#imagePreview').hide();
+                        $('#imagePreview').fadeIn(650);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
 
-                                        $("#imageUpload").on('change', function () {
+            $("#imageUpload").on('change', function () {
 
-                                            readURL(this);
-                                        });
-                                        $('.remove-img').on('click', function () {
-                                            var imageUrl = "${pageContext.request.contextPath}/public/assets/images/no-img-avatar.png";
-                                            $('.avatar-preview, #imagePreview').removeAttr('style');
-                                            $('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
-                                        });
+                readURL(this);
+            });
+            $('.remove-img').on('click', function () {
+                var imageUrl = "${pageContext.request.contextPath}/public/assets/images/no-img-avatar.png";
+                $('.avatar-preview, #imagePreview').removeAttr('style');
+                $('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
+            });
 
-                                        function checkValidateForm() {
-                                            const name = document.querySelector('input[name="name"]').value;
-                                            const des = document.querySelector('input[name="des"]').value;
-                                            const dir = document.querySelector('input[name="dir"]').value;
-                                            const actor = document.querySelector('input[name="actor"]').value;
-                                            const date = document.querySelector('input[name="date"]').value;
-                                            const time = document.querySelector('input[name="time"]').value;
-                                            const lan = document.querySelector('select[name="language"]').value;
-                                            const img = document.querySelector('input[name="img"]').value;
-                                            const status = document.querySelector('input[name="status"]').value;
-                                            const price = document.querySelector('input[name="price"]').value;
-                                            const otherType = document.querySelector('input[name="otherType"]').value;
-                                            var checkboxes = document.querySelectorAll('input[name="type"]:checked');
-                                            if (name.trim() === "" || des.trim() === "" || dir.trim() === "" || actor.trim() === "" || date.trim() === "" || time.trim() === "" || lan.trim() === "" || img.trim() === "" || status.trim() === "" || price.trim() === "") {
-                                                alert("Vui lòng điền đầy đủ thông tin!");
-                                                return false;
-                                            }
-                                            if (otherType.trim() === "" && checkboxes.length === 0) {
-                                                alert("Vui lòng điền đầy đủ thông tin!");
-                                                return false;
 
-                                            }
-                                            if (parseInt(price) <= 0 || isNaN(price) || isNaN(parseInt(price))) {
-                                                alert("Giá vé phải lớn hơn 0 và phải là số nguyên!");
-                                                return false;
-                                            }
-
-                                            if (parseInt(time) <= 0 || isNaN(time) || isNaN(parseInt(time))) {
-                                                alert("Thời lượng phim phải là số nguyên và không đượng nhỏ hơn 0!");
-                                                return false;
-                                            }
-
-                                            return true;
-
-                                        }
         </script>
 
 
