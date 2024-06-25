@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -161,7 +162,7 @@ public class TicketServlet extends HttpServlet {
             for (String seatIdStr : selectedSeats) {
                 int seatId;
                 try {
-                    seatId = Integer.parseInt(seatIdStr);
+                    seatId = Integer.parseInt(seatIdStr.substring(1)); // Chuyển đổi định dạng ghế ngồi
                 } catch (NumberFormatException e) {
                     // Handle invalid seat ID format
                     allSeatsHeld = false;
@@ -179,26 +180,40 @@ public class TicketServlet extends HttpServlet {
             }
 
             if (allSeatsHeld) {
-                // Create the ticket object and set it in the session
+                // Lấy danh sách `ShowTime` và ID `ShowTime` từ session
+                ArrayList<ShowTime> lists = (ArrayList<ShowTime>) session.getAttribute("showtime");
+                int showtimeid = (int) session.getAttribute("time");
+                ShowTime st = new ShowTime();
+                for (ShowTime stt : lists) {
+                    if (stt.getShowTimeID() == showtimeid) {
+                        st = stt;
+                        break;
+                    }
+                }
+
+                // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
+                String seati = "";
+                for (int i = 0; i < selectedSeats.length; i++) {
+                    selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+                    int seatInt = Integer.parseInt(selectedSeats[i]);
+                    int realID = (seatInt - 1) * 4 + st.getRoomID();
+                    seati += realID + ",";
+                }
+                seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
+
+                // Tạo đối tượng `Ticket` và lưu vào session
                 Customer customer = (Customer) session.getAttribute("user");
                 Movie movie = (Movie) session.getAttribute("movie");
-                String time = null;
-                TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
-                try {
-                    time = ticketDAO.getDateByShowtime((int)session.getAttribute("time"));
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                String time = d.getDateByShowtime((int) session.getAttribute("time"));
                 Date date = new Date();
-                String Seater = changeSeat(selectedSeatsParam); // Assumes changeSeat handles seat conversion
                 Ticket ticket = new Ticket(
                         customer.getIdCustomer(),
                         customer.getName(),
                         time,
-                        Seater,
+                        seati, // Sử dụng chuỗi ID ghế ngồi thực tế
                         "",
                         "",
-                        (float) getPrice(Seater, movie.getPrice()), // Assumes getPrice handles pricing
+                        (float) getPrice(seati, movie.getPrice()), // Assumes getPrice handles pricing
                         "Hold",
                         date.toString(),
                         "",
@@ -216,8 +231,8 @@ public class TicketServlet extends HttpServlet {
             e.printStackTrace();
             response.sendRedirect("error.jsp"); // Redirect to an error page on exception
         }
-
     }
+
 
     @Override
     public String getServletInfo() {
