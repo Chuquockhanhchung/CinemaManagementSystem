@@ -40,6 +40,10 @@
         <servlet-class>controller.SearchMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>controller.UpdateProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
@@ -298,6 +302,10 @@
     <servlet-mapping>
         <servlet-name>EventServlet</servlet-name>
         <url-pattern>/event</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/updateprofile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddProduct</servlet-name>

@@ -21,6 +21,29 @@ public class CustomerDAO extends DBContext {
         this.con = con;
     }
 
+    public void EditCustomer(String name, String email, String phone, String img, int id) {
+        String sql = "UPDATE customer SET FullName = ?, Email = ?, PhoneNumber = ?, Picture = ? WHERE CustomerID = ?";
+
+        System.out.println("Executing query: " + sql);
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, phone);
+            ps.setString(4, img);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        CustomerDAO dao =  new CustomerDAO(DBContext.getConn());
+        dao.EditCustomer("Nguyễn Tiến Đạt","dat10bn@gmail.com","0968338678","https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg",28);
+    }
+
     public ArrayList<Customer> getInfor_Customer() {
         String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture\n"
                 + "FROM customer\n"

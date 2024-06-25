@@ -1156,7 +1156,6 @@
 
 
     <!-- Form Forgot Password -->
-    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
         <div class="modal-dialog">
             <div class="modal-content">
@@ -1199,33 +1198,38 @@
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         // Phone regex pattern (assuming it should be 10-15 digits)
         const phonePattern = /^\d{10}$/;
+        const passPattern = /^\d{6}$/;
 
         // Validate email
         if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
+            alert("Hãy nhập địa chỉ email của bạn");
             return false;
         }
 
         // Validate phone
         if (!phonePattern.test(phone)) {
-            alert("Please enter a valid phone number (10 digits).");
+            alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
+            return false;
+        }
+        if (!passPattern.test(pass1)) {
+            alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
             return false;
         }
 
         // Validate name
         if (name.trim() === "") {
-            alert("Please enter your name.");
+            alert("Hãy nhập tên.");
             return false;
         }
 
         // Validate passwords
         if (pass1 === "" || pass2 === "") {
-            alert("Please enter and confirm your password.");
+            alert("Hãy nhập mật khẩu.");
             return false;
         }
 
         if (pass1 !== pass2) {
-            alert("Passwords do not match.");
+            alert("Mật khẩu không trùng khớp.");
             return false;
         }
 
