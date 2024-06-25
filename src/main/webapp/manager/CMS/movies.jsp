@@ -1074,7 +1074,7 @@ Content body start
                     </div>
 
                     <div class="mb-5">
-                        <a href="addmovie" class="btn btn-primary">Add
+                        <a href="../../addmovie" class="btn btn-primary">Add
                             Movies</a>
                     </div>
                     <div class="filter cm-content-box box-primary">
@@ -1109,7 +1109,7 @@ Content body start
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">
 
-                                                    <a href="editMovie?id=${m.getId()}"
+                                                    <a href="../../editMovie?id=${m.getId()}"
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
