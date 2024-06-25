@@ -16,7 +16,7 @@ public class DBContext {
 
     protected static Connection conn;
 
-    private static String URL = "jdbc:mysql://localhost:3306/cinemamanagersystem";
+    private static String URL = "jdbc:mysql://localhost:3306/cinemamanagersystem?charSet=utf8";
 
     private static String USER = "root";
 

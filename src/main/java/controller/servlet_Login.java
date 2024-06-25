@@ -86,6 +86,8 @@ public class servlet_Login extends HttpServlet {
                     // Session
                     HttpSession session = request.getSession();
                     session.setAttribute("user", c);
+                    session.setAttribute("email",email);
+                    session.setAttribute("pass",pass);
 
                     if (c.getRole() == 1) {
                         response.sendRedirect("home");

@@ -11,8 +11,17 @@ import jakarta.servlet.http.HttpSession;
 import model.Account;
 import model.Customer;
 
+import java.io.*;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class UpdateProfileServlet extends HttpServlet {
@@ -57,22 +66,69 @@ public class UpdateProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Customer c = (Customer) session.getAttribute("user");
         request.setAttribute("customer", c);
-        request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("Account.jsp").forward(request, response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CustomerDAO dao  = new CustomerDAO(DBContext.getConn());
-        int id = Integer.parseInt(request.getParameter("id"));
-        String username =  request.getParameter("username");
+        request.setCharacterEncoding("UTF-8");
+
+        // Retrieve form data
+        String username = request.getParameter("name");
         String email = request.getParameter("email");
-        String phone  = request.getParameter("phone");
-        String avatar = request.getParameter("avatar");
-        dao.EditCustomer(username, email, phone, avatar, id);
-        response.sendRedirect("/home");
+        String phone = request.getParameter("phone");
+
+        // Check if any part is missing
+        if (username == null || email == null || phone == null) {
+            response.getWriter().println("Missing form parameters.");
+            return;
+        }
+
+        // Log the parameters to verify they are being retrieved correctly
+        System.out.println("Username: " + username);
+        System.out.println("Email: " + email);
+        System.out.println("Phone: " + phone);
+
+        // Retrieve file part
+        Part filePart = request.getPart("profile-pic");
+        String filePath = null;
+
+        if (filePart != null && filePart.getSize() > 0) {
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
+            // Save the file to the server
+            String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) uploadDir.mkdir();
+
+            filePath = uploadPath + File.separator + fileName;
+            filePart.write(filePath);
+        }
+
+        // Update the user's profile with the new data
+        CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+        HttpSession session = request.getSession();
+        Customer c = (Customer) session.getAttribute("user");
+
+        if (filePath == null) {
+            // If no new file uploaded, keep the old file path
+            filePath = c.getPicture();
+        }
+
+        dao.EditCustomer(username, email, phone, filePath, c.getIdCustomer());
+
+        // Update session with new user data
+        c.setName(username);
+        c.setEmail(email);
+        c.setPhone(phone);
+        c.setPicture(filePath);
+        session.setAttribute("user", c);
+
+        response.sendRedirect("home");
     }
+
 
     /**
      * Returns a short description of the servlet.

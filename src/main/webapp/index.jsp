@@ -4202,26 +4202,7 @@
 
 
     <!-- Form Forgot Password -->
-    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                    <h3>Forgot Password</h3>
-                    <p>We can help! All you need to do is enter your email ID and follow the
-                        instructions!</p>
-                </div>
-                <div class="st_profile_input float_left">
-                    <label>Email Address</label>
-                    <input id="emailInput" name="email" type="text">
-                </div>
-                <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
-                                                                                                  id="verifyButton">Verify</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </form>
 <script>
     function showAlert(message) {
@@ -4246,33 +4227,38 @@
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         // Phone regex pattern (assuming it should be 10-15 digits)
         const phonePattern = /^\d{10}$/;
+        const passPattern = /^\d{6}$/;
 
         // Validate email
         if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
+            alert("Hãy nhập địa chỉ email của bạn");
             return false;
         }
 
         // Validate phone
         if (!phonePattern.test(phone)) {
-            alert("Please enter a valid phone number (10 digits).");
+            alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
+            return false;
+        }
+        if (!passPattern.test(pass1)) {
+            alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
             return false;
         }
 
         // Validate name
         if (name.trim() === "") {
-            alert("Please enter your name.");
+            alert("Hãy nhập tên.");
             return false;
         }
 
         // Validate passwords
         if (pass1 === "" || pass2 === "") {
-            alert("Please enter and confirm your password.");
+            alert("Hãy nhập mật khẩu.");
             return false;
         }
 
         if (pass1 !== pass2) {
-            alert("Passwords do not match.");
+            alert("Mật khẩu không trùng khớp.");
             return false;
         }
 

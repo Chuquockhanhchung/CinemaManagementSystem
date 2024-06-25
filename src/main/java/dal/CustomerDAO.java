@@ -41,11 +41,11 @@ public class CustomerDAO extends DBContext {
 
     public static void main(String[] args) {
         CustomerDAO dao =  new CustomerDAO(DBContext.getConn());
-        System.out.println(dao.getInfor_Customer().size());
+        dao.EditCustomer("Nguyễn Tiến Đạt","dat10bn@gmail.com","0968338678","https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg",28);
     }
 
     public ArrayList<Customer> getInfor_Customer() {
-        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"
+        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture\n"
                 + "FROM customer\n"
                 + "JOIN account  ON customer.AccountID = account.AccountID";
         ArrayList<Customer> list = new ArrayList<>();
@@ -60,6 +60,7 @@ public class CustomerDAO extends DBContext {
                 c.setPhone(rs.getString(5));
                 c.setPass(s.decode(rs.getString(6)));
                 c.setRole(rs.getInt(7));
+                c.setPicture(rs.getString(8));
                 list.add(c);
             }
         } catch (SQLException e) {

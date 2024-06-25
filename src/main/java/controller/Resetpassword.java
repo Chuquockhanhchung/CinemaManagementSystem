@@ -102,7 +102,7 @@ public class Resetpassword extends HttpServlet {
                     session.setAttribute("user", c);
 
                     if (c.getRole() == 1) {
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("home");
                     } else {
                         System.out.println("Login failed");
                         response.sendRedirect("index.jsp");
@@ -111,12 +111,12 @@ public class Resetpassword extends HttpServlet {
                 } else {
                     System.out.println("Login failed: Incorrect password for user: " + email);
                     request.setAttribute("err", "Password is wrong!");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("../home").forward(request, response);
                 }
             } else {
                 System.out.println("Login failed: Email not found - " + email);
                 request.setAttribute("err", "Email not exist!");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("../home").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
