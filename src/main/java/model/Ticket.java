@@ -1,13 +1,18 @@
 package model;
 
+import java.util.List;
+
 public class Ticket {
 
     private int TicketID;
     private int CustomerID;
     private String FullName;
     private int ShowtimeID;
+    private String BookingID;
     private String StartTime;
+    private String StartDate;
     private String SeatID;
+    private List<String> seatIDs;
     private String SeatType;
     private String EventName;
     private float TicketPrice;
@@ -22,7 +27,7 @@ public class Ticket {
     }
 
 
-    public Ticket(int customerID, int showtimeID,  String seatID, float ticketPrice, String status) {
+    public Ticket(int customerID, int showtimeID, String seatID, float ticketPrice, String status) {
         CustomerID = customerID;
         ShowtimeID = showtimeID;
         SeatID = seatID;
@@ -65,12 +70,28 @@ public class Ticket {
                 '}';
     }
 
+    public List<String> getSeatIDs() {
+        return seatIDs;
+    }
+
+    public void setSeatIDs(List<String> seatIDs) {
+        this.seatIDs = seatIDs;
+    }
+
     public int getTicketID() {
         return TicketID;
     }
 
     public void setTicketID(int ticketID) {
         TicketID = ticketID;
+    }
+
+    public String getBookingID() {
+        return BookingID;
+    }
+
+    public void setBookingID(String bookingID) {
+        BookingID = bookingID;
     }
 
     public int getCustomerID() {
@@ -175,5 +196,13 @@ public class Ticket {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getStartDate() {
+        return StartDate;
+    }
+
+    public void setStartDate(String startDate) {
+        StartDate = startDate;
     }
 }

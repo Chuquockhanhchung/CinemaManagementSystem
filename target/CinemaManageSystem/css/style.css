@@ -2086,7 +2086,7 @@ body.active #mobile-nav {
     float: left;
     width: 100%;
     text-align: center;
-    padding-top: 80px;
+    padding: 50px 0 50px 0;
 }
 
 .prs_upcome_tabs_wrapper ul {
@@ -2390,6 +2390,7 @@ body.active #mobile-nav {
 }
 
 .prs_upcom_movie_content_box p {
+    max-width: 175px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-right: -200px;

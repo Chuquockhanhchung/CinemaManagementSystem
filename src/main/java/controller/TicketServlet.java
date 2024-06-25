@@ -10,11 +10,13 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import dal.DBContext;
+import dal.MovieDAO;
 import dal.PaymentDAO;
 import dal.TicketDAO;
 import jakarta.servlet.RequestDispatcher;
@@ -23,10 +25,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Customer;
-import model.Movie;
-import model.ShowTime;
-import model.Ticket;
+import model.*;
 import org.json.JSONObject;
 
 public class TicketServlet extends HttpServlet {
@@ -71,9 +70,9 @@ public class TicketServlet extends HttpServlet {
             seats[i] = seats[i].trim();
             int seatInt=0;
             if(seats[i].length()>2) {
-                 seatInt = Integer.parseInt(seats[i].split("")[1]) * 10 + Integer.parseInt(seats[i].split("")[2]);
+                seatInt = Integer.parseInt(seats[i].split("")[1]) * 10 + Integer.parseInt(seats[i].split("")[2]);
             }else{
-                 seatInt = Integer.parseInt(seats[i].split("")[1]);
+                seatInt = Integer.parseInt(seats[i].split("")[1]);
             }
             if(seatInt<=22){
                 seatAfterChange+="D"+seatInt;
@@ -85,101 +84,115 @@ public class TicketServlet extends HttpServlet {
                 seatAfterChange+="B"+((s==0)?22:s);
             }else if(seatInt==67){
                 seatAfterChange+="B23";
+            }else if(seatInt==90) {
+                seatAfterChange+="A23";
             }else{
-                int s = seatInt%22-1;
-                seatAfterChange+="A"+((s==0)?22:s);
-            }
+                    int s = seatInt%22-1;
+                    seatAfterChange+="A"+((s==0)?22:s);
+                }
+
             if(i<seats.length-1){
                 seatAfterChange+=",";
             }
         }
         return seatAfterChange;
     }
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int customerID = Integer.parseInt(request.getParameter("CustomerID"));
-        String seatID = request.getParameter("selectedSeats");
 
-        Date date =new Date();
-        HttpSession session = request.getSession();
-        Movie movie = (Movie) session.getAttribute("movie");
-        PaymentDAO dao = new PaymentDAO(DBContext.getConn());
-        TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
-        Customer customer = dao.getCustomerByID(customerID);
-        String time = null;
         try {
-            time = ticketDAO.getDateByShowtime((int)session.getAttribute("time"));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        String Seater=changeSeat(seatID);
-        String[] s2 = Seater.split(",");
+            String selectedSeatsParam = request.getParameter("selectedSeats");
+            if (selectedSeatsParam == null || selectedSeatsParam.isEmpty()) {
+                response.sendRedirect("error.jsp"); // Redirect to an error page if no seats are selected
+                return;
+            }
+            String realSeat= changeSeat(selectedSeatsParam);
+            MovieDAO md = new MovieDAO(DBContext.getConn());
+            HttpSession session = request.getSession();
+            ArrayList<ShowTime> lists = (ArrayList<ShowTime>) session.getAttribute("showtime");
+            int showtimeid = (int) session.getAttribute("time");
+            int romID = md.getRoomIDbyST(showtimeid);
 
-        Ticket ticket = new Ticket(customer.getIdCustomer(),
-                customer.getName(),
-                time,
-                Seater,
-                "",
-                "",
-                (float) getPrice(Seater,movie.getPrice()),
-                "Hold",
-                date.toString(),
-                
-                "",
-                movie.getName(),
-                ""
+            // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
+            String seati = "";
+            String[] selectedSeats = selectedSeatsParam.split(",");
+            for (int i = 0; i < selectedSeats.length; i++) {
+                selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+                int seatInt = Integer.parseInt(selectedSeats[i]);
+                int realID = (seatInt - 1) * 4 + romID;
+                seati += realID + ",";
+            }
+            seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
+            TicketDAO d = new TicketDAO(DBContext.getConn());
+            boolean allSeatsHeld = true;
+            String[] seats = seati.split(",");
+            for (String seatIdStr : seats) {
+                int seatId;
+                try {
+                    seatId = Integer.parseInt(seatIdStr); // Chuyển đổi định dạng ghế ngồi
+                } catch (NumberFormatException e) {
+                    // Handle invalid seat ID format
+                    allSeatsHeld = false;
+                    break;
+                }
+                Seat seat = new Seat();
+                seat.setSeatID(seatId);
+                seat.setStatus("hold");
+
+                boolean seatHeld = d.holdTicket(seat);
+                if (!seatHeld) {
+                    allSeatsHeld = false;
+                    break;
+                }
+            }
+
+            if (allSeatsHeld) {
+                // Lấy danh sách `ShowTime` và ID `ShowTime` từ session
+
+                // Tạo đối tượng `Ticket` và lưu vào session
+                Customer customer = (Customer) session.getAttribute("user");
+                Movie movie = (Movie) session.getAttribute("movie");
+                String time = d.getDateByShowtime((int) session.getAttribute("time"));
+                Date date = new Date();
+                Ticket ticket = new Ticket(
+                        customer.getIdCustomer(),
+                        customer.getName(),
+                        time,
+                        realSeat, // Sử dụng chuỗi ID ghế ngồi thực tế
+                        "",
+                        "",
+                        (float) getPrice(seati, movie.getPrice()), // Assumes getPrice handles pricing
+                        "Hold",
+                        date.toString(),
+                        "",
+                        movie.getName(),
+                        seati
                 );
+                session.setAttribute("seatC",selectedSeatsParam);
+                session.setAttribute("ticket", ticket);
+                session.setAttribute("seatID",realSeat);
 
-        session.setAttribute("ticket", ticket);
-
-        response.sendRedirect("payment.jsp");
+                response.sendRedirect("payment.jsp");
+            } else {
+                response.sendRedirect("error.jsp"); // Redirect to an error page if any seat update fails
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp"); // Redirect to an error page on exception
+        }
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String content = request.getParameter("content");
-        String price = request.getParameter("price");
 
-        String urlString = "https://script.google.com/macros/s/AKfycbxVVi9V7W28MhMyCgYECnPssLc_qQgrkkyjY6LrsWO5o8d6ZUoeq3UgB5CqxXAaSpce/exec";
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.connect();
-
-        // Getting the response code
-        int responsecode = conn.getResponseCode();
-
-        if (responsecode != 200) {
-            throw new RuntimeException("HttpResponseCode: " + responsecode);
-        } else {
-            StringBuilder inline = new StringBuilder();
-            Scanner scanner = new Scanner(url.openStream());
-
-            while (scanner.hasNext()) {
-                inline.append(scanner.nextLine());
-            }
-            scanner.close();
-
-            JSONObject jsonObject = new JSONObject(inline.toString());
-            // Assume the lastPaid data is at the last element of the array.
-            JSONObject lastPaid = jsonObject.getJSONArray("data").getJSONObject(jsonObject.getJSONArray("data").length() - 1);
-
-            String lastContent = lastPaid.getString("Mô tả");
-            int lastPrice = lastPaid.getInt("Giá trị");
-
-            boolean isPaid = lastContent.contains(content) && lastPrice >= Integer.parseInt(price);
-
-            response.setContentType("application/json");
-            PrintWriter out = response.getWriter();
-            JSONObject result = new JSONObject();
-            result.put("isPaid", isPaid);
-            out.print(result);
-            out.flush();
-        }
     }
+
 
     @Override
     public String getServletInfo() {

@@ -59,9 +59,11 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="st_bt_top_back_btn float_left"><a href="seat?showtimeId=${sessionScope.time}"><i
-                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
-                </div>
+
+                    <div class="st_bt_top_back_btn float_left"><a href="seat?showtimeId=${sessionScope.time}"><i
+                            class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
+                    </div>
+
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="st_bt_top_center_heading float_left">
@@ -99,7 +101,8 @@
                                         </li>
                                         <li>
                                             <span class="dtts1">Ghế Ngồi:</span>
-                                            <h5><%= ticket.getSeatType() %> - <%= ticket.getSeatID() %></h5>
+                                            <h5> <%= ticket.getSeatID() %></h5>
+                                            <input type="text" name="seatID" value="<%= ticket.getSeatID() %>" hidden="">
                                         </li>
                                     </ul>
 
@@ -726,7 +729,24 @@
         </div>
     </div>
     <!--main js file start-->
+
+    <input type="text" id="randomBookingID" name="BookingID" readonly >
+
 </form>
+<script>
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            result += characters[randomIndex];
+        }
+        return result;
+    }
+
+    const randomString = generateRandomString(8);
+    document.getElementById('randomBookingID').value = randomString;
+</script>
 
 <script>
     const payment_process = document.querySelector('.payment-process');
@@ -761,7 +781,7 @@
 
                 if (lastContent.includes(content) && lastPrice >= price) {
                     Swal.fire({
-                        title: "Good job!",
+                        title: "Chúc Mừng!",
                         text: "Thanh toán thành công!",
                         icon: "success",
                         allowOutsideClick: false, // Ngăn người dùng đóng alert bằng cách bấm bên ngoài
