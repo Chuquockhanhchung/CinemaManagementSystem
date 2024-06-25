@@ -151,7 +151,7 @@ public class TicketDAO extends DBContext{
                     "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
                     "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                     "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
-                    "m.MovieName, m.Image " +
+                    "m.MovieName, m.Image, t.BookingID, t.SeatID " +
                     "FROM movieticket t " +
                     "JOIN customer c ON t.CustomerID = c.CustomerID " +
                     "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
@@ -169,13 +169,15 @@ public class TicketDAO extends DBContext{
             while (rs.next()) {
                 ticket = new Ticket();
                 ticket.setTicketID(rs.getInt("TicketID"));
-                ticket.setComboName(rs.getString("FullName")); // Assuming you want FullName for ComboName
+                ticket.setComboName(rs.getString("FullName"));
                 ticket.setTicketPrice(rs.getFloat("TicketPrice"));
                 ticket.setStartDate(rs.getString("StartDate"));
                 ticket.setStartTime(rs.getString("StartTime"));
                 ticket.setBookingDate(rs.getString("BookingDate"));
                 ticket.setMovieName(rs.getString("MovieName"));
                 ticket.setImage(rs.getString("Image"));
+                ticket.setBookingID(rs.getString("BookingID"));
+                ticket.setSeatID(rs.getString("SeatID"));
                 list.add(ticket);
             }
         } catch (Exception e) {
@@ -193,8 +195,8 @@ public class TicketDAO extends DBContext{
                     "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
                     "JOIN movie m ON s.MovieID = m.MovieID " +
                     "WHERE t.CustomerID = ? " +
-                    "AND DATE_FORMAT(t.BookingDate, '%Y/%m/%d %H') = (" +
-                    "   SELECT MAX(DATE_FORMAT(t2.BookingDate, '%Y/%m/%d %H')) " +
+                    "AND DATE_FORMAT(t.BookingDate, '%Y/%m/%d %H:%i') = (" +
+                    "   SELECT MAX(DATE_FORMAT(t2.BookingDate, '%Y/%m/%d %H:%i')) " +
                     "   FROM movieticket t2 " +
                     "   WHERE t2.CustomerID = ?);";
 

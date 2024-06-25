@@ -33,6 +33,13 @@
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="images/header/shortcut-icon.png"/>
+
+    <style>
+        .st_bcc_tecket_bottom_right_wrapper .qrcode img {
+            width: 110px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body class="booking_type_back">
@@ -72,8 +79,11 @@
     int ticketCount = dao.countTicketsByBooking(CustomerID);
 
     float TicketPrice = 0;
+    String BookingID = null;
+
     for (Ticket ticket : list) {
         TicketPrice += ticket.getTicketPrice();
+        BookingID = ticket.getBookingID();
     }
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
@@ -85,16 +95,20 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="st_bcc_heading_wrapper float_left"><i class="fa fa-check-circle"></i>
-                        <h3>Thanh toán <span><%= currencyFormat.format(TicketPrice)%></span> Thành Công</h3>
+                        <h3>Thanh toán <span><%= currencyFormat.format(TicketPrice) %></span> Thành Công</h3>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="st_bcc_ticket_boxes_wrapper float_left">
                         <div class="st_bcc_tecket_top_hesder float_left">
-                            <p>VÉ CỦA BẠN ĐÃ ĐƯỢC XÁC NHẬN!</p> <span>Booking ID SSST0000310644 </span>
+                            <p>VÉ CỦA BẠN ĐÃ ĐƯỢC XÁC NHẬN!</p> <span>Booking ID <%= BookingID %></span>
                         </div>
                         <%
+                            int ticketIndex = 0;
                             for (Ticket ticket : list) {
+                                String ticketID = "ticket_" + ticketIndex;
+                                String qrCodeID = "qrcode_" + ticketIndex;
+                                ticketIndex++;
                         %>
                         <div class="st_bcc_tecket_bottom_hesder float_left">
                             <div class="st_bcc_tecket_bottom_left_wrapper">
@@ -104,7 +118,7 @@
                                     </div>
                                     <div class="st_bcc_teckt_bot_inner_img_cont">
                                         <h4><%= ticket.getMovieName() %></h4>
-                                        <h5>Malayalam, 2D</h5>
+                                        <h5><%= ticket.getSeatID() %></h5>
                                         <h3><%= ticket.getStartDate() %> | <%= ticket.getStartTime() %></h3>
                                     </div>
                                     <div class="st_purchase_img">
@@ -117,17 +131,14 @@
                                 </div>
                             </div>
                             <div class="st_bcc_tecket_bottom_right_wrapper">
-
-                                <input type="text" spellcheck="false" id="text" value="https://google.com" />
-                                <div id="qrcode"></div>
-
-                                <h4>Booking ID<br>SSST0000310644</h4>
+                                <input  type="text" spellcheck="false" hidden="" id="<%= ticketID %>" value="<%= BookingID %>" />
+                                <div class="qrcode" id="<%= qrCodeID %>"></div>
                             </div>
                         </div>
                         <% } %>
                         <div class="st_bcc_tecket_bottom_left_price_wrapper">
                             <h4>Total Amount</h4>
-                            <h5><%= currencyFormat.format(TicketPrice)%></h5>
+                            <h5><%= currencyFormat.format(TicketPrice) %></h5>
                         </div>
                     </div>
                     <div class="st_bcc_ticket_boxes_bottom_wrapper float_left">
@@ -144,162 +155,31 @@
     </div>
 </div>
 <!-- st bc End -->
-<!-- prs patner slider Start -->
-<div class="prs_patner_main_section_wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="prs_heading_section_wrapper">
-                    <h2>Our Patner’s</h2>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="prs_pn_slider_wraper">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p1.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p2.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p3.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p4.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p5.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="prs_pn_img_wrapper">
-                                <img src="images/content/p6.jpg" alt="patner_img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- prs patner slider End -->
+
 <%@include file="footer.jsp" %>
 <!-- prs footer Wrapper End -->
-<!-- st login wrapper Start -->
-<div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="st_pop_form_heading_wrapper float_left">
-                <h3>Log in</h3>
-            </div>
-            <div class="st_profile_input float_left">
-                <label>Email / Mobile Number</label>
-                <input type="text">
-            </div>
-            <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                <input type="password" placeholder="Password">
-            </div>
-            <div class="st_form_pop_fp float_left">
-                <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-            </div>
-            <div class="st_form_pop_login_btn float_left"><a href="page-1-7_profile_settings.jsp">LOGIN</a>
-            </div>
-            <div class="st_form_pop_or_btn float_left">
-                <h4>or</h4>
-            </div>
-            <div class="st_form_pop_facebook_btn float_left"><a href="#"> Connect with Facebook</a>
-            </div>
-            <div class="st_form_pop_gmail_btn float_left"><a href="#"> Connect with Google</a>
-            </div>
-            <div class="st_form_pop_signin_btn float_left">
-                <h4>Don’t have an account? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Sign
-                    Up</a></h4>
-                <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-                <h3>Forgot Password</h3>
-                <p>We can help! All you need to do is enter your email ID and follow the instructions!</p>
-            </div>
-            <div class="st_profile_input float_left">
-                <label>Email Address</label>
-                <input type="text">
-            </div>
-            <div class="st_form_pop_fpass_btn float_left"><a href="#">Verify</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="st_pop_form_heading_wrapper float_left">
-                <h3>Sign Up</h3>
-            </div>
-            <div class="st_profile_input float_left">
-                <label>Email / Mobile Number</label>
-                <input type="text">
-            </div>
-            <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                <input type="password" placeholder="Password">
-            </div>
-            <div class="st_form_pop_fp float_left">
-                <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-            </div>
-            <div class="st_form_pop_login_btn float_left"><a href="page-1-7_profile_settings.jsp">LOGIN</a>
-            </div>
-            <div class="st_form_pop_or_btn float_left">
-                <h4>or</h4>
-            </div>
-            <div class="st_form_pop_facebook_btn float_left"><a href="#"><i class="fab fa-facebook-f"></i> Connect with
-                Facebook</a>
-            </div>
-            <div class="st_form_pop_gmail_btn float_left"><a href="#"><i class="fab fa-google-plus-g"></i> Connect with
-                Google</a>
-            </div>
-            <div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
-                <h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- st login wrapper End -->
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<script >
-
-    const qrcode = document.getElementById("qrcode");
-    const textInput = document.getElementById("text");
-
-    const qr = new QRCode(qrcode);
-
-    textInput.oninput = (e) => {
-        qr.makeCode(e.target.value.trim());
-    };
-
-    qr.makeCode(textInput.value.trim());
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        <%
+            ticketIndex = 0;
+            for (Ticket ticket : list) {
+                String qrCodeID = "qrcode_" + ticketIndex;
+                String ticketID = "ticket_" + ticketIndex;
+                ticketIndex++;
+        %>
+        var qr<%= ticketIndex %> = new QRCode(document.getElementById("<%= qrCodeID %>"));
+        var textInput<%= ticketIndex %> = document.getElementById("<%= ticketID %>");
+        textInput<%= ticketIndex %>.oninput = function(e) {
+            qr<%= ticketIndex %>.makeCode(e.target.value.trim());
+        };
+        qr<%= ticketIndex %>.makeCode(textInput<%= ticketIndex %>.value.trim());
+        <% } %>
+    });
 </script>
+
 <!--main js file start-->
 <script src="js/jquery_min.js"></script>
 <script src="js/modernizr.js"></script>
