@@ -93,57 +93,60 @@ public class AddMovieServlet extends HttpServlet {
             String[] type = request.getParameterValues("type");
             String des = request.getParameter("des");
             String dir = request.getParameter("dir");
-            String actor = request.getParameter("actor");
+            String[] actor = request.getParameterValues("act");
+            String[] imagedv = request.getParameterValues("im");
             String date = request.getParameter("date");
             int time = Integer.parseInt(request.getParameter("time"));
             int lan = Integer.parseInt(request.getParameter("language"));
             String img = request.getParameter("img");
             String status = request.getParameter("status");
+            String trailer = request.getParameter("trailer");
             int price = Integer.parseInt(request.getParameter("price"));
-            String otherType = request.getParameter("otherType");
             MovieDAO dao = new MovieDAO(DBContext.getConn());
-            Movie movie = new Movie(1, name, des, otherType, img, actor, date, status, time, price, dir, lan);
-            request.setAttribute("movies", movie);
-         if(name.trim() == "" || des.trim() == "" || dir.trim() == "" || actor.trim() == "" || date.trim() == "" || request.getParameter("time").trim() == "" || request.getParameter("language").trim() == "" || img.trim() == "" || status.trim() == "" || request.getParameter("price").trim() == ""){
-             request.setAttribute("err", "Vui l�ng ?i?n ??y ?? th�ng tin!");
+            Movie movie = new Movie(1, name, des, "", img, "", date, status, time, price, dir, lan,trailer);
+            request.setAttribute("type",type);
+            request.setAttribute("movieId", movie);
+            ArrayList<Actor> lista = new ArrayList<>();
+            for(int i = 0; i< actor.length; i++){
+                lista.add(new Actor(1, actor[i],imagedv[i]));
+            }
+            request.setAttribute("actors", lista);
+         if(name.trim() == "" || des.trim() == "" || dir.trim() == ""  || date.trim() == "" || request.getParameter("time").trim() == "" || request.getParameter("language").trim() == "" || img.trim() == "" || status.trim() == "" || request.getParameter("price").trim() == ""){
+             request.setAttribute("err", "Vui lòng nhập đầy đủ thông tin phim!");
              request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
+         } else {
+             if(type.length == 0 || actor.length == 0 || imagedv.length == 0 || trailer.trim() == ""){
+                 request.setAttribute("err", "Vui lòng nhập đầy đủ thông tin phim!");
+                 request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
+             } else {
+                 dao.AddMovie(movie);
+                 int[] id = new int[lista.size()];
+                 int i = -1;
+                 for (Actor a: lista) {
+                     if(a.getName().trim()!=""&& a.getPicture().trim() !="" ){
+                         i++;
+                         dao.AddActor(a);
+                         id[i] = dao.getIdActor();
+
+                     }
+                 }
+                 int movieID = dao.getIDMovie();
+                 for (String t : type) {
+                     dao.AddHasType(movieID, Integer.parseInt(t));
+                 }
+                 for (int a : id) {
+                     dao.AddHasActor(movieID, a);
+                 }
+                 response.sendRedirect("manageMovie");
+             }
          }
          
-         if(type.length == 0 && otherType.trim() == ""){
-             request.setAttribute("err", "Vui l�ng ?i?n ??y ?? th�ng tin!");
-             request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
-         }
+
             
-            dao.AddMovie(movie);
-            String[] actors = actor.split(",");
-            int[] id = new int[actors.length];
-            for (int i = 0; i < actors.length; i++) {
-                dao.AddActor(actors[i]);                
-                id[i] = dao.getIdActor();
-            }
-            int movieID = dao.getIDMovie();
-            for (String t : type) {
-                dao.AddHasType(movieID, Integer.parseInt(t));
-            } 
-            for (int a : id) {
-                dao.AddHasActor(movieID, a);
-            }
-            if(otherType.trim() != ""){
-                String[] otherT = otherType.split(",");
-                int[] idtype = new int[otherT.length];
-                for(int i = 0; i< otherT.length; i++){
-                    dao.AddType(otherT[i]);
-                    idtype[i] = dao.getIdType();
-                }
-                
-                for(int t: idtype){
-                    dao.AddHasType(movieID, t);
-                }
-            }
-            response.sendRedirect("manageMovie");
+
 
         } catch (NumberFormatException e) {
-            request.setAttribute("err", "G�a phim v� th?i l??ng phim ph?i l?n h?n 0!");
+            request.setAttribute("err", "Gía phim và thời lượng phim là số nguyên dương!");
             request.getRequestDispatcher("manager/CMS/add_movies.jsp").forward(request, response);
         }
     }

@@ -7,7 +7,12 @@ public class MovieType {
 
     public MovieType() {
     }
+public MovieType(int TypeID, String TypeName, String TypeDescription) {
+        this.TypeID = TypeID;
+        this.TypeName = TypeName;
+        this.TypeDescription = TypeDescription;
 
+}
     public int getTypeID() {
         return TypeID;
     }

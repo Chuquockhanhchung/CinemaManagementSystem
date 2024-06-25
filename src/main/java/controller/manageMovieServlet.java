@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Movie;
+import model.*;
 
 /**
  *
@@ -59,6 +59,11 @@ public class manageMovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        MovieDAO dao = new MovieDAO(DBContext.getConn());
+        ArrayList<Movie> list = dao.getall_Movie();
+        HttpSession session = request.getSession();
+        session.setAttribute("list", list);
+
 
         request.getRequestDispatcher("manager/CMS/movies.jsp").forward(request, response);
     } 

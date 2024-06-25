@@ -47,19 +47,21 @@ public class Movie {
         this.Rate = Rate;
     }
 
-    public Movie(int i, String name, String des, String otherType, String img, String actor, String date, String status, int time, int price, String dir, int lan) {
+    public Movie(int i, String name, String des, String otherType, String img, String actor, String date, String status, int time, int price, String dir, int lan, String trailer) {
         this.id = i;
         this.name = name;
         this.description = des;
         this.type = otherType;
         this.image = img;
         this.actor = actor;
-        ReleaseDate = date;
+        this.ReleaseDate = date;
         this.status = status;
-        duration = time;
-        price = price;
-        director = dir;
-        languages = lan;
+        this.duration = time;
+        this.price = price;
+        this.director = dir;
+        this.languages = lan;
+        this.trailer = trailer;
+
 
     }
 

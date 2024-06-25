@@ -1074,8 +1074,7 @@ Content body start
                     </div>
 
                     <div class="mb-5">
-                        <a href="addmovie" class="btn btn-primary">Add
-                            Movies</a>
+                        <a href="addmovie" class="btn btn-primary">Thêm film</a>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
@@ -1101,7 +1100,7 @@ Content body start
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${sessionScope.movies}" var="m">
+                                        <c:forEach items="${sessionScope.list}" var="m">
                                             <tr>
                                                 <td>${m.getId()}</td>
                                                 <td>${m.getName()}</td>
@@ -1113,7 +1112,7 @@ Content body start
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="javascript:void(0);"
+                                                    <a href="deleteM?id=${m.getId()}"
                                                        class="btn btn-danger btn-sm content-icon">
                                                         <i class="fa fa-times"></i>
                                                     </a>
@@ -1262,5 +1261,25 @@ Footer end
             document.getElementById('datepicker').value = '';
         });
     });
+</script>
+<script>
+    function updateP(id) {
+        window.location = "admin_update?id=" + id
+    }
+
+    function setDetete(id) {
+        document.querySelector(".header").innerText = "Do you want delete product with id: " + id
+    }
+
+    function deleteP() {
+        let id = document.querySelector(".header").innerText.split(":")
+        let d = id[id.length - 1].substring(1)
+        window.location = "deleteM?id=" + d
+    }
+    function searchP() {
+        let search = document.querySelector("#search").value
+        window.location = "admin_search?txt=" + search
+    }
+
 </script>
 </html>

@@ -48,6 +48,10 @@
         <servlet-class>controller.SearchMovie</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddMovieType</servlet-name>
+        <servlet-class>controller.AddMovieType</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdAccountServlet</servlet-name>
         <servlet-class>controller.AdAccountServlet</servlet-class>
     </servlet>
@@ -167,9 +171,18 @@
         <servlet-name>editMovieServlet</servlet-name>
         <servlet-class>controller.editMovieServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteMovie</servlet-name>
+        <servlet-class>controller.deleteMovie</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteMovie</servlet-name>
+        <url-pattern>/deleteM</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet</servlet-name>
@@ -226,6 +239,10 @@
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMovieType</servlet-name>
+        <url-pattern>/addType</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchMovieServlet</servlet-name>
