@@ -100,6 +100,7 @@
                                         <li>
                                             <span class="dtts1">Ghế Ngồi:</span>
                                             <h5> <%= ticket.getSeatID() %></h5>
+                                            <input type="text" name="seatID" value="<%= ticket.getSeatID() %>">
                                         </li>
                                     </ul>
 
