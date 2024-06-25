@@ -368,7 +368,7 @@
                                                     <div class="prs_upcom_movie_content_box_inner_icon">
                                                         <ul>
                                                             <li>
-                                                                <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
+                                                                <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="detail">
                                                                     <i class="fi fi-ss-ticket"></i>
                                                                 </a>
                                                             </li>
@@ -385,7 +385,7 @@
                                 <%}%>
                                 <script>
                                     function bookMovie(movieID) {
-                                        window.location.href='booking_movie?id='+movieID;
+                                        window.location.href='detail?id='+movieID;
                                     }
                                 </script>
 

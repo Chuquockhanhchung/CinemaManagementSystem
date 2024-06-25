@@ -741,7 +741,7 @@
                                                 <div class="st_calender_tabs" >
                                                     <ul class="nav nav-tabs">
 
-                                                        <c:if test="${sessionScope.time != null}">
+                                                        <c:if test="${sessionScope.time != null && sessionScope.user!=null}">
                                                             <c:forEach items="${sessionScope.time}" var="i">
 
                                                                 <li class="" onclick="filterMovie('${i.getTime()}')" style="border: 1px solid #555555; background-color: #555555; border-radius: 5px">
@@ -1019,7 +1019,7 @@
     <!-- prs footer Wrapper End -->
     <!-- st login wrapper Start -->
     <!-- Form Login -->
-    <form action="login" method="post" id="form">
+    <form action="login" method="get" id="form">
         <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

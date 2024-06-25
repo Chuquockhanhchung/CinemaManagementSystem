@@ -44,18 +44,53 @@ public class servlet_Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cookie arr[] = request.getCookies();
-        for(Cookie o: arr){
-            if(o.getName().equals("em")){
-                request.setAttribute("email", o.getValue());
+        try {
+            String email = request.getParameter("email");
+            String pass = request.getParameter("pass");
+
+            CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+            ArrayList<Customer> list = dao.getInfor_Customer();
+            Customer c = null;
+            for (Customer cu : list) {
+                if ((email != null && cu.getEmail().equals(email)) || (email != null && cu.getPhone().equals(email))) {
+                    c = cu;
+                    break;
+                }
             }
-            if(o.getName().equals("pa")){
-                request.setAttribute("pass", o.getValue());
+            if (c != null) {
+
+                if (c.getPass().compareTo(pass) == 0) {
+                    Cookie em = new Cookie("em", c.getEmail());
+                    Cookie pa = new Cookie("pa", c.getPass());
+                    em.setMaxAge(60 * 60 * 24 * 7);
+                    pa.setMaxAge(60 * 60 * 24 * 7);
+                    response.addCookie(em);
+                    response.addCookie(pa);
+
+                    // Session
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", c);
+                    Movie m = (Movie) session.getAttribute("movie");
+                    if (c.getRole() == 1) {
+                        response.sendRedirect("detail?id=" + m.getId());
+                    } else if(c.getRole()==3){
+                        response.sendRedirect("staff/index.jsp");
+                    }else if(c.getRole()==4){
+                        response.sendRedirect("manager");
+                    }else {
+                        response.sendRedirect("admin");
+                    }
+
+                } else {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-
     }
 
     @Override

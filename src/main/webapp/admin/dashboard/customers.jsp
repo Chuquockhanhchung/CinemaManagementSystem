@@ -129,7 +129,11 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
-
+        .dropdown-menu {
+            display: block; /* hoặc inline-block */
+            visibility: visible;
+            opacity: 1;
+        }
 
     </style>
 </head>
@@ -227,6 +231,11 @@
             </nav>
         </div>
     </header>
+    <script>
+        document.querySelector('.dropdown-toggle').addEventListener('click', function() {
+            document.querySelector('.dropdown-menu').classList.toggle('show');
+        })
+    </script>
     <!--**********************************
 Header end 
 ***********************************-->

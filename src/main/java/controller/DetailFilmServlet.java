@@ -92,7 +92,7 @@ public class DetailFilmServlet extends HttpServlet {
         AdminDAO adao = new AdminDAO(DBContext.getConn());
         //Get account
         ArrayList<Customer> listC= cdao.getInfor_Customer();
-        ArrayList<Account> listacc = adao.getall_Account();
+        ArrayList<Account> list = adao.getall_Account();
         session.setAttribute("movietype", movietype);
         session.setAttribute("movie", movie);
         session.setAttribute("showtime", list1);
@@ -102,10 +102,10 @@ public class DetailFilmServlet extends HttpServlet {
         session.setAttribute("date", date);
         session.setAttribute("listf", listf);
         session.setAttribute("actors", actors);
-        request.setAttribute("listAcc", listacc);
+        request.setAttribute("listAcc", list);
         request.setAttribute("listCus", listC);
-        request.setAttribute("numberAcc",listacc.size());
-       response.sendRedirect("movie_single_second.jsp");
+        request.setAttribute("numberAcc",list.size());
+        request.getRequestDispatcher("movie_single_second.jsp").forward(request, response);
 
     }
 
