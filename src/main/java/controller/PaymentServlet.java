@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
 
 import dal.DBContext;
 import dal.MovieDAO;
@@ -30,14 +32,14 @@ public class PaymentServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PaymentServlet</title>");  
+            out.println("<title>Servlet PaymentServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet PaymentServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
 
     @Override
@@ -54,10 +56,14 @@ public class PaymentServlet extends HttpServlet {
 
             int customerID = Integer.parseInt(request.getParameter("idCustomer"));
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
+
             String seatID = request.getParameter("seatID");
             String seatID2 = (String)session.getAttribute("seatC");
+
             float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
             String status = request.getParameter("status");
+            String BookingID = request.getParameter("BookingID");
+
             MovieDAO md = new MovieDAO(DBContext.getConn());
             int romID = md.getRoomIDbyST(showtimeID);
 
@@ -93,11 +99,16 @@ public class PaymentServlet extends HttpServlet {
                     break;
                 }
             }
+
+            String[] seatIDs = seatID.split(",");
+            List<String> seatIDList = Arrays.asList(seatIDs);
+
             Ticket ticket = new Ticket();
             ticket.setCustomerID(customerID);
             ticket.setShowtimeID(showtimeID);
-            ticket.setSeatID(seatID);
+            ticket.setSeatIDs(seatIDList);
             ticket.setTicketPrice(ticketPrice);
+            ticket.setBookingID(BookingID);
             ticket.setStatus(status);
 
             PaymentDAO dao = new PaymentDAO(DBContext.getConn());

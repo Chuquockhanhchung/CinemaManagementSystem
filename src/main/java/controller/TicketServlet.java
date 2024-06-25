@@ -153,7 +153,6 @@ public class TicketServlet extends HttpServlet {
             if (allSeatsHeld) {
                 // Lấy danh sách `ShowTime` và ID `ShowTime` từ session
 
-
                 // Tạo đối tượng `Ticket` và lưu vào session
                 Customer customer = (Customer) session.getAttribute("user");
                 Movie movie = (Movie) session.getAttribute("movie");

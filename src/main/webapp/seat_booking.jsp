@@ -40,15 +40,17 @@
         <img src="images/header/horoscope.gif" id="preloader_image" alt="loader">
     </div>
 </div>
-<!-- color picker start -->
+
+<%-- Header Start --%>
+<%@include file="header.jsp" %>
+<%-- Header End --%>
 <!-- st top header Start -->
 <div class="st_bt_top_header_wrapper float_left">
     <div class="container container_seat">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left"> <a
-                        href="detail?id=${sessionScope.movie.getId()}"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở
-                    lại</a>
+                        href="detail?id=${sessionScope.movie.getId()}"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
                 </div>
 
             </div>

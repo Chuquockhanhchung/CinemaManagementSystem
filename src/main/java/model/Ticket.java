@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Ticket {
 
     private int TicketID;
@@ -10,6 +12,7 @@ public class Ticket {
     private String StartTime;
     private String StartDate;
     private String SeatID;
+    private List<String> seatIDs;
     private String SeatType;
     private String EventName;
     private float TicketPrice;
@@ -65,6 +68,14 @@ public class Ticket {
                 ", MovieName='" + MovieName + '\'' +
                 ", Image='" + Image + '\'' +
                 '}';
+    }
+
+    public List<String> getSeatIDs() {
+        return seatIDs;
+    }
+
+    public void setSeatIDs(List<String> seatIDs) {
+        this.seatIDs = seatIDs;
     }
 
     public int getTicketID() {

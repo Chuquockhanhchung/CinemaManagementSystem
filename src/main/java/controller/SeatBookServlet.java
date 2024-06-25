@@ -2,6 +2,7 @@ package controller;
 
 import dal.AdminDAO;
 import dal.DBContext;
+import dal.MovieDAO;
 import dal.TicketDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -54,6 +55,7 @@ public class SeatBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         int showtimeID =Integer.parseInt(request.getParameter("showtimeId")) ;
         TicketDAO dal = new TicketDAO(DBContext.getConn());
         List<Seat> list = null;
@@ -80,7 +82,52 @@ public class SeatBookServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         HttpSession session = request.getSession();
+        try{
+
+            String seatID = request.getParameter("seatID");
+            String seatID2 = (String)session.getAttribute("seatC");
+            MovieDAO md = new MovieDAO(DBContext.getConn());
+            int romID = md.getRoomIDbyST(showtimeID);
+
+            // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
+            String seati = "";
+            String[] selectedSeats = seatID2.split(",");
+            for (int i = 0; i < selectedSeats.length; i++) {
+                selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+                int seatInt = Integer.parseInt(selectedSeats[i]);
+                int realID = (seatInt - 1) * 4 + romID;
+                seati += realID + ",";
+            }
+            seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
+            TicketDAO d = new TicketDAO(DBContext.getConn());
+            boolean allSeatsHeld = true;
+            String[] seats = seati.split(",");
+            for (String seatIdStr : seats) {
+                int seatId;
+                try {
+                    seatId = Integer.parseInt(seatIdStr); // Chuyển đổi định dạng ghế ngồi
+                } catch (NumberFormatException e) {
+                    // Handle invalid seat ID format
+                    allSeatsHeld = false;
+                    break;
+                }
+                Seat seat = new Seat();
+                seat.setSeatID(seatId);
+                seat.setStatus("active");
+
+                boolean seatHeld = d.holdTicket(seat);
+                if (!seatHeld) {
+                    allSeatsHeld = false;
+                    break;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         session.setAttribute("time",showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
@@ -94,7 +141,7 @@ public class SeatBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
