@@ -4,6 +4,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="dal.ProductDAO" %>
 <%@ page import="model.Product" %>
+<%@ page import="dal.VoucherDAO" %>
+<%@ page import="model.Voucher" %>
 <%--
   Created by IntelliJ IDEA.
   User: datla
@@ -13,6 +15,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <html lang="en">
 
@@ -186,35 +189,36 @@ Content body start
                                     <table class="table table-striped  table-condensed flip-content">
                                         <thead>
                                         <tr>
-                                            <th class="text-black">V.ID</th>
+                                            <th class="text-black">ID</th>
                                             <th class="text-black">Tên Voucher</th>
-                                            <th class="text-black">Thông Tin Voucher</th>
                                             <th class="text-black">Giá Trị Voucher</th>
                                             <th class="text-black">Hạn Sử Dụng</th>
+                                            <th class="text-black">Thông Tin Voucher</th>
                                             <th class="text-black">Thông Tin Chi Tiết</th>
                                             <th class="text-black text-end">Công cụ</th>
                                         </tr>
                                         </thead>
+
+
                                         <tbody>
 <%--                                        Sửa hàm dao thành VoucherDAO--%>
                                         <%
-                                            ProductDAO pd = new ProductDAO(DBContext.getConn());
-                                            List<Product> list = pd.getAllProduct();
-                                            for (Product product : list) {
+                                            VoucherDAO pd = new VoucherDAO(DBContext.getConn());
+                                            List<Voucher> list = pd.getAllVouchers();
+                                            for (Voucher voucher : list) {
                                         %>
                                         <tr>
-                                            <td><%= product.getProductID() %></td>
-                                            <td><%= product.getProductName() %></td>
-                                            <td><%= product.getSupplierName() %></td>
-                                            <td><%= product.getProductPrice() %></td>
-                                            <td><%= product.getProductPrice() %></td>
-                                            <td><%= product.getDetail() %></td>
+                                            <td><%= voucher.getVoucherID() %></td>
+                                            <td><%= voucher.getVoucherName() %></td>
+                                            <td><%= voucher.getVoucherPrice() %></td>
+                                            <td><%= voucher.getExpirationDate() %></td>
+                                            <td><%= voucher.getDetail() %></td>
                                             <td class="text-end">
-                                                <a href="edit_product.jsp?ProductID=<%=product.getProductID()%>"
+                                                <a href="edit_voucher.jsp?VoucherID=<%=voucher.getVoucherID()%>"
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="javascript:void(0);" onclick="DeleteProduct('<%=product.getProductID()%>')"
+                                                <a href="" onclick="DeleteVoucher('<%=voucher.getVoucherID()%>')"
                                                    class="btn btn-danger btn-sm content-icon">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
@@ -225,10 +229,10 @@ Content body start
                                         </tbody>
                                     </table>
                                     <script>
-                                        function DeleteProduct(ProductID) {
-                                            let text = "You want delete" + ProductID + "?";
+                                        function DeleteVoucher(VoucherID) {
+                                            let text = "You want delete" + VoucherID + "?";
                                             if (confirm(text) == true) {
-                                                window.location = "../../deleteproduct?ProductID=" + ProductID
+                                                window.location = "../../deletevoucher?VoucherID=" + VoucherID
                                             }
                                         }
                                     </script>

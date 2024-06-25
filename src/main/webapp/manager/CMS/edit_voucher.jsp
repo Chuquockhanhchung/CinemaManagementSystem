@@ -1,7 +1,9 @@
 <%@ page import="dal.ProductDAO" %>
 <%@ page import="dal.DBContext" %>
 <%@ page import="model.Product" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="dal.VoucherDAO" %>
+<%@ page import="model.Voucher" %><%--
 
   Created by IntelliJ IDEA.
   User: datla
@@ -145,17 +147,17 @@ Content body start
                         </ul>
                     </div>
                     <%
-                        int ProductID = Integer.parseInt(request.getParameter("ProductID"));
-                        ProductDAO pd = new ProductDAO(DBContext.getConn());
-                        Product p = pd.getProductByID(ProductID);
+                        int VoucherID = Integer.parseInt(request.getParameter("VoucherID"));
+                        VoucherDAO vd = new VoucherDAO(DBContext.getConn());
+                        Voucher v = vd.getVoucherByID(VoucherID);
                     %>
-                    <form method="post" action="../../editproduct">
-                        <input type="text" name="ProductID" value="<%= p.getProductID()%>">
+                    <form method="post" action="../../editvoucher">
+                        <input type="text" name="VoucherID" value="<%= v.getVoucherID()%>">
                         <div class="row">
                             <div class="mb-3 col-sm-8">
-                                <label class="form-label">Tên Sản Phẩm</label>
-                                <input type="text" class="form-control" placeholder="Tên Sản Phẩm"
-                                       name="ProductName" value="<%=p.getProductName()%>">
+                                <label class="form-label">Tên Voucher</label>
+                                <input type="text" class="form-control" placeholder="Tên Voucher"
+                                       name="VoucherName" value="<%=v.getVoucherName()%>">
                             </div>
                             <div class="col-xl-8">
                                 <div class="filter cm-content-box box-primary">
@@ -169,19 +171,26 @@ Content body start
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
-                                            <label class="form-label">Giá Sản Phẩm</label>
+                                            <label class="form-label">Giá Trị Voucher</label>
                                             <input type="text" class="form-control"
-                                                   name="ProductPrice" value="<%=p.getProductPrice()%>">
+                                                   name="VoucherPrice" value="<%=v.getVoucherPrice()%>">
                                         </div>
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
-                                            <label class="form-label">Thông Tin Sản Phẩm</label>
+                                            <label class="form-label">Hạn Sử Dụng</label>
                                             <input type="text" class="form-control"
-                                                   name="Detail" value="<%=p.getDetail()%>">
+                                                   name="ExpirationDate" value="<%=v.getExpirationDate()%>">
                                         </div>
                                     </div>
-                                    <input type="submit" class="btn btn-primary" value="EditProduct">
+                                    <div class="cm-content-body form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Thông Tin Voucher</label>
+                                            <input type="text" class="form-control"
+                                                   name="Detail" value="<%=v.getDetail()%>">
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="EditVoucher">
                                 </div>
 
                             </div>

@@ -154,20 +154,20 @@ Content body start
                             <div class="col-xl-8">
                                 <div class="filter cm-content-box box-primary">
                                     <div class="content-title SlideToolHeader">
-                                        <div class="cpa"> Thông Tin Voucher
-                                        </div>
+                                        <div class="cpa"> Thông Tin Voucher</div>
                                         <div class="tools">
-                                            <a href="javascript:void(0);" class="expand handle"><i
-                                                    class="fal fa-angle-down"></i></a>
+                                            <a href="javascript:void(0);" class="expand handle">
+                                                <i class="fal fa-angle-down"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Giá Trị Voucher</label>
-                                            <input type="text" class="form-control" name="VoucherPrice">
+                                            <input type="number" class="form-control" name="VoucherPrice" min="1" max="100">
                                         </div>
                                     </div>
-<%--                                    Có thể sẽ lỗi ở đây vì định dạng ngày ở đây là tháng/ngày/năm còn tròn database là năm/tháng/ngày--%>
+<%--Có thể sẽ lỗi ở đây vì định dạng ngày ở đây là tháng/ngày/năm còn tròn database là năm/tháng/ngày--%>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Hạn Sử Dụng</label>
@@ -180,145 +180,18 @@ Content body start
                                             <input type="text" class="form-control" name="Detail">
                                         </div>
                                     </div>
-                                    <%--                                    <select name="type">--%>
-                                    <%--                                        <c:if test="${requestScope.}"--%>
-                                    <%--                                    </select>--%>
                                     <input type="submit" class="btn btn-primary btn-sm" value="Thêm Voucher">
                                 </div>
                             </div>
-                            <%--                            <div class="col-xl-4">--%>
-                            <%--                                <div class="right-sidebar-sticky">--%>
-                            <%--                                    <div class="filter cm-content-box box-primary">--%>
-                            <%--                                        <div class="content-title SlideToolHeader">--%>
-                            <%--                                            <div class="cpa">--%>
-                            <%--                                                Cài Đặt--%>
-                            <%--                                            </div>--%>
-                            <%--                                            <div class="tools">--%>
-                            <%--                                                <a href="javascript:void(0);" class="expand handle"><i--%>
-                            <%--                                                        class="fal fa-angle-down"></i></a>--%>
-                            <%--                                            </div>--%>
-                            <%--                                        </div>--%>
-                            <%--                                        <div class="cm-content-body publish-content form excerpt">--%>
-                            <%--                                            <div class="card-body py-3">--%>
-                            <%--                                                <ul class="d-flex align-items-center mb-2">--%>
-                            <%--                                                    <li><a href="javascript:void(0);"><i class="fa-solid fa-eye"></i></a>--%>
-                            <%--                                                    </li>--%>
-                            <%--                                                    <li><a href="javascript:void(0);" class="ms-2">Trạng Thái:</a></li>--%>
-                            <%--                                                    <li><strong><a href="javascript:void(0);"--%>
-                            <%--                                                                   class="mx-2">Hoạt Động</a></strong></li>--%>
-                            <%--                                                    <li><a href="javascript:void(0);" class="accordion accordion-primary"--%>
-                            <%--                                                           id="headingtwo" data-bs-toggle="collapse"--%>
-                            <%--                                                           data-bs-target="#collapsetwo" aria-controls="collapsetwo"--%>
-                            <%--                                                           aria-expanded="true" role="button">Chỉnh sửa</a></li>--%>
-                            <%--                                                </ul>--%>
-                            <%--                                                <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"--%>
-                            <%--                                                     data-bs-parent="#accordion-one">--%>
-                            <%--                                                    <div class="accordion-body-text p-3 border rounded">--%>
-                            <%--                                                        <div class="basic-form">--%>
-                            <%--                                                            <form>--%>
-                            <%--                                                                <div class="mb-3 mb-0">--%>
-                            <%--                                                                    <div class="radio">--%>
-                            <%--                                                                        <label class="form-check-label"><input type="radio"--%>
-                            <%--                                                                                                               name="optradio"--%>
-                            <%--                                                                                                               class="form-check-input">--%>
-                            <%--                                                                            Hoạt Động</label>--%>
-                            <%--                                                                    </div>--%>
-                            <%--                                                                    <div class="radio">--%>
-                            <%--                                                                        <label class="form-check-label"><input type="radio"--%>
-                            <%--                                                                                                               name="optradio"--%>
-                            <%--                                                                                                               class="form-check-input">--%>
-                            <%--                                                                            Không Hoạt Động</label>--%>
-                            <%--                                                                    </div>--%>
-                            <%--                                                                </div>--%>
-                            <%--                                                            </form>--%>
-                            <%--                                                        </div>--%>
-                            <%--                                                        <div>--%>
-                            <%--                                                            <button class="btn btn-primary btn-sm me-2" type="button"--%>
-                            <%--                                                                    data-bs-toggle="collapse" data-bs-target="#collapsetwo"--%>
-                            <%--                                                                    aria-expanded="false" aria-controls="collapsetwo">--%>
-                            <%--                                                                Ok--%>
-                            <%--                                                            </button>--%>
-                            <%--                                                            <button class="btn btn-danger light btn-sm" type="button"--%>
-                            <%--                                                                    data-bs-toggle="collapse" data-bs-target="#collapsetwo"--%>
-                            <%--                                                                    aria-expanded="false" aria-controls="collapsetwo">--%>
-                            <%--                                                                Cancel--%>
-                            <%--                                                            </button>--%>
-                            <%--                                                        </div>--%>
-                            <%--                                                    </div>--%>
-                            <%--                                                </div>--%>
-                            <%--                                                <ul class="d-flex align-items-center mb-2 flex-wrap">--%>
-                            <%--                                                    <li><a href="javascript:void(0);"><i--%>
-                            <%--                                                            class="fa-solid fa-calendar-days"></i></a></li>--%>
-                            <%--                                                    <li><a href="javascript:void(0);" class="ms-2">Published</a></li>--%>
-                            <%--                                                    <li><strong><a href="javascript:void(0);" class="mx-2">on :24-09-2023--%>
-                            <%--                                                        16:22:52 </a></strong></li>--%>
-                            <%--                                                    <li><a href="javascript:void(0);" class="accordion accordion-primary"--%>
-                            <%--                                                           id="headingthree" data-bs-toggle="collapse"--%>
-                            <%--                                                           data-bs-target="#collapsethree" aria-controls="collapsethree"--%>
-                            <%--                                                           aria-expanded="true" role="button">Edit</a></li>--%>
 
-                            <%--                                                </ul>--%>
-                            <%--                                                <div id="collapsethree" class="collapse" aria-labelledby="headingthree"--%>
-                            <%--                                                     data-bs-parent="#accordion-one">--%>
-                            <%--                                                    <div class="accordion-body-text p-3 mb-3 border rounded">--%>
-                            <%--                                                        <div class="basic-form mb-3">--%>
-                            <%--                                                            <input type="date" name="datepicker" class=" form-control">--%>
-                            <%--                                                        </div>--%>
-                            <%--                                                        <button class="btn btn-primary btn-sm me-2" type="button"--%>
-                            <%--                                                                data-bs-toggle="collapse" data-bs-target="#collapsethree"--%>
-                            <%--                                                                aria-expanded="false" aria-controls="collapsethree">--%>
-                            <%--                                                            Ok--%>
-                            <%--                                                        </button>--%>
-                            <%--                                                        <button class="btn btn-danger light btn-sm" type="button"--%>
-                            <%--                                                                data-bs-toggle="collapse" data-bs-target="#collapsethree"--%>
-                            <%--                                                                aria-expanded="false" aria-controls="collapsethree">--%>
-                            <%--                                                            Cancel--%>
-                            <%--                                                        </button>--%>
-                            <%--                                                    </div>--%>
-                            <%--                                                </div>--%>
-                            <%--                                            </div>--%>
-                            <%--                                        </div>--%>
-                            <%--                                    </div>--%>
-
-                            <%--                                    <div class="filter cm-content-box box-primary">--%>
-                            <%--                                        <div class="content-title SlideToolHeader">--%>
-                            <%--                                            <div class="cpa">--%>
-                            <%--                                                Featured Image--%>
-                            <%--                                            </div>--%>
-                            <%--                                            <div class="tools">--%>
-                            <%--                                                <a href="javascript:void(0);" class="expand handle"><i--%>
-                            <%--                                                        class="fal fa-angle-down"></i></a>--%>
-                            <%--                                            </div>--%>
-                            <%--                                        </div>--%>
-                            <%--                                        <div class="cm-content-body publish-content form excerpt">--%>
-                            <%--                                            <div class="card-body">--%>
-                            <%--                                                <div class="avatar-upload d-flex align-items-center">--%>
-                            <%--                                                    <div class=" position-relative ">--%>
-                            <%--                                                        <div class="avatar-preview">--%>
-                            <%--                                                            <div id="imagePreview"--%>
-                            <%--                                                                 style="background-image: url(../../public/assets/images/no-img-avatar.png);">--%>
-                            <%--                                                            </div>--%>
-                            <%--                                                        </div>--%>
-                            <%--                                                        <div class="change-btn d-flex align-items-center flex-wrap">--%>
-                            <%--                                                            <input type='file' class="form-control d-none" id="imageUpload"--%>
-                            <%--                                                                   accept=".png, .jpg, .jpeg"--%>
-                            <%--                                                                   name="EventImage">--%>
-                            <%--                                                            <label for="imageUpload" class="btn btn-primary ms-0">Select--%>
-                            <%--                                                                Image</label>--%>
-                            <%--                                                        </div>--%>
-                            <%--                                                    </div>--%>
-                            <%--                                                </div>--%>
-                            <%--                                            </div>--%>
-                            <%--                                        </div>--%>
-                            <%--                                        <hr>--%>
-                            <%--                                        <div class="card-footer border-0 pt-0 text-end">--%>
-                            <%--                                            <input type="submit" class="btn btn-primary btn-sm" name="SUBMIT">--%>
-                            <%--                                        </div>--%>
-                            <%--                                    </div>--%>
-                            <%--                                </div>--%>
-                            <%--                            </div>--%>
                         </div>
                     </form>
+                    <!-- Display message using JSTL -->
+                    <c:if test="${not empty message}">
+                        <div class="alert alert-info">
+                                ${message}
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
