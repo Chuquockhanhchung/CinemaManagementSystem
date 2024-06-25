@@ -95,10 +95,7 @@
         <servlet-name>DetailFilmServlet</servlet-name>
         <servlet-class>controller.DetailFilmServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DetailFilmServlet</servlet-name>
-        <servlet-class>controller.DetailFilmServlet</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>ActiveServlet</servlet-name>
         <servlet-class>controller.ActiveServlet</servlet-class>
@@ -107,10 +104,7 @@
         <servlet-name>DeleteFeedback</servlet-name>
         <servlet-class>controller.DeleteFeedback</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DeleteFeedback</servlet-name>
-        <servlet-class>controller.DeleteFeedback</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
         <servlet-class>controller.ActivatedServlet</servlet-class>
@@ -175,22 +169,7 @@
         <servlet-name>editMovieServlet</servlet-name>
         <servlet-class>controller.editMovieServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>EventServlet</servlet-name>
-        <servlet-class>controller.EventServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddProduct</servlet-name>
-        <servlet-class>controller.AddProduct</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditProduct</servlet-name>
-        <servlet-class>controller.EditProduct</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteProduct</servlet-name>
-        <servlet-class>controller.DeleteProduct</servlet-class>
-    </servlet>
+
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -211,10 +190,7 @@
         <servlet-name>SeatBookServlet</servlet-name>
         <url-pattern>/seat</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FilterByTypeServlet</servlet-name>
-        <url-pattern>/type</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>FilterByTypeServlet</servlet-name>
         <url-pattern>/type</url-pattern>
@@ -231,10 +207,7 @@
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteFeedback</servlet-name>
-        <url-pattern>/deletefeedback</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>SearchMovie</servlet-name>
         <url-pattern>/searchmovie</url-pattern>
@@ -315,22 +288,13 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
-        <servlet-name>EventServlet</servlet-name>
-        <url-pattern>/event</url-pattern>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <url-pattern>/search2</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddProduct</servlet-name>
-        <url-pattern>/addproduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditProduct</servlet-name>
-        <url-pattern>/editproduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteProduct</servlet-name>
-        <url-pattern>/deleteproduct</url-pattern>
-    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>EventServlet</servlet-name>
         <url-pattern>/event</url-pattern>

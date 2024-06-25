@@ -121,6 +121,20 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
+    public int getRoomIDbyST(int id){
+        String sql ="Select RoomID from showtime where ShowtimeID =?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public float getRatingById(int id) {
         float rating = 0;
         String sql = "SELECT IMDbRating FROM movie WHERE MovieID=?";

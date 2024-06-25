@@ -127,7 +127,11 @@ public class SeatBookServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        try {
+            list = dal.getSeatByRoom(dal.getRoomByShowtime(showtimeID).getRoomId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         session.setAttribute("time",showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
