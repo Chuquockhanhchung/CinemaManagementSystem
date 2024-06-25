@@ -233,14 +233,22 @@ public class TicketDAO extends DBContext{
         return f;
     }
 
+    public String changeSeat(String realSeat){
+        String seati="";
+        String[] selectedSeats = realSeat.split(",");
+        for (int i = 0; i < selectedSeats.length; i++) {
+            selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+            int seatInt = Integer.parseInt(selectedSeats[i]);
+            int realID = (seatInt - 1) * 4 + 1;
+            seati += realID + ",";
+        }
+        seati = seati.substring(0, seati.length() - 1);
+        return seati;
+    }
 
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        try {
-            System.out.println(dal.getMovieByShowTime(1));
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
+        System.out.println(dal.changeSeat("A22,A23"));
     }
 }

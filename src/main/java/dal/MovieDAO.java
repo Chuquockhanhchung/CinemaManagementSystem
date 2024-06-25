@@ -240,6 +240,20 @@ public class MovieDAO extends DBContext {
 //            System.out.println(a.toString());
 //        }
 //    }
+    public int getRoomIDbyST(int id){
+        String sql ="Select RoomID from showtime where ShowtimeID =?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public ArrayList<Actor> getActorByMovieId(int id) {
         ArrayList<Actor> actors = new ArrayList<>();
         String sql = "Select a.ActorID,a.ActorImg,a.ActorName from actors a join movie_has_actors m on a.ActorID=m.ActorID where m.MovieID=?";
