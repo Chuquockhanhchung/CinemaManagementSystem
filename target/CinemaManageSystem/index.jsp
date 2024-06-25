@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="images/header/shortcut-icon.png"/>
+    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
 
     <!-- Uicons - Flaticon -->
     <link rel='stylesheet'
@@ -1156,6 +1156,7 @@
 
 
     <!-- Form Forgot Password -->
+    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
 
         <div class="modal-dialog">
             <div class="modal-content">

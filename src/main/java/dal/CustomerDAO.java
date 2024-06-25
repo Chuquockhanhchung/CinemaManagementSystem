@@ -97,14 +97,7 @@ public class CustomerDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-        try (Connection con = getConn()) {
-            // Connection successful, you can perform further operations here if needed
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
     public Customer getCustomer(String id) {
         Customer c = new Customer();
         String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType\n"
