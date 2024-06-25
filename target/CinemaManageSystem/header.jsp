@@ -164,7 +164,7 @@
                             </li>
                             <c:if test="${sessionScope.user != null}">
                                 <li>
-                                    <a style="text-decoration: none;color: white" href="login"><i
+                                    <a style="text-decoration: none;color: white" href="Account.jsp"><i
                                             class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
                                 </li>
 
