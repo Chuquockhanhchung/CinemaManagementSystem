@@ -173,7 +173,7 @@ public class TicketServlet extends HttpServlet {
                         movie.getName(),
                         seati
                 );
-
+                session.setAttribute("seatC",selectedSeatsParam);
                 session.setAttribute("ticket", ticket);
                 session.setAttribute("seatID",realSeat);
 

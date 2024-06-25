@@ -16,7 +16,7 @@ public class DBContext {
 
     protected static Connection conn;
 
-    private static String URL = "jdbc:mysql://localhost:3306/cinemamanagersystem";
+    private static String URL = "jdbc:mysql://localhost:3306/cinemamanagersystem?charSet=utf8";
 
     private static String USER = "root";
 
@@ -63,9 +63,7 @@ public class DBContext {
 //    }
     public static void main(String[] args) {
         try (Connection con = getConn()) {
-            MovieDAO dao = new MovieDAO(con);
-            ArrayList<ShowTime> list = dao.getShowTime(44);
-            System.out.println(list.get(0).getDayName());
+            System.out.println(con);
         } catch (SQLException e) {
             e.printStackTrace();
         }

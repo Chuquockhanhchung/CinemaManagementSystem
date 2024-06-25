@@ -9,12 +9,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import dal.DBContext;
+import dal.MovieDAO;
 import dal.PaymentDAO;
+import dal.TicketDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Seat;
 import model.Ticket;
 
 public class PaymentServlet extends HttpServlet {
@@ -47,13 +50,49 @@ public class PaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try {
+            HttpSession session = request.getSession();
+
             int customerID = Integer.parseInt(request.getParameter("idCustomer"));
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
             String seatID = request.getParameter("seatID");
+            String seatID2 = (String)session.getAttribute("seatC");
             float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
             String status = request.getParameter("status");
+            MovieDAO md = new MovieDAO(DBContext.getConn());
+            int romID = md.getRoomIDbyST(showtimeID);
 
-            HttpSession session = request.getSession();
+            // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
+            String seati = "";
+            String[] selectedSeats = seatID2.split(",");
+            for (int i = 0; i < selectedSeats.length; i++) {
+                selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+                int seatInt = Integer.parseInt(selectedSeats[i]);
+                int realID = (seatInt - 1) * 4 + romID;
+                seati += realID + ",";
+            }
+            seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
+            TicketDAO d = new TicketDAO(DBContext.getConn());
+            boolean allSeatsHeld = true;
+            String[] seats = seati.split(",");
+            for (String seatIdStr : seats) {
+                int seatId;
+                try {
+                    seatId = Integer.parseInt(seatIdStr); // Chuyển đổi định dạng ghế ngồi
+                } catch (NumberFormatException e) {
+                    // Handle invalid seat ID format
+                    allSeatsHeld = false;
+                    break;
+                }
+                Seat seat = new Seat();
+                seat.setSeatID(seatId);
+                seat.setStatus("unactive");
+
+                boolean seatHeld = d.holdTicket(seat);
+                if (!seatHeld) {
+                    allSeatsHeld = false;
+                    break;
+                }
+            }
             Ticket ticket = new Ticket();
             ticket.setCustomerID(customerID);
             ticket.setShowtimeID(showtimeID);
