@@ -79,6 +79,7 @@
 <form action="payment" method="post">
     <input type="text" value="${sessionScope.user.idCustomer}" name="idCustomer" hidden="">
     <input type="text" value="${sessionScope.time}" name="showtimeID" hidden="">
+    <input type="text" id="randomBookingID" name="BookingID" readonly >
 
     <div class="st_dtts_wrapper float_left">
         <div class="container">
@@ -730,7 +731,6 @@
     </div>
     <!--main js file start-->
 
-    <input type="text" id="randomBookingID" name="BookingID" readonly >
 
 </form>
 <script>
