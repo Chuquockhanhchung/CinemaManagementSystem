@@ -196,18 +196,21 @@
                                                 for (Movie movie : list) {
                                             %>
                                             <swiper-slide>
+
                                                 <option value="<%= movie.getId() %>"
                                                         data-thumbnail="<%= movie.getImage() %>">
                                                     <p value="<%= movie.getName() %>"
                                                        class="product-color-text"><%= movie.getName() %>
                                                     </p>
                                                 </option>
+
                                             </swiper-slide>
                                             <%
                                                 }
                                             %>
                                         </select>
                                     </swiper-container>
+
                                 </div>
                             </div>
                         </div>
