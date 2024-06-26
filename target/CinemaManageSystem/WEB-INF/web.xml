@@ -108,7 +108,22 @@
         <servlet-name>DeleteFeedback</servlet-name>
         <servlet-class>controller.DeleteFeedback</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <servlet-class>controller.AddVoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoucherServlet</servlet-name>
+        <servlet-class>controller.VoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditVoucher</servlet-name>
+        <servlet-class>controller.EditVoucher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteVoucher</servlet-name>
+        <servlet-class>controller.DeleteVoucher</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
         <servlet-class>controller.ActivatedServlet</servlet-class>
@@ -211,7 +226,22 @@
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <url-pattern>/addvoucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoucherServlet</servlet-name>
+        <url-pattern>/voucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditVoucher</servlet-name>
+        <url-pattern>/editvoucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteVoucher</servlet-name>
+        <url-pattern>/deletevoucher</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchMovie</servlet-name>
         <url-pattern>/searchmovie</url-pattern>
