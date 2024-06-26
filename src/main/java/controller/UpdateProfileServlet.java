@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+@MultipartConfig
 public class UpdateProfileServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -50,7 +51,6 @@ public class UpdateProfileServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -75,58 +75,46 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        // Retrieve form data
-        String username = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
+      try{
+          // Retrieve form data
+          String username = request.getParameter("name");
+          String email = request.getParameter("email");
+          String phone = request.getParameter("phone");
 
-        // Check if any part is missing
-        if (username == null || email == null || phone == null) {
-            response.getWriter().println("Missing form parameters.");
-            return;
-        }
+          Part part = request.getPart("profile-pic");
+          String picture = part.getSubmittedFileName();
+          // Check if any part is missing
+          if (username == null || email == null || phone == null) {
+              response.getWriter().println("Missing form parameters.");
+              return;
+          }
 
-        // Log the parameters to verify they are being retrieved correctly
-        System.out.println("Username: " + username);
-        System.out.println("Email: " + email);
-        System.out.println("Phone: " + phone);
+          // Log the parameters to verify they are being retrieved correctly
+          System.out.println("Username: " + username);
+          System.out.println("Email: " + email);
+          System.out.println("Phone: " + phone);
 
-        // Retrieve file part
-        Part filePart = request.getPart("profile-pic");
-        String filePath = null;
+          // Retrieve file part
+          String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "about";
 
-        if (filePart != null && filePart.getSize() > 0) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+          // Update the user's profile with the new data
+          CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+          HttpSession session = request.getSession();
+          Customer c = (Customer) session.getAttribute("user");
 
-            // Save the file to the server
-            String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) uploadDir.mkdir();
+          dao.EditCustomer(username, email, phone, "images" + "/" + "content" + "/" + "about"+ "/" + picture, c.getIdCustomer());
 
-            filePath = uploadPath + File.separator + fileName;
-            filePart.write(filePath);
-        }
+          // Update session with new user data
+          c.setName(username);
+          c.setEmail(email);
+          c.setPhone(phone);
+          c.setPicture(picture);
+          session.setAttribute("user", c);
 
-        // Update the user's profile with the new data
-        CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-        HttpSession session = request.getSession();
-        Customer c = (Customer) session.getAttribute("user");
-
-        if (filePath == null) {
-            // If no new file uploaded, keep the old file path
-            filePath = c.getPicture();
-        }
-
-        dao.EditCustomer(username, email, phone, filePath, c.getIdCustomer());
-
-        // Update session with new user data
-        c.setName(username);
-        c.setEmail(email);
-        c.setPhone(phone);
-        c.setPicture(filePath);
-        session.setAttribute("user", c);
-
-        response.sendRedirect("home");
+          response.sendRedirect("home");
+      } catch(Exception e){
+          e.printStackTrace();
+      }
     }
 
 

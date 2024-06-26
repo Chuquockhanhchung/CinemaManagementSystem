@@ -1,2 +1,5 @@
 /target/
 *.MF
+target/CinemaManageSystem/WEB-INF/classes/dal/DBContext.class
+src/main/java/dal/DBContext.java
+target/classes/dal/DBContext.class

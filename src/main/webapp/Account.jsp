@@ -7,9 +7,13 @@
 --%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.*" %>
+<%@ page import="dal.CustomerDAO" %>
+<%@ page import="dal.TicketDAO" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <html lang="zxx">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -117,6 +121,11 @@
         </div>
         <div class="col-md-9">
             <div class="tab-content">
+                <%
+                    int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
+                    CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+                    Customer cus = dao.getCustomerByID(CustomerID);
+                %>
                 <!-- Thông Tin Cá Nhân -->
                 <div class="tab-pane fade show active" id="thong-tin-chung">
                     <h2>THÔNG TIN CHUNG</h2>
@@ -124,7 +133,7 @@
                         <div class="form-group">
                             <label for="profile-pic">Ảnh</label>
                             <input type="file" class="form-control-file" id="profile-pic" name="profile-pic" onchange="previewImage(event)">
-                            <img id="profile-pic-preview" src="${sessionScope.user.picture}" alt="Profile Picture" class="mt-2" style="width: 100px; height: 100px;">
+                            <img id="profile-pic-preview" src="<%= cus.getPicture() %>>" alt="Profile Picture" class="mt-2" style="width: 100px; height: 100px;">
                         </div>
                         <div class="form-group">
                             <label for="full-name">Họ và Tên</label>
@@ -173,31 +182,74 @@
                     </form>
                 </div>
                 <!-- Lịch Sử Giao Dịch -->
+                <%
+                    TicketDAO tdao = new TicketDAO(DBContext.getConn());
+                    List<Ticket> list = tdao.getTicketByCustomer(CustomerID);
+                    int ticketCount = tdao.countTicketsByBooking(CustomerID);
+
+                    float TicketPrice = 0;
+                    String BookingID = null;
+
+                    for (Ticket ticket : list) {
+                        TicketPrice += ticket.getTicketPrice();
+                        BookingID = ticket.getBookingID();
+                    }
+                    NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+
+                %>
                 <div class="tab-pane fade" id="lich-su-giao-dich">
                     <h2>LỊCH SỬ GIAO DỊCH</h2>
                     <!-- Ticket example -->
-                    <div class="ticket">
-                        <img src="https://via.placeholder.com/100x150" alt="Movie Poster">
-                        <div class="ticket-info">
-                            <h4>Njan Prakashan</h4>
-                            <p>Malayalam, 2D</p>
-                            <p>Mon, 31 Dec | 09.30PM</p>
-                            <p>Carnival: Artech Central Mall, Trivandrum Audi-5</p>
-                            <p><strong>Total Amount: ₹373.00</strong></p>
+                    <%
+                        int ticketIndex = 0;
+                        for (Ticket ticket : list) {
+                            String ticketID = "ticket_" + ticketIndex;
+                            String qrCodeID = "qrcode_" + ticketIndex;
+                            ticketIndex++;
+                    %>
+                    <div class="st_bcc_tecket_bottom_hesder float_left">
+                        <div class="st_bcc_tecket_bottom_left_wrapper">
+                            <div class="st_bcc_tecket_bottom_inner_left">
+                                <div class="st_bcc_teckt_bot_inner_img">
+                                    <img src="<%= ticket.getImage() %>" alt="img" style="width: 130px">
+                                </div>
+                                <div class="st_bcc_teckt_bot_inner_img_cont">
+                                    <h4><%= ticket.getMovieName() %></h4>
+                                    <h5><%= ticket.getSeatID() %></h5>
+                                    <h3><%= ticket.getStartDate() %> | <%= ticket.getStartTime() %></h3>
+                                    <%
+                                        if ("pending".equals(ticket.getStatus())) {
+                                    %>
+                                    <button type="button" class="btn btn-primary">Thanh toán</button>
+                                    <%
+                                        }
+                                    %>
+                                </div>
+                                <div class="st_purchase_img">
+                                    <img src="images/content/pur2.png" alt="img">
+                                </div>
+                            </div>
+                            <div class="st_bcc_tecket_bottom_inner_right"><i class="fas fa-chair"></i>
+                                <h3><%= ticketIndex %> TICKETS <br>
+                                    <span>EXECUTIV - <%= ticket.getSeatID() %></span></h3>
+                            </div>
                         </div>
-                        <div class="ticket-qr">
-                            <p>2 TICKETS</p>
-                            <p>EXECUTIV - K1, K2</p>
-                            <img src="https://via.placeholder.com/100" alt="QR Code">
-                            <p>Booking ID SSST0000310644</p>
+                        <div class="st_bcc_tecket_bottom_right_wrapper">
+                            <input type="text" spellcheck="false" hidden="" id="<%= ticketID %>" value="<%= ticket.getBookingID() %>" />
+                            <div class="qrcode" id="<%= qrCodeID %>"></div>
                         </div>
                     </div>
+                    <% } %>
                     <!-- Repeat ticket divs for more tickets -->
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
     function previewImage(event) {
         var reader = new FileReader();
@@ -283,12 +335,6 @@
             alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
             return false;
         }
-
-
-
-
-
-
         return true;
 
     }

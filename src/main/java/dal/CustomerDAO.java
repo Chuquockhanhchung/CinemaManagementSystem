@@ -147,6 +147,28 @@ public class CustomerDAO extends DBContext {
         }
         return null;
     }
+
+    public Customer getCustomerByID(int CustomerID) {
+        Customer c = null;
+        String sql = "SELECT * FROM customer WHERE CustomerID = ?";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, CustomerID);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                c = new Customer();
+                c.setIdCustomer(rs.getInt(1));
+                c.setName(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setPicture(rs.getString(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+
     public void insertAccount(Customer account) {
         Security s = new Security();
         String sql = "insert into account (AccountID, Password,AccountType, CreationDate,Status) values (?, ?, ?, now(),'active')";
