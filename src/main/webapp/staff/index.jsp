@@ -105,7 +105,7 @@
                     status = "Đang chiếu"; // Gán giá trị mặc định nếu status là null
                 }
                 MovieDAO dao = new MovieDAO(DBContext.getConn());
-                List<Movie> list = dao.phim(status);
+                List<Movie> list = dao.phim(status,"");
             %>
             <form action="../booking_movie" method="post">
                 <div class="tab-content">

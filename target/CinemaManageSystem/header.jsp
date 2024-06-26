@@ -221,7 +221,7 @@
                     function submitForm() {
 
                         const query = document.getElementById("query").value;
-                        var link = 'searchmovie?Search=' + query;
+                        var link = 'search2?Search=' + query;
                         window.location.href = link;
                     }
                 </script>
