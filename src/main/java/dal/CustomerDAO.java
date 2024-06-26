@@ -7,9 +7,12 @@ package dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import Utill.Security;
+
 import java.sql.*;
 import java.util.ArrayList;
+
 import model.*;
 
 public class CustomerDAO extends DBContext {
@@ -40,8 +43,8 @@ public class CustomerDAO extends DBContext {
 
 
     public static void main(String[] args) {
-        CustomerDAO dao =  new CustomerDAO(DBContext.getConn());
-        dao.EditCustomer("Nguyễn Tiến Đạt","dat10bn@gmail.com","0968338678","https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg",28);
+        CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+        dao.EditCustomer("Nguyễn Tiến Đạt", "dat10bn@gmail.com", "0968338678", "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg", 28);
     }
 
     public ArrayList<Customer> getInfor_Customer() {
@@ -84,6 +87,40 @@ public class CustomerDAO extends DBContext {
         }
     }
 
+    public boolean insertCustomerOffline(Customer customer) {
+        boolean f = false;
+        try {
+            String sql = "INSERT INTO customer (FullName, PhoneNumber, DOB) VALUES ( ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getPhone());
+            ps.setString(3, customer.getDOB());
+
+            int i = ps.executeUpdate();
+            if (i == 1) {
+                f = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
+
+    public int getLatestCustomerID() {
+        int latestCustomerID = -1;
+        String sql = "SELECT CustomerID FROM customer WHERE CustomerID = (SELECT MAX(CustomerID) FROM customer)";
+
+        try (PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                latestCustomerID = rs.getInt("CustomerID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return latestCustomerID;
+    }
+
     public void resetPassword(String email, String password) {
         Security s = new Security();
         String sql = "update account SET Password = ? where AccountID =\n"
@@ -105,9 +142,9 @@ public class CustomerDAO extends DBContext {
                 + "JOIN account  ON customer.AccountID = account.AccountID where account.AccountID=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,id);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 c.setIdCustomer(rs.getInt(1));
                 c.setName(rs.getString(3));
                 c.setEmail(rs.getString(4));
@@ -117,11 +154,12 @@ public class CustomerDAO extends DBContext {
                 return c;
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
     public Customer getCustomerByCID(String id) {
         Customer c = new Customer();
         String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType, Picture\n"
@@ -129,9 +167,9 @@ public class CustomerDAO extends DBContext {
                 + "JOIN account  ON customer.AccountID = account.AccountID where customer.CustomerID=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,id);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 c.setIdCustomer(rs.getInt(1));
                 c.setName(rs.getString(3));
                 c.setEmail(rs.getString(4));
@@ -142,7 +180,7 @@ public class CustomerDAO extends DBContext {
                 return c;
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;

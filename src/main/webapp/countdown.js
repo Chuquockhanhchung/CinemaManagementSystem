@@ -28,7 +28,7 @@ function startCountdown() {
         if (timeBetweenDates <= 0) {
             // Display failure message and redirect to the home page
             alert("Thanh toán thất bại");
-            window.location.href = "/"; // Redirect to home page, change if needed
+            window.location.href = "home"; // Redirect to home page, change if needed
             return; // Stop further execution
         }
 

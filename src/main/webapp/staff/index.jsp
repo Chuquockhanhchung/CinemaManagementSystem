@@ -2,6 +2,7 @@
 <%@ page import="dal.DBContext" %>
 <%@ page import="model.Movie" %>
 <%@ page import="java.util.List" %>
+<%@ page import="dal.CustomerDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <html lang="zxx">
@@ -74,6 +75,49 @@
             color: black;
         }
 
+        .prs_heading_section_wrapper {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .prs_heading_section_wrapper h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #e53935;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 
@@ -89,6 +133,35 @@
 <div class="prs_upcom_slider_main_wrapper">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 50px">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Thông tin khách hàng</h2>
+                </div>
+                <%
+                    CustomerDAO dao2 = new CustomerDAO(DBContext.getConn());
+                    int LastCID = dao2.getLatestCustomerID();
+                    session.setAttribute("lastcid", LastCID);
+                %>
+                <form action="../booking_movie" method="post">
+                    <input type="text" value="<%= LastCID %>" hidden="">
+                    <div class="form-group">
+                        <label for="fullName">Họ và tên:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Ngày tháng năm sinh:</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <button type="submit">Lưu Thông Tin</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="prs_heading_section_wrapper">
                     <h2>Phim</h2>
@@ -101,13 +174,15 @@
 
             <%
                 String status = request.getParameter("status");
-                if (status == null) {
-                    status = "Đang chiếu"; // Gán giá trị mặc định nếu status là null
+                String type = request.getParameter("type");
+                if (status == null || type == null) {
+                    status = "Đang chiếu";
+                    type = "";
                 }
                 MovieDAO dao = new MovieDAO(DBContext.getConn());
-                List<Movie> list = dao.phim(status);
+                List<Movie> list = dao.phim(status, type);
             %>
-            <form action="../booking_movie" method="post">
+            <form action="../booking_movie" method="get">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="best">
                         <div class="prs_upcom_slider_slides_wrapper all_movie">
@@ -121,21 +196,18 @@
                                                 for (Movie movie : list) {
                                             %>
                                             <swiper-slide>
-
                                                 <option value="<%= movie.getId() %>"
                                                         data-thumbnail="<%= movie.getImage() %>">
                                                     <p value="<%= movie.getName() %>"
                                                        class="product-color-text"><%= movie.getName() %>
                                                     </p>
                                                 </option>
-
                                             </swiper-slide>
                                             <%
                                                 }
                                             %>
                                         </select>
                                     </swiper-container>
-
                                 </div>
                             </div>
                         </div>
