@@ -28,7 +28,7 @@
 Nav header start
 ***********************************-->
 <div class="nav-header">
-    <a href="../../home" class="brand-logo">
+    <a href="${pageContext.request.contextPath}/home" class="brand-logo">
         <img class="logo-abbr" src="${pageContext.request.contextPath}/images/header/logo.png">
     </a>
     <div class="nav-control">
@@ -37,14 +37,7 @@ Nav header start
         </div>
     </div>
 </div>
-<!--**********************************
-Nav header end
-***********************************-->
-<!--**********************************
 
-<!--**********************************
-Header start
-***********************************-->
 <header class="header">
     <div class="header-content">
         <nav class="navbar navbar-expand">

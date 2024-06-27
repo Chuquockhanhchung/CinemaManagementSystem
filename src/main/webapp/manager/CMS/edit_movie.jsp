@@ -115,205 +115,219 @@ Content body start
                     <div class="row">
                         <div class="col-xl-11">
                             <form action="editMovie" method="post">
-                                <c:if test="${sessionScope.movieT != null}">
-                                    <div style="display:none" class="filter cm-content-box box-primary">
+                                <div style="display: none" class="filter cm-content-box box-primary">
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Id</label>
+                                            <input type="text" value="${sessionScope.movieT.getId()}" name="id" class="form-control mb-3" placeholder="Tên phim">
 
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">ID phim</label>
-                                                <input type="text" name="id" value="${movieT.getId()}"
-                                                       class="form-control mb-3" placeholder="ID movie">
-
-                                            </div>
                                         </div>
                                     </div>
 
+                                </div>
+                                <div class="filter cm-content-box box-primary">
 
-                                    <div class="filter cm-content-box box-primary">
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Tên phim</label>
+                                            <input type="text" value="${sessionScope.movieT.getName()}" name="name" class="form-control mb-3" placeholder="Tên phim">
 
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Tên phim</label>
-                                                <input type="text" name="name" value="${movieT.getName()}"
-                                                       class="form-control mb-3" placeholder="Tên phim">
-
-                                            </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="filter cm-content-box box-primary">
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Thể loại</label>
-                                                <div class="col-xl-2 col-lg-3 col-sm-4">
-                                                    <c:if test="${sessionScope.type != null}">
-                                                        <c:forEach items="${sessionScope.type}" var="i">
-                                                            <div class="form-check mb-sm-3 mb-1">
-                                                                <input class="form-check-input"
-                                                                <c:forEach items="${sessionScope.typecheck}" var="u">
-                                                                    ${u.getTypeID() == i.getTypeID() ?"checked":""}
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Thể loại</label>
+                                            <div class="col-xl-2 col-lg-3 col-sm-4">
+                                                <c:if test="${sessionScope.type != null}">
+                                                    <c:forEach items="${sessionScope.type}" var="i">
+                                                        <div class="form-check mb-sm-3 mb-1">
+                                                            <input class="form-check-input"
+                                                            <c:forEach items="${sessionScope.typecheck}" var="t">
+                                                                ${t.getTypeID() == i.getTypeID() ?"checked" : ""}
+                                                            </c:forEach>
 
-                                                                </c:forEach>
-                                                                       type="checkbox" name="type"
-                                                                       value="${i.getTypeID()}" id="flexCheckDefault-1">
-                                                                <label class="form-check-label mb-0 text-nowrap"
-                                                                       for="flexCheckDefault-1">
-                                                                        ${i.getTypeName()}
-                                                                </label>
-                                                            </div>
-                                                        </c:forEach>
-                                                    </c:if>
+                                                                   type="checkbox" name="type" value="${i.getTypeID()}" id="flexCheckDefault-1">
+                                                            <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
+                                                                    ${i.getTypeName()}
+                                                            </label>
+                                                        </div>
+                                                    </c:forEach>
+                                                </c:if>
+
+                                                <button type="button" class="btn btn-primary"><a href="addType">Thêm thể loại film</a></button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Mô tả</label>
+                                            <input type="text" value="${sessionScope.movieT.getDescription()}" name="des" class="form-control mb-3" placeholder="Mô tả">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Đạo diễn</label>
+                                            <input type="text" value="${sessionScope.movieT.getDirector()}" name="dir" class="form-control mb-3" placeholder="Đạo diễn">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="filter cm-content-box box-primary">
+
+                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
+                                        Diễn Viên
+                                    </label>
+                                    <div id="inputContainer">
+                                        <c:if test="${sessionScope.mactor!= null}">
+                                            <c:forEach items="${sessionScope.mactor}" var="i">
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Tên Diễn viên</label>
+                                                        <input type="text" value="${i.getName()}" name="act" class="form-control mb-3" placeholder="Tên phim">
+
+                                                    </div>
 
                                                     <div class="card-body">
-                                                        <label class="form-label">khác</label>
-                                                        <input type="text" class="form-control mb-3" name="otherType"
-                                                               placeholder="Nhập thể loại khác">
+                                                        <label class="form-label">Hình ảnh</label>
+                                                        <input type="text" value="${i.getPicture()}" name="im" class="form-control mb-3" placeholder="Mô tả">
+
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </c:forEach>
+                                        </c:if>
 
+                                        <c:if test="${sessionScope.mactor == null}">
+                                            <div class="cm-content-body   form excerpt">
+                                                <div class="card-body">
+                                                    <label class="form-label">Tên Diễn viên</label>
+                                                    <input type="text"  name="act" class="form-control mb-3" placeholder="Tên phim">
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                    <label class="form-label">Hình ảnh</label>
+                                                    <input type="text"  name="im" class="form-control mb-3" placeholder="Mô tả">
+
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                    </div>
+
+
+                                    <div>
+                                        <button type="button" class="btn btn-primary" id="addInputBtn">Thêm Diễn Viên</button>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="filter cm-content-box box-primary">
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Ngày phát hành</label>
+                                            <input type="Date" value="${sessionScope.movieT.getReleaseDate()}" name="date" class="form-control mb-3" placeholder="Ngày phát hành">
 
                                         </div>
                                     </div>
-                                    <div class="filter cm-content-box box-primary">
+                                </div>
 
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Mô tả</label>
-                                                <input type="text" value="${movieT.getDescription()}" name="des"
-                                                       class="form-control mb-3" placeholder="Mô tả">
+                                <div class="filter cm-content-box box-primary">
 
-                                            </div>
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Thời lượng phim</label>
+                                            <input type="text" value="${sessionScope.movieT.getDuration()}" name="time" class="form-control mb-3" placeholder="Thời lượng phim">
+
                                         </div>
                                     </div>
-                                    <div class="filter cm-content-box box-primary">
+                                </div>
 
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Đạo diễn</label>
-                                                <input type="text" value="${movieT.getDirector()}" name="dir"
-                                                       class="form-control mb-3" placeholder="Đạo diễn">
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="card-body">
+                                        <label class="form-label">Ngôn ngữ phim</label>
+                                        <select class="js-example-disabled" name="language" style="width:100%;">
 
-                                            </div>
-                                        </div>
+                                            <c:if test="${sessionScope.lan != null}">
+                                                <c:forEach items="${sessionScope.lan}" var="i">
+                                                    <option ${sessionScope.movieT.getLanguages() == i.getId()?"selected":""} value="${i.getId()}">${i.getName()}</option>
+                                                </c:forEach>
+                                            </c:if>
+                                        </select>
+
                                     </div>
+                                </div>
 
-                                    <div class="filter cm-content-box box-primary">
-
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Diễn viên</label>
-                                                <input type="text" value="${a}"
-                                                       name="actor" class="form-control mb-3" placeholder="Diễn viên">
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="filter cm-content-box box-primary">
-
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Ngày phát hành</label>
-                                                <input type="Date" value="${movieT.getReleaseDate()}" name="date"
-                                                       class="form-control mb-3" placeholder="Ngày phát hành">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="filter cm-content-box box-primary">
-
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Thời lượng phim</label>
-                                                <input type="text" value="${movieT.getDuration()}" name="time"
-                                                       class="form-control mb-3" placeholder="Thời lượng phim">
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="filter cm-content-box box-primary">
 
                                     <div class="filter cm-content-box box-primary">
                                         <div class="card-body">
-                                            <label class="form-label">Ngôn ngữ phim</label>
-                                            <select class="js-example-disabled" name="language" style="width:100%;">
+                                            <label class="form-label">Áp phích</label>
+                                            <input type="text" value="${sessionScope.movieT.getImage()}" name="img" class="form-control mb-3" placeholder="Áp phích">
 
-                                                <c:if test="${sessionScope.lan != null}">
-                                                    <c:forEach items="${sessionScope.lan}" var="i">
-                                                        <option ${movieT.getLanguages() == i.getId()?"selected":""}
-                                                                value="${i.getId()}">${i.getName()}</option>
-                                                    </c:forEach>
-                                                </c:if>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Trailer</label>
+                                            <input type="text" value="${sessionScope.movieT.getTrailer()}" name="trailer" class="form-control mb-3" placeholder="Áp phích">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="filter cm-content-box box-primary" >
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body" >
+                                            <label class="form-label">Trạng thái phim</label>
+                                            <select class="js-example-disabled" name="status" style="width:100%;" >
+                                                <option ${sessionScope.movieT.getStatus() == "Đang chiếu"?"selected": ""}>Đang chiếu</option>
+                                                <option ${sessionScope.movieT.getStatus() == "Đang chiếu"?"selected": ""}>Sắp chiếu</option>
                                             </select>
 
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="filter cm-content-box box-primary">
+                                <div class="filter cm-content-box box-primary">
 
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Áp phích</label>
-                                                <input type="text" value="${movieT.getImage()}" name="img"
-                                                       class="form-control mb-3" placeholder="Áp phích">
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Gía vé phim</label>
+                                            <input type="text" value="${sessionScope.movieT.getPrice()}" name="price" class="form-control mb-3" placeholder="Gía vé phim">
 
-                                            </div>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="filter cm-content-box box-primary">
-
-                                    <div class="cm-content-body form excerpt">
-                                    <div class="card-body">
-                                    <label class="form-label">Đánh giá phim</label>
-                                    <input type="text" name="rating" class="form-control mb-3" placeholder="Đánh giá phim">
-
-                                    </div>
-                                    </div>
-                                    </div>-->
-
-                                    <div class="filter cm-content-box box-primary">
-
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Trạng thái phim</label>
-                                                <select class="js-example-disabled" name="status" style="width:100%;">
-                                                    <option ${movieT.getStatus() == "Đang chiếu"?"selected": ""} >Đang
-                                                        chiếu
-                                                    </option>
-                                                    <option ${movieT.getStatus() == "Sắp chiếu"?"selected": ""}>Sắp
-                                                        chiếu
-                                                    </option>
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="filter cm-content-box box-primary">
-
-                                        <div class="cm-content-body   form excerpt">
-                                            <div class="card-body">
-                                                <label class="form-label">Gía vé phim</label>
-                                                <input type="text" value="${movieT.getPrice()}" name="price"
-                                                       class="form-control mb-3" placeholder="Gía vé phim">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <c:if test="${requestScope.err != null}">
-                                        <div class="alert alert-danger" role="alert">
-                                                ${requestScope.err}
-                                        </div>
-                                    </c:if>
-                                    <div>
-                                        <input type="submit" class="btn btn-primary mb-3" value="Edit movie">
-
+                                </div>
+                                <c:if test="${requestScope.err != null}">
+                                    <div class="alert alert-danger" role="alert">
+                                            ${requestScope.err}
                                     </div>
                                 </c:if>
+                                <div>
+                                    <input type="submit" class="btn btn-primary mb-3" value="Add movie" >
+
+                                </div>
 
                             </form>
 
@@ -384,7 +398,68 @@ Footer end
         $('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
     });
 
+    function checkValidateForm() {
+        const name = document.querySelector('input[name="name"]').value;
+        const des = document.querySelector('input[name="des"]').value;
+        const dir = document.querySelector('input[name="dir"]').value;
+        const actor = document.querySelector('input[name="actor"]').value;
+        const date = document.querySelector('input[name="date"]').value;
+        const time = document.querySelector('input[name="time"]').value;
+        const lan = document.querySelector('select[name="language"]').value;
+        const img = document.querySelector('input[name="img"]').value;
+        const status = document.querySelector('input[name="status"]').value;
+        const price = document.querySelector('input[name="price"]').value;
+        const otherType = document.querySelector('input[name="otherType"]').value;
+        var checkboxes = document.querySelectorAll('input[name="type"]:checked');
+        if (name.trim() === "" || des.trim() === "" || dir.trim() === "" || actor.trim() === "" || date.trim() === "" || time.trim() === "" || lan.trim() === "" || img.trim() === "" || status.trim() === "" || price.trim() === "") {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return false;
+        }
+        if (otherType.trim() === "" && checkboxes.length === 0) {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return false;
 
+        }
+        if (parseInt(price) <= 0 || isNaN(price) || isNaN(parseInt(price))) {
+            alert("Giá vé phải lớn hơn 0 và phải là số nguyên!");
+            return false;
+        }
+
+        if (parseInt(time) <= 0 || isNaN(time) || isNaN(parseInt(time))) {
+            alert("Thời lượng phim phải là số nguyên và không đượng nhỏ hơn 0!");
+            return false;
+        }
+
+        return true;
+
+    }
+</script>
+<script>
+    document.getElementById('addInputBtn').addEventListener('click', function() {
+        var inputContainer = document.getElementById('inputContainer');
+
+        // Tạo một thẻ div chứa toàn bộ form mới
+        var newForm = document.createElement('div');
+        newForm.className = 'cm-content-body form excerpt';
+
+        // Tạo nội dung cho form mới
+        var formContent = `
+        <div class="card-body">
+            <label class="form-label">Tên Diễn viên</label>
+            <input type="text" name="act" class="form-control mb-3" placeholder="Tên phim">
+        </div>
+        <div class="card-body">
+            <label class="form-label">Hình ảnh</label>
+            <input type="text" name="im" class="form-control mb-3" placeholder="Mô tả">
+        </div>
+    `;
+
+        // Thêm nội dung vào thẻ div mới
+        newForm.innerHTML = formContent;
+
+        // Thêm thẻ div mới vào container
+        inputContainer.appendChild(newForm);
+    });
 </script>
 
 

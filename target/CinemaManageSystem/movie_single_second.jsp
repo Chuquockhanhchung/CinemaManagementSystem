@@ -919,18 +919,7 @@
 
                                         function submitReply(feedbackId) {
                                             const replyTextElement = document.getElementById('reply-text-' + feedbackId);
-                                            function isUserLoggedIn() {
-                                                // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
-                                                // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
-                                                return !!localStorage.getItem('user');
-                                            }
 
-                                            if (!isUserLoggedIn()) {
-                                                alert('Bạn cần đăng nhập để thực hiện thao tác này.');
-                                                // Hiển thị popup đăng nhập hoặc chuyển hướng đến trang đăng nhập
-
-                                                return false;
-                                            }
                                             if (replyTextElement) {
                                                 let replyText = replyTextElement.value.trim();
                                                 console.log("Reply Text:", replyText);  // Debug: In giá trị reply text

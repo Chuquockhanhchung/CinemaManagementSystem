@@ -512,7 +512,7 @@ public class MovieDAO extends DBContext {
     }
 
     public void AddMovie(Movie m) {
-        String sql = "insert into movie  (MovieName, Description, Director, ReleaseDate, Duration, Language, Image, status,Price)Values (?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into movie  (MovieName, Description, Director, ReleaseDate, Duration, Language, Image, status,Price,Trailer)Values (?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -525,6 +525,7 @@ public class MovieDAO extends DBContext {
             ps.setString(7, m.getImage());
             ps.setString(8, m.getStatus());
             ps.setInt(9, m.getPrice());
+            ps.setString(10, m.getTrailer());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -544,24 +545,26 @@ public class MovieDAO extends DBContext {
         }
     }
 
-    public void AddActor(String a) {
-        String sql = "insert into actors ( ActorName) values(?)";
+    public void AddActor(Actor a) {
+        String sql = "insert into actors ( ActorName,ActorImg) values(?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, a);
+            ps.setString(1, a.getName());
+            ps.setString(2, a.getPicture());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-     public void AddType(String a) {
-        String sql = "insert into movietype ( TypeName) values(?)";
+    public void AddType(MovieType a) {
+        String sql = "insert into movietype ( TypeName,Description) values(?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, a);
+            ps.setString(1, a.getTypeName());
+            ps.setString(2,a.getTypeDescription());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -626,7 +629,7 @@ public class MovieDAO extends DBContext {
     }
 
     public void UpdateMovie(Movie movie) {
-        String sql = "update movie set movieName = ?, description=?, director=?, releaseDate =?, duration=?, language = ?, image =?, status=?, price=? where movieID = ?";
+        String sql = "update movie set movieName = ?, description=?, director=?, releaseDate =?, duration=?, language = ?, image =?, status=?, price=? , Trailer=? where movieID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, movie.getName());
@@ -638,7 +641,8 @@ public class MovieDAO extends DBContext {
             ps.setString(7, movie.getImage());
             ps.setString(8, movie.getStatus());
             ps.setInt(9, movie.getPrice());
-            ps.setInt(10, movie.getId());
+            ps.setString(10,movie.getTrailer());
+            ps.setInt(11, movie.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -696,7 +700,7 @@ public class MovieDAO extends DBContext {
     }
 
     public ArrayList<Actor> getActorCheck(int id) {
-        String sql = "SELECT m.ActorID,a.ActorName from movie_has_actors m join actors a on m.ActorID = a.ActorID where m.MovieID = ?";
+        String sql = "SELECT m.ActorID,a.ActorName, a.ActorImg from movie_has_actors m join actors a on m.ActorID = a.ActorID where m.MovieID = ?";
         ArrayList<Actor> list = new ArrayList<>();
 
         try {
@@ -707,6 +711,7 @@ public class MovieDAO extends DBContext {
                 Actor a = new Actor();
                 a.setId(rs.getInt(1));
                 a.setName(rs.getString(2));
+                a.setPicture(rs.getString(3));
                 list.add(a);
             }
 
@@ -742,5 +747,26 @@ public class MovieDAO extends DBContext {
         } catch (Exception e) {
         }
         return m;
+    }
+
+    public void deleteMovie(int id){
+        String sql = "delete from movie where MovieID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void deleteActor(int id){
+        String sql = "delete from actors where ActorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

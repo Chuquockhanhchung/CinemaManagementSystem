@@ -161,6 +161,14 @@
         <servlet-class>controller.AddMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddMovieType</servlet-name>
+        <servlet-class>controller.AddMovieType</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteMovie</servlet-name>
+        <servlet-class>controller.deleteMovie</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>manageMovieServlet</servlet-name>
         <servlet-class>controller.manageMovieServlet</servlet-class>
     </servlet>
@@ -313,6 +321,14 @@
     <servlet-mapping>
         <servlet-name>AddMovieServlet</servlet-name>
         <url-pattern>/addmovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMovieType</servlet-name>
+        <url-pattern>/addType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteMovie</servlet-name>
+        <url-pattern>/deleteM</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>manageMovieServlet</servlet-name>

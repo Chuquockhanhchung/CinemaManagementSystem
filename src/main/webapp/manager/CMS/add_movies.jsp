@@ -124,8 +124,8 @@ Content body start
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Tên phim</label>
-                                            <input type="text" name="name" class="form-control mb-3"
-                                                   placeholder="Tên phim">
+                                            <input type="text" value="${requestScope.movieId.getName()}" name="name"
+                                                   class="form-control mb-3" placeholder="Tên phim">
 
                                         </div>
                                     </div>
@@ -139,8 +139,13 @@ Content body start
                                                 <c:if test="${sessionScope.movieType != null}">
                                                     <c:forEach items="${sessionScope.movieType}" var="i">
                                                         <div class="form-check mb-sm-3 mb-1">
-                                                            <input class="form-check-input" type="checkbox" name="type"
-                                                                   value="${i.getTypeID()}" id="flexCheckDefault-1">
+                                                            <input class="form-check-input"
+                                                            <c:forEach items="${requestScope.type}" var="t">
+                                                                ${t == i.getTypeID() ?"checked" : ""}
+                                                            </c:forEach>
+
+                                                                   type="checkbox" name="type" value="${i.getTypeID()}"
+                                                                   id="flexCheckDefault-1">
                                                             <label class="form-check-label mb-0 text-nowrap"
                                                                    for="flexCheckDefault-1">
                                                                     ${i.getTypeName()}
@@ -149,11 +154,8 @@ Content body start
                                                     </c:forEach>
                                                 </c:if>
 
-                                                <div class="card-body">
-                                                    <label class="form-label">khác</label>
-                                                    <input type="text" class="form-control mb-3" name="otherType"
-                                                           placeholder="Nhập thể loại khác">
-                                                </div>
+                                                <button type="button" class="btn btn-primary"><a href="addType">Thêm thể
+                                                    loại film</a></button>
                                             </div>
                                         </div>
 
@@ -165,7 +167,8 @@ Content body start
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Mô tả</label>
-                                            <input type="text" name="des" class="form-control mb-3" placeholder="Mô tả">
+                                            <input type="text" value="${requestScope.movieId.getDescription()}"
+                                                   name="des" class="form-control mb-3" placeholder="Mô tả">
 
                                         </div>
                                     </div>
@@ -175,8 +178,8 @@ Content body start
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Đạo diễn</label>
-                                            <input type="text" name="dir" class="form-control mb-3"
-                                                   placeholder="Đạo diễn">
+                                            <input type="text" value="${requestScope.movieId.getDirector()}" name="dir"
+                                                   class="form-control mb-3" placeholder="Đạo diễn">
 
                                         </div>
                                     </div>
@@ -184,23 +187,67 @@ Content body start
 
                                 <div class="filter cm-content-box box-primary">
 
-                                    <div class="cm-content-body   form excerpt">
-                                        <div class="card-body">
-                                            <label class="form-label">Diễn viên</label>
-                                            <input type="text" name="actor" class="form-control mb-3"
-                                                   placeholder="Diễn viên">
+                                    <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
+                                        Diễn Viên
+                                    </label>
+                                    <div id="inputContainer">
+                                        <c:if test="${requestScope.actors!= null}">
+                                            <c:forEach items="${requestScope.actors}" var="i">
+                                                <div class="cm-content-body   form excerpt">
+                                                    <div class="card-body">
+                                                        <label class="form-label">Tên Diễn viên</label>
+                                                        <input type="text" value="${i.getName()}" name="act"
+                                                               class="form-control mb-3" placeholder="Tên phim">
 
-                                        </div>
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <label class="form-label">Hình ảnh</label>
+                                                        <input type="text" value="${i.getPicture()}" name="im"
+                                                               class="form-control mb-3" placeholder="Mô tả">
+
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </c:if>
+
+                                        <c:if test="${requestScope.actors == null}">
+                                            <div class="cm-content-body   form excerpt">
+                                                <div class="card-body">
+                                                    <label class="form-label">Tên Diễn viên</label>
+                                                    <input type="text" name="act" class="form-control mb-3"
+                                                           placeholder="Tên phim">
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                    <label class="form-label">Hình ảnh</label>
+                                                    <input type="text" name="im" class="form-control mb-3"
+                                                           placeholder="Mô tả">
+
+                                                </div>
+                                            </div>
+                                        </c:if>
                                     </div>
+
+
+                                    <div>
+                                        <button type="button" class="btn btn-primary" id="addInputBtn">+ Diễn Viên
+                                        </button>
+
+                                    </div>
+
+
                                 </div>
+
 
                                 <div class="filter cm-content-box box-primary">
 
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Ngày phát hành</label>
-                                            <input type="Date" name="date" class="form-control mb-3"
-                                                   placeholder="Ngày phát hành">
+                                            <input type="Date" value="${requestScope.movieId.getReleaseDate()}"
+                                                   name="date" class="form-control mb-3" placeholder="Ngày phát hành">
 
                                         </div>
                                     </div>
@@ -211,8 +258,8 @@ Content body start
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Thời lượng phim</label>
-                                            <input type="text" name="time" class="form-control mb-3"
-                                                   placeholder="Thời lượng phim">
+                                            <input type="text" value="${requestScope.movieId.getDuration()}" name="time"
+                                                   class="form-control mb-3" placeholder="Thời lượng phim">
 
                                         </div>
                                     </div>
@@ -225,7 +272,8 @@ Content body start
 
                                             <c:if test="${sessionScope.language != null}">
                                                 <c:forEach items="${sessionScope.language}" var="i">
-                                                    <option value="${i.getId()}">${i.getName()}</option>
+                                                    <option ${requestScope.movieId.getLanguages() == i.getId()?"selected":""}
+                                                            value="${i.getId()}">${i.getName()}</option>
                                                 </c:forEach>
                                             </c:if>
                                         </select>
@@ -235,26 +283,27 @@ Content body start
 
                                 <div class="filter cm-content-box box-primary">
 
-                                    <div class="cm-content-body   form excerpt">
+                                    <div class="filter cm-content-box box-primary">
                                         <div class="card-body">
                                             <label class="form-label">Áp phích</label>
-                                            <input type="text" name="img" class="form-control mb-3"
-                                                   placeholder="Áp phích">
+                                            <input type="text" value="${requestScope.movieId.getImage()}" name="img"
+                                                   class="form-control mb-3" placeholder="Áp phích">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+
+                                    <div class="cm-content-body   form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Trailer</label>
+                                            <input type="text" value="${requestScope.movieId.getTrailer()}"
+                                                   name="trailer" class="form-control mb-3" placeholder="Áp phích">
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <!--                                        <div class="filter cm-content-box box-primary">
-
-                                                                            <div class="cm-content-body   form excerpt">
-                                                                                <div class="card-body">
-                                                                                    <label class="form-label">Đánh giá phim</label>
-                                                                                    <input type="text" name="rating" class="form-control mb-3" placeholder="Đánh giá phim">
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
 
                                 <div class="filter cm-content-box box-primary">
 
@@ -262,9 +311,12 @@ Content body start
                                         <div class="card-body">
                                             <label class="form-label">Trạng thái phim</label>
                                             <select class="js-example-disabled" name="status" style="width:100%;">
-                                                <option>Đang chiếu</option>
-                                                <option>Sắp chiếu</option>
-
+                                                <option ${requestScope.movieId.getStatus() == "Đang chiếu"?"selected": ""}>
+                                                    Đang chiếu
+                                                </option>
+                                                <option ${requestScope.movieId.getStatus() == "Đang chiếu"?"selected": ""}>
+                                                    Sắp chiếu
+                                                </option>
                                             </select>
 
                                         </div>
@@ -276,8 +328,8 @@ Content body start
                                     <div class="cm-content-body   form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Gía vé phim</label>
-                                            <input type="text" name="price" class="form-control mb-3"
-                                                   placeholder="Gía vé phim">
+                                            <input type="text" value="${requestScope.movieId.getPrice()}" name="price"
+                                                   class="form-control mb-3" placeholder="Gía vé phim">
 
                                         </div>
                                     </div>
@@ -396,6 +448,33 @@ Footer end
         return true;
 
     }
+</script>
+<script>
+    document.getElementById('addInputBtn').addEventListener('click', function () {
+        var inputContainer = document.getElementById('inputContainer');
+
+        // Tạo một thẻ div chứa toàn bộ form mới
+        var newForm = document.createElement('div');
+        newForm.className = 'cm-content-body form excerpt';
+
+        // Tạo nội dung cho form mới
+        var formContent = `
+        <div class="card-body">
+            <label class="form-label">Tên Diễn viên</label>
+            <input type="text" name="act" class="form-control mb-3" placeholder="Tên phim">
+        </div>
+        <div class="card-body">
+            <label class="form-label">Hình ảnh</label>
+            <input type="text" name="im" class="form-control mb-3" placeholder="Mô tả">
+        </div>
+    `;
+
+        // Thêm nội dung vào thẻ div mới
+        newForm.innerHTML = formContent;
+
+        // Thêm thẻ div mới vào container
+        inputContainer.appendChild(newForm);
+    });
 </script>
 
 

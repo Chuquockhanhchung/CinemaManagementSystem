@@ -121,7 +121,7 @@ Header end
     <!--**********************************
 Sidebar start
 ***********************************-->
-    <%@include file="../sidebar.jsp" %>
+    <%@include file="sidebar.jsp" %>
     <!--**********************************
 Sidebar end
 ***********************************-->
@@ -183,13 +183,12 @@ Content body start
                     </div>
 
                     <div class="mb-5">
-                        <a href="../../addmovie" class="btn btn-primary">Add
-                            Movies</a>
+                        <a href="../../addmovie" class="btn btn-primary">Thêm Phim Mới</a>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
                             <div class="cpa">
-                                <i class="fa-solid fa-file-lines me-1"></i>Movie List
+                                <i class="fa-solid fa-file-lines me-1"></i>Danh Sách Phim
                             </div>
                             <div class="tools">
                                 <a href="javascript:void(0);" class="expand handle"><i
@@ -203,10 +202,10 @@ Content body start
                                         <thead>
                                         <tr>
                                             <th class="text-black">M.No</th>
-                                            <th class="text-black">Title</th>
-                                            <th class="text-black">Status</th>
-                                            <th class="text-black">Modified</th>
-                                            <th class="text-black text-end">Actions</th>
+                                            <th class="text-black">Tên Phim</th>
+                                            <th class="text-black">Trạng Thái</th>
+                                            <th class="text-black">Ngày Đăng</th>
+                                            <th class="text-black text-end">Hành Động</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -218,7 +217,7 @@ Content body start
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">
 
-                                                    <a href="../../editMovie?id=${m.getId()}"
+                                                    <a href="${pageContext.request.contextPath}/editMovie?id=${m.getId()}"
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
@@ -238,7 +237,7 @@ Content body start
                                             8 total, starting on record 1, ending on 2</small>
                                         <nav aria-label="Page navigation example">
                                             <ul class="pagination mb-2 mb-sm-0">
-                                                <li class="page-item"><a class="page-link" href="javascript:void(0);"><i
+                                                <li class="page-item"><a class="page-link" href="javascript:void();"><i
                                                         class="fa-solid fa-angle-left"></i></a></li>
                                                 <li class="page-item"><a class="page-link"
                                                                          href="javascript:void(0);">1</a></li>
