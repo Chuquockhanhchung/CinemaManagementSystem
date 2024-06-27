@@ -96,7 +96,8 @@ public class UpdateProfileServlet extends HttpServlet {
 
           // Retrieve file part
           String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "about";
-
+          File file = new File(path);
+          part.write(path + File.separator +  picture);
           // Update the user's profile with the new data
           CustomerDAO dao = new CustomerDAO(DBContext.getConn());
           HttpSession session = request.getSession();

@@ -5,18 +5,18 @@
 
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import dal.DBContext;
 import dal.EventDAO;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.http.*;
 import model.Event;
 
+@MultipartConfig
 /**
  *
  * @author datla
@@ -56,7 +56,8 @@ public class EventServlet extends HttpServlet {
             String EventName = request.getParameter("EventName");
             String EventCode = request.getParameter("EventCode");
             String EventDetail = request.getParameter("EventDetail");
-            String EventImage = request.getParameter("EventImage");
+            Part part = request.getPart("EventImage");
+            String EventImage = part.getSubmittedFileName();
             String StartDate = request.getParameter("datetimes");
             String EndDate = request.getParameter("EndDate");
             float Discount = Float.parseFloat(request.getParameter("Discount"));
@@ -64,15 +65,22 @@ public class EventServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
+            String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "about";
+
+            EventImage = path + File.separator + EventImage;
+            File file = new File(path);
+            part.write(path + File.separator +  EventImage);
+
             Event event = new Event();
             event.setEventName(EventName);
             event.setEventCode(EventCode);
             event.setEventDetail(EventDetail);
-            event.setEventImage(EventImage);
+            event.setEventImage("images" + "/" + "content" + "Event_Single" + "/" + "event"+ "/" + EventImage);
             event.setStartDate(StartDate);
             event.setEndDate(EndDate);
             event.setDiscount(Discount);
             event.setStatus(Status);
+
 
             EventDAO dao = new EventDAO(DBContext.getConn());
             boolean f = dao.addEvent(event);

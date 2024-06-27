@@ -36,8 +36,8 @@
                 <span class="nav-text">Bảng Điều Khiển</span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="manager/dashboard/orders_list.jsp">Danh Sách Vé Đã Đặt</a></li>
-                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Sự Kiện</a></li
+                    <li><a href="../dashboard/orders_list.jsp">Danh Sách Vé Đã Đặt</a></li>
+<%--                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Sự Kiện</a></li--%>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Phân Tích</a></li>
                 </ul>
 
@@ -55,6 +55,8 @@
                     <li><a href="add_event.jsp">Thêm Sự Kiện</a></li>
                     <li><a href="product.jsp">Sản Phẩm</a>
                     <li><a href="add_product.jsp">Thêm Sản Phẩm</a>
+                    <li><a href="voucher.jsp">Voucher</a>
+                    <li><a href="add_voucher.jsp">Thêm Voucher</a>
                     </li>
                 </ul>
             </li>

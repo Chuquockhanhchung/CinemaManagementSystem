@@ -56,17 +56,18 @@
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet" type="text/css"/>
 
-<%--Date Picker--%>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<%--Date Picker--%>
+    <%--Date Picker--%>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <%--Date Picker--%>
     <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
     <style>
         .picktime {
             display: block;
-            width: 100%;
-            padding: 0.375rem 0.75rem;
+            width: 12em;
+            padding: 0.75rem 0.75rem;
+            margin: 0.75em;
             font-size: 0.875rem;
             font-weight: 400;
             line-height: 1.5;
@@ -140,224 +141,188 @@ Content body start
                                    class="btn btn-primary">Danh sách sự kiện</a></li>
                         </ul>
                     </div>
-    <form method="post" action="../../event">
-                    <div class="row">
-                        <div class="mb-3 col-sm-8">
-                            <label class="form-label">Tiêu Đề</label>
-                            <input type="text" class="form-control" placeholder="Tiêu Đề" name="EventName">
-                        </div>
-                        <div class="col-xl-8">
-                            <div class="card h-auto">
-                                <div class="card-body p-2">
-                                    <div id="ckeditor"></div>
-                                </div>
+                    <form method="post" action="../../event" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="mb-3 col-sm-8">
+                                <label class="form-label">Tiêu Đề</label>
+                                <input type="text" class="form-control" placeholder="Tiêu Đề" name="EventName">
                             </div>
-
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Code Sự Kiện
-                                    </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body form excerpt">
-                                    <div class="card-body">
-                                        <label class="form-label">Code Sự Kiện</label>
-                                        <input type="text" class="form-control" name="EventCode">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="filter cm-content-box box-primary">
-                                <div class="content-title SlideToolHeader">
-                                    <div class="cpa"> Giảm giá
-                                    </div>
-                                    <div class="tools">
-                                        <a href="javascript:void(0);" class="expand handle"><i
-                                                class="fal fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                                <div class="cm-content-body form excerpt">
-                                    <div class="card-body">
-                                        <label class="form-label">Giảm giá</label>
-                                        <input type="number" class="form-control" name="Discount">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-xl-8">
                                 <div class="card h-auto">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Ngày Bắt Đầu & Kết Thúc Sự Kiện</h4>
+                                    <div class="card-body p-2">
+                                        <%--                                    <div id="ckeditor"></div>--%>
+                                        <textarea style="width: 100%; height: 130px;" name="EventDetail"></textarea>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-4 mb-3">
-                                                <div class="example">
-                                                    <input class="picktime" type="text" name="datetimes" />
-                                                    <input class="picktime" type="text" name="EndDate" />
+                                </div>
+
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa"> Code Sự Kiện
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Code Sự Kiện</label>
+                                            <input type="text" id="randomEnventCode" class="form-control" name="EventCode" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa"> Giảm giá
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body form excerpt">
+                                        <div class="card-body">
+                                            <label class="form-label">Giảm giá</label>
+                                            <input type="number" class="form-control" name="Discount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-8">
+                                    <div class="card h-auto">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Ngày Bắt Đầu & Kết Thúc Sự Kiện</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-xl-4 mb-3">
+                                                    <div class="example d-flex">
+                                                        <input class="picktime" type="text" name="StartDate"/>
+                                                        <input class="picktime" type="text" name="EndDate"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="right-sidebar-sticky">
-                                <div class="filter cm-content-box box-primary">
-                                    <div class="content-title SlideToolHeader">
-                                        <div class="cpa">
-                                            Cài Đặt
-                                        </div>
-                                        <div class="tools">
-                                            <a href="javascript:void(0);" class="expand handle"><i
-                                                    class="fal fa-angle-down"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cm-content-body publish-content form excerpt">
-                                        <div class="card-body py-3">
-                                            <ul class="d-flex align-items-center mb-2">
-                                                <li><a href="javascript:void(0);"><i class="fa-solid fa-eye"></i></a>
-                                                </li>
-                                                <li><a href="javascript:void(0);" class="ms-2">Trạng Thái:</a></li>
-                                                <li><strong><a href="javascript:void(0);"
-                                                               class="mx-2">Hoạt Động</a></strong></li>
-                                                <li><a href="javascript:void(0);" class="accordion accordion-primary"
-                                                       id="headingtwo" data-bs-toggle="collapse"
-                                                       data-bs-target="#collapsetwo" aria-controls="collapsetwo"
-                                                       aria-expanded="true" role="button">Chỉnh sửa</a></li>
-                                            </ul>
-                                            <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
-                                                 data-bs-parent="#accordion-one">
-                                                <div class="accordion-body-text p-3 border rounded">
-                                                    <div class="basic-form">
-                                                        <form>
-                                                            <div class="mb-3 mb-0">
-                                                                <div class="radio">
-                                                                    <label class="form-check-label"><input type="radio"
-                                                                                                           name="optradio"
-                                                                                                           class="form-check-input">
-                                                                        Hoạt Động</label>
-                                                                </div>
-                                                                <div class="radio">
-                                                                    <label class="form-check-label"><input type="radio"
-                                                                                                           name="optradio"
-                                                                                                           class="form-check-input">
-                                                                        Không Hoạt Động</label>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div>
-                                                        <button class="btn btn-primary btn-sm me-2" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapsetwo"
-                                                                aria-expanded="false" aria-controls="collapsetwo">
-                                                            Ok
-                                                        </button>
-                                                        <button class="btn btn-danger light btn-sm" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapsetwo"
-                                                                aria-expanded="false" aria-controls="collapsetwo">
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </div>
+                            <div class="col-xl-4">
+                                <div class="right-sidebar-sticky">
+                                    <div class="filter cm-content-box box-primary">
+                                        <div class="content-title SlideToolHeader">
+                                            <div class="cpa">
+                                                Cài Đặt
                                             </div>
-                                            <ul class="d-flex align-items-center mb-2 flex-wrap">
-                                                <li><a href="javascript:void(0);"><i
-                                                        class="fa-solid fa-calendar-days"></i></a></li>
-                                                <li><a href="javascript:void(0);" class="ms-2">Published</a></li>
-                                                <li><strong><a href="javascript:void(0);" class="mx-2">on :24-09-2023
-                                                    16:22:52 </a></strong></li>
-                                                <li><a href="javascript:void(0);" class="accordion accordion-primary"
-                                                       id="headingthree" data-bs-toggle="collapse"
-                                                       data-bs-target="#collapsethree" aria-controls="collapsethree"
-                                                       aria-expanded="true" role="button">Edit</a></li>
-
-                                            </ul>
-                                            <div id="collapsethree" class="collapse" aria-labelledby="headingthree"
-                                                 data-bs-parent="#accordion-one">
-                                                <div class="accordion-body-text p-3 mb-3 border rounded">
-                                                    <div class="basic-form mb-3">
-                                                        <input type="date" name="datepicker" class=" form-control">
-                                                    </div>
-                                                    <button class="btn btn-primary btn-sm me-2" type="button"
-                                                            data-bs-toggle="collapse" data-bs-target="#collapsethree"
-                                                            aria-expanded="false" aria-controls="collapsethree">
-                                                        Ok
-                                                    </button>
-                                                    <button class="btn btn-danger light btn-sm" type="button"
-                                                            data-bs-toggle="collapse" data-bs-target="#collapsethree"
-                                                            aria-expanded="false" aria-controls="collapsethree">
-                                                        Cancel
-                                                    </button>
-                                                </div>
+                                            <div class="tools">
+                                                <a href="javascript:void(0);" class="expand handle"><i
+                                                        class="fal fa-angle-down"></i></a>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="filter cm-content-box box-primary">
-                                    <div class="content-title SlideToolHeader">
-                                        <div class="cpa">
-                                            Featured Image
-                                        </div>
-                                        <div class="tools">
-                                            <a href="javascript:void(0);" class="expand handle"><i
-                                                    class="fal fa-angle-down"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cm-content-body publish-content form excerpt">
-                                        <div class="card-body">
-                                            <div class="avatar-upload d-flex align-items-center">
-                                                <div class=" position-relative ">
-                                                    <div class="avatar-preview">
-                                                        <div id="imagePreview"
-                                                             style="background-image: url(../../public/assets/images/no-img-avatar.png);">
+                                        <div class="cm-content-body publish-content form excerpt">
+                                            <div class="card-body py-3">
+                                                <ul class="d-flex align-items-center mb-2">
+                                                    <li><a href="javascript:void(0);"><i
+                                                            class="fa-solid fa-eye"></i></a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0);" class="ms-2">Trạng Thái:</a></li>
+                                                    <li><strong><a href="javascript:void(0);"
+                                                                   class="mx-2">Hoạt Động</a></strong></li>
+                                                    <li><a href="javascript:void(0);"
+                                                           class="accordion accordion-primary"
+                                                           id="headingtwo" data-bs-toggle="collapse"
+                                                           data-bs-target="#collapsetwo" aria-controls="collapsetwo"
+                                                           aria-expanded="true" role="button">Chỉnh sửa</a></li>
+                                                </ul>
+                                                <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
+                                                     data-bs-parent="#accordion-one">
+                                                    <div class="accordion-body-text p-3 border rounded">
+                                                        <div class="basic-form">
+                                                            <form>
+                                                                <div class="mb-3 mb-0">
+                                                                    <div class="radio">
+                                                                        <label class="form-check-label"><input
+                                                                                type="radio"
+                                                                                name="Status"
+                                                                                class="form-check-input">
+                                                                            Hoạt Động</label>
+                                                                    </div>
+                                                                    <div class="radio">
+                                                                        <label class="form-check-label"><input
+                                                                                type="radio"
+                                                                                name="Status"
+                                                                                class="form-check-input">
+                                                                            Không Hoạt Động</label>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div>
+                                                            <button class="btn btn-primary btn-sm me-2" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapsetwo"
+                                                                    aria-expanded="false" aria-controls="collapsetwo">
+                                                                Ok
+                                                            </button>
+                                                            <button class="btn btn-danger light btn-sm" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapsetwo"
+                                                                    aria-expanded="false" aria-controls="collapsetwo">
+                                                                Cancel
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                    <div class="change-btn d-flex align-items-center flex-wrap">
-                                                        <input type='file' class="form-control d-none" id="imageUpload"
-                                                               accept=".png, .jpg, .jpeg"
-                                                                name="EventImage">
-                                                        <label for="imageUpload" class="btn btn-primary ms-0">Select
-                                                            Image</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter cm-content-box box-primary">
+                                        <div class="content-title SlideToolHeader">
+                                            <div class="cpa">
+                                                Banner
+                                            </div>
+                                            <div class="tools">
+                                                <a href="javascript:void(0);" class="expand handle"><i
+                                                        class="fal fa-angle-down"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="cm-content-body publish-content form excerpt">
+                                            <div class="card-body">
+                                                <div class="avatar-upload d-flex align-items-center">
+                                                    <div class=" position-relative ">
+                                                        <div class="avatar-preview">
+                                                            <div id="imagePreview"
+                                                                 style="background-image: url(../../public/assets/images/no-img-avatar.png);">
+                                                            </div>
+                                                        </div>
+                                                        <div class="change-btn d-flex align-items-center flex-wrap">
+                                                            <input type='file' class="form-control d-none"
+                                                                   id="imageUpload"
+                                                                   accept=".png, .jpg, .jpeg"
+                                                                   name="EventImage">
+                                                            <label for="imageUpload" class="btn btn-primary ms-0">Chọn
+                                                                Ảnh</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="card-footer border-0 pt-0 text-end">
-                                        <input type="submit" class="btn btn-primary btn-sm" name="SUBMIT">
+                                        <hr>
+                                        <div class="card-footer border-0 pt-0 text-end">
+                                            <input type="submit" class="btn btn-primary btn-sm" style="float: left;"
+                                                   value="THÊM SỰ KIỆN">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-    </form>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--**********************************
-Content body end
-***********************************-->
-    <!--**********************************
-Footer start
-***********************************-->
-    <footer class="footer">
-        <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a>
-                2023</p>
-        </div>
-    </footer>
-    <!--**********************************
-Footer end
-***********************************-->
 
 </div>
 <script data-cfasync="false"
@@ -386,34 +351,42 @@ Footer end
 <%--Date Picker--%>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
-
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#ckeditor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            result += characters[randomIndex];
+        }
+        return result;
+    }
+
+    const randomString = generateRandomString(8);
+    document.getElementById('randomEnventCode').value = randomString;
 </script>
 <script>
-    $(function() {
-        $('input[name="datetimes"]').daterangepicker({
-            timePicker: true,
-            startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(32, 'hour'),
-            locale: {
-                format: 'YYYY/MM/DD hh:mm'
-            }
+    ClassicEditor
+        .create(document.querySelector('#ckeditor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
+    $(function () {
+        $('input[name="StartDate"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format('YYYY'), 10)
         });
     });
-
-    $(function() {
+    $(function () {
         $('input[name="EndDate"]').daterangepicker({
-            timePicker: true,
-            startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(32, 'hour'),
-            locale: {
-                format: 'YYYY/MM/DD hh:mm'
-            }
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format('YYYY'), 10)
         });
     });
 </script>
