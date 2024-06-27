@@ -20,18 +20,6 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
-    <meta name="robots" content="">
-
-    <meta name="keywords"
-          content="admin, admin panel, admin dashboard, admin template, administration, analytics, bootstrap, bootstrap admin, coupon, deal, modern, responsive admin dashboard, ticket, ticket dashboard, ticket system">
-    <meta name="description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today!">
-    <meta property="og:title" content="Ventic - CodeIgniter Event Ticketing Admin Dashboard Template">
-    <meta property="og:description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today! ">
-    <meta property="og:image" content="https://ventic.w3itexpert.com/codeigniter/social-image.png">
-    <meta name="format-detection" content="telephone=no">
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,29 +28,21 @@
 
     <link rel="icon" type="image/png" sizes="16x16"
           href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
-
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
@@ -184,11 +164,15 @@ Content body start
                                     <table class="table table-striped  table-condensed flip-content">
                                         <thead>
                                         <tr>
-                                            <th class="text-black">S.No</th>
-                                            <th class="text-black">Title</th>
-                                            <th class="text-black">Status</th>
-                                            <th class="text-black">Modified</th>
-                                            <th class="text-black text-end">Actions</th>
+                                            <th class="text-black">E.ID</th>
+                                            <th class="text-black">Banner</th>
+                                            <th class="text-black">Tên Sự Kiện</th>
+                                            <th class="text-black">Code Sự Kiện</th>
+                                            <th class="text-black">Giảm Giá</th>
+                                            <th class="text-black">Ngày Bắt Đầu</th>
+                                            <th class="text-black">Ngày Kết Thúc</th>
+                                            <th class="text-black">Trạng Thái</th>
+                                            <th class="text-black text-end">Công Cụ</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -199,9 +183,17 @@ Content body start
                                         %>
                                         <tr>
                                             <td><%= event.getEventID() %></td>
+                                            <td>
+                                                <img src="<%= event.getEventImage() %>"  width="100">
+                                            </td>
                                             <td><%= event.getEventName() %></td>
-                                            <td><%= event.getStatus() %></td>
+                                            <td><%= event.getEventCode() %></td>
+                                            <td><%= event.getDiscount() %></td>
                                             <td><%= event.getStartDate() %></td>
+                                            <td><%= event.getEndDate() %></td>
+                                            <td>
+                                                <%= (event.getStatus() == 1) ? "Hoạt Động" : "Không Hoạt Động" %>
+                                            </td>
                                             <td class="text-end">
                                                 <a href="javascript:void(0);"
                                                    class="btn btn-warning btn-sm content-icon">
@@ -253,8 +245,8 @@ Footer start
 ***********************************-->
     <footer class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a>
-                2023</p>
+            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">MCN</a>
+                2024</p>
         </div>
     </footer>
     <!--**********************************

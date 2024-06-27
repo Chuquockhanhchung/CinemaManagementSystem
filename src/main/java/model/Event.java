@@ -10,7 +10,7 @@ public class Event {
     private String StartDate;
     private String EndDate;
     private float Discount;
-    private String Status;
+    private int Status;
 
     public Event() {
         super();
@@ -88,11 +88,11 @@ public class Event {
         Discount = discount;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         Status = status;
     }
 }

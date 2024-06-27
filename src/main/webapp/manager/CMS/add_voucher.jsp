@@ -16,43 +16,23 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
-    <meta name="robots" content="">
-
-    <meta name="keywords"
-          content="admin, admin panel, admin dashboard, admin template, administration, analytics, bootstrap, bootstrap admin, coupon, deal, modern, responsive admin dashboard, ticket, ticket dashboard, ticket system">
-    <meta name="description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today!">
-    <meta property="og:title" content="Ventic - CodeIgniter Event Ticketing Admin Dashboard Template">
-    <meta property="og:description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today! ">
-    <meta property="og:image" content="https://ventic.w3itexpert.com/codeigniter/social-image.png">
-    <meta name="format-detection" content="telephone=no">
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon icon -->
-
     <link rel="icon" type="image/png" sizes="16x16"
           href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
-
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/select2/css/select2.min.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/tagify/tagify.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet" type="text/css"/>
 
@@ -164,10 +144,11 @@ Content body start
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Giá Trị Voucher</label>
-                                            <input type="number" class="form-control" name="VoucherPrice" min="1" max="100">
+                                            <input type="number" class="form-control" name="VoucherPrice" min="1"
+                                                   max="100">
                                         </div>
                                     </div>
-<%--Có thể sẽ lỗi ở đây vì định dạng ngày ở đây là tháng/ngày/năm còn tròn database là năm/tháng/ngày--%>
+                                    <%--Có thể sẽ lỗi ở đây vì định dạng ngày ở đây là tháng/ngày/năm còn tròn database là năm/tháng/ngày--%>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Hạn Sử Dụng</label>
@@ -216,9 +197,7 @@ Footer end
 </div>
 <script data-cfasync="false"
         src="${pageContext.request.contextPath}/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script>
-    var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
-</script>
+
 <script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 

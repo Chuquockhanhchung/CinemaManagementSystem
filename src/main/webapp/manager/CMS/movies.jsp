@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: datla
@@ -16,18 +15,6 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
-    <meta name="robots" content="">
-
-    <meta name="keywords"
-          content="admin, admin panel, admin dashboard, admin template, administration, analytics, bootstrap, bootstrap admin, coupon, deal, modern, responsive admin dashboard, ticket, ticket dashboard, ticket system">
-    <meta name="description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today!">
-    <meta property="og:title" content="Ventic - CodeIgniter Event Ticketing Admin Dashboard Template">
-    <meta property="og:description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today! ">
-    <meta property="og:image" content="https://ventic.w3itexpert.com/codeigniter/social-image.png">
-    <meta name="format-detection" content="telephone=no">
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,32 +22,22 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16"
-          href="public/assets/images/favicon.png">
-
-
-    <link href="public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
-
-    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet" type="text/css"/>
-
-    <link href="public/assets/vendor/datatables/css/jquery.dataTables.min.css"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet" type="text/css"/>
-
-    <link href="public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
+    <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet" type="text/css"/>
-
-    <link href="public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
-          rel="stylesheet" type="text/css"/>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <link class="main-css" href="public/assets/css/style.css" rel="stylesheet"
+    <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
     <style>
@@ -71,15 +48,18 @@
             flex-wrap: wrap;
             gap: 10px; /* Khoảng cách giữa các phần tử */
         }
+
         .form-container > div {
             flex: 1 1 20%; /* Điều chỉnh kích thước cho mỗi phần tử */
             min-width: 150px; /* Đảm bảo kích thước tối thiểu cho mỗi phần tử */
         }
+
         .form-container .btn-container {
             display: flex;
             gap: 10px;
             flex: 1 1 30%; /* Điều chỉnh kích thước container chứa nút */
         }
+
         .form-container .btn-container > button {
             flex: 1;
             /* Để các nút có cùng kích thước */
@@ -111,9 +91,9 @@
     Main wrapper start
 ***********************************-->
 <div id="main-wrapper">
-<!--**********************************
-Nav header start
-***********************************-->
+    <!--**********************************
+    Nav header start
+    ***********************************-->
     <%@include file="../header.jsp" %>
     <!--**********************************
 Header end
@@ -152,30 +132,32 @@ Content body start
                         <div class="cm-content-body  form excerpt">
                             <div class="card-body pb-2">
                                 <div class="row">
-                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                   placeholder="Title" name="title">
-                                        </div>
-                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                            <select id="statusSelect" name="status" class="form-control default-select dashboard-select-2 h-auto wide"
-                                                    aria-label="Default select example">
-                                                <option value="">Select Status</option>
-                                                <option value="Đang Chiếu">Đang Chiếu</option>
-                                                <option value="Sắp Chiếu">Sắp Chiếu</option>
+                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                               placeholder="Title" name="title">
+                                    </div>
+                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                        <select id="statusSelect" name="status"
+                                                class="form-control default-select dashboard-select-2 h-auto wide"
+                                                aria-label="Default select example">
+                                            <option value="">Select Status</option>
+                                            <option value="Đang Chiếu">Đang Chiếu</option>
+                                            <option value="Sắp Chiếu">Sắp Chiếu</option>
 
-                                            </select>
-                                        </div>
-                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                            <input class="form-control" name="date" type="text" id="datepicker">
-                                        </div>
-                                        <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3 btn-container">
-                                            <button class="btn btn-primary" title="Click here to Search" id="filterButton"><i
-                                                    class="fa-sharp fa-solid fa-filter me-1" ></i>Filter
-                                            </button>
-                                            <button class="btn btn-danger light" title="Click here to remove filter"
-                                                    type="button" id="removeFilterButton">Remove Filter
-                                            </button>
-                                        </div>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
+                                        <input class="form-control" name="date" type="text" id="datepicker">
+                                    </div>
+                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3 btn-container">
+                                        <button class="btn btn-primary" title="Click here to Search" id="filterButton">
+                                            <i
+                                                    class="fa-sharp fa-solid fa-filter me-1"></i>Filter
+                                        </button>
+                                        <button class="btn btn-danger light" title="Click here to remove filter"
+                                                type="button" id="removeFilterButton">Remove Filter
+                                        </button>
+                                    </div>
 
                                 </div>
                             </div>
@@ -198,7 +180,8 @@ Content body start
                         <div class="cm-content-body form excerpt">
                             <div class="card-body py-3">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-condensed flip-content">
+                                    <table class="table table-striped table-condensed dataTablesCard flip-content"
+                                           id="movieTable">
                                         <thead>
                                         <tr>
                                             <th class="text-black">M.No</th>
@@ -232,25 +215,7 @@ Content body start
 
                                         </tbody>
                                     </table>
-                                    <div class="d-lg-flex d-block align-items-center width-defult justify-content-between flex-wrap py-3">
-                                        <small class="mb-lg-0 mb-3 d-inline-block">Page 1 of 5, showing 2 records out of
-                                            8 total, starting on record 1, ending on 2</small>
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination mb-2 mb-sm-0">
-                                                <li class="page-item"><a class="page-link" href="javascript:void();"><i
-                                                        class="fa-solid fa-angle-left"></i></a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="javascript:void(0);">1</a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="javascript:void(0);">2</a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="javascript:void(0);">3</a></li>
-                                                <li class="page-item"><a class="page-link "
-                                                                         href="javascript:void(0);"><i
-                                                        class="fa-solid fa-angle-right"></i></a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -267,8 +232,8 @@ Footer start
 ***********************************-->
     <footer class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a>
-                2023</p>
+            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">MCN</a>
+                2024</p>
         </div>
     </footer>
     <!--**********************************
@@ -276,19 +241,17 @@ Footer end
 ***********************************-->
 
 </div>
-<script>
-    var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
-</script>
-<script src="public/assets/vendor/global/global.min.js"></script>
-<script src="public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/plugins-init/datatables.init.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
 
-<script src="public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
-
-<script src="public/assets/js/custom.min.js"></script>
-<script src="public/assets/js/deznav-init.js"></script>
-<script src="public/assets/js/demo.js"></script>
-<script src="public/assets/js/styleSwitcher.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
 <script>
     $(function () {
         $("#datepicker").datepicker({
@@ -299,13 +262,12 @@ Footer end
     });
 </script>
 
-
 <!--**********************************
     Main wrapper end
 ***********************************-->
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         console.log('DOM fully loaded and parsed');
         var filterButton = document.getElementById('filterButton');
         var removeFilterButton = document.getElementById('removeFilterButton');
@@ -318,7 +280,7 @@ Footer end
             console.error('Remove filter button not found');
         }
 
-        filterButton.addEventListener('click', function() {
+        filterButton.addEventListener('click', function () {
             console.log('Filter button clicked');
 
             var title = document.getElementById('exampleFormControlInput1').value;
@@ -328,41 +290,41 @@ Footer end
             console.log('Title:', title);
             console.log('Status:', status);
             console.log('Date:', date);
-            var queryParams="";
-            var titlev="title=";
-            var statusv="status=";
-            var datev="date=";
+            var queryParams = "";
+            var titlev = "title=";
+            var statusv = "status=";
+            var datev = "date=";
             if (title) {
-                titlev+=title;
-                queryParams=titlev;
+                titlev += title;
+                queryParams = titlev;
             }
             if (status) {
-                statusv+=status;
-                if(title){
-                    queryParams=queryParams+"&&"+statusv;
-                }else{
-                    queryParams=queryParams+statusv;
+                statusv += status;
+                if (title) {
+                    queryParams = queryParams + "&&" + statusv;
+                } else {
+                    queryParams = queryParams + statusv;
                 }
 
             }
             if (date) {
-                datev+=date;
-                if(title || status){
-                    queryParams=queryParams+"&&"+datev;
-                }else{
-                    queryParams=queryParams+datev;
+                datev += date;
+                if (title || status) {
+                    queryParams = queryParams + "&&" + datev;
+                } else {
+                    queryParams = queryParams + datev;
                 }
 
             }
 
 
-            var newUrl = `http://localhost:9999/CinemaManageSystem_war_exploded/searchmovie?`+queryParams;
+            var newUrl = `http://localhost:9999/CinemaManageSystem_war_exploded/searchmovie?` + queryParams;
             console.log('Navigating to:', newUrl);
 
             // window.location.href = newUrl;
         });
 
-        removeFilterButton.addEventListener('click', function() {
+        removeFilterButton.addEventListener('click', function () {
             console.log('Remove filter button clicked');
 
             document.getElementById('exampleFormControlInput1').value = '';
@@ -370,5 +332,24 @@ Footer end
             document.getElementById('datepicker').value = '';
         });
     });
+</script>
+<script>
+    (function($) {
+
+        var table = $('#example5').DataTable({
+            searching: false,
+            paging: true,
+            select: false,
+            //info: false,
+            lengthChange: false,
+            responsive: true
+
+        });
+        $('#example tbody').on('click', 'tr', function() {
+            var data = table.row(this).data();
+
+        });
+
+    })(jQuery);
 </script>
 </html>

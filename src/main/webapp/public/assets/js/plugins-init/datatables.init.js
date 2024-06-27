@@ -231,7 +231,21 @@ let dataSet = [
 
     });
 
+    // movieTable
+    var table = $('#movieTable').DataTable({
+        searching: true,
+        paging: true,
+        select: true,
+        info: false,
+        lengthChange: false,
+        language: {
+            paginate: {
+                next: '<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
+                previous: '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'
+            }
+        }
 
+    });
 
     // table row
     var table = $('#dataTable1, #dataTable2, #dataTable3, #dataTable4,  #example3, #example4 ').DataTable({

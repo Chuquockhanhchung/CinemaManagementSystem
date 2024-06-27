@@ -26,11 +26,11 @@ public class EventDAO {
             ps.setString(1, event.getEventName());
             ps.setString(2, event.getEventCode());
             ps.setString(3, event.getEventDetail());
-            ps.setString(3, event.getEventImage());
-            ps.setString(4, event.getStartDate());
-            ps.setString(5, event.getEndDate());
-            ps.setFloat(6, event.getDiscount());
-            ps.setString(7, event.getStatus());
+            ps.setString(4, event.getEventImage());
+            ps.setString(5, event.getStartDate());
+            ps.setString(6, event.getEndDate());
+            ps.setFloat(7, event.getDiscount());
+            ps.setInt(8, event.getStatus());
             int i = ps.executeUpdate();
             if (i == 1) {
                 f = true;
@@ -47,19 +47,19 @@ public class EventDAO {
         try {
             String sql = "Select * From event WHERE Status = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "Active");
+            ps.setString(1, "1");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 event = new Event();
                 event.setEventID(rs.getInt(1));
                 event.setEventName(rs.getString(2));
                 event.setEventCode(rs.getString(3));
-                event.setEventDetail(rs.getString(5));
-                event.setEventImage(rs.getString(6));
-                event.setStartDate(rs.getString(7));
-                event.setEndDate(rs.getString(8));
-                event.setDiscount(rs.getFloat(9));
-                event.setStatus(rs.getString(10));
+                event.setEventDetail(rs.getString(4));
+                event.setEventImage(rs.getString(5));
+                event.setStartDate(rs.getString(6));
+                event.setEndDate(rs.getString(7));
+                event.setDiscount(rs.getFloat(8));
+                event.setStatus(rs.getInt(9));
 
                 list.add(event);
 

@@ -22,18 +22,6 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
-    <meta name="robots" content="">
-
-    <meta name="keywords"
-          content="admin, admin panel, admin dashboard, admin template, administration, analytics, bootstrap, bootstrap admin, coupon, deal, modern, responsive admin dashboard, ticket, ticket dashboard, ticket system">
-    <meta name="description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today!">
-    <meta property="og:title" content="Ventic - CodeIgniter Event Ticketing Admin Dashboard Template">
-    <meta property="og:description"
-          content="Enhance your event management with Ventic - the ultimate Event Ticketing CodeIgniter Admin Template. Streamline ticket sales, track attendance, and manage your events effortlessly with this powerful and user-friendly template. Elevate your event experience today! ">
-    <meta property="og:image" content="https://ventic.w3itexpert.com/codeigniter/social-image.png">
-    <meta name="format-detection" content="telephone=no">
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,29 +30,21 @@
 
     <link rel="icon" type="image/png" sizes="16x16"
           href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
-
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/datatables/css/jquery.dataTables.min.css"
           rel="stylesheet" type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/css/bootstrap-select.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
           rel="stylesheet"
           type="text/css"/>
-
     <link class="main-css" href="${pageContext.request.contextPath}/public/assets/css/style.css" rel="stylesheet"
           type="text/css"/>
 
@@ -265,8 +245,8 @@ Footer start
 ***********************************-->
     <footer class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a>
-                2023</p>
+            <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">MCN</a>
+                2024</p>
         </div>
     </footer>
     <!--**********************************
@@ -274,9 +254,6 @@ Footer end
 ***********************************-->
 
 </div>
-<script>
-    var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
-</script>
 <script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 

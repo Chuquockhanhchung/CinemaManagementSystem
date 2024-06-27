@@ -58,16 +58,14 @@ public class EventServlet extends HttpServlet {
             String EventDetail = request.getParameter("EventDetail");
             Part part = request.getPart("EventImage");
             String EventImage = part.getSubmittedFileName();
-            String StartDate = request.getParameter("datetimes");
+            String StartDate = request.getParameter("StartDate");
             String EndDate = request.getParameter("EndDate");
             float Discount = Float.parseFloat(request.getParameter("Discount"));
-            String Status = request.getParameter("Status");
+            int Status = Integer.parseInt(request.getParameter("Status"));
 
             HttpSession session = request.getSession();
 
-            String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "about";
-
-            EventImage = path + File.separator + EventImage;
+            String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "Event_Categories" + File.separator + "event";
             File file = new File(path);
             part.write(path + File.separator +  EventImage);
 
@@ -75,7 +73,7 @@ public class EventServlet extends HttpServlet {
             event.setEventName(EventName);
             event.setEventCode(EventCode);
             event.setEventDetail(EventDetail);
-            event.setEventImage("images" + "/" + "content" + "Event_Single" + "/" + "event"+ "/" + EventImage);
+            event.setEventImage("../" +"../" +"images" + "/" + "content" + "/" + "Event_Categories" + "/" + "event"+ "/" + EventImage);
             event.setStartDate(StartDate);
             event.setEndDate(EndDate);
             event.setDiscount(Discount);
