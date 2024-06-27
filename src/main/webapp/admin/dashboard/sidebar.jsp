@@ -36,7 +36,7 @@
                 <span class="nav-text">Bảng Điều Khiển<span class="badge badge-danger badge-xs ms-1"> Admin</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="dashboard/customers.jsp">Danh Sách Khách Hàng</a></li>
+                    <li><a href="customers.jsp">Danh Sách Khách Hàng</a></li>
                     <%--                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Sự Kiện</a></li--%>
                     <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Phân Tích</a></li>
                 </ul>

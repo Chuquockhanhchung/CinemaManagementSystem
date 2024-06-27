@@ -143,7 +143,7 @@
 <!--*******************
     Preloader start
 ********************-->
-<!-- <div id="preloader">
+<div id="preloader">
     <div class="loader">
         <div class="loader--dot"></div>
         <div class="loader--dot"></div>
@@ -153,7 +153,7 @@
         <div class="loader--dot"></div>
         <div class="loader--text"></div>
     </div>
-</div> -->
+</div>
 <!--*******************
     Preloader end
 ********************-->
@@ -164,73 +164,8 @@
 <div id="main-wrapper show">
 
 
-    <header class="header">
-        <div class="header-content">
-            <nav class="navbar navbar-expand">
-                <div class="collapse navbar-collapse justify-content-between">
-                    <div class="header-left">
-                        <div class="form-control input-group search-area d-xl-inline-flex d-none">
-                            <form action="search" method="get" style="display: flex; flex-direction: row;">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search"
-                                       style=" flex: 0.4;">
-                                <input type="submit" value="Search" class="input-group-text"
-                                       style="background-color: #007bff; color: #fff; border-color: #007bff; flex: 0.3;">
-                            </form>
-                        </div>
+    <%@include file="../header.jsp" %>
 
-                    </div>
-                    <ul class="navbar-nav header-right">
-                        <li class="nav-item dropdown notification_dropdown">
-                            <a class="nav-link bell dz-theme-mode" href="javascript:void(0);"
-                               aria-label="theme-mode">
-                                <i id="icon-light" class="fas fa-sun"></i>
-                                <i id="icon-dark" class="fas fa-moon"></i>
-
-                            </a>
-
-                        </li>
-
-
-                        <li class="nav-item dropdown header-profile">
-                            <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                                <div class="header-info me-3">
-                                    <span class="fs-16 font-w600 ">${sessionScope.user.name}</span>
-                                    <small class="text-end fs-14 font-w400"> Admin</small>
-                                </div>
-                                <img src="${sessionScope.user.picture}" width="20" alt="">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="https://ventic.dexignzone.com/codeigniter/demo/app_profile"
-                                   class="dropdown-item ai-icon">
-                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    <span class="ms-2">Thông Tin Cá Nhân </span>
-                                </a>
-
-
-
-                                <a href="logout"
-                                   class="dropdown-item ai-icon">
-                                    <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                        <polyline points="16 17 21 12 16 7"></polyline>
-                                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                                    </svg>
-                                    <span class="ms-2">Đăng Xuất </span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
     <script>
         document.querySelector('.dropdown-toggle').addEventListener('click', function() {
             document.querySelector('.dropdown-menu').classList.toggle('show');
@@ -242,6 +177,7 @@ Header end
     <!--**********************************
 Sidebar start
 ***********************************-->
+    <%@include file="sidebar.jsp" %>
 
 
     <!--**********************************

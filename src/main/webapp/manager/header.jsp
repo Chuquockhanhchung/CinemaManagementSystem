@@ -67,14 +67,14 @@ Header start
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                             <div class="header-info me-3">
-                                <span class="fs-16 font-w600 ">James P. Sullivan</span>
-                                <small class="text-end fs-14 font-w400">Super Admin</small>
+                                <span class="fs-16 font-w600 ">${sessionScope.user.name}</span>
+                                <small class="text-end fs-14 font-w400">Manager</small>
                             </div>
-                            <img src="${pageContext.request.contextPath}/public/assets/images/profile/pic1.jpg"
+                            <img src="${sessionScope.user.picture}"
                                  width="20" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="#"
+                            <a href="${pageContext.request.contextPath}/Account.jsp?CustomerID=${sessionScope.user.idCustomer}"
                                class="dropdown-item ai-icon">
                                 <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                      width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
