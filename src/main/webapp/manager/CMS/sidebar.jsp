@@ -49,14 +49,16 @@
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> QUẢN LÝ</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="movies.jsp">Danh Sách Phim</a></li>
-                    <li><a href="add_movies.jsp">Thêm Phim Mới</a></li>
-                    <li><a href="event.jsp">Sự Kiện</a></li>
-                    <li><a href="add_event.jsp">Thêm Sự Kiện</a></li>
-                    <li><a href="product.jsp">Sản Phẩm</a>
-                    <li><a href="add_product.jsp">Thêm Sản Phẩm</a>
-                    <li><a href="voucher.jsp">Voucher</a>
-                    <li><a href="add_voucher.jsp">Thêm Voucher</a>
+                    <li><a href="manageMovie">Danh Sách Phim</a></li>
+                    <li><a href="addmovie">Thêm Phim Mới</a></li>
+                    <li><a href="event">Sự Kiện</a></li>
+                    <li><a href="addevent">Thêm Sự Kiện</a></li>
+                    <li><a href="product">Sản Phẩm</a>
+                    <li><a href="addproduct">Thêm Sản Phẩm</a>
+                    <li><a href="voucher">Voucher</a>
+                    <li><a href="addvoucher">Thêm Voucher</a>
+                    <li><a href="combo">Combo</a>
+                    <li><a href="addCombo">Thêm Combo</a>
                     </li>
                 </ul>
             </li>

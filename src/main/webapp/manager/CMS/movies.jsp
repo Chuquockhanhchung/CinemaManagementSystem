@@ -119,63 +119,18 @@ Content body start
             <!-- Row -->
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="filter cm-content-box box-primary">
-                        <div class="content-title SlideToolHeader">
-                            <h4 class="cpa card-title">
-                                <i class="fa-sharp fa-solid fa-filter me-2"></i>Filter
-                            </h4>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
-                        </div>
-                        <div class="cm-content-body  form excerpt">
-                            <div class="card-body pb-2">
-                                <div class="row">
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                                               placeholder="Title" name="title">
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <select id="statusSelect" name="status"
-                                                class="form-control default-select dashboard-select-2 h-auto wide"
-                                                aria-label="Default select example">
-                                            <option value="">Select Status</option>
-                                            <option value="Đang Chiếu">Đang Chiếu</option>
-                                            <option value="Sắp Chiếu">Sắp Chiếu</option>
 
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3">
-                                        <input class="form-control" name="date" type="text" id="datepicker">
-                                    </div>
-                                    <div class="col-xl-3 col-xxl-6 col-sm-6 mb-3 btn-container">
-                                        <button class="btn btn-primary" title="Click here to Search" id="filterButton">
-                                            <i
-                                                    class="fa-sharp fa-solid fa-filter me-1"></i>Filter
-                                        </button>
-                                        <button class="btn btn-danger light" title="Click here to remove filter"
-                                                type="button" id="removeFilterButton">Remove Filter
-                                        </button>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="mb-5">
-                        <a href="../../addmovie" class="btn btn-primary">Thêm Phim Mới</a>
+                        <a href="addmovie" class="btn btn-primary">Thêm Phim Mới</a>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
                             <div class="cpa">
                                 <i class="fa-solid fa-file-lines me-1"></i>Danh Sách Phim
                             </div>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
+
                         </div>
                         <div class="cm-content-body form excerpt">
                             <div class="card-body py-3">
@@ -186,16 +141,18 @@ Content body start
                                         <tr>
                                             <th class="text-black">M.No</th>
                                             <th class="text-black">Tên Phim</th>
+                                            <th class="text-black">Ảnh Phim</th>
                                             <th class="text-black">Trạng Thái</th>
                                             <th class="text-black">Ngày Đăng</th>
                                             <th class="text-black text-end">Hành Động</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${sessionScope.movies}" var="m">
+                                        <c:forEach items="${sessionScope.list}" var="m">
                                             <tr>
                                                 <td>${m.getId()}</td>
                                                 <td>${m.getName()}</td>
+                                                <td><img width="100" height="100" src=${m.getImage()}  /></td>
                                                 <td>${m.getStatus()}</td>
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">
@@ -204,7 +161,7 @@ Content body start
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="javascript:void(0);"
+                                                    <a onclick="deleteM(${m.getId()})"
                                                        class="btn btn-danger btn-sm content-icon">
                                                         <i class="fa fa-times"></i>
                                                     </a>
@@ -332,6 +289,14 @@ Footer end
             document.getElementById('datepicker').value = '';
         });
     });
+</script>
+<script>
+    function deleteM(id){
+        let confirmDelete = window.confirm("Bạn muốn xóa movie " + id +"?")
+        if(confirmDelete){
+            window.location = "deleteM?id=" + id
+        }
+    }
 </script>
 <script>
     (function($) {

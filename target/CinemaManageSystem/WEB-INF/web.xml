@@ -173,6 +173,10 @@
         <servlet-class>controller.manageMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ManageCombo</servlet-name>
+        <servlet-class>controller.ManageCombo</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>controller.PaymentServlet</servlet-class>
     </servlet>
@@ -196,7 +200,43 @@
         <servlet-name>editMovieServlet</servlet-name>
         <servlet-class>controller.editMovieServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditCombo</servlet-name>
+        <servlet-class>controller.EditCombo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addEvent</servlet-name>
+        <url-pattern>/addevent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>addEvent</servlet-name>
+        <servlet-class>controller.addEvent</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditCombo</servlet-name>
+        <url-pattern>/editCombo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteCombo</servlet-name>
+        <servlet-class>controller.DeleteCombo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCombo</servlet-name>
+        <url-pattern>/deleteCombo</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddCombo</servlet-name>
+        <servlet-class>controller.AddCombo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>controller.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCombo</servlet-name>
+        <url-pattern>/addCombo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -216,6 +256,10 @@
     <servlet-mapping>
         <servlet-name>SeatBookServlet</servlet-name>
         <url-pattern>/seat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageCombo</servlet-name>
+        <url-pattern>/combo</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -343,7 +387,10 @@
         <servlet-name>SearchMovieServlet</servlet-name>
         <url-pattern>/search2</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>EventServlet</servlet-name>
