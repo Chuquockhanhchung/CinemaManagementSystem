@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.CustomerDAO;
 import dal.DBContext;
 import dal.MovieDAO;
 import model.*;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -72,8 +74,7 @@ public class BookingMovieServlet extends HttpServlet {
             session.setAttribute("movie", movie);
             session.setAttribute("showtime", list1);
             session.setAttribute("time", list2);
-
-            request.getRequestDispatcher("movie_booking.jsp").forward(request, response);
+            response.sendRedirect("staff/movie_booking.jsp");
 
         } catch (Exception e) {
             System.out.println(e);
@@ -92,17 +93,24 @@ public class BookingMovieServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            MovieDAO dao = new MovieDAO(DBContext.getConn());
-            int movieId = Integer.parseInt(request.getParameter("id"));
-            Movie movie = dao.getMovie(movieId);
-            ArrayList<ShowTime> list1 = dao.getShowTime(movieId);
-            ArrayList<ShowTime> list2 = dao.getTime(movieId);
-            HttpSession session = request.getSession();
-            session.setAttribute("movie", movie);
-            session.setAttribute("showtime", list1);
-            session.setAttribute("time", list2);
+           String name = request.getParameter("fullName");
+           String phoneNumber = request.getParameter("phoneNumber");
+           String dob = request.getParameter("dob");
 
-            request.getRequestDispatcher("movie_booking.jsp").forward(request, response);
+            Customer cus = new Customer();
+            cus.setName(name);
+            cus.setPhone(phoneNumber);
+            cus.setDOB(dob);
+
+            HttpSession session = request.getSession();
+
+            CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+            boolean f = dao.insertCustomerOffline(cus);
+
+            if (f) {
+                session.setAttribute("message", "Đặt vé thành công");
+                response.sendRedirect("staff/index.jsp");
+            }
 
         } catch (Exception e) {
             System.out.println(e);

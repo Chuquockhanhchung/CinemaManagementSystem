@@ -8,10 +8,7 @@
     <meta charset="utf-8" />
     <title>Movie Pro Responsive HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Movie Pro" />
-    <meta name="keywords" content="Movie Pro" />
-    <meta name="author" content="" />
-    <meta name="MobileOptimized" content="320" />
+
     <!--Template style -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -29,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
     <link rel="stylesheet" type="text/css" href="css/venobox.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/movie_single.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
     <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- favicon links -->
@@ -37,411 +35,7 @@
     
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        .replies-section {
-            margin-top: 10px; /* Khoảng cách giữa phần replies-section và các phần khác */
-        }
 
-        .comment {
-            border: 1px solid #ccc; /* Viền đơn giản cho mỗi comment */
-            padding: 10px; /* Khoảng cách lề bên trong mỗi comment */
-            margin-bottom: 10px; /* Khoảng cách giữa các comment */
-        }
-
-        .comment-header {
-            display: flex; /* Sắp xếp các thành phần của comment theo chiều ngang */
-            align-items: center; /* Căn giữa các thành phần */
-            margin-bottom: 5px; /* Khoảng cách giữa header và body của comment */
-        }
-
-        .comment-header img {
-            width: 40px; /* Độ rộng của ảnh avatar */
-            height: 40px; /* Chiều cao của ảnh avatar */
-            border-radius: 50%; /* Làm tròn góc cho ảnh */
-            margin-right: 10px; /* Khoảng cách giữa ảnh và các thành phần khác trong header */
-        }
-
-        .comment-header span {
-            margin-right: 10px; /* Khoảng cách giữa các phần tử span trong header */
-            font-weight: bold; /* Đậm chữ cho tên và rate */
-        }
-
-        .comment-body {
-            margin-bottom: 5px; /* Khoảng cách giữa phần body và footer của comment */
-        }
-
-        .reply-btn {
-            cursor: pointer; /* Biến con trỏ thành dấu nhấp nháy khi di chuột qua button */
-            color: blue; /* Màu sắc của button reply */
-            margin-top: 5px; /* Khoảng cách giữa button reply và phần body của comment */
-        }
-
-        .reply-form {
-            margin-top: 5px; /* Khoảng cách giữa form reply và button reply */
-        }
-
-        textarea {
-            width: 100%; /* Chiều rộng của textarea */
-            padding: 5px; /* Khoảng cách lề bên trong textarea */
-            margin-bottom: 5px; /* Khoảng cách giữa các phần tử */
-        }
-
-        button {
-            padding: 5px 10px; /* Khoảng cách lề bên trong button */
-            cursor: pointer; /* Biến con trỏ thành dấu nhấp nháy khi di chuột qua button */
-            background-color: #007bff; /* Màu nền của button */
-            color: white; /* Màu chữ của button */
-            border: none; /* Không có đường viền */
-            border-radius: 5px; /* Làm tròn góc cho button */
-        }
-
-        button:hover {
-            background-color: #0056b3; /* Màu nền của button khi di chuột qua */
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .comment {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .comment-header {
-            display: flex;
-            align-items: center;
-        }
-        .comment-header img {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .comment-body {
-            margin: 10px 0;
-        }
-        .reply-btn {
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-            margin-top: 10px;
-            display: inline-block;
-        }
-        .comment-replies {
-            display: block !important; /* Sử dụng !important để đảm bảo quy tắc hiển thị được ưu tiên */
-        }
-        .reply-form {
-            display: none;
-            margin-top: 10px;
-        }
-        .feedback-container {
-            margin-top: 20px;
-        }
-
-        .feedback-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .feedback-item h4 {
-            margin-top: 0;
-        }
-
-        .feedback-item p {
-            margin-bottom: 5px;
-        }
-
-        .feedback-item em {
-            font-style: italic;
-        }
-        .stars {
-            display: flex;
-            gap: 5px;
-        }
-        .stars input {
-            display: none;
-        }
-        .stars label {
-            font-size: 30px;
-            color: lightgray;
-            cursor: pointer;
-        }
-        .stars input:checked ~ label {
-            color: gold;
-        }
-        .stars label:hover,
-        .stars label:hover ~ label {
-            color: gold;
-        }
-        .stars input:checked ~ label:hover,
-        .stars input:checked ~ label:hover ~ label {
-            color: gold;
-        }
-        textarea {
-            width: 100%;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-            padding: 10px;
-        }
-        .spoiler-checkbox {
-            display: flex;
-            align-items: center;
-        }
-        .stars {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
-
-        .stars input[type="radio"] {
-            display: none;
-        }
-
-        .stars label {
-            font-size: 30px;
-            color: grey;
-            cursor: pointer;
-        }
-
-        .stars label.checked {
-            color: gold;
-        }
-        .modal-body {
-            display: flex;
-            width: 80%;
-        }
-        .d-flex {
-            display: flex;
-            width: 100%;
-        }
-        /* General modal styling */
-        .modal-content {
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #1b1b1b; /* Dark background to match the theme */
-            color: #fff; /* White text for contrast */
-        }
-
-        .modal-header {
-            background-color: #e50914; /* Bright red to match the header */
-            border-bottom: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .modal-title {
-            font-size: 1.5em;
-            margin: 0;
-        }
-
-        .close {
-            color: #fff;
-            opacity: 1;
-            font-size: 1.5em;
-        }
-
-        .modal-body {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            padding: 20px;
-        }
-
-        .d-flex {
-            display: flex;
-            align-items: flex-start;
-            width: 100%;
-        }
-
-        img {
-            border-radius: 8px;
-            margin-right: 20px;
-        }
-
-        .content {
-            flex-grow: 1;
-        }
-
-        .stars {
-            display: flex;
-            justify-content: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .stars input[type="radio"] {
-            display: none;
-        }
-
-        .stars label {
-            font-size: 30px;
-            color: grey;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-
-        .stars label.checked {
-            color: #e50914; /* Bright red for checked stars */
-        }
-
-        textarea {
-            width: 100%; /* Full width */
-            height: 100px;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background-color: #2a2a2a; /* Dark background for textarea */
-            color: #fff;
-            resize: vertical; /* Allows the user to resize the textarea vertically */
-            font-size: 1em;
-        }
-
-        .modal-footer {
-            background-color: #1b1b1b; /* Matching the modal body background */
-            border-top: none;
-            display: flex;
-            justify-content: flex-end;
-            padding: 15px 20px;
-        }
-
-        .btn-primary {
-            background-color: #e50914; /* Bright red for buttons */
-            border: none;
-            margin-right: 10px;
-        }
-        .btn-primary2 {
-            background-color: #e50914; /* Bright red for buttons */
-            border: none;
-            padding: 15px 30px; /* Increase padding for a larger button */
-            font-size: 1.25em; /* Increase font size */
-            border-radius: 8px; /* Rounded corners */
-            font-weight: bold; /* Make the text bold */
-            transition: background-color 0.3s ease; /* Smooth transition for background color */
-        }
-
-        .btn-secondary {
-            background-color: #333; /* Dark grey for secondary button */
-            border: none;
-        }
-        /* General styles for the feedback section */
-        #menu2 {
-            margin: 20px 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Styles for individual comments */
-        .comment {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-
-        /* Styles for the comment header */
-        .comment-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .comment-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .comment-header span {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        /* Styles for the comment body */
-        .comment-body {
-            margin-bottom: 10px;
-        }
-
-        /* Styles for the reply button */
-        .reply-btn {
-            display: inline-block;
-            padding: 5px 10px;
-            color: white;
-            background-color: #ff3e3e;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        /* Styles for the reply form */
-        .reply-form {
-            margin-top: 10px;
-        }
-
-        .reply-form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical;
-        }
-
-        .reply-form button {
-            display: inline-block;
-            padding: 5px 10px;
-            color: white;
-            background-color: #ff3e3e;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        /* Styles for the replies toggle button */
-        .replies-toggle-btn {
-            display: inline-block;
-            padding: 5px 10px;
-            color: #ff3e3e;
-            background-color: transparent;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-
-        /* Styles for the replies section */
-        .replies-section {
-            margin-top: 15px;
-            padding-left: 20px;
-            border-left: 2px solid #ddd;
-        }
-
-        /* Add some responsiveness */
-        @media (max-width: 600px) {
-            .comment-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .comment-header img {
-                margin-bottom: 5px;
-            }
-
-            .reply-btn, .replies-toggle-btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .reply-form textarea {
-                width: 100%;
-            }
-        }
-
-    </style>
 </head>
 
 <body>
@@ -463,7 +57,7 @@
                     <div class="st_video_slider_inner_wrapper float_left">
                         <div class="st_video_slider_overlay"></div>
                         <div class="st_video_slide_sec float_left">
-                            <a rel='external' href='' title='title' class="test-popup-link">
+                            <a rel='external' href='h${sessionScope.movie.getTrailer()}' title='title' class="test-popup-link">
 								<img src="${sessionScope.movie.getImage()}" alt="img" style="width: 300px; height: auto;">
 							</a>
                             <h3>${sessionScope.movie.getName()}</h3>
@@ -472,10 +66,10 @@
                             <h5><span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h5>
                         </div>
                         <div class="st_video_slide_social float_left">
-                            <div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">
-                                <h5><i class="fa fa-heart"></i> 85%</h5>
-                                <h4>52,291 votes</h4>
-                            </div>
+<%--                            <div class="st_slider_rating_btn_heart st_slider_rating_btn_heart_5th">--%>
+<%--                                <h5><i class="fa fa-heart"></i> 85%</h5>--%>
+<%--                                <h4>52,291 votes</h4>--%>
+<%--                            </div>--%>
 
                             <div class="st_video_slide_social_right float_left">
                                 <ul>
@@ -628,6 +222,16 @@
                                 radio.checked = true;
                             }
                         });
+                        function filterMovie(date){
+                            const movies = document.querySelectorAll('.movie');
+                            movies.forEach(movie => {
+                                if(movie.getAttribute('data-date') === date){
+                                    movie.classList.add('display');
+                                } else {
+                                    movie.classList.remove('display');
+                                }
+                            })
+                        }
                     </script>
                     <h4>Đánh Giá Của Khách Hàng</h4>
                 </div >
@@ -685,17 +289,18 @@
                 </div>
             </div>
             <div class="st_slider_rating_right">
-                <div class="st_slider_rating_btn prs_animate_btn1">
-                    <ul>
-                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="st_slider_rating_btn_heart">
-                    <h5><i class="fa fa-heart"></i> 85%</h5>
-                    <h4>52,291 lượt bình chọn</h4>
-                </div>
+<%--                <div class="st_slider_rating_btn prs_animate_btn1">--%>
+<%--                    <ul>--%>
+<%--                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+<%--                <div class="st_slider_rating_btn_heart">--%>
+<%--                    <h5><i class="fa fa-heart"></i> 85%</h5>--%>
+<%--                    <h4>52,291 lượt bình chọn</h4>--%>
+<%--                </div>--%>
             </div>
+
         </div>
     </div>
     <script>
@@ -705,6 +310,7 @@
     </script>
     <!-- st slider rating wrapper End -->
     <!-- st slider sidebar wrapper Start -->
+
     <div class="st_slider_index_sidebar_main_wrapper st_slider_index_sidebar_main_wrapper_md float_left">
         <div class="container">
             <div class="row">
@@ -712,7 +318,55 @@
                     <div class="st_indx_slider_main_container float_left">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="tab-content">
+                                    <div id="home1" class="tab-pane active">
+                                        <c:if test="${sessionScope.movie != null}">
+                                            <h1 style="font-size: 34px; font-family: inherit; color: #333333; margin-bottom: 20px; font-weight: 700">${sessionScope.movie.getName()}</h1>
+                                            <ul style="display: flex;  margin-bottom: 40px" class="blog-info">
 
+                                                <c:forEach items="${sessionScope.movietype}" var="i">
+                                                    <li style="margin-right: 10px;"><i style="font-size: 18px; color: #555555;" class="fa fa-tags"></i> ${i.getType()} </li>
+                                                </c:forEach>
+                                                <li style="margin-right: 10px;"><i style="font-size: 18px; color: #555555;" class="fa fa-clock-o"></i>${sessionScope.movie.getDuration()}p</li>
+                                            </ul>
+                                            <ul style="display: flex;  margin-bottom: 40px" class="blog-info">
+                                                <div class="st_calender_tabs" >
+                                                    <ul class="nav nav-tabs">
+
+                                                        <c:if test="${sessionScope.time != null && sessionScope.user!=null}">
+                                                            <c:forEach items="${sessionScope.time}" var="i">
+
+                                                                <li class="" onclick="filterMovie('${i.getTime()}')" style="border: 1px solid #555555; background-color: #555555; border-radius: 5px">
+                                                                    <a data-toggle="tab" ><span>${i.getDayName()}</span> <br> ${i.getDay()}/${i.getMonth()}</a>
+                                                                </li>
+                                                            </c:forEach>
+
+                                                        </c:if>
+                                                    </ul>
+                                                </div>
+                                            </ul>
+
+
+                                        </c:if>
+                                        <ul  style="display:flex; list-style: none;flex-wrap:wrap ">
+                                            <c:if test="${sessionScope.showtime != null}">
+                                                <c:forEach items="${sessionScope.showtime}" var="i">
+                                                    <li class="movie" data-date="${i.getDate()}" style="border: 1px solid #333; padding: 15px; margin-left: 15px" >
+                                                        <a  href="seat?showtimeId=${i.getShowTimeID()}">${i.getTime()}</a>
+                                                    </li>
+
+                                                </c:forEach>
+                                            </c:if>
+
+
+                                        </ul>
+
+
+
+
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
@@ -857,18 +511,7 @@
 
                                         function submitReply(feedbackId) {
                                             const replyTextElement = document.getElementById('reply-text-' + feedbackId);
-                                            function isUserLoggedIn() {
-                                                // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
-                                                // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
-                                                return !!localStorage.getItem('user');
-                                            }
 
-                                            if (!isUserLoggedIn()) {
-                                                alert('Bạn cần đăng nhập để thực hiện thao tác này.');
-                                                // Hiển thị popup đăng nhập hoặc chuyển hướng đến trang đăng nhập
-
-                                                return false;
-                                            }
                                             if (replyTextElement) {
                                                 let replyText = replyTextElement.value.trim();
                                                 console.log("Reply Text:", replyText);  // Debug: In giá trị reply text
@@ -905,59 +548,13 @@
     <!-- st slider sidebar wrapper End -->
    
     <!-- prs patner slider Start -->
-    <div class="prs_patner_main_section_wrapper prs_patner_main_section_wrapper_ind3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="prs_heading_section_wrapper">
-                        <h2>Our Patner</h2>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="prs_pn_slider_wraper">
-                        <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p1.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p2.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p3.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p4.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p5.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="prs_pn_img_wrapper">
-                                    <img src="images/content/p6.jpg" alt="patner_img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <!-- prs patner slider End -->
            <%@include file="footer.jsp" %>
     <!-- prs footer Wrapper End -->
     <!-- st login wrapper Start -->
     <!-- Form Login -->
-    <form action="login" method="post" id="form">
+    <form action="login" method="get" id="form">
         <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

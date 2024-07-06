@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+
+.ticket {
+    margin-top: 50px;
+    display: flex;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px 6px;
+}
+
+.left {
+    display: flex;
+}
+
+.image {
+    position: relative;
+    display: inline-block;
+    /*background-image: url("https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg");*/
+    background-size: contain;
+    opacity: 0.85;
+}
+.image img {
+    /*width: 250px;*/
+    height: 250px;
+    display: block;
+}
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.admit-one {
+    position: absolute;
+    color: darkgray;
+    height: 250px;
+    padding: 0 10px;
+    letter-spacing: 0.15em;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+}
+
+.admit-one span {
+    font-family: "Staatliches", cursive;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    color: #f5b8b8;
+}
+
+.left .ticket-number {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+}
+
+.ticket-info {
+    min-width: 600px;
+    max-width: 600px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-info .show-name .movie-language {
+    margin-top: 6px;
+}
+
+
+.date {
+    font-family: "Kanit", sans-serif;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    padding: 5px 0;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.date span {
+    width: 100px;
+}
+
+.date span:first-child {
+    text-align: left;
+}
+
+.date span:last-child {
+    text-align: right;
+}
+
+.date .june-29 {
+    color: #d83565;
+    font-size: 20px;
+    min-width: 110px;
+}
+
+.show-name {
+    font-size: 32px;
+    font-family: "Kanit", sans-serif;
+    color: #d83565;
+}
+
+.show-name h1 {
+    margin-top: 6px;
+    font-size: 29px;
+    font-weight: 900;
+    color: #4a437e;
+}
+
+.time {
+    padding: 10px 0;
+    color: #4a437e;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.time span {
+    font-weight: 400;
+    color: black;
+}
+
+.left .time {
+    font-size: 16px;
+}
+
+
+.location {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid gray;
+}
+
+.location .separator {
+    font-size: 20px;
+}
+.location .separator img {
+    width: 20px;
+    height: 20px;
+}
+.right {
+    width: 100%;
+    border-left: 1px dashed #404040;
+}
+
+.right .admit-one {
+    color: darkgray;
+}
+
+.right .admit-one span:nth-child(2) {
+    color: gray;
+}
+
+.right .right-info-container {
+    height: 250px;
+    padding: 10px 10px 10px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right .right-info-container .movie-price{
+    margin-top: 10px;
+    font-size: 20px;
+    color: #d83565;
+}
+
+.right .show-name h1 {
+    font-size: 18px;
+}
+
+.barcode img {
+    width: 135px;
+    height: auto;
+}
+
+.ticket-number p{
+    color: white;
+}
+.ticket-number {
+    color: black;
+}
+
+.st_bcc_tecket_bottom_right_wrapper .qrcode img {
+    width: 110px;
+    margin: 0 auto;
+}
+
+.st_bcc_ticket_boxes_wrapper .print-ticket-button {
+    float: right;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background: #ff4444;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-right: 30px;
+    margin-top: -10px;
+}

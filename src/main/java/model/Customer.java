@@ -21,6 +21,7 @@ public class Customer {
     private int role;
     private String date;
     private String status;
+    private String DOB;
 
     public Customer() {
         super();
@@ -51,6 +52,17 @@ public class Customer {
         this.picture = picture;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
 
     public int getIdCustomer() {
         return idCustomer;

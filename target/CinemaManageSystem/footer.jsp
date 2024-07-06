@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_2">
-                            <h2>Phim của người dẫn chương trình</h2>
+                            <h2>Thể loại phim</h2>
                             <ul>
                                 <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">phim hành động</a>
                                 </li>
@@ -119,8 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="prs_bottom_footer_wrapper"> <a href="javascript:" id="return-to-top"><i
-                    class="fi fi-rr-arrow-small-up"></i></a>
+        <div class="prs_bottom_footer_wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">

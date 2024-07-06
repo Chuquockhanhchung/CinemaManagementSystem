@@ -15,7 +15,7 @@
     </filter>
     <filter-mapping>
         <filter-name>Role_ManageFilter</filter-name>
-        <url-pattern>/manage</url-pattern>
+        <url-pattern>/manager</url-pattern>
         <url-pattern>/admin</url-pattern>
     </filter-mapping>
     <filter-mapping>
@@ -40,8 +40,16 @@
         <servlet-class>controller.SearchMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>controller.UpdateProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchMovie</servlet-name>
+        <servlet-class>controller.SearchMovie</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdAccountServlet</servlet-name>
@@ -50,6 +58,10 @@
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>controller.signup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccessManage</servlet-name>
+        <servlet-class>controller.AccessManage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>
@@ -96,6 +108,22 @@
         <servlet-class>controller.DeleteFeedback</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <servlet-class>controller.AddVoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoucherServlet</servlet-name>
+        <servlet-class>controller.VoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditVoucher</servlet-name>
+        <servlet-class>controller.EditVoucher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteVoucher</servlet-name>
+        <servlet-class>controller.DeleteVoucher</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
         <servlet-class>controller.ActivatedServlet</servlet-class>
     </servlet>
@@ -128,12 +156,28 @@
         <servlet-class>controller.TicketServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddMovieServlet</servlet-name>
+        <servlet-class>controller.AddMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddMovieType</servlet-name>
+        <servlet-class>controller.AddMovieType</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteMovie</servlet-name>
+        <servlet-class>controller.deleteMovie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>manageMovieServlet</servlet-name>
+        <servlet-class>controller.manageMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>controller.PaymentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EventServlet</servlet-name>
-        <servlet-class>controller.EventServlet</servlet-class>
+        <servlet-class>manager.EventServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddProduct</servlet-name>
@@ -146,6 +190,18 @@
     <servlet>
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>controller.DeleteProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editMovieServlet</servlet-name>
+        <servlet-class>controller.editMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEvent</servlet-name>
+        <servlet-class>manager.DeleteEvent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditEvent</servlet-name>
+        <servlet-class>manager.EditEvent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
@@ -176,8 +232,32 @@
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AccessManage</servlet-name>
+        <url-pattern>/managemovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>EditAccount</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <url-pattern>/addvoucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoucherServlet</servlet-name>
+        <url-pattern>/voucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditVoucher</servlet-name>
+        <url-pattern>/editvoucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteVoucher</servlet-name>
+        <url-pattern>/deletevoucher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchMovie</servlet-name>
+        <url-pattern>/searchmovie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteFeedback</servlet-name>
@@ -198,10 +278,6 @@
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchMovieServlet</servlet-name>
-        <url-pattern>/searchmovie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
@@ -229,7 +305,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManageServlet</servlet-name>
-        <url-pattern>/manage</url-pattern>
+        <url-pattern>/manager</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>sendEmail</servlet-name>
@@ -248,12 +324,36 @@
         <url-pattern>/ticket</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddMovieServlet</servlet-name>
+        <url-pattern>/addmovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMovieType</servlet-name>
+        <url-pattern>/addType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteMovie</servlet-name>
+        <url-pattern>/deleteM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manageMovieServlet</servlet-name>
+        <url-pattern>/manageMovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>SearchMovieServlet</servlet-name>
+        <url-pattern>/search2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>EventServlet</servlet-name>
         <url-pattern>/event</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/updateprofile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddProduct</servlet-name>
@@ -267,7 +367,19 @@
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/deleteproduct</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editMovieServlet</servlet-name>
+        <url-pattern>/editMovie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEvent</servlet-name>
+        <url-pattern>/deleteevent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditEvent</servlet-name>
+        <url-pattern>/editevent</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
 </web-app>

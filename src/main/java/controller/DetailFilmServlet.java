@@ -6,10 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Actor;
-import model.Customer;
-import model.Feedback;
-import model.Movie;
+import model.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -69,6 +66,7 @@ public class DetailFilmServlet extends HttpServlet {
         //Get infor of film
         MovieDAO dao = new MovieDAO(DBContext.getConn());
         TicketDAO tdao = new TicketDAO(DBContext.getConn());
+        CustomerDAO cdao = new CustomerDAO(DBContext.getConn());
         String language = null;
         try {
             language = tdao.getLanguageFilm(id);
@@ -87,13 +85,27 @@ public class DetailFilmServlet extends HttpServlet {
         //Get actor
         ArrayList<Actor> actors = dao.getActorByMovieId(id);
         HttpSession session = request.getSession();
+        ArrayList<Movie> movietype = dao.getMovieType(id);
+        //Get showtime
+        ArrayList<ShowTime> list1 = dao.getShowTime(id);
+        ArrayList<ShowTime> list2 = dao.getTime(id);
+        AdminDAO adao = new AdminDAO(DBContext.getConn());
+        //Get account
+        ArrayList<Customer> listC= cdao.getInfor_Customer();
+        ArrayList<Account> list = adao.getall_Account();
+        session.setAttribute("movietype", movietype);
         session.setAttribute("movie", movie);
+        session.setAttribute("showtime", list1);
+        session.setAttribute("time", list2);
         session.setAttribute("language", language);
         session.setAttribute("rating", rating);
         session.setAttribute("date", date);
         session.setAttribute("listf", listf);
         session.setAttribute("actors", actors);
-       response.sendRedirect("movie_single_second.jsp");
+        request.setAttribute("listAcc", list);
+        request.setAttribute("listCus", listC);
+        request.setAttribute("numberAcc",list.size());
+        request.getRequestDispatcher("movie_single_second.jsp").forward(request, response);
 
     }
 

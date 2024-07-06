@@ -3599,8 +3599,8 @@ body.active #mobile-nav {
     float: left;
     width: 100%;
     background-color: #ff4444;
-    padding-top: 60px;
-    padding-bottom: 53px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .prs_newsletter_text {
@@ -3611,7 +3611,7 @@ body.active #mobile-nav {
 .prs_newsletter_text h3 {
     float: left;
     width: 100%;
-    font-size: 30px;
+    font-size: 22px;
     color: #ffffff;
     margin: 12px 0px;
     font-weight: bold;
@@ -11131,7 +11131,7 @@ i:before {
 .st_bcc_tecket_top_hesder {
     text-align: center;
     padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 35px;
     border-bottom: 1px dashed #979797;
 }
 
@@ -11149,6 +11149,7 @@ i:before {
     font-weight: 600;
     padding-top: 10px;
     display: inline-block;
+    padding-left: 180px;
 }
 
 .st_bcc_tecket_bottom_right_wrapper {

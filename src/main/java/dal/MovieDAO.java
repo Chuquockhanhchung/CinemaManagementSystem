@@ -2,10 +2,14 @@ package dal;
 
 import model.*;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MovieDAO extends DBContext {
+
     private final Connection con;
 
     public MovieDAO(Connection con) {
@@ -13,95 +17,37 @@ public class MovieDAO extends DBContext {
         this.con = con;
     }
 
-    public ArrayList<String> getMovieType(){
-        ArrayList<String> type = new ArrayList<>();
-        String sql = "select movietype.TypeName from cinemamanagersystem.movietype;";
-        try{
+    public static void main(String[] args) {
+        MovieDAO mdao = new MovieDAO(DBContext.getConn());
+        ArrayList<Movie> movies = mdao.phim("Đang Chiếu","");
+        for (Movie movie : movies) {
+            System.out.println(movie);
+        }
+    }
+    public ArrayList<Movie> phim(String status, String Type) {
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where Status like ? and Types like ?";
+
+        // Kiểm tra giá trị đầu vào
+        if (status == null || Type == null) {
+            System.out.println("Status or Type is null");
+            return movies;
+        }
+
+        // Kiểm tra kết nối cơ sở dữ liệu
+        if (con == null) {
+            System.out.println("Database connection is null");
+            return movies;
+        }
+
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                type.add(rs.getString("TypeName"));
-            }
-            return type;
+            ps.setString(1, "%" + status + "%");
+            ps.setString(2, "%" + Type + "%");
 
-        }catch(SQLException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
+            // In ra câu lệnh SQL cuối cùng để kiểm tra
+            System.out.println("Executing query: " + ps.toString());
 
-    public ArrayList<Movie> FilterbyType(String type){
-        ArrayList<Movie> movies = new ArrayList<>();
-        String sql = "SELECT * FROM movie_all where Types like ?;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+type+"%");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Movie a = new Movie();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setType(rs.getString(3));
-                a.setDescription(rs.getString(4));
-                a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(14));
-                movies.add(a);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return movies;
-    }
-
-    public ArrayList<Movie> SearchMovie(String Search){
-        ArrayList<Movie> movies = new ArrayList<>();
-        String sql = "SELECT * FROM movie_all where MovieName like ?;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+Search+"%");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Movie a = new Movie();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setType(rs.getString(3));
-                a.setDescription(rs.getString(4));
-                a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(14));
-                movies.add(a);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return movies;
-    }
-
-    public ArrayList<Movie> SearchMovie(String Search, String Status){
-        ArrayList<Movie> movies = new ArrayList<>();
-        String sql = "SELECT * FROM movie_all where MovieName like ? and Status like ?;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+Search+"%");
-            ps.setString(2, "%"+Status+"%");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Movie a = new Movie();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setType(rs.getString(3));
-                a.setDescription(rs.getString(4));
-                a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(14));
-                movies.add(a);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return movies;
-    }
-
-    public ArrayList<Movie> phim(String status){
-        ArrayList<Movie> movies = new ArrayList<>();
-        String sql = "SELECT * FROM movie_all where Status like ?;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+status+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Movie a = new Movie();
@@ -115,45 +61,11 @@ public class MovieDAO extends DBContext {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("SQL Error Code: " + e.getErrorCode());
+            System.out.println("SQL State: " + e.getSQLState());
+            System.out.println("Error Message: " + e.getMessage());
         }
         return movies;
-    }
-
-    public ArrayList<Movie> phim(String status, String Type){
-        ArrayList<Movie> movies = new ArrayList<>();
-        String sql = "SELECT * FROM movie_all where Status like ? and Types like ?;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "%"+status+"%");
-            ps.setString(2, "%"+Type+"%");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Movie a = new Movie();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setType(rs.getString(3));
-                a.setDescription(rs.getString(4));
-                a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
-                movies.add(a);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return movies;
-    }
-
-    public double GetRateByID (int id){
-        String sql="SELECT sum(Rate), count(Rate) from feedback where MovieID = ? and rate>0;";
-        try {PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return (double) rs.getDouble(1)/rs.getDouble(2);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     public ArrayList<Movie> film(){
@@ -177,40 +89,6 @@ public class MovieDAO extends DBContext {
         }
         return movies;
     }
-
-    public static void main(String[] args) {
-        MovieDAO type = new MovieDAO(DBContext.getConn());
-        ArrayList<Movie> St = type.phim("Đang chiếu");
-        ArrayList<Movie> St2 = type.phim("Sắp chiếu");
-        for(int i=0; i<St.size(); i++) {
-            System.out.println(St.get(i).toString());
-        }
-        System.out.println();
-        for(int i=0; i<St2.size(); i++) {
-            System.out.println(St2.get(i).toString());
-        }
-    }
-
-    public ArrayList<Movie> getall_Movie() {
-        ArrayList<Movie> movies = new ArrayList<>();
-        MovieTypeDAO tdao = new MovieTypeDAO(con);
-        String sql = "SELECT * FROM movie_all;";
-        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Movie a = new Movie();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setType(rs.getString(3));
-                a.setDescription(rs.getString(4));
-                a.setImage(rs.getString(10));
-                a.setTrailer(rs.getString(11));
-                movies.add(a);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return movies;
-    }
     public String getDateById(int id) {
         String date = "";
         String sql = "SELECT ReleaseDate FROM movie WHERE MovieID=?";
@@ -226,33 +104,6 @@ public class MovieDAO extends DBContext {
             e.printStackTrace();
         }
         return null;
-    }
-//    public static void main(String[] args) {
-//        MovieDAO dao = new MovieDAO(DBContext.getConn());
-////        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-////        Customer cu = daoc.getCustomerByCID("60");
-////        ArrayList<Feedback> feedbacks = dao.getFBbyFBID(110);
-////        for (Feedback feedback : feedbacks) {
-////            System.out.println(feedback);
-////        }
-//        ArrayList<Actor> actors = dao.getActorByMovieId(48);
-//        for (Actor a : actors) {
-//            System.out.println(a.toString());
-//        }
-//    }
-    public int getRoomIDbyST(int id){
-        String sql ="Select RoomID from showtime where ShowtimeID =?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return 0;
     }
     public ArrayList<Actor> getActorByMovieId(int id) {
         ArrayList<Actor> actors = new ArrayList<>();
@@ -270,6 +121,20 @@ public class MovieDAO extends DBContext {
         }
         return null;
     }
+    public int getRoomIDbyST(int id){
+        String sql ="Select RoomID from showtime where ShowtimeID =?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public float getRatingById(int id) {
         float rating = 0;
         String sql = "SELECT IMDbRating FROM movie WHERE MovieID=?";
@@ -284,56 +149,9 @@ public class MovieDAO extends DBContext {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-    return rating;
+        return rating;
     }
-    public ArrayList<Feedback> getFBbyID(int id){
-        ArrayList<Feedback> feedbacks = new ArrayList<>();
-        String sql = "SELECT * FROM Feedback WHERE MovieID=?";
-        CustomerDAO cdao = new CustomerDAO(con);
-        try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                feedbacks.add(new Feedback(
-                        rs.getInt(1),
-                        rs.getInt(2),
-                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
-                        rs.getString(4),
-                        rs.getDate(5),
-                        rs.getInt(6)
-                ));
-            }
-            return feedbacks;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return feedbacks;
-    }
-    public ArrayList<Feedback> getFBbyFBID(int id){
-        ArrayList<Feedback> feedbacks = new ArrayList<>();
-        String sql = "SELECT * FROM Feedback WHERE ReplyID=?";
-        CustomerDAO cdao = new CustomerDAO(con);
-        try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                feedbacks.add(new Feedback(
-                        rs.getInt(1),
-                        rs.getInt(2),
-                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
-                        rs.getString(4),
-                        rs.getDate(5),
-                        rs.getInt(6)
-                ));
-            }
-            return feedbacks;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return feedbacks;
-    }
+
     public void delete_Feedback(int id){
         String sql = "DELETE FROM `cinemamanagersystem`.`feedback` WHERE (`FeedbackID` = ?);\n";
         try{
@@ -361,6 +179,158 @@ public class MovieDAO extends DBContext {
         }
     }
 
+    public ArrayList<Feedback> getFBbyFBID(int id){
+        ArrayList<Feedback> feedbacks = new ArrayList<>();
+        String sql = "SELECT * FROM Feedback WHERE ReplyID=?";
+        CustomerDAO cdao = new CustomerDAO(con);
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                feedbacks.add(new Feedback(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getInt(6)
+                ));
+            }
+            return feedbacks;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return feedbacks;
+    }
+    public ArrayList<Feedback> getFBbyID(int id){
+        ArrayList<Feedback> feedbacks = new ArrayList<>();
+        String sql = "SELECT * FROM Feedback WHERE MovieID=?";
+        CustomerDAO cdao = new CustomerDAO(con);
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                feedbacks.add(new Feedback(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        cdao.getCustomerByCID(String.valueOf(rs.getInt(3))),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getInt(6)
+                ));
+            }
+            return feedbacks;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return feedbacks;
+    }
+
+    public ArrayList<Movie> filter(String name, String status, String date) {
+        ArrayList<Movie> movies = new ArrayList<>();
+        name = "%" + name + "%";
+        status = "%" + status + "%";
+        date = "%" + date + "%";
+        MovieTypeDAO tdao = new MovieTypeDAO(con);
+        String sql = "SELECT * FROM movie_all  where MovieName LIKE ? And Status Like ? and ReleaseDate Like ? ;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, status);
+            ps.setString(3, date);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setStatus(rs.getString(13));
+                a.setReleaseDate(rs.getString(7));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public ArrayList<Movie> getall_Movie() {
+        ArrayList<Movie> movies = new ArrayList<>();
+        MovieTypeDAO tdao = new MovieTypeDAO(con);
+        String sql = "SELECT * FROM movie_all;";
+        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setStatus(rs.getString(13));
+                a.setReleaseDate(rs.getString(7));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(11));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+    public ArrayList<Movie> SearchMovie(String Search, String Status){
+        ArrayList<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie_all where MovieName like ? and Status like ?;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%"+Search+"%");
+            ps.setString(2, "%"+Status+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Movie a = new Movie();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setType(rs.getString(3));
+                a.setDescription(rs.getString(4));
+                a.setImage(rs.getString(10));
+                a.setTrailer(rs.getString(14));
+                movies.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public ArrayList<String> getMovieType(){
+        ArrayList<String> type = new ArrayList<>();
+        String sql = "select movietype.TypeName from cinemamanagersystem.movietype;";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                type.add(rs.getString("TypeName"));
+            }
+            return type;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public double GetRateByID (int id){
+        String sql="SELECT sum(Rate), count(Rate) from feedback where MovieID = ? and rate>0;";
+        try {PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return (double) rs.getDouble(1)/rs.getDouble(2);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public ArrayList<Movie> getMovieType(int id) {
         String sql = "select m.MovieID, m.MovieName, m.Description, t.TypeName, m.Image, m.Status,  m.Duration  from movietype t join (SELECT m.MovieID, m.MovieName, m.Description, t.TypeID, m.Image, m.Status, m.Duration FROM movie m join movie_has_types t on m.MovieID = t.MovieID) m on m.TypeID = t.TypeID   where m.MovieID = ? ";
         ArrayList<Movie> list = new ArrayList<>();
@@ -388,7 +358,7 @@ public class MovieDAO extends DBContext {
     }
 
     public Movie getMovie(int id) {
-        String sql = "SELECT m.MovieID, m.MovieName, m.Description, m.Image, m.Status, m.Duration FROM movie m join movie_has_types t on m.MovieID = t.MovieID where m.MovieID =? ";
+        String sql = "SELECT m.MovieID, m.MovieName, m.Description, m.Image, m.Status, m.Duration,m.Trailer FROM movie m join movie_has_types t on m.MovieID = t.MovieID where m.MovieID =? ";
         Movie c = new Movie();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -401,6 +371,7 @@ public class MovieDAO extends DBContext {
                 c.setImage(rs.getString(4));
                 c.setStatus(rs.getString(5));
                 c.setDuration(rs.getInt(6));
+                c.setTrailer(rs.getString(7));
 
             }
         } catch (SQLException e) {
@@ -479,5 +450,323 @@ public class MovieDAO extends DBContext {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<Language> getAllLanguage() {
+        ArrayList<Language> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.movielanguage;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Language l = new Language();
+                l.setId(rs.getInt(1));
+                l.setName(rs.getString(2));
+                list.add(l);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public ArrayList<MovieType> getAllMovieType() {
+        ArrayList<MovieType> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.movietype;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MovieType m = new MovieType();
+                m.setTypeID(rs.getInt(1));
+                m.setTypeName(rs.getString(2));
+                m.setTypeDescription(rs.getString(3));
+                list.add(m);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public ArrayList<Actor> getAllActor() {
+        ArrayList<Actor> list = new ArrayList<>();
+        String sql = "SELECT * FROM cinemamanagersystem.actors;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Actor m = new Actor();
+                m.setId(rs.getInt(1));
+                m.setName(rs.getString(2));
+                list.add(m);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public void AddMovie(Movie m) {
+        String sql = "insert into movie  (MovieName, Description, Director, ReleaseDate, Duration, Language, Image, status,Price,Trailer)Values (?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, m.getName());
+            ps.setString(2, m.getDescription());
+            ps.setString(3, m.getDirector());
+            ps.setString(4, m.getReleaseDate());
+            ps.setInt(5, m.getDuration());
+            ps.setInt(6, m.getLanguages());
+            ps.setString(7, m.getImage());
+            ps.setString(8, m.getStatus());
+            ps.setInt(9, m.getPrice());
+            ps.setString(10, m.getTrailer());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddHasType(int a, int b) {
+        String sql = "insert into movie_has_types (MovieID, TypeID) VALUES(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, a);
+            ps.setInt(2, b);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddActor(Actor a) {
+        String sql = "insert into actors ( ActorName,ActorImg) values(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, a.getName());
+            ps.setString(2, a.getPicture());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddType(MovieType a) {
+        String sql = "insert into movietype ( TypeName,Description) values(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, a.getTypeName());
+            ps.setString(2,a.getTypeDescription());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void AddHasActor(int a, int b) {
+        String sql = "insert into movie_has_actors (MovieID, ActorID) values(?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, a);
+            ps.setInt(2, b);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public int getIDMovie() {
+        String sql = "SELECT max(MovieID) FROM movie ";
+        int movieID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                movieID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return movieID;
+    }
+
+    public int getIdActor() {
+        String sql = "SELECT max(ActorID) FROM cinemamanagersystem.actors";
+        int actorID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                actorID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return actorID;
+    }
+
+    public int getIdType() {
+        String sql = "SELECT max(TypeID) FROM cinemamanagersystem.movietype";
+        int typeID = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                typeID = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return typeID;
+    }
+
+    public void UpdateMovie(Movie movie) {
+        String sql = "update movie set movieName = ?, description=?, director=?, releaseDate =?, duration=?, language = ?, image =?, status=?, price=? , Trailer=? where movieID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, movie.getName());
+            ps.setString(2, movie.getDescription());
+            ps.setString(3, movie.getDirector());
+            ps.setString(4, movie.getReleaseDate());
+            ps.setInt(5, movie.getDuration());
+            ps.setInt(6, movie.getLanguages());
+            ps.setString(7, movie.getImage());
+            ps.setString(8, movie.getStatus());
+            ps.setInt(9, movie.getPrice());
+            ps.setString(10,movie.getTrailer());
+            ps.setInt(11, movie.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void UpdateType( int movieID) {
+        String sql = "delete from movie_has_types where MovieID =?";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, movieID);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void UpdateActor( int movieID) {
+        String sql = "delete from movie_has_actors where MovieID =?";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, movieID);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public ArrayList<MovieType> getTypeCheck(int id) {
+        String sql = "select m.TypeID, m.TypeName from  movie_has_types t join movietype m on t.TypeID = m.TypeID  where MovieID = ?";
+        ArrayList<MovieType> list = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MovieType m = new MovieType();
+                m.setTypeID(rs.getInt(1));
+                m.setTypeName(rs.getString(2));
+                list.add(m);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return  list;
+
+
+    }
+
+    public ArrayList<Actor> getActorCheck(int id) {
+        String sql = "SELECT m.ActorID,a.ActorName, a.ActorImg from movie_has_actors m join actors a on m.ActorID = a.ActorID where m.MovieID = ?";
+        ArrayList<Actor> list = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Actor a = new Actor();
+                a.setId(rs.getInt(1));
+                a.setName(rs.getString(2));
+                a.setPicture(rs.getString(3));
+                list.add(a);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return  list;
+
+
+    }
+
+    public Movie getMoviebyID(int id){
+        String sql ="SELECT m.MovieID, m.MovieName, m.Description, m.Director, m.Duration, m.Language, m.Image,m.Status,m.Price, m.ReleaseDate FROM cinemamanagersystem.movie m where MovieID = ?";
+        Movie m = new Movie();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+
+                m.setId(rs.getInt(1));
+                m.setName(rs.getString(2));
+                m.setDescription(rs.getNString(3));
+                m.setDirector(rs.getString(4));
+                m.setDuration(rs.getInt(5));
+                m.setLanguages(rs.getInt(6));
+                m.setImage(rs.getString(7));
+                m.setStatus(rs.getString(8));
+                m.setPrice(rs.getInt(9));
+                m.setReleaseDate(rs.getString(10));
+
+            }
+        } catch (Exception e) {
+        }
+        return m;
+    }
+
+    public void deleteMovie(int id){
+        String sql = "delete from movie where MovieID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void deleteActor(int id){
+        String sql = "delete from actors where ActorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

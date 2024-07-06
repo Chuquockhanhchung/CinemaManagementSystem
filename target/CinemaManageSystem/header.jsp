@@ -164,10 +164,9 @@
                             </li>
                             <c:if test="${sessionScope.user != null}">
                                 <li>
-                                    <a style="text-decoration: none;color: white" href="login"><i
+                                    <a style="text-decoration: none;color: white" href="Account.jsp?CustomerID=${sessionScope.user.idCustomer}"><i
                                             class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
-                                </li>
-
+                                </li>   
                             </c:if>
                         </ul>
                     </div>
@@ -221,7 +220,7 @@
                     function submitForm() {
 
                         const query = document.getElementById("query").value;
-                        var link = 'searchmovie?Search=' + query;
+                        var link = 'search2?Search=' + query;
                         window.location.href = link;
                     }
                 </script>
@@ -322,5 +321,7 @@
         </div>
     </div>
 </div>
+<script src="js/jquery.nice-select.min.js"></script>
+
 </body>
 </html>

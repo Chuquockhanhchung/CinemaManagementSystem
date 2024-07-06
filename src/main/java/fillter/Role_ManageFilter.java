@@ -113,14 +113,14 @@ public class Role_ManageFilter implements Filter {
         if (session.getAttribute("user") == null) {
             res.sendRedirect("index.jsp");
         } else {
-            Customer c = (Customer) session.getAttribute("user");
-             if(c.getRole()==1){
-                res.sendRedirect("error/error3.jsp");
-            } else if(c.getRole()==3){
-                res.sendRedirect("error/error4.jsp");
-            } else if(c.getRole()==2){
-                res.sendRedirect("error/error5.jsp");
-            }
+//            Customer c = (Customer) session.getAttribute("user");
+//             if(c.getRole()==1){
+//                res.sendRedirect("error/error1.jsp");
+//            } else if(c.getRole()==3){
+//                res.sendRedirect("error/error2.jsp");
+//            } else if(c.getRole()==2){
+//                res.sendRedirect("error/error3.jsp");
+//            }
         }
         Throwable problem = null;
         try {

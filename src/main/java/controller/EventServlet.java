@@ -60,7 +60,7 @@ public class EventServlet extends HttpServlet {
             String StartDate = request.getParameter("datetimes");
             String EndDate = request.getParameter("EndDate");
             float Discount = Float.parseFloat(request.getParameter("Discount"));
-            String Status = request.getParameter("Status");
+            int Status = Integer.parseInt(request.getParameter("Status"));
 
             HttpSession session = request.getSession();
 
