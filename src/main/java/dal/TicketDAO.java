@@ -2,12 +2,10 @@ package dal;
 
 import model.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 public class TicketDAO extends DBContext{
     private final Connection con;
@@ -286,10 +284,43 @@ public class TicketDAO extends DBContext{
         seati = seati.substring(0, seati.length() - 1);
         return seati;
     }
+    public int countTicketbymonth(Date startdate,Date enddate){
+        int count = 0;
+        String sql="Select count(*) AS count from movieticket t where t.BookingDate <= ? and t.BookingDate>= ?;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDate(2, startdate);
+            ps.setDate(1, enddate);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
 
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
+    public int priceTicketbymonth(Date startdate,Date enddate){
+        int count = 0;
+        String sql="Select sum(t.TicketPrice) AS sum from movieticket t where t.BookingDate <= ? and t.BookingDate>= ?;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDate(2, startdate);
+            ps.setDate(1, enddate);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("sum");
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        System.out.println(dal.changeSeat("A22,A23"));
+        System.out.println(dal.priceTicketbymonth(Date.valueOf("2024-06-01"),Date.valueOf("2024-07-01")));
     }
 }

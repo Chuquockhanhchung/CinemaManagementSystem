@@ -185,6 +185,14 @@
         <servlet-class>controller.AddProduct</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>LoadData</servlet-name>
+        <servlet-class>controller.LoadData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadData2</servlet-name>
+        <servlet-class>controller.LoadData2</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EditProduct</servlet-name>
         <servlet-class>controller.EditProduct</servlet-class>
     </servlet>
@@ -208,6 +216,14 @@
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet2</servlet-name>
         <url-pattern>/added2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadData</servlet-name>
+        <url-pattern>/dataload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadData2</servlet-name>
+        <url-pattern>/dataload2</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailFilmServlet</servlet-name>

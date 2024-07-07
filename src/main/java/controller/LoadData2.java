@@ -1,14 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.util.Calendar;
 
 import dal.DBContext;
 import dal.TicketDAO;
@@ -16,20 +6,21 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-/**
- * @author Chi
- */
-public class ManageServlet extends HttpServlet {
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.Calendar;
 
+public class LoadData2 extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,24 +30,22 @@ public class ManageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ManageServlet</title>");
+            out.println("<title>Servlet AdminServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ManageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     public static int getLastDayOfMonth(int month, int year) {
         Calendar calendar = Calendar.getInstance();
@@ -68,8 +57,11 @@ public class ManageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        // Khởi tạo mảng data ban đầu
         int[] data = { 0, 0, 100, 300, 0, 400, 200, 0, 100, 0, 200, 300 };
-        int[] data2 = { 0, 0, 100, 300, 0, 400, 200, 0, 100, 0, 200, 300 };
+
 // Khởi tạo đối tượng td để gọi phương thức countTicketbymonth
         TicketDAO td = new TicketDAO(DBContext.getConn()); // Thay TicketData bằng tên lớp chứa hàm countTicketbymonth của bạn
 
@@ -86,54 +78,39 @@ public class ManageServlet extends HttpServlet {
             Date monthEndDate = Date.valueOf("2024-" + String.format("%02d", month + 1) + "-" + lastDayOfMonth);
 
             // Gọi hàm countTicketbymonth và cập nhật giá trị vào mảng data
-            data[month] = td.countTicketbymonth(monthStartDate, monthEndDate);
-            data2[month] = td.priceTicketbymonth(monthStartDate, monthEndDate);
+            data[month] = td.priceTicketbymonth(monthStartDate, monthEndDate)/1000;
         }
-        int change = 0;
-        int fist=0;
-        for(int i=0;i<data.length;i++) {
-            if(data[i]>0){
-                
-                if(i==0||data[i-1]==0){fist=data[i];}
-                change=data[i]-fist;
-            }
+
+
+        // Chuyển đổi dữ liệu sang JSON
+        JSONObject json = new JSONObject();
+        JSONArray dataArray = new JSONArray();
+        for (int i : data) {
+            dataArray.put(i);
         }
-        int change2 = 0;
-        int fist2=0;
-        for(int i=0;i<data2.length;i++) {
-            if(data2[i]>0){
-                if(i==0||data2[i-1]==0){fist2=data2[i];}
-                change2=data2[i]-fist2;
-            }
-        }
-        HttpSession session = request.getSession();
-        session.setAttribute("change1", change);
-        session.setAttribute("change2", change2/1000);
-        request.getRequestDispatcher("manager/index.jsp").forward(request, response);
+        json.put("data", dataArray);
+
+        // Gửi dữ liệu JSON
+        PrintWriter out = response.getWriter();
+        out.print(json.toString());
+        out.flush();
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+
     }
 
     /**
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

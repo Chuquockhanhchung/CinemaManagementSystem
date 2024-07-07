@@ -38,7 +38,7 @@
                 <ul aria-expanded="false">
                     <li><a href="dashboard/orders_list.jsp">Danh Sách Vé Đã Đặt</a></li>
 <%--                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/event">Sự Kiện</a></li--%>
-                    <li><a href="https://ventic.dexignzone.com/codeigniter/demo/analytics">Phân Tích</a></li>
+                    <li><a href="manager/index.jsp">Phân Tích</a></li>
                 </ul>
 
             </li>
