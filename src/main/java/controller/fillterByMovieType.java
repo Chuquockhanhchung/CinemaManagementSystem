@@ -27,7 +27,7 @@ import model.MovieType;
  *
  * @author Chi
  */
-public class Homepage extends HttpServlet {
+public class fillterByMovieType extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -64,41 +64,48 @@ public class Homepage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO(DBContext.getConn());
-        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-        MovieDAO md = new MovieDAO(DBContext.getConn());
-        ArrayList<Customer> listC= daoc.getInfor_Customer();
-        ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> sapchieu = md.phim("Sắp chiếu","");
-        for(Movie m : sapchieu){
-            m.setRate(md.getRatingById(m.getId()));
+       try {
+           AdminDAO dao = new AdminDAO(DBContext.getConn());
+           CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+           MovieDAO md = new MovieDAO(DBContext.getConn());
+           ArrayList<Customer> listC= daoc.getInfor_Customer();
+           ArrayList<Account> list = dao.getall_Account();
+           String type1=request.getParameter("type");
+           ArrayList<Movie> sapchieu = md.phim("Sắp chiếu",type1);
+           for(Movie m : sapchieu){
+               m.setRate(md.getRatingById(m.getId()));
 
-        }
-        ArrayList<Movie> dangchieu = md.phim("Đang chiếu","");
-        for(Movie m : dangchieu){
-            m.setRate(md.getRatingById(m.getId()));
-        }
+           }
+           ArrayList<Movie> dangchieu = md.phim("Đang chiếu",type1);
+           for(Movie m : dangchieu){
+               m.setRate(md.getRatingById(m.getId()));
+           }
 
-        ArrayList<Movie> phimhaynhat = md.film();
-        HttpSession session = request.getSession();
-        //get type by filter type
-        int sumMovie = md.SumMovie();
-        ArrayList<MovieType> types = md.getMovieTypeAndAmount();
-        session.setAttribute("types", types);
-        session.setAttribute("sum", sumMovie);
-        //end
-        ArrayList<Movie> all = md.getall_Movie();
-        ArrayList<String> type = md.getMovieType();
-        session.setAttribute("type", type);
-        request.setAttribute("sapchieu", sapchieu);
-        request.setAttribute("dangchieu", dangchieu);
-        request.setAttribute("phimhaynhat", phimhaynhat);
-        request.setAttribute("listAcc", list);
-        request.setAttribute("listCus", listC);
-        request.setAttribute("numberAcc",list.size());
-        session.setAttribute("movies",all);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+           ArrayList<Movie> phimhaynhat = md.film();
+           HttpSession session = request.getSession();
+           //get type by filter type
+           int sumMovie = md.SumMovie();
+           ArrayList<MovieType> types = md.getMovieTypeAndAmount();
+           session.setAttribute("types", types);
+           session.setAttribute("sum", sumMovie);
+           //end
+           ArrayList<Movie> all = md.getall_Movie();
+           ArrayList<String> type = md.getMovieType();
+           session.setAttribute("type", type);
+           request.setAttribute("sapchieu", sapchieu);
+           request.setAttribute("dangchieu", dangchieu);
+           request.setAttribute("phimhaynhat", phimhaynhat);
+           request.setAttribute("listAcc", list);
+           request.setAttribute("listCus", listC);
+           request.setAttribute("numberAcc",list.size());
+           session.setAttribute("movies",all);
+           request.getRequestDispatcher("index.jsp").forward(request, response);
 
+
+
+       }catch (Exception e){
+           System.out.println(e);
+       }
 
     }
 

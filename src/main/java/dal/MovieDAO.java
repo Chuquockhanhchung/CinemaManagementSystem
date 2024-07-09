@@ -352,6 +352,7 @@ public class MovieDAO extends DBContext {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
         return list;
 
@@ -768,5 +769,43 @@ public class MovieDAO extends DBContext {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+
+    //Filter movie by type
+    public ArrayList<MovieType> getMovieTypeAndAmount() {
+        ArrayList<MovieType> list = new ArrayList<>();
+        String sql = "select t.TypeID, t.TypeName, m.count from movietype t join (SELECT  mt.TypeID, count(mt.MovieID) as count  FROM cinemamanagersystem.movie_has_types mt group by mt.TypeID )  m on m.typeId = t.TypeID;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MovieType m = new MovieType();
+                m.setTypeID(rs.getInt(1));
+                m.setTypeName(rs.getString(2));
+                m.setTypeDescription(rs.getInt(3) +"");
+                list.add(m);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+
+    public int SumMovie() {
+        String sql = "SELECT count(m.MovieID) FROM cinemamanagersystem.movie m";
+        int sum = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                sum = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return sum;
     }
 }

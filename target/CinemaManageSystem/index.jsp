@@ -251,383 +251,400 @@
                     <h2>Phim Đang Chiếu</h2>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="prs_upcome_tabs_wrapper">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab"
-                                                                  data-toggle="tab">Phim Đang Chiếu</a>
-                        </li>
-                        <li role="presentation"><a href="#hot" aria-controls="hot" role="tab"
-                                                   data-toggle="tab">Phim Sắp Chiếu</a>
-                        </li>
-                        <li role="presentation"><a href="#trand" aria-controls="trand" role="tab"
-                                                   data-toggle="tab">Top Phim Hay Nhất</a>
-                        </li>
-                    </ul>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_bro_title_wrapper ">
+                        <h2>Thể loại phim</h2>
+                        <ul>
+                            <li role="presentation" class="active"><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="home">All <span>${sessionScope.sum}</span></a>
+                            </li>
+                            <c:forEach items="${sessionScope.types}" var="i">
+                                <li role="presentation"><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="filterByTypeMovie?type=${i.getTypeName()}">${i.getTypeName()} <span>${i.getTypeDescription()}</span></a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        // Lấy tất cả các thẻ a trong tab
-                        var tabs = document.querySelectorAll('.nav-tabs a');
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="prs_upcome_tabs_wrapper">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab"
+                                                                          data-toggle="tab">Phim Đang Chiếu</a>
+                                </li>
+                                <li role="presentation"><a href="#hot" aria-controls="hot" role="tab"
+                                                           data-toggle="tab">Phim Sắp Chiếu</a>
+                                </li>
+                                <li role="presentation"><a href="#trand" aria-controls="trand" role="tab"
+                                                           data-toggle="tab">Top Phim Hay Nhất</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                // Lấy tất cả các thẻ a trong tab
+                                var tabs = document.querySelectorAll('.nav-tabs a');
 
-                        tabs.forEach(function(tab) {
-                            // Thêm sự kiện click vào mỗi thẻ a
-                            tab.addEventListener('click', function (event) {
-                                // Ngăn chặn hành động mặc định của thẻ a
-                                event.preventDefault();
+                                tabs.forEach(function(tab) {
+                                    // Thêm sự kiện click vào mỗi thẻ a
+                                    tab.addEventListener('click', function (event) {
+                                        // Ngăn chặn hành động mặc định của thẻ a
+                                        event.preventDefault();
 
-                                // Lấy nội dung của thẻ a được nhấp vào
-                                var tabText = tab.textContent;
+                                        // Lấy nội dung của thẻ a được nhấp vào
+                                        var tabText = tab.textContent;
 
-                                // Thay đổi nội dung của thẻ h2
-                                document.querySelector('.prs_heading_section_wrapper h2').textContent = tabText;
+                                        // Thay đổi nội dung của thẻ h2
+                                        document.querySelector('.prs_heading_section_wrapper h2').textContent = tabText;
 
-                                // Hiển thị tab tương ứng
+                                        // Hiển thị tab tương ứng
+
+                                    });
 
                                 });
-
                             });
-                        });
 
-                </script>
-            </div>
-            <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="best">
-                        <div class="prs_upcom_slider_slides_wrapper">
-                            <div class="owl-carousel owl-theme">
-                                <%
-                                    ArrayList<Movie> dangchieu = (ArrayList<Movie>) request.getAttribute("dangchieu");
-                                    int size = dangchieu.size()/8;
-                                    for(int i=0 ; i<(size*8== dangchieu.size()? size:size+1);i++){
-                                %>
-                                <div class="item">
-                                    <div class="row">
-                                        <%
-                                            for (Movie movie : dangchieu) {
-                                                if(dangchieu.indexOf(movie)>=i*8 && dangchieu.indexOf(movie)<=i*8+7){
-                                        %>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                                            <div class="prs_upcom_movie_box_wrapper">
-                                                                <div class="prs_upcom_movie_img_box">
-                                                                    <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
-                                                                    <div class="prs_upcom_movie_img_btn_wrapper">
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a
-                                                                                        class="test-popup-link button" rel='external'
-                                                                                        href='h<%=movie.getTrailer()%>'
-
-                                                                                        title='title'>Xem Trailer
-                                                                                </a>
-                                                                            </li>
-                                                                            <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                                    <div class="prs_upcom_movie_content_box_inner">
-                                                                        <h2><a href="detail?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
-                                                                        <p><%= movie.getType() %></p>
-                                                                        <%
-                                                                            int rate = (int)movie.getRate();
-                                                                            if(movie.getRate() == rate){
-                                                                                for(int j=1; j<=rate; j++){
-                                                                                    %>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <%
-                                                                                }
-                                                                            }else{
-                                                                                    for(int k=1; k<=rate+1; k++){
-                                                                                        if (k == rate + 1) {
-                                                                                            %>
-                                                                                            <i class="fa fa-star-half-empty"></i>
-                                                                        <%
-                                                                                        }else{
-                                                                                            %>
-                                                                                            <i class="fa fa-star"></i>
-                                                                        <%
-                                                                                        }
-                                                                                    }
-                                                                                }%>
-
-                                                    </div>
-                                                    <%
-                                                        if (us == null) {
-                                                    %>
-                                                    <div class="prs_upcom_movie_content_box_inner_icon">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
-                                                                    <i class="fi fi-ss-ticket"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <% } else { %>
-                                                    <div class="prs_upcom_movie_content_box_inner_icon">
-                                                        <ul>
-                                                            <li>
-                                                                <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="detail">
-                                                                    <i class="fi fi-ss-ticket"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <% } %>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <% }
-                                        }%>
-                                    </div>
-                                </div>
-                                <%}%>
-                                <script>
-                                    function bookMovie(movieID) {
-                                        window.location.href='detail?id='+movieID;
-                                    }
-                                </script>
-
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="prs_animate_btn1 prs_upcom_main_wrapper">
-                                    <ul>
-                                        <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
-                                               data-text="view all"><span>Xem Tất Cả</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        </script>
                     </div>
-                <div role="tabpanel" class="tab-pane fade" id="hot">
-                    <div class="prs_upcom_slider_slides_wrapper">
-                        <div class="owl-carousel owl-theme">
-                            <%
-                                ArrayList<Movie> sapchieu = (ArrayList<Movie>) request.getAttribute("sapchieu");
-                                int size2 = sapchieu.size()/8;
-                                for(int i=0 ; i<(size2*8== dangchieu.size()? size2:size2+1);i++){
-                            %>
-                            <div class="item">
-                                <div class="row">
-
-
-
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="best">
+                            <div class="prs_upcom_slider_slides_wrapper">
+                                <div class="owl-carousel owl-theme">
                                     <%
-
-                                        for (Movie movie : sapchieu) {
-                                            if(sapchieu.indexOf(movie)>=i*8 && sapchieu.indexOf(movie)<=i*8+7){
+                                        ArrayList<Movie> dangchieu = (ArrayList<Movie>) request.getAttribute("dangchieu");
+                                        int size = dangchieu.size()/8;
+                                        for(int i=0 ; i<(size*8== dangchieu.size()? size:size+1);i++){
                                     %>
+                                    <div class="item">
+                                        <div class="row">
+                                            <%
+                                                for (Movie movie : dangchieu) {
+                                                    if(dangchieu.indexOf(movie)>=i*8 && dangchieu.indexOf(movie)<=i*8+7){
+                                            %>
 
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li>
-                                                            <a
-                                                                    class="test-popup-link button" rel='external'
-                                                                    href='<%= movie.getTrailer()%>'
-                                                                    title='title'>Xem Trailer
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
-                                                    </ul>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                                                <div class="prs_upcom_movie_box_wrapper">
+                                                    <div class="prs_upcom_movie_img_box">
+                                                        <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
+                                                        <div class="prs_upcom_movie_img_btn_wrapper">
+                                                            <ul>
+                                                                <li>
+                                                                    <a
+                                                                            class="test-popup-link button" rel='external'
+                                                                            href='h<%=movie.getTrailer()%>'
 
-                                                </div>
-                                            </div>
-                                            <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
-                                                    <p><%= movie.getType() %></p>
-                                                    <%
-                                                        int rate = (int)movie.getRate();
-                                                        if(movie.getRate() == rate){
-                                                            for(int j=1; j<=rate; j++){
-                                                    %>
-                                                    <i class="fa fa-star"></i>
-                                                    <%
-                                                        }
-                                                    }else{
-                                                        for(int k=1; k<=rate+1; k++){
-                                                            if (k == rate + 1) {
-                                                    %>
-                                                    <i class="fa fa-star-half-empty"></i>
-                                                    <%
-                                                    }else{
-                                                    %>
-                                                    <i class="fa fa-star"></i>
-                                                    <%
+                                                                            title='title'>Xem Trailer
+                                                                    </a>
+                                                                </li>
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">
+                                                        <div class="prs_upcom_movie_content_box_inner">
+                                                            <h2><a href="detail?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
+                                                            <p><%= movie.getType() %></p>
+                                                            <%
+                                                                int rate = (int)movie.getRate();
+                                                                if(movie.getRate() == rate){
+                                                                    for(int j=1; j<=rate; j++){
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
                                                                 }
-                                                            }
-                                                        }%>
+                                                            }else{
+                                                                for(int k=1; k<=rate+1; k++){
+                                                                    if (k == rate + 1) {
+                                                            %>
+                                                            <i class="fa fa-star-half-empty"></i>
+                                                            <%
+                                                            }else{
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
+                                                                        }
+                                                                    }
+                                                                }%>
+
+                                                        </div>
+                                                        <%
+                                                            if (us == null) {
+                                                        %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } else { %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="detail">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } %>
+                                                    </div>
                                                 </div>
-                                                <%
-                                                    if (us == null) {
-                                                %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } else { %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } %>
                                             </div>
+                                            <% }
+                                            }%>
                                         </div>
                                     </div>
-                                    <% }
-                                    }%>
-
-
-
-
-
-
-
-
-
+                                    <%}%>
+                                    <script>
+                                        function bookMovie(movieID) {
+                                            window.location.href='detail?id='+movieID;
+                                        }
+                                    </script>
 
 
                                 </div>
                             </div>
-        <%}%>
-
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="prs_animate_btn1 prs_upcom_main_wrapper">
-                                <ul>
-                                    <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
-                                           data-text="view all"><span>View All</span></a>
-                                    </li>
-                                </ul>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="prs_animate_btn1 prs_upcom_main_wrapper">
+                                        <ul>
+                                            <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
+                                                   data-text="view all"><span>Xem Tất Cả</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="trand">
-                    <div class="prs_upcom_slider_slides_wrapper">
-                        <div class="owl-carousel owl-theme">
-                            <%
-                                ArrayList<Movie> phimhaynhat = (ArrayList<Movie>) request.getAttribute("phimhaynhat");
-                                int size3 = phimhaynhat.size()/8;
-                                for(int i=0 ; i<(size3*8== phimhaynhat.size()? size3:size3+1);i++){
-                            %>
-                            <div class="item">
-                                <div class="row">
+                        <div role="tabpanel" class="tab-pane fade" id="hot">
+                            <div class="prs_upcom_slider_slides_wrapper">
+                                <div class="owl-carousel owl-theme">
                                     <%
-
-                                        for (Movie movie : phimhaynhat) {
-                                            if(phimhaynhat.indexOf(movie)>=i*8 && phimhaynhat.indexOf(movie)<=i*8+7){
+                                        ArrayList<Movie> sapchieu = (ArrayList<Movie>) request.getAttribute("sapchieu");
+                                        int size2 = sapchieu.size()/8;
+                                        for(int i=0 ; i<(size2*8== dangchieu.size()? size2:size2+1);i++){
                                     %>
+                                    <div class="item">
+                                        <div class="row">
 
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                        <div class="prs_upcom_movie_box_wrapper">
-                                            <div class="prs_upcom_movie_img_box">
-                                                <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
-                                                <div class="prs_upcom_movie_img_btn_wrapper">
-                                                    <ul>
-                                                        <li>
-                                                            <a
-                                                                    class="test-popup-link button" rel='external'
-                                                                    href='h<%=movie.getTrailer()%>'
 
-                                                                    title='title'>Xem Trailer
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div style="height: 150px" class="prs_upcom_movie_content_box">
-                                                <div class="prs_upcom_movie_content_box_inner">
-                                                    <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
-                                                    <p><%= movie.getType() %></p>
-                                                    <%
-                                                        int rate = (int)movie.getRate();
-                                                        if(movie.getRate() == rate){
-                                                            for(int j=1; j<=rate; j++){
-                                                    %>
-                                                    <i class="fa fa-star"></i>
-                                                    <%
-                                                        }
-                                                    }else{
-                                                        for(int k=1; k<=rate+1; k++){
-                                                            if (k == rate + 1) {
-                                                    %>
-                                                    <i class="fa fa-star-half-empty"></i>
-                                                    <%
-                                                    }else{
-                                                    %>
-                                                    <i class="fa fa-star"></i>
-                                                    <%
+
+                                            <%
+
+                                                for (Movie movie : sapchieu) {
+                                                    if(sapchieu.indexOf(movie)>=i*8 && sapchieu.indexOf(movie)<=i*8+7){
+                                            %>
+
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                                                <div class="prs_upcom_movie_box_wrapper">
+                                                    <div class="prs_upcom_movie_img_box">
+                                                        <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
+                                                        <div class="prs_upcom_movie_img_btn_wrapper">
+                                                            <ul>
+                                                                <li>
+                                                                    <a
+                                                                            class="test-popup-link button" rel='external'
+                                                                            href='<%= movie.getTrailer()%>'
+                                                                            title='title'>Xem Trailer
+                                                                    </a>
+                                                                </li>
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">
+                                                        <div class="prs_upcom_movie_content_box_inner">
+                                                            <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
+                                                            <p><%= movie.getType() %></p>
+                                                            <%
+                                                                int rate = (int)movie.getRate();
+                                                                if(movie.getRate() == rate){
+                                                                    for(int j=1; j<=rate; j++){
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
                                                                 }
-                                                            }
-                                                        }%>
-
+                                                            }else{
+                                                                for(int k=1; k<=rate+1; k++){
+                                                                    if (k == rate + 1) {
+                                                            %>
+                                                            <i class="fa fa-star-half-empty"></i>
+                                                            <%
+                                                            }else{
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
+                                                                        }
+                                                                    }
+                                                                }%>
+                                                        </div>
+                                                        <%
+                                                            if (us == null) {
+                                                        %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } else { %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } %>
+                                                    </div>
                                                 </div>
-                                                <%
-                                                    if (us == null) {
-                                                %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } else { %>
-                                                <div class="prs_upcom_movie_content_box_inner_icon">
-                                                    <ul>
-                                                        <li>
-                                                            <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
-                                                                <i class="fi fi-ss-ticket"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <% } %>
                                             </div>
+                                            <% }
+                                            }%>
+
+
+
+
+
+
+
+
+
+
+
                                         </div>
                                     </div>
-                                    <% }
-                                    }%>
+                                    <%}%>
+
+
                                 </div>
                             </div>
-                            <%}%>
-
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="prs_animate_btn1 prs_upcom_main_wrapper">
+                                        <ul>
+                                            <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
+                                                   data-text="view all"><span>View All</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="prs_animate_btn1 prs_upcom_main_wrapper">
-                                <ul>
-                                    <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
-                                           data-text="view all"><span>View All</span></a>
-                                    </li>
-                                </ul>
+                        <div role="tabpanel" class="tab-pane fade" id="trand">
+                            <div class="prs_upcom_slider_slides_wrapper">
+                                <div class="owl-carousel owl-theme">
+                                    <%
+                                        ArrayList<Movie> phimhaynhat = (ArrayList<Movie>) request.getAttribute("phimhaynhat");
+                                        int size3 = phimhaynhat.size()/8;
+                                        for(int i=0 ; i<(size3*8== phimhaynhat.size()? size3:size3+1);i++){
+                                    %>
+                                    <div class="item">
+                                        <div class="row">
+                                            <%
+
+                                                for (Movie movie : phimhaynhat) {
+                                                    if(phimhaynhat.indexOf(movie)>=i*8 && phimhaynhat.indexOf(movie)<=i*8+7){
+                                            %>
+
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                                                <div class="prs_upcom_movie_box_wrapper">
+                                                    <div class="prs_upcom_movie_img_box">
+                                                        <img style="height: 400px;" loading="lazy" src="<%= movie.getImage() %>" alt="movie_img"/>
+                                                        <div class="prs_upcom_movie_img_btn_wrapper">
+                                                            <ul>
+                                                                <li>
+                                                                    <a
+                                                                            class="test-popup-link button" rel='external'
+                                                                            href='h<%=movie.getTrailer()%>'
+
+                                                                            title='title'>Xem Trailer
+                                                                    </a>
+                                                                </li>
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin Chi Tiết</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div style="height: 150px" class="prs_upcom_movie_content_box">
+                                                        <div class="prs_upcom_movie_content_box_inner">
+                                                            <h2><a href="booking_movie?id=<%= movie.getId() %>"><%= movie.getName() %></a></h2>
+                                                            <p><%= movie.getType() %></p>
+                                                            <%
+                                                                int rate = (int)movie.getRate();
+                                                                if(movie.getRate() == rate){
+                                                                    for(int j=1; j<=rate; j++){
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
+                                                                }
+                                                            }else{
+                                                                for(int k=1; k<=rate+1; k++){
+                                                                    if (k == rate + 1) {
+                                                            %>
+                                                            <i class="fa fa-star-half-empty"></i>
+                                                            <%
+                                                            }else{
+                                                            %>
+                                                            <i class="fa fa-star"></i>
+                                                            <%
+                                                                        }
+                                                                    }
+                                                                }%>
+
+                                                        </div>
+                                                        <%
+                                                            if (us == null) {
+                                                        %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } else { %>
+                                                        <div class="prs_upcom_movie_content_box_inner_icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a onclick="bookMovie(<%= movie.getId() %>); return false;" href="booking_movie">
+                                                                        <i class="fi fi-ss-ticket"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }
+                                            }%>
+                                        </div>
+                                    </div>
+                                    <%}%>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="prs_animate_btn1 prs_upcom_main_wrapper">
+                                        <ul>
+                                            <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
+                                                   data-text="view all"><span>View All</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -47,91 +47,10 @@
                         <ul class="dl-menu">
                             <li class="parent"><a href="home">Trang chủ</a>
                             </li>
-                            <li class="parent megamenu"><a href="#">Phim</a>
-                                <ul class="lg-submenu">
-                                    <c:forEach items="${type}" var="o">
-                                        <li><a href="type?name=${o}">Phim ${o}</a>
 
-                                        </li>
-                                    </c:forEach>
-
-
-                                </ul>
-                            </li>
-                            <li class="parent megamenu"><a href="#">Thước phim</a>
-                                <ul class="lg-submenu prs_navi_video_wrapper">
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp1.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp2.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp3.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp4.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp5.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="hidden-sm">
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp6.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
                             <li class="parent"><a href="#">Trang</a>
                                 <ul class="lg-submenu">
-                                    <li class="parent"><a href="#">Tin tức</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="blog_category.jsp">Blog-Category</a>
-                                            </li>
-                                            <li><a href="blog_single.jsp">Blog-Single</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+
                                     <li class="parent"><a href="#">Sự kiện</a>
                                         <ul class="lg-submenu">
                                             <li><a href="event_category.jsp">Loại sự kện</a>
@@ -140,16 +59,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="parent"><a href="#">Phim</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="movie_category.jsp">Thể loại phim</a>
-                                            </li>
-                                            <li><a href="movie_single.jsp">Phim đơn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="gallery.jsp">Phòng trưng bày</a>
-                                    </li>
+
                                     <li><a href="payment.jsp">Loại đăng kí</a>
                                     </li>
                                     <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>

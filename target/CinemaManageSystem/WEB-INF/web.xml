@@ -209,6 +209,16 @@
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fillterByMovieType</servlet-name>
+        <servlet-class>controller.fillterByMovieType</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fillterByMovieType</servlet-name>
+        <url-pattern>/filterByTypeMovie</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet</servlet-name>
         <url-pattern>/added</url-pattern>
