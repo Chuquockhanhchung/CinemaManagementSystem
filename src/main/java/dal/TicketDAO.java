@@ -318,6 +318,24 @@ public class TicketDAO extends DBContext{
         }
         return count;
     }
+    public int countTicketbymonth2(Date startdate,Date enddate){
+        int count = 0;
+        String sql="Select count(*) AS count from showtime t where t.ShowDate <= ? and t.ShowDate>= ?;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDate(2, startdate);
+            ps.setDate(1, enddate);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());

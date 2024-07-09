@@ -8,9 +8,11 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 import dal.DBContext;
+import dal.EventDAO;
 import dal.TicketDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -106,9 +108,30 @@ public class ManageServlet extends HttpServlet {
                 change2=data2[i]-fist2;
             }
         }
+        //Count number of ticket today
+        int tickettoday = td.countTicketbymonth(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()));
+        int tickettoday2= td.countTicketbymonth2(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()))*90;
+        double perform=0;
+        if (tickettoday2!=0){
+            perform = tickettoday*100/tickettoday2;
+        }
+
+
+        int perf=(int)perform;
+        //Get number of event
+        EventDAO ed= new EventDAO(DBContext.getConn());
+        Date d = Date.valueOf(LocalDate.now());
+        int events= ed.countevented(d);
+        int event2= ed.countevented(Date.valueOf("2024-12-31"));
+
         HttpSession session = request.getSession();
         session.setAttribute("change1", change);
         session.setAttribute("change2", change2/1000);
+        session.setAttribute("events", events);
+        session.setAttribute("event2", event2);
+        session.setAttribute("tickettoday", tickettoday);
+        session.setAttribute("tickettoday2", tickettoday2);
+        session.setAttribute("perf", perf);
         request.getRequestDispatcher("manager/index.jsp").forward(request, response);
     }
 

@@ -2,10 +2,7 @@ package dal;
 
 import model.Event;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +37,21 @@ public class EventDAO {
         }
         return f;
     }
-
+    public int countevented(Date date){
+        int count = 0;
+        String sql = "select count(*) from event e where  e.StartDate<?";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, date);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
     public List<Event> getAllEvent() {
         List<Event> list = new ArrayList<Event>();
         Event event = null;

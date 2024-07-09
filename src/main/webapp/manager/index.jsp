@@ -94,10 +94,7 @@ Sidebar end
                     <h2 class="font-w600 mb-0">Dashboard</h2>
                     <p>Lorem ipsum dolor sit amet </p>
                 </div>
-                <div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
-                    <button class="input-group-text"><i class="flaticon-381-search-2 text-primary"></i></button>
-                    <input type="text" class="form-control" placeholder="Search here...">
-                </div>
+
                 <div class="dropdown custom-dropdown mb-2 period-btn">
                     <div class="btn btn-sm  d-flex align-items-center" data-bs-toggle="dropdown"
                          aria-expanded="false" role="button">
@@ -234,7 +231,7 @@ Sidebar end
                                     <div>
                                         <div class="d-inline-block position-relative donut-chart-sale">
                                                     <span class="donut1"
-                                                          data-peity='{ "fill": ["var(--primary)", "rgba(240, 240, 240)"],   "innerRadius": 35, "radius": 10}'>5/8</span>
+                                                          data-peity='{ "fill": ["var(--primary)", "rgba(240, 240, 240)"],   "innerRadius": 35, "radius": 10}'>66/100</span>
                                             <small class="text-black">66%</small>
                                         </div>
                                     </div>
@@ -254,40 +251,18 @@ Sidebar end
                                                     <span
                                                             class="chart-num-3 font-w200 d-block mb-sm-3 mb-2 text-white">Ticket
                                                         Sold Today</span>
-                                            <h2 class="chart-num-2 text-white mb-0">456,502<span
+                                            <h2 class="chart-num-2 text-white mb-0">${sessionScope.tickettoday}<span
                                                     class="fs-18 me-2 ms-3">pcs</span></h2>
                                         </div>
-                                        <div class="d-flex flex-wrap mb-3 mb-sm-0">
-                                            <svg width="87" height="58" viewBox="0 0 87 58" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                        d="M18.4571 37.6458C11.9375 44.6715 4.81049 52.3964 2 55.7162H68.8125C77.6491 55.7162 84.8125 48.5528 84.8125 39.7162V2L61.531 31.9333C56.8486 37.9536 48.5677 39.832 41.746 36.4211L37.3481 34.2222C30.9901 31.0432 23.2924 32.4352 18.4571 37.6458Z"
-                                                        fill="url(#paint0_linear)"/>
-                                                <path
-                                                        d="M2 55.7162C4.81049 52.3964 11.9375 44.6715 18.4571 37.6458C23.2924 32.4352 30.9901 31.0432 37.3481 34.2222L41.746 36.4211C48.5677 39.832 56.8486 37.9536 61.531 31.9333L84.8125 2"
-                                                        stroke="white" stroke-width="4" stroke-linecap="round"/>
-                                                <defs>
-                                                    <linearGradient id="paint0_linear" x1="43.4062" y1="8.71453"
-                                                                    x2="46.7635" y2="55.7162"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="white" offset="0"/>
-                                                        <stop offset="1" stop-color="white" stop-opacity="0"/>
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                            <div class="ms-3">
-                                                <p class="fs-20 mb-0 font-w500 text-white">+4%</p>
-                                                <span class="fs-12 text-white">than last day</span>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div class="progress style-1" style="height:15px;">
                                         <div class="progress-bar bg-white progress-animated"
-                                             style="width: 55%; height:15px;" role="progressbar">
-                                            <span class="sr-only">55% Complete</span>
+                                             style="width: ${sessionScope.perf}%; height:15px;" role="progressbar">
+                                            <span class="sr-only">${sessionScope.perf}% Complete</span>
                                             <span class="bg-white arrow"></span>
                                             <span class="font-w600 counter-bx text-black"><strong
-                                                    class="counter font-w400">985pcs Left</strong></span>
+                                                    class="counter font-w400">${sessionScope.tickettoday2-sessionScope.tickettoday}pcs Left</strong></span>
                                         </div>
                                     </div>
                                     <p class="fs-12 text-white pt-4">Lorem ipsum dolor sit amet, consectetur
@@ -299,352 +274,11 @@ Sidebar end
 
                     </div>
                 </div>
-                <div class="col-xl-9 col-xxl-8">
+                <div class="col-xl-12 col-xxl-12">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card event-bx">
-                                <div class="card-header border-0 mb-0">
-                                    <h4 class="fs-20 card-title">Recent Movie List</h4>
-                                    <div class="dropdown custom-dropdown mb-0 tbl-orders-style">
-                                        <div class="btn sharp tp-btn" data-bs-toggle="dropdown">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                                <path
-                                                        d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                                <path
-                                                        d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                            </svg>
-                                        </div>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                            <a class="dropdown-item text-danger"
-                                               href="javascript:void(0);">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
-                                    <div class="media event-list pb-3 border-bottom mb-3">
-                                        <div class="image">
-                                            <img src="public/assets/images/card/Untitled-15.jpg"
-                                                 alt="">
-                                            <i class="las la-film image-icon"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);"
-                                                                              class="text-black"> Envato International
-                                                Online Meetup 2020</a>
-                                            </h4>
-                                            <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan,
-                                                        Indonesia</span>
-                                            <p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad mini</p>
-                                        </div>
-                                        <div class="media-footer">
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">$124,00</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-ticket" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">561 pcs Left</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">24 June 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media event-list pb-3 border-bottom mb-3">
-                                        <div class="image">
-                                            <img src="public/assets/images/card/Untitled-16.jpg"
-                                                 alt="">
-                                            <i class="fa fa-music image-icon"></i>
 
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);"
-                                                                              class="text-black">Google I/O Developer
-                                                Conference</a></h4>
-                                            <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan,
-                                                        Indonesia</span>
-                                            <p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad mini</p>
-                                        </div>
-                                        <div class="media-footer">
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">$124,00</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3 disabled">
-                                                            <i class="fa fa-ticket" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">561 pcs Left</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">24 June 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media event-list pb-3 border-bottom mb-3">
-                                        <div class="image">
-                                            <img src="public/assets/images/card/Untitled-17.jpg"
-                                                 alt="">
-                                            <i class="fa fa-music image-icon"></i>
 
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);"
-                                                                              class="text-black">Apple Worldwide
-                                                Developers Conference
-                                                (WWDC)</a></h4>
-                                            <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan,
-                                                        Indonesia</span>
-                                            <p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad mini</p>
-                                        </div>
-                                        <div class="media-footer">
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">$124,00</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3 disabled">
-                                                            <i class="fa fa-ticket" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">561 pcs Left</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 disabled mb-3">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">24 June 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media event-list pb-3 border-bottom mb-3">
-                                        <div class="image">
-                                            <img src="public/assets/images/card/Untitled-15.jpg"
-                                                 alt="">
-                                            <i class="fa fa-music image-icon"></i>
-
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);"
-                                                                              class="text-black"> TED Global Summit
-                                                2020</a></h4>
-                                            <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan,
-                                                        Indonesia</span>
-                                            <p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad mini</p>
-                                        </div>
-                                        <div class="media-footer">
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">$124,00</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3 disabled">
-                                                            <i class="fa fa-ticket" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">561 pcs Left</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 disabled mb-3">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">24 June 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media event-list pb-3 border-bottom mb-3">
-                                        <div class="image">
-                                            <img src="public/assets/images/card/Untitled-16.jpg"
-                                                 alt="">
-                                            <i class="fa fa-music image-icon"></i>
-
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);"
-                                                                              class="text-black"> Adobe MAX Creative
-                                                Conference</a></h4>
-                                            <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan,
-                                                        Indonesia</span>
-                                            <p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad mini</p>
-                                        </div>
-                                        <div class="media-footer">
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3">
-                                                            <i class="fa fa-usd text-primary" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">$124,00</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 mb-3 disabled">
-                                                            <i class="fa fa-ticket" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">561 pcs Left</div>
-                                            </div>
-                                            <div class="text-center">
-                                                        <span class="ticket-icon-1 disabled mb-3">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                <div class="fs-12 text-primary">24 June 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-center pt-0 border-0">
-                                    <a href="javascript:void(0);"
-                                       class="btn btn-secondary btn-lg  text-white dz-load-more" id="EventList"
-                                       rel="public/assets/ajax/event-list.jsp">Load
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-xxl-12">
-                            <div class="card latest-sales-bx">
-                                <div class="card-header border-0 mb-0">
-                                    <h4 class="fs-20 card-title">Latest Sales</h4>
-                                    <div class="dropdown custom-dropdown mb-0 tbl-orders-style">
-                                        <div class="btn sharp tp-btn" data-bs-toggle="dropdown">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                                <path
-                                                        d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                                <path
-                                                        d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
-                                                        stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"/>
-                                            </svg>
-                                        </div>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                            <a class="dropdown-item text-danger"
-                                               href="javascript:void(0);">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="public/assets/images/contacts/pic1.jpg"
-                                                 alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Olivia Johanson</h6>
-                                            <div class="d-flex">
-                                                        <span class="fs-14 me-auto text-secondary"><i
-                                                                class="fa fa-ticket me-1"></i>High Performance Conert
-                                                            2020..</span>
-                                                <span class="fs-14 text-nowrap">2m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="public/assets/images/contacts/pic2.jpg"
-                                                 alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Griezerman</h6>
-                                            <div class="d-flex">
-                                                        <span class="fs-14 me-auto text-secondary"><i
-                                                                class="fa fa-ticket me-1"></i>Fireworks Show New Year
-                                                            2020</span>
-                                                <span class="fs-14 text-nowrap">5m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="public/assets/images/contacts/pic3.jpg"
-                                                 alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Uli Trumb</h6>
-                                            <div class="d-flex">
-                                                        <span class="fs-14 me-auto text-secondary"><i
-                                                                class="fa fa-ticket me-1"></i>High Performance Conert
-                                                            2020..</span>
-                                                <span class="fs-14 text-nowrap">8m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="public/assets/images/contacts/pic1.jpg"
-                                                 alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Oconner</h6>
-                                            <div class="d-flex">
-                                                        <span class="fs-14 me-auto text-secondary"><i
-                                                                class="fa fa-ticket me-1"></i>High Performance Conert
-                                                            2020..</span>
-                                                <span class="fs-14 text-nowrap">9m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="public/assets/images/contacts/pic1.jpg"
-                                                 alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Oconner</h6>
-                                            <div class="d-flex">
-                                                        <span class="fs-14 me-auto text-secondary"><i
-                                                                class="fa fa-ticket me-1"></i>High Performance Conert
-                                                            2020..</span>
-                                                <span class="fs-14 text-nowrap">9m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer style-1 border-0 px-0">
-                                    <a href="javascript:void();"
-                                       class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales"
-                                       rel="public/assets/ajax/latest-sales.jsp"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-xxl-12">
+                        <div class="col-xl-12 col-xxl-12">
                             <div class="card">
                                 <div class="card-header border-0 flex-wrap pb-0">
                                     <h4 class="fs-20 font-w500 card-title">Sales Revenue</h4>
@@ -655,16 +289,7 @@ Sidebar end
                                                     Monthly
                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link " data-bs-toggle="tab" href="#Weekly1">
-                                                    Weekly
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link " data-bs-toggle="tab" href="#Daily1">
-                                                    Daily
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -686,94 +311,7 @@ Sidebar end
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-xxl-4">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-body text-center event-calender pb-2 px-2 pt-2">
-                                    <input type='text' class="form-control d-none" id='datetimepicker1'>
-                                </div>
-                                <div class="card-header py-0 border-0">
-                                    <h4 class="text-black fs-20">Upcoming Movies</h4>
-                                </div>
-                                <div class="card-body pb-0 loadmore-content height450 dz-scroll"
-                                     id="UpcomingEventContent">
-                                    <div class="media mb-5 align-items-center event-list">
-                                        <div class="p-3 text-center me-3 date-bx bgl-primary">
-                                            <h2 class="mb-0 text-secondary fs-28 font-w600">3</h2>
-                                            <h5 class="mb-1 text-black">Wed</h5>
-                                        </div>
-                                        <div class="media-body px-0">
-                                            <h6 class="mt-0 mb-3 fs-14"><a class="text-black"
-                                                                           href="https://ventic.dexignzone.com/codeigniter/demo/event">Live
-                                                Concert Choir Charity Event 2020</a></h6>
-                                            <ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-                                                <li>Ticket Sold</li>
-                                                <li>561/650</li>
-                                            </ul>
-                                            <div class="progress mb-0" style="height:4px; width:100%;">
-                                                <div class="progress-bar bg-warning progress-animated"
-                                                     style="width:60%;" role="progressbar">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media mb-5 align-items-center event-list">
-                                        <div class="p-3 text-center me-3 date-bx bgl-primary">
-                                            <h2 class="mb-0 text-secondary fs-28 font-w600">16</h2>
-                                            <h5 class="mb-1 text-black">Wed</h5>
-                                        </div>
-                                        <div class="media-body px-0">
-                                            <h6 class="mt-0 mb-3 fs-14"><a class="text-black"
-                                                                           href="https://ventic.dexignzone.com/codeigniter/demo/event">Live
-                                                Concert Choir Charity Event 2020</a></h6>
-                                            <ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-                                                <li>Ticket Sold</li>
-                                                <li>431/650</li>
-                                            </ul>
-                                            <div class="progress mb-0" style="height:4px; width:100%;">
-                                                <div class="progress-bar bg-warning progress-animated"
-                                                     style="width:50%;" role="progressbar">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media mb-5 align-items-center event-list">
-                                        <div class="p-3 text-center me-3 date-bx bgl-primary">
-                                            <h2 class="mb-0 text-primary fs-28 font-w600">28</h2>
-                                            <h5 class="mb-1 text-black">Wed</h5>
-                                        </div>
-                                        <div class="media-body px-0">
-                                            <h6 class="mt-0 mb-3 fs-14"><a class="text-black"
-                                                                           href="https://ventic.dexignzone.com/codeigniter/demo/event">Live
-                                                Concert Choir Charity Event 2020</a></h6>
-                                            <ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-                                                <li>Ticket Sold</li>
-                                                <li>650/650</li>
-                                            </ul>
-                                            <div class="progress mb-0" style="height:4px; width:100%;">
-                                                <div class="progress-bar bg-warning progress-animated"
-                                                     style="width:100%;" role="progressbar">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer pt-0 border-0">
-                                    <a href="javascript:void(0);"
-                                       class="btn btn-secondary btn-block text-white dz-load-more"
-                                       id="UpcomingEvent"
-                                       rel="public/assets/ajax/upcoming-event.jsp">Load
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
             </div>
         </div>
     </div>
@@ -1362,142 +900,149 @@ Footer end
                 chart.render();
             }
             var salesChart = function() {
-                var options = {
-                    series: [{
-                        name: 'Net Profit',
-                        data: [100, 200, 100, 300, 200, 400, 200, 300, 100],
-                        //radius: 12,
-                    }, ],
-                    chart: {
-                        type: 'line',
-                        height: 380,
-                        toolbar: {
-                            show: false,
-                        },
-                    },
-
-                    colors: ['var(--primary)'],
-                    dataLabels: {
-                        enabled: false,
-                    },
-
-                    legend: {
-                        show: true,
-                    },
-                    stroke: {
-                        show: true,
-                        width: 6,
-                        curve: 'smooth',
-                        colors: ['var(--primary)'],
-                    },
-
-                    grid: {
-                        show: true,
-                        borderColor: '#C8C8C8',
-                        strokeDashArray: 4,
-                        padding: {
-                            top: 0,
-                            right: 0,
-                            bottom: 0,
-                            left: 0
-
-                        }
-                    },
-                    states: {
-                        normal: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        hover: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        active: {
-                            allowMultipleDataPointsSelection: false,
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        }
-                    },
-                    xaxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct'],
-                        axisBorder: {
-                            show: true,
-                        },
-                        axisTicks: {
-                            show: true
-                        },
-                        labels: {
-                            show: true,
-                            style: {
-                                fontSize: '14px',
-                                colors: '#a4a7ab',
-                            }
-
-                        },
-                        crosshairs: {
-                            show: false,
-                            position: 'front',
-                            stroke: {
-                                width: 1,
-                                dashArray: 3
-                            }
-                        },
-                        tooltip: {
-                            enabled: true,
-                            formatter: undefined,
-                            offsetY: 0,
-                            style: {
-                                fontSize: '12px',
-                            }
-                        }
-                    },
-                    yaxis: {
-                        show: true,
-                        labels: {
-                            offsetX: -10,
-                            formatter: function(value) {
-                                return value + "k";
-                            },
-                            style: {
-                                colors: '#a4a7ab',
-                                fontSize: '14px',
-                            },
-                        },
-                    },
-                    fill: {
-                        opacity: 1,
-                        colors: '#FB3E7A'
-                    },
-                    tooltip: {
-                        style: {
-                            fontSize: '12px',
-                        },
-                        y: {
-                            formatter: function(val) {
-                                return "k" + val + " thousands"
-                            }
-                        }
-                    },
-                    responsive: [{
-                        breakpoint: 575,
-                        options: {
+                $.ajax({
+                    url: 'dataload2', // Đường dẫn đến servlet
+                    type: 'GET',
+                    success: function (response) {
+                        var options = {
+                            series: [{
+                                name: 'Net Profit',
+                                data: response.data,
+                                //radius: 12,
+                            }],
                             chart: {
-                                height: 250,
+                                type: 'line',
+                                height: 380,
+                                toolbar: {
+                                    show: false,
+                                },
                             },
-                        },
-                    }]
-                };
 
-                var chartBar1 = new ApexCharts(document.querySelector("#salesChart"), options);
-                chartBar1.render();
+                            colors: ['var(--primary)'],
+                            dataLabels: {
+                                enabled: false,
+                            },
 
-            }
+                            legend: {
+                                show: true,
+                            },
+                            stroke: {
+                                show: true,
+                                width: 6,
+                                curve: 'smooth',
+                                colors: ['var(--primary)'],
+                            },
+
+                            grid: {
+                                show: true,
+                                borderColor: '#C8C8C8',
+                                strokeDashArray: 4,
+                                padding: {
+                                    top: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    left: 0
+
+                                }
+                            },
+                            states: {
+                                normal: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                hover: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                active: {
+                                    allowMultipleDataPointsSelection: false,
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                }
+                            },
+                            xaxis: {
+                                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct','Nov','Dec'],
+                                axisBorder: {
+                                    show: true,
+                                },
+                                axisTicks: {
+                                    show: true
+                                },
+                                labels: {
+                                    show: true,
+                                    style: {
+                                        fontSize: '14px',
+                                        colors: '#a4a7ab',
+                                    }
+
+                                },
+                                crosshairs: {
+                                    show: false,
+                                    position: 'front',
+                                    stroke: {
+                                        width: 1,
+                                        dashArray: 3
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    formatter: undefined,
+                                    offsetY: 0,
+                                    style: {
+                                        fontSize: '12px',
+                                    }
+                                }
+                            },
+                            yaxis: {
+                                show: true,
+                                labels: {
+                                    offsetX: -10,
+                                    formatter: function (value) {
+                                        return value + "k";
+                                    },
+                                    style: {
+                                        colors: '#a4a7ab',
+                                        fontSize: '14px',
+                                    },
+                                },
+                            },
+                            fill: {
+                                opacity: 1,
+                                colors: '#FB3E7A'
+                            },
+                            tooltip: {
+                                style: {
+                                    fontSize: '12px',
+                                },
+                                y: {
+                                    formatter: function (val) {
+                                        return "k" + val + " thousands"
+                                    }
+                                }
+                            },
+                            responsive: [{
+                                breakpoint: 575,
+                                options: {
+                                    chart: {
+                                        height: 250,
+                                    },
+                                },
+                            }]
+                        };
+
+                        var chartBar1 = new ApexCharts(document.querySelector("#salesChart"), options);
+                        chartBar1.render();
+
+                    }
+                });
+            };
+
             var salesChart1 = function() {
                 var options = {
                     series: [{
@@ -1562,7 +1107,7 @@ Footer end
                         }
                     },
                     xaxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct'],
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct','Nov','Dec'],
                         axisBorder: {
                             show: true,
                         },
@@ -1698,7 +1243,7 @@ Footer end
                         }
                     },
                     xaxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct'],
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct','Nov','Dec'],
                         axisBorder: {
                             show: true,
                         },
