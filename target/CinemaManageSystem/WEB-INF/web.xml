@@ -181,12 +181,12 @@
         <servlet-class>controller.manageMovieServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>MakeReportServlet</servlet-name>
-        <servlet-class>controller.MakeReportServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ManageCombo</servlet-name>
         <servlet-class>controller.ManageCombo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MakeReportServlet</servlet-name>
+        <servlet-class>controller.MakeReportServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
@@ -221,29 +221,11 @@
         <servlet-class>controller.editMovieServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteEvent</servlet-name>
-        <servlet-class>manager.DeleteEvent</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditEvent</servlet-name>
-        <servlet-class>manager.EditEvent</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EventSetvlet</servlet-name>
-        <servlet-class>controller.EventSetvlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EditCombo</servlet-name>
         <servlet-class>controller.EditCombo</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>addEvent</servlet-name>
-        <url-pattern>/addevent</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>addEvent</servlet-name>
-        <servlet-class>controller.addEvent</servlet-class>
-    </servlet>
+
+
     <servlet-mapping>
         <servlet-name>EditCombo</servlet-name>
         <url-pattern>/editCombo</url-pattern>
@@ -269,6 +251,18 @@
         <servlet-name>AddCombo</servlet-name>
         <url-pattern>/addCombo</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteEvent</servlet-name>
+        <servlet-class>manager.DeleteEvent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditEvent</servlet-name>
+        <servlet-class>manager.EditEvent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EventSetvlet</servlet-name>
+        <servlet-class>controller.EventSetvlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -434,6 +428,7 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>SearchMovieServlet</servlet-name>
         <url-pattern>/search2</url-pattern>
@@ -482,4 +477,6 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
+
 </web-app>
+

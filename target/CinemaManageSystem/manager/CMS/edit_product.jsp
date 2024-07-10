@@ -111,8 +111,9 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm sản phẩm mới</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="product">Danh sách sản phẩm</a></li>
+                    <li class="breadcrumb-item active"><a href="addproduct">Thêm sản phẩm mới</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -120,7 +121,7 @@ Content body start
                 <div class="col-xl-12">
                     <div class="mb-3">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="event.jsp"
+                            <li><a href="product"
                                    class="btn btn-primary">Danh sách sản phẩm</a></li>
                         </ul>
                     </div>

@@ -91,13 +91,19 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm phim mới</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item active"><a href="addmovie">Thêm phim mới</a></li>
                 </ol>
             </div>
             <!-- Row -->
             <div class="row">
                 <div class="col-xl-12">
+                    <div class="mb-3">
+                        <ul class="d-flex align-items-center flex-wrap">
+                            <li><a href="manageMovie"
+                                   class="btn btn-primary">Danh sách phim</a></li>
+                        </ul>
+                    </div>
 
 
                     <div class="row">
@@ -286,7 +292,7 @@ Content body start
                                         <div class="card-body">
                                             <label class="form-label">Trailer</label>
                                             <input type="text" value="${requestScope.movieId.getTrailer()}"
-                                                   name="trailer" class="form-control mb-3" placeholder="Áp phích">
+                                                   name="trailer" class="form-control mb-3" placeholder="Trailer">
 
                                         </div>
                                     </div>
@@ -328,7 +334,7 @@ Content body start
                                     </div>
                                 </c:if>
                                 <div>
-                                    <input type="submit" class="btn btn-primary mb-3" value="Add movie">
+                                    <input type="submit" class="btn btn-primary mb-3" value="Thêm film">
 
                                 </div>
 

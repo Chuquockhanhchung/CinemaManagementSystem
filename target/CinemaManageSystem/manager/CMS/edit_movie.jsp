@@ -90,13 +90,20 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm phim mới</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="manageMovie">Danh sách movie</a></li>
+                    <li class="breadcrumb-item active"><a href="editMovie">Sửa phim</a></li>
                 </ol>
             </div>
             <!-- Row -->
             <div class="row">
                 <div class="col-xl-12">
+                    <div class="mb-3">
+                        <ul class="d-flex align-items-center flex-wrap">
+                            <li><a href="manageMovie"
+                                   class="btn btn-primary">Danh sách phim</a></li>
+                        </ul>
+                    </div>
 
 
                     <div class="row">
