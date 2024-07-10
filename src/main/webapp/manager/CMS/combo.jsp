@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
-  User: datla
-  Date: 6/2/2024
-  Time: 11:41 AM
+  User: Chi
+  Date: 7/4/2024
+  Time: 12:17 AM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -112,8 +113,8 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Movies</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item active"><a href="combo">Combo</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -121,14 +122,13 @@ Content body start
                 <div class="col-xl-12">
 
 
-
                     <div class="mb-5">
-                        <a href="addmovie" class="btn btn-primary">Thêm Phim Mới</a>
+                        <a href="addCombo" class="btn btn-primary">Thêm combo</a>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
                             <div class="cpa">
-                                <i class="fa-solid fa-file-lines me-1"></i>Danh Sách Phim
+                                <i class="fa-solid fa-file-lines me-1"></i>Danh Sách Combo
                             </div>
 
                         </div>
@@ -139,29 +139,30 @@ Content body start
                                            id="movieTable">
                                         <thead>
                                         <tr>
-                                            <th class="text-black">M.No</th>
-                                            <th class="text-black">Tên Phim</th>
-                                            <th class="text-black">Ảnh Phim</th>
-                                            <th class="text-black">Trạng Thái</th>
-                                            <th class="text-black">Ngày Đăng</th>
-                                            <th class="text-black text-end">Hành Động</th>
+                                            <th class="text-black">Combo.No</th>
+                                            <th class="text-black">Tên combo</th>
+                                            <th class="text-black">Ảnh</th>
+                                            <th class="text-black">Chi tiết</th>
+                                            <th class="text-black">Gía Combo</th>
+                                            <th class="text-black">Hành động</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${sessionScope.list}" var="m">
+                                        <c:forEach items="${sessionScope.combos}" var="m">
                                             <tr>
                                                 <td>${m.getId()}</td>
                                                 <td>${m.getName()}</td>
-                                                <td><img width="100" height="100" src=${m.getImage()}  /></td>
-                                                <td>${m.getStatus()}</td>
-                                                <td>${m.getReleaseDate()}</td>
+                                                <td><img  height="100" width="100" src=${m.getImg()}  /> </td>
+                                                <td>${m.getDescription()}</td>
+                                                <td>${m.getPrice()}</td>
+
                                                 <td class="text-end">
 
-                                                    <a href="${pageContext.request.contextPath}/editMovie?id=${m.getId()}"
+                                                    <a href="${pageContext.request.contextPath}/editCombo?id=${m.getId()}"
                                                        class="btn btn-warning btn-sm content-icon">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a onclick="deleteM(${m.getId()})"
+                                                    <a onclick="DeleteC(${m.getId()})"
                                                        class="btn btn-danger btn-sm content-icon">
                                                         <i class="fa fa-times"></i>
                                                     </a>
@@ -291,14 +292,6 @@ Footer end
     });
 </script>
 <script>
-    function deleteM(id){
-        let confirmDelete = window.confirm("Bạn muốn xóa movie " + id +"?")
-        if(confirmDelete){
-            window.location = "deleteM?id=" + id
-        }
-    }
-</script>
-<script>
     (function($) {
 
         var table = $('#example5').DataTable({
@@ -316,5 +309,14 @@ Footer end
         });
 
     })(jQuery);
+</script>
+
+<script>
+    function DeleteC(id){
+        let confirmDelete = window.confirm("Bạn muốn xóa combo" + id +"?")
+        if(confirmDelete){
+            window.location = "deleteCombo?id=" + id
+        }
+    }
 </script>
 </html>
