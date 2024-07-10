@@ -402,6 +402,212 @@
                                                                 </div>
                                                             </div>
                                                             <%
+                                                            } else {
+                                                            %>
+                                                            <div class="row-payment list-mb24 list-crop">
+                                                                <div class="col-12 main-title-mobile show-mobile h3 text-center">
+                                                                    Thanh toán qua ứng dụng Ngân hàng/ Ví điện
+                                                                    tử
+                                                                </div>
+
+                                                                <div class="col-md-5 bills-col">
+                                                                    <div class="bills">
+                                                                        <div class="bills-header h2 show-desktop">
+                                                                            Thông tin đơn hàng
+                                                                        </div>
+                                                                        <div class="bills-header-mobile show-mobile list-mb12 list-last-mb"
+                                                                             data-bs-toggle="collapse"
+                                                                             data-bs-target="#accordionBill"
+                                                                             aria-expanded="true"
+                                                                             aria-controls="accordionBill">
+                                                                            <div class="title weight5">
+                                                                                Thanh toán đơn hàng 182098
+                                                                            </div>
+                                                                            <div class="row-payment color-primary align-items-center">
+                                                                                <div class="col h2">
+                                                                                        <span id="totalAmountMb">
+                                                                                           <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                        </span><sup>VND</sup>
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                    <!-- button.button -->
+                                                                                    <div
+                                                                                            class="ubg-transparent ubox-size-button-xs ubg-hover ubg-active ubtn">
+                                                                                        <div class="ubtn-inner">
+                                                                                                <span class="ubtn-text color-primary">
+                                                                                                    Xem chi tiết
+                                                                                                </span>
+                                                                                            <span class="ubtn-ic ubtn-ic-right">
+                                                                                                    <img src="css/QR_Code/images/icons-color/primary/default/24x24-chevrondown.svg"
+                                                                                                         alt=""
+                                                                                                         class="ic-default">
+                                                                                                </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- end button.button -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="bills-body accordion-collapse collapse"
+                                                                             id="accordionBill">
+                                                                            <div>
+                                                                                <div class="bills-list list-mb24 list-last-mb">
+                                                                                    <div class="bills-list-item show-desktop">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Số tiền
+                                                                                                    thanh toán
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right color-primary h2">
+                                                                                                        <span id="totalAmountDt">
+                                                                                                                <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                                        </span><sup>VND</sup>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="bills-list-item">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Giá trị đơn
+                                                                                                    hàng
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right">
+                                                                                                    <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                                    <sup>VND</sup>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="bills-list-item">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Phí giao
+                                                                                                    dịch
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right ">
+                                                                                                    0<sup>VND</sup>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="bills-list-item"
+                                                                                         id="discountAmountItem"
+                                                                                         style="display: none">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Số tiền
+                                                                                                    khuyến mại
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right">
+                                                                                                    <span id="discountAmount">0</span><sup>VND</sup>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="bills-list-item show-desktop">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Mã đơn hàng
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right h3">
+                                                                                                    ${userobj.name}
+                                                                                                    - ${userobj.id}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="bills-list-item">
+                                                                                        <div class="row-payment">
+                                                                                            <div class="col-md-12 col-5 mb4">
+                                                                                                <div class="sub-title color-sub-default">
+                                                                                                    Nhà cung cấp
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-12 col">
+                                                                                                <div class="title text-left-md-right h3">
+                                                                                                    MC CTT VNPAY
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md right-bill-col">
+                                                                    <div class="right-bill-col-inner">
+                                                                        <div class="main-title h2 text-center show-desktop mb24">
+                                                                            Quét mã qua ứng dụng Ngân hàng/ Ví
+                                                                            điện tử
+                                                                        </div>
+                                                                        <div class="qr-section">
+                                                                            <div class="qr-section-inner list-mb24 list-last-mb">
+                                                                                <a href="#"
+                                                                                   data-bs-toggle="modal"
+                                                                                   data-bs-target="#modalHuongDan"
+                                                                                   class="link weight5 link-style-default show-desktop">
+                                                                                    <img src="css/QR_Code/images/icons-color/info/default/24x24-information-circle.svg"
+                                                                                         alt=""
+                                                                                         class="ic-default">
+                                                                                    Hướng dẫn thanh toán
+                                                                                </a>
+                                                                                <div class="qr qr-size-default"
+                                                                                     data-bs-toggle="modal"
+                                                                                     data-bs-target="#modalQR">
+                                                                                    <div class="qr-inner"
+                                                                                         style="background-image: url('css/QR_Code/images/qr-frame.svg')">
+                                                                                        <img class="qrcodeimg-modal"
+                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= customCurrency %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}"
+                                                                                             alt="QR CODE">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="section d-flex justify-content-center align-items-center w-100 show-mobile">
+                                                                                    <a href="Transaction/DownloadQR.html"
+                                                                                       class="link weight5 link-style-default">
+                                                                                        <img src="css/QR_Code/images/icons-color/info/default/24x24-download.svg"
+                                                                                             alt=""
+                                                                                             class="ic-default">
+                                                                                        Tải mã
+                                                                                    </a>
+                                                                                    <a data-bs-toggle="modal"
+                                                                                       data-bs-target="#modalHuongDanMobile"
+                                                                                       class="link link-underline weight5"
+                                                                                       style="margin-left:15px;">
+                                                                                        <img src="css/QR_Code/images/icons-color/info/default/24x24-question-circle.svg"
+                                                                                             alt=""
+                                                                                             class="ic-md">
+                                                                                        Hướng dẫn
+                                                                                    </a>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <%
                                                                 }
                                                             %>
                                                         </div>
@@ -694,9 +900,32 @@
                                     <h3>Tổng
                                         <span><%= formattedFinalPrice %></span>
                                     </h3>
-<%--                                                                    <h4>Current State is <span>Kerala</span></h4>--%>
+                                    <%--                                                                    <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
                                         <span><%= formattedFinalPrice %></span>
+                                    </h5>
+                                    <input type="text" value="<%= finalPrice %>" name="ticketPrice" hidden="">
+                                </div>
+                                <%
+                                } else {
+                                %>
+                                <div class="st_dtts_sb_ul float_left">
+                                    <ul>
+                                        <li><%= ticket.getSeatID() %>
+                                            <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "") %></span>
+                                        </li>
+                                        <%--                                    <li>Internet handling fees <span>Rs.70.80</span></li>--%>
+                                    </ul>
+                                    <%--                                <p>Booking Fees <span>Rs.60.00</span></p>--%>
+                                    <%--                                <p>Integrated GST (IGST) @ 18% <span>Rs.60.00</span></p>--%>
+                                </div>
+                                <div class="st_dtts_sb_h2 float_left">
+                                    <h3>Tổng
+                                        <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
+                                    </h3>
+                                    <%--                                <h4>Current State is <span>Kerala</span></h4>--%>
+                                    <h5>Số tiền cần thanh toán
+                                        <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
                                     </h5>
                                     <input type="text" value="<%= customCurrency %>" name="ticketPrice" hidden="">
                                 </div>
@@ -831,7 +1060,7 @@
                         }
                     });
                 } else {
-                    if (! ) {
+                    if (!alertShown) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",

@@ -159,11 +159,12 @@ public class TicketDAO extends DBContext {
                 "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
                 "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                 "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
-                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.Status " +
+                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.Status,s.RoomID " +
                 "FROM movieticket t " +
                 "JOIN customer c ON t.CustomerID = c.CustomerID " +
                 "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
                 "JOIN movie m ON s.MovieID = m.MovieID " +
+                "JOIN (SELECT MIN(TicketID) AS TicketID FROM movieticket GROUP BY BookingID) sub ON t.TicketID = sub.TicketID " +
                 "WHERE t.CustomerID = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -182,6 +183,7 @@ public class TicketDAO extends DBContext {
                 ticket.setBookingID(rs.getString("BookingID"));
                 ticket.setSeatID(rs.getString("SeatID"));
                 ticket.setStatus(rs.getString("Status"));
+                ticket.setRoomID(rs.getInt("RoomID"));
                 list.add(ticket);
             }
         } catch (SQLException e) {

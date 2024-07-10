@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Tài Khoản</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-item">THÔNG TIN CHUNG</div>
+            <div class="sidebar-item active">CHI TIẾT TÀI KHOẢN</div>
+            <div class="sidebar-item">SETUP A PIN</div>
+            <div class="sidebar-item">THẺ THÀNH VIÊN</div>
+            <div class="sidebar-item">ĐIỂM THƯỞNG</div>
+            <div class="sidebar-item">THẺ QUÀ TẶNG</div>
+            <div class="sidebar-item">VOUCHER</div>
+            <div class="sidebar-item">COUPON</div>
+            <div class="sidebar-item">LỊCH SỬ GIAO DỊCH</div>
+        </div>
+        <div class="main-content">
+            <h1>THAY ĐỔI THÔNG TIN</h1>
+            <form class="account-details-form">
+                <div class="form-group">
+                    <label for="name">Tên *</label>
+                    <input type="text" id="name" value="Nguyễn Tiến Đạt" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">Thành phố/Tỉnh *</label>
+                    <select id="city" required>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="TP HCM">TP HCM</option>
+                        <!-- Add other cities here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Điện thoại *</label>
+                    <input type="text" id="phone" value="0968338829" required>
+                </div>
+                <div class="form-group">
+                    <label for="district">Quận *</label>
+                    <select id="district" required>
+                        <option value="700">700</option>
+                        <!-- Add other districts here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Giới tính *</label>
+                    <div>
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                        <label for="male">Nam</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Nữ</label>
+                        <input type="radio" id="none" name="gender" value="none">
+                        <label for="none">None</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ *</label>
+                    <input type="text" id="address" value="No address 700" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Ngày sinh</label>
+                    <input type="text" id="birthday" value="OCT 27 2003" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="email">Địa chỉ email *</label>
+                    <input type="email" id="email" value="datlacve2@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="change-password">
+                    <label for="change-password">Tôi muốn thay đổi mật khẩu</label>
+                </div>
+                <div class="form-group">
+                    <label for="old-password">Mật khẩu cũ *</label>
+                    <input type="password" id="old-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="membership-number">Số thẻ thành viên</label>
+                    <input type="text" id="membership-number" value="9992-3686-5144-8273" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="favorite-theater">Rạp yêu thích</label>
+                    <select id="favorite-theater">
+                        <option value="CGV Indochina">CGV Indochina</option>
+                        <!-- Add other theaters here -->
+                    </select>
+                </div>
+                <div class="form-group buttons">
+                    <a href="#" class="back-link">&laquo; Quay lại</a>
+                    <button type="submit">LƯU LẠI</button>
+                </div>
+                <div class="required-note">
+                    * Thông tin bắt buộc
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

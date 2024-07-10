@@ -164,10 +164,11 @@
                             </li>
                             <c:if test="${sessionScope.user != null}">
                                 <li>
-                                    <a style="text-decoration: none;color: white" href="Account.jsp?CustomerID=${sessionScope.user.idCustomer}"><i
+                                    <a style="text-decoration: none;color: white" href="user_information.jsp?CustomerID=${sessionScope.user.idCustomer}"><i
                                             class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
-                                </li>   
+                                </li>
                             </c:if>
+
                         </ul>
                     </div>
                     <!-- /dl-menuwrapper -->

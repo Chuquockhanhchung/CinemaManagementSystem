@@ -29,7 +29,7 @@
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Uicons - Flaticon -->
     <link rel='stylesheet'
           href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -63,6 +63,27 @@
 <%@include file="header.jsp" %>
 
 <!-- prs navigation End -->
+<c:if test="${not empty discountMessage}">
+    <script>
+        Swal.fire({
+            title: "Chúc Mừng!",
+            text: "Áp dụng Voucher thành công!",
+            icon: "success"
+        });
+    </script>
+    <c:remove var="discountMessage" scope="session"/>
+</c:if>
+
+<c:if test="${not empty discountFailMessage}">
+    <script>
+        Swal.fire({
+            title: "Xin lỗi!",
+            text: "Bạn không đủ điều kiện để áp dụng Voucher!",
+            icon: "warning"
+        });
+    </script>
+    <c:remove var="discountFailMessage" scope="session"/>
+</c:if>
 <!-- prs Slider Start -->
 <div class="prs_main_slider_wrapper">
     <div id="rev_slider_41_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
@@ -361,8 +382,8 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#"
-                                                               onclick="alert('Please log in to book tickets.'); return false;">
+                                                            <a
+                                                                    onclick="noti()">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -482,8 +503,8 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#"
-                                                               onclick="alert('Please log in to book tickets.'); return false;">
+                                                            <a
+                                                                    onclick="noti()">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -528,47 +549,6 @@
                     </div>
                 </div>
 
-                <!-- prs feature slider Start -->
-                <div class="prs_feature_slider_main_wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="prs_heading_section_wrapper">
-                                    <h2>SỰ KIỆN ĐẶC BIỆT</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="prs_feature_slider_wrapper">
-                                    <div class="owl-carousel owl-theme">
-                                        <%
-                                            EventDAO dao = new EventDAO(DBContext.getConn());
-                                            List<Event> list = dao.getAllEvent();
-                                            for (Event event : list) {
-                                                String imagePathFromDB = event.getEventImage();
-                                                String fullImagePath = imagePathFromDB.substring(imagePathFromDB.indexOf("images"));
-                                                if (event.getStatus() == 1) {
-                                        %>
-                                        <div class="item prs_feature_slider_item_wrapper">
-                                            <div class="prs_feature_img_box_wrapper">
-                                                <div class="prs_feature_img">
-                                                    <a href="event_single.jsp?EventID=<%=event.getEventID()%>">
-                                                        <img src="<%= fullImagePath %>" alt="feature_img" style="max-height: 250px; min-height: 250px; width: 100%; margin: 0 auto;">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <%
-                                                }
-                                            }
-                                        %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- prs feature slider End -->
 
                 <div role="tabpanel" class="tab-pane fade" id="trand">
                     <div class="prs_upcom_slider_slides_wrapper">
@@ -642,8 +622,8 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#"
-                                                               onclick="alert('Please log in to book tickets.'); return false;">
+                                                            <a
+                                                                    onclick="noti()">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -684,6 +664,49 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- prs feature slider Start -->
+                <div class="prs_feature_slider_main_wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="prs_heading_section_wrapper">
+                                    <h2>SỰ KIỆN ĐẶC BIỆT</h2>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="prs_feature_slider_wrapper">
+                                    <div class="owl-carousel owl-theme">
+                                        <%
+                                            EventDAO dao = new EventDAO(DBContext.getConn());
+                                            List<Event> list = dao.getAllEvent();
+                                            for (Event event : list) {
+                                                String imagePathFromDB = event.getEventImage();
+                                                String fullImagePath = imagePathFromDB.substring(imagePathFromDB.indexOf("images"));
+                                                if (event.getStatus() == 1) {
+                                        %>
+                                        <div class="item prs_feature_slider_item_wrapper">
+                                            <div class="prs_feature_img_box_wrapper">
+                                                <div class="prs_feature_img">
+                                                    <a href="event_single.jsp?EventID=<%=event.getEventID()%>">
+                                                        <img src="<%= fullImagePath %>" alt="feature_img"
+                                                             style="max-height: 250px; min-height: 250px; width: 100%; margin: 0 auto;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%
+                                                }
+                                            }
+                                        %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- prs feature slider End -->
             </div>
         </div>
     </div>
@@ -777,7 +800,7 @@
                             <div class="prs_upcom_movie_content_box_inner_icon">
                                 <ul>
                                     <li>
-                                        <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                        <a onclick="noti()">
                                             <i class="fi fi-ss-ticket"></i>
                                         </a>
                                     </li>
@@ -1162,10 +1185,10 @@
             alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
             return false;
         }
-        // if (!passPattern.test(pass1)) {
-        //     alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
-        //     return false;
-        // }
+        if (!passPattern.test(pass1)) {
+            alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
+            return false;
+        }
 
         // Validate name
         if (name.trim() === "") {
@@ -1185,6 +1208,16 @@
         }
 
         return true;
+    }
+</script>
+
+<script>
+    function noti() {
+        Swal.fire({
+            title: "Xin lỗi",
+            text: "Bạn cần đăng nhập để đặt vé",
+            icon: "warning"
+        });
     }
 </script>
 <!-- st login wrapper End -->

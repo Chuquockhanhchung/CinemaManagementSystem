@@ -7,15 +7,18 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import dal.DBContext;
 import dal.EventDAO;
+import dal.TicketDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Event;
+import model.Ticket;
 
 /**
  *
@@ -58,6 +61,7 @@ public class EventSetvlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
         int EventID = Integer.parseInt(request.getParameter("EventID"));
         EventDAO dao = new EventDAO(DBContext.getConn());
         Event eventdao = dao.getEventByID(EventID);
@@ -75,7 +79,29 @@ public class EventSetvlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("event", event);
-        response.sendRedirect("home");
+
+        TicketDAO ticketDAO = new TicketDAO(DBContext.getConn());
+        List<Ticket> list = ticketDAO.getTicketByBooking(CustomerID);
+        int totalTickets = ticketDAO.countTicketsByBooking(CustomerID);
+
+        boolean isFirstPurchase = list.isEmpty();
+        double discount = 0.0;
+
+        if (isFirstPurchase) {
+            discount = 0.15; // Giảm giá 15% nếu đây là lần đầu mua vé
+            session.setAttribute("discountMessage", "Congratulations!");
+            response.sendRedirect("home");
+        } else if (totalTickets > 5) {
+            discount = 0.10; // Giảm giá 10% nếu người dùng đã mua trên 5 vé
+            session.setAttribute("discountMessage", "Congratulations!");
+            response.sendRedirect("home");
+        } else {
+            session.setAttribute("discountFailMessage", "Fail!");
+            session.removeAttribute("event");
+            response.sendRedirect("home");
+        }
+
+
     } 
 
     /** 

@@ -127,7 +127,6 @@
                                 float formattedPrice = TicketPrice / ticketCount;
                                 String formattedPriceDisplay = currencyFormat.format(formattedPrice);
                             %>
-
                                 <div class="ticket created-by-anniedotexe">
                                     <div class="left">
                                         <div class="image">
@@ -185,7 +184,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             <% } %>
                         </div>
                     </div>

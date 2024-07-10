@@ -48,7 +48,7 @@ public class CustomerDAO extends DBContext {
     }
 
     public ArrayList<Customer> getInfor_Customer() {
-        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture\n"
+        String sql = "SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture, DOB\n"
                 + "FROM customer\n"
                 + "JOIN account  ON customer.AccountID = account.AccountID";
         ArrayList<Customer> list = new ArrayList<>();
@@ -64,6 +64,7 @@ public class CustomerDAO extends DBContext {
                 c.setPass(s.decode(rs.getString(6)));
                 c.setRole(rs.getInt(7));
                 c.setPicture(rs.getString(8));
+                c.setDOB(rs.getString(9));
                 list.add(c);
             }
         } catch (SQLException e) {

@@ -80,7 +80,7 @@ public class UpdateProfileServlet extends HttpServlet {
           String username = request.getParameter("name");
           String email = request.getParameter("email");
           String phone = request.getParameter("phone");
-
+          String DOB = request.getParameter("DOB");
           Part part = request.getPart("profile-pic");
           String picture = part.getSubmittedFileName();
           // Check if any part is missing
@@ -110,6 +110,7 @@ public class UpdateProfileServlet extends HttpServlet {
           c.setEmail(email);
           c.setPhone(phone);
           c.setPicture(picture);
+          c.setDOB(DOB);
           session.setAttribute("user", c);
 
           response.sendRedirect("home");

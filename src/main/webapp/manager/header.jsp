@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
     <style>
         .nav-header .logo-abbr {
             width: 125px;
@@ -43,7 +43,7 @@ Nav header start
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-
+                    <a href="${pageContext.request.contextPath}/home"><i class="las la-home" style="font-size: 30px"></i></a>
                 </div>
                 <ul class="navbar-nav header-right">
 
@@ -51,10 +51,10 @@ Nav header start
                     <li class="nav-item dropdown notification_dropdown">
                         <select class="language-btn default-select">
                             <option data-display="ENGLISH">TIẾNG VIỆT</option>
-<%--                            <option value="1">ENGLISH</option>--%>
-<%--                            <option value="1">FRANCE</option>--%>
-<%--                            <option value="2">CANADA</option>--%>
-<%--                            <option value="3">GERMAN</option>--%>
+                            <%--                            <option value="1">ENGLISH</option>--%>
+                            <%--                            <option value="1">FRANCE</option>--%>
+                            <%--                            <option value="2">CANADA</option>--%>
+                            <%--                            <option value="3">GERMAN</option>--%>
                         </select>
                     </li>
                     <li class="nav-item dropdown header-profile">
