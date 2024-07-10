@@ -106,7 +106,7 @@ Content body start
 
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="addproduct" class="btn btn-primary ">Thêm sản phẩm mới</a></li>
+                            <li><a href="../../addproduct" class="btn btn-primary ">Thêm sản phẩm mới</a></li>
                         </ul>
                     </div>
                     <div class="filter cm-content-box box-primary">
