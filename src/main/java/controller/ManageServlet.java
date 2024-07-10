@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import dal.DBContext;
@@ -70,6 +71,11 @@ public class ManageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String year = request.getParameter("year");
+        LocalDate d1 = LocalDate.now();
+        if(year==null || year.equals("")){
+            year= String.valueOf(d1.getYear());
+        }
         int[] data = { 0, 0, 100, 300, 0, 400, 200, 0, 100, 0, 200, 300 };
         int[] data2 = { 0, 0, 100, 300, 0, 400, 200, 0, 100, 0, 200, 300 };
 // Khởi tạo đối tượng td để gọi phương thức countTicketbymonth
@@ -77,15 +83,15 @@ public class ManageServlet extends HttpServlet {
 
 // Ngày bắt đầu và ngày kết thúc (ví dụ: năm 2023)
         // Ngày bắt đầu và ngày kết thúc (ví dụ: năm 2023)
-        Date startDate = Date.valueOf("2024-01-01");
-        Date endDate = Date.valueOf("2024-12-31");
+        Date startDate = Date.valueOf(year+"-01-01");
+        Date endDate = Date.valueOf(year+"-12-31");
 
 // Lặp qua từng tháng trong năm
         for (int month = 0; month < 12; month++) {
             // Tính ngày đầu tháng và ngày cuối tháng
-            Date monthStartDate = Date.valueOf("2024-" + String.format("%02d", month + 1) + "-01");
+            Date monthStartDate = Date.valueOf(year+"-" + String.format("%02d", month + 1) + "-01");
             int lastDayOfMonth = getLastDayOfMonth(month + 1, 2024); // Lấy số ngày cuối cùng của tháng
-            Date monthEndDate = Date.valueOf("2024-" + String.format("%02d", month + 1) + "-" + lastDayOfMonth);
+            Date monthEndDate = Date.valueOf(year+"-" + String.format("%02d", month + 1) + "-" + lastDayOfMonth);
 
             // Gọi hàm countTicketbymonth và cập nhật giá trị vào mảng data
             data[month] = td.countTicketbymonth(monthStartDate, monthEndDate);
@@ -115,6 +121,8 @@ public class ManageServlet extends HttpServlet {
         if (tickettoday2!=0){
             perform = tickettoday*100/tickettoday2;
         }
+        int[] years= td.getYear();
+
 
 
         int perf=(int)perform;
@@ -132,6 +140,8 @@ public class ManageServlet extends HttpServlet {
         session.setAttribute("tickettoday", tickettoday);
         session.setAttribute("tickettoday2", tickettoday2);
         session.setAttribute("perf", perf);
+        session.setAttribute("years", years);
+        session.setAttribute("year2", year);
         request.getRequestDispatcher("manager/index.jsp").forward(request, response);
     }
 

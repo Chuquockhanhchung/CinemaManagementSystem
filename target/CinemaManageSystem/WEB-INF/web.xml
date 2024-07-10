@@ -173,6 +173,10 @@
         <servlet-class>controller.manageMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MakeReportServlet</servlet-name>
+        <servlet-class>controller.MakeReportServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>controller.PaymentServlet</servlet-class>
     </servlet>
@@ -317,6 +321,10 @@
     <servlet-mapping>
         <servlet-name>ManageServlet</servlet-name>
         <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakeReportServlet</servlet-name>
+        <url-pattern>/make</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>sendEmail</servlet-name>

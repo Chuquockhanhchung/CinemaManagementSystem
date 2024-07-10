@@ -99,7 +99,12 @@
             <version>1.14.0</version>
         </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>itextpdf</id>
+            <url>https://repo.itextsupport.com/releases</url>
+        </repository>
+    </repositories>
     <build>
         <finalName>CinemaManageSystem</finalName>
         <plugins>

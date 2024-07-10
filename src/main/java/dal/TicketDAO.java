@@ -335,10 +335,34 @@ public class TicketDAO extends DBContext{
         }
         return count;
     }
+    public int[] getYear(){
+        int years[] = new int[10];
+        for (int j=0;j<years.length;j++){
+            years[j]=0;
+        }
+        String sql = "SELECT distinct year(BookingDate)  as year FROM cinemamanagersystem.movieticket;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            int i=0;
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                 years[i]=year;
+                i++;
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return years;
+    }
 
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        System.out.println(dal.priceTicketbymonth(Date.valueOf("2024-06-01"),Date.valueOf("2024-07-01")));
+        int[] y = dal.getYear();
+        for (int i = 0; i < y.length; i++) {
+            System.out.println(y[i]+" ");
+        }
     }
 }

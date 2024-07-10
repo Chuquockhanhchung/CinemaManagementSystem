@@ -1,3 +1,26 @@
 .fa {
     line-height: unset !important;
 }
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.report-button {
+    background-color: #4CAF50; /* Màu nền */
+    color: white; /* Màu chữ */
+    padding: 15px 32px; /* Padding */
+    text-align: center; /* Căn giữa chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: inline-block; /* Hiển thị dạng khối inline */
+    font-size: 16px; /* Kích thước chữ */
+    margin: 4px 2px; /* Margin */
+    cursor: pointer; /* Con trỏ dạng pointer */
+    border-radius: 12px; /* Bo góc */
+    border: none; /* Bỏ viền */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.report-button:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}

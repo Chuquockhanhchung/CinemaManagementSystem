@@ -91,7 +91,7 @@
                     <button type="submit" onclick="return validatePasswords()">Reset Password</button>
                 </div>
                 <div class="form-group">
-                    <a href="index.jsp">Back to Login</a>
+                    <a href="home">Back to Login</a>
                 </div>
             </form>
         </div>

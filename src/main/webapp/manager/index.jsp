@@ -109,13 +109,27 @@ Sidebar end
                         </svg>
                         <div class="text-start ms-3 flex-1">
                             <span class="d-block text-black">Change Periode</span>
-                            <small class="d-block text-muted">August 28th - October 28th, 2021</small>
+                            <small class="d-block text-muted">${sessionScope.year2}</small>
                         </div>
                         <i class="fa fa-caret-down text-light scale5 ms-3"></i>
                     </div>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="javascript:void(0);">October 29th - November 29th, 2021</a>
-                        <a class="dropdown-item" href="javascript:void(0);">July 27th - Auguts 27th, 2021</a>
+                        <% int[] years = (int[])session.getAttribute("years");
+                            for(int i=0;i<years.length;i++) {
+                                if(years[i]!=0){
+
+                                %>
+
+                        <a class="dropdown-item" href="manager?year=<%= years[i]%>"><%= years[i]%>></a>
+
+
+
+                        <%
+                                }
+                            }
+
+                        %>
+
                     </div>
                 </div>
             </div>
@@ -123,7 +137,7 @@ Sidebar end
             <div class="row">
                 <div class="col-xl-12">
                     <div class="row">
-                        <div class="col-xl-3 col-xxl-3 col-sm-6 ">
+                        <div class="col-xl-4 col-xxl-4 col-sm-6 ">
                             <div class="card chart-bx">
                                 <div class="card-header border-0 pb-0">
                                     <div class="d-flex align-items-center">
@@ -163,7 +177,7 @@ Sidebar end
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-xxl-3 col-sm-6 ">
+                        <div class="col-xl-4 col-xxl-4 col-sm-6 ">
                             <div class="card chart-bx">
                                 <div class="card-header border-0 pb-0">
                                     <div class="d-flex align-items-center">
@@ -203,7 +217,7 @@ Sidebar end
                         </div>
 
 
-                        <div class="col-xl-3 col-xxl-3 col-sm-6 ">
+                        <div class="col-xl-4 col-xxl-4 col-sm-6 ">
                             <div class="card chart-bx">
                                 <div
                                         class="card-body pt-sm-4 pt-3 d-flex align-items-center justify-content-between">
@@ -311,6 +325,38 @@ Sidebar end
                         </div>
                     </div>
                 </div>
+                <button onclick="generateExcel()">Generate Excel Report</button>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+                <script>
+                  async  function generateExcel() {
+                        // Create a workbook
+                        var wb = XLSX.utils.book_new();
+
+                      $.ajax({
+                          url: 'dataload2', // Đường dẫn đến servlet
+                          type: 'GET',
+                          success: function (response) {
+                              var data = [
+                                  response.data
+                              ];
+                              console.log(data);
+                              // Convert data to a worksheet
+                              var ws = XLSX.utils.aoa_to_sheet(data);
+
+                              // Append the worksheet to the workbook
+                              XLSX.utils.book_append_sheet(wb, ws, "Report");
+
+                              // Generate and download the Excel file
+                              XLSX.writeFile(wb, "report.xlsx");
+
+                              // Sample data
+                          }
+                      });
+
+
+                    }
+                </script>
 
             </div>
         </div>
@@ -369,8 +415,42 @@ Footer end
                                 type: 'line',
                                 height: 100,
                                 toolbar: {
-                                    show: false,
+                                    show: true,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    tools: {
+                                        download: true,
+                                        selection: true,
+                                        zoom: true,
+                                        zoomin: true,
+                                        zoomout: true,
+                                        pan: true,
+                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        customIcons: []
+                                    },
+                                    export: {
+                                        csv: {
+                                            filename: undefined,
+                                            columnDelimiter: ',',
+                                            headerCategory: 'categories',
+                                            headerValue: 'value',
+                                            categoryFormatter(x) {
+                                                return new Date(x).toDateString()
+                                            },
+                                            valueFormatter(y) {
+                                                return y
+                                            }
+                                        },
+                                        svg: {
+                                            filename: undefined,
+                                        },
+                                        png: {
+                                            filename: undefined,
+                                        }
+                                    },
+                                    autoSelected: 'zoom'
                                 },
+
                                 zoom: {
                                     enabled: false
                                 },
@@ -499,16 +579,45 @@ Footer end
                             }],
                             chart: {
                                 type: 'line',
-                                height: 70,
+                                height: 100,
                                 toolbar: {
-                                    show: false,
+                                    show: true,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    tools: {
+                                        download: true,
+
+                                        selection: true,
+                                        zoom: true,
+                                        zoomin: true,
+                                        zoomout: true,
+                                        pan: true,
+                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        customIcons: []
+                                    },
+                                    export: {
+                                        csv: {
+                                            filename: undefined,
+                                            columnDelimiter: ',',
+                                            headerCategory: 'categories',
+                                            headerValue: 'value',
+                                            categoryFormatter(x) {
+                                                return new Date(x).toDateString()
+                                            },
+                                            valueFormatter(y) {
+                                                return y
+                                            }
+                                        },
+                                        svg: {
+                                            filename: undefined,
+                                        },
+                                        png: {
+                                            filename: undefined,
+                                        }
+                                    },
+                                    autoSelected: 'zoom'
                                 },
-                                zoom: {
-                                    enabled: false
-                                },
-                                sparkline: {
-                                    enabled: true
-                                }
+
 
                             },
 
@@ -904,6 +1013,7 @@ Footer end
                     url: 'dataload2', // Đường dẫn đến servlet
                     type: 'GET',
                     success: function (response) {
+
                         var options = {
                             series: [{
                                 name: 'Net Profit',
@@ -914,7 +1024,40 @@ Footer end
                                 type: 'line',
                                 height: 380,
                                 toolbar: {
-                                    show: false,
+                                    show: true,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    tools: {
+                                        download: true,
+                                        selection: true,
+                                        zoom: true,
+                                        zoomin: true,
+                                        zoomout: true,
+                                        pan: true,
+                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        customIcons: []
+                                    },
+                                    export: {
+                                        csv: {
+                                            filename: undefined,
+                                            columnDelimiter: ',',
+                                            headerCategory: 'categories',
+                                            headerValue: 'value',
+                                            categoryFormatter(x) {
+                                                return new Date(x).toDateString()
+                                            },
+                                            valueFormatter(y) {
+                                                return y
+                                            }
+                                        },
+                                        svg: {
+                                            filename: undefined,
+                                        },
+                                        png: {
+                                            filename: undefined,
+                                        }
+                                    },
+                                    autoSelected: 'zoom'
                                 },
                             },
 
