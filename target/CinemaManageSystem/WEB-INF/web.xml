@@ -373,20 +373,13 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>SearchMovieServlet</servlet-name>
         <url-pattern>/search2</url-pattern>
     </servlet-mapping>
-
-
     <servlet-mapping>
         <servlet-name>AddEventServlet</servlet-name>
         <url-pattern>/addevent</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateProfileServlet</servlet-name>
-        <url-pattern>/updateprofile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
@@ -423,6 +416,4 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
-
 </web-app>
-

@@ -9,11 +9,11 @@ function startCountdown() {
             count_timer = parseInt(sessionStorage.getItem("count_timer"));
         } else {
             // If no timer found, set to default value (5 minutes)
-            count_timer = 30 * 60;
+            count_timer = 15 * 60;
         }
     } else {
         // If this is the first visit or visit from another page, reset the countdown timer to default value (5 minutes)
-        count_timer = 30 * 60;
+        count_timer = 15 * 60;
     }
 
     let countToDate = new Date().getTime() + count_timer * 1000; // Calculate the countdown end time

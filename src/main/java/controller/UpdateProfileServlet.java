@@ -112,6 +112,9 @@ public class UpdateProfileServlet extends HttpServlet {
           c.setPicture(picture);
           c.setDOB(DOB);
           response.sendRedirect("home");
+
+      }
+      catch (Exception e){
           e.printStackTrace();
       }
     }
