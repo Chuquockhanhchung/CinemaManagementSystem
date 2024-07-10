@@ -56,6 +56,7 @@ public class CheckEmailServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+
         try {
             JsonObject json = new JsonObject();
             if (customer != null) {
@@ -63,13 +64,14 @@ public class CheckEmailServlet extends HttpServlet {
                 json.addProperty("fullName", customer.getName());
                 json.addProperty("phoneNumber", customer.getPhone());
                 json.addProperty("dob", customer.getDOB());
-                session.setAttribute("user", customer);
+                session.setAttribute("customer", customer);
             } else {
                 json.addProperty("exists", false);
             }
+
             out.print(json.toString());
-        } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        } catch (Exception var13) {
+            response.setStatus(500);
             JsonObject errorJson = new JsonObject();
             errorJson.addProperty("exists", false);
             errorJson.addProperty("error", "An error occurred while processing your request.");

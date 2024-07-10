@@ -143,6 +143,11 @@
                     session.setAttribute("lastcid", LastCID);
                 %>
                 <form action="../booking_movie2" method="post">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email">
+                        <button type="button" id="searchButton">Tìm kiếm</button>
+                    </div>
                     <input type="text" value="<%= LastCID %>" hidden="">
                     <div class="form-group">
                         <label for="fullName">Họ và tên:</label>
@@ -156,7 +161,11 @@
                         <label for="dob">Ngày tháng năm sinh:</label>
                         <input type="date" id="dob" name="dob">
                     </div>
+                    <p id="message" style="color: red"></p>
 
+                </form>
+                <form action="../logout" method="get" style="margin-top: 20px;">
+                    <button type="submit">Đăng xuất</button>
                 </form>
             </div>
         </div>
@@ -167,10 +176,10 @@
             // JavaScript to handle the search functionality
             document.getElementById('searchButton').addEventListener('click', function() {
                 var email = document.getElementById('email').value;
-                fetch('../check_email?email=' + email)
+                fetch('../check_email?email=' + encodeURIComponent(email))
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error('Network response was not ok ' + response.statusText);
+                            throw new Error('Network response was not ok');
                         }
                         return response.json();
                     })
@@ -189,7 +198,7 @@
                     })
                     .catch(error => {
                         console.error('There was a problem with the fetch operation:', error);
-                        document.getElementById('message').textContent = 'Đã xảy ra lỗi khi tìm kiếm email';
+                        document.getElementById('message').textContent = 'Lỗi khi tìm kiếm khách hàng.';
                     });
             });
 
@@ -218,7 +227,7 @@
                 MovieDAO dao = new MovieDAO(DBContext.getConn());
                 List<Movie> list = dao.phim(status, type);
             %>
-            <form action="../booking_movie" method="get">
+            <form action="../booking_movie" method="get" id="movieForm">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="best">
                         <div class="prs_upcom_slider_slides_wrapper all_movie">
@@ -259,7 +268,7 @@
         document.getElementById('movieForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            const movieId = document.getElementById('movieId').value;
+            const movieId = document.getElementById('movie').value;
             const email = document.getElementById('email').value;
             const fullName = document.getElementById('fullName').value;
             const phoneNumber = document.getElementById('phoneNumber').value;
@@ -285,14 +294,14 @@
             }
 
             // Full name validation (should not be empty and only contain letters and spaces)
-            const namePattern = /^[a-zA-Z\s]+$/;
-            if (!namePattern.test(fullName) || fullName.trim() === '') {
+
+            if ( fullName.trim() === '') {
                 alert('Please enter a valid full name.');
                 return;
             }
 
             // Construct the query parameters
-            const link = `../booking_movie2?email=${encodeURIComponent(email)}&fullName=${encodeURIComponent(fullName)}&phoneNumber=${encodeURIComponent(phoneNumber)}&dob=${encodeURIComponent(dob)}&movieId=${encodeURIComponent(movieId)}`;
+            const link = `../booking_movie2?email=`+email+`&fullName=`+fullName+`&phoneNumber=`+phoneNumber+`&dob=`+dob+`&movieId=`+movieId;
 
             // Redirect to the constructed link
             window.location.href = link;

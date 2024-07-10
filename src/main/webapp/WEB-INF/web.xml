@@ -60,6 +60,10 @@
         <servlet-class>controller.signup</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CheckEmailServlet</servlet-name>
+        <servlet-class>controller.CheckEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AccessManage</servlet-name>
         <servlet-class>controller.AccessManage</servlet-class>
     </servlet>
@@ -145,6 +149,10 @@
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>BookingMovieServlet2</servlet-name>
+        <servlet-class>controller.BookingMovieServlet2</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AddFeedbackServlet</servlet-name>
         <servlet-class>controller.AddFeedbackServlet</servlet-class>
     </servlet>
@@ -227,6 +235,10 @@
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet</servlet-name>
         <url-pattern>/added</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckEmailServlet</servlet-name>
+        <url-pattern>/check_email</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet2</servlet-name>
@@ -348,6 +360,10 @@
     <servlet-mapping>
         <servlet-name>BookingMovieServlet</servlet-name>
         <url-pattern>/booking_movie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingMovieServlet2</servlet-name>
+        <url-pattern>/booking_movie2</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>

@@ -57,32 +57,36 @@ public class BookingMovieServlet2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String dob = request.getParameter("dob");
-        CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-        String idAccount = Math.random() + "";
-        PrintWriter out = response.getWriter();
-        out.print(idAccount);
-        Customer account = new Customer(idAccount, "111111", 1, "", "");
-        dao.insertAccount(account);
-        Customer customer = new Customer(0, idAccount, name, email, phone, "", dob);
-        dao.insertCustomer(customer);
-        Email mail = new Email();
-        try {
-            mail.sendEmail2(email,idAccount);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
+        HttpSession session = request.getSession();
+        if(session.getAttribute("customer") == null) {
+            String name = request.getParameter("fullName");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phoneNumber");
+            String dob = request.getParameter("dob");
+            CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+            String idAccount = Math.random() + "";
+            PrintWriter out = response.getWriter();
+            out.print(idAccount);
+            Customer account = new Customer(idAccount, "111111", 1, "", "");
+            dao.insertAccount(account);
+            Customer customer = new Customer(0, idAccount, name, email, phone, "", dob);
+            dao.insertCustomer(customer);
+            Email mail = new Email();
+            try {
+                mail.sendEmail2(email,idAccount);
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
         }
+
         try {
             MovieDAO daom = new MovieDAO(DBContext.getConn());
-            int movieId = Integer.parseInt(request.getParameter("id"));
+            int movieId = Integer.parseInt(request.getParameter("movieId"));
             Movie movie = daom.getMovie(movieId);
             ArrayList<Movie> movietype = daom.getMovieType(movieId);
             ArrayList<ShowTime> list1 = daom.getShowTime(movieId);
             ArrayList<ShowTime> list2 = daom.getTime(movieId);
-            HttpSession session = request.getSession();
+
             session.setAttribute("movietype", movietype);
             session.setAttribute("movie", movie);
             session.setAttribute("showtime", list1);

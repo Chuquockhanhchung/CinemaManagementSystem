@@ -7,6 +7,7 @@ package dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 
 import Utill.Security;
 
@@ -70,7 +71,7 @@ public class CustomerDAO extends DBContext {
     }
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-        dao.EditCustomer("Nguyễn Tiến Đạt", "dat10bn@gmail.com", "0968338678", "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg", 28);
+        System.out.println(dao.getCustomerByEmail("chungcqkhe170745@fpt.edu.vn"));
     }
 
     public ArrayList<Customer> getInfor_Customer() {
@@ -108,7 +109,7 @@ public class CustomerDAO extends DBContext {
             ps.setString(3, customer.getName());
             ps.setString(4, customer.getEmail());
             ps.setString(5, customer.getPhone());
-            ps.setString(6, customer.getDOB());
+            ps.setDate(6, Date.valueOf(customer.getDOB()));
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
