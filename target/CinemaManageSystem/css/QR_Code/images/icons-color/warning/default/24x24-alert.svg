@@ -1,0 +1,4 @@
+<svg id="_24x24-Alert" data-name="24x24-Alert" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Frame24" width="24" height="24" fill="#fff" opacity="0"/>
+  <path id="alert" d="M13.609,3.247l8.192,15.8a1.885,1.885,0,0,1,.2.8,1.792,1.792,0,0,1-1.8,1.8H3.719a2.349,2.349,0,0,1-.8-.2,1.788,1.788,0,0,1-.7-2.4q7.96-15.178,8.291-15.8a1.614,1.614,0,0,1,1.482-.9,1.805,1.805,0,0,1,1.615.9ZM12,18.95a1.3,1.3,0,1,0-1.3-1.3A1.3,1.3,0,0,0,12,18.95Zm-.889-10.2v5.4a.9.9,0,1,0,1.8,0v-5.3a.9.9,0,0,0-.9-.9A.882.882,0,0,0,11.111,8.747Z" transform="translate(0 -0.35)" fill="#995400"/>
+<style type="text/css" media="screen">path{vector-effect:non-scaling-stroke}</style></svg>

@@ -12,6 +12,7 @@ public class Ticket {
     private String StartTime;
     private String StartDate;
     private String SeatID;
+    private int RoomID;
     private List<String> seatIDs;
     private String SeatType;
     private String EventName;
@@ -68,6 +69,14 @@ public class Ticket {
                 ", MovieName='" + MovieName + '\'' +
                 ", Image='" + Image + '\'' +
                 '}';
+    }
+
+    public int getRoomID() {
+        return RoomID;
+    }
+
+    public void setRoomID(int roomID) {
+        RoomID = roomID;
     }
 
     public List<String> getSeatIDs() {

@@ -65,6 +65,7 @@ public class signup extends HttpServlet {
             String phone = request.getParameter("phone");
             String pass1 = request.getParameter("pass1");
             String pass2 = request.getParameter("pass2");
+            String DOB = request.getParameter("DOB");
             if (email == null || name == null || phone == null || pass1 == null || pass2 == null
                     || email.isEmpty() || name.isEmpty() || phone.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
                 request.setAttribute("err", "Input is missing!");
@@ -119,11 +120,11 @@ public class signup extends HttpServlet {
             out.print(idAccount);
             Customer account = new Customer(idAccount, pass1, 1, "", "");
             dao.insertAccount(account);
-            Customer customer = new Customer(0, idAccount, name, email, phone, "");
+            Customer customer = new Customer(0, idAccount, name, email, phone, "", DOB);
             dao.insertCustomer(customer);
             Email mail = new Email();
             mail.sendEmail2(email,idAccount);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("home");
 
         } catch (Exception e) {
             System.out.println(e);

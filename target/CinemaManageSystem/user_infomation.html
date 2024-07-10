@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Khoản MCN</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .sidebar h4 {
+            color: #ffc107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a.active,
+        .sidebar a:hover {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            margin-right: 20px;
+        }
+
+        .profile-image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+
+        .profile-image button {
+            display: block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile-info p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card-info-item {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .action-item {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .action-item:last-child {
+            margin-right: 0;
+        }
+
+        .action-item button {
+            display: block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .barcode img {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .account-info h2 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .account-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .account-info-item p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .account-info-item button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .account-info-details p {
+            margin: 10px 0;
+        }
+
+        .account-details-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .account-details-form label {
+            font-weight: bold;
+        }
+
+        .account-details-form input[type="text"],
+        .account-details-form input[type="email"],
+        .account-details-form input[type="password"],
+        .account-details-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .account-details-form input[type="radio"] {
+            margin-left: 10px;
+        }
+
+        .form-group.buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-group.buttons .back-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-group.buttons button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .required-note {
+            font-style: italic;
+            color: #dc3545;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h4>TÀI KHOẢN MCN</h4>
+            <a href="#thong-tin-chung" class="active" data-toggle="tab">Thông Tin Cá Nhân</a>
+            <a href="#thong-tin-tai-khoan" data-toggle="tab">Thông Tin Tài Khoản</a>
+            <a href="#lich-su-giao-dich" data-toggle="tab">Lịch Sử Giao Dịch</a>
+        </aside>
+        <main class="main-content">
+            <div class="tab-pane" id="thong-tin-chung" style="display: block;">
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="default-avatar.png" alt="Avatar">
+                        <button>Thay đổi</button>
+                    </div>
+                    <div class="profile-info">
+                        <p>Xin chào Nguyễn Tiến Đạt,</p>
+                        <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
+                        <div class="card-info">
+                            <div class="card-info-item">
+                                <p>Cấp Độ Thẻ</p>
+                                <p>MEMBER</p>
+                            </div>
+                            <div class="card-info-item">
+                                <p>Tổng Chi Tiêu</p>
+                                <p>0 đ</p>
+                            </div>
+                            <div class="card-info-item">
+                                <p>Điểm CGV</p>
+                                <p>0 P</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="action-item">
+                                <p>Thẻ quà tặng</p>
+                                <button>Xem</button>
+                            </div>
+                            <div class="action-item">
+                                <p>Voucher</p>
+                                <button>Xem</button>
+                            </div>
+                            <div class="action-item">
+                                <p>Coupon</p>
+                                <button>Xem</button>
+                            </div>
+                            <div class="action-item">
+                                <p>Thẻ Thành Viên</p>
+                                <button>Xem</button>
+                            </div>
+                        </div>
+                        <div class="barcode">
+                            <img src="barcode.png" alt="Barcode">
+                        </div>
+                    </div>
+                </div>
+                <div class="account-info">
+                    <h2>Thông tin tài khoản</h2>
+                    <div class="account-info-item">
+                        <p>LIÊN HỆ</p>
+                        <button>Thay đổi</button>
+                    </div>
+                    <div class="account-info-details">
+                        <p><strong>Tên:</strong> Nguyễn Tiến Đạt</p>
+                        <p><strong>Email:</strong> datlacve2@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0968338829</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="thong-tin-tai-khoan" style="display: none;">
+                <form class="account-details-form">
+                    <div class="form-group">
+                        <label for="name">Tên *</label>
+                        <input type="text" id="name" value="Nguyễn Tiến Đạt" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Thành phố/Tỉnh *</label>
+                        <select id="city" required>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="TP HCM">TP HCM</option>
+                            <!-- Add other cities here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Điện thoại *</label>
+                        <input type="text" id="phone" value="0968338829" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">Quận *</label>
+                        <select id="district" required>
+                            <option value="700">700</option>
+                            <!-- Add other districts here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới tính *</label>
+                        <div>
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            <label for="male">Nam</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Nữ</label>
+                            <input type="radio" id="none" name="gender" value="none">
+                            <label for="none">None</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa chỉ *</label>
+                        <input type="text" id="address" value="No address 700" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">Ngày sinh</label>
+                        <input type="text" id="birthday" value="OCT 27 2003" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Địa chỉ email *</label>
+                        <input type="email" id="email" value="datlacve2@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="change-password">
+                        <label for="change-password">Tôi muốn thay đổi mật khẩu</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="old-password">Mật khẩu cũ *</label>
+                        <input type="password" id="old-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership-number">Số thẻ thành viên</label>
+                        <input type="text" id="membership-number" value="9992-3686-5144-8273" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="favorite-theater">Rạp yêu thích</label>
+                        <select id="favorite-theater">
+                            <option value="CGV Indochina">CGV Indochina</option>
+                            <!-- Add other theaters here -->
+                        </select>
+                    </div>
+                    <div class="form-group buttons">
+                        <a href="#" class="back-link">&laquo; Quay lại</a>
+                        <button type="submit">LƯU LẠI</button>
+                    </div>
+                    <div class="required-note">
+                        * Thông tin bắt buộc
+                    </div>
+                </form>
+            </div>
+            
+            <div class="tab-pane" id="lich-su-giao-dich" style="display: none;">
+                <h1>LỊCH SỬ GIAO DỊCH</h1>
+            </div>
+
+        </main>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       $(document).ready(function() {
+    // Handle click on sidebar links
+    $('.sidebar a').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        $('.sidebar a').removeClass('active');
+        $(this).addClass('active');
+        $('.tab-pane').css('display', 'none');
+        $(target).css('display', 'block');
+    });
+});
+    </script>
+</body>
+
+</html>

@@ -3,18 +3,17 @@ function startCountdown() {
     let count_timer;
 
     // Check if the user has visited payment.jsp before in this session
-    if (sessionStorage.getItem("visited")) {
-        // If the user has visited before in this session, continue with the existing timer
+    if (sessionStorage.getItem("fromPaymentPage")) {
+        // If the user has refreshed the payment.jsp, continue with the existing timer
         if (sessionStorage.getItem("count_timer")) {
             count_timer = parseInt(sessionStorage.getItem("count_timer"));
         } else {
-            // If no timer found, set to default value (15 minutes)
+            // If no timer found, set to default value (5 minutes)
             count_timer = 15 * 60;
         }
     } else {
-        // If this is the first visit in this session, reset the countdown timer to default value (15 minutes)
+        // If this is the first visit or visit from another page, reset the countdown timer to default value (5 minutes)
         count_timer = 15 * 60;
-        sessionStorage.setItem("visited", "true"); // Mark that the user has visited the page in this session
     }
 
     let countToDate = new Date().getTime() + count_timer * 1000; // Calculate the countdown end time
@@ -28,12 +27,15 @@ function startCountdown() {
         if (timeBetweenDates <= 0) {
             // Display failure message and redirect to the home page
             alert("Thanh toán thất bại");
+            sessionStorage.removeItem("fromPaymentPage"); // Clear the flag on failure
+            sessionStorage.removeItem("count_timer"); // Clear the timer on failure
             window.location.href = "home"; // Redirect to home page, change if needed
             return; // Stop further execution
         }
 
         // Save the count_timer value in sessionStorage after each update
         sessionStorage.setItem("count_timer", timeBetweenDates);
+        sessionStorage.setItem("fromPaymentPage", "true"); // Set the flag that the user is on the payment page
 
         flipAllCards(timeBetweenDates);
 
@@ -87,4 +89,7 @@ function flip(flipCard, newNumber) {
 // Check if the current URL is payment.jsp
 if (window.location.pathname.endsWith("payment.jsp")) {
     startCountdown();
+} else {
+    // If navigating away from payment.jsp, clear the flag
+    sessionStorage.removeItem("fromPaymentPage");
 }

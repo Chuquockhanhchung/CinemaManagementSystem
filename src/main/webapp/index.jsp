@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.*" %>
+<%@ page import="dal.EventDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zxx">
@@ -7,10 +8,7 @@
     <meta charset="utf-8"/>
     <title>Movie Pro Responsive HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta name="description" content="Movie Pro"/>
-    <meta name="keywords" content="Movie Pro"/>
-    <meta name="author" content=""/>
-    <meta name="MobileOptimized" content="320"/>
+
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="css/animate.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
@@ -31,7 +29,7 @@
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Uicons - Flaticon -->
     <link rel='stylesheet'
           href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -65,6 +63,27 @@
 <%@include file="header.jsp" %>
 
 <!-- prs navigation End -->
+<c:if test="${not empty discountMessage}">
+    <script>
+        Swal.fire({
+            title: "Chúc Mừng!",
+            text: "Áp dụng Voucher thành công!",
+            icon: "success"
+        });
+    </script>
+    <c:remove var="discountMessage" scope="session"/>
+</c:if>
+
+<c:if test="${not empty discountFailMessage}">
+    <script>
+        Swal.fire({
+            title: "Xin lỗi!",
+            text: "Bạn không đủ điều kiện để áp dụng Voucher!",
+            icon: "warning"
+        });
+    </script>
+    <c:remove var="discountFailMessage" scope="session"/>
+</c:if>
 <!-- prs Slider Start -->
 <div class="prs_main_slider_wrapper">
     <div id="rev_slider_41_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
@@ -376,6 +395,31 @@
                                                     </div>
                                                     <% } %>
                                                 </div>
+                                                <%
+                                                    if (us == null) {
+                                                %>
+                                                <div class="prs_upcom_movie_content_box_inner_icon">
+                                                    <ul>
+                                                        <li>
+                                                            <a
+                                                                    onclick="noti()">
+                                                                <i class="fi fi-ss-ticket"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <% } else { %>
+                                                <div class="prs_upcom_movie_content_box_inner_icon">
+                                                    <ul>
+                                                        <li>
+                                                            <a onclick="bookMovie(<%= movie.getId() %>); return false;"
+                                                               href="detail">
+                                                                <i class="fi fi-ss-ticket"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <% } %>
                                             </div>
                                         </div>
                                         <% }
@@ -402,8 +446,28 @@
                                     </ul>
                                 </div>
                             </div>
+                            <%}%>
+                            <script>
+                                function bookMovie(movieID) {
+                                    window.location.href = 'detail?id=' + movieID;
+                                }
+                            </script>
+
+
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="prs_animate_btn1 prs_upcom_main_wrapper">
+                                <ul>
+                                    <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
+                                           data-text="view all"><span>Xem Tất Cả</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div role="tabpanel" class="tab-pane fade" id="hot">
                     <div class="prs_upcom_slider_slides_wrapper">
                         <div class="owl-carousel owl-theme">
@@ -473,7 +537,8 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                                            <a
+                                                                    onclick="noti()">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -525,6 +590,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div role="tabpanel" class="tab-pane fade" id="trand">
                     <div class="prs_upcom_slider_slides_wrapper">
                         <div class="owl-carousel owl-theme">
@@ -592,7 +659,8 @@
                                                 <div class="prs_upcom_movie_content_box_inner_icon">
                                                     <ul>
                                                         <li>
-                                                            <a href="#" onclick="alert('Please log in to book tickets.'); return false;">
+                                                            <a
+                                                                    onclick="noti()">
                                                                 <i class="fi fi-ss-ticket"></i>
                                                             </a>
                                                         </li>
@@ -632,6 +700,49 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- prs feature slider Start -->
+                <div class="prs_feature_slider_main_wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="prs_heading_section_wrapper">
+                                    <h2>SỰ KIỆN ĐẶC BIỆT</h2>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="prs_feature_slider_wrapper">
+                                    <div class="owl-carousel owl-theme">
+                                        <%
+                                            EventDAO dao = new EventDAO(DBContext.getConn());
+                                            List<Event> list = dao.getAllEvent();
+                                            for (Event event : list) {
+                                                String imagePathFromDB = event.getEventImage();
+                                                String fullImagePath = imagePathFromDB.substring(imagePathFromDB.indexOf("images"));
+                                                if (event.getStatus() == 1) {
+                                        %>
+                                        <div class="item prs_feature_slider_item_wrapper">
+                                            <div class="prs_feature_img_box_wrapper">
+                                                <div class="prs_feature_img">
+                                                    <a href="event_single.jsp?EventID=<%=event.getEventID()%>">
+                                                        <img src="<%= fullImagePath %>" alt="feature_img"
+                                                             style="max-height: 250px; min-height: 250px; width: 100%; margin: 0 auto;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%
+                                                }
+                                            }
+                                        %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- prs feature slider End -->
             </div>
         </div>
     </div>
@@ -742,6 +853,32 @@
                                     <% } %>
                                 </div>
                             </div>
+                            <%
+                                if (us == null) {
+                            %>
+                            <div class="prs_upcom_movie_content_box_inner_icon">
+                                <ul>
+                                    <li>
+                                        <a onclick="noti()">
+                                            <i class="fi fi-ss-ticket"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <% } else { %>
+                            <div class="prs_upcom_movie_content_box_inner_icon">
+                                <ul>
+                                    <li>
+                                        <a onclick="bookMovie(<%= movie.getId() %>); return false;"
+                                           href="booking_movie">
+                                            <i class="fi fi-ss-ticket"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
 
     <!-- End album body -->
     </figure>
@@ -769,114 +906,6 @@
     </div>
 </div>
 <!-- prs theater Slider End -->
-
-<!-- prs feature slider Start -->
-<%--<div class="prs_feature_slider_main_wrapper">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--%>
-<%--                <div class="prs_heading_section_wrapper">--%>
-<%--                    <h2>FEATURED EVENTS</h2>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--%>
-<%--                <div class="prs_feature_slider_wrapper">--%>
-<%--                    <div class="owl-carousel owl-theme">--%>
-<%--                        <div class="item prs_feature_slider_item_wrapper">--%>
-<%--                            <div class="prs_feature_img_box_wrapper">--%>
-<%--                                <div class="prs_feature_img">--%>
-<%--                                    <img src="images/content/ft1.jpg" alt="feature_img">--%>
-<%--                                    <div class="prs_ft_btn_wrapper">--%>
-<%--                                        <ul>--%>
-<%--                                            <li><a href="#">Book Now</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="prs_feature_img_cont">--%>
-<%--                                    <h2><a href="#">Music Event in india</a></h2>--%>
-<%--                                    <div class="prs_ft_small_cont_left">--%>
-<%--                                        <p>Mumbai & Pune</p>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="prs_ft_small_cont_right"><i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                    </div>--%>
-<%--                                    <ul>--%>
-<%--                                        <li>June 07 - july 08</li>--%>
-<%--                                        <li>08:00-12:00 pm</li>--%>
-<%--                                    </ul>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="item prs_feature_slider_item_wrapper">--%>
-<%--                            <div class="prs_feature_img_box_wrapper">--%>
-<%--                                <div class="prs_feature_img">--%>
-<%--                                    <img src="images/content/ft2.jpg" alt="feature_img">--%>
-<%--                                    <div class="prs_ft_btn_wrapper">--%>
-<%--                                        <ul>--%>
-<%--                                            <li><a href="#">Book Now</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="prs_feature_img_cont">--%>
-<%--                                    <h2><a href="#">Music Event in india</a></h2>--%>
-<%--                                    <div class="prs_ft_small_cont_left">--%>
-<%--                                        <p>Mumbai & Pune</p>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="prs_ft_small_cont_right"><i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                    </div>--%>
-<%--                                    <ul>--%>
-<%--                                        <li>June 07 - july 08</li>--%>
-<%--                                        <li>08:00-12:00 pm</li>--%>
-<%--                                    </ul>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="item prs_feature_slider_item_wrapper">--%>
-<%--                            <div class="prs_feature_img_box_wrapper">--%>
-<%--                                <div class="prs_feature_img">--%>
-<%--                                    <img src="images/content/ft3.jpg" alt="feature_img">--%>
-<%--                                    <div class="prs_ft_btn_wrapper">--%>
-<%--                                        <ul>--%>
-<%--                                            <li><a href="#">Book Now</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="prs_feature_img_cont">--%>
-<%--                                    <h2><a href="#">Music Event in india</a></h2>--%>
-<%--                                    <div class="prs_ft_small_cont_left">--%>
-<%--                                        <p>Mumbai & Pune</p>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="prs_ft_small_cont_right"><i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                        <i class="fa fa-star-o"></i>--%>
-<%--                                    </div>--%>
-<%--                                    <ul>--%>
-<%--                                        <li>June 07 - july 08</li>--%>
-<%--                                        <li>08:00-12:00 pm</li>--%>
-<%--                                    </ul>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<!-- prs feature slider End -->
-
 
 <!-- prs Newsletter Wrapper Start -->
 <%@include file="footer.jsp" %>
@@ -1081,6 +1110,10 @@
                     <input type="text" placeholder="Họ Và Tên" name="name">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Họ Và Tên</label>
+                    <input type="date" placeholder="Ngày Sinh" name="DOB">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
                     <label>Mật Khẩu</label>
                     <input type="password" placeholder="Mật Khẩu" name="pass1">
                 </div>
@@ -1235,6 +1268,16 @@
         }
 
         return true;
+    }
+</script>
+
+<script>
+    function noti() {
+        Swal.fire({
+            title: "Xin lỗi",
+            text: "Bạn cần đăng nhập để đặt vé",
+            icon: "warning"
+        });
     }
 </script>
 <!-- st login wrapper End -->

@@ -1,0 +1,212 @@
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
+.st_cherity_btn.float_left {
+    margin-top: 20px;
+}
+
+.ubox {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.badge-phoenix {
+    text-transform: uppercase;
+    padding: 2px 8px;
+    background-color: var(--phoenix-badge-bg);
+    color: var(--phoenix-badge-color);
+    border: 1px solid var(--phoenix-badge-border-color);
+}
+
+.badge-phoenix-warning {
+    --phoenix-badge-bg: #ffefca;
+    --phoenix-badge-color: #bc3803;
+    --phoenix-badge-border-color: #ffcc85;
+}
+
+.row.g-4.mb-7.payment-method {
+    justify-content: center;
+}
+
+.ubox-square {
+    padding: 0 !important;
+}
+
+.ubox-size-ic-xxs {
+    height: 16px;
+    min-width: 16px;
+}
+
+.ubox-size-ic-xxs.ubox-square {
+    width: 16px;
+}
+
+.ubox-size-ic-xxs.ubox-rounded {
+    border-radius: 8px;
+}
+
+.ubox-size-ic-xs {
+    height: 32px;
+    min-width: 32px;
+}
+
+.ubox-size-ic-xs.ubox-square {
+    width: 32px;
+}
+
+.ubox-size-ic-xs.ubox-rounded {
+    border-radius: 16px;
+}
+
+.ubox-size-ic-md {
+    height: 40px;
+    min-width: 40px;
+}
+
+.ubox-size-ic-md.ubox-square {
+    width: 40px;
+}
+
+.ubox-size-ic-md.ubox-rounded {
+    border-radius: 20px;
+}
+
+.ubox-size-ic-xxxl {
+    height: 160px;
+    min-width: 160px;
+}
+
+.ubox-size-ic-xxxl.ubox-square {
+    width: 160px;
+}
+
+.ubox-size-ic-xxxl.ubox-rounded {
+    border-radius: 80px;
+}
+
+.ubox-size-button-default {
+    height: 44px;
+    min-width: 44px;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.ubox-size-button-default.ubox-square {
+    width: 44px;
+}
+
+.ubox-size-button-default.ubox-rounded {
+    border-radius: 22px;
+}
+
+.ubox-size-button-default .ubtn-inner {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ubox-size-button-sm {
+    height: 36px;
+    min-width: 36px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.ubox-size-button-sm.ubox-square {
+    width: 36px;
+}
+
+.ubox-size-button-sm.ubox-rounded {
+    border-radius: 18px;
+}
+
+.ubox-size-button-sm .ubtn-inner {
+    font-size: 14px;
+}
+
+.ubox-size-button-xs {
+    height: 28px;
+    min-width: 28px;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.ubox-size-button-xs.ubox-square {
+    width: 28px;
+}
+
+.ubox-size-button-xs.ubox-rounded {
+    border-radius: 14px;
+}
+
+.ubox-size-button-xs .ubtn-inner {
+    font-size: 12px;
+}
+
+.ubox-size-button-xxs {
+    height: 24px;
+    min-width: 24px;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.ubox-size-button-xxs.ubox-square {
+    width: 24px;
+}
+
+.ubox-size-button-xxs.ubox-rounded {
+    border-radius: 12px;
+}
+
+.ubox-size-button-xxs .ubtn-inner {
+    font-size: 12px;
+}
+
+.ubox-size-ic-xxxl .ic-default {
+    width: 160px;
+}
+
+@media (max-width: 767px) {
+    .toast .flex-grow-1 {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+        flex: 1 0 0;
+    }
+
+    .toast {
+        top: auto;
+        margin: auto;
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        min-width: 0;
+    }
+}
+
+.modal-close-btn {
+    position: absolute;
+    background-image: url(../images/icons-color/default2/default/24x24-close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 4px;
+    right: 4px;
+}
+
+.modal-title-wrap .modal-title {
+    padding: 0 24px;
+}

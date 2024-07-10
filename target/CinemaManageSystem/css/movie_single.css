@@ -1,0 +1,404 @@
+.movie {
+    display: none; /* Hide all movies by default */
+}
+
+.movie.display {
+    display: block; /* Show movies with the 'display' class */
+}
+.replies-section {
+    margin-top: 10px; /* Khoảng cách giữa phần replies-section và các phần khác */
+}
+
+.comment {
+    border: 1px solid #ccc; /* Viền đơn giản cho mỗi comment */
+    padding: 10px; /* Khoảng cách lề bên trong mỗi comment */
+    margin-bottom: 10px; /* Khoảng cách giữa các comment */
+}
+
+.comment-header {
+    display: flex; /* Sắp xếp các thành phần của comment theo chiều ngang */
+    align-items: center; /* Căn giữa các thành phần */
+    margin-bottom: 5px; /* Khoảng cách giữa header và body của comment */
+}
+
+.comment-header img {
+    width: 40px; /* Độ rộng của ảnh avatar */
+    height: 40px; /* Chiều cao của ảnh avatar */
+    border-radius: 50%; /* Làm tròn góc cho ảnh */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và các thành phần khác trong header */
+}
+
+.comment-header span {
+    margin-right: 10px; /* Khoảng cách giữa các phần tử span trong header */
+    font-weight: bold; /* Đậm chữ cho tên và rate */
+}
+
+.comment-body {
+    margin-bottom: 5px; /* Khoảng cách giữa phần body và footer của comment */
+}
+
+.reply-btn {
+    cursor: pointer; /* Biến con trỏ thành dấu nhấp nháy khi di chuột qua button */
+    color: blue; /* Màu sắc của button reply */
+    margin-top: 5px; /* Khoảng cách giữa button reply và phần body của comment */
+}
+
+.reply-form {
+    margin-top: 5px; /* Khoảng cách giữa form reply và button reply */
+}
+
+textarea {
+    width: 100%; /* Chiều rộng của textarea */
+    padding: 5px; /* Khoảng cách lề bên trong textarea */
+    margin-bottom: 5px; /* Khoảng cách giữa các phần tử */
+}
+
+button {
+    padding: 5px 10px; /* Khoảng cách lề bên trong button */
+    cursor: pointer; /* Biến con trỏ thành dấu nhấp nháy khi di chuột qua button */
+    background-color: #007bff; /* Màu nền của button */
+    color: white; /* Màu chữ của button */
+    border: none; /* Không có đường viền */
+    border-radius: 5px; /* Làm tròn góc cho button */
+}
+
+button:hover {
+    background-color: #0056b3; /* Màu nền của button khi di chuột qua */
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+.comment-header img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.comment-body {
+    margin: 10px 0;
+}
+.reply-btn {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-top: 10px;
+    display: inline-block;
+}
+.comment-replies {
+    display: block !important; /* Sử dụng !important để đảm bảo quy tắc hiển thị được ưu tiên */
+}
+.reply-form {
+    display: none;
+    margin-top: 10px;
+}
+.feedback-container {
+    margin-top: 20px;
+}
+
+.feedback-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.feedback-item h4 {
+    margin-top: 0;
+}
+
+.feedback-item p {
+    margin-bottom: 5px;
+}
+
+.feedback-item em {
+    font-style: italic;
+}
+.stars {
+    display: flex;
+    gap: 5px;
+}
+.stars input {
+    display: none;
+}
+.stars label {
+    font-size: 30px;
+    color: lightgray;
+    cursor: pointer;
+}
+.stars input:checked ~ label {
+    color: gold;
+}
+.stars label:hover,
+.stars label:hover ~ label {
+    color: gold;
+}
+.stars input:checked ~ label:hover,
+.stars input:checked ~ label:hover ~ label {
+    color: gold;
+}
+textarea {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    padding: 10px;
+}
+.spoiler-checkbox {
+    display: flex;
+    align-items: center;
+}
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.stars label {
+    font-size: 30px;
+    color: grey;
+    cursor: pointer;
+}
+
+.stars label.checked {
+    color: gold;
+}
+.modal-body {
+    display: flex;
+    width: 80%;
+}
+.d-flex {
+    display: flex;
+    width: 100%;
+}
+/* General modal styling */
+
+
+.modal-header {
+    background-color: #e50914; /* Bright red to match the header */
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.modal-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.close {
+    color: #fff;
+    opacity: 1;
+    font-size: 1.5em;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.d-flex {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+img {
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.stars {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.stars label {
+    font-size: 30px;
+    color: grey;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.stars label.checked {
+    color: #e50914; /* Bright red for checked stars */
+}
+
+textarea {
+    width: 100%; /* Full width */
+    height: 100px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #2a2a2a; /* Dark background for textarea */
+    color: #fff;
+    resize: vertical; /* Allows the user to resize the textarea vertically */
+    font-size: 1em;
+}
+
+.modal-footer {
+    background-color: #1b1b1b; /* Matching the modal body background */
+    border-top: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
+}
+
+.btn-primary {
+    background-color: #e50914; /* Bright red for buttons */
+    border: none;
+    margin-right: 10px;
+}
+.btn-primary2 {
+    background-color: #e50914; /* Bright red for buttons */
+    border: none;
+    padding: 15px 30px; /* Increase padding for a larger button */
+    font-size: 1.25em; /* Increase font size */
+    border-radius: 8px; /* Rounded corners */
+    font-weight: bold; /* Make the text bold */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.btn-secondary {
+    background-color: #333; /* Dark grey for secondary button */
+    border: none;
+}
+/* General styles for the feedback section */
+#menu2 {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles for individual comments */
+.comment {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Styles for the comment header */
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-header span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Styles for the comment body */
+.comment-body {
+    margin-bottom: 10px;
+}
+
+/* Styles for the reply button */
+.reply-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    color: white;
+    background-color: #ff3e3e;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Styles for the reply form */
+.reply-form {
+    margin-top: 10px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.reply-form button {
+    display: inline-block;
+    padding: 5px 10px;
+    color: white;
+    background-color: #ff3e3e;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Styles for the replies toggle button */
+.replies-toggle-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #ff3e3e;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Styles for the replies section */
+.replies-section {
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #ddd;
+}
+
+/* Add some responsiveness */
+@media (max-width: 600px) {
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comment-header img {
+        margin-bottom: 5px;
+    }
+
+    .reply-btn, .replies-toggle-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .reply-form textarea {
+        width: 100%;
+    }
+}

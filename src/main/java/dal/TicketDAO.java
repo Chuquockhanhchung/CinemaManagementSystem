@@ -7,39 +7,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-public class TicketDAO extends DBContext{
+public class TicketDAO extends DBContext {
     private final Connection con;
+
     public TicketDAO(Connection con) {
         super();
         this.con = con;
     }
+
     public Room getRoomByShowtime(int id) throws SQLException {
         try {
             PreparedStatement ps = con.prepareStatement("select s.RoomID, c.RoomName,c.Status,c.Capacity from showtime s join cinemaroom c on s.RoomID=c.RoomID where s.ShowtimeID=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Room(rs.getInt("RoomID"), rs.getString("RoomName"), rs.getString("Status"), rs.getInt("Capacity"));
+                return new Room(
+                        rs.getInt("RoomID"),
+                        rs.getString("RoomName"),
+                        rs.getString("Status"),
+                        rs.getInt("Capacity"));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
     public String getDateByShowtime(int id) throws SQLException {
-        try{
-            String sql ="select StartTime from showtime where ShowtimeID = ?";
+        try {
+            String sql = "select StartTime from showtime where ShowtimeID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 return rs.getString("StartTime");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
     public Movie getMovieByShowTime(int id) throws SQLException {
         try {
             String sql = "select m.MovieID,m.MovieName,m.Description,m.Types,m.Image,m.Actors,m.Status,m.Duration,m.Price, m.Trailer, m.IMDbRating " +
@@ -64,13 +72,14 @@ public class TicketDAO extends DBContext{
 
                 );
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
     public String getLanguageFilm(int id) throws SQLException {
-        String sql="select LanguageName from movie_all where MovieID=?";
+        String sql = "select LanguageName from movie_all where MovieID=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -78,27 +87,28 @@ public class TicketDAO extends DBContext{
             while (rs.next()) {
                 return rs.getString(1);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return null;
     }
-    public List<Seat> getSeatByRoom(int id){
+
+    public List<Seat> getSeatByRoom(int id) {
         List<Seat> seats = new ArrayList<Seat>();
-        String sql="select * from seat where RoomID = ?;";
+        String sql = "select * from seat where RoomID = ?;";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 seats.add(new Seat(rs.getInt(2),
                         rs.getInt(1),
                         rs.getString(4),
                         rs.getString(3)));
             }
             return seats;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -147,15 +157,13 @@ public class TicketDAO extends DBContext{
                 "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
                 "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                 "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
-                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.Status " +
+                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.Status,s.RoomID " +
                 "FROM movieticket t " +
                 "JOIN customer c ON t.CustomerID = c.CustomerID " +
                 "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
                 "JOIN movie m ON s.MovieID = m.MovieID " +
-                "WHERE t.CustomerID = ?";
-
+                "JOIN (SELECT MIN(TicketID) AS TicketID FROM movieticket GROUP BY BookingID) sub ON t.TicketID = sub.TicketID " +
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, CustomerID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ticket ticket = new Ticket();
@@ -170,6 +178,7 @@ public class TicketDAO extends DBContext{
                 ticket.setBookingID(rs.getString("BookingID"));
                 ticket.setSeatID(rs.getString("SeatID"));
                 ticket.setStatus(rs.getString("Status"));
+                ticket.setRoomID(rs.getInt("RoomID"));
                 list.add(ticket);
             }
         } catch (SQLException e) {
@@ -272,8 +281,8 @@ public class TicketDAO extends DBContext{
         return f;
     }
 
-    public String changeSeat(String realSeat){
-        String seati="";
+    public String changeSeat(String realSeat) {
+        String seati = "";
         String[] selectedSeats = realSeat.split(",");
         for (int i = 0; i < selectedSeats.length; i++) {
             selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
