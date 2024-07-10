@@ -73,7 +73,7 @@ public class CustomerDAO extends DBContext {
     }
 
     public void insertCustomer(Customer customer) {
-        String sql = "INSERT INTO customer (CustomerID, AccountID, FullName, Email, PhoneNumber) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO customer (CustomerID, AccountID, FullName, Email, PhoneNumber, DOB) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, customer.getIdCustomer());
@@ -81,6 +81,7 @@ public class CustomerDAO extends DBContext {
             ps.setString(3, customer.getName());
             ps.setString(4, customer.getEmail());
             ps.setString(5, customer.getPhone());
+            ps.setString(6, customer.getDOB());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

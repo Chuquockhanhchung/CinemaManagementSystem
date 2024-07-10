@@ -105,48 +105,6 @@ Content body start
             <!-- Row -->
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="filter cm-content-box box-primary">
-                        <div class="content-title SlideToolHeader">
-                            <div class="cpa">
-                                <i class="fa-solid fa-filter me-2"></i>Filter
-                            </div>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
-                        </div>
-                        <div class="cm-content-body  form excerpt">
-                            <div class="card-body pb-3">
-                                <div class="row">
-                                    <div class="col-xl-3 col-sm-6">
-                                        <input type="text" class="form-control mb-3" id="exampleFormControlInput1"
-                                               placeholder="Title">
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <select class="default-select form-control mb-3 dashboard-select-2 w-100">
-                                            <option selected>Select Status</option>
-                                            <option value="1">Published</option>
-                                            <option value="2">Draft</option>
-                                            <option value="3">Trash</option>
-                                            <option value="4">Private</option>
-                                            <option value="5">Pending</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <input class="form-control  mb-3" type="text" id="datepicker">
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <button class="btn btn-primary" title="Click here to Search" type="button"><i
-                                                class="fa-solid fa-filter me-1"></i>Filter
-                                        </button>
-                                        <button class="btn btn-danger light" title="Click here to remove filter"
-                                                type="button">Remove Filter
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
                             <li><a href="add_event.jsp" class="btn btn-primary ">Thêm sự kiện mới</a></li>
@@ -211,11 +169,11 @@ Content body start
                                                 <%= (event.getStatus() == 1) ? "Hoạt Động" : "Không Hoạt Động" %>
                                             </td>
                                             <td class="text-end">
-                                                <a href="../../editevent?eventID=<%= event.getEventID() %>"
+                                                <a href="${pageContext.request.contextPath}/editevent?eventID=<%= event.getEventID() %>"
                                                    class="btn btn-warning btn-sm content-icon">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
-                                                <a href="../../deleteevent?eventID=<%= event.getEventID() %>"
+                                                <a href="${pageContext.request.contextPath}/deleteevent?eventID=<%= event.getEventID() %>"
                                                    class="btn btn-danger btn-sm content-icon">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
@@ -270,28 +228,14 @@ Footer end
 ***********************************-->
 
 </div>
-<script>
-    var base_url = 'https://ventic.dexignzone.com/codeigniter/demo/';
-</script>
+
 <script src="${pageContext.request.contextPath}/public/assets/vendor/global/global.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-
-
-<script src="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
-
 <script src="${pageContext.request.contextPath}/public/assets/js/custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/deznav-init.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/public/assets/js/styleSwitcher.js"></script>
-<script>
-    $(function () {
-        $("#datepicker").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
 
-    });
-</script>
 
 
 <!--**********************************

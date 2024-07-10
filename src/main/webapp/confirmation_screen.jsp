@@ -76,7 +76,7 @@
     String BookingID = null;
 
     for (Ticket ticket : list) {
-        TicketPrice += ticket.getTicketPrice();
+        TicketPrice = ticket.getTicketPrice();
         BookingID = ticket.getBookingID();
     }
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
@@ -124,7 +124,8 @@
 
                                 // Định dạng lại thời gian kết thúc thành chuỗi để hiển thị
                                 String endTimeStr = endTime.format(timeFormatter);
-                                String formattedPrice = currencyFormat.format(movie.getPrice());
+                                float formattedPrice = TicketPrice / ticketCount;
+                                String formattedPriceDisplay = currencyFormat.format(formattedPrice);
                             %>
 
                                 <div class="ticket created-by-anniedotexe">
@@ -179,7 +180,7 @@
                                                 #<%= BookingID %>
                                             </p>
                                                 <p class="movie-price hidden-print-area">
-                                                    <%= formattedPrice %>
+                                                    <%= formattedPriceDisplay %>
                                                 </p>
                                         </div>
                                     </div>

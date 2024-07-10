@@ -1,4 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dal.EventDAO" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -345,8 +346,7 @@
                                                     </ul>
                                                 </div>
                                             </ul>
-
-
+                                            
                                         </c:if>
                                         <ul  style="display:flex; list-style: none;flex-wrap:wrap ">
                                             <c:if test="${sessionScope.showtime != null}">

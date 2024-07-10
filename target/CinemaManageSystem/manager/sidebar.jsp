@@ -31,7 +31,7 @@
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
 
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                 <i class="fi fi-rr-dashboard-monitor"></i>
                 <span class="nav-text">Bảng Điều Khiển</span>
             </a>
@@ -44,19 +44,19 @@
             </li>
 
 
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                 <i class="fi fi-sr-clapperboard-play"></i>
                 <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> QUẢN LÝ</span></span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="manager/CMS/movies.jsp">Danh Sách Phim</a></li>
-                    <li><a href="manager/CMS/add_movies.jsp">Thêm Phim Mới</a></li>
-                    <li><a href="manager/CMS/event.jsp">Sự Kiện</a></li>
-                    <li><a href="manager/CMS/add_event.jsp">Thêm Sự Kiện</a></li>
-                    <li><a href="manager/CMS/product.jsp">Sản Phẩm</a>
-                    <li><a href="manager/CMS/add_product.jsp">Thêm Sản Phẩm</a>
-                    <li><a href="manager/CMS/voucher.jsp">Voucher</a>
-                    <li><a href="manager/CMS/add_voucher.jsp">Thêm Voucher</a>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/movies.jsp">Danh Sách Phim</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/add_movies.jsp">Thêm Phim Mới</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/event.jsp">Sự Kiện</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/add_event.jsp">Thêm Sự Kiện</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/product.jsp">Sản Phẩm</a>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/add_product.jsp">Thêm Sản Phẩm</a>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/voucher.jsp">Voucher</a>
+                    <li><a href="${pageContext.request.contextPath}/manager/CMS/add_voucher.jsp">Thêm Voucher</a>
                     </li>
                 </ul>
             </li>

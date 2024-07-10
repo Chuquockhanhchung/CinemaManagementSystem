@@ -27,7 +27,7 @@ public class Customer {
         super();
     }
 
-    public Customer(int idCustomer, String id, String name, String email, String phone, String picture) {
+    public Customer(int idCustomer, String id, String name, String email, String phone, String picture, String DOB) {
 
         this.idCustomer = idCustomer;
         this.id = id;
@@ -35,6 +35,7 @@ public class Customer {
         this.email = email;
         this.phone = phone;
         this.picture = picture;
+        this.DOB = DOB;
     }
 
     public Customer(String id, String pass, int role, String date, String status) {

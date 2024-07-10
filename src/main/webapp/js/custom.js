@@ -191,7 +191,7 @@ nice Select active
             $('.prs_feature_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
-                autoplay: true,
+                autoplay: false,
                 responsiveClass: true,
                 smartSpeed: 1200,
                 navText: ['<i class="fi fi-rr-play"></i>', '<i class="fi fi-rr-play"></i>'],
@@ -209,9 +209,9 @@ nice Select active
                         nav: true
                     },
                     1000: {
-                        items: 3,
+                        items: 4,
                         nav: true,
-                        loop: true,
+                        loop: false,
                         margin: 20
                     }
                 }
@@ -581,7 +581,7 @@ nice Select active
             slideMargin: 17,
             ticker: true,
             tickerHover: true,
-            speed: 15000,
+            speed: 1,
             useCSS: false,
             infiniteLoop: false
 

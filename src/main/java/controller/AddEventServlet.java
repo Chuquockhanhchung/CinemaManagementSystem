@@ -21,7 +21,7 @@ import model.Event;
  *
  * @author datla
  */
-public class EventServlet extends HttpServlet {
+public class AddEventServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -44,8 +44,16 @@ public class EventServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-    } 
+        // Lấy EventID từ request
+        int EventID = Integer.parseInt(request.getParameter("EventID"));
+
+        // Lưu EventID vào session
+        HttpSession session = request.getSession();
+        session.setAttribute("EventID", EventID);
+
+        // Chuyển hướng đến trang đặt vé hoặc trang chủ
+        response.sendRedirect("home");
+        }
 
 
     @Override

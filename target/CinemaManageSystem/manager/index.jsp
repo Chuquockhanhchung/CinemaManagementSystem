@@ -11,7 +11,7 @@
 
 <head>
     <!-- Title -->
-    <title>chu chung</title>
+    <title>MCN | Quản Lý</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/images/header/favicon.ico">
 
-    <link rel="icon" type="image/png" sizes="16x16"
-          href="${pageContext.request.contextPath}/public/assets/images/favicon.png">
     <link href="${pageContext.request.contextPath}/public/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet"
           type="text/css"/>
     <link href="${pageContext.request.contextPath}/public/assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"

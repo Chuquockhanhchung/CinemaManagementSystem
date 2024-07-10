@@ -58,14 +58,15 @@
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
 
-                    <div class="st_bt_top_back_btn float_left"><a href="seat?showtimeId=${sessionScope.time}"><i
-                            class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
-                    </div>
+                <div class="st_bt_top_back_btn float_left"><a href="seat?showtimeId=${sessionScope.time}"><i
+                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
+                </div>
 
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="st_bt_top_center_heading float_left">
-                    <h3>${sessionScope.movie.getName()} - ${sessionScope.language} - (${sessionScope.movie.getDuration()} phút)</h3>
+                    <h3>${sessionScope.movie.getName()} - ${sessionScope.language} -
+                        (${sessionScope.movie.getDuration()} phút)</h3>
                     <h4>${sessionScope.date}</h4>
                 </div>
             </div>
@@ -77,7 +78,7 @@
 <form action="payment" method="post">
     <input type="text" value="${sessionScope.user.idCustomer}" name="idCustomer" hidden="">
     <input type="text" value="${sessionScope.time}" name="showtimeID" hidden="">
-    <input type="text" id="randomBookingID" name="BookingID" readonly hidden="" >
+    <input type="text" id="randomBookingID" name="BookingID" readonly hidden="">
 
     <div class="st_dtts_wrapper float_left">
         <div class="container">
@@ -100,8 +101,10 @@
                                         </li>
                                         <li>
                                             <span class="dtts1">Ghế Ngồi:</span>
-                                            <h5> <%= ticket.getSeatID() %></h5>
-                                            <input type="text" name="seatID" value="<%= ticket.getSeatID() %>" hidden="">
+                                            <h5><%= ticket.getSeatID() %>
+                                            </h5>
+                                            <input type="text" name="seatID" value="<%= ticket.getSeatID() %>"
+                                                   hidden="">
                                         </li>
                                     </ul>
 
@@ -122,7 +125,8 @@
                                             <div class="form-check" style="margin-right: 20px;">
                                                 <input class="form-check-input" id="coupon" type="radio"
                                                        name="paymentMethod" checked="checked"/>
-                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ ngân hàng </label>
+                                                <label class="form-check-label fs-8 text-body" for="coupon">Thẻ ngân
+                                                    hàng </label>
                                                 <span class="badge badge-phoenix badge-phoenix-warning ms-2 ms-lg-4 ms-xl-2">Popular</span>
                                             </div>
                                         </div>
@@ -182,6 +186,19 @@
                                                 <div class="box__body ubg-white">
                                                     <div class="list-mb24">
                                                         <div class="layout-bills-inner box-section">
+                                                            <%
+                                                                Event event = (Event) session.getAttribute("event");
+                                                                if (event != null) {
+                                                                    double discountRate = event.getDiscount();
+                                                                    double discountedAmount = ticket.getTicketPrice() * discountRate;
+                                                                    double finalPrice = ticket.getTicketPrice() - discountedAmount;
+
+                                                                    String formattedFinalPrice = currencyFormat.format(finalPrice);
+                                                                    String QrPrice = currencyFormat.format(finalPrice).replace("₫", "");
+
+                                                                    String finalQrPrice = customFormat.format(finalPrice);
+
+                                                            %>
                                                             <div class="row-payment list-mb24 list-crop">
                                                                 <div class="col-12 main-title-mobile show-mobile h3 text-center">
                                                                     Thanh toán qua ứng dụng Ngân hàng/ Ví điện
@@ -227,7 +244,6 @@
                                                                             </div>
                                                                         </div>
 
-
                                                                         <div class="bills-body accordion-collapse collapse"
                                                                              id="accordionBill">
                                                                             <div>
@@ -243,7 +259,7 @@
                                                                                             <div class="col-md-12 col">
                                                                                                 <div class="title text-left-md-right color-primary h2">
                                                                                                         <span id="totalAmountDt">
-                                                                                                                <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                                                <%= QrPrice %>
                                                                                                         </span><sup>VND</sup>
                                                                                                 </div>
                                                                                             </div>
@@ -259,7 +275,7 @@
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
                                                                                                 <div class="title text-left-md-right">
-                                                                                                    <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                                    <%= QrPrice %>
                                                                                                     <sup>VND</sup>
                                                                                                 </div>
                                                                                             </div>
@@ -355,7 +371,7 @@
                                                                                     <div class="qr-inner"
                                                                                          style="background-image: url('css/QR_Code/images/qr-frame.svg')">
                                                                                         <img class="qrcodeimg-modal"
-                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= customCurrency %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}"
+                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= finalQrPrice %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}"
                                                                                              alt="QR CODE">
                                                                                     </div>
                                                                                 </div>
@@ -385,6 +401,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <%
+                                                                }
+                                                            %>
                                                         </div>
                                                         <div class="box-section show-desktop">
                                                             <div class="list-bank-promo">
@@ -645,31 +664,51 @@
                                 <div class="st_dtts_bs_heading float_left">
                                     <p>Tóm tắt đặt vé</p>
                                 </div>
+                                <%
+                                    if (event != null) {
+                                        double discountRate = event.getDiscount();
+                                        double discountedAmount = ticket.getTicketPrice() * discountRate;
+                                        double finalPrice = ticket.getTicketPrice() - discountedAmount;
+
+                                        String formattedFinalPrice = currencyFormat.format(finalPrice);
+                                        String QrPrice = currencyFormat.format(finalPrice).replace("₫", "");
+                                %>
                                 <div class="st_dtts_sb_ul float_left">
                                     <ul>
-                                        <li> <%= ticket.getSeatID() %>
-                                            <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "") %></span>
+                                        <li><%= ticket.getSeatID() %>
+                                            <span><%= currencyFormat.format(ticket.getTicketPrice())%></span>
                                         </li>
-                                        <%--                                    <li>Internet handling fees <span>Rs.70.80</span></li>--%>
+
+                                        <li>${event.getEventName()}
+                                            <span>
+                                               <%= String.format("%.0f%%", discountRate * 100) %>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span style="color: red">- <%= currencyFormat.format(discountedAmount)%></span>
+                                        </li>
+
                                     </ul>
-                                    <%--                                <p>Booking Fees <span>Rs.60.00</span></p>--%>
-                                    <%--                                <p>Integrated GST (IGST) @ 18% <span>Rs.60.00</span></p>--%>
                                 </div>
                                 <div class="st_dtts_sb_h2 float_left">
                                     <h3>Tổng
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
+                                        <span><%= formattedFinalPrice %></span>
                                     </h3>
-                                    <%--                                <h4>Current State is <span>Kerala</span></h4>--%>
+<%--                                                                    <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%></span>
+                                        <span><%= formattedFinalPrice %></span>
                                     </h5>
                                     <input type="text" value="<%= customCurrency %>" name="ticketPrice" hidden="">
                                 </div>
+                                <%
+                                    }
+                                %>
                             </div>
                             <div class="col-md-12">
                                 <div class="st_cherity_btn float_left">
                                     <ul>
-                                        <li><a  class="payment-process" style="cursor: pointer;">Xác nhận thanh toán</a></li>
+                                        <li><a class="payment-process" style="cursor: pointer;">Xác nhận thanh toán</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -764,7 +803,7 @@
     let alertShown = false;
 
     async function checkPaid(content, price) {
-        if(paidSuccess) {
+        if (paidSuccess) {
             return;
         } else {
             try {
@@ -792,7 +831,7 @@
                         }
                     });
                 } else {
-                    if (!alertShown) {
+                    if (! ) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
