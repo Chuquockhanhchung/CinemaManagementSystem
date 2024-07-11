@@ -90,7 +90,22 @@ public class Homepage extends HttpServlet {
         request.setAttribute("listCus", listC);
         request.setAttribute("numberAcc",list.size());
         session.setAttribute("movies",all);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        Customer c = (Customer) session.getAttribute("user");
+        if(c != null){
+            if (c.getRole() == 1) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else if(c.getRole()==3){
+                response.sendRedirect("staff/index.jsp");
+            }else if(c.getRole()==4){
+                response.sendRedirect("manager");
+            }else {
+                response.sendRedirect("admin");
+            }
+        }else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
+
 
 
     }

@@ -191,6 +191,7 @@ public class TicketDAO extends DBContext {
 
     public List<Ticket> getTicketByBooking(int CustomerID) {
         List<Ticket> list = new ArrayList<Ticket>();
+        ComboDAO cd = new ComboDAO(DBContext.getConn());
         Ticket ticket = null;
         try {
             String sql = "SELECT " +
@@ -198,7 +199,7 @@ public class TicketDAO extends DBContext {
                     "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
                     "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
                     "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
-                    "m.MovieName, m.Image, t.BookingID, t.SeatID " +
+                    "m.MovieName, m.Image, t.BookingID, t.SeatID,t.ComboID " +
                     "FROM movieticket t " +
                     "JOIN customer c ON t.CustomerID = c.CustomerID " +
                     "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
@@ -225,6 +226,7 @@ public class TicketDAO extends DBContext {
                 ticket.setImage(rs.getString("Image"));
                 ticket.setBookingID(rs.getString("BookingID"));
                 ticket.setSeatID(rs.getString("SeatID"));
+                ticket.setComboDescription(cd.getComboByID(rs.getInt("ComboID")).getName());
                 list.add(ticket);
             }
         } catch (Exception e) {

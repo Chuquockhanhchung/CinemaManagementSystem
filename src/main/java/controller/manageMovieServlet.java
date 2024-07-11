@@ -63,8 +63,6 @@ public class manageMovieServlet extends HttpServlet {
         ArrayList<Movie> list = dao.getall_Movie();
         HttpSession session = request.getSession();
         session.setAttribute("list", list);
-
-
         request.getRequestDispatcher("manager/CMS/movies.jsp").forward(request, response);
     } 
 

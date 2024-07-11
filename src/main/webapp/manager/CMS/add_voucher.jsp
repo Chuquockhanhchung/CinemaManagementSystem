@@ -107,8 +107,9 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm Voucher Phim</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="voucher">Danh sách vouvher phim</a></li>
+                    <li class="breadcrumb-item active"><a href="addvoucher">Thêm Voucher Phim</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -116,7 +117,7 @@ Content body start
                 <div class="col-xl-12">
                     <div class="mb-3">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="voucher.jsp"
+                            <li><a href="voucher"
                                    class="btn btn-primary">Danh sách Voucher</a></li>
                         </ul>
                     </div>

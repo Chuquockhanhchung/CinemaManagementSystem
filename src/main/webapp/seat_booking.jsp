@@ -63,7 +63,7 @@
                 <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"> <a href="#"><i
                         class="fa fa-times"></i></a>
                 </div>
-                <div class="st_seatlay_btn float_left"> <a
+                <div class="st_seatlay_btn float_left"> <a onclick="submitCombos()"
                         href="ticket?CustomerID=${sessionScope.user.idCustomer}" id="payment-link"
                 >Thanh Toán</a>
                 </div>
@@ -201,7 +201,9 @@
         </div>
     </div>
 </div>
-</div>
+<footer>
+    <%@include file="combo_pick.jsp" %>
+</footer>
 <!-- st seat Layout End -->
 <!--main js file start-->
 <script src="js/jquery_min.js"></script>
@@ -277,10 +279,18 @@
 
         // Join the IDs into a single string
         const selectedSeatsString = selectedSeats.join(',');
-
+        var combos = [];
+        document.querySelectorAll('.combo').forEach(function(combo) {
+            var comboId = combo.getAttribute('data-combo-id');
+            var quantity = combo.querySelector('input').value;
+            if (quantity > 0) {
+                combos.push(comboId,quantity);
+            }
+        });
+        var combosString = JSON.stringify(combos);
         // Set the href of the link with selected seats as query parameter
         const paymentLink = document.getElementById('payment-link');
-        paymentLink.href = `ticket?CustomerID=${sessionScope.user.idCustomer}&selectedSeats=` + selectedSeatsString;
+        paymentLink.href = `ticket?CustomerID=${sessionScope.user.idCustomer}&selectedSeats=` + selectedSeatsString+`&comboId=`+encodeURIComponent(combosString);
     });
 
 </script>

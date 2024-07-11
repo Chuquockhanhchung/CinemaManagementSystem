@@ -96,69 +96,25 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Event</a></li>
+                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item active"><a href="product">Sản phẩm</a></li>
                 </ol>
             </div>
             <!-- Row -->
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="filter cm-content-box box-primary">
-                        <div class="content-title SlideToolHeader">
-                            <div class="cpa">
-                                <i class="fa-solid fa-filter me-2"></i>Filter
-                            </div>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
-                        </div>
-                        <div class="cm-content-body  form excerpt">
-                            <div class="card-body pb-3">
-                                <div class="row">
-                                    <div class="col-xl-3 col-sm-6">
-                                        <input type="text" class="form-control mb-3" id="exampleFormControlInput1"
-                                               placeholder="Title">
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <select class="default-select form-control mb-3 dashboard-select-2 w-100">
-                                            <option selected>Select Status</option>
-                                            <option value="1">Published</option>
-                                            <option value="2">Draft</option>
-                                            <option value="3">Trash</option>
-                                            <option value="4">Private</option>
-                                            <option value="5">Pending</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <input class="form-control  mb-3" type="text" id="datepicker">
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6">
-                                        <button class="btn btn-primary" title="Click here to Search" type="button"><i
-                                                class="fa-solid fa-filter me-1"></i>Filter
-                                        </button>
-                                        <button class="btn btn-danger light" title="Click here to remove filter"
-                                                type="button">Remove Filter
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="add_event.jsp" class="btn btn-primary ">Thêm sự kiện mới</a></li>
+                            <li><a href="../../addproduct" class="btn btn-primary ">Thêm sản phẩm mới</a></li>
                         </ul>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
                             <div class="cpa">
-                                <i class="fa-solid fa-file-lines me-1"></i>Event List
+                                <i class="fa-solid fa-file-lines me-1"></i>Danh sách sản phẩm
                             </div>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
+
                         </div>
                         <div class="cm-content-body  form excerpt">
                             <div class="card-body py-3">
@@ -189,13 +145,14 @@ Content body start
                                             <td class="text-end">
                                                 <a href="edit_product.jsp?ProductID=<%=product.getProductID()%>"
                                                    class="btn btn-warning btn-sm content-icon">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="DeleteProduct('<%=product.getProductID()%>')"
                                                    class="btn btn-danger btn-sm content-icon">
-                                                    <i class="fa-solid fa-trash"></i>
+                                                    <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
+
 
                                         </tr>
                                         <% } %>

@@ -60,6 +60,10 @@
         <servlet-class>controller.signup</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CheckEmailServlet</servlet-name>
+        <servlet-class>controller.CheckEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AccessManage</servlet-name>
         <servlet-class>controller.AccessManage</servlet-class>
     </servlet>
@@ -145,6 +149,10 @@
         <servlet-class>controller.BookingMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>BookingMovieServlet2</servlet-name>
+        <servlet-class>controller.BookingMovieServlet2</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AddFeedbackServlet</servlet-name>
         <servlet-class>controller.AddFeedbackServlet</servlet-class>
     </servlet>
@@ -171,6 +179,10 @@
     <servlet>
         <servlet-name>manageMovieServlet</servlet-name>
         <servlet-class>controller.manageMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageCombo</servlet-name>
+        <servlet-class>controller.ManageCombo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MakeReportServlet</servlet-name>
@@ -209,6 +221,37 @@
         <servlet-class>controller.editMovieServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditCombo</servlet-name>
+        <servlet-class>controller.EditCombo</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>EditCombo</servlet-name>
+        <url-pattern>/editCombo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteCombo</servlet-name>
+        <servlet-class>controller.DeleteCombo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCombo</servlet-name>
+        <url-pattern>/deleteCombo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddCombo</servlet-name>
+        <servlet-class>controller.AddCombo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>controller.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCombo</servlet-name>
+        <url-pattern>/addCombo</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>DeleteEvent</servlet-name>
         <servlet-class>manager.DeleteEvent</servlet-class>
     </servlet>
@@ -229,6 +272,10 @@
         <url-pattern>/added</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CheckEmailServlet</servlet-name>
+        <url-pattern>/check_email</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddFeedbackServlet2</servlet-name>
         <url-pattern>/added2</url-pattern>
     </servlet-mapping>
@@ -247,6 +294,10 @@
     <servlet-mapping>
         <servlet-name>SeatBookServlet</servlet-name>
         <url-pattern>/seat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageCombo</servlet-name>
+        <url-pattern>/combo</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -350,6 +401,10 @@
         <url-pattern>/booking_movie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>BookingMovieServlet2</servlet-name>
+        <url-pattern>/booking_movie2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/ticket</url-pattern>
     </servlet-mapping>
@@ -373,10 +428,16 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>SearchMovieServlet</servlet-name>
         <url-pattern>/search2</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>AddEventServlet</servlet-name>
         <url-pattern>/addevent</url-pattern>
@@ -416,4 +477,6 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
+
 </web-app>
+

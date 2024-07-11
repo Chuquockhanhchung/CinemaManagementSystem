@@ -107,7 +107,7 @@ Content body start
                 <div class="col-xl-12">
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="add_event.jsp" class="btn btn-primary ">Thêm sự kiện mới</a></li>
+                            <li><a href="../../add_event.jsp" class="btn btn-primary ">Thêm sự kiện mới</a></li>
                         </ul>
                     </div>
                     <div class="filter cm-content-box box-primary">

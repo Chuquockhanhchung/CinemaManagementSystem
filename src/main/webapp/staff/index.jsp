@@ -142,7 +142,12 @@
                     int LastCID = dao2.getLatestCustomerID();
                     session.setAttribute("lastcid", LastCID);
                 %>
-                <form action="../booking_movie" method="post">
+                <form action="../booking_movie2" method="post">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email">
+                        <button type="button" id="searchButton">Tìm kiếm</button>
+                    </div>
                     <input type="text" value="<%= LastCID %>" hidden="">
                     <div class="form-group">
                         <label for="fullName">Họ và tên:</label>
@@ -156,10 +161,50 @@
                         <label for="dob">Ngày tháng năm sinh:</label>
                         <input type="date" id="dob" name="dob">
                     </div>
-                    <button type="submit">Lưu Thông Tin</button>
+                    <p id="message" style="color: red"></p>
+
+                </form>
+                <form action="../logout" method="get" style="margin-top: 20px;">
+                    <button type="submit">Đăng xuất</button>
                 </form>
             </div>
         </div>
+        <script>
+            // Embed session data into the JavaScript
+
+
+            // JavaScript to handle the search functionality
+            document.getElementById('searchButton').addEventListener('click', function() {
+                var email = document.getElementById('email').value;
+                fetch('../check_email?email=' + encodeURIComponent(email))
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.exists) {
+                            document.getElementById('fullName').value = data.fullName;
+                            document.getElementById('phoneNumber').value = data.phoneNumber;
+                            document.getElementById('dob').value = data.dob;
+                            document.getElementById('message').textContent = '';
+                        } else {
+                            document.getElementById('fullName').value = '';
+                            document.getElementById('phoneNumber').value = '';
+                            document.getElementById('dob').value = '';
+                            document.getElementById('message').textContent = 'Không có khách hàng này';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        document.getElementById('message').textContent = 'Lỗi khi tìm kiếm khách hàng.';
+                    });
+            });
+
+
+
+        </script>
         <div class="row">
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -182,7 +227,7 @@
                 MovieDAO dao = new MovieDAO(DBContext.getConn());
                 List<Movie> list = dao.phim(status, type);
             %>
-            <form action="../booking_movie" method="get">
+            <form action="../booking_movie" method="get" id="movieForm">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="best">
                         <div class="prs_upcom_slider_slides_wrapper all_movie">
@@ -191,7 +236,7 @@
                                     <swiper-container class="mySwiper2" space-between="10" slides-per-view="6"
                                                       free-mode="true"
                                                       watch-slides-progress="true">
-                                        <select name="id" id="#" class="form-select w-auto select2button">
+                                        <select name="id" id="movie" class="form-select w-auto select2button">
                                             <%
                                                 for (Movie movie : list) {
                                             %>
@@ -219,6 +264,49 @@
             </form>
         </div>
     </div>
+    <script>
+        document.getElementById('movieForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const movieId = document.getElementById('movie').value;
+            const email = document.getElementById('email').value;
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const dob = document.getElementById('dob').value;
+
+            if (!movieId) {
+                alert('Please select a movie.');
+                return;
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Phone number validation
+            const phonePattern = /^\d{10,15}$/; // Assuming phone numbers are between 10 to 15 digits
+            if (!phonePattern.test(phoneNumber)) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+
+            // Full name validation (should not be empty and only contain letters and spaces)
+
+            if ( fullName.trim() === '') {
+                alert('Please enter a valid full name.');
+                return;
+            }
+
+            // Construct the query parameters
+            const link = `../booking_movie2?email=`+email+`&fullName=`+fullName+`&phoneNumber=`+phoneNumber+`&dob=`+dob+`&movieId=`+movieId;
+
+            // Redirect to the constructed link
+            window.location.href = link;
+        });
+    </script>
 
     <!-- st top header Start -->
 

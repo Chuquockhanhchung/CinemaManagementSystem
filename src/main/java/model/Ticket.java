@@ -1,5 +1,8 @@
 package model;
 
+import dal.ComboDAO;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
@@ -19,9 +22,12 @@ public class Ticket {
     private float TicketPrice;
     private String BookingDate;
     private String Status;
-    private String ComboName;
+    private ArrayList<Combo> comboId;
     private String MovieName;
     private String Image;
+    private String ComboName;
+    private String ComboDescription="";
+
 
     public Ticket() {
         super();
@@ -36,19 +42,30 @@ public class Ticket {
         Status = status;
     }
 
-    public Ticket(int CustomerId, String name, String time, String seater, String s, String s1, float price, String string, String hold, String s2, String name1, String SeatId) {
+    public String getComboDescription() {
+        return ComboDescription;
+    }
+
+    public void setComboDescription(String comboDescription) {
+        ComboDescription = comboDescription;
+    }
+
+    public Ticket(int CustomerId, String name, String time, String seater, String s, ArrayList<Combo> s1, float price, String string, String hold, String s2, String name1, String SeatId) {
         CustomerID = CustomerId;
         FullName = name;
         StartTime = time;
         SeatID = seater;
         EventName = s;
-        ComboName = s1;
+        comboId = s1;
         TicketPrice = price;
         Status = string;
         BookingDate = hold;
         MovieName = s2;
         Image = name1;
         SeatType = SeatId;
+        for(Combo combo : s1) {
+            ComboDescription+= combo.getName()+":"+combo.getAmount()+",";
+        }
     }
 
     @Override
@@ -65,7 +82,7 @@ public class Ticket {
                 ", TicketPrice=" + TicketPrice +
                 ", BookingDate='" + BookingDate + '\'' +
                 ", Status='" + Status + '\'' +
-                ", ComboName='" + ComboName + '\'' +
+                ", ComboName='" + comboId + '\'' +
                 ", MovieName='" + MovieName + '\'' +
                 ", Image='" + Image + '\'' +
                 '}';
@@ -89,6 +106,14 @@ public class Ticket {
 
     public int getTicketID() {
         return TicketID;
+    }
+
+    public ArrayList<Combo> getComboId() {
+        return comboId;
+    }
+
+    public void setComboId(ArrayList<Combo> comboId) {
+        this.comboId = comboId;
     }
 
     public void setTicketID(int ticketID) {
@@ -184,7 +209,7 @@ public class Ticket {
     }
 
     public String getComboName() {
-        return ComboName;
+        return ComboName ;
     }
 
     public void setComboName(String comboName) {

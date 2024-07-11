@@ -90,8 +90,8 @@ Sidebar end
         <div class="container-fluid">
             <div class="form-head mb-4 d-flex flex-wrap align-items-center">
                 <div class="me-auto">
-                    <h2 class="font-w600 mb-0">Dashboard</h2>
-                    <p>Lorem ipsum dolor sit amet </p>
+                    <h2 class="font-w600 mb-0">Thống kê</h2>
+                    <p> Thống kê doanh thu của MCN</p>
                 </div>
 
                 <div class="dropdown custom-dropdown mb-2 period-btn">
@@ -107,7 +107,7 @@ Sidebar end
                                     fill="#0E8A74"/>
                         </svg>
                         <div class="text-start ms-3 flex-1">
-                            <span class="d-block text-black">Change Periode</span>
+                            <span class="d-block text-black">Đổi Giai Đoạn</span>
                             <small class="d-block text-muted">${sessionScope.year2}</small>
                         </div>
                         <i class="fa fa-caret-down text-light scale5 ms-3"></i>
@@ -168,7 +168,7 @@ Sidebar end
                                         </svg>
                                     </div>
                                     <div>
-                                        <h5 class="text-black font-w500 mb-0">Tickets</h5>
+                                        <h5 class="text-black font-w500 mb-0">Vé</h5>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0 chart-body-wrapper">
@@ -205,7 +205,7 @@ Sidebar end
                                         </svg>
                                     </div>
                                     <div>
-                                        <h5 class="text-black font-w500 mb-0">Revenue</h5>
+                                        <h5 class="text-black font-w500 mb-0">Doanh thu</h5>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0 chart-body-wrapper">
@@ -225,7 +225,7 @@ Sidebar end
                                             <h2 class="chart-num font-w600 mb-0">45242</h2>
                                         </div>
                                         <div>
-                                            <h5 class="text-black font-w500 mb-3 mt-2">Event Held</h5>
+                                            <h5 class="text-black font-w500 mb-3 mt-2">Sự kiện</h5>
                                         </div>
                                         <div>
                                             <p class="text-primary fs-14 mb-0">
@@ -262,25 +262,22 @@ Sidebar end
                                     <div class="d-sm-flex d-block pb-sm-3 align-items-end mb-2">
                                         <div class="me-auto pe-3 mb-3 mb-sm-0">
                                                     <span
-                                                            class="chart-num-3 font-w200 d-block mb-sm-3 mb-2 text-white">Ticket
-                                                        Sold Today</span>
+                                                            class="chart-num-3 font-w200 d-block mb-sm-3 mb-2 text-white">Vé đã bán hôm nay</span>
                                             <h2 class="chart-num-2 text-white mb-0">${sessionScope.tickettoday}<span
-                                                    class="fs-18 me-2 ms-3">pcs</span></h2>
+                                                    class="fs-18 me-2 ms-3">cái</span></h2>
                                         </div>
 
                                     </div>
                                     <div class="progress style-1" style="height:15px;">
                                         <div class="progress-bar bg-white progress-animated"
                                              style="width: ${sessionScope.perf}%; height:15px;" role="progressbar">
-                                            <span class="sr-only">${sessionScope.perf}% Complete</span>
+                                            <span class="sr-only">${sessionScope.perf}% Hoàn thành</span>
                                             <span class="bg-white arrow"></span>
                                             <span class="font-w600 counter-bx text-black"><strong
                                                     class="counter font-w400">${sessionScope.tickettoday2-sessionScope.tickettoday}pcs Left</strong></span>
                                         </div>
                                     </div>
-                                    <p class="fs-12 text-white pt-4">Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad mini</p>
+                                    <p class="fs-12 text-white pt-4">Tính số vé đã được thanh toán trong ngày hôm nay</p>
 
                                 </div>
                             </div>
@@ -294,12 +291,12 @@ Sidebar end
                         <div class="col-xl-12 col-xxl-12">
                             <div class="card">
                                 <div class="card-header border-0 flex-wrap pb-0">
-                                    <h4 class="fs-20 font-w500 card-title">Sales Revenue</h4>
+                                    <h4 class="fs-20 font-w500 card-title">Thống kê doanh thu</h4>
                                     <div class="card-action coin-tabs">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" data-bs-toggle="tab" href="#Monthly1">
-                                                    Monthly
+                                                    Tháng
                                                 </a>
                                             </li>
 
@@ -324,38 +321,7 @@ Sidebar end
                         </div>
                     </div>
                 </div>
-                <button onclick="generateExcel()">Generate Excel Report</button>
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
-                <script>
-                  async  function generateExcel() {
-                        // Create a workbook
-                        var wb = XLSX.utils.book_new();
-
-                      $.ajax({
-                          url: 'dataload2', // Đường dẫn đến servlet
-                          type: 'GET',
-                          success: function (response) {
-                              var data = [
-                                  response.data
-                              ];
-                              console.log(data);
-                              // Convert data to a worksheet
-                              var ws = XLSX.utils.aoa_to_sheet(data);
-
-                              // Append the worksheet to the workbook
-                              XLSX.utils.book_append_sheet(wb, ws, "Report");
-
-                              // Generate and download the Excel file
-                              XLSX.writeFile(wb, "report.xlsx");
-
-                              // Sample data
-                          }
-                      });
-
-
-                    }
-                </script>
 
             </div>
         </div>

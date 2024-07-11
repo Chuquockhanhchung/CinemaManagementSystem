@@ -7,6 +7,7 @@ package dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 
 import Utill.Security;
 
@@ -41,10 +42,36 @@ public class CustomerDAO extends DBContext {
         }
     }
 
-
+    public Customer getCustomerByEmail(String email) {
+        String sql ="SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture, DOB\n"
+                + "FROM customer\n"
+                + "JOIN account  ON customer.AccountID = account.AccountID where Email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            Security s = new Security();
+            if(rs.next()) {
+                Customer c = new Customer();
+                c.setIdCustomer(rs.getInt(1));
+                c.setId(rs.getString(2));
+                c.setName(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setPass(s.decode(rs.getString(6)));
+                c.setRole(rs.getInt(7));
+                c.setPicture(rs.getString(8));
+                c.setDOB(rs.getString(9));
+                return c;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-        dao.EditCustomer("Nguyễn Tiến Đạt", "dat10bn@gmail.com", "0968338678", "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/665499a64747c2ba370e369b526b6849.jpg", 28);
+        System.out.println(dao.getCustomerByEmail("chungcqkhe170745@fpt.edu.vn"));
     }
 
     public ArrayList<Customer> getInfor_Customer() {
@@ -82,7 +109,7 @@ public class CustomerDAO extends DBContext {
             ps.setString(3, customer.getName());
             ps.setString(4, customer.getEmail());
             ps.setString(5, customer.getPhone());
-            ps.setString(6, customer.getDOB());
+            ps.setDate(6, Date.valueOf(customer.getDOB()));
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

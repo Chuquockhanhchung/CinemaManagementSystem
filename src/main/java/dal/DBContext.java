@@ -28,7 +28,7 @@ public class DBContext {
             System.out.println("USER --->" + USER);
             System.out.println("PASS --->" + PASS);
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(URL, USER, "Chuchung1@");
+            conn = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Successfully connected to the database.");
         } catch (Exception e) {
             System.out.println("Failed to connect to the database.");
