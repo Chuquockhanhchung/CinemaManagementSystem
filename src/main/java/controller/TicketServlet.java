@@ -5,8 +5,11 @@
 
 package controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,10 +18,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import dal.DBContext;
-import dal.MovieDAO;
-import dal.PaymentDAO;
-import dal.TicketDAO;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import dal.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -98,10 +100,28 @@ public class TicketServlet extends HttpServlet {
         return seatAfterChange;
     }
 
-
+    public ArrayList<Combo> convertCombo(String combo){
+        ComboDAO cd = new ComboDAO(DBContext.getConn());
+        combo =combo.substring(1, combo.length()-1);
+        ArrayList<Combo> combos = new ArrayList<>();
+        String[] cb = combo.split("");
+    int j=0;
+        for(int i=0; i<cb.length; i++){
+            Combo c = new Combo();
+            if(i%8==1){
+                c=cd.getComboByID(Integer.parseInt(cb[i]));
+                combos.add(c);
+            }else if(i%8==5){
+                combos.get(j).setAmount(Integer.parseInt(cb[i]));
+                j++;
+            }
+        }
+        return combos;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         int customerID = Integer.parseInt(request.getParameter("CustomerID"));
 
         try {
@@ -110,79 +130,90 @@ public class TicketServlet extends HttpServlet {
                 response.sendRedirect("error.jsp"); // Redirect to an error page if no seats are selected
                 return;
             }
-            String realSeat= changeSeat(selectedSeatsParam);
+            String realSeat = changeSeat(selectedSeatsParam);
             MovieDAO md = new MovieDAO(DBContext.getConn());
             HttpSession session = request.getSession();
             ArrayList<ShowTime> lists = (ArrayList<ShowTime>) session.getAttribute("showtime");
             int showtimeid = (int) session.getAttribute("time");
             int romID = md.getRoomIDbyST(showtimeid);
-
-            // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
-            String seati = "";
-            String[] selectedSeats = selectedSeatsParam.split(",");
-            for (int i = 0; i < selectedSeats.length; i++) {
-                selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
-                int seatInt = Integer.parseInt(selectedSeats[i]);
-                int realID = (seatInt - 1) * 4 + romID;
-                seati += realID + ",";
+            //Getid combo
+            String combo="";
+            ArrayList<Combo> combos = new ArrayList<>();
+            if(request.getParameter("comboId")!=null) {
+                 combo = request.getParameter("comboId");
+                combos=convertCombo(combo);
             }
-            seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
-            TicketDAO d = new TicketDAO(DBContext.getConn());
-            boolean allSeatsHeld = true;
-            String[] seats = seati.split(",");
-            for (String seatIdStr : seats) {
-                int seatId;
-                try {
-                    seatId = Integer.parseInt(seatIdStr); // Chuyển đổi định dạng ghế ngồi
-                } catch (NumberFormatException e) {
-                    // Handle invalid seat ID format
-                    allSeatsHeld = false;
-                    break;
+                // Chuyển đổi các ID ghế ngồi từ định dạng hiển thị sang ID ghế ngồi thực tế
+                String seati = "";
+                String[] selectedSeats = selectedSeatsParam.split(",");
+                for (int i = 0; i < selectedSeats.length; i++) {
+                    selectedSeats[i] = selectedSeats[i].substring(1); // Bỏ ký tự đầu tiên
+                    int seatInt = Integer.parseInt(selectedSeats[i]);
+                    int realID = (seatInt - 1) * 4 + romID;
+                    seati += realID + ",";
                 }
-                Seat seat = new Seat();
-                seat.setSeatID(seatId);
-                seat.setStatus("hold");
+                seati = seati.substring(0, seati.length() - 1); // Bỏ dấu phẩy cuối cùng
+                TicketDAO d = new TicketDAO(DBContext.getConn());
+                boolean allSeatsHeld = true;
+                String[] seats = seati.split(",");
+                for (String seatIdStr : seats) {
+                    int seatId;
+                    try {
+                        seatId = Integer.parseInt(seatIdStr); // Chuyển đổi định dạng ghế ngồi
+                    } catch (NumberFormatException e) {
+                        // Handle invalid seat ID format
+                        allSeatsHeld = false;
+                        break;
+                    }
+                    Seat seat = new Seat();
+                    seat.setSeatID(seatId);
+                    seat.setStatus("hold");
 
-                boolean seatHeld = d.holdTicket(seat);
-                if (!seatHeld) {
-                    allSeatsHeld = false;
-                    break;
+                    boolean seatHeld = d.holdTicket(seat);
+                    if (!seatHeld) {
+                        allSeatsHeld = false;
+                        break;
+                    }
                 }
-            }
+                double comboprice=0;
+                for(Combo c:combos){
+                    comboprice+=c.getPrice();
+                }
+                if (allSeatsHeld) {
+                    // Lấy danh sách `ShowTime` và ID `ShowTime` từ session
 
-            if (allSeatsHeld) {
-                // Lấy danh sách `ShowTime` và ID `ShowTime` từ session
+                    // Tạo đối tượng `Ticket` và lưu vào session
+                    Customer customer = (Customer) session.getAttribute("user");
+                    Movie movie = (Movie) session.getAttribute("movie");
+                    String time = d.getDateByShowtime((int) session.getAttribute("time"));
+                    Date date = new Date();
+                    Ticket ticket = new Ticket(
+                            customer.getIdCustomer(),
+                            customer.getName(),
+                            time,
+                            realSeat, // Sử dụng chuỗi ID ghế ngồi thực tế
+                            "",
+                            combos,
+                            (float) getPrice(seati, movie.getPrice()), // Assumes getPrice handles pricing
+                            "Hold",
+                            date.toString(),
+                            movie.getName(),
+                            "",
+                            seati
+                    );
+                    session.setAttribute("seatC", selectedSeatsParam);
+                    session.setAttribute("ticket", ticket);
+                    session.setAttribute("Combos",combos);
+                    session.setAttribute("seatID", realSeat);
 
-                // Tạo đối tượng `Ticket` và lưu vào session
-                Customer customer = (Customer) session.getAttribute("user");
-                Movie movie = (Movie) session.getAttribute("movie");
-                String time = d.getDateByShowtime((int) session.getAttribute("time"));
-                Date date = new Date();
-                Ticket ticket = new Ticket(
-                        customer.getIdCustomer(),
-                        customer.getName(),
-                        time,
-                        realSeat, // Sử dụng chuỗi ID ghế ngồi thực tế
-                        "",
-                        "",
-                        (float) getPrice(seati, movie.getPrice()), // Assumes getPrice handles pricing
-                        "Hold",
-                        date.toString(),
-                        "",
-                        movie.getName(),
-                        seati
-                );
-                session.setAttribute("seatC",selectedSeatsParam);
-                session.setAttribute("ticket", ticket);
-                session.setAttribute("seatID",realSeat);
+                    response.sendRedirect("payment.jsp");
+                } else {
+                    response.sendRedirect("error.jsp"); // Redirect to an error page if any seat update fails
+                }
 
-                response.sendRedirect("payment.jsp");
-            } else {
-                response.sendRedirect("error.jsp"); // Redirect to an error page if any seat update fails
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp"); // Redirect to an error page on exception
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

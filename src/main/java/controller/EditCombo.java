@@ -96,7 +96,7 @@ public class EditCombo extends HttpServlet {
             String img = request.getParameter("img");
             float price = Float.parseFloat(request.getParameter("price"));
             ComboDAO dao = new ComboDAO(DBContext.getConn());
-            Combo c = new Combo(id,name,des,price,img);
+            Combo c = new Combo(id,name,des,price,img,100);
             request.setAttribute("p",type);
             request.setAttribute("combo", c);
             if(name.trim() == "" || des.trim() == ""  || img.trim() == "" ||  request.getParameter("price").trim() == ""){

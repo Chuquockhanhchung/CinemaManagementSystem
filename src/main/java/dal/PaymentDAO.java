@@ -81,7 +81,7 @@ public class PaymentDAO {
     public boolean addTicket(Ticket ticket) {
         boolean f = false;
         try {
-            String sql = "INSERT INTO movieticket (CustomerID, ShowtimeID, SeatID, BookingID, TicketPrice, BookingDate, Status) VALUES (?, ?, ?, ?, ?, now(), 'successful')";
+            String sql = "INSERT INTO movieticket (CustomerID, ShowtimeID, SeatID, BookingID, TicketPrice, BookingDate, Status,ComboID) VALUES (?, ?, ?, ?, ?, now(), 'successful',?)";
             PreparedStatement ps = con.prepareStatement(sql);
 
             for (String seatID : ticket.getSeatIDs()) {
@@ -90,6 +90,7 @@ public class PaymentDAO {
                 ps.setString(3, seatID);
                 ps.setString(4, ticket.getBookingID());
                 ps.setFloat(5, ticket.getTicketPrice());
+                ps.setInt(6, ticket.getComboId().get(0).getId());
 
                 int i = ps.executeUpdate();
                 if (i == 1) {

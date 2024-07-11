@@ -26,8 +26,9 @@ public class ComboDAO extends DBContext  {
                 combo.setId(rs.getInt(1));
                 combo.setName(rs.getString(2));
                 combo.setDescription(rs.getString(3));
-                combo.setPrice(rs.getFloat(4));
-                combo.setImg(rs.getString(5));
+                combo.setPrice(rs.getFloat(5));
+                combo.setImg(rs.getString(4));
+                combo.setAmount(rs.getInt(6));
                 combos.add(combo);
             }
             return combos;
@@ -117,6 +118,18 @@ public class ComboDAO extends DBContext  {
             e.printStackTrace();
         }
     }
+    public void chaneAmount(Combo c){
+        String sql = "update combo set Amount=?  where ComboId =?";
+        try {
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setInt(1, c.getAmount());
+            ps.setInt(2, c.getId());
+
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
 
     public Combo getComboByID(int id){
@@ -131,8 +144,8 @@ public class ComboDAO extends DBContext  {
                 combo.setId(rs.getInt(1));
                 combo.setName(rs.getString(2));
                 combo.setDescription(rs.getString(3));
-                combo.setPrice(rs.getFloat(4));
-                combo.setImg(rs.getString(5));
+                combo.setPrice(rs.getFloat(5));
+                combo.setImg(rs.getString(4));
 
             }
 
@@ -157,5 +170,35 @@ public class ComboDAO extends DBContext  {
             e.printStackTrace();
         }
         return productIds;
+    }
+    public ArrayList<Combo> convertCombo(String combo){
+        ComboDAO cd = new ComboDAO(DBContext.getConn());
+        combo =combo.substring(1, combo.length()-1);
+        ArrayList<Combo> combos = new ArrayList<>();
+        String[] cb = combo.split("");
+
+        for(int i=0; i<cb.length; i++){
+            Combo c = new Combo();
+            if(i%8==1){
+                c=cd.getComboByID(Integer.parseInt(cb[i]));
+                combos.add(c);
+            }else if(i%8==5){
+                combos.get(i/5-1).setAmount(Integer.parseInt(cb[i]));
+            }
+        }
+        return combos;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Combo> combos = new ArrayList<>();
+        ComboDAO cd = new ComboDAO(DBContext.getConn());
+        System.out.println("[\"1\",\"1\"]");
+        String mol= "[\"1\",\"1\"]";
+        System.out.println(mol.substring(1, mol.length()-1));
+        combos=cd.convertCombo("[\"1\",\"1\"]");
+
+        for(Combo c : combos){
+            System.out.println(c);
+        }
     }
 }

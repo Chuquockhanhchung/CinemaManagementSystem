@@ -1,15 +1,13 @@
 package controller;
 
-import dal.AdminDAO;
-import dal.DBContext;
-import dal.MovieDAO;
-import dal.TicketDAO;
+import dal.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Account;
+import model.Combo;
 import model.Movie;
 import model.Seat;
 
@@ -132,11 +130,15 @@ public class SeatBookServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        //Show combo list
+        ComboDAO cd= new ComboDAO(DBContext.getConn());
+        ArrayList<Combo> combos= cd.getCombo();
         session.setAttribute("time",showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
         session.setAttribute("language", language);
         session.setAttribute("date",date);
+        session.setAttribute("combos", combos);
         request.getRequestDispatcher("seat_booking.jsp").forward(request, response);
 
     }

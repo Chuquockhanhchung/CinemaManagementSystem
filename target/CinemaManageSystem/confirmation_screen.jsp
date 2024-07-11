@@ -74,9 +74,13 @@
 
     float TicketPrice = 0;
     String BookingID = null;
-
+    double comboprice =0;
+    ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
+    for (Combo combo:combos) {
+        comboprice += combo.getPrice();
+    }
     for (Ticket ticket : list) {
-        TicketPrice = ticket.getTicketPrice();
+        TicketPrice = ticket.getTicketPrice()+(float) comboprice;
         BookingID = ticket.getBookingID();
     }
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
@@ -108,6 +112,7 @@
                                     ticketIndex++;
                             %>
                             <% // TÍNH THỜI GIAN KẾT THÚC
+
                                 Movie movie = (Movie) session.getAttribute("movie");
                                 // Lấy StartTime và Duration từ các đối tượng tương ứng
                                 String startTimeStr = ticket.getStartTime(); // Giả sử định dạng "HH:mm"
@@ -157,6 +162,9 @@
                                                 <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>
                                                 <p>PHÒNG: ${sessionScope.room.roomId} - GHẾ: <%= ticket.getSeatID() %>
                                                 </p>
+                                                <%if(ticket.getComboId()!=null){%>
+                                                <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>
+                                                <%}%>
                                             </div>
                                             <p class="location"><span style="min-width: 150px;">MY CINEMA</span>
                                                 <span class="separator">
@@ -167,7 +175,7 @@
                                     </div>
                                     <div class="right">
                                         <p class="admit-one">
-                                            <span>MY CINEMA MY CINEMA MY CINEMA MY CINEMA</span>
+                                            <span>MY CINEMA </span>
                                         </p>
                                         <div class="right-info-container">
                                             <div class="barcode">

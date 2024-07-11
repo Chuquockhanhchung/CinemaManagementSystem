@@ -7,18 +7,17 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import dal.DBContext;
-import dal.MovieDAO;
-import dal.PaymentDAO;
-import dal.TicketDAO;
+import dal.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Combo;
 import model.Seat;
 import model.Ticket;
 
@@ -58,7 +57,7 @@ public class PaymentServlet extends HttpServlet {
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
 
             String seatID = request.getParameter("seatID");
-            String seatID2 = (String)session.getAttribute("seatC");
+            String seatID2 = (String) session.getAttribute("seatC");
 
             float ticketPrice = Float.parseFloat(request.getParameter("ticketPrice"));
             String status = request.getParameter("status");
@@ -80,6 +79,7 @@ public class PaymentServlet extends HttpServlet {
             TicketDAO d = new TicketDAO(DBContext.getConn());
             boolean allSeatsHeld = true;
             String[] seats = seati.split(",");
+            ArrayList<Combo> combos = null;
             for (String seatIdStr : seats) {
                 int seatId;
                 try {
@@ -92,7 +92,7 @@ public class PaymentServlet extends HttpServlet {
                 Seat seat = new Seat();
                 seat.setSeatID(seatId);
                 seat.setStatus("unactive");
-
+                combos = (ArrayList<Combo>) session.getAttribute("Combos");
                 boolean seatHeld = d.holdTicket(seat);
                 if (!seatHeld) {
                     allSeatsHeld = false;
@@ -110,9 +110,14 @@ public class PaymentServlet extends HttpServlet {
             ticket.setTicketPrice(ticketPrice);
             ticket.setBookingID(BookingID);
             ticket.setStatus(status);
+            ticket.setComboId(combos);
 
             PaymentDAO dao = new PaymentDAO(DBContext.getConn());
             boolean f = dao.addTicket(ticket);
+            ComboDAO cdao = new ComboDAO(DBContext.getConn());
+            Combo combonew = cdao.getComboByID(ticket.getComboId().get(0).getId());
+            combonew.setAmount(combonew.getAmount() - ticket.getComboId().get(0).getAmount());
+            cdao.chaneAmount(combonew);
 
             if (f) {
                 session.setAttribute("succMess", "Payment successful!");
