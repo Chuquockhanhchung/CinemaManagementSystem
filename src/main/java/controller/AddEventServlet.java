@@ -72,6 +72,26 @@ public class AddEventServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
+            if (EventName == null || EventCode == null || EventDetail == null || EventImage == null ||
+                    StartDate == null || EndDate == null) {
+                session.setAttribute("errMsg", "Please fill in all fields.");
+                response.sendRedirect("manager/CMS/add_event.jsp");
+                return; // Exit method
+            }
+
+            // Validate Discount range (0 to 100)
+            if (Discount < 0 || Discount > 100) {
+                session.setAttribute("errMsg", "Discount must be between 0 and 100.");
+                response.sendRedirect("manager/CMS/add_event.jsp");
+                return; // Exit method
+            }
+
+            if (!EventCode.matches("[a-zA-Z0-9]+")) {
+                session.setAttribute("errMsg", "EventCode cannot contain special characters.");
+                response.sendRedirect("manager/CMS/add_event.jsp");
+                return; // Exit method
+            }
+            
             Event event = new Event();
             event.setEventName(EventName);
             event.setEventCode(EventCode);

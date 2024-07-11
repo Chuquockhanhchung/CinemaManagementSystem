@@ -125,7 +125,8 @@ Content body start
                                    class="btn btn-primary">Danh sách sự kiện</a></li>
                         </ul>
                     </div>
-                    <form method="post" action="../../event" enctype="multipart/form-data">
+                    <form method="post" action="${pageContext.request.contextPath}/addevent" enctype="multipart/form-data"
+                          onsubmit="return validateForm()">
                         <div class="row">
                             <div class="col-xl-8">
 
@@ -133,22 +134,19 @@ Content body start
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa"> Tiêu Đề
                                         </div>
-
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <input type="text" class="form-control" placeholder="Tiêu Đề"
                                                    name="EventName">
-
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="filter cm-content-box box-primary">
                                     <div class="content-title SlideToolHeader">
-                                        <div class="cpa"> Tiêu Đề
+                                        <div class="cpa"> Chi tiết sự kiện
                                         </div>
-
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
@@ -161,7 +159,6 @@ Content body start
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa"> Code Sự Kiện
                                         </div>
-
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
@@ -175,7 +172,6 @@ Content body start
                                     <div class="content-title SlideToolHeader">
                                         <div class="cpa"> Giảm giá (%)
                                         </div>
-
                                     </div>
                                     <div class="cm-content-body form excerpt">
                                         <div class="card-body">
@@ -191,7 +187,6 @@ Content body start
                                             <div class="cpa">
                                                 Cài Đặt
                                             </div>
-
                                         </div>
                                         <div class="card-body py-3">
                                             <ul class="d-flex align-items-center mb-2">
@@ -252,8 +247,8 @@ Content body start
                                                 </li>
                                                 <li class="w-100">
                                                     <div class="card-body d-flex" style="padding: 0">
-                                                        <input class="picktime mb-2" type="text" name="StartDate" />
-                                                        <input class="picktime" type="text" name="EndDate" />
+                                                        <input class="picktime mb-2" type="text" name="StartDate"/>
+                                                        <input class="picktime" type="text" name="EndDate"/>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -437,7 +432,38 @@ Content body start
         new Tagify(input);
     }
 </script>
+<script>
+    function validateForm() {
+        // Get form elements
+        const phone = document.querySelector('input[name="EventName"]').value;
+        const name = document.querySelector('input[name="EventDetail"]').value;
+        const pass1 = document.querySelector('input[name="EventCode"]').value;
+        const pass2 = document.querySelector('input[name="Discount"]').value;
+        const image = document.querySelector('input[name="EventImage"]').value;
 
+        // Kiểm tra EventCode phải viết hoa
+        if (eventCode !== eventCode.toUpperCase()) {
+            alert('EventCode must be uppercase.');
+            return false; // Ngăn chặn việc gửi form
+        }
+
+        // Kiểm tra Discount nhỏ hơn 100
+        if (discount >= 100) {
+            alert('Discount must be less than 100%.');
+            return false; // Ngăn chặn việc gửi form
+        }
+
+        // Kiểm tra các trường thông tin bắt buộc
+        if (eventName === '' || eventDetail === '' || eventCode === '' || isNaN(discount) || discount < 0) {
+            alert('Please fill in all fields correctly.');
+            return false; // Ngăn chặn việc gửi form
+        }
+
+        // Thêm logic kiểm tra thêm ở đây nếu cần
+
+        return true; // Form hợp lệ
+    }
+</script>
 <!--**********************************
     Main wrapper end
 ***********************************-->

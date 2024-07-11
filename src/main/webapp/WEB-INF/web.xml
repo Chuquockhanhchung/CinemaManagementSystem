@@ -194,7 +194,7 @@
     </servlet>
     <servlet>
         <servlet-name>AddEventServlet</servlet-name>
-        <servlet-class>manager.AddEventServlet</servlet-class>
+        <servlet-class>controller.AddEventServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddProduct</servlet-name>

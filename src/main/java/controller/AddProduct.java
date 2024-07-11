@@ -15,6 +15,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -76,6 +77,15 @@ public class AddProduct extends HttpServlet {
             String ProductName = request.getParameter("ProductName");
             Float ProductPrice = Float.parseFloat(request.getParameter("ProductPrice"));
             String Detail = request.getParameter("Detail");
+
+            HttpSession session = request.getSession();
+
+            if (ProductName == null || ProductPrice == null || Detail == null) {
+                session.setAttribute("errMsg", "Please fill in all fields.");
+                response.sendRedirect("manager/CMS/add_product.jsp");
+                return; // Exit method
+            }
+
             Product p = new Product();
             p.setProductName(ProductName);
             p.setProductPrice(ProductPrice);
