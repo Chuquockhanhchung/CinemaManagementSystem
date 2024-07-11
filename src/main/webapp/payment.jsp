@@ -931,7 +931,7 @@
                                 </div>
                                 <%
                                 } else {
-                                    double comboprice =0;
+                                        double comboprice =0;
                                     ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
                                 %>
                                 <div class="st_dtts_sb_ul float_left">

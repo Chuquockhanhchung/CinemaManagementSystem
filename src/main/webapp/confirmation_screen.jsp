@@ -132,66 +132,66 @@
                                 float formattedPrice = TicketPrice / ticketCount;
                                 String formattedPriceDisplay = currencyFormat.format(formattedPrice);
                             %>
-                            <div class="ticket created-by-anniedotexe">
-                                <div class="left">
-                                    <div class="image">
-                                        <img src="<%= ticket.getImage() %>">
-                                        <div class="image-overlay">
-                                            <p class="admit-one">
-                                                <span>MY CINEMA MY CINEMA MY CINEMA MY CINEMA</span>
-                                            </p>
-                                            <div class="ticket-number">
-                                                <p>
-                                                    #<%= BookingID %>
+                                <div class="ticket created-by-anniedotexe">
+                                    <div class="left">
+                                        <div class="image">
+                                            <img src="<%= ticket.getImage() %>">
+                                            <div class="image-overlay">
+                                                <p class="admit-one">
+                                                    <span>MY CINEMA MY CINEMA MY CINEMA MY CINEMA</span>
                                                 </p>
+                                                <div class="ticket-number">
+                                                    <p>
+                                                        #<%= BookingID %>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ticket-info">
-                                        <p class="date">
-                                            <span>TUESDAY</span>
-                                            <span id="startDate" class="june-29"><%= ticket.getStartDate() %></span>
-                                            <span>2024</span>
-                                        </p>
-                                        <div class="show-name">
-                                            <h1><%= ticket.getMovieName() %>
-                                            </h1>
-                                            <h4 class="movie-language">${sessionScope.language}</h4>
-                                        </div>
-                                        <div class="time">
-                                            <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>
-                                            <p>PHÒNG: ${sessionScope.room.roomId} - GHẾ: <%= ticket.getSeatID() %>
+                                        <div class="ticket-info">
+                                            <p class="date">
+                                                <span>TUESDAY</span>
+                                                <span id="startDate" class="june-29"><%= ticket.getStartDate() %></span>
+                                                <span>2024</span>
                                             </p>
-                                            <%if(ticket.getComboId()!=null){%>
-                                            <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>
-                                            <%}%>
-                                        </div>
-                                        <p class="location"><span style="min-width: 150px;">MY CINEMA</span>
-                                            <span class="separator">
+                                            <div class="show-name">
+                                                <h1><%= ticket.getMovieName() %>
+                                                </h1>
+                                                <h4 class="movie-language">${sessionScope.language}</h4>
+                                            </div>
+                                            <div class="time">
+                                                <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>
+                                                <p>PHÒNG: ${sessionScope.room.roomId} - GHẾ: <%= ticket.getSeatID() %>
+                                                </p>
+                                                <%if(ticket.getComboId()!=null){%>
+                                                <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>
+                                                <%}%>
+                                            </div>
+                                            <p class="location"><span style="min-width: 150px;">MY CINEMA</span>
+                                                <span class="separator">
                                                 <img src="images/header/favicon.ico">
                                             </span><span>THẠCH THẤT - HÀ NỘI</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="right">
-                                    <p class="admit-one">
-                                        <span>MY CINEMA </span>
-                                    </p>
-                                    <div class="right-info-container">
-                                        <div class="barcode">
-                                            <input type="text" spellcheck="false" hidden="" id="<%= ticketID %>"
-                                                   value="<%= BookingID %>"/>
-                                            <div class="qrcode" id="<%= qrCodeID %>"></div>
+                                            </p>
                                         </div>
-                                        <p class="ticket-number">
-                                            #<%= BookingID %>
+                                    </div>
+                                    <div class="right">
+                                        <p class="admit-one">
+                                            <span>MY CINEMA </span>
                                         </p>
-                                        <p class="movie-price hidden-print-area">
-                                            <%= formattedPriceDisplay %>
-                                        </p>
+                                        <div class="right-info-container">
+                                            <div class="barcode">
+                                                <input type="text" spellcheck="false" hidden="" id="<%= ticketID %>"
+                                                       value="<%= BookingID %>"/>
+                                                <div class="qrcode" id="<%= qrCodeID %>"></div>
+                                            </div>
+                                            <p class="ticket-number">
+                                                #<%= BookingID %>
+                                            </p>
+                                                <p class="movie-price hidden-print-area">
+                                                    <%= formattedPriceDisplay %>
+                                                </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <% } %>
                         </div>
                     </div>
