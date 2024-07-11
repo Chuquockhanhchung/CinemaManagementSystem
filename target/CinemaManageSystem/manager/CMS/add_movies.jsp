@@ -102,9 +102,9 @@ Content body start
 
                     <div class="row">
                         <div class="col-xl-11">
-                            <form action="addmovie" method="post">
+                            <form action="${pageContext.request.contextPath}/addmovie" method="post"
+                                  onsubmit="return checkValidateForm()">
                                 <div class="filter cm-content-box box-primary">
-
 
                                 </div>
                                 <div class="filter cm-content-box box-primary">
@@ -114,13 +114,12 @@ Content body start
                                             <label class="form-label">Tên phim</label>
                                             <input type="text" value="${requestScope.movieId.getName()}" name="name"
                                                    class="form-control mb-3" placeholder="Tên phim">
-
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="filter cm-content-box box-primary">
-                                    <div class="cm-content-body   form excerpt">
+                                    <div class="cm-content-body form excerpt">
                                         <div class="card-body">
                                             <label class="form-label">Thể loại</label>
                                             <div class="col-xl-2 col-lg-3 col-sm-4">
@@ -142,7 +141,8 @@ Content body start
                                                     </c:forEach>
                                                 </c:if>
 
-                                                <button type="button" class="btn btn-primary"><a href="addType">Thêm thể
+                                                <button type="button" class="btn btn-primary"><a
+                                                        href="${pageContext.request.contextPath}/addType">Thêm thể
                                                     loại film</a></button>
                                             </div>
                                         </div>

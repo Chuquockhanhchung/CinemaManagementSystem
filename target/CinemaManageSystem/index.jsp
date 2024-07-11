@@ -6,7 +6,7 @@
 <html lang="zxx">
 <head>
     <meta charset="utf-8"/>
-    <title>Movie Pro Responsive HTML Template</title>
+    <title>MCN</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <!--Template style -->
@@ -295,15 +295,11 @@
                             tab.addEventListener('click', function (event) {
                                 // Ngăn chặn hành động mặc định của thẻ a
                                 event.preventDefault();
-
                                 // Lấy nội dung của thẻ a được nhấp vào
                                 var tabText = tab.textContent;
-
                                 // Thay đổi nội dung của thẻ h2
                                 document.querySelector('.prs_heading_section_wrapper h2').textContent = tabText;
-
                                 // Hiển thị tab tương ứng
-
                             });
 
                         });
