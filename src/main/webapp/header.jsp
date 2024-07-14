@@ -231,7 +231,7 @@
             <div class="mobail_nav_overlay"></div>
             <div class="mobile-nav-box">
                 <div class="mobile-logo">
-                    <a href="index.jsp" class="mobile-main-logo">
+                    <a href="home" class="mobile-main-logo">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46.996px"
                              height="40px" viewBox="0 0 46.996 40" enable-background="new 0 0 46.996 40"

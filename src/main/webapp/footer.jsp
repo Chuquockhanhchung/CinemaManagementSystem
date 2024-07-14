@@ -22,8 +22,8 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                         <div class="prs_newsletter_field">
-                            <input type="text" placeholder="Enter Your Email">
-                            <button type="submit">Submit</button>
+                            <input type="text" placeholder="Nhập email của bạn">
+                            <button type="submit">Đăng Ký</button>
                         </div>
                     </div>
                 </div>
@@ -76,46 +76,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
-                            <h2>Đặt vé trực tuyến</h2>
-                            <ul>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
-                                </li>
-                                <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_4">
-                            <h2>Ứng dụng có sẵn vào ngày</h2>
-                            <p>Tải ứng dụng và nhận vé xem phim miễn phí!</p>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <img src="images/content/f1.jpg" alt="footer_img">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="images/content/f2.jpg" alt="footer_img">
-                                    </a>
-                                </li>
-                            </ul>
-                            <h5><span>$50</span> Hoàn vốn khi tải ứng dụng</h5>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -124,25 +85,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                         <div class="prs_bottom_footer_cont_wrapper">
-                            <p>Copyright 2022-23 <a href="#">Movie Pro</a> . Bảo lưu mọi quyền - Thiết kế bởi <a
-                                    href="#">Webstrot</a>
+                            <p>Copyright 2024 <a href="#">MCN</a> . Bảo lưu mọi quyền - Thiết kế bởi <a
+                                    href="#">MCNTEAM</a>
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
-                        <div class="prs_footer_social_wrapper">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

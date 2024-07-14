@@ -419,7 +419,7 @@
                             <div class="prs_animate_btn1 prs_upcom_main_wrapper">
                                 <ul>
                                     <li><a href="#" class="button button--tamaya prs_upcom_main_btn"
-                                           data-text="view all"><span>Xem Tất Cả</span></a>
+                                           data-text="Xem Tất Cả"><span>Xem Tất Cả</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -717,7 +717,7 @@
                 <div class="prs_video_sec_icon_wrapper">
                     <ul>
                         <li><a class="test-popup-link button" rel='external'
-                               href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i
+                               href='hhttps://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV' title='title'><i
                                 class="fi fi-rr-play"></i></a>
                         </li>
                     </ul>
