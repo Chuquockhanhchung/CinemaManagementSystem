@@ -55,11 +55,11 @@
             right: 8px;
         }
 
-        .event-popup .st_pop_form_wrapper .modal-content{
+        .event-popup .st_pop_form_wrapper .modal-content {
             padding: 6px;
         }
 
-        .event-popup .st_pop_form_wrapper .modal-dialog{
+        .event-popup .st_pop_form_wrapper .modal-dialog {
             max-width: unset;
         }
 
@@ -289,6 +289,48 @@
 <!-- prs Slider End -->
 <!-- prs upcomung Slider Start -->
 <div class="prs_upcom_slider_main_wrapper">
+
+    <div class="Side-Event-Left" style=" position: absolute; left: 11em">
+        <%
+            EventDAO dao = new EventDAO(DBContext.getConn());
+            List<Event> list = dao.getAllEvent();
+            if (list.size() > 1) {
+                Event secondEvent = list.get(1);
+                String imagePathFromDB = secondEvent.getEventImage();
+                String fullImagePath = imagePathFromDB.substring(imagePathFromDB.indexOf("images"));
+                if (secondEvent.getStatus() == 1) {
+
+        %>
+        <div class="image-left">
+            <a href="event_single.jsp?EventID=<%=secondEvent.getEventID()%>">
+                <img src="<%= fullImagePath %>" alt="feature_img"
+                     style="">
+            </a>
+        </div>
+        <%
+                }
+            }
+        %>
+    </div>
+    <div class="Side-Event-Right" style=" position: absolute; right: 11em">
+        <%
+            if (list.size() > 1) {
+                Event thirdEvent = list.get(2);
+                String imagePathFromDB = thirdEvent.getEventImage();
+                String fullImagePath = imagePathFromDB.substring(imagePathFromDB.indexOf("images"));
+                if (thirdEvent.getStatus() == 1) {
+        %>
+        <div class="image-right">
+            <a href="event_single.jsp?EventID=<%=thirdEvent.getEventID()%>">
+                <img src="<%= fullImagePath %>" alt="feature_img"
+                     style="">
+            </a>
+        </div>
+        <%
+                }
+            }
+        %>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -317,7 +359,8 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="prs_upcome_tabs_wrapper">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab"
+                                <li role="presentation" class="active"><a href="#best" aria-controls="best"
+                                                                          role="tab"
                                                                           data-toggle="tab">Phim Đang Chiếu</a>
                                 </li>
                                 <li role="presentation"><a href="#hot" aria-controls="hot" role="tab"
@@ -386,7 +429,8 @@
                                                                             title='title'>Xem Trailer
                                                                     </a>
                                                                 </li>
-                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông
+                                                                    Tin
                                                                     Chi Tiết</a></li>
                                                             </ul>
                                                         </div>
@@ -508,7 +552,8 @@
                                                                             title='title'>Xem Trailer
                                                                     </a>
                                                                 </li>
-                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông
+                                                                    Tin
                                                                     Chi Tiết</a></li>
                                                             </ul>
 
@@ -626,7 +671,8 @@
                                                                             title='title'>Xem Trailer
                                                                     </a>
                                                                 </li>
-                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông Tin
+                                                                <li><a href="detail?id=<%= movie.getId() %>">Thông
+                                                                    Tin
                                                                     Chi Tiết</a></li>
                                                             </ul>
                                                         </div>
@@ -710,8 +756,6 @@
                             </div>
                         </div>
                         <%
-                            EventDAO dao = new EventDAO(DBContext.getConn());
-                            List<Event> list = dao.getAllEvent();
                             for (Event event : list) {
                                 Event latestEvent = list.get(0);
                                 String imagePathFromDB = latestEvent.getEventImage();
@@ -801,6 +845,7 @@
 
         </div>
     </div>
+
 </div>
 
 <!-- prs upcomung Slider End -->
@@ -812,7 +857,8 @@
                 <div class="prs_video_sec_icon_wrapper">
                     <ul>
                         <li><a class="test-popup-link button" rel='external'
-                               href='hhttps://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV' title='title'><i
+                               href='hhttps://www.youtube.com/embed/vPwSfR_O9Jo?si=tumuwCng35DLm6HV'
+                               title='title'><i
                                 class="fi fi-rr-play"></i></a>
                         </li>
                     </ul>
