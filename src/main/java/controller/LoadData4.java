@@ -13,9 +13,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-public class LoadData3 extends HttpServlet {
+public class LoadData4 extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -61,33 +63,34 @@ public class LoadData3 extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        // Get the current date and the number of days in the current month
-        LocalDate date = LocalDate.now();
-        int daysInMonth = date.lengthOfMonth();
-        int[] data = new int[daysInMonth];
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
 
         // Initialize the TicketDAO object
         TicketDAO td = new TicketDAO(DBContext.getConn());
 
-        // Loop through each day in the current month
-        for (int day = 1; day <= daysInMonth; day++) {
-            // Get the current day and the next day
-            LocalDate currentDay = date.withDayOfMonth(day);
-            LocalDate nextDay = currentDay.plusDays(1);
+        // List to store weekly revenues
+        List<Integer> weeklyData = new ArrayList<>();
+
+        // Calculate the dates for the last 4 weeks
+        for (int i = 3; i >= 0; i--) {
+            LocalDate endOfWeek = currentDate.minusDays(currentDate.getDayOfWeek().getValue() - 1).minusWeeks(i);
+            LocalDate startOfWeek = endOfWeek.minusDays(6);
 
             // Convert LocalDate to java.sql.Date
-            Date currentDate = Date.valueOf(currentDay);
-            Date nextDate = Date.valueOf(nextDay);
+            Date startDate = Date.valueOf(startOfWeek);
+            Date endDate = Date.valueOf(endOfWeek.plusDays(1)); // Include the last day
 
-            // Call countTicketbymonth with current day and next day
-            data[day - 1] = td.priceTicketbymonth(currentDate, nextDate);
+            // Call priceTicketbymonth with start of week and end of week
+            int weeklyRevenue = td.priceTicketbymonth(startDate, endDate);
+            weeklyData.add(weeklyRevenue);
         }
 
-        // Convert the data array to JSON
+        // Convert the weeklyData list to JSON
         JSONObject json = new JSONObject();
         JSONArray dataArray = new JSONArray();
-        for (int i : data) {
-            dataArray.put(i);
+        for (int revenue : weeklyData) {
+            dataArray.put(revenue);
         }
         json.put("data", dataArray);
 
@@ -96,6 +99,7 @@ public class LoadData3 extends HttpServlet {
         out.print(json.toString());
         out.flush();
     }
+
 
 
     @Override
