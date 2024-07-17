@@ -37,12 +37,13 @@ public class EventDAO {
         }
         return f;
     }
-    public int countevented(Date date){
+    public int countevented(Date startdate,Date enddate){
         int count = 0;
-        String sql = "select count(*) from event e where  e.StartDate<?";
+        String sql = "select count(*) from event e where  e.StartDate<=? and e.EndDate>=?";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, date);
+            ps.setDate(1, startdate);
+            ps.setDate(2, enddate);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);

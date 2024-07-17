@@ -222,30 +222,18 @@ Sidebar end
                                         class="card-body pt-sm-4 pt-3 d-flex align-items-center justify-content-between">
                                     <div class="me-3">
                                         <div class="d-flex align-items-center">
-                                            <h2 class="chart-num font-w600 mb-0">45242</h2>
+                                            <h2 class="chart-num font-w600 mb-0">${sessionScope.events}</h2>
                                         </div>
                                         <div>
                                             <h5 class="text-black font-w500 mb-3 mt-2">Sự kiện</h5>
                                         </div>
-                                        <div>
-                                            <p class="text-primary fs-14 mb-0">
-                                                <svg class="me-2 primary-icon" width="19" height="12"
-                                                     viewBox="0 0 19 12" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                            d="M2.00401 11.1924C0.222201 11.1924 -0.670134 9.0381 0.589795 7.77817L7.78218 0.585786C8.56323 -0.195262 9.82956 -0.195262 10.6106 0.585786L17.803 7.77817C19.0629 9.0381 18.1706 11.1924 16.3888 11.1924H2.00401Z"
-                                                            fill="#0E8A74"/>
-                                                </svg>
-                                                2.4%
-                                                <span class="op-6 text-muted">than Last Week</span>
-                                            </p>
-                                        </div>
+
                                     </div>
                                     <div>
                                         <div class="d-inline-block position-relative donut-chart-sale">
                                                     <span class="donut1"
                                                           data-peity='{ "fill": ["var(--primary)", "rgba(240, 240, 240)"],   "innerRadius": 35, "radius": 10}'>66/100</span>
-                                            <small class="text-black">66%</small>
+                                            <small class="text-black">${sessionScope.events*100/sessionScope.event2}%</small>
                                         </div>
                                     </div>
                                 </div>
@@ -295,8 +283,19 @@ Sidebar end
                                     <div class="card-action coin-tabs">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab" href="#Monthly1">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#Daily1">
+                                                Ngày
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link " data-bs-toggle="tab" href="#Monthly1">
                                                     Tháng
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link " data-bs-toggle="tab" href="#Weekly1">
+                                                    Tuần
                                                 </a>
                                             </li>
 
@@ -310,7 +309,6 @@ Sidebar end
                                         </div>
                                         <div class="tab-pane fade" id="Weekly1">
                                             <div id="salesChart1" class="chart-primary"></div>
-
                                         </div>
                                         <div class="tab-pane fade" id="Daily1">
                                             <div id="salesChart2" class="chart-primary"></div>
@@ -385,12 +383,12 @@ Footer end
                                     offsetY: 0,
                                     tools: {
                                         download: true,
-                                        selection: true,
-                                        zoom: true,
-                                        zoomin: true,
-                                        zoomout: true,
-                                        pan: true,
-                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        selection: false,
+                                        zoom: false,
+                                        zoomin: false,
+                                        zoomout: false,
+                                        pan: false,
+                                        reset: false | '<img src="/static/icons/reset.png" width="20">',
                                         customIcons: []
                                     },
                                     export: {
@@ -552,12 +550,12 @@ Footer end
                                     tools: {
                                         download: true,
 
-                                        selection: true,
-                                        zoom: true,
-                                        zoomin: true,
-                                        zoomout: true,
-                                        pan: true,
-                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        selection: false,
+                                        zoom: false,
+                                        zoomin: false,
+                                        zoomout: false,
+                                        pan: false,
+                                        reset: false | '<img src="/static/icons/reset.png" width="20">',
                                         customIcons: []
                                     },
                                     export: {
@@ -994,12 +992,12 @@ Footer end
                                     offsetY: 0,
                                     tools: {
                                         download: true,
-                                        selection: true,
-                                        zoom: true,
-                                        zoomin: true,
-                                        zoomout: true,
-                                        pan: true,
-                                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                                        selection: false,
+                                        zoom: false,
+                                        zoomin: false,
+                                        zoomout: false,
+                                        pan: false,
+                                        reset: false | '<img src="/static/icons/reset.png" width="20">',
                                         customIcons: []
                                     },
                                     export: {
@@ -1152,141 +1150,186 @@ Footer end
             };
 
             var salesChart1 = function() {
-                var options = {
-                    series: [{
-                        name: 'Net Profit',
-                        data: [100, 300, 200, 400, 100, 300, 100, 200, 100],
-                        //radius: 12,
-                    }, ],
-                    chart: {
-                        type: 'line',
-                        height: 380,
-                        toolbar: {
-                            show: false,
-                        },
-                    },
+                $.ajax({
+                    url: 'dataload3', // Đường dẫn đến servlet
+                    type: 'GET',
+                    success: function (response) {
+                        // Get the number of days in the current month
+                        var date = new Date();
+                        var daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-                    colors: ['var(--primary)'],
-                    dataLabels: {
-                        enabled: false,
-                    },
+                        // Generate an array of days for the current month
+                        var categories = [];
+                        for (var i = 1; i <= daysInMonth; i++) {
+                            categories.push(i.toString());
+                        }
 
-                    legend: {
-                        show: true,
-                    },
-                    stroke: {
-                        show: true,
-                        width: 6,
-                        curve: 'smooth',
-                        colors: ['var(--primary)'],
-                    },
-
-                    grid: {
-                        show: true,
-                        borderColor: '#C8C8C8',
-                        strokeDashArray: 4,
-                        padding: {
-                            top: 0,
-                            right: 0,
-                            bottom: 0,
-                            left: 0
-
-                        }
-                    },
-                    states: {
-                        normal: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        hover: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        active: {
-                            allowMultipleDataPointsSelection: false,
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        }
-                    },
-                    xaxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct','Nov','Dec'],
-                        axisBorder: {
-                            show: true,
-                        },
-                        axisTicks: {
-                            show: true
-                        },
-                        labels: {
-                            show: true,
-                            style: {
-                                fontSize: '14px',
-                                colors: '#a4a7ab',
-                            }
-                        },
-                        crosshairs: {
-                            show: false,
-                            position: 'front',
-                            stroke: {
-                                width: 1,
-                                dashArray: 3
-                            }
-                        },
-                        tooltip: {
-                            enabled: true,
-                            formatter: undefined,
-                            offsetY: 0,
-                            style: {
-                                fontSize: '12px',
-                            }
-                        }
-                    },
-                    yaxis: {
-                        show: true,
-                        labels: {
-                            offsetX: -10,
-                            formatter: function(value) {
-                                return value + "k";
-                            },
-                            style: {
-                                colors: '#a4a7ab',
-                                fontSize: '14px',
-                            },
-                        }
-                    },
-                    fill: {
-                        opacity: 1,
-                        colors: '#FB3E7A'
-                    },
-                    tooltip: {
-                        style: {
-                            fontSize: '12px',
-                        },
-                        y: {
-                            formatter: function(val) {
-                                return "k" + val + " thousands"
-                            }
-                        }
-                    },
-                    responsive: [{
-                        breakpoint: 575,
-                        options: {
+                        var options = {
+                            series: [{
+                                name: 'Net Profit',
+                                data: response.data,
+                                //radius: 12,
+                            }],
                             chart: {
-                                height: 250,
+                                type: 'line',
+                                height: 380,
+                                toolbar: {
+                                    show: true,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    tools: {
+                                        download: true,
+                                        selection: false,
+                                        zoom: false,
+                                        zoomin: false,
+                                        zoomout: false,
+                                        pan: false,
+                                        reset: false | '<img src="/static/icons/reset.png" width="20">',
+                                        customIcons: []
+                                    },
+                                    export: {
+                                        csv: {
+                                            filename: undefined,
+                                            columnDelimiter: ',',
+                                            headerCategory: 'categories',
+                                            headerValue: 'value',
+                                            categoryFormatter(x) {
+                                                return new Date(x).toDateString();
+                                            },
+                                            valueFormatter(y) {
+                                                return y;
+                                            }
+                                        },
+                                        svg: {
+                                            filename: undefined,
+                                        },
+                                        png: {
+                                            filename: undefined,
+                                        }
+                                    },
+                                    autoSelected: 'zoom'
+                                },
                             },
-                        },
-                    }]
-                };
+                            colors: ['var(--primary)'],
+                            dataLabels: {
+                                enabled: false,
+                            },
+                            legend: {
+                                show: true,
+                            },
+                            stroke: {
+                                show: true,
+                                width: 6,
+                                curve: 'smooth',
+                                colors: ['var(--primary)'],
+                            },
+                            grid: {
+                                show: true,
+                                borderColor: '#C8C8C8',
+                                strokeDashArray: 4,
+                                padding: {
+                                    top: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    left: 0
+                                }
+                            },
+                            states: {
+                                normal: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                hover: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                active: {
+                                    allowMultipleDataPointsSelection: false,
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                }
+                            },
+                            xaxis: {
+                                categories: categories,
+                                axisBorder: {
+                                    show: true,
+                                },
+                                axisTicks: {
+                                    show: true
+                                },
+                                labels: {
+                                    show: true,
+                                    style: {
+                                        fontSize: '14px',
+                                        colors: '#a4a7ab',
+                                    }
+                                },
+                                crosshairs: {
+                                    show: false,
+                                    position: 'front',
+                                    stroke: {
+                                        width: 1,
+                                        dashArray: 3
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    formatter: undefined,
+                                    offsetY: 0,
+                                    style: {
+                                        fontSize: '12px',
+                                    }
+                                }
+                            },
+                            yaxis: {
+                                show: true,
+                                labels: {
+                                    offsetX: -10,
+                                    formatter: function(value) {
+                                        return value + "k";
+                                    },
+                                    style: {
+                                        colors: '#a4a7ab',
+                                        fontSize: '14px',
+                                    },
+                                }
+                            },
+                            fill: {
+                                opacity: 1,
+                                colors: '#FB3E7A'
+                            },
+                            tooltip: {
+                                style: {
+                                    fontSize: '12px',
+                                },
+                                y: {
+                                    formatter: function(val) {
+                                        return "k" + val + " thousands";
+                                    }
+                                }
+                            },
+                            responsive: [{
+                                breakpoint: 575,
+                                options: {
+                                    chart: {
+                                        height: 250,
+                                    },
+                                },
+                            }]
+                        };
 
-                var chartBar1 = new ApexCharts(document.querySelector("#salesChart1"), options);
-                chartBar1.render();
-
+                        var chartBar1 = new ApexCharts(document.querySelector("#salesChart"), options);
+                        chartBar1.render();
+                    }
+                });
             }
+
             var salesChart2 = function() {
                 var options = {
                     series: [{
