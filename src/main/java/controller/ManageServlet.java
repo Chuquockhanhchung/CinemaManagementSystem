@@ -95,7 +95,7 @@ public class ManageServlet extends HttpServlet {
 
             // Gọi hàm countTicketbymonth và cập nhật giá trị vào mảng data
             data[month] = td.countTicketbymonth(monthStartDate, monthEndDate);
-            data2[month] = td.priceTicketbymonth(monthStartDate, monthEndDate);
+            data2[month] = td.priceTicketbymonth(monthStartDate,monthEndDate);
         }
         int change = 0;
         int fist=0;
@@ -115,8 +115,8 @@ public class ManageServlet extends HttpServlet {
             }
         }
         //Count number of ticket today
-        int tickettoday = td.countTicketbymonth(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()));
-        int tickettoday2= td.countTicketbymonth2(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()))*90;
+        int tickettoday = td.countTicketbymonth(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now().plusDays(1)));
+        int tickettoday2= td.countTicketbymonth2(Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now().plusDays(1)))*90;
         double perform=0;
         if (tickettoday2!=0){
             perform = tickettoday*100/tickettoday2;
@@ -129,8 +129,10 @@ public class ManageServlet extends HttpServlet {
         //Get number of event
         EventDAO ed= new EventDAO(DBContext.getConn());
         Date d = Date.valueOf(LocalDate.now());
-        int events= ed.countevented(d);
-        int event2= ed.countevented(Date.valueOf("2024-12-31"));
+        Date d2 = Date.valueOf(LocalDate.now().plusDays(1));
+        Date d3 = Date.valueOf(LocalDate.now().withDayOfMonth(1));
+        int events= ed.countevented(d,d2);
+        int event2= ed.countevented(d3,d2);
 
         HttpSession session = request.getSession();
         session.setAttribute("change1", change);

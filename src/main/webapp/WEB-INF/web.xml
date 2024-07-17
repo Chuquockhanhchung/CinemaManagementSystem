@@ -209,6 +209,10 @@
         <servlet-class>controller.LoadData2</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>LoadData3</servlet-name>
+        <servlet-class>controller.LoadData3</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EditProduct</servlet-name>
         <servlet-class>controller.EditProduct</servlet-class>
     </servlet>
@@ -286,6 +290,10 @@
     <servlet-mapping>
         <servlet-name>LoadData2</servlet-name>
         <url-pattern>/dataload2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadData3</servlet-name>
+        <url-pattern>/dataload3</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailFilmServlet</servlet-name>

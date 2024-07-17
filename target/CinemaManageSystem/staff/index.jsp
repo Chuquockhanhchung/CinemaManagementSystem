@@ -144,8 +144,8 @@
                 %>
                 <form action="../booking_movie2" method="post">
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Nhập email">
+                        <label for="phoneNumber">Số điện thoại:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại">
                         <button type="button" id="searchButton">Tìm kiếm</button>
                     </div>
                     <input type="text" value="<%= LastCID %>" hidden="">
@@ -154,8 +154,9 @@
                         <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên">
                     </div>
                     <div class="form-group">
-                        <label for="phoneNumber">Số điện thoại:</label>
-                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại">
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email">
                     </div>
                     <div class="form-group">
                         <label for="dob">Ngày tháng năm sinh:</label>
@@ -175,7 +176,7 @@
 
             // JavaScript to handle the search functionality
             document.getElementById('searchButton').addEventListener('click', function() {
-                var email = document.getElementById('email').value;
+                var email = document.getElementById('phoneNumber').value;
                 fetch('../check_email?email=' + encodeURIComponent(email))
                     .then(response => {
                         if (!response.ok) {

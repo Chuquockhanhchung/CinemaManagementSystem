@@ -45,7 +45,7 @@ public class CustomerDAO extends DBContext {
     public Customer getCustomerByEmail(String email) {
         String sql ="SELECT CustomerID, customer.AccountID, FullName, Email, PhoneNumber, Password, AccountType,Picture, DOB\n"
                 + "FROM customer\n"
-                + "JOIN account  ON customer.AccountID = account.AccountID where Email = ?";
+                + "JOIN account  ON customer.AccountID = account.AccountID where PhoneNumber = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
