@@ -205,7 +205,7 @@ public class TicketServlet extends HttpServlet {
 
                     session.setAttribute("seatC", selectedSeatsParam);
                     session.setAttribute("ticket", ticket);
-                    session.setAttribute("Combos",combos);
+                        session.setAttribute("Combos",combos);
                     session.setAttribute("seatID", realSeat);
 
                     response.sendRedirect("payment.jsp");

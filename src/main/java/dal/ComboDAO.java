@@ -68,6 +68,17 @@ public class ComboDAO extends DBContext  {
         return id;
 
     }
+    public void deleteCombo(int ticketID,int comboID){
+        String sql="DELETE FROM `cinemamanagersystem`.`ticket_has_combo` WHERE (`TicketID` = ?) and (`ComboID` = ?);";
+        try{
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setInt(1, ticketID);
+            ps.setInt(2, comboID);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
     public void addCombohasProduct(int a, int b){
         String sql ="insert into combo_has_product (ComboId, ProductId) values(?,?)";
