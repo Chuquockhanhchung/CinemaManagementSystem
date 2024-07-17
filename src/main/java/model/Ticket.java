@@ -27,7 +27,29 @@ public class Ticket {
     private String Image;
     private String ComboName;
     private String ComboDescription="";
+    private int ComboId;
+    private int amount;
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    public int getCombo(){
+        return ComboId;
+    }
+
+    public void setComboId(int comboId) {
+        ComboId = comboId;
+    }
+
+    public Ticket(int amount, int comboId, int ticketID) {
+        this.amount = amount;
+        ComboId = comboId;
+        TicketID = ticketID;
+    }
 
     public Ticket() {
         super();

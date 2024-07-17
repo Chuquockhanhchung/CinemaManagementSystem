@@ -84,7 +84,7 @@ public class SeatBookServlet extends HttpServlet {
         HttpSession session = request.getSession();
         try{
 
-            String seatID = request.getParameter("seatID");
+            String seatID = (String)session.getAttribute("seatID");
             String seatID2 = (String)session.getAttribute("seatC");
             MovieDAO md = new MovieDAO(DBContext.getConn());
             int romID = md.getRoomIDbyST(showtimeID);

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -96,17 +97,19 @@
 <div class="main">
     <h2>Bắp Nước</h2>
     <c:forEach items="${sessionScope.combos}" var="c">
-        <div class="combo" data-combo-id="${c.getId()}">
-            <img src="${c.getImg()}" alt="${c.getName()}">
-            <h3>${c.getName()}</h3>
-            <p>${c.getDescription()}</p>
-            <p class="price">Giá: ${c.getPrice()} ₫</p>
-            <div class="quantity">
-                <button onclick="updateQuantity(this, ${c.getAmount()})">-</button>
-                <input type="text" value="0" size="1" readonly>
-                <button onclick="updateQuantity(this, ${c.getAmount()})">+</button>
+        <c:if test="${c.getAmount()>0}">
+            <div class="combo" data-combo-id="${c.getId()}">
+                <img src="${c.getImg()}" alt="${c.getName()}">
+                <h3>${c.getName()}</h3>
+                <p>${c.getDescription()}</p>
+                <p class="price">Giá: ${c.getPrice()} ₫</p>
+                <div class="quantity">
+                    <button onclick="updateQuantity(this, ${c.getAmount()})">-</button>
+                    <input type="text" value="0" size="1" readonly>
+                    <button onclick="updateQuantity(this, ${c.getAmount()})">+</button>
+                </div>
             </div>
-        </div>
+        </c:if>
     </c:forEach>
 </div>
 <div class="footer">

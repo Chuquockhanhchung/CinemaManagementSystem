@@ -201,6 +201,8 @@ public class TicketServlet extends HttpServlet {
                             "",
                             seati
                     );
+
+
                     session.setAttribute("seatC", selectedSeatsParam);
                     session.setAttribute("ticket", ticket);
                     session.setAttribute("Combos",combos);

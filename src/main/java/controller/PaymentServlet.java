@@ -114,10 +114,16 @@ public class PaymentServlet extends HttpServlet {
 
             PaymentDAO dao = new PaymentDAO(DBContext.getConn());
             boolean f = dao.addTicket(ticket);
+            for(Combo combo : combos) {
+                d.addCombo(new Ticket(combo.getAmount(),combo.getId(),d.getIDnew()));
+            }
             ComboDAO cdao = new ComboDAO(DBContext.getConn());
-            Combo combonew = cdao.getComboByID(ticket.getComboId().get(0).getId());
-            combonew.setAmount(combonew.getAmount() - ticket.getComboId().get(0).getAmount());
-            cdao.chaneAmount(combonew);
+            for(Combo combo : combos) {
+                Combo combonew = cdao.getComboByID(combo.getId());
+                combonew.setAmount(combonew.getAmount() - combo.getAmount());
+                cdao.chaneAmount(combonew);
+            }
+
 
             if (f) {
                 session.setAttribute("succMess", "Payment successful!");
