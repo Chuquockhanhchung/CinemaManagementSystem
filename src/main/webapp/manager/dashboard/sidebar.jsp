@@ -46,7 +46,7 @@
 
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="fi fi-sr-clapperboard-play"></i>
-                <span class="nav-text">CMS<span class="badge badge-danger badge-xs ms-1"> QUẢN LÝ</span></span>
+                <span class="nav-text">QUẢN LÝ</span>
             </a>
                 <ul aria-expanded="false">
                     <li><a href="../CMS/movies.jsp">Danh Sách Phim</a></li>

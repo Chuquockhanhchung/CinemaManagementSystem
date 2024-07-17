@@ -76,7 +76,7 @@
 </div>
 
 <!-- st dtts section Start -->
-<form action="payment" method="post">
+<form action="payment" method="post" id="payment">
     <input type="text" value="${sessionScope.user.idCustomer}" name="idCustomer" hidden="">
     <input type="text" value="${sessionScope.time}" name="showtimeID" hidden="">
     <input type="text" id="randomBookingID" name="BookingID" readonly hidden="">
@@ -193,14 +193,14 @@
                                                             <%
                                                                 Event event = (Event) session.getAttribute("event");
                                                                 if (event != null) {
-                                                                    double comboprice =0;
-                                                                    ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
-                                                                    for (Combo combo:combos) {
+                                                                    double comboprice = 0;
+                                                                    ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
+                                                                    for (Combo combo : combos) {
                                                                         comboprice += combo.getPrice();
                                                                     }
                                                                     double discountRate = event.getDiscount();
                                                                     double discountedAmount = ticket.getTicketPrice() * discountRate;
-                                                                    double finalPrice = ticket.getTicketPrice()+comboprice - discountedAmount;
+                                                                    double finalPrice = ticket.getTicketPrice() + comboprice - discountedAmount;
 
                                                                     String formattedFinalPrice = currencyFormat.format(finalPrice);
                                                                     String QrPrice = currencyFormat.format(finalPrice).replace("₫", "");
@@ -412,9 +412,9 @@
                                                             </div>
                                                             <%
                                                             } else {
-                                                                double comboprice =0;
-                                                                ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
-                                                                for (Combo combo:combos) {
+                                                                double comboprice = 0;
+                                                                ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
+                                                                for (Combo combo : combos) {
                                                                     comboprice += combo.getPrice();
                                                                 }
                                                             %>
@@ -440,7 +440,7 @@
                                                                             <div class="row-payment color-primary align-items-center">
                                                                                 <div class="col h2">
                                                                                         <span id="totalAmountMb">
-                                                                                           <%= currencyFormat.format(ticket.getTicketPrice()+comboprice).replace("₫", "")%>
+                                                                                           <%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%>
                                                                                         </span><sup>VND</sup>
                                                                                 </div>
                                                                                 <div class="col-auto">
@@ -479,7 +479,7 @@
                                                                                             <div class="col-md-12 col">
                                                                                                 <div class="title text-left-md-right color-primary h2">
                                                                                                         <span id="totalAmountDt">
-                                                                                                                <%= currencyFormat.format(ticket.getTicketPrice()+comboprice).replace("₫", "")%>
+                                                                                                                <%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%>
                                                                                                         </span><sup>VND</sup>
                                                                                                 </div>
                                                                                             </div>
@@ -495,7 +495,7 @@
                                                                                             </div>
                                                                                             <div class="col-md-12 col">
                                                                                                 <div class="title text-left-md-right">
-                                                                                                    <%= currencyFormat.format(ticket.getTicketPrice()+comboprice).replace("₫", "")%>
+                                                                                                    <%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%>
                                                                                                     <sup>VND</sup>
                                                                                                 </div>
                                                                                             </div>
@@ -886,16 +886,15 @@
                                 </div>
                                 <%
                                     if (event != null) {
-                                        double comboprice =0;
-                                        ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
-                                        for (Combo combo:combos) {
+                                        double comboprice = 0;
+                                        ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
+                                        for (Combo combo : combos) {
                                             comboprice += combo.getPrice();
                                         }
                                         double discountRate = event.getDiscount();
                                         double discountedAmount = ticket.getTicketPrice() * discountRate;
 
-                                        double finalPrice = ticket.getTicketPrice()+comboprice-discountedAmount;
-
+                                        double finalPrice = ticket.getTicketPrice() + comboprice - discountedAmount;
 
 
                                         String formattedFinalPrice = currencyFormat.format(finalPrice);
@@ -931,8 +930,8 @@
                                 </div>
                                 <%
                                 } else {
-                                        double comboprice =0;
-                                    ArrayList<Combo> combos =(ArrayList<Combo>) session.getAttribute("Combos");
+                                    double comboprice = 0;
+                                    ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
                                 %>
                                 <div class="st_dtts_sb_ul float_left">
                                     <ul>
@@ -940,8 +939,8 @@
                                             <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "") %></span>
                                         </li>
                                         <%
-                                            for (Combo combo:combos) {
-                                                comboprice+=combo.getPrice();
+                                            for (Combo combo : combos) {
+                                                comboprice += combo.getPrice();
                                         %>
 
                                         <li><%= combo.getName() %>
@@ -949,7 +948,8 @@
                                         </li>
 
                                         <%
-                                            };
+                                            }
+                                            ;
                                         %>
                                         <%--                                    <li>Internet handling fees <span>Rs.70.80</span></li>--%>
                                     </ul>
@@ -958,11 +958,11 @@
                                 </div>
                                 <div class="st_dtts_sb_h2 float_left">
                                     <h3>Tổng
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice()+comboprice).replace("₫", "")%></span>
+                                        <span><%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%></span>
                                     </h3>
                                     <%--                                <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice()+comboprice).replace("₫", "")%></span>
+                                        <span><%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%></span>
                                     </h5>
                                     <input type="text" value="<%= customCurrency %>" name="ticketPrice" hidden="">
                                 </div>
@@ -1033,8 +1033,6 @@
         </div>
     </div>
     <!--main js file start-->
-
-
 </form>
 <script>
     function generateRandomString(length) {
@@ -1093,7 +1091,8 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Chuyển hướng trang sau khi nhấn OK
-                            document.querySelector('form').submit(); // Thay đổi đường dẫn tới trang mới
+                            // document.querySelector('form').submit();
+                            document.getElementById('payment').submit();
                         }
                     });
                 } else {

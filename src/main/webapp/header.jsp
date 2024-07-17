@@ -58,125 +58,129 @@
 
                                 </ul>
                             </li>
-<%--                            <li class="parent megamenu"><a href="#">Thước phim</a>--%>
-<%--                                <ul class="lg-submenu prs_navi_video_wrapper">--%>
-<%--                                    <li>--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp1.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp2.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp3.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp4.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp5.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li class="hidden-sm">--%>
-<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
-<%--                                            <img src="images/content/vp6.jpg" alt="video_img">--%>
-<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
-<%--                                                    class="test-popup-link button" rel='external'--%>
-<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
-<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                </ul>--%>
-<%--                            </li>--%>
-<%--                            <li class="parent"><a href="#">Trang</a>--%>
-<%--                                <ul class="lg-submenu">--%>
-<%--                                    <li class="parent"><a href="#">Tin tức</a>--%>
-<%--                                        <ul class="lg-submenu">--%>
-<%--                                            <li><a href="blog_category.jsp">Blog-Category</a>--%>
-<%--                                            </li>--%>
-<%--                                            <li><a href="blog_single.jsp">Blog-Single</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </li>--%>
-<%--                                    <li class="parent"><a href="#">Sự kiện</a>--%>
-<%--                                        <ul class="lg-submenu">--%>
-<%--                                            <li><a href="event_category.jsp">Loại sự kện</a>--%>
-<%--                                            </li>--%>
-<%--                                            <li><a href="event_single.jsp">Sự kiện đơn</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </li>--%>
-<%--                                    <li class="parent"><a href="#">Phim</a>--%>
-<%--                                        <ul class="lg-submenu">--%>
-<%--                                            <li><a href="movie_category.jsp">Thể loại phim</a>--%>
-<%--                                            </li>--%>
-<%--                                            <li><a href="movie_single.jsp">Phim đơn</a>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </li>--%>
-<%--                                    <li><a href="gallery.jsp">Phòng trưng bày</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li><a href="payment.jsp">Loại đăng kí</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li><a href="movie_booking.jsp">Đặt phim</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li><a href="seat_booking.jsp">Đặt chỗ</a>--%>
-<%--                                    </li>--%>
-<%--                                </ul>--%>
-<%--                            </li>--%>
+                            <%--                            <li class="parent megamenu"><a href="#">Thước phim</a>--%>
+                            <%--                                <ul class="lg-submenu prs_navi_video_wrapper">--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp1.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp2.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp3.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp4.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp5.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li class="hidden-sm">--%>
+                            <%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+                            <%--                                            <img src="images/content/vp6.jpg" alt="video_img">--%>
+                            <%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+                            <%--                                                    class="test-popup-link button" rel='external'--%>
+                            <%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+                            <%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+                            <%--                                            </div>--%>
+                            <%--                                        </div>--%>
+                            <%--                                    </li>--%>
+                            <%--                                </ul>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li class="parent"><a href="#">Trang</a>--%>
+                            <%--                                <ul class="lg-submenu">--%>
+                            <%--                                    <li class="parent"><a href="#">Tin tức</a>--%>
+                            <%--                                        <ul class="lg-submenu">--%>
+                            <%--                                            <li><a href="blog_category.jsp">Blog-Category</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                            <li><a href="blog_single.jsp">Blog-Single</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                        </ul>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li class="parent"><a href="#">Sự kiện</a>--%>
+                            <%--                                        <ul class="lg-submenu">--%>
+                            <%--                                            <li><a href="event_category.jsp">Loại sự kện</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                            <li><a href="event_single.jsp">Sự kiện đơn</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                        </ul>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li class="parent"><a href="#">Phim</a>--%>
+                            <%--                                        <ul class="lg-submenu">--%>
+                            <%--                                            <li><a href="movie_category.jsp">Thể loại phim</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                            <li><a href="movie_single.jsp">Phim đơn</a>--%>
+                            <%--                                            </li>--%>
+                            <%--                                        </ul>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li><a href="gallery.jsp">Phòng trưng bày</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li><a href="payment.jsp">Loại đăng kí</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li><a href="movie_booking.jsp">Đặt phim</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li><a href="seat_booking.jsp">Đặt chỗ</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                </ul>--%>
+                            <%--                            </li>--%>
                             <li class="parent"><a href="contact.jsp">Liên hệ</a>
                             </li>
                             <c:if test="${sessionScope.user != null}">
                                 <li>
-                                    <a style="text-decoration: none;color: white" href="user_information.jsp?CustomerID=${sessionScope.user.idCustomer}"><i
+                                    <a style="text-decoration: none;color: white"
+                                       href="user_information.jsp?CustomerID=${sessionScope.user.idCustomer}"><i
                                             class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
                                 </li>
                             </c:if>
                             <c:choose>
                                 <c:when test="${sessionScope.user.getRole() == 4}">
-                                    <li><a style="text-decoration: none; color: white" href="manager"><i style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Quản Lí</a></li>
+                                    <li><a style="text-decoration: none; color: white" href="manager"><i
+                                            style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Quản Lí</a>
+                                    </li>
                                 </c:when>
                                 <c:when test="${sessionScope.user.getRole() == 2}">
-                                    <li><a style="text-decoration: none; color: white" href="admin"><i style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Admin</a></li>
+                                    <li><a style="text-decoration: none; color: white" href="admin"><i
+                                            style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Admin</a>
+                                    </li>
                                 </c:when>
                             </c:choose>
-
                         </ul>
                     </div>
                     <!-- /dl-menuwrapper -->
@@ -287,7 +291,7 @@
                         <select>
                             <option>Tất cả danh mục</option>
                             <option>Phim</option>
-<%--                            <option>Thước phim</option>--%>
+                            <%--                            <option>Thước phim</option>--%>
                             <option>Nhạc</option>
                         </select>
                         <input type="text" placeholder="Search Movie , Video , Music">
@@ -528,7 +532,7 @@
                     <input type="text" placeholder="Họ Và Tên" name="name">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-                    <label>Họ Và Tên</label>
+                    <label>Ngày sinh</label>
                     <input type="date" placeholder="Ngày Sinh" name="DOB">
                 </div>
                 <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
