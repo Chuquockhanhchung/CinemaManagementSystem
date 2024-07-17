@@ -165,6 +165,7 @@ public class TicketDAO extends DBContext {
                 "JOIN (SELECT MIN(TicketID) AS TicketID FROM movieticket GROUP BY BookingID) sub ON t.TicketID = sub.TicketID " +
                 "WHERE t.CustomerID = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, CustomerID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ticket ticket = new Ticket();

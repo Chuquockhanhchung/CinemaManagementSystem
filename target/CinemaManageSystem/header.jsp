@@ -58,108 +58,108 @@
 
                                 </ul>
                             </li>
-                            <li class="parent megamenu"><a href="#">Thước phim</a>
-                                <ul class="lg-submenu prs_navi_video_wrapper">
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp1.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp2.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp3.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp4.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp5.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="hidden-sm">
-                                        <div class="prs_video_navi_img_main_wrapper">
-                                            <img src="images/content/vp6.jpg" alt="video_img">
-                                            <div class="prs_video_navi_overlay_wrapper"><a
-                                                    class="test-popup-link button" rel='external'
-                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'
-                                                    title='title'><i class="fi fi-rr-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#">Trang</a>
-                                <ul class="lg-submenu">
-                                    <li class="parent"><a href="#">Tin tức</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="blog_category.jsp">Blog-Category</a>
-                                            </li>
-                                            <li><a href="blog_single.jsp">Blog-Single</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent"><a href="#">Sự kiện</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="event_category.jsp">Loại sự kện</a>
-                                            </li>
-                                            <li><a href="event_single.jsp">Sự kiện đơn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent"><a href="#">Phim</a>
-                                        <ul class="lg-submenu">
-                                            <li><a href="movie_category.jsp">Thể loại phim</a>
-                                            </li>
-                                            <li><a href="movie_single.jsp">Phim đơn</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="gallery.jsp">Phòng trưng bày</a>
-                                    </li>
-                                    <li><a href="payment.jsp">Loại đăng kí</a>
-                                    </li>
-                                    <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>
-                                    </li>
-                                    <li><a href="movie_booking.jsp">Đặt phim</a>
-                                    </li>
-                                    <li><a href="seat_booking.jsp">Đặt chỗ</a>
-                                    </li>
-                                </ul>
-                            </li>
+<%--                            <li class="parent megamenu"><a href="#">Thước phim</a>--%>
+<%--                                <ul class="lg-submenu prs_navi_video_wrapper">--%>
+<%--                                    <li>--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp1.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp2.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp3.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp4.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp5.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                    <li class="hidden-sm">--%>
+<%--                                        <div class="prs_video_navi_img_main_wrapper">--%>
+<%--                                            <img src="images/content/vp6.jpg" alt="video_img">--%>
+<%--                                            <div class="prs_video_navi_overlay_wrapper"><a--%>
+<%--                                                    class="test-popup-link button" rel='external'--%>
+<%--                                                    href='https://www.youtube.com/embed/ryzOXAO0Ss0'--%>
+<%--                                                    title='title'><i class="fi fi-rr-play"></i></a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </li>--%>
+<%--                                </ul>--%>
+<%--                            </li>--%>
+<%--                            <li class="parent"><a href="#">Trang</a>--%>
+<%--                                <ul class="lg-submenu">--%>
+<%--                                    <li class="parent"><a href="#">Tin tức</a>--%>
+<%--                                        <ul class="lg-submenu">--%>
+<%--                                            <li><a href="blog_category.jsp">Blog-Category</a>--%>
+<%--                                            </li>--%>
+<%--                                            <li><a href="blog_single.jsp">Blog-Single</a>--%>
+<%--                                            </li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
+<%--                                    <li class="parent"><a href="#">Sự kiện</a>--%>
+<%--                                        <ul class="lg-submenu">--%>
+<%--                                            <li><a href="event_category.jsp">Loại sự kện</a>--%>
+<%--                                            </li>--%>
+<%--                                            <li><a href="event_single.jsp">Sự kiện đơn</a>--%>
+<%--                                            </li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
+<%--                                    <li class="parent"><a href="#">Phim</a>--%>
+<%--                                        <ul class="lg-submenu">--%>
+<%--                                            <li><a href="movie_category.jsp">Thể loại phim</a>--%>
+<%--                                            </li>--%>
+<%--                                            <li><a href="movie_single.jsp">Phim đơn</a>--%>
+<%--                                            </li>--%>
+<%--                                        </ul>--%>
+<%--                                    </li>--%>
+<%--                                    <li><a href="gallery.jsp">Phòng trưng bày</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li><a href="payment.jsp">Loại đăng kí</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li><a href="confirmation_screen.jsp">Màn hình xác nhận</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li><a href="movie_booking.jsp">Đặt phim</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li><a href="seat_booking.jsp">Đặt chỗ</a>--%>
+<%--                                    </li>--%>
+<%--                                </ul>--%>
+<%--                            </li>--%>
                             <li class="parent"><a href="contact.jsp">Liên hệ</a>
                             </li>
                             <c:if test="${sessionScope.user != null}">
@@ -168,6 +168,14 @@
                                             class="fa-solid fa-user"></i> ${sessionScope.user.name}</a>
                                 </li>
                             </c:if>
+                            <c:choose>
+                                <c:when test="${sessionScope.user.getRole() == 4}">
+                                    <li><a style="text-decoration: none; color: white" href="manager"><i style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Quản Lí</a></li>
+                                </c:when>
+                                <c:when test="${sessionScope.user.getRole() == 2}">
+                                    <li><a style="text-decoration: none; color: white" href="admin"><i style="margin-right: 5px" class="fa-solid fa-house"></i> Trang Admin</a></li>
+                                </c:when>
+                            </c:choose>
 
                         </ul>
                     </div>
@@ -279,7 +287,7 @@
                         <select>
                             <option>Tất cả danh mục</option>
                             <option>Phim</option>
-                            <option>Thước phim</option>
+<%--                            <option>Thước phim</option>--%>
                             <option>Nhạc</option>
                         </select>
                         <input type="text" placeholder="Search Movie , Video , Music">
@@ -322,6 +330,367 @@
         </div>
     </div>
 </div>
+
+<!-- Form Login -->
+<form action="login" method="post" id="form">
+    <div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="st_pop_form_heading_wrapper float_left">
+                    <h3>Đăng Nhập</h3>
+                </div>
+                <c:if test="${not empty err}">
+                    <div class="text-danger">${err}.</div>
+                    <c:remove var="failMess" scope="session"/>
+                </c:if>
+                <div class="st_profile_input float_left">
+                    <label>Email / Số điện thoại</label>
+                    <input value="${requestScope.email}" name="email" type="text" placeholder="Email / Số điện thoại">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Mật khẩu</label>
+                    <input value="${requestScope.pass}" name="pass" type="password" placeholder="Mật khẩu">
+                </div>
+
+                <div class="st_form_pop_fp float_left">
+                    <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Bạn quên mật khẩu?</a>
+                    </h3>
+                </div>
+                <div class="g-recaptcha float_left" data-sitekey="6LclJOUpAAAAABir2gwq1sKVfC1zD_Gygchg7m-g"></div>
+                <div id="error"></div>
+
+                <div class="st_form_pop_login_btn float_left">
+                    <input type="submit" value="ĐĂNG NHẬP"/>
+                </div>
+                <div class="st_form_pop_or_btn float_left">
+                    <h4>Hoặc</h4>
+                </div>
+                <div class="click st_form_pop_gmail_btn float_left">
+                    <a href="https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force"
+                       class="link">
+                        <img src="images/content/google.png" alt=""> Đăng nhập bằng Google</a>
+                </div>
+                <div class="st_form_pop_signin_btn float_left">
+                    <h4>Bạn chưa có tài khoản? <a href="#" data-toggle="modal" data-target="#myModa3"
+                                                  target="_blank">Đăng Ký</a></h4>
+                    <h5>Tôi đồng ý với <a href="#">Điều khoản & Dịch vụ</a> & <a href="#">của chúnng tôi</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('#form');
+        const emailInput = form.querySelector('input[name="email"]');
+        const passwordInput = form.querySelector('input[name="pass"]');
+        const errorDiv = document.getElementById("error");
+
+        // Retrieve the existing emails and passwords from JSTL
+        const existingAccounts = [
+            <%-- Server-side rendering of existing emails and passwords --%>
+            <c:forEach var="account" items="${listAcc}" varStatus="status">
+            {
+                email: "${account.getEmail().toLowerCase()}",
+                password: "${account.getPassword()}",
+                status: "${account.getStatus()}"// Assuming passwords are stored this way
+            }<c:if test="${!status.last}">, </c:if>
+            </c:forEach>
+        ];
+
+        console.log("Existing Accounts:", existingAccounts);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+            const response = grecaptcha.getResponse();
+            if (!response) {
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+                return;
+            }
+            // Perform client-side validation
+            if (!email) {
+                alert('Email không được để trống.');
+                return;
+            }
+
+            if (!password) {
+                alert('Mật khẩu không được để trống.');
+                return;
+            }
+
+            // Check if the email exists and the password is correct
+            const account = existingAccounts.find(acc => acc.email === email);
+            if (!account) {
+                alert('Email không tồn tại. Vui lòng sử dụng một email khác.');
+                return;
+            }
+            if (account.status === "unactive") {
+                alert('Tài khoản chưa được kích hoạt!');
+                return;
+            }
+            if (account.password !== password) {
+                alert('Sai mật khẩu. Vui lòng nhập lại mật khẩu.');
+                return;
+            }
+
+            // Perform reCAPTCHA validation
+
+
+            console.log("Email and password validation passed. Submitting form...");
+            // If all validations pass, submit the form
+            form.submit();
+        });
+
+        document.querySelector('.click').addEventListener('click', (e) => {
+            const response = grecaptcha.getResponse();
+            if (!response) {
+                e.preventDefault();
+                errorDiv.innerHTML = "Please check reCAPTCHA!";
+            } else {
+                window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+            }
+        });
+    });
+</script>
+
+<!-- Form Forgot Password -->
+<div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="st_pop_form_heading_wrapper float_left">
+                <h3>QUÊN MẬT KHẨU</h3>
+            </div>
+            <c:if test="${not empty err}">
+                <div class="text-danger">${err}.</div>
+                <c:remove var="failMess" scope="session"/>
+            </c:if>
+            <div class="st_profile_input float_left">
+                <label>Địa chỉ Email</label>
+                <input id="emailInput" name="email" type="text">
+            </div>
+            <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href="" id="verifyButton">Xác
+                Nhận</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#verifyButton').on('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+            var email = $('#emailInput').val(); // Lấy giá trị từ input
+
+            if (email) {
+                $.ajax({
+                    url: 'sendEmail',
+                    method: 'POST',
+                    data: {email: email},
+                    success: function (response) {
+                        alert("View your email to verify");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("An error occurred: " + xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Please enter your email address.");
+            }
+        });
+    });
+</script>
+<!-- Form Sign Up -->
+<form action="signup" method="post" onsubmit="return validateForm()" id="formSignUp">
+    <div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="st_pop_form_heading_wrapper float_left">
+                    <h3>Đăng Ký</h3>
+                </div>
+                <div class="st_profile_input float_left">
+                    <label>Địa Chỉ Email</label>
+                    <input type="text" id="emailInput2" name="email" placeholder="example@gmail.com">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Số Điện Thoại</label>
+                    <input type="text" placeholder="Số Điện Thoại" name="phone">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Họ Và Tên</label>
+                    <input type="text" placeholder="Họ Và Tên" name="name">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Họ Và Tên</label>
+                    <input type="date" placeholder="Ngày Sinh" name="DOB">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Mật Khẩu</label>
+                    <input type="password" placeholder="Mật Khẩu" name="pass1">
+                </div>
+                <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                    <label>Xác Nhận Mật Khẩu</label>
+                    <input type="password" placeholder="Xác Nhận Mật Khẩu" name="pass2">
+                </div>
+                <div class="st_form_pop_login_btn float_left">
+                    <input type="submit" value="Đăng Ký">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('#formSignUp');
+            const emailInput = form.querySelector('input[name="email"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const errorDiv = document.getElementById("error");
+
+            // Retrieve the existing emails and passwords from JSTL
+            const existingAccounts = [
+                <%-- Server-side rendering of existing emails and passwords --%>
+                <c:forEach var="customer" items="${listCus}" varStatus="status">
+                {
+                    email: "${customer.getEmail().toLowerCase()}",
+                    phone: "${customer.getPhone()}",
+
+                }<c:if test="${!status.last}">, </c:if>
+                </c:forEach>
+            ];
+
+            console.log("Existing Accounts:", existingAccounts);
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the default form submission
+
+                const email = emailInput.value.trim().toLowerCase();
+                const phone = phoneInput.value;
+
+                // Perform client-side validation
+
+
+                // Check if the email exists and the password is correct
+                const account = existingAccounts.find(acc => acc.email === email);
+                if (account) {
+                    alert('Email đã tồn tại. Vui lòng sử dụng một email khác.');
+                    return;
+                }
+                const phones = existingAccounts.find(acc => acc.phone === phone);
+                if (phones) {
+                    alert('Số điện thoại đã tồn tại. Vui lòng sử dụng một số khác.');
+                    return;
+                }
+
+
+                console.log("Email and password validation passed. Submitting form...");
+                // If all validations pass, submit the form
+                form.submit();
+            });
+
+            document.querySelector('.click').addEventListener('click', (e) => {
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    e.preventDefault();
+                    errorDiv.innerHTML = "Please check reCAPTCHA!";
+                } else {
+                    window.location.href = 'https://accounts.google.com/o/oauth2/auth?&scope=email+profile&redirect_uri=http://localhost:9999/CinemaManageSystem/loginbygoogle&response_type=code&client_id=962105997781-r3en06a8vrbe2ecetg9jdjadomka2ei4.apps.googleusercontent.com&approval_prompt=force';
+                }
+            });
+        });
+    </script>
+
+
+    <!-- Form Forgot Password -->
+    <div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
+                    <h3>Quên Mật Khẩu</h3>
+                    <p>Chúng tôi sẽ giúp bạn! Tất cả những gì bạn phải làm là nhập địa chỉ Email và làm theo hướng
+                        dẫn</p>
+                </div>
+                <div class="st_profile_input float_left">
+                    <label>Địa Chỉ Email</label>
+                    <input id="emailInput" name="email" type="text">
+                </div>
+                <div class="send st_form_pop_fpass_btn float_left" data-target="#verifyButton"><a href=""
+                                                                                                  id="verifyButton">Xác
+                    Nhận</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+<% if ("true".equals(request.getParameter("success"))) { %>
+<script>
+    alert("Đã gửi email xác thực tài khoản");
+</script>
+<% } %>
+<script>
+    function validateForm() {
+        // Get form elements
+        const email = document.getElementById('emailInput2').value;
+        const phone = document.querySelector('input[name="phone"]').value;
+        const name = document.querySelector('input[name="name"]').value;
+        const pass1 = document.querySelector('input[name="pass1"]').value;
+        const pass2 = document.querySelector('input[name="pass2"]').value;
+
+        // Email regex pattern
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        // Phone regex pattern (assuming it should be 10-15 digits)
+        const phonePattern = /^\d{10}$/;
+        const passPattern = /^\d{6}$/;
+
+        // Validate email
+        if (!emailPattern.test(email)) {
+            alert("Hãy nhập địa chỉ email của bạn");
+            return false;
+        }
+
+        // Validate phone
+        if (!phonePattern.test(phone)) {
+            alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
+            return false;
+        }
+        if (!passPattern.test(pass1)) {
+            alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
+            return false;
+        }
+
+        // Validate name
+        if (name.trim() === "") {
+            alert("Hãy nhập tên.");
+            return false;
+        }
+
+        // Validate passwords
+        if (pass1 === "" || pass2 === "") {
+            alert("Hãy nhập mật khẩu.");
+            return false;
+        }
+
+        if (pass1 !== pass2) {
+            alert("Mật khẩu không trùng khớp.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
 <script src="js/jquery.nice-select.min.js"></script>
 
 </body>

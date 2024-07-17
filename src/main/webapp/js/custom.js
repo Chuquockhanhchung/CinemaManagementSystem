@@ -543,6 +543,32 @@ nice Select active
             })
         })
 
+        $(document).ready(function() {
+            $('.st_md_actor_slider .owl-carousel').owlCarousel({
+                loop: false,
+                margin: 10,
+                autoplay: false,
+                responsiveClass: false,
+                smartSpeed: 1200,
+                navText: ['<i class="fi fi-br-arrow-left" aria-hidden="true"></i>', '<i class="fi fi-br-arrow-right" aria-hidden="true"></i>'],
+                responsive: {
+                    0: {
+                        items: 2,
+                        nav: false
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 4,
+                        nav: false,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
 
         $(".album-slider").bxSlider({
             minSlides: 1,

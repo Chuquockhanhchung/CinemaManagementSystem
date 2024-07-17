@@ -437,7 +437,15 @@
         <servlet-name>ProductServlet</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>fillterByMovieType</servlet-name>
+        <servlet-class>controller.fillterByMovieType</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>fillterByMovieType</servlet-name>
+        <url-pattern>/filterByTypeMovie</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddEventServlet</servlet-name>
         <url-pattern>/addevent</url-pattern>

@@ -90,7 +90,13 @@ public class PaymentDAO {
                 ps.setString(3, seatID);
                 ps.setString(4, ticket.getBookingID());
                 ps.setFloat(5, ticket.getTicketPrice());
-                ps.setInt(6, ticket.getComboId().get(0).getId());
+                // Check if the ComboId list is not empty before accessing it
+                if (ticket.getComboId() != null && !ticket.getComboId().isEmpty()) {
+                    ps.setInt(6, ticket.getComboId().get(0).getId());
+                } else {
+                    // Handle the case where ComboId is empty or null
+                    ps.setNull(6, java.sql.Types.INTEGER);
+                }
 
                 int i = ps.executeUpdate();
                 if (i == 1) {

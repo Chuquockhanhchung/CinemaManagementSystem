@@ -15,7 +15,7 @@
 
 <head>
     <!-- Title -->
-    <title>Ventic - CodeIgniter Event Ticketing Admin Dashboard Template</title>
+    <title>Danh sách vé đã đặt | Quản Lý</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,8 +85,8 @@ Content body start
         <div class="container-fluid">
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Order List</a></li>
+                    <li class="breadcrumb-item"><a href="../index.jsp">Bảng Điều Khiển</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Danh Sách Vé Đã Đặt</a></li>
                 </ol>
             </div>
             <div class="form-head mb-4 d-flex flex-wrap align-items-center">

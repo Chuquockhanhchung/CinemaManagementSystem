@@ -61,13 +61,32 @@ button {
     border: none; /* Không có đường viền */
     border-radius: 5px; /* Làm tròn góc cho button */
 }
-
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    color: white;
+    text-decoration: none;
+}
 button:hover {
-    background-color: #0056b3; /* Màu nền của button khi di chuột qua */
+    background-color: #ff4444; /* Màu nền của button khi di chuột qua */
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: Geneva, Tahoma, Verdana, sans-serif !important;
 }
+
+.tab-content .st_md_actor_slider .title {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+    letter-spacing: 0.86px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.tab-content .st_md_actor_slider .detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .comment {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
@@ -217,7 +236,6 @@ textarea {
 
 img {
     border-radius: 8px;
-    margin-right: 20px;
 }
 
 .content {
@@ -272,12 +290,12 @@ textarea {
     margin-right: 10px;
 }
 .btn-primary2 {
-    background-color: #e50914; /* Bright red for buttons */
+    background-color: #ff4444; /* Bright red for buttons */
     border: none;
-    padding: 15px 30px; /* Increase padding for a larger button */
+    padding: 10px; /* Increase padding for a larger button */
     font-size: 1.25em; /* Increase font size */
     border-radius: 8px; /* Rounded corners */
-    font-weight: bold; /* Make the text bold */
+    /*font-weight: bold; */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 

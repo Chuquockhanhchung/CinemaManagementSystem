@@ -103,7 +103,7 @@
                 <div class="profile-image">
                     <input type="file" class="form-control-file" id="profile-pic" name="profile-pic"
                            onchange="previewImage(event)">
-                    <img id="profile-pic-preview" src="<%= cus.getPicture() %>>" alt="Profile Picture" class="mt-2"
+                    <img id="profile-pic-preview" src="images/content/about/<%= cus.getPicture() %>>" alt="Profile Picture" class="mt-2"
                          style="width: 100px; height: 100px;">
                 </div>
                 <div class="form-group">

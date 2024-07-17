@@ -19,7 +19,7 @@
 	14. FOOTER
 
 ---------------------------------------*/
-
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 /*--------------
 1.Theme default CSS
 --------------------------*/
@@ -51,7 +51,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 a {
-    color: #797979;
+    color: black;
     text-decoration: none;
 }
 
@@ -1842,7 +1842,7 @@ body.active #mobile-nav {
 .prs_upcom_slider_main_wrapper {
     float: left;
     width: 100%;
-    padding-top: 95px;
+    padding-top: 50px;
     padding-bottom: 94px;
     background: #f6f6f6;
 }
@@ -2994,6 +2994,7 @@ body.active #mobile-nav {
     background: #f6f6f6;
     padding-top: 60px;
     /*padding-bottom: 90px;*/
+    margin-left: -160px;
 }
 
 .prs_feature_slider_wrapper {
@@ -8730,14 +8731,19 @@ body.active #mobile-nav {
     margin-top: 50px;
 }
 
+.st_slider_rating_main_wrapper .container {
+    display: flex;
+
+}
+
 .st_slider_rating_left {
     float: left;
-    width: 50%;
+    width: 240px;
 }
 
 .st_slider_rating_right {
-    float: left;
-    width: 50%;
+    /*float: left;*/
+    /*width: 50%;*/
 }
 
 .st_rating_box {
@@ -8858,19 +8864,18 @@ body.active #mobile-nav {
 }
 
 .st_md_summ_pera h5 {
-    font-family: 'Lato', sans-serif;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.87);
     letter-spacing: 0.86px;
     text-transform: uppercase;
     font-weight: 700;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
 }
 
 .st_md_summ_pera p {
     font-size: 16px;
     color: rgba(0, 0, 0, 0.54);
-    padding-top: 25px;
+    padding: 25px 0 25px 0;
 }
 
 .st_md_summ_client_slider .owl-theme .owl-dots {
@@ -10164,7 +10169,7 @@ i:before {
     border-radius: 5px;
     text-transform: uppercase;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgb(255 255 255 / 0.8);
     letter-spacing: 1px;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -10189,7 +10194,7 @@ i:before {
 
 .st_bt_top_center_heading h3 {
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.8);
     letter-spacing: 0.62px;
     text-transform: uppercase;
     padding-top: 6px;
@@ -10209,7 +10214,7 @@ i:before {
 
 .st_bt_top_center_heading h4 {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.8);
     letter-spacing: 0.44px;
     text-transform: uppercase;
     padding-top: 10px;
@@ -10288,6 +10293,7 @@ i:before {
     padding-top: 40px;
     padding-bottom: 100px;
     background: #333545;
+    height: 81%;
 }
 
 .st_seat_lay_heading h3 {
@@ -10316,7 +10322,7 @@ i:before {
     color: rgba(255, 255, 255, 0.38);
     letter-spacing: 1.14px;
     text-transform: uppercase;
-    z-index: 100;
+    z-index: 1;
     background: #333545;
     display: inline-block;
     padding: 15px 40px;
@@ -10350,7 +10356,7 @@ i:before {
     line-height: 25px;
     margin: 0.2em 0.56em .0 .0;
     padding: 0;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.8);
     vertical-align: top;
     width: 40px;
     border-radius: 5px;
@@ -10368,7 +10374,7 @@ i:before {
     line-height: 25px;
     margin: 0.2em 0.56em .0 .0;
     padding: 0;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.8);
     vertical-align: top;
     width: 30px;
     border-bottom-left-radius: 5px;
@@ -10399,6 +10405,7 @@ i:before {
 
 .seat_disable input[type="checkbox"] + label:before {
     background: #4d4f5c;
+    color: rgba(255, 255, 255, 0.38);
 }
 
 .seat_disable input[type="checkbox"] + label:after {
@@ -10457,6 +10464,7 @@ i:before {
 }
 
 .st_seat_lay_row li {
+    color: rgba(255, 255, 255, 0.8);
     float: left;
     margin-right: 50px;
     margin-top: 40px;
@@ -10710,7 +10718,7 @@ i:before {
 
 .st_bt_top_center_heading h3 {
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.8);
     letter-spacing: 0.62px;
     text-transform: uppercase;
     padding-top: 6px;
