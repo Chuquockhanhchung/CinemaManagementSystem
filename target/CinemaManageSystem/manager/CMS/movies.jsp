@@ -112,8 +112,8 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Movies</a></li>
+                    <li class="breadcrumb-item"><a href="manager">Quản Lý</a></li>
+                    <li class="breadcrumb-item active"><a href="manageMovie">Movies</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -142,6 +142,7 @@ Content body start
                                             <th class="text-black">M.No</th>
                                             <th class="text-black">Tên Phim</th>
                                             <th class="text-black">Ảnh Phim</th>
+                                            <th class="text-black">Gía vé</th>
                                             <th class="text-black">Trạng Thái</th>
                                             <th class="text-black">Ngày Đăng</th>
                                             <th class="text-black text-end">Hành Động</th>
@@ -153,6 +154,7 @@ Content body start
                                                 <td>${m.getId()}</td>
                                                 <td>${m.getName()}</td>
                                                 <td><img width="100" height="100" src=${m.getImage()}  /></td>
+                                                <td>${m.getPrice()}</td>
                                                 <td>${m.getStatus()}</td>
                                                 <td>${m.getReleaseDate()}</td>
                                                 <td class="text-end">

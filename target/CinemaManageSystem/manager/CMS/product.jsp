@@ -96,7 +96,7 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="manager">Quản Lý</a></li>
                     <li class="breadcrumb-item active"><a href="product">Sản phẩm</a></li>
                 </ol>
             </div>
@@ -106,7 +106,7 @@ Content body start
 
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="../../addproduct" class="btn btn-primary ">Thêm sản phẩm mới</a></li>
+                            <li><a href="addproduct" class="btn btn-primary ">Thêm sản phẩm mới</a></li>
                         </ul>
                     </div>
                     <div class="filter cm-content-box box-primary">

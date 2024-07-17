@@ -91,7 +91,7 @@ Content body start
     <div class="container-fluid">
       <div class="page-titles">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+          <li class="breadcrumb-item"><a href="manager">Quản Lý</a></li>
           <li class="breadcrumb-item active"><a href="combo">Danh sách combo</a></li>
           <li class="breadcrumb-item active"><a href="addCombo">Thêm combo</a></li>
         </ol>

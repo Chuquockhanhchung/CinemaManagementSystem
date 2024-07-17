@@ -91,7 +91,7 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="manager">Quản Lý</a></li>
                     <li class="breadcrumb-item active"><a href="addmovie">Thêm phim mới</a></li>
                 </ol>
             </div>
@@ -191,7 +191,7 @@ Content body start
                                                     <div class="card-body">
                                                         <label class="form-label">Tên Diễn viên</label>
                                                         <input type="text" value="${i.getName()}" name="act"
-                                                               class="form-control mb-3" placeholder="Tên phim">
+                                                               class="form-control mb-3" placeholder="Tên Diễn viên">
 
                                                     </div>
 
@@ -226,7 +226,7 @@ Content body start
 
 
                                     <div>
-                                        <button type="button" class="btn btn-primary" id="addInputBtn">+ Diễn Viên
+                                        <button type="button" class="btn btn-primary" id="addInputBtn">Thêm Diễn Viên
                                         </button>
 
                                     </div>
