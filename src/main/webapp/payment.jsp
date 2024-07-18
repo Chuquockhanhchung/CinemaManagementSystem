@@ -940,11 +940,11 @@
                                         </li>
                                         <%
                                             for (Combo combo : combos) {
-                                                comboprice += combo.getPrice();
+                                                comboprice += combo.getPrice()*combo.getAmount();
                                         %>
 
                                         <li><%= combo.getName() %>
-                                            <span><%= combo.getPrice()%></span>
+                                            <span><%= combo.getPrice()*combo.getAmount()%></span>
                                         </li>
 
                                         <%

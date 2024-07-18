@@ -227,7 +227,7 @@ public class TicketDAO extends DBContext {
                 ticket.setImage(rs.getString("Image"));
                 ticket.setBookingID(rs.getString("BookingID"));
                 ticket.setSeatID(rs.getString("SeatID"));
-                ticket.setComboDescription(cd.getComboByID(rs.getInt("ComboID")).getName());
+                ticket.setComboId(cd.getComboByTicketID(rs.getInt("TicketID")));
                 list.add(ticket);
             }
         } catch (Exception e) {
@@ -266,7 +266,31 @@ public class TicketDAO extends DBContext {
         }
         return count;
     }
-
+    public void addCombo(Ticket t){
+        String sql = "INSERT INTO `cinemamanagersystem`.`ticket_has_combo` (`TicketID`, `ComboID`, `Amount`) VALUES (?, ?, ?);";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, t.getTicketID());
+            ps.setInt(2, t.getCombo());
+            ps.setInt(3, t.getAmount());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public int getIDnew(){
+        String sql ="SELECT max(TicketID) as max FROM cinemamanagersystem.movieticket;";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return rs.getInt("max");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public boolean holdTicket(Seat seat) {
         boolean f = false;
         try {
@@ -373,9 +397,6 @@ public class TicketDAO extends DBContext {
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        int[] y = dal.getYear();
-        for (int i = 0; i < y.length; i++) {
-            System.out.println(y[i]+" ");
-        }
+        System.out.println(dal.getIDnew());
     }
 }

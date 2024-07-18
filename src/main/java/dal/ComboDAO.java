@@ -68,6 +68,17 @@ public class ComboDAO extends DBContext  {
         return id;
 
     }
+    public void deleteCombo(int ticketID,int comboID){
+        String sql="DELETE FROM `cinemamanagersystem`.`ticket_has_combo` WHERE (`TicketID` = ?) and (`ComboID` = ?);";
+        try{
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setInt(1, ticketID);
+            ps.setInt(2, comboID);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
     public void addCombohasProduct(int a, int b){
         String sql ="insert into combo_has_product (ComboId, ProductId) values(?,?)";
@@ -118,6 +129,30 @@ public class ComboDAO extends DBContext  {
             e.printStackTrace();
         }
     }
+    public ArrayList<Combo> getComboByTicketID(int ticketID){
+        String sql = "SELECT * FROM ticket_has_combo tc join combo mt on tc.ComboID=mt.ComboID WHERE tc.TicketID=?";
+        ArrayList<Combo> combos = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ticketID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Combo combo = new Combo();
+                combo.setId(rs.getInt(2));
+                combo.setName(rs.getString(5));
+                combo.setDescription(rs.getString(6));
+                combo.setPrice(rs.getFloat(8));
+                combo.setImg(rs.getString(7));
+                combo.setAmount(rs.getInt(3));
+                combos.add(combo);
+            }
+            return combos;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
     public void chaneAmount(Combo c){
         String sql = "update combo set Amount=?  where ComboId =?";
         try {
@@ -146,6 +181,7 @@ public class ComboDAO extends DBContext  {
                 combo.setDescription(rs.getString(3));
                 combo.setPrice(rs.getFloat(5));
                 combo.setImg(rs.getString(4));
+                combo.setAmount(rs.getInt(6));
 
             }
 

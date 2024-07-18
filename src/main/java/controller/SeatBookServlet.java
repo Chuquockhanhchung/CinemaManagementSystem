@@ -84,8 +84,17 @@ public class SeatBookServlet extends HttpServlet {
         HttpSession session = request.getSession();
         try{
 
-            String seatID = request.getParameter("seatID");
+            String seatID = (String)session.getAttribute("seatID");
             String seatID2 = (String)session.getAttribute("seatC");
+            if(session.getAttribute("Combos")!=null){
+                ArrayList<Combo> combos = (ArrayList<Combo>)session.getAttribute("Combos");
+                ComboDAO cdao = new ComboDAO(DBContext.getConn());
+                for(Combo combo : combos){
+                    Combo combonew = cdao.getComboByID(combo.getId());
+                    combonew.setAmount(combonew.getAmount() + combo.getAmount());
+                    cdao.chaneAmount(combonew);
+                }
+            }
             MovieDAO md = new MovieDAO(DBContext.getConn());
             int romID = md.getRoomIDbyST(showtimeID);
 

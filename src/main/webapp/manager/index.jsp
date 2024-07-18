@@ -283,12 +283,12 @@ Sidebar end
                                     <div class="card-action coin-tabs">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab" href="#Daily1">
+                                                <a class="nav-link " data-bs-toggle="tab" href="#Daily1">
                                                 Ngày
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link " data-bs-toggle="tab" href="#Monthly1">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#Monthly1">
                                                     Tháng
                                                 </a>
                                             </li>
@@ -1151,6 +1151,193 @@ Footer end
 
             var salesChart1 = function() {
                 $.ajax({
+                    url: 'dataload4', // Đường dẫn đến servlet
+                    type: 'GET',
+                    success: function (response) {
+                        // Get the current date
+                        var date = new Date();
+
+                        // Generate an array of the last 4 weeks
+                        var categories = [];
+                        for (var i = 3; i >=0 ; i--) {
+                            var endOfWeek = new Date(date);
+                            endOfWeek.setDate(date.getDate() - date.getDay() + (7 * (i + 1)));
+                            var startOfWeek = new Date(endOfWeek);
+                            startOfWeek.setDate(startOfWeek.getDate() - 6);
+                            var weekString = startOfWeek.toLocaleDateString() + " - " + endOfWeek.toLocaleDateString();
+                            categories.unshift(weekString);
+                        }
+
+                        var options = {
+                            series: [{
+                                name: 'Net Profit',
+                                data: response.data,
+                                //radius: 12,
+                            }],
+                            chart: {
+                                type: 'line',
+                                height: 380,
+                                toolbar: {
+                                    show: true,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    tools: {
+                                        download: true,
+                                        selection: false,
+                                        zoom: false,
+                                        zoomin: false,
+                                        zoomout: false,
+                                        pan: false,
+                                        reset: false | '<img src="/static/icons/reset.png" width="20">',
+                                        customIcons: []
+                                    },
+                                    export: {
+                                        csv: {
+                                            filename: undefined,
+                                            columnDelimiter: ',',
+                                            headerCategory: 'categories',
+                                            headerValue: 'value',
+                                            categoryFormatter(x) {
+                                                return new Date(x).toDateString();
+                                            },
+                                            valueFormatter(y) {
+                                                return y;
+                                            }
+                                        },
+                                        svg: {
+                                            filename: undefined,
+                                        },
+                                        png: {
+                                            filename: undefined,
+                                        }
+                                    },
+                                    autoSelected: 'zoom'
+                                },
+                            },
+                            colors: ['var(--primary)'],
+                            dataLabels: {
+                                enabled: false,
+                            },
+                            legend: {
+                                show: true,
+                            },
+                            stroke: {
+                                show: true,
+                                width: 6,
+                                curve: 'smooth',
+                                colors: ['var(--primary)'],
+                            },
+                            grid: {
+                                show: true,
+                                borderColor: '#C8C8C8',
+                                strokeDashArray: 4,
+                                padding: {
+                                    top: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    left: 0
+                                }
+                            },
+                            states: {
+                                normal: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                hover: {
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                },
+                                active: {
+                                    allowMultipleDataPointsSelection: false,
+                                    filter: {
+                                        type: 'none',
+                                        value: 0
+                                    }
+                                }
+                            },
+                            xaxis: {
+                                categories: categories,
+                                axisBorder: {
+                                    show: true,
+                                },
+                                axisTicks: {
+                                    show: true
+                                },
+                                labels: {
+                                    show: true,
+                                    style: {
+                                        fontSize: '14px',
+                                        colors: '#a4a7ab',
+                                    }
+                                },
+                                crosshairs: {
+                                    show: false,
+                                    position: 'front',
+                                    stroke: {
+                                        width: 1,
+                                        dashArray: 3
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    formatter: undefined,
+                                    offsetY: 0,
+                                    style: {
+                                        fontSize: '12px',
+                                    }
+                                }
+                            },
+                            yaxis: {
+                                show: true,
+                                labels: {
+                                    offsetX: -10,
+                                    formatter: function(value) {
+                                        return value + "k";
+                                    },
+                                    style: {
+                                        colors: '#a4a7ab',
+                                        fontSize: '14px',
+                                    },
+                                }
+                            },
+                            fill: {
+                                opacity: 1,
+                                colors: '#FB3E7A'
+                            },
+                            tooltip: {
+                                style: {
+                                    fontSize: '12px',
+                                },
+                                y: {
+                                    formatter: function(val) {
+                                        return "k" + val + " thousands";
+                                    }
+                                }
+                            },
+                            responsive: [{
+                                breakpoint: 575,
+                                options: {
+                                    chart: {
+                                        height: 250,
+                                    },
+                                },
+                            }]
+                        };
+
+                        var chartBar1 = new ApexCharts(document.querySelector("#salesChart1"), options);
+                        chartBar1.render();
+                    }
+                });
+            }
+
+
+
+            var salesChart2 = function() {
+                $.ajax({
                     url: 'dataload3', // Đường dẫn đến servlet
                     type: 'GET',
                     success: function (response) {
@@ -1324,146 +1511,10 @@ Footer end
                             }]
                         };
 
-                        var chartBar1 = new ApexCharts(document.querySelector("#salesChart"), options);
+                        var chartBar1 = new ApexCharts(document.querySelector("#salesChart2"), options);
                         chartBar1.render();
                     }
                 });
-            }
-
-            var salesChart2 = function() {
-                var options = {
-                    series: [{
-                        name: 'Net Profit',
-                        data: [200, 300, 400, 200, 300, 100, 300, 200, 100],
-                        //radius: 12,
-                    }, ],
-                    chart: {
-                        type: 'line',
-                        height: 380,
-                        toolbar: {
-                            show: false,
-                        },
-                    },
-
-                    colors: ['var(--primary)'],
-                    dataLabels: {
-                        enabled: false,
-                    },
-
-                    legend: {
-                        show: true,
-                    },
-                    stroke: {
-                        show: true,
-                        width: 6,
-                        curve: 'smooth',
-                        colors: ['var(--primary)'],
-                    },
-
-                    grid: {
-                        show: true,
-                        borderColor: '#C8C8C8',
-                        strokeDashArray: 4,
-                        padding: {
-                            top: 0,
-                            right: 0,
-                            bottom: 0,
-                            left: 0
-
-                        }
-                    },
-                    states: {
-                        normal: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        hover: {
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        },
-                        active: {
-                            allowMultipleDataPointsSelection: false,
-                            filter: {
-                                type: 'none',
-                                value: 0
-                            }
-                        }
-                    },
-                    xaxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct','Nov','Dec'],
-                        axisBorder: {
-                            show: true,
-                        },
-                        axisTicks: {
-                            show: true
-                        },
-                        labels: {
-                            show: true,
-                            style: {
-                                fontSize: '14px',
-                                colors: '#a4a7ab',
-                            }
-                        },
-                        crosshairs: {
-                            show: false,
-                            position: 'front',
-                            stroke: {
-                                width: 1,
-                                dashArray: 3
-                            }
-                        },
-                        tooltip: {
-                            enabled: true,
-                            formatter: undefined,
-                            offsetY: 0,
-                            style: {
-                                fontSize: '12px',
-                            }
-                        }
-                    },
-                    yaxis: {
-                        show: true,
-                        labels: {
-                            offsetX: -10,
-                            formatter: function(value) {
-                                return value + "k";
-                            },
-                            style: {
-                                colors: '#a4a7ab',
-                                fontSize: '14px',
-                            },
-                        }
-                    },
-                    fill: {
-                        opacity: 1,
-                        colors: '#FB3E7A'
-                    },
-                    tooltip: {
-                        style: {
-                            fontSize: '12px',
-                        },
-                        y: {
-                            formatter: function(val) {
-                                return "k" + val + " thousands"
-                            }
-                        }
-                    },
-                    responsive: [{
-                        breakpoint: 575,
-                        options: {
-                            chart: {
-                                height: 250,
-                            },
-                        },
-                    }]
-                };
-
-                var chartBar1 = new ApexCharts(document.querySelector("#salesChart2"), options);
-                chartBar1.render();
 
             }
 
