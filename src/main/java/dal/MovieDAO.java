@@ -57,6 +57,7 @@ public class MovieDAO extends DBContext {
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 a.setTrailer(rs.getString(11));
+                a.setAge(rs.getString("AgeRequire"));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -272,6 +273,7 @@ public class MovieDAO extends DBContext {
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 a.setTrailer(rs.getString(11));
+                a.setAge(rs.getString(14));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -358,7 +360,7 @@ public class MovieDAO extends DBContext {
     }
 
     public Movie getMovie(int id) {
-        String sql = "SELECT m.MovieID, m.MovieName, m.Description, m.Image, m.Status, m.Duration,m.Trailer FROM movie m join movie_has_types t on m.MovieID = t.MovieID where m.MovieID =? ";
+        String sql = "SELECT m.MovieID, m.MovieName, m.Description, m.Image, m.Status, m.Duration,m.Trailer,m.AgeRequire FROM movie m join movie_has_types t on m.MovieID = t.MovieID where m.MovieID =? ";
         Movie c = new Movie();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -372,7 +374,7 @@ public class MovieDAO extends DBContext {
                 c.setStatus(rs.getString(5));
                 c.setDuration(rs.getInt(6));
                 c.setTrailer(rs.getString(7));
-
+                c.setAge(rs.getString(8));
             }
         } catch (SQLException e) {
             e.printStackTrace();

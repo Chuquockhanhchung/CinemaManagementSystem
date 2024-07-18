@@ -133,6 +133,9 @@ public class SeatBookServlet extends HttpServlet {
         //Show combo list
         ComboDAO cd= new ComboDAO(DBContext.getConn());
         ArrayList<Combo> combos= cd.getCombo();
+
+
+        
         session.setAttribute("time",showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
