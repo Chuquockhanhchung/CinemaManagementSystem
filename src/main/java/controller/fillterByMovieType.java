@@ -71,12 +71,12 @@ public class fillterByMovieType extends HttpServlet {
            ArrayList<Customer> listC= daoc.getInfor_Customer();
            ArrayList<Account> list = dao.getall_Account();
            String type1=request.getParameter("type");
-           ArrayList<Movie> sapchieu = md.phim("Sắp chiếu",type1);
+           ArrayList<Movie> sapchieu = md.phim("2",type1);
            for(Movie m : sapchieu){
                m.setRate(md.getRatingById(m.getId()));
 
            }
-           ArrayList<Movie> dangchieu = md.phim("Đang chiếu",type1);
+           ArrayList<Movie> dangchieu = md.phim("1",type1);
            for(Movie m : dangchieu){
                m.setRate(md.getRatingById(m.getId()));
            }

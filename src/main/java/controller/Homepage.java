@@ -69,12 +69,12 @@ public class Homepage extends HttpServlet {
         MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> sapchieu = md.phim("Sắp chiếu","");
+        ArrayList<Movie> sapchieu = md.phim("2","");
         for(Movie m : sapchieu){
             m.setRate(md.getRatingById(m.getId()));
 
         }
-        ArrayList<Movie> dangchieu = md.phim("Đang chiếu","");
+        ArrayList<Movie> dangchieu = md.phim("1","");
         for(Movie m : dangchieu){
             m.setRate(md.getRatingById(m.getId()));
 

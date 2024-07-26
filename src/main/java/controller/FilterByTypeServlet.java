@@ -55,12 +55,12 @@ public class FilterByTypeServlet extends HttpServlet {
         MovieDAO md = new MovieDAO(DBContext.getConn());
         ArrayList<Customer> listC= daoc.getInfor_Customer();
         ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> sapchieu = md.SearchMovie("Sắp chiếu", name);
+        ArrayList<Movie> sapchieu = md.SearchMovie("2", name);
         for(Movie m : sapchieu){
             m.setRate(md.GetRateByID(m.getId()));
 
         }
-        ArrayList<Movie> dangchieu = md.SearchMovie("Đang chiếu", name);
+        ArrayList<Movie> dangchieu = md.SearchMovie("1", name);
         for(Movie m : dangchieu){
             m.setRate(md.GetRateByID(m.getId()));
         }
