@@ -1823,7 +1823,17 @@ body.active #mobile-nav {
     -moz-transition: all 0.5s;
     transition: all 0.5s;
 }
-
+#movie-age{
+    position: absolute;
+    z-index: 99;
+    top: 44px;
+    left: 28px;
+    background-color: red;
+    color: white;
+    padding: 7px;
+    font-weight: 600;
+}
+}
 .hephaistos .tp-bullet:hover,
 .hephaistos .tp-bullet.selected {
     border: 5px solid #000;

@@ -414,7 +414,10 @@
                                             %>
 
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
-                                                <div class="prs_upcom_movie_box_wrapper">
+                                                <div style="position: relative" class="prs_upcom_movie_box_wrapper">
+                                                    <div id="movie-age">
+                                                        <%= movie.getAge()%>
+                                                    </div>
                                                     <div class="prs_upcom_movie_img_box">
                                                         <img style="height: 400px;" loading="lazy"
                                                              src="<%= movie.getImage() %>" alt="movie_img"/>

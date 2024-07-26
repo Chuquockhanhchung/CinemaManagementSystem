@@ -27,7 +27,7 @@ public class Movie {
     private double Rate;
     private String director;
     private int languages;
-
+    private String age;
 
     public Movie() {
     }
@@ -183,6 +183,13 @@ public class Movie {
     }
 
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
 
     @Override
     public String toString() {

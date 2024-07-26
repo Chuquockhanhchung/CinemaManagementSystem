@@ -77,6 +77,8 @@ public class Homepage extends HttpServlet {
         ArrayList<Movie> dangchieu = md.phim("Đang chiếu","");
         for(Movie m : dangchieu){
             m.setRate(md.getRatingById(m.getId()));
+
+
         }
 
         ArrayList<Movie> phimhaynhat = md.film();

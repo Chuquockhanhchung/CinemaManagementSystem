@@ -76,6 +76,8 @@ public class DetailFilmServlet extends HttpServlet {
         float rating=  dao.getRatingById(id);
         String date = dao.getDateById(id);
         Movie movie = dao.getMovie(id);
+
+
         //Get Feedback of film
         ArrayList<Feedback> listf = dao.getFBbyID(id);
         for (Feedback f : listf) {

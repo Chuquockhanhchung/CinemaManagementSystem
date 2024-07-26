@@ -246,7 +246,7 @@
                     }
                 </script>
                 <h4>Đánh Giá Của Khách Hàng</h4>
-            </div>
+
             <div class="st_rating_box st_rating_box2" hidden="">
                 <fieldset class="rating">
                     <h3>4.5&nbsp;&nbsp;</h3>
@@ -304,6 +304,19 @@
                 Đánh Giá
             </button>
         </div>
+
+
+            <%--                <div class="st_slider_rating_btn prs_animate_btn1">--%>
+            <%--                    <ul>--%>
+            <%--                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>--%>
+            <%--                        </li>--%>
+            <%--                    </ul>--%>
+            <%--                </div>--%>
+            <%--                <div class="st_slider_rating_btn_heart">--%>
+            <%--                    <h5><i class="fa fa-heart"></i> 85%</h5>--%>
+            <%--                    <h4>52,291 lượt bình chọn</h4>--%>
+            <%--                </div>--%>
+        </div>
         <div class="col-md-5 st_slider_rating_right">
             <div class="st_calender_tabs">
                 <ul class="nav nav-tabs">
@@ -334,25 +347,18 @@
                         <c:forEach items="${sessionScope.showtime}" var="i">
                             <li class="movie" data-date="${i.getDate()}"
                                 style="border: 1px solid #fff; padding: 15px; margin: 15px 15px 0 0; background-color: white;border-radius: 8px;">
-                                <a href="seat?showtimeId=${i.getShowTimeID()}">${i.getTime()}</a>
+                                <p style="cursor: pointer" onclick="goToBooking('${i.getShowTimeID()}', '${sessionScope.movie.age}', '${sessionScope.user.DOB}')" >${i.getTime()}</p>
+                                    <%--                                href="seat?showtimeId=${i.getShowTimeID()}"--%>
                             </li>
                         </c:forEach>
+
                     </c:if>
+
 
 
                 </ul>
 
             </div>
-            <%--                <div class="st_slider_rating_btn prs_animate_btn1">--%>
-            <%--                    <ul>--%>
-            <%--                        <li data-animation="animated fadeInUp"><a onclick="bookMovie()" href="booking_movie?id=${sessionScope.movie.getId()}" class="button button--tamaya prs_upcom_main_btn" data-text="Đặt Vé Ngay"><span>Đặt Vé Ngay</span></a>--%>
-            <%--                        </li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
-            <%--                <div class="st_slider_rating_btn_heart">--%>
-            <%--                    <h5><i class="fa fa-heart"></i> 85%</h5>--%>
-            <%--                    <h4>52,291 lượt bình chọn</h4>--%>
-            <%--                </div>--%>
         </div>
 
     </div>
@@ -360,6 +366,28 @@
 <script>
     function bookMovie(movieID) {
         window.location.href = 'booking_movie?id=' + movieID;
+    }
+    function goToBooking(id,movie,age){
+        let ageUser = getAge(age)
+        let ageRequire = parseInt(movie.substring(1))
+        if(ageRequire > ageUser){
+            alert("Your age isn't enough")
+        }
+        else{
+            window.location = "seat?showtimeId="+id
+        }
+
+
+    }
+    function getAge(dateString)
+    {
+
+        var birthdate = new Date(dateString);
+
+        var cur = new Date();
+        var diff = cur-birthdate; // This is the difference in milliseconds
+        var age = Math.floor(diff/31557600000);
+        return age;
     }
 </script>
 <!-- st slider rating wrapper End -->
