@@ -459,6 +459,25 @@
     </servlet>
 
     <servlet-mapping>
+
+        <servlet-name>ServletEvent</servlet-name>
+        <url-pattern>/eventMovie</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletEvent</servlet-name>
+        <servlet-class>controller.ServletEvent</servlet-class>
+    </servlet>
+    <servlet-mapping>
+
+        <servlet-name>ServletAddEvent</servlet-name>
+        <url-pattern>/addEventMovie</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletAddEvent</servlet-name>
+        <servlet-class>controller.ServletAddEvent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
         <servlet-name>fillterByMovieType</servlet-name>
         <url-pattern>/filterByTypeMovie</url-pattern>
     </servlet-mapping>

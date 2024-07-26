@@ -111,7 +111,7 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="manager">CMS</a></li>
+                    <li class="breadcrumb-item"><a href="manager">Quản Lý</a></li>
                     <li class="breadcrumb-item"><a href="product">Danh sách sản phẩm</a></li>
                     <li class="breadcrumb-item active"><a href="addproduct">Thêm sản phẩm mới</a></li>
                 </ol>

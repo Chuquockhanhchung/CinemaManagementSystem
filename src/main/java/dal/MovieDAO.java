@@ -269,7 +269,8 @@ public class MovieDAO extends DBContext {
                 a.setId(rs.getInt(1));
                 a.setName(rs.getString(2));
                 a.setType(rs.getString(3));
-                a.setStatus(rs.getString(13));
+                a.setPrice(rs.getInt(13));
+                a.setStatus(rs.getString(14));
                 a.setReleaseDate(rs.getString(7));
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));

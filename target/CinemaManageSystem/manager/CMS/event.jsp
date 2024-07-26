@@ -98,8 +98,8 @@ Content body start
         <div class="container-fluid">
             <div class="page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">CMS</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Event</a></li>
+                    <li class="breadcrumb-item"><a href="manager">Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="eventMovie">Event</a></li>
                 </ol>
             </div>
             <!-- Row -->
@@ -107,18 +107,15 @@ Content body start
                 <div class="col-xl-12">
                     <div class="mb-5">
                         <ul class="d-flex align-items-center flex-wrap">
-                            <li><a href="../../add_event.jsp" class="btn btn-primary ">Thêm sự kiện mới</a></li>
+                            <li><a href="addEventMovie" class="btn btn-primary ">Thêm sự kiện mới</a></li>
                         </ul>
                     </div>
                     <div class="filter cm-content-box box-primary">
                         <div class="content-title SlideToolHeader">
                             <div class="cpa">
-                                <i class="fa-solid fa-file-lines me-1"></i>Event List
+                                <i class="fa-solid fa-file-lines me-1"></i>Danh sách sự Kiện
                             </div>
-                            <div class="tools">
-                                <a href="javascript:void(0);" class="expand handle"><i
-                                        class="fal fa-angle-down"></i></a>
-                            </div>
+
                         </div>
                         <div class="cm-content-body  form excerpt">
                             <div class="card-body py-3">
