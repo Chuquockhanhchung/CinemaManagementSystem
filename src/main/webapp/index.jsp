@@ -403,14 +403,14 @@
                                 <div class="owl-carousel owl-theme">
                                     <%
                                         ArrayList<Movie> dangchieu = (ArrayList<Movie>) request.getAttribute("dangchieu");
-                                        int size = dangchieu.size() / 8;
-                                        for (int i = 0; i < (size * 8 == dangchieu.size() ? size : size + 1); i++) {
+                                        int size = dangchieu.size() / 9;
+                                        for (int i = 0; i < (size * 9 == dangchieu.size() ? size : size + 1); i++) {
                                     %>
                                     <div class="item">
                                         <div class="row">
                                             <%
                                                 for (Movie movie : dangchieu) {
-                                                    if (dangchieu.indexOf(movie) >= i * 8 && dangchieu.indexOf(movie) <= i * 8 + 7) {
+                                                    if (dangchieu.indexOf(movie) >= i * 8 && dangchieu.indexOf(movie) <= i * 9 + 8) {
                                             %>
 
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
@@ -527,8 +527,8 @@
                                 <div class="owl-carousel owl-theme">
                                     <%
                                         ArrayList<Movie> sapchieu = (ArrayList<Movie>) request.getAttribute("sapchieu");
-                                        int size2 = sapchieu.size() / 8;
-                                        for (int i = 0; i < (size2 * 8 == dangchieu.size() ? size2 : size2 + 1); i++) {
+                                        int size2 = sapchieu.size() / 9;
+                                        for (int i = 0; i < (size2 * 9 == dangchieu.size() ? size2 : size2 + 1); i++) {
                                     %>
                                     <div class="item">
                                         <div class="row">
@@ -537,11 +537,12 @@
                                             <%
 
                                                 for (Movie movie : sapchieu) {
-                                                    if (sapchieu.indexOf(movie) >= i * 8 && sapchieu.indexOf(movie) <= i * 8 + 7) {
+                                                    if (sapchieu.indexOf(movie) >= i * 9 && sapchieu.indexOf(movie) <= i * 9 + 8) {
                                             %>
 
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                                 <div class="prs_upcom_movie_box_wrapper">
+                                                    
                                                     <div class="prs_upcom_movie_img_box">
                                                         <img style="height: 400px;" loading="lazy"
                                                              src="<%= movie.getImage() %>" alt="movie_img"/>
@@ -647,15 +648,15 @@
                                 <div class="owl-carousel owl-theme">
                                     <%
                                         ArrayList<Movie> phimhaynhat = (ArrayList<Movie>) request.getAttribute("phimhaynhat");
-                                        int size3 = phimhaynhat.size() / 8;
-                                        for (int i = 0; i < (size3 * 8 == phimhaynhat.size() ? size3 : size3 + 1); i++) {
+                                        int size3 = phimhaynhat.size() / 9;
+                                        for (int i = 0; i < (size3 * 9 == phimhaynhat.size() ? size3 : size3 + 1); i++) {
                                     %>
                                     <div class="item">
                                         <div class="row">
                                             <%
 
                                                 for (Movie movie : phimhaynhat) {
-                                                    if (phimhaynhat.indexOf(movie) >= i * 8 && phimhaynhat.indexOf(movie) <= i * 8 + 7) {
+                                                    if (phimhaynhat.indexOf(movie) >= i * 9 && phimhaynhat.indexOf(movie) <= i * 9 + 8) {
                                             %>
 
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">

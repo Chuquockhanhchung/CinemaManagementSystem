@@ -19,7 +19,7 @@ public class MovieDAO extends DBContext {
 
     public static void main(String[] args) {
         MovieDAO mdao = new MovieDAO(DBContext.getConn());
-        ArrayList<Movie> movies = mdao.phim("1","");
+        ArrayList<Movie> movies = mdao.getall_Movie();
         for (Movie movie : movies) {
             System.out.println(movie);
         }
@@ -57,7 +57,7 @@ public class MovieDAO extends DBContext {
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 a.setTrailer(rs.getString(11));
-                a.setAge(rs.getString(14));
+                a.setAge(rs.getString(15));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -83,6 +83,7 @@ public class MovieDAO extends DBContext {
                 a.setImage(rs.getString(10));
                 a.setTrailer(rs.getString(11));
                 a.setRate(rs.getFloat(12));
+                a.setAge(rs.getString(15));
                 movies.add(a);
             }
         } catch (SQLException e) {
@@ -273,7 +274,7 @@ public class MovieDAO extends DBContext {
                 a.setDescription(rs.getString(4));
                 a.setImage(rs.getString(10));
                 a.setTrailer(rs.getString(11));
-                a.setAge(rs.getString(14));
+                a.setAge(rs.getString(15));
                 movies.add(a);
             }
         } catch (SQLException e) {

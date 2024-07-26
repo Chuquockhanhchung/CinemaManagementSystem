@@ -203,6 +203,7 @@ public class Movie {
                 ", status='" + status + '\'' +
                 ", duration=" + duration +
                 ", price=" + price +
+                ", age="+age+
                 ", trailer='" + trailer + '\'' +
                 '}';
     }
