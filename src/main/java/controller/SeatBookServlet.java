@@ -84,7 +84,7 @@ public class SeatBookServlet extends HttpServlet {
         HttpSession session = request.getSession();
         try{
 
-            String seatID = (String)session.getAttribute("seatID");
+            //String seatID = (String)session.getAttribute("seatID");
             String seatID2 = (String)session.getAttribute("seatC");
             if(session.getAttribute("Combos")!=null){
                 ArrayList<Combo> combos = (ArrayList<Combo>)session.getAttribute("Combos");
