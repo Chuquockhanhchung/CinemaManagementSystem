@@ -1,4 +1,7 @@
-<%--
+<%@ page import="dal.MovieDAO" %>
+<%@ page import="dal.DBContext" %>
+<%@ page import="model.Movie" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: datla
   Date: 6/2/2024
@@ -142,36 +145,42 @@ Content body start
                                             <th class="text-black">M.No</th>
                                             <th class="text-black">Tên Phim</th>
                                             <th class="text-black">Ảnh Phim</th>
-                                            <th class="text-black">Gía vé</th>
                                             <th class="text-black">Trạng Thái</th>
                                             <th class="text-black">Ngày Đăng</th>
                                             <th class="text-black text-end">Hành Động</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${sessionScope.list}" var="m">
-                                            <tr>
-                                                <td>${m.getId()}</td>
-                                                <td>${m.getName()}</td>
-                                                <td><img width="100" height="100" src=${m.getImage()}  /></td>
-                                                <td>${m.getPrice()}</td>
-                                                <td>${m.getStatus()}</td>
-                                                <td>${m.getReleaseDate()}</td>
-                                                <td class="text-end">
+                                        <%
+                                            MovieDAO dao = new MovieDAO(DBContext.getConn());
+                                            List<Movie> list = dao.getall_Movie();
 
-                                                    <a href="${pageContext.request.contextPath}/editMovie?id=${m.getId()}"
-                                                       class="btn btn-warning btn-sm content-icon">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a onclick="deleteM(${m.getId()})"
-                                                       class="btn btn-danger btn-sm content-icon">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-
-
+                                            for (Movie movie : list) {
+                                        %>
+                                        <tr>
+                                            <td><%= movie.getId()%>
+                                            </td>
+                                            <td><%= movie.getName()%>
+                                            </td>
+                                            <td><img  height="100" width="100" src=<%=movie.getImage()%>  /> </td>
+                                            <td><%= movie.getStatus()%>
+                                            </td>
+                                            <td><%= movie.getReleaseDate()%>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="${pageContext.request.contextPath}/editMovie?id=<%= movie.getId()%>"
+                                                   class="btn btn-warning btn-sm content-icon">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a onclick="deleteM(<%= movie.getId()%>)"
+                                                   class="btn btn-danger btn-sm content-icon">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <%
+                                            }
+                                        %>
                                         </tbody>
                                     </table>
 

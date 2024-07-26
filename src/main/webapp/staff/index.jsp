@@ -222,7 +222,7 @@
                 String status = request.getParameter("status");
                 String type = request.getParameter("type");
                 if (status == null || type == null) {
-                    status = "Đang chiếu";
+                    status = "1";
                     type = "";
                 }
                 MovieDAO dao = new MovieDAO(DBContext.getConn());

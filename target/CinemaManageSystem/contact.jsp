@@ -72,15 +72,15 @@
                         <h2>Liên hệ với chúng tôi</h2>
                     </div>
                     <div class="row">
-                        <form>
+                        <form id="contactForm" action="contact" method="post">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="prs_contact_input_wrapper">
-                                    <input name="full_name" type="text" class="require" placeholder="Họ và Tên">
+                                    <input name="name" type="text" class="require" placeholder="Họ và Tên">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="prs_contact_input_wrapper">
-                                    <input type="email" class="require" data-valid="email" data-error="Email should be valid." placeholder="Email">
+                                    <input type="text" name="email" class="require" placeholder="Title">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -94,7 +94,7 @@
                                     <ul>
                                         <li>
                                             <input type="hidden" name="form_type" value="contact" />
-                                            <button type="button" class="submitForm">Gửi</button>
+                                            <button type="submit" class="submitForm">Gửi</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -106,6 +106,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            function validateEmail(email) {
+                var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            $('.submitForm').on('click', function() {
+                var isValid = true;
+                var errorMessage = "";
+
+                $('#contactForm .require').each(function() {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                        errorMessage += "Vui lòng điền " + $(this).attr('placeholder') + ".\n";
+                    } else if ($(this).attr('type') === 'email' ) {
+                        isValid = false;
+                        errorMessage += $(this).data('error') + "\n";
+                    }
+                });
+
+                if (!isValid) {
+                    alert(errorMessage);
+                } else {
+                    alert("Form submitted successfully!");
+                    // Here you can add code to actually submit the form data via AJAX or any other method
+                }
+            });
+        });
+    </script>
     <!-- prs contact form wrapper End -->
     <!-- prs contact map Start -->
     <div class="hs_contact_map_main_wrapper">

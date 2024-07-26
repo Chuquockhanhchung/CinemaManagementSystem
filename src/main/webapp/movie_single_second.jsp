@@ -89,6 +89,9 @@
         </div>
     </div>
 </div>
+<%
+    Customer us = (Customer) session.getAttribute("user");
+%>
 <!-- prs video top End -->
 <div class="container mt-5">
     <!-- Modal -->
@@ -125,7 +128,17 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <%
+                            if (us == null) {
+                        %>
+                        <button  class="btn btn-primary"><a href="#"
+                                                                         onclick="alert('Please log in to book tickets.'); return false;">
+                            <i class="btn btn-primary">Đăng</i>
+                        </a></button>
+
+                        <% } else { %>
                         <button type="submit" class="btn btn-primary">Đăng</button>
+                        <% } %>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                     </div>
                 </form>
@@ -141,7 +154,7 @@
         function isUserLoggedIn() {
             // Thực hiện kiểm tra session (có thể dựa trên cookie, local storage, hoặc API)
             // Giả sử chúng ta sử dụng localStorage để lưu trạng thái đăng nhập
-            return !!localStorage.getItem('user');
+            return document.cookie.split(';').some((item) => item.trim().startsWith('em='));
         }
 
         if (!isUserLoggedIn()) {

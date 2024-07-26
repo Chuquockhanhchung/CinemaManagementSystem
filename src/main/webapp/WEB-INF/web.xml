@@ -29,47 +29,47 @@
     </filter-mapping>
     <servlet>
         <servlet-name>servlet_Login</servlet-name>
-        <servlet-class>controller.servlet_Login</servlet-class>
+        <servlet-class>controller.Customer.servlet_Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FilterByTypeServlet</servlet-name>
-        <servlet-class>controller.FilterByTypeServlet</servlet-class>
+        <servlet-class>controller.Customer.FilterByTypeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchMovieServlet</servlet-name>
-        <servlet-class>controller.SearchMovieServlet</servlet-class>
+        <servlet-class>controller.Customer.SearchMovieServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>controller.UpdateProfileServlet</servlet-class>
+        <servlet-class>controller.Customer.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>controller.SearchServlet</servlet-class>
+        <servlet-class>controller.Customer.SearchServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchMovie</servlet-name>
-        <servlet-class>controller.SearchMovie</servlet-class>
+        <servlet-class>controller.Customer.SearchMovie</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdAccountServlet</servlet-name>
-        <servlet-class>controller.AdAccountServlet</servlet-class>
+        <servlet-class>controller.Admin.AdAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>signup</servlet-name>
-        <servlet-class>controller.signup</servlet-class>
+        <servlet-class>controller.Customer.signup</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CheckEmailServlet</servlet-name>
-        <servlet-class>controller.CheckEmailServlet</servlet-class>
+        <servlet-class>controller.Customer.CheckEmailServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AccessManage</servlet-name>
-        <servlet-class>controller.AccessManage</servlet-class>
+        <servlet-class>controller.Manager.AccessManage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>
-        <servlet-class>controller.logout</servlet-class>
+        <servlet-class>controller.Customer.logout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginByGoogle</servlet-name>
@@ -77,160 +77,164 @@
     </servlet>
     <servlet>
         <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>controller.AdminServlet</servlet-class>
+        <servlet-class>controller.Admin.AdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteAccount</servlet-name>
-        <servlet-class>controller.DeleteAccount</servlet-class>
+        <servlet-class>controller.Admin.DeleteAccount</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditAccount</servlet-name>
-        <servlet-class>controller.EditAccount</servlet-class>
+        <servlet-class>controller.Admin.EditAccount</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StaffServlet</servlet-name>
-        <servlet-class>controller.StaffServlet</servlet-class>
+        <servlet-class>controller.Staff.StaffServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageServlet</servlet-name>
-        <servlet-class>controller.ManageServlet</servlet-class>
+        <servlet-class>controller.Manager.ManageServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Homepage</servlet-name>
-        <servlet-class>controller.Homepage</servlet-class>
+        <servlet-class>controller.Customer.Homepage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DetailFilmServlet</servlet-name>
-        <servlet-class>controller.DetailFilmServlet</servlet-class>
+        <servlet-class>controller.Customer.DetailFilmServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>ActiveServlet</servlet-name>
-        <servlet-class>controller.ActiveServlet</servlet-class>
+        <servlet-class>controller.Admin.ActiveServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteFeedback</servlet-name>
-        <servlet-class>controller.DeleteFeedback</servlet-class>
+        <servlet-class>controller.Customer.DeleteFeedback</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddVoucherServlet</servlet-name>
-        <servlet-class>controller.AddVoucherServlet</servlet-class>
+        <servlet-class>controller.Manager.AddVoucherServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>VoucherServlet</servlet-name>
-        <servlet-class>controller.VoucherServlet</servlet-class>
+        <servlet-class>controller.Manager.VoucherServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditVoucher</servlet-name>
-        <servlet-class>controller.EditVoucher</servlet-class>
+        <servlet-class>controller.Manager.EditVoucher</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteVoucher</servlet-name>
-        <servlet-class>controller.DeleteVoucher</servlet-class>
+        <servlet-class>controller.Manager.DeleteVoucher</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ActivatedServlet</servlet-name>
-        <servlet-class>controller.ActivatedServlet</servlet-class>
+        <servlet-class>controller.Admin.ActivatedServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>sendEmail</servlet-name>
-        <servlet-class>controller.sendEmail</servlet-class>
+        <servlet-class>controller.Customer.sendEmail</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SeatBookServlet</servlet-name>
-        <servlet-class>controller.SeatBookServlet</servlet-class>
+        <servlet-class>controller.Customer.SeatBookServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Resetpassword</servlet-name>
-        <servlet-class>controller.Resetpassword</servlet-class>
+        <servlet-class>controller.Customer.Resetpassword</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BookingMovieServlet</servlet-name>
-        <servlet-class>controller.BookingMovieServlet</servlet-class>
+        <servlet-class>controller.Customer.BookingMovieServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BookingMovieServlet2</servlet-name>
-        <servlet-class>controller.BookingMovieServlet2</servlet-class>
+        <servlet-class>controller.Customer.BookingMovieServlet2</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddFeedbackServlet</servlet-name>
-        <servlet-class>controller.AddFeedbackServlet</servlet-class>
+        <servlet-class>controller.Customer.AddFeedbackServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddFeedbackServlet2</servlet-name>
-        <servlet-class>controller.AddFeedbackServlet2</servlet-class>
+        <servlet-class>controller.Customer.AddFeedbackServlet2</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
-        <servlet-class>controller.TicketServlet</servlet-class>
+        <servlet-class>controller.Staff.TicketServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddMovieServlet</servlet-name>
-        <servlet-class>controller.AddMovieServlet</servlet-class>
+        <servlet-class>controller.Manager.AddMovieServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddMovieType</servlet-name>
-        <servlet-class>controller.AddMovieType</servlet-class>
+        <servlet-class>controller.Manager.AddMovieType</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteMovie</servlet-name>
-        <servlet-class>controller.deleteMovie</servlet-class>
+        <servlet-class>controller.Manager.deleteMovie</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>manageMovieServlet</servlet-name>
-        <servlet-class>controller.manageMovieServlet</servlet-class>
+        <servlet-class>controller.Manager.manageMovieServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageCombo</servlet-name>
-        <servlet-class>controller.ManageCombo</servlet-class>
+        <servlet-class>controller.Manager.ManageCombo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ContactServlet</servlet-name>
+        <servlet-class>controller.Customer.ContactServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MakeReportServlet</servlet-name>
-        <servlet-class>controller.MakeReportServlet</servlet-class>
+        <servlet-class>controller.Manager.MakeReportServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
-        <servlet-class>controller.PaymentServlet</servlet-class>
+        <servlet-class>controller.Customer.PaymentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddEventServlet</servlet-name>
-        <servlet-class>controller.AddEventServlet</servlet-class>
+        <servlet-class>controller.Manager.AddEventServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddProduct</servlet-name>
-        <servlet-class>controller.AddProduct</servlet-class>
+        <servlet-class>controller.Manager.AddProduct</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadData</servlet-name>
-        <servlet-class>controller.LoadData</servlet-class>
+        <servlet-class>controller.Manager.LoadData</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadData2</servlet-name>
-        <servlet-class>controller.LoadData2</servlet-class>
+        <servlet-class>controller.Manager.LoadData2</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadData3</servlet-name>
-        <servlet-class>controller.LoadData3</servlet-class>
+        <servlet-class>controller.Manager.LoadData3</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadData4</servlet-name>
-        <servlet-class>controller.LoadData4</servlet-class>
+        <servlet-class>controller.Manager.LoadData4</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditProduct</servlet-name>
-        <servlet-class>controller.EditProduct</servlet-class>
+        <servlet-class>controller.Manager.EditProduct</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteProduct</servlet-name>
-        <servlet-class>controller.DeleteProduct</servlet-class>
+        <servlet-class>controller.Manager.DeleteProduct</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>editMovieServlet</servlet-name>
-        <servlet-class>controller.editMovieServlet</servlet-class>
+        <servlet-class>controller.Manager.editMovieServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditCombo</servlet-name>
-        <servlet-class>controller.EditCombo</servlet-class>
+        <servlet-class>controller.Manager.EditCombo</servlet-class>
     </servlet>
 
 
@@ -240,7 +244,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>DeleteCombo</servlet-name>
-        <servlet-class>controller.DeleteCombo</servlet-class>
+        <servlet-class>controller.Manager.DeleteCombo</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteCombo</servlet-name>
@@ -249,11 +253,11 @@
 
     <servlet>
         <servlet-name>AddCombo</servlet-name>
-        <servlet-class>controller.AddCombo</servlet-class>
+        <servlet-class>controller.Manager.AddCombo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductServlet</servlet-name>
-        <servlet-class>controller.ProductServlet</servlet-class>
+        <servlet-class>controller.Manager.ProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCombo</servlet-name>
@@ -269,7 +273,7 @@
     </servlet>
     <servlet>
         <servlet-name>EventSetvlet</servlet-name>
-        <servlet-class>controller.EventSetvlet</servlet-class>
+        <servlet-class>controller.Manager.EventSetvlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet_Login</servlet-name>
@@ -298,6 +302,10 @@
     <servlet-mapping>
         <servlet-name>LoadData3</servlet-name>
         <url-pattern>/dataload3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactServlet</servlet-name>
+        <url-pattern>/contact</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoadData4</servlet-name>
@@ -455,7 +463,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>fillterByMovieType</servlet-name>
-        <servlet-class>controller.fillterByMovieType</servlet-class>
+        <servlet-class>controller.Customer.fillterByMovieType</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -465,7 +473,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ServletEvent</servlet-name>
-        <servlet-class>controller.ServletEvent</servlet-class>
+        <servlet-class>controller.Manager.ServletEvent</servlet-class>
     </servlet>
     <servlet-mapping>
 
@@ -474,7 +482,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ServletAddEvent</servlet-name>
-        <servlet-class>controller.ServletAddEvent</servlet-class>
+        <servlet-class>controller.Manager.ServletAddEvent</servlet-class>
     </servlet>
 
     <servlet-mapping>
