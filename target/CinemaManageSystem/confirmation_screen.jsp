@@ -69,7 +69,12 @@
     List<Ticket> list = dao.getTicketByBooking(CustomerID);
 
     int showtimeID = (int) session.getAttribute("time");
-    Room room = dao.getRoomByShowtime(showtimeID);
+    Room room = null;
+    try {
+        room = dao.getRoomByShowtime(showtimeID);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
     session.setAttribute("room", room);
 
     int ticketCount = dao.countTicketsByBooking(CustomerID);
@@ -78,11 +83,14 @@
     String BookingID = null;
     double comboprice =0;
     ArrayList<Combo> combos = cdao.getComboByTicketID(list.get(0).getTicketID());
-
+    for(Combo combo:combos){
+        comboprice+=combo.getPrice();
+    }
     for (Ticket ticket : list) {
-        TicketPrice = ticket.getTicketPrice()+(float) comboprice;
+        TicketPrice += ticket.getTicketPrice();
         BookingID = ticket.getBookingID();
     }
+    TicketPrice +=(float) comboprice;
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
 %>

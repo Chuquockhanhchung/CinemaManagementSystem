@@ -64,6 +64,7 @@ public class CheckEmailServlet extends HttpServlet {
                 json.addProperty("fullName", customer.getName());
                 json.addProperty("phoneNumber", customer.getPhone());
                 json.addProperty("dob", customer.getDOB());
+                json.addProperty("email", customer.getEmail());
                 session.setAttribute("customer", customer);
             } else {
                 json.addProperty("exists", false);
