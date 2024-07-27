@@ -239,6 +239,10 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>controller.Customer.ChangePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchTickets</servlet-name>
+        <servlet-class>controller.Customer.SearchTickets</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EditCombo</servlet-name>
         <url-pattern>/editCombo</url-pattern>
@@ -522,6 +526,10 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchTickets</servlet-name>
+        <url-pattern>/searchTickets</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>

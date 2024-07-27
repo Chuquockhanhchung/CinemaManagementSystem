@@ -8,12 +8,8 @@
 <html lang="zxx">
 <head>
     <meta charset="utf-8"/>
-    <title>Movie Pro Responsive HTML Template</title>
+    <title>Nhân Viên | CMN</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta name="description" content="Movie Pro"/>
-    <meta name="keywords" content="Movie Pro"/>
-    <meta name="author" content=""/>
-    <meta name="MobileOptimized" content="320"/>
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
@@ -36,10 +32,7 @@
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="../images/header/favicon.ico"/>
     <%--    Swiper--%>
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
         .select-buttons button:hover, section button.active {
@@ -96,15 +89,19 @@
         }
 
         .form-group input[type="text"],
-        .form-group input[type="date"] {
+        .form-group input[type="date"],
+        .form-group input[type="email"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
         }
-
-        button[type="submit"] {
+        button[type="button"] {
+            margin-top: 10px;
+        }
+        button[type="submit"],
+        button[type="button"] {
             padding: 10px;
             background-color: #e53935;
             color: #fff;
@@ -117,6 +114,12 @@
 
         button[type="submit"]:hover {
             background-color: #d32f2f;
+        }
+
+        .btn-logout {
+            position: absolute;
+            right: 10px;
+            top: 10px;
         }
     </style>
 </head>
@@ -136,6 +139,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 50px">
                 <div class="prs_heading_section_wrapper">
                     <h2>Thông tin khách hàng</h2>
+                    <form action="../logout" method="get" style="margin-top: 20px;">
+                        <button class="btn-logout" type="submit">Đăng xuất</button>
+                    </form>
                 </div>
                 <%
                     CustomerDAO dao2 = new CustomerDAO(DBContext.getConn());
@@ -165,9 +171,7 @@
                     <p id="message" style="color: red"></p>
 
                 </form>
-                <form action="../logout" method="get" style="margin-top: 20px;">
-                    <button type="submit">Đăng xuất</button>
-                </form>
+
             </div>
         </div>
         <script>
@@ -203,10 +207,10 @@
                         document.getElementById('message').textContent = 'Lỗi khi tìm kiếm khách hàng.';
                     });
             });
-
-
-
         </script>
+
+        
+
         <div class="row">
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

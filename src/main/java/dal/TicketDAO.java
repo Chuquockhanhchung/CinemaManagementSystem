@@ -189,6 +189,46 @@ public class TicketDAO extends DBContext {
         return list;
     }
 
+    public List<Ticket> searchTickets(String bookingID) {
+        List<Ticket> tickets = new ArrayList<>();
+        String sql = "SELECT " +
+                "t.TicketID, c.FullName, t.TicketPrice, " +
+                "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
+                "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
+                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
+                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.ComboID " +
+                "FROM movieticket t " +
+                "JOIN customer c ON t.CustomerID = c.CustomerID " +
+                "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
+                "JOIN movie m ON s.MovieID = m.MovieID " +
+                "WHERE t.BookingID = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, bookingID);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Ticket ticket = new Ticket();
+                    ticket.setTicketID(rs.getInt("TicketID"));
+                    ticket.setComboName(rs.getString("FullName"));
+                    ticket.setTicketPrice(rs.getFloat("TicketPrice"));
+                    ticket.setStartDate(rs.getString("StartDate"));
+                    ticket.setStartTime(rs.getString("StartTime"));
+                    ticket.setBookingDate(rs.getString("BookingDate"));
+                    ticket.setMovieName(rs.getString("MovieName"));
+                    ticket.setImage(rs.getString("Image"));
+                    ticket.setBookingID(rs.getString("BookingID"));
+                    ticket.setSeatID(rs.getString("SeatID"));
+                    ticket.setStatus(rs.getString("Status"));
+                    ticket.setRoomID(rs.getInt("RoomID"));
+                    tickets.add(ticket);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tickets;
+    }
 
     public List<Ticket> getTicketByBooking(int CustomerID) {
         List<Ticket> list = new ArrayList<Ticket>();
