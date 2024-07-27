@@ -103,7 +103,6 @@
         <servlet-name>DetailFilmServlet</servlet-name>
         <servlet-class>controller.Customer.DetailFilmServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>ActiveServlet</servlet-name>
         <servlet-class>controller.Admin.ActiveServlet</servlet-class>
@@ -236,8 +235,10 @@
         <servlet-name>EditCombo</servlet-name>
         <servlet-class>controller.Manager.EditCombo</servlet-class>
     </servlet>
-
-
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.Customer.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EditCombo</servlet-name>
         <url-pattern>/editCombo</url-pattern>
@@ -250,7 +251,6 @@
         <servlet-name>DeleteCombo</servlet-name>
         <url-pattern>/deleteCombo</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>AddCombo</servlet-name>
         <servlet-class>controller.Manager.AddCombo</servlet-class>
@@ -323,7 +323,6 @@
         <servlet-name>ManageCombo</servlet-name>
         <url-pattern>/combo</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>FilterByTypeServlet</servlet-name>
         <url-pattern>/type</url-pattern>
@@ -452,7 +451,6 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>SearchMovieServlet</servlet-name>
         <url-pattern>/search2</url-pattern>
@@ -465,9 +463,7 @@
         <servlet-name>fillterByMovieType</servlet-name>
         <servlet-class>controller.Customer.fillterByMovieType</servlet-class>
     </servlet>
-
     <servlet-mapping>
-
         <servlet-name>ServletEvent</servlet-name>
         <url-pattern>/eventMovie</url-pattern>
     </servlet-mapping>
@@ -476,7 +472,6 @@
         <servlet-class>controller.Manager.ServletEvent</servlet-class>
     </servlet>
     <servlet-mapping>
-
         <servlet-name>ServletAddEvent</servlet-name>
         <url-pattern>/addEventMovie</url-pattern>
     </servlet-mapping>
@@ -484,7 +479,6 @@
         <servlet-name>ServletAddEvent</servlet-name>
         <servlet-class>controller.Manager.ServletAddEvent</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>fillterByMovieType</servlet-name>
         <url-pattern>/filterByTypeMovie</url-pattern>
@@ -525,9 +519,11 @@
         <servlet-name>EventSetvlet</servlet-name>
         <url-pattern>/event</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
-
 </web-app>
-

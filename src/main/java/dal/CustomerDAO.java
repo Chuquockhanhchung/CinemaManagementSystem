@@ -25,21 +25,27 @@ public class CustomerDAO extends DBContext {
         this.con = con;
     }
 
-    public void EditCustomer(String name, String email, String phone, String img, int id) {
-        String sql = "UPDATE customer SET FullName = ?, Email = ?, PhoneNumber = ?, Picture = ? WHERE CustomerID = ?";
-
-        System.out.println("Executing query: " + sql);
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, name);
-            ps.setString(2, email);
-            ps.setString(3, phone);
-            ps.setString(4, img);
-            ps.setInt(5, id);
-            ps.executeUpdate();
+    public boolean EditCustomer(Customer c) {
+        boolean f = false;
+        try {
+            String sql = "UPDATE customer SET FullName = ?, Email = ?, PhoneNumber = ?, Picture = ?, Gender = ?, Address = ?, DOB = ? WHERE CustomerID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, c.getName());
+            ps.setString(2, c.getEmail());
+            ps.setString(3, c.getPhone());
+            ps.setString(4, c.getPicture());
+            ps.setString(5, c.getGender());
+            ps.setString(6, c.getAddress());
+            ps.setString(7, c.getDOB());
+            ps.setInt(8, c.getIdCustomer());
+            int i = ps.executeUpdate();
+            if (i == 1) {
+                f = true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return f;
     }
 
     public Customer getCustomerByEmail(String email) {
@@ -217,7 +223,10 @@ public class CustomerDAO extends DBContext {
 
     public Customer getCustomerByID(int CustomerID) {
         Customer c = null;
-        String sql = "SELECT * FROM customer WHERE CustomerID = ?";
+        Security s = new Security();
+        String sql = "SELECT * FROM customer " +
+                "join account on account.AccountID = customer.AccountID " +
+                "WHERE CustomerID = ?";
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, CustomerID);
             ResultSet rs = statement.executeQuery();
@@ -228,12 +237,17 @@ public class CustomerDAO extends DBContext {
                 c.setEmail(rs.getString(4));
                 c.setPhone(rs.getString(5));
                 c.setPicture(rs.getString(6));
+                c.setDOB(rs.getString(7));
+                c.setGender(rs.getString(8));
+                c.setAddress(rs.getString(9));
+                c.setPass(s.decode(rs.getString(11)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return c;
     }
+
 
 
     public void insertAccount(Customer account) {
@@ -250,5 +264,18 @@ public class CustomerDAO extends DBContext {
         }
     }
 
-
+    public int getTotalSpendingByCustomerId(int customerId) {
+        String sql = "SELECT SUM(TicketPrice) FROM movieticket WHERE CustomerID = ? AND Status = 'successful'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

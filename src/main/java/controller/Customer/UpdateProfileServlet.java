@@ -13,7 +13,10 @@ import java.io.*;
 
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.Part;
+
 import java.io.IOException;
+
+import static java.lang.Integer.parseInt;
 
 @MultipartConfig
 public class UpdateProfileServlet extends HttpServlet {
@@ -57,7 +60,7 @@ public class UpdateProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Customer c = (Customer) session.getAttribute("user");
         request.setAttribute("customer", c);
-        request.getRequestDispatcher("Account.jsp").forward(request, response);
+        request.getRequestDispatcher("user_information.jsp").forward(request, response);
     }
 
 
@@ -66,58 +69,70 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-      try{
-          // Retrieve form data
-          String username = request.getParameter("name");
-          String email = request.getParameter("email");
-          String phone = request.getParameter("phone");
-          String DOB = request.getParameter("DOB");
-          Part part = request.getPart("profile-pic");
-          String picture = part.getSubmittedFileName();
-          // Check if any part is missing
-          if (username == null || email == null || phone == null) {
-              response.getWriter().println("Missing form parameters.");
-              return;
-          }
+        try {
 
-          // Log the parameters to verify they are being retrieved correctly
-          System.out.println("Username: " + username);
-          System.out.println("Email: " + email);
-          System.out.println("Phone: " + phone);
+            String username = request.getParameter("name");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String gender = request.getParameter("gender");
+            String address = request.getParameter("address");
+            String dob = request.getParameter("dob");
 
-          // Retrieve file part
-          String path = getServletContext().getRealPath("")+ "images" + File.separator + "content" + File.separator + "about";
-          File file = new File(path);
-          part.write(path + File.separator +  picture);
-          // Update the user's profile with the new data
-          CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-          HttpSession session = request.getSession();
-          Customer c = (Customer) session.getAttribute("user");
+            Part part = request.getPart("profile-pic");
+            String picture = part.getSubmittedFileName();
+            String picturePath = "";
+            // Retrieve file part
+            if (picture != null && !picture.isEmpty()) {
+                // Retrieve file part
+                String path = getServletContext().getRealPath("") + "images" + File.separator + "content" + File.separator + "about";
+                File file = new File(path);
+                if (!file.exists()) {
+                    file.mkdirs();
+                }
+                part.write(path + File.separator + picture);
+                picturePath = "images/content/about/" + picture;
+            } else {
+                // Retain the existing picture
+                picturePath = ((Customer) request.getSession().getAttribute("user")).getPicture();
+            }
+            // Update the user's profile with the new data
+            CustomerDAO dao = new CustomerDAO(DBContext.getConn());
+            HttpSession session = request.getSession();
+            Customer c = (Customer) session.getAttribute("user");
 
-          dao.EditCustomer(username, email, phone, "images" + "/" + "content" + "/" + "about"+ "/" + picture, c.getIdCustomer());
+            // Update session with new user data
+            Customer customer = new Customer();
+            customer.setName(username);
+            customer.setEmail(email);
+            customer.setPhone(phone);
+            customer.setGender(gender);
+            customer.setAddress(address);
+            customer.setDOB(dob);
+            customer.setPicture(picturePath);
+            customer.setIdCustomer(c.getIdCustomer());
 
-          // Update session with new user data
-          c.setName(username);
-          c.setEmail(email);
-          c.setPhone(phone);
-          c.setPicture(picture);
-          c.setDOB(DOB);
-          response.sendRedirect("home");
+            boolean success = dao.EditCustomer(customer);
+            if (success) {
+                session.setAttribute("succMess", "Thay đổi thông tin thành công");
+                response.sendRedirect("user_information.jsp" + "?CustomerID=" + c.getIdCustomer());
+            } else {
+                session.setAttribute("failMess", "Update Failed");
+                response.sendRedirect("user_information.jsp" + "?CustomerID=" + c.getIdCustomer());
+            }
 
-      }
-      catch (Exception e){
-          e.printStackTrace();
-      }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("failMess", e.getMessage());
+            response.sendRedirect("user_information.jsp");
+        }
     }
-
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-}
+        /**
+         * Returns a short description of the servlet.
+         *
+         * @return a String containing servlet description
+         */
+        @Override
+        public String getServletInfo () {
+            return "Short description";
+        }// </editor-fold>
+    }

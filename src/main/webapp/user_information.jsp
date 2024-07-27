@@ -20,7 +20,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài Khoản MCN</title>
+    <title>Thông Tin Cá Nhân</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/user-info.css" rel="stylesheet">
 
@@ -29,28 +29,45 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="css/fonts.css"/>
-    <link rel="stylesheet" type="text/css" href="css/flaticon.css"/>
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
-    <link rel="stylesheet" type="text/css" href="css/owl.theme.default.css"/>
+    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="css/dl-menu.css"/>
     <link rel="stylesheet" type="text/css" href="css/nice-select.css"/>
-    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css"/>
-    <link rel="stylesheet" type="text/css" href="css/venobox.css"/>
-    <link rel="stylesheet" type="text/css" href="js/plugin/rs_slider/layers.css"/>
-    <link rel="stylesheet" type="text/css" href="js/plugin/rs_slider/navigation.css"/>
-    <link rel="stylesheet" type="text/css" href="js/plugin/rs_slider/settings.css"/>
+
+
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
     <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
-    <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico"/>
-
     <link rel="stylesheet" type="text/css" href="css/confirmation_screen.css"/>
-
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
+
+<c:if test="${not empty succMess}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: "Chúc Mừng!",
+                text: "${succMess}",
+                icon: "success",
+                allowOutsideClick: true,
+                showCancelButton: false,
+                confirmButtonText: "OK"
+            });
+        });
+    </script>
+    <c:remove var="succMess" scope="session"/>
+</c:if>
+
+<c:if test="${not empty failMess}">
+    <p style="padding: 10px" class="text-center text-danger">${failMess}</p>
+    <c:remove var="failMess" scope="session"/>
+</c:if>
+
 <%@include file="header.jsp" %>
 <div class="container">
     <aside class="sidebar">
@@ -64,12 +81,14 @@
             int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
             CustomerDAO dao = new CustomerDAO(DBContext.getConn());
             Customer cus = dao.getCustomerByID(CustomerID);
+            int totalSpending = dao.getTotalSpendingByCustomerId(CustomerID);
+            NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+
         %>
         <div class="tab-pane" id="thong-tin-chung" style="display: block;">
             <div class="profile">
                 <div class="profile-image">
-                    <img src="default-avatar.png" alt="Avatar">
-                    <button>Thay đổi</button>
+                    <img src="<%= cus.getPicture() %>" alt="Avatar">
                 </div>
                 <div class="profile-info">
                     <p>Xin chào <%= cus.getName() %>
@@ -78,7 +97,8 @@
                     <div class="card-info">
                         <div class="card-info-item">
                             <p>Tổng Chi Tiêu</p>
-                            <p>0 đ</p>
+                            <p><%= currencyFormat.format(totalSpending) %>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -87,12 +107,14 @@
                 <h2>Thông tin tài khoản</h2>
                 <div class="account-info-item">
                     <p>LIÊN HỆ</p>
-                    <button>Thay đổi</button>
                 </div>
                 <div class="account-info-details">
-                    <p><strong>Tên:</strong> Nguyễn Tiến Đạt</p>
-                    <p><strong>Email:</strong> datlacve2@gmail.com</p>
-                    <p><strong>Điện thoại:</strong> 0968338829</p>
+                    <p><strong>Tên:</strong> <%= cus.getName() %>
+                    </p>
+                    <p><strong>Email:</strong> <%= cus.getEmail() %>
+                    </p>
+                    <p><strong>Điện thoại:</strong> <%= cus.getPhone() %>
+                    </p>
                 </div>
             </div>
         </div>
@@ -100,64 +122,65 @@
         <div class="tab-pane" id="thong-tin-tai-khoan" style="display: none;">
             <form class="account-details-form" action="updateprofile" method="post" enctype="multipart/form-data"
                   onsubmit="return validateForm2()">
+                <input type="hidden" value="<%= CustomerID %>" name="CustomerID">
                 <div class="profile-image">
                     <input type="file" class="form-control-file" id="profile-pic" name="profile-pic"
-                           onchange="previewImage(event)">
-                    <img id="profile-pic-preview" src="images/content/about/<%= cus.getPicture() %>>" alt="Profile Picture" class="mt-2"
+                           onchange="previewImage(event)" accept="image/png, image/jpeg, image/jpg">
+                    <img id="profile-pic-preview" src="<%= cus.getPicture() %>" alt="Profile Picture" class="mt-2"
                          style="width: 100px; height: 100px;">
                 </div>
                 <div class="form-group">
-                    <label for="full-name">Tên *</label>
-                    <input type="text" id="full-name" name="name" value="${sessionScope.user.name}" required>
+                    <label for="full-name">Họ và Tên *</label>
+                    <input type="text" id="full-name" name="name" value="<%= cus.getName() %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Địa chỉ email *</label>
+                    <input type="email" id="email" name="email" value="<%= cus.getEmail() %>" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Điện thoại *</label>
-                    <input type="text" id="phone" name="phone" value="${sessionScope.user.phone}" required>
+                    <input type="text" id="phone" name="phone" value="<%= cus.getPhone() %>" required>
                 </div>
-                <%--                <div class="form-group">--%>
-                <%--                    <label>Giới tính *</label>--%>
-                <%--                    <div>--%>
-                <%--                        <input type="radio" id="male" name="gender" value="male" checked>--%>
-                <%--                        <label for="male">Nam</label>--%>
-                <%--                        <input type="radio" id="female" name="gender" value="female">--%>
-                <%--                        <label for="female">Nữ</label>--%>
-                <%--                        <input type="radio" id="none" name="gender" value="none">--%>
-                <%--                        <label for="none">None</label>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
-                <%--                <div class="form-group">--%>
-                <%--                    <label for="address">Địa chỉ *</label>--%>
-                <%--                    <input type="text" id="address" value="No address 700" required>--%>
-                <%--                </div>--%>
-                <%--                <div class="form-group">--%>
-                <%--                    <label for="birthday">Ngày sinh</label>--%>
-                <%--                    <input type="text" id="birthday" value="${sessionScope.user.DOB}" disabled>--%>
-                <%--                </div>--%>
                 <div class="form-group">
-                    <label for="email">Địa chỉ email *</label>
-                    <input type="email" id="email" name="email" value="${sessionScope.user.email}" required>
+                    <label>Giới tính</label>
+                    <div>
+                        <input type="radio" id="male" name="gender"
+                               value="male" <%= "male".equals(cus.getGender()) ? "checked" : "" %>>
+                        <label for="male">Nam</label>
+                        <input type="radio" id="female" name="gender"
+                               value="female" <%= "female".equals(cus.getGender()) ? "checked" : "" %>>
+                        <label for="female">Nữ</label>
+                        <input type="radio" id="other" name="gender"
+                               value="other" <%= "other".equals(cus.getGender()) ? "checked" : "" %>>
+                        <label for="other">Khác</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ</label>
+                    <input type="text" id="address" name="address"
+                           value="<%= (cus.getAddress() != null && !cus.getAddress().isEmpty()) ? cus.getAddress() : "Chưa có địa chỉ" %>">
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Ngày sinh *</label>
+                    <input type="date" id="birthday" name="dob" value="<%= cus.getDOB() %>">
                 </div>
                 <div class="form-group buttons">
                     <button type="submit">LƯU LẠI</button>
                 </div>
             </form>
-            <form action="resetPassword" method="post" onsubmit="return validateForm()">
-                <%--                <div class="form-group">--%>
-                <%--                    <label for="username">Tên Tài Khoản</label>--%>
-                <%--                    <input type="text" class="form-control" name="email" id="username" value="${sessionScope.email}"--%>
-                <%--                           readonly>--%>
-                <%--                </div>--%>
+            <form action="changePassword" method="post" onsubmit="return validatePasswords()">
+                <div id="password-error" style="color: red;"></div>
                 <div class="form-group">
                     <label for="current-password">Mật Khẩu Hiện Tại *</label>
-                    <input type="password" class="form-control" id="current-password">
+                    <input type="password" class="form-control" name="currentPassword" id="current-password" required>
                 </div>
                 <div class="form-group">
                     <label for="new-password">Mật Khẩu Mới *</label>
-                    <input type="password" class="form-control" name="newPassword" id="new-password">
+                    <input type="password" class="form-control" name="newPassword" id="new-password" required>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Xác Nhận Mật Khẩu Mới *</label>
-                    <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+                    <input type="password" class="form-control" name="confirmPassword" id="confirm-password" required>
                 </div>
                 <div class="form-group buttons">
                     <button type="submit" class="btn btn-primary">Thay Đổi Mật Khẩu</button>
@@ -174,7 +197,6 @@
                 TicketDAO ticketdao = new TicketDAO(DBContext.getConn());
                 List<Ticket> ticketlist = ticketdao.getTicketByCustomer(CustomerID);
                 int ticketCount = ticketdao.countTicketsByBooking(CustomerID);
-                NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
                 int ticketIndex = 0;
                 for (Ticket ticket : ticketlist) {
@@ -183,24 +205,24 @@
                     ticketIndex++;
             %>
             <%
-                    float TicketPrice = ticket.getTicketPrice();
-                    Movie movie = (Movie) session.getAttribute("movie");
-                    String startTimeStr = ticket.getStartTime(); // Giả sử định dạng "HH:mm"
+                float TicketPrice = ticket.getTicketPrice();
+                Movie movie = (Movie) session.getAttribute("movie");
+                String startTimeStr = ticket.getStartTime(); // Giả sử định dạng "HH:mm"
 //                    int durationMinutes = movie.getDuration();
 
-                    // Định dạng thời gian đầu vào
-                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                // Định dạng thời gian đầu vào
+                DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
-                    // Chuyển đổi chuỗi StartTime thành đối tượng LocalTime
-                    LocalTime startTime = LocalTime.parse(startTimeStr, timeFormatter);
+                // Chuyển đổi chuỗi StartTime thành đối tượng LocalTime
+                LocalTime startTime = LocalTime.parse(startTimeStr, timeFormatter);
 
-                    // Cộng thời lượng phim vào thời gian bắt đầu
+                // Cộng thời lượng phim vào thời gian bắt đầu
 //                    LocalTime endTime = startTime.plusMinutes(durationMinutes);
 
-                    // Định dạng lại thời gian kết thúc thành chuỗi để hiển thị
+                // Định dạng lại thời gian kết thúc thành chuỗi để hiển thị
 //                    String endTimeStr = endTime.format(timeFormatter);
-                    float formattedPrice = TicketPrice / ticketCount;
-                    String formattedPriceDisplay = currencyFormat.format(formattedPrice);
+                float formattedPrice = TicketPrice / ticketCount;
+                String formattedPriceDisplay = currencyFormat.format(formattedPrice);
             %>
             <div class="ticket created-by-anniedotexe">
                 <div class="left">
@@ -229,7 +251,7 @@
                             <h4 class="movie-language">${sessionScope.language}</h4>
                         </div>
                         <div class="time">
-<%--                            <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>--%>
+                            <%--                            <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>--%>
                             <p>PHÒNG: <%=ticket.getRoomID()%> - GHẾ: <%= ticket.getSeatID() %>
                             </p>
                         </div>
@@ -248,7 +270,7 @@
                         <div class="barcode">
                             <input type="text" spellcheck="false" hidden="" id="<%= ticket.getTicketID() %>"
                                    value="<%= ticket.getBookingID() %>"/>
-                            <div class="qrcode" id="<%= qrCodeID %>"></div>
+                            <%--                            <div class="qrcode" id="<%= qrCodeID %>"></div>--%>
                         </div>
                         <p class="ticket-number">
                             #<%= ticket.getBookingID() %>
@@ -268,7 +290,6 @@
     </main>
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
@@ -287,29 +308,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="js/jquery_min.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/jquery.dlmenu.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery.magnific-popup.js"></script>
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/venobox.min.js"></script>
-<script src="js/smothscroll_part1.js"></script>
-<script src="js/smothscroll_part2.js"></script>
-<script src="js/plugin/rs_slider/jquery.themepunch.revolution.min.js"></script>
-<script src="js/plugin/rs_slider/jquery.themepunch.tools.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.addon.snow.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.actions.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.carousel.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.kenburn.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.layeranimation.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.migration.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.navigation.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.parallax.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
-<script src="js/plugin/rs_slider/revolution.extension.video.min.js"></script>
+
 <script src="js/custom.js"></script>
 
 
@@ -323,12 +322,31 @@
         }
         reader.readAsDataURL(event.target.files[0]);
     }
-
-    function checkPasswords() {
+</script>
+<script>
+    function validatePasswords() {
+        var currentPassword = document.getElementById('current-password').value;
         var newPassword = document.getElementById('new-password').value;
         var confirmPassword = document.getElementById('confirm-password').value;
         var errorDiv = document.getElementById('password-error');
 
+        // Clear any previous error messages
+        errorDiv.textContent = '';
+
+        // Validate current password is not empty
+        if (currentPassword === '' || <%= cus.getPass()%> != currentPassword) {
+            errorDiv.textContent = 'Mật khẩu hiện tại không đúng.';
+            return false;
+        }
+
+        // Validate new password meets criteria
+        const passPattern = /^.{6,}$/; // At least 6 characters
+        if (!passPattern.test(newPassword)) {
+            errorDiv.textContent = 'Hãy điền mật khẩu hợp lệ (ít nhất 6 số).';
+            return false;
+        }
+
+        // Validate passwords match
         if (newPassword !== confirmPassword) {
             errorDiv.textContent = 'Mật khẩu và xác nhận mật khẩu không khớp.';
             return false;
@@ -337,75 +355,25 @@
         return true;
     }
 
-    function validateForm() {
-        // Get form elements
-        const email = document.getElementById('username').value;
-        const pass1 = document.querySelector('input[name="newPassword"]').value;
-        const pass2 = document.querySelector('input[name="confirm-password"]').value;
-
-        // Email regex pattern
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        // Phone regex pattern (assuming it should be 10-15 digits)
-        const passPattern = /^\d{6}$/;
-        if (!passPattern.test(pass1)) {
-            alert("Hãy điền mật khẩu hợp lệ (6 chữ số).");
-            return false;
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.onsubmit = function () {
+            return validatePasswords();
         }
-        // Validate email
-        if (!emailPattern.test(email)) {
-            alert("Hãy nhập địa chỉ email hợp lệ (abc@abc.abc)");
-            return false;
-        }
-
-
-        // Validate name
-
-        // Validate passwords
-        if (pass1 === "" || pass2 === "") {
-            alert("Hãy nhập mật khẩu.");
-            return false;
-        }
-
-        if (pass1 !== pass2) {
-            alert("Mật khẩu không trùng khớp.");
-            return false;
-        }
-
-        return true;
-
-    }
-
-    function validateForm2() {
-        // Get form elements
-        const name = document.getElementById('full-name').value;
-        const email = document.querySelector('input[name="email"]').value;
-        const phone = document.querySelector('input[name="phone"]').value;
-
-        // Email regex pattern
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        // Phone regex pattern (assuming it should be 10-15 digits)
-        const phonePattern = /^\d{10}$/;
-
-        // Validate email
-        if (!emailPattern.test(email)) {
-            alert("Hãy nhập địa chỉ email hợp lệ (abc@abc.abc)");
-            return false;
-        }
-        // Validate name
-        if (name.trim() === "") {
-            alert("Hãy nhập tên.");
-            return false;
-        }
-        //Validate phone
-        if (!phonePattern.test(phone)) {
-            alert("Hãy điền số điện thoại hợp lệ (10 chữ số).");
-            return false;
-        }
-        return true;
-
-    }
+    });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/jquery.dlmenu.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.magnific-popup.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/venobox.min.js"></script>
+<script src="js/smothscroll_part1.js"></script>
+<script src="js/smothscroll_part2.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

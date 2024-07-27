@@ -22,6 +22,8 @@ public class Customer {
     private String date;
     private String status;
     private String DOB;
+    private String gender;
+    private String address;
 
     public Customer() {
         super();
@@ -51,6 +53,22 @@ public class Customer {
         this.email = email;
         this.phone = phone;
         this.picture = picture;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getStatus() {
