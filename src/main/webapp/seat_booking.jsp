@@ -1,3 +1,5 @@
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zxx">
@@ -68,6 +70,12 @@
     </div>
 </div>
 <!-- st top header Start -->
+<%
+    Movie movie = (Movie) session.getAttribute("movie");
+    double price = movie.getPrice();
+    NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+    String formattedPrice = currencyFormat.format(price);
+%>
 <!-- st seat Layout Start -->
 <div class="st_seatlayout_main_wrapper float_left">
     <div class="container container_seat">
@@ -90,7 +98,7 @@
                                 <c:choose>
                                     <c:when test="${seat.getStatus() == 'active'}">
                                         <li>
-                                            <span>Pay ${sessionScope.movie.getPrice() * 1.5} VND</span>
+                                            <span>Giá <%= formattedPrice %> VND</span>
                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                             <label for="c${seat.getIndex()}"></label>
                                         </li>
@@ -119,7 +127,7 @@
                                 <c:choose>
                                     <c:when test="${seat.getStatus() == 'active'}">
                                         <li>
-                                            <span>Pay ${sessionScope.movie.getPrice()} VND</span>
+                                            <span>Giá <%= formattedPrice %> VND</span>
                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                             <label for="c${seat.getIndex()}"></label>
                                         </li>
@@ -143,7 +151,7 @@
                                 <c:choose>
                                     <c:when test="${seat.getStatus() == 'active'}">
                                         <li>
-                                            <span>Pay ${sessionScope.movie.getPrice()} VND</span>
+                                            <span>Giá <%= formattedPrice %> VND</span>
                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                             <label for="c${seat.getIndex()}"></label>
                                         </li>
@@ -167,7 +175,7 @@
                                 <c:choose>
                                     <c:when test="${seat.getStatus() == 'active'}">
                                         <li>
-                                            <span>Pay ${sessionScope.movie.getPrice()} VND</span>
+                                            <span>Giá <%= formattedPrice %> VND</span>
                                             <input type="checkbox" id="c${seat.getIndex()}" name="cb">
                                             <label for="c${seat.getIndex()}"></label>
                                         </li>

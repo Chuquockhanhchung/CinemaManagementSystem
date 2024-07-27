@@ -4,6 +4,7 @@
 <%@ page import="model.*" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Random" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
@@ -74,12 +75,22 @@
         </div>
     </div>
 </div>
-
+<%
+    // Tạo BookingID ngẫu nhiên
+    Random random = new Random();
+    String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    StringBuilder bookingIdBuilder = new StringBuilder();
+    for (int i = 0; i < 8; i++) {
+        bookingIdBuilder.append(characters.charAt(random.nextInt(characters.length())));
+    }
+    String bookingId = bookingIdBuilder.toString();
+    session.setAttribute("BookingID", bookingId); // Lưu vào session nếu cần
+%>
 <!-- st dtts section Start -->
 <form action="payment" method="post" id="payment">
     <input type="text" value="${sessionScope.user.idCustomer}" name="idCustomer" hidden="">
     <input type="text" value="${sessionScope.time}" name="showtimeID" hidden="">
-    <input type="text" id="randomBookingID" name="BookingID" readonly hidden="">
+    <input type="hidden" id="randomBookingID" name="BookingID"  value="<%= bookingId %>" readonly>
 
     <div class="st_dtts_wrapper float_left">
         <div class="container">
@@ -196,10 +207,11 @@
                                                                     double comboprice = 0;
                                                                     ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
                                                                     for (Combo combo : combos) {
-                                                                        comboprice += combo.getPrice();
+                                                                        comboprice += combo.getPrice() * combo.getAmount();
                                                                     }
                                                                     double discountRate = event.getDiscount();
-                                                                    double discountedAmount = ticket.getTicketPrice() * discountRate;
+                                                                    double discountedAmount = (ticket.getTicketPrice() + comboprice) * discountRate;
+
                                                                     double finalPrice = ticket.getTicketPrice() + comboprice - discountedAmount;
 
                                                                     String formattedFinalPrice = currencyFormat.format(finalPrice);
@@ -208,6 +220,7 @@
                                                                     String finalQrPrice = customFormat.format(finalPrice);
 
                                                             %>
+
                                                             <div class="row-payment list-mb24 list-crop">
                                                                 <div class="col-12 main-title-mobile show-mobile h3 text-center">
                                                                     Thanh toán qua ứng dụng Ngân hàng/ Ví điện
@@ -230,7 +243,7 @@
                                                                             <div class="row-payment color-primary align-items-center">
                                                                                 <div class="col h2">
                                                                                         <span id="totalAmountMb2">
-                                                                                           <%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "")%>
+                                                                                               <%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%>
                                                                                         </span><sup>VND</sup>
                                                                                 </div>
                                                                                 <div class="col-auto">
@@ -380,7 +393,7 @@
                                                                                     <div class="qr-inner"
                                                                                          style="background-image: url('css/QR_Code/images/qr-frame.svg')">
                                                                                         <img class="qrcodeimg-modal"
-                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= finalQrPrice %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}"
+                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= finalQrPrice %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}%20<%= bookingId %>"
                                                                                              alt="QR CODE">
                                                                                     </div>
                                                                                 </div>
@@ -415,7 +428,7 @@
                                                                 double comboprice = 0;
                                                                 ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
                                                                 for (Combo combo : combos) {
-                                                                    comboprice += combo.getPrice();
+                                                                    comboprice += combo.getPrice() * combo.getAmount();
                                                                 }
                                                             %>
                                                             <div class="row-payment list-mb24 list-crop">
@@ -591,7 +604,7 @@
                                                                                     <div class="qr-inner"
                                                                                          style="background-image: url('css/QR_Code/images/qr-frame.svg')">
                                                                                         <img class="qrcodeimg-modal"
-                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= customCurrency %>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}"
+                                                                                             src="https://img.vietqr.io/image/vietinbank-104877396758-qr_only.jpg?amount=<%= ticket.getTicketPrice() + comboprice%>&addInfo=${sessionScope.user.name}%20${sessionScope.user.idCustomer}%20<%= bookingId %>"
                                                                                              alt="QR CODE">
                                                                                     </div>
                                                                                 </div>
@@ -885,44 +898,47 @@
                                     <p>Tóm tắt đặt vé</p>
                                 </div>
                                 <%
+                                    ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
+                                    double comboprice = 0;
+                                    double totalcombo = 0;
+                                    for (Combo combo : combos) {
+                                        double comboItemPrice = combo.getPrice() * combo.getAmount();
+                                        totalcombo += comboItemPrice;
+                                    }
+
                                     if (event != null) {
-                                        double comboprice = 0;
-                                        ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
-                                        for (Combo combo : combos) {
-                                            comboprice += combo.getPrice();
-                                        }
                                         double discountRate = event.getDiscount();
-                                        double discountedAmount = ticket.getTicketPrice() * discountRate;
-
-                                        double finalPrice = ticket.getTicketPrice() + comboprice - discountedAmount;
-
-
+                                        double discountedAmount = (ticket.getTicketPrice() + totalcombo) * discountRate;
+                                        double finalPrice = ticket.getTicketPrice() + totalcombo - discountedAmount;
                                         String formattedFinalPrice = currencyFormat.format(finalPrice);
-                                        String QrPrice = currencyFormat.format(finalPrice).replace("₫", "");
                                 %>
                                 <div class="st_dtts_sb_ul float_left">
                                     <ul>
                                         <li><%= ticket.getSeatID() %>
-                                            <span><%= currencyFormat.format(ticket.getTicketPrice())%></span>
+                                            <span><%= currencyFormat.format(ticket.getTicketPrice()) %></span>
                                         </li>
-
-
-                                        <li>${event.getEventName()}
-                                            <span>
-                                               <%= String.format("%.0f%%", discountRate * 100) %>
-                                            </span>
+                                        <%
+                                            for (Combo combo : combos) {
+                                                double comboItemPrice = combo.getPrice() * combo.getAmount();
+                                        %>
+                                        <li><%= combo.getName() %>
+                                            <span><%= currencyFormat.format(comboItemPrice) %></span>
+                                        </li>
+                                        <%
+                                            }
+                                        %>
+                                        <li><%= event.getEventName() %>
+                                            <span>- <%= String.format("%.0f%%", discountRate * 100) %></span>
                                         </li>
                                         <li>
-                                            <span style="color: red">- <%= currencyFormat.format(discountedAmount)%></span>
+                                            <span style="color: red">- <%= currencyFormat.format(discountedAmount) %></span>
                                         </li>
-
                                     </ul>
                                 </div>
                                 <div class="st_dtts_sb_h2 float_left">
                                     <h3>Tổng
                                         <span><%= formattedFinalPrice %></span>
                                     </h3>
-                                    <%--                                                                    <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
                                         <span><%= formattedFinalPrice %></span>
                                     </h5>
@@ -930,45 +946,39 @@
                                 </div>
                                 <%
                                 } else {
-                                    double comboprice = 0;
-                                    ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
+                                    double finalPrice = ticket.getTicketPrice() + totalcombo;
+                                    String formattedFinalPrice = currencyFormat.format(finalPrice);
                                 %>
                                 <div class="st_dtts_sb_ul float_left">
                                     <ul>
                                         <li><%= ticket.getSeatID() %>
-                                            <span><%= currencyFormat.format(ticket.getTicketPrice()).replace("₫", "") %></span>
+                                            <span><%= currencyFormat.format(ticket.getTicketPrice()) %></span>
                                         </li>
                                         <%
                                             for (Combo combo : combos) {
-                                                comboprice += combo.getPrice()*combo.getAmount();
+                                                double comboItemPrice = combo.getPrice() * combo.getAmount();
                                         %>
-
                                         <li><%= combo.getName() %>
-                                            <span><%= combo.getPrice()*combo.getAmount()%></span>
+                                            <span><%= currencyFormat.format(comboItemPrice) %></span>
                                         </li>
-
                                         <%
                                             }
-                                            ;
                                         %>
-                                        <%--                                    <li>Internet handling fees <span>Rs.70.80</span></li>--%>
                                     </ul>
-                                    <%--                                <p>Booking Fees <span>Rs.60.00</span></p>--%>
-                                    <%--                                <p>Integrated GST (IGST) @ 18% <span>Rs.60.00</span></p>--%>
                                 </div>
                                 <div class="st_dtts_sb_h2 float_left">
                                     <h3>Tổng
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%></span>
+                                        <span><%= formattedFinalPrice %></span>
                                     </h3>
-                                    <%--                                <h4>Current State is <span>Kerala</span></h4>--%>
                                     <h5>Số tiền cần thanh toán
-                                        <span><%= currencyFormat.format(ticket.getTicketPrice() + comboprice).replace("₫", "")%></span>
+                                        <span><%= formattedFinalPrice %></span>
                                     </h5>
-                                    <input type="text" value="<%= customCurrency %>" name="ticketPrice" hidden="">
+                                    <input type="text" value="<%= finalPrice %>" name="ticketPrice" hidden="">
                                 </div>
                                 <%
                                     }
                                 %>
+
                             </div>
                             <div class="col-md-12">
                                 <div class="st_cherity_btn float_left">
@@ -1034,24 +1044,24 @@
     </div>
     <!--main js file start-->
 </form>
-<script>
-    function generateRandomString(length) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            result += characters[randomIndex];
-        }
-        return result;
-    }
+<%--<script>--%>
+<%--    function generateRandomString(length) {--%>
+<%--        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';--%>
+<%--        let result = '';--%>
+<%--        for (let i = 0; i < length; i++) {--%>
+<%--            const randomIndex = Math.floor(Math.random() * characters.length);--%>
+<%--            result += characters[randomIndex];--%>
+<%--        }--%>
+<%--        return result;--%>
+<%--    }--%>
 
-    const randomString = generateRandomString(8);
-    document.getElementById('randomBookingID').value = randomString;
-</script>
+<%--    const randomString = generateRandomString(8);--%>
+<%--    document.getElementById('randomBookingID').value = randomString;--%>
+<%--</script>--%>
 
 <script>
     const payment_process = document.querySelector('.payment-process');
-    const paid_content = "123";
+    const paid_content = "a";
     const paid_price = "<%= customCurrency %>";
 
     console.log(paid_content);

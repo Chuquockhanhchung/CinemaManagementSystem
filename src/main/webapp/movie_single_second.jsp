@@ -131,8 +131,8 @@
                         <%
                             if (us == null) {
                         %>
-                        <button  class="btn btn-primary"><a href="#"
-                                                                         onclick="alert('Please log in to book tickets.'); return false;">
+                        <button class="btn btn-primary"><a href="#"
+                                                           onclick="alert('Please log in to book tickets.'); return false;">
                             <i class="btn btn-primary">Đăng</i>
                         </a></button>
 
@@ -260,64 +260,63 @@
                 </script>
                 <h4>Đánh Giá Của Khách Hàng</h4>
 
-            <div class="st_rating_box st_rating_box2" hidden="">
-                <fieldset class="rating">
-                    <h3>4.5&nbsp;&nbsp;</h3>
-                    <input type="radio" name="rating" value="5"/>
-                    <label class="full" title="5 stars"></label>
-                    <input type="radio" name="rating" value="4 and a half"/>
-                    <label class="half" title="4.5 stars"></label>
-                    <input type="radio" name="rating" value="4"/>
-                    <label class="full" title="4 stars"></label>
-                    <input type="radio" name="rating" value="3 and a half"/>
-                    <label class="half" title="3.5 stars"></label>
-                    <input type="radio" name="rating" value="3"/>
-                    <label class="full" title="3 stars"></label>
-                    <input type="radio" name="rating" value="2 and a half"/>
-                    <label class="half" title="2.5 stars"></label>
-                    <input type="radio" name="rating" value="2"/>
-                    <label class="full" title="2 stars"></label>
-                    <input type="radio" name="rating" value="1 and a half"/>
-                    <label class="half" title="1.5 stars"></label>
-                    <input type="radio" name="rating" value="1"/>
-                    <label class="full" title="1 star"></label>
-                    <input type="radio" name="rating" value="half"/>
-                    <label class="half" title="0.5 stars"></label>
-                </fieldset>
-                <h4>USERS RATING</h4>
-            </div>
-            <div class="st_rating_box st_rating_box2" hidden="">
-                <fieldset class="rating">
-                    <h3>0&nbsp;&nbsp;</h3>
-                    <input type="radio" name="rating" value="5"/>
-                    <label class="full" title="5 stars"></label>
-                    <input type="radio" name="rating" value="4 and a half"/>
-                    <label class="half" title="4.5 stars"></label>
-                    <input type="radio" name="rating" value="4"/>
-                    <label class="full" title="4 stars"></label>
-                    <input type="radio" name="rating" value="3 and a half"/>
-                    <label class="half" title="3.5 stars"></label>
-                    <input type="radio" name="rating" value="3"/>
-                    <label class="full" title="3 stars"></label>
-                    <input type="radio" name="rating" value="2 and a half"/>
-                    <label class="half" title="2.5 stars"></label>
-                    <input type="radio" name="rating" value="2"/>
-                    <label class="full" title="2 stars"></label>
-                    <input type="radio" name="rating" value="1 and a half"/>
-                    <label class="half" title="1.5 stars"></label>
-                    <input type="radio" name="rating" value="1"/>
-                    <label class="full" title="1 star"></label>
-                    <input type="radio" name="rating" value="half"/>
-                    <label class="half" title="0.5 stars"></label>
-                </fieldset>
-                <h4>RATE IT</h4>
+                <div class="st_rating_box st_rating_box2" hidden="">
+                    <fieldset class="rating">
+                        <h3>4.5&nbsp;&nbsp;</h3>
+                        <input type="radio" name="rating" value="5"/>
+                        <label class="full" title="5 stars"></label>
+                        <input type="radio" name="rating" value="4 and a half"/>
+                        <label class="half" title="4.5 stars"></label>
+                        <input type="radio" name="rating" value="4"/>
+                        <label class="full" title="4 stars"></label>
+                        <input type="radio" name="rating" value="3 and a half"/>
+                        <label class="half" title="3.5 stars"></label>
+                        <input type="radio" name="rating" value="3"/>
+                        <label class="full" title="3 stars"></label>
+                        <input type="radio" name="rating" value="2 and a half"/>
+                        <label class="half" title="2.5 stars"></label>
+                        <input type="radio" name="rating" value="2"/>
+                        <label class="full" title="2 stars"></label>
+                        <input type="radio" name="rating" value="1 and a half"/>
+                        <label class="half" title="1.5 stars"></label>
+                        <input type="radio" name="rating" value="1"/>
+                        <label class="full" title="1 star"></label>
+                        <input type="radio" name="rating" value="half"/>
+                        <label class="half" title="0.5 stars"></label>
+                    </fieldset>
+                    <h4>USERS RATING</h4>
+                </div>
+                <div class="st_rating_box st_rating_box2" hidden="">
+                    <fieldset class="rating">
+                        <h3>0&nbsp;&nbsp;</h3>
+                        <input type="radio" name="rating" value="5"/>
+                        <label class="full" title="5 stars"></label>
+                        <input type="radio" name="rating" value="4 and a half"/>
+                        <label class="half" title="4.5 stars"></label>
+                        <input type="radio" name="rating" value="4"/>
+                        <label class="full" title="4 stars"></label>
+                        <input type="radio" name="rating" value="3 and a half"/>
+                        <label class="half" title="3.5 stars"></label>
+                        <input type="radio" name="rating" value="3"/>
+                        <label class="full" title="3 stars"></label>
+                        <input type="radio" name="rating" value="2 and a half"/>
+                        <label class="half" title="2.5 stars"></label>
+                        <input type="radio" name="rating" value="2"/>
+                        <label class="full" title="2 stars"></label>
+                        <input type="radio" name="rating" value="1 and a half"/>
+                        <label class="half" title="1.5 stars"></label>
+                        <input type="radio" name="rating" value="1"/>
+                        <label class="full" title="1 star"></label>
+                        <input type="radio" name="rating" value="half"/>
+                        <label class="half" title="0.5 stars"></label>
+                    </fieldset>
+                    <h4>RATE IT</h4>
+                </div>
             </div>
             <button type="button" class="btn btn-primary2" style="color: white; margin-left: 10px;" data-toggle="modal"
                     data-target="#reviewModal">
                 Đánh Giá
             </button>
-        </div>
-
 
             <%--                <div class="st_slider_rating_btn prs_animate_btn1">--%>
             <%--                    <ul>--%>
@@ -360,13 +359,13 @@
                         <c:forEach items="${sessionScope.showtime}" var="i">
                             <li class="movie" data-date="${i.getDate()}"
                                 style="border: 1px solid #fff; padding: 15px; margin: 15px 15px 0 0; background-color: white;border-radius: 8px;">
-                                <p style="cursor: pointer" onclick="goToBooking('${i.getShowTimeID()}', '${sessionScope.movie.age}', '${sessionScope.user.DOB}')" >${i.getTime()}</p>
+                                <p style="cursor: pointer"
+                                   onclick="goToBooking('${i.getShowTimeID()}', '${sessionScope.movie.age}', '${sessionScope.user.DOB}')">${i.getTime()}</p>
                                     <%--                                href="seat?showtimeId=${i.getShowTimeID()}"--%>
                             </li>
                         </c:forEach>
 
                     </c:if>
-
 
 
                 </ul>
@@ -380,26 +379,26 @@
     function bookMovie(movieID) {
         window.location.href = 'booking_movie?id=' + movieID;
     }
-    function goToBooking(id,movie,age){
+
+    function goToBooking(id, movie, age) {
         let ageUser = getAge(age)
         let ageRequire = parseInt(movie.substring(1))
-        if(ageRequire > ageUser){
+        if (ageRequire > ageUser) {
             alert("Your age isn't enough")
-        }
-        else{
-            window.location = "seat?showtimeId="+id
+        } else {
+            window.location = "seat?showtimeId=" + id
         }
 
 
     }
-    function getAge(dateString)
-    {
+
+    function getAge(dateString) {
 
         var birthdate = new Date(dateString);
 
         var cur = new Date();
-        var diff = cur-birthdate; // This is the difference in milliseconds
-        var age = Math.floor(diff/31557600000);
+        var diff = cur - birthdate; // This is the difference in milliseconds
+        var age = Math.floor(diff / 31557600000);
         return age;
     }
 </script>

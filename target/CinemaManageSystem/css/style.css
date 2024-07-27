@@ -1833,7 +1833,7 @@ body.active #mobile-nav {
     padding: 7px;
     font-weight: 600;
 }
-}
+
 .hephaistos .tp-bullet:hover,
 .hephaistos .tp-bullet.selected {
     border: 5px solid #000;
@@ -10303,7 +10303,7 @@ i:before {
     padding-top: 40px;
     padding-bottom: 100px;
     background: #333545;
-    height: 81%;
+    height: 100%;
 }
 
 .st_seat_lay_heading h3 {
@@ -10536,7 +10536,7 @@ i:before {
     line-height: 50px;
     font-weight: 700;
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
     background: #ff4444;
     color: #ffffff;
     border-radius: 5px;
@@ -10999,7 +10999,7 @@ i:before {
 
 .st_dtts_sb_ul li span {
     float: right;
-    margin-top: -22px;
+    /*margin-top: -22px;*/
 }
 
 .st_dtts_sb_ul li:last-child span {

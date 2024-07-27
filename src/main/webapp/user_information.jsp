@@ -120,14 +120,11 @@
         </div>
 
         <div class="tab-pane" id="thong-tin-tai-khoan" style="display: none;">
-            <form class="account-details-form" action="updateprofile" method="post" enctype="multipart/form-data"
-                  onsubmit="return validateForm2()">
+            <form class="account-details-form" action="updateprofile" method="post" enctype="multipart/form-data" onsubmit="return validateProfileForm()">
                 <input type="hidden" value="<%= CustomerID %>" name="CustomerID">
                 <div class="profile-image">
-                    <input type="file" class="form-control-file" id="profile-pic" name="profile-pic"
-                           onchange="previewImage(event)" accept="image/png, image/jpeg, image/jpg">
-                    <img id="profile-pic-preview" src="<%= cus.getPicture() %>" alt="Profile Picture" class="mt-2"
-                         style="width: 100px; height: 100px;">
+                    <input type="file" class="form-control-file" id="profile-pic" name="profile-pic" onchange="previewImage(event)" accept="image/png, image/jpeg, image/jpg">
+                    <img id="profile-pic-preview" src="<%= cus.getPicture() %>" alt="Profile Picture" class="mt-2" style="width: 100px; height: 100px;">
                 </div>
                 <div class="form-group">
                     <label for="full-name">Họ và Tên *</label>
@@ -144,21 +141,17 @@
                 <div class="form-group">
                     <label>Giới tính</label>
                     <div>
-                        <input type="radio" id="male" name="gender"
-                               value="male" <%= "male".equals(cus.getGender()) ? "checked" : "" %>>
+                        <input type="radio" id="male" name="gender" value="male" <%= "male".equals(cus.getGender()) ? "checked" : "" %>>
                         <label for="male">Nam</label>
-                        <input type="radio" id="female" name="gender"
-                               value="female" <%= "female".equals(cus.getGender()) ? "checked" : "" %>>
+                        <input type="radio" id="female" name="gender" value="female" <%= "female".equals(cus.getGender()) ? "checked" : "" %>>
                         <label for="female">Nữ</label>
-                        <input type="radio" id="other" name="gender"
-                               value="other" <%= "other".equals(cus.getGender()) ? "checked" : "" %>>
+                        <input type="radio" id="other" name="gender" value="other" <%= "other".equals(cus.getGender()) ? "checked" : "" %>>
                         <label for="other">Khác</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address"
-                           value="<%= (cus.getAddress() != null && !cus.getAddress().isEmpty()) ? cus.getAddress() : "Chưa có địa chỉ" %>">
+                    <input type="text" id="address" name="address" value="<%= (cus.getAddress() != null && !cus.getAddress().isEmpty()) ? cus.getAddress() : "Chưa có địa chỉ" %>">
                 </div>
                 <div class="form-group">
                     <label for="birthday">Ngày sinh *</label>
@@ -322,6 +315,62 @@
         }
         reader.readAsDataURL(event.target.files[0]);
     }
+</script>
+<script>
+    function validateProfileForm() {
+        // Lấy giá trị từ các trường nhập liệu
+        var name = document.getElementById('full-name').value;
+        var phone = document.getElementById('phone').value;
+        var address = document.getElementById('address').value;
+        var dob = document.getElementById('birthday').value;
+
+        // Validate full name
+        var namePattern = /^[\p{L} \-]+$/u;
+        if (!namePattern.test(name)) {
+            alert("Tên không được chứa số hoặc ký tự đặc biệt.");
+            return false;
+        } else if (name.trim() === "") {
+            alert("Họ và Tên không được để trống.");
+            return false;
+        }
+
+        // Validate email
+        var email = document.getElementById('email').value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(email)) {
+            alert("Địa chỉ email không hợp lệ.");
+            return false;
+        }
+
+        // Validate phone
+        var phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+            alert("Số điện thoại không hợp lệ.");
+            return false;
+        }
+
+        // Validate gender
+        var genderSelected = document.querySelector('input[name="gender"]:checked');
+        if (!genderSelected) {
+            alert("Hãy chọn giới tính.");
+            return false;
+        }
+
+        // Validate date of birth
+        if (dob === "") {
+            alert("Ngày sinh không được để trống.");
+            return false;
+        }
+
+        return true;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.onsubmit = function () {
+            return validateProfileForm();
+        }
+    });
 </script>
 <script>
     function validatePasswords() {
