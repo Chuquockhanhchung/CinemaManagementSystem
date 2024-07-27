@@ -19,10 +19,11 @@ import java.util.List;
 public class SeatBookServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
+     *
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,25 +36,27 @@ public class SeatBookServlet extends HttpServlet {
             out.println("<title>Servlet AdminServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AdminServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
+     *
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int showtimeID =Integer.parseInt(request.getParameter("showtimeId")) ;
+        int showtimeID = Integer.parseInt(request.getParameter("showtimeId"));
         TicketDAO dal = new TicketDAO(DBContext.getConn());
         List<Seat> list = null;
         try {
@@ -73,22 +76,22 @@ public class SeatBookServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        String date=null;
+        String date = null;
         try {
-             date = dal.getDateByShowtime(showtimeID);
+            date = dal.getDateByShowtime(showtimeID);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         HttpSession session = request.getSession();
-        try{
+        try {
 
             //String seatID = (String)session.getAttribute("seatID");
-            String seatID2 = (String)session.getAttribute("seatC");
-            if(session.getAttribute("Combos")!=null){
-                ArrayList<Combo> combos = (ArrayList<Combo>)session.getAttribute("Combos");
+            String seatID2 = (String) session.getAttribute("seatC");
+            if (session.getAttribute("Combos") != null) {
+                ArrayList<Combo> combos = (ArrayList<Combo>) session.getAttribute("Combos");
                 ComboDAO cdao = new ComboDAO(DBContext.getConn());
-                for(Combo combo : combos){
+                for (Combo combo : combos) {
                     Combo combonew = cdao.getComboByID(combo.getId());
                     combonew.setAmount(combonew.getAmount() + combo.getAmount());
                     cdao.chaneAmount(combonew);
@@ -121,12 +124,13 @@ public class SeatBookServlet extends HttpServlet {
                 }
                 Seat seat = new Seat();
                 seat.setSeatID(seatId);
-                seat.setStatus("active");
-
-                boolean seatHeld = d.holdTicket(seat);
-                if (!seatHeld) {
-                    allSeatsHeld = false;
-                    break;
+                if (!"unactive".equals(seat.getStatus())) {
+                    seat.setStatus("active");
+                    boolean seatHeld = d.holdTicket(seat);
+                    if (!seatHeld) {
+                        allSeatsHeld = false;
+                        break;
+                    }
                 }
             }
 
@@ -139,16 +143,15 @@ public class SeatBookServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         //Show combo list
-        ComboDAO cd= new ComboDAO(DBContext.getConn());
-        ArrayList<Combo> combos= cd.getCombo();
+        ComboDAO cd = new ComboDAO(DBContext.getConn());
+        ArrayList<Combo> combos = cd.getCombo();
 
 
-        
-        session.setAttribute("time",showtimeID);
+        session.setAttribute("time", showtimeID);
         session.setAttribute("listSeat", list);
         session.setAttribute("movie", movie);
         session.setAttribute("language", language);
-        session.setAttribute("date",date);
+        session.setAttribute("date", date);
         session.setAttribute("combos", combos);
         request.getRequestDispatcher("seat_booking.jsp").forward(request, response);
 
@@ -163,6 +166,7 @@ public class SeatBookServlet extends HttpServlet {
 
     /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

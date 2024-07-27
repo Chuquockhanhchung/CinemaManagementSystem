@@ -101,7 +101,7 @@ public class PaymentServlet extends HttpServlet {
                     break;
                 }
             }
-
+            session.removeAttribute("seatC");
             String[] seatIDs = seatID.split(",");
             List<String> seatIDList = Arrays.asList(seatIDs);
 
