@@ -122,6 +122,7 @@ public class PaymentServlet extends HttpServlet {
 //            email.sendEmail3(c.getEmail(),"Bạn đã thanh toán thành công! ");
             PaymentDAO dao = new PaymentDAO(DBContext.getConn());
             boolean f = dao.addTicket(ticket);
+            combos = (ArrayList<Combo>) session.getAttribute("Combos");
             for(Combo combo : combos) {
                 d.addCombo(new Ticket(combo.getAmount(),combo.getId(),d.getIDnew()));
             }

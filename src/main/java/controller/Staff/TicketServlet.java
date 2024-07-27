@@ -96,9 +96,9 @@ public class TicketServlet extends HttpServlet {
         String[] cb = combo.split("");
     int j=0;
         for(int i=0; i<cb.length; i++){
-            Combo c = new Combo();
+
             if(i%8==1){
-                c=cd.getComboByID(Integer.parseInt(cb[i]));
+                Combo c=cd.getComboByID(Integer.parseInt(cb[i]));
                 combos.add(c);
             }else if(i%8==5){
                 combos.get(j).setAmount(Integer.parseInt(cb[i]));

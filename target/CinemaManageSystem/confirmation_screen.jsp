@@ -82,7 +82,7 @@
     float TicketPrice = 0;
     String BookingID = null;
     double comboprice =0;
-    ArrayList<Combo> combos = cdao.getComboByTicketID(list.get(0).getTicketID());
+    ArrayList<Combo> combos = cdao.getComboByTicketID(list.get(list.size()-1).getTicketID());
     for(Combo combo:combos){
         comboprice+=combo.getPrice();
     }
@@ -170,9 +170,9 @@
                                                 <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>
                                                 <p>PHÒNG: ${sessionScope.room.roomId} - GHẾ: <%= ticket.getSeatID() %>
                                                 </p>
-                                                <%if(ticket.getComboId()!=null){%>
-                                                <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>
-                                                <%}%>
+<%--                                                <%if(ticket.getComboId()!=null){%>--%>
+<%--                                                <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>--%>
+<%--                                                <%}%>--%>
                                             </div>
                                             <p class="location"><span style="min-width: 150px;">MY CINEMA</span>
                                                 <span class="separator">

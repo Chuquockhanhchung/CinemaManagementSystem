@@ -343,6 +343,10 @@
             alert("Hãy chọn ít nhất một ghế trước khi tiếp tục.");
             event.preventDefault();
             return false; // Stop function
+        }else if(checkboxes.length>8){
+            alert("Chỉ chọn tối đa tám  ghế !");
+            event.preventDefault();
+            return false; // Stop function
         }
         document.getElementById('comboModal').style.display = 'block';
     });
