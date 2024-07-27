@@ -1,15 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
-package controller.Customer;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
+package controller.Staff;
 
 import dal.DBContext;
 import dal.TicketDAO;
@@ -17,15 +6,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Ticket;
 
-/**
- *
- * @author datla
- */
-public class SearchTickets extends HttpServlet {
-   
-    /** 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+public class CheckTicket extends HttpServlet {
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -33,24 +22,24 @@ public class SearchTickets extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SearchTickets</title>");  
+            out.println("<title>Servlet StaffServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SearchTickets at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet StaffServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -59,38 +48,11 @@ public class SearchTickets extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String bookingID = request.getParameter("bookingID");
-        List<Ticket> tickets = null;
-
-        if (bookingID != null && !bookingID.trim().isEmpty()) {
-            try (Connection con = DBContext.getConn()) {
-                TicketDAO ticketDAO = new TicketDAO(con);
-                tickets = ticketDAO.searchTickets(bookingID);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
-                return;
-            }
-        }
-
-        // Đặt loại nội dung và mã hóa ký tự
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
-        try (PrintWriter out = response.getWriter()) {
-
-        }
+            throws ServletException, IOException {
+        request.getRequestDispatcher("userStaff/index.jsp").forward(request, response);
     }
 
-    public static class Result {
-        public List<Ticket> tickets;
-
-        public Result(List<Ticket> tickets) {
-            this.tickets = tickets;
-        }
-    }
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -99,11 +61,16 @@ public class SearchTickets extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {
+        String booking = request.getParameter("bookingID");
+        TicketDAO td = new TicketDAO(DBContext.getConn());
+        List<Ticket> a = td.searchTickets(booking);
+        HttpSession session = request.getSession();
+        session.setAttribute("tickets", a);
+        response.sendRedirect("confirmation_screen.jsp?CustomerID=" +a.get(0).getCustomerID());
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

@@ -142,7 +142,7 @@
                     <form action="../logout" method="get" style="margin-top: 20px;">
                         <button class="btn-logout" type="submit">Đăng xuất</button>
                     </form>
-                </div>
+            </div>
                 <%
                     CustomerDAO dao2 = new CustomerDAO(DBContext.getConn());
                     int LastCID = dao2.getLatestCustomerID();
@@ -170,6 +170,13 @@
                     </div>
                     <p id="message" style="color: red"></p>
 
+                </form>
+                <form action="../check_ticket" method="post">
+                    <div class="form-group">
+                        <label for="bookingID">Mã đặt vé:</label>
+                        <input type="text" id="bookingID" name="bookingID" placeholder="Nhập mã đặt vé">
+                        <button type="submit">Kiểm tra vé</button>
+                    </div>
                 </form>
 
             </div>

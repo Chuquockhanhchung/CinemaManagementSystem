@@ -92,6 +92,10 @@
         <servlet-class>controller.Staff.StaffServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CheckTicket</servlet-name>
+        <servlet-class>controller.Staff.CheckTicket</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ManageServlet</servlet-name>
         <servlet-class>controller.Manager.ManageServlet</servlet-class>
     </servlet>
@@ -290,6 +294,10 @@
     <servlet-mapping>
         <servlet-name>CheckEmailServlet</servlet-name>
         <url-pattern>/check_email</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckTicket</servlet-name>
+        <url-pattern>/check_ticket</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddFeedbackServlet2</servlet-name>

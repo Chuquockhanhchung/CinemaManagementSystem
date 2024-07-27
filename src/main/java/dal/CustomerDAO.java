@@ -240,7 +240,7 @@ public class CustomerDAO extends DBContext {
                 c.setDOB(rs.getString(7));
                 c.setGender(rs.getString(8));
                 c.setAddress(rs.getString(9));
-                c.setPass(s.decode(rs.getString(11)));
+                c.setPass((rs.getString(11)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
