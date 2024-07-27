@@ -228,11 +228,7 @@ public class ComboDAO extends DBContext  {
     public static void main(String[] args) {
         ArrayList<Combo> combos = new ArrayList<>();
         ComboDAO cd = new ComboDAO(DBContext.getConn());
-        System.out.println("[\"1\",\"1\"]");
-        String mol= "[\"1\",\"1\"]";
-        System.out.println(mol.substring(1, mol.length()-1));
-        combos=cd.convertCombo("[\"1\",\"1\"]");
-
+        combos=cd.getComboByTicketID(102);
         for(Combo c : combos){
             System.out.println(c);
         }

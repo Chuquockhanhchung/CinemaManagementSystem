@@ -397,6 +397,10 @@ public class TicketDAO extends DBContext {
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        System.out.println(dal.getTicketByBooking(28));
+        List<Ticket> t = dal.getTicketByBooking(28);
+        for(Ticket t1:t){
+            System.out.println(t1.toString());
+        }
+        System.out.println();
     }
 }
