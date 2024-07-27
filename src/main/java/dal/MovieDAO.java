@@ -384,6 +384,29 @@ public class MovieDAO extends DBContext {
         return c;
 
     }
+    public Movie getMoviebyST(int id) {
+        String sql = "SELECT m.MovieID, m.MovieName, m.Description, m.Image, m.Status, m.Duration,m.Trailer,m.AgeRequire FROM movie m join showtime t on m.MovieID = t.MovieID where t.ShowtimeID =? ";
+        Movie c = new Movie();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                c.setId(rs.getInt(1));
+                c.setName(rs.getString(2));
+                c.setDescription(rs.getString(3));
+                c.setImage(rs.getString(4));
+                c.setStatus(rs.getString(5));
+                c.setDuration(rs.getInt(6));
+                c.setTrailer(rs.getString(7));
+                c.setAge(rs.getString(8));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+
+    }
 
 //
 

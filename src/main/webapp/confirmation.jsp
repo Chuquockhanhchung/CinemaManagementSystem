@@ -62,11 +62,10 @@
 <!-- prs navigation End -->
 
 <%
-    int CustomerID = Integer.parseInt(request.getParameter("CustomerID"));
 
     TicketDAO dao = new TicketDAO(DBContext.getConn());
     ComboDAO cdao = new ComboDAO(DBContext.getConn());
-    List<Ticket> list = dao.getTicketByBooking(CustomerID);
+    List<Ticket> list = (List<Ticket>)session.getAttribute("tickets");
 
     int showtimeID = (int) session.getAttribute("time");
     Room room = null;
@@ -77,7 +76,7 @@
     }
     session.setAttribute("room", room);
 
-    int ticketCount = dao.countTicketsByBooking(CustomerID);
+    int ticketCount = dao.countTicketsByBooking((int)session.getAttribute("cus"));
 
     float TicketPrice = 0;
     String BookingID = null;

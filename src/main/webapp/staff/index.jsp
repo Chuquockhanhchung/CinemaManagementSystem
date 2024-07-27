@@ -171,14 +171,39 @@
                     <p id="message" style="color: red"></p>
 
                 </form>
-                <form action="../check_ticket" method="post">
+                <form action="../check_ticket" id="checkTicketForm" method="post">
                     <div class="form-group">
                         <label for="bookingID">Mã đặt vé:</label>
                         <input type="text" id="bookingID" name="bookingID" placeholder="Nhập mã đặt vé">
                         <button type="submit">Kiểm tra vé</button>
                     </div>
                 </form>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('#checkTicketForm').on('submit', function(event) {
+                            event.preventDefault();
+                            var bookingID = $('#bookingID').val();
 
+                            $.ajax({
+                                url: '../check_ticket', // Adjust this URL to your actual endpoint
+                                method: 'GET',
+                                data: { bookingID: bookingID },
+                                success: function(response) {
+                                    if (!response.ticketExists) {
+                                        alert('Mã đặt vé không tồn tại.');
+                                    } else {
+                                        // Proceed with form submission if the ticket exists
+                                        $('#checkTicketForm')[0].submit();
+                                    }
+                                },
+                                error: function() {
+                                    alert('Đã xảy ra lỗi khi kiểm tra mã đặt vé.');
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
         <script>

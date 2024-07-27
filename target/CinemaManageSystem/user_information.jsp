@@ -13,6 +13,7 @@
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.LocalTime" %>
+<%@ page import="dal.ComboDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -191,6 +192,8 @@
                 List<Ticket> ticketlist = ticketdao.getTicketByCustomer(CustomerID);
                 int ticketCount = ticketdao.countTicketsByBooking(CustomerID);
 
+                ComboDAO cdao = new ComboDAO(DBContext.getConn());
+                List<Ticket> list = ticketdao.getTicketByBooking(CustomerID);
                 int ticketIndex = 0;
                 for (Ticket ticket : ticketlist) {
                     String ticketID = "ticket_" + ticketIndex;
@@ -261,9 +264,9 @@
                     </p>
                     <div class="right-info-container">
                         <div class="barcode">
-                            <input type="text" spellcheck="false" hidden="" id="<%= ticket.getTicketID() %>"
+                            <input type="text" spellcheck="false" hidden="" id="<%= ticketID %>"
                                    value="<%= ticket.getBookingID() %>"/>
-                            <%--                            <div class="qrcode" id="<%= qrCodeID %>"></div>--%>
+                            <div class="qrcode" id="<%= qrCodeID %>"></div>
                         </div>
                         <p class="ticket-number">
                             #<%= ticket.getBookingID() %>
@@ -274,8 +277,84 @@
                     </div>
                 </div>
             </div>
-
             <%
+                ArrayList<Combo> combos = cdao.getComboByTicketID(list.get(list.size()-1).getTicketID());
+                if(!combos.isEmpty() ){
+            %>
+
+            <div class="ticket created-by-anniedotexe">
+                <div class="left">
+                    <div class="image">
+                        <img src="<%= ticket.getImage() %>">
+                        <div class="image-overlay">
+                            <p class="admit-one">
+                                <span>MY CINEMA MY CINEMA MY CINEMA MY CINEMA</span>
+                            </p>
+                            <div class="ticket-number">
+                                <p>
+                                    #<%= ticket.getBookingID() %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket-info">
+                        <p class="date">
+                            <span>TUESDAY</span>
+                            <span id="" class="june-29"><%= ticket.getStartDate() %></span>
+                            <span>2024</span>
+                        </p>
+                        <div class="show-name">
+                            <h1><%= ticket.getMovieName() %>
+                            </h1>
+                            <h4 class="movie-language">${sessionScope.language}</h4>
+                        </div>
+                        <div class="time">
+<%--                            <p><%= ticket.getStartTime() %> PM <span>ĐẾN</span> <%=endTimeStr%> PM</p>--%>
+                            <%
+                                for(Combo combo:combos){
+
+                            %>
+                            <p>
+                                <%=combo.getName()%>: <%=combo.getAmount()%>:<%=combo.getPrice()%>
+                            </p>
+
+                            <%
+                                }
+                            %>
+
+                            <%if(ticket.getComboId()!=null){%>
+                            <p>Combo: <%=ticket.getComboId().get(0).getName()%></p>
+                            <%}%>
+                        </div>
+                        <p class="location"><span style="min-width: 150px;">MY CINEMA</span>
+                            <span class="separator">
+                                                <img src="images/header/favicon.ico">
+                                            </span><span>THẠCH THẤT - HÀ NỘI</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+                    <p class="admit-one">
+                        <span>MY CINEMA </span>
+                    </p>
+                    <div class="right-info-container">
+                        <div class="barcode">
+                            <input type="text" spellcheck="false" hidden="" id="<%= ticketID %>"
+                                   value="<%= ticket.getBookingID() %>"/>
+                            <div class="qrcode" id="<%= qrCodeID %>"></div>
+                        </div>
+                        <p class="ticket-number">
+                            #<%= ticket.getBookingID() %>
+                        </p>
+                        <p class="movie-price hidden-print-area">
+                            <%= formattedPriceDisplay %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <%
+
+                }
                 }
             %>
         </div>

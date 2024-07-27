@@ -64,42 +64,92 @@ public class Homepage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO(DBContext.getConn());
-        CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
-        MovieDAO md = new MovieDAO(DBContext.getConn());
-        ArrayList<Customer> listC= daoc.getInfor_Customer();
-        ArrayList<Account> list = dao.getall_Account();
-        ArrayList<Movie> sapchieu = md.phim("2","");
-        for(Movie m : sapchieu){
-            m.setRate(md.getRatingById(m.getId()));
-
-        }
-        ArrayList<Movie> dangchieu = md.phim("1","");
-        for(Movie m : dangchieu){
-            m.setRate(md.getRatingById(m.getId()));
-
-
-        }
-
-        ArrayList<Movie> phimhaynhat = md.film();
         HttpSession session = request.getSession();
-        //get type by filter type
-        int sumMovie = md.SumMovie();
-        ArrayList<MovieType> types = md.getMovieTypeAndAmount();
-        session.setAttribute("types", types);
-        session.setAttribute("sum", sumMovie);
-        //end
-        ArrayList<Movie> all = md.getall_Movie();
-        ArrayList<String> type = md.getMovieType();
-        session.setAttribute("type", type);
-        request.setAttribute("sapchieu", sapchieu);
-        request.setAttribute("dangchieu", dangchieu);
-        request.setAttribute("phimhaynhat", phimhaynhat);
-        request.setAttribute("listAcc", list);
-        request.setAttribute("listCus", listC);
-        request.setAttribute("numberAcc",list.size());
-        session.setAttribute("movies",all);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        if(session.getAttribute("user")!=null){
+            Customer c = (Customer) session.getAttribute("user");
+            if(c.getRole()==1){
+                AdminDAO dao = new AdminDAO(DBContext.getConn());
+                CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+                MovieDAO md = new MovieDAO(DBContext.getConn());
+                ArrayList<Customer> listC= daoc.getInfor_Customer();
+                ArrayList<Account> list = dao.getall_Account();
+                ArrayList<Movie> sapchieu = md.phim("2","");
+                for(Movie m : sapchieu){
+                    m.setRate(md.getRatingById(m.getId()));
+
+                }
+                ArrayList<Movie> dangchieu = md.phim("1","");
+                for(Movie m : dangchieu){
+                    m.setRate(md.getRatingById(m.getId()));
+
+
+                }
+
+                ArrayList<Movie> phimhaynhat = md.film();
+
+                //get type by filter type
+                int sumMovie = md.SumMovie();
+                ArrayList<MovieType> types = md.getMovieTypeAndAmount();
+                session.setAttribute("types", types);
+                session.setAttribute("sum", sumMovie);
+                //end
+                ArrayList<Movie> all = md.getall_Movie();
+                ArrayList<String> type = md.getMovieType();
+                session.setAttribute("type", type);
+                request.setAttribute("sapchieu", sapchieu);
+                request.setAttribute("dangchieu", dangchieu);
+                request.setAttribute("phimhaynhat", phimhaynhat);
+                request.setAttribute("listAcc", list);
+                request.setAttribute("listCus", listC);
+                request.setAttribute("numberAcc",list.size());
+                session.setAttribute("movies",all);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }else if(c.getRole()==2){
+                response.sendRedirect("admin");
+            } else if (c.getRole()==3) {
+                response.sendRedirect("staff/index.jsp");
+            }else {
+                response.sendRedirect("manager");
+            }
+        }else{
+            AdminDAO dao = new AdminDAO(DBContext.getConn());
+            CustomerDAO daoc = new CustomerDAO(DBContext.getConn());
+            MovieDAO md = new MovieDAO(DBContext.getConn());
+            ArrayList<Customer> listC= daoc.getInfor_Customer();
+            ArrayList<Account> list = dao.getall_Account();
+            ArrayList<Movie> sapchieu = md.phim("2","");
+            for(Movie m : sapchieu){
+                m.setRate(md.getRatingById(m.getId()));
+
+            }
+            ArrayList<Movie> dangchieu = md.phim("1","");
+            for(Movie m : dangchieu){
+                m.setRate(md.getRatingById(m.getId()));
+
+
+            }
+
+            ArrayList<Movie> phimhaynhat = md.film();
+
+            //get type by filter type
+            int sumMovie = md.SumMovie();
+            ArrayList<MovieType> types = md.getMovieTypeAndAmount();
+            session.setAttribute("types", types);
+            session.setAttribute("sum", sumMovie);
+            //end
+            ArrayList<Movie> all = md.getall_Movie();
+            ArrayList<String> type = md.getMovieType();
+            session.setAttribute("type", type);
+            request.setAttribute("sapchieu", sapchieu);
+            request.setAttribute("dangchieu", dangchieu);
+            request.setAttribute("phimhaynhat", phimhaynhat);
+            request.setAttribute("listAcc", list);
+            request.setAttribute("listCus", listC);
+            request.setAttribute("numberAcc",list.size());
+            session.setAttribute("movies",all);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
 
 
     }

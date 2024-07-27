@@ -191,17 +191,17 @@ public class TicketDAO extends DBContext {
 
     public List<Ticket> searchTickets(String bookingID) {
         List<Ticket> tickets = new ArrayList<>();
-        String sql = "SELECT " +
-                "t.TicketID, c.FullName, t.TicketPrice, " +
-                "DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, " +
-                "DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, " +
-                "DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, " +
-                "m.MovieName, m.Image, t.BookingID, t.SeatID, t.ComboID " +
-                "FROM movieticket t " +
-                "JOIN customer c ON t.CustomerID = c.CustomerID " +
-                "JOIN showtime s ON t.ShowtimeID = s.ShowtimeID " +
-                "JOIN movie m ON s.MovieID = m.MovieID " +
-                "WHERE t.BookingID = ?";
+        String sql = "SELECT \n" +
+                "                t.TicketID, c.FullName, t.TicketPrice, \n" +
+                "                DATE_FORMAT(s.StartTime, '%d-%m-%Y') AS StartDate, \n" +
+                "                DATE_FORMAT(s.StartTime, '%H:%i') AS StartTime, \n" +
+                "                DATE_FORMAT(t.BookingDate, '%d-%m-%Y %H:%i') AS BookingDate, \n" +
+                "                m.MovieName, m.Image,t.ShowtimeID, t.SeatID,t.Status, t.ComboID , t.BookingID\n" +
+                "                FROM movieticket t \n" +
+                "                JOIN customer c ON t.CustomerID = c.CustomerID \n" +
+                "                JOIN showtime s ON t.ShowtimeID = s.ShowtimeID \n" +
+                "                JOIN movie m ON s.MovieID = m.MovieID \n" +
+                "                WHERE t.BookingID = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, bookingID);
@@ -220,7 +220,7 @@ public class TicketDAO extends DBContext {
                     ticket.setBookingID(rs.getString("BookingID"));
                     ticket.setSeatID(rs.getString("SeatID"));
                     ticket.setStatus(rs.getString("Status"));
-                    ticket.setRoomID(rs.getInt("RoomID"));
+                    ticket.setShowtimeID(rs.getInt("ShowtimeID"));
                     tickets.add(ticket);
                 }
             }
@@ -437,7 +437,7 @@ public class TicketDAO extends DBContext {
 
     public static void main(String[] args) {
         TicketDAO dal = new TicketDAO(DBContext.getConn());
-        List<Ticket> t = dal.getTicketByBooking(28);
+        List<Ticket> t = dal.searchTickets("88VWZ271");
         for(Ticket t1:t){
             System.out.println(t1.toString());
         }
