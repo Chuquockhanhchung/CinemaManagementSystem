@@ -77,7 +77,7 @@ public class CustomerDAO extends DBContext {
     }
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO(DBContext.getConn());
-        System.out.println(dao.getCustomerByEmail("chungcqkhe170745@fpt.edu.vn"));
+        System.out.println(dao.getCustomerByEmail("0968338678").getEmail());
     }
 
     public ArrayList<Customer> getInfor_Customer() {

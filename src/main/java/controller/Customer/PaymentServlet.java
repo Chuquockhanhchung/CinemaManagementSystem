@@ -18,10 +18,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Account;
-import model.Combo;
-import model.Seat;
-import model.Ticket;
+import model.*;
 
 public class PaymentServlet extends HttpServlet {
 
@@ -54,6 +51,13 @@ public class PaymentServlet extends HttpServlet {
     throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
+            Customer customer = (Customer) session.getAttribute("user");
+            Customer customer1 = (Customer) session.getAttribute("customer2");
+            CustomerDAO customerDAO = new CustomerDAO(DBContext.getConn());
+            Customer customer2 = new Customer();
+            if(customer.getRole()==3) {
+                 customer2 = customerDAO.getCustomer(customer1.getId());
+            }
 
             int customerID = Integer.parseInt(request.getParameter("idCustomer"));
             int showtimeID = Integer.parseInt(request.getParameter("showtimeID"));
@@ -106,7 +110,7 @@ public class PaymentServlet extends HttpServlet {
             List<String> seatIDList = Arrays.asList(seatIDs);
 
             Ticket ticket = new Ticket();
-            ticket.setCustomerID(customerID);
+            ticket.setCustomerID((customer.getRole()==3?customer2.getIdCustomer():customerID));
             ticket.setShowtimeID(showtimeID);
             ticket.setSeatIDs(seatIDList);
             ticket.setTicketPrice(ticketPrice);
@@ -131,7 +135,7 @@ public class PaymentServlet extends HttpServlet {
 
             if (f) {
                 session.setAttribute("succMess", "Payment successful!");
-                response.sendRedirect("confirmation_screen.jsp?CustomerID=" + customerID);
+                response.sendRedirect("confirmation_screen.jsp?CustomerID=" + (customer.getRole()==3?customer2.getIdCustomer():customerID));
             }
 
         } catch (Exception e) {

@@ -189,6 +189,7 @@
                             document.getElementById('fullName').value = data.fullName;
                             document.getElementById('phoneNumber').value = data.phoneNumber;
                             document.getElementById('dob').value = data.dob;
+                            document.getElementById('email').value = data.email;
                             document.getElementById('message').textContent = '';
                         } else {
                             document.getElementById('fullName').value = '';
