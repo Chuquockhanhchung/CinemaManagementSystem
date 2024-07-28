@@ -80,6 +80,7 @@
     int ticketCount = dao.countTicketsByBooking(CustomerID);
 
     float TicketPrice = 0;
+    float ConfimPrice = 0;
     String BookingID = null;
     double comboprice =0;
     ArrayList<Combo> combos = cdao.getComboByTicketID(list.get(list.size()-1).getTicketID());
@@ -89,6 +90,7 @@
     for (Ticket ticket : list) {
         TicketPrice += ticket.getTicketPrice();
         BookingID = ticket.getBookingID();
+        ConfimPrice = ticket.getTicketPrice();
     }
     TicketPrice +=(float) comboprice;
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
@@ -101,7 +103,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="st_bcc_heading_wrapper float_left"><i class="fa fa-check-circle"></i>
-                        <h3>Thanh toán <span><%= currencyFormat.format(TicketPrice) %></span> Thành Công</h3>
+                        <h3>Thanh toán <span><%= currencyFormat.format(ConfimPrice) %></span> Thành Công</h3>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -195,7 +197,7 @@
                                                 #<%= BookingID %>
                                             </p>
                                                 <p class="movie-price hidden-print-area">
-                                                    <%= formattedPriceDisplay %>
+                                                    <%= ConfimPrice %>
                                                 </p>
                                         </div>
                                     </div>
@@ -237,7 +239,7 @@
 
                                                     %>
                                                 <p>
-                                                    <%=combo.getName()%>: <%=combo.getAmount()%>:<%=combo.getPrice()%>
+                                                    <%=combo.getName()%>: <%=combo.getAmount()%> : <%= currencyFormat.format(combo.getPrice() * combo.getAmount()) %>
                                                 </p>
 
                                                 <%
@@ -269,7 +271,7 @@
                                                 #<%= BookingID %>
                                             </p>
                                             <p class="movie-price hidden-print-area">
-                                                <%= formattedPriceDisplay %>
+                                                <%= ConfimPrice %>
                                             </p>
                                         </div>
                                     </div>
@@ -285,12 +287,11 @@
                         </div>
                     </div>
                     <div class="st_bcc_ticket_boxes_bottom_wrapper float_left">
-                        <p>Bạn có thể truy cập vé của mình từ Hồ sơ của bạn. Chúng tôi sẽ gửi cho bạn
-                            <br>Xác nhận qua e-Mail/SMS trong vòng 15 phút.</p>
-                        <ul>
-                            <li><a href="#">MỜI BẠN BÈ</a>
-                            </li>
-                        </ul>
+                        <p>Bạn có thể truy cập vé của mình từ Hồ sơ của bạn. </p>
+<%--                        <ul>--%>
+<%--                            <li><a href="#">MỜI BẠN BÈ</a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
                     </div>
                 </div>
             </div>

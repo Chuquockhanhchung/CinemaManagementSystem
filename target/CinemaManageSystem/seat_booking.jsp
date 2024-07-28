@@ -344,7 +344,7 @@
             event.preventDefault();
             return false; // Stop function
         }else if(checkboxes.length>8){
-            alert("Chỉ chọn tối đa tám  ghế !");
+            alert("Chỉ chọn tối đa 8 ghế !");
             event.preventDefault();
             return false; // Stop function
         }
